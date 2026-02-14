@@ -15,7 +15,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Mukund MGM Realty",
-    "url": "https://www.mukundmgmrealty.com/",
+    "url": "https://mukundrealty.vercel.app/",
     "description": "Mangalore-based real estate developer offering luxury and affordable residential and commercial projects.",
     "address": {
       "@type": "PostalAddress",

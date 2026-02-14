@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mukund MGM Realty | Real Estate Developer in Mangalore",
     description: "Discover premium residential and commercial projects by Mukund MGM Realty in Mangalore.",
-    url: "https://www.mukundmgmrealty.com/",
+    url: "https://mukundrealty.vercel.app/",
     siteName: "Mukund MGM Realty",
     images: [
       {

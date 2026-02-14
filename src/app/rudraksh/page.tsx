@@ -38,7 +38,7 @@ export const metadata = {
         title: "Rudraksh | Luxury Living by Mukund MGM Realty",
         description:
             "Premium residential apartments in Mangalore offering modern amenities, elegant architecture, and high-quality living experience.",
-        url: "https://www.mukundmgmrealty.com/",
+        url: "https://mukundrealty.vercel.app/",
         siteName: "Rudraksh by Mukund MGM Realty",
         images: [
             {
