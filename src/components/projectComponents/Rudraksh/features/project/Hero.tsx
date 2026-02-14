@@ -942,7 +942,7 @@ export function ProjectHero() {
                 <div>
                   <div className="space-y-3">
                     <div>
-                      <p className="text-lg font-light opacity-90">{currentFloor.title}</p>
+                      <p className="text-lg font-light opacity-90">{currentFloor?.title}</p>
                       <h1 className="text-6xl mt-2">{currentUnit?.details.number}</h1>
                     </div>
 
