@@ -16,12 +16,12 @@ import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Head
 // import ProjectHeader from "@/components/projectComponents/Rudraksh/features/project/Header";
 
 export const metadata = {
-    title: "Rudraksh by Mukund MGM Realty | Luxury Apartments in Mangalore",
+    title: "Rudraksh by Mukund Realty | Luxury Apartments in Mangalore",
     description:
         "Rudraksh by Mukund MGM Realty offers thoughtfully designed luxury 2, 3 & 4 BHK apartments in Mangalore, combining modern amenities, elegant design, and premium living comfort.",
 
     keywords: [
-        "Rudraksh Mukund MGM Realty",
+        "Rudraksh Mukund  Realty",
         "Luxury Apartments Mangalore",
         "2 3 4 BHK Mangalore",
         "Mukund Realty Projects",

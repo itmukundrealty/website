@@ -14,7 +14,7 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "name": "Mukund MGM Realty",
+    "name": "Mukund Realty",
     "url": "https://mukundrealty.vercel.app/",
     "description": "Mangalore-based real estate developer offering luxury and affordable residential and commercial projects.",
     "address": {
