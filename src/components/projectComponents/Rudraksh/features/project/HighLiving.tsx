@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const SECTION_DATA = [
     {
         id: "high-living",
-        label: "High Living Homes",
+        label: "High Living Luxurious Homes",
         description: "Rudraksh is envisioned as an expression of high living, where space, light, and serenity define everyday life. With two refined wings rising across 14 floors, each home feels expansive, composed, and effortlessly elegant.",
         imageSrc: "/images/rudrakshImages/1.webp"
     },
@@ -220,7 +220,7 @@ export default function ProjectHighLiving() {
                                     fontWeight: index === 0 ? 500 : 100, // Medium vs Thin
                                 }}
                             >
-                                <span className="text-4xl lg:text-5xl xl:text-[3.5rem] tracking-wide block hover:opacity-100 transition-opacity">
+                                <span className="text-3xl lg:text-[40px] xl:text-[3rem] tracking-wide block hover:opacity-100 transition-opacity">
                                     {item.label}
                                 </span>
                             </h2>

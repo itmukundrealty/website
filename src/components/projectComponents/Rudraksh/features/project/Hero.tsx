@@ -563,7 +563,7 @@ export function ProjectHero() {
           />
         </div>
         <div className="block lg:hidden h-full w-full">
-          <Image src="/images/rudrakshImages/mobileHero.png" alt="Mukund Realty Project Mobile" fill className="object-cover" priority />
+          <Image src="/images/rudrakshImages/mobileHero1.png" alt="Mukund Realty Project Mobile" fill className="object-cover" priority />
         </div>
       </div>
 

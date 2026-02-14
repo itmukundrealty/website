@@ -41,20 +41,6 @@ const testimonials = [
         name: "Mr. Nagraj Nayak",
         role: "Residents at Mukund Villas"
     },
-    {
-        id: 5,
-        thumbnail: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2FWgVckaoq5No-HQ.jpg?alt=media&token=fe772f19-d0be-4d61-b100-2c48f7c3e203",
-        videoUrl: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/Portfolios%2FNagaraj%20Bhat%20%20Proud%20Owner%20at%20%20of%20his%20flat%20at%20Nandadeep%20by%20Nirmaan%20Homes.mp4?alt=media&token=a989323b-7528-494c-8f0f-0e6d3ce0d9e6",
-        name: "Nagaraj Bhat",
-        role: "Proud Owner at Nandadeep by Mukund MGM Realty"
-    },
-    {
-        id: 6,
-        thumbnail: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2FmPJszdjJdb8-HD.jpg?alt=media&token=e9d4eb0b-1e91-4a4e-8534-d929dda5bffa",
-        videoUrl: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/Portfolios%2FSatish_Honnagatte_is_the_proud_owner_of_his_flat_in_Nandadeep_by_Nirmaan_Homes_1080P.mp4?alt=media&token=e5ebfad2-f0a8-43c2-9b0a-54236dec72b9",
-        name: "Satish Honnagatte",
-        role: "Proud Owner at Nandadeep by Mukund MGM Realty"
-    },
 ];
 
 export default function ExperienceSection() {
