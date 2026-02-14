@@ -1,0 +1,258 @@
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+
+// SVG Icons (Kept exactly as provided)
+const Icons = {
+    SwimmingPool: () => (
+        <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.9322 18.2373H17.0678M25 26.5162C24.242 26.5007 23.6935 26.1381 23.2203 25.4282C22.2527 23.9769 20.1201 23.9769 19.1525 25.4282C18.1849 26.8796 16.0523 26.8796 15.0847 25.4282C14.1171 23.9769 11.9845 23.9769 11.0169 25.4282C10.0493 26.8796 7.91668 26.8796 6.9491 25.4282C5.98152 23.9769 3.84888 23.9769 2.88131 25.4282C2.38697 26.1698 1.79185 26.5324 1 26.5162M4.86441 4C7.111 4 8.9322 5.8212 8.9322 8.0678V21.6963M13 4C15.2466 4 17.0678 5.8212 17.0678 8.0678V21.6963M17.0678 14.1695H8.9322M8.9322 10.1017H17.0678" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    GamesArea: () => (
+        <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.6667 14.3336C21.6667 20.0406 17.0404 24.667 11.3334 24.667C5.62639 24.667 1 20.0406 1 14.3336C1 8.62664 5.62639 4.00025 11.3334 4.00025C17.0404 4.00025 21.6667 8.62664 21.6667 14.3336Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" />
+            <path d="M16.8002 14.3336C16.8002 17.3529 14.3526 19.8004 11.3334 19.8004C8.31414 19.8004 5.86655 17.3529 5.86655 14.3336C5.86655 11.3144 8.31414 8.86679 11.3334 8.86679C14.3526 8.86679 16.8002 11.3144 16.8002 14.3336Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" />
+            <path d="M12.6197 12.7257C12.6197 13.4361 12.0438 14.012 11.3334 14.012C10.623 14.012 10.0471 13.4361 10.0471 12.7257C10.0471 12.0153 10.623 11.4394 11.3334 11.4394C12.0438 11.4394 12.6197 12.0153 12.6197 12.7257Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" />
+            <path d="M12.9413 15.6199C12.9413 16.508 12.2214 17.2278 11.3334 17.2278C10.4453 17.2278 9.72548 16.508 9.72548 15.6199C9.72548 14.7319 10.4453 14.012 11.3334 14.012C12.2214 14.012 12.9413 14.7319 12.9413 15.6199Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" />
+        </svg>
+    ),
+    Gymnasium: () => (
+        <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.4388 4.99977L17.0797 9.3588M21.4388 23.8887V22.4357M3.90599 23.8887V22.4357M3.90599 19.4179V12.2647C3.90599 10.6598 5.20704 9.35874 6.81197 9.35874L17.0797 9.35879L19.3107 18.2823M19.4762 6.96228L22.2551 18.0785M2.34397 19.5337C23.0297 17.9993 22.0188 18.0767 22.1653 18.0767C23.369 18.0767 24.3447 19.0525 24.3447 20.2562C24.3447 21.4599 23.369 22.4357 22.1653 22.4357H2.45299C1.65055 22.4357 1 21.7851 1 20.9827C1 20.2169 1.59238 19.5895 2.34397 19.5337Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    Reflexology: () => (
+        <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.8899 12.3503L11.2288 13.3093M13.9022 14.7187L12.5074 15.524M5.13272 15.737C6.18518 13.9141 5.57005 11.5878 3.76248 10.519M17.2809 19.786V15.524M1 24.9004H3.98341M7.39302 24.9004H17.2809M1 22.3432H5.68822M19.8381 24.9004H21.5429M15.3489 15.524C14.6606 15.524 14.0399 15.1102 13.7752 14.4749L12.0813 10.4095C9.96282 10.6449 8.05467 9.11841 7.81928 6.99993L4.61676 9.62017C4.13856 10.0114 3.73516 10.4861 3.42621 11.0213L1.81086 13.8192L12.1457 19.786H21.543C21.543 17.4321 19.6348 15.524 17.281 15.524H15.3489ZM21.5429 19.786H12.1456L1.81081 13.8192L1.17151 14.9265C0.818443 15.538 1.02796 16.32 1.63952 16.673L10.867 22.0006C11.2557 22.225 11.6967 22.3432 12.1456 22.3432H20.2643C20.9704 22.3432 21.5429 21.7708 21.5429 21.0646V19.786Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    LeisureAreas: () => (
+        <svg width="21" height="27" viewBox="0 0 21 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.91873 8.67795V25.0742M8.70011 14.4494L6.82 12.5693M9.26851 16.8105L11.6514 14.4276M8.91873 3.99955C6.57406 3.99955 4.6557 5.91791 4.6557 8.26258V8.44233C2.85276 7.89163 1.00152 9.23512 1.00152 11.1465C1.00152 12.359 1.76493 13.3931 2.83729 13.7948C1.88893 14.5248 1.27759 15.6712 1.27759 16.9606C1.27759 19.166 3.06539 20.9538 5.27067 20.9538C6.53672 20.9538 7.66492 20.3645 8.3965 19.4454C8.74401 19.4883 9.09345 19.4883 9.44096 19.4454C10.1725 20.3645 11.3007 20.9538 12.5668 20.9538C14.7721 20.9538 16.5599 19.166 16.5599 16.9606C16.5599 15.6712 15.9486 14.5248 15.0002 13.7948C16.0725 13.3931 16.8359 12.359 16.8359 11.1465C16.8359 9.23512 14.9847 7.89163 13.1818 8.44233V8.26258C13.1818 5.91791 11.2634 3.99955 8.91873 3.99955Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="22.926" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    ChildrenPlay: () => (
+        <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.4636 7.07036C17.4158 6.56258 18.5664 6.60108 19.4909 7.15643L19.9742 7.44678L21.8214 8.55612C22.6604 8.95338 23.0495 9.93136 22.7124 10.7961C22.4420 11.4914 21.7761 11.9231 21.0645 11.9231C20.891 11.9231 20.7153 11.8977 20.5413 11.8438L18.531 11.221H18.5306C16.8713 11.8212 17.7904 15.4273 17.8208 15.5573C17.8208 15.5587 17.8212 15.5596 17.8212 15.56L19.1317 20.6112L19.8306 23.3059L16.8505 23.8078C16.5171 20.5482 13.763 18.0052 10.4151 18.0052C7.06761 18.0052 4.31352 20.5482 3.98013 23.8078L1 23.3059L1.69894 20.6112L3.0094 14.6541C3.40711 13.1203 4.92504 12.1518 6.48191 12.4467C7.78105 12.6927 9.0983 12.8155 10.4151 12.8155C10.5034 12.8155 10.5917 12.815 10.68 12.8136C10.7077 12.8132 10.7353 12.8127 10.7629 12.8123C11.6861 12.7973 12.6088 12.7217 13.5247 12.5853M4.86747 21.1448L1.6989 20.6112M19.1316 20.6112L15.9631 21.1448M13.5247 12.5853C13.5247 9.6068 15.097 7.79875 16.4637 7.07036C17.4158 6.56258 18.5664 6.60108 19.4909 7.15643L19.9742 7.44678L21.5451 5.22041L20.8901 4.82677C19.1512 3.78221 16.9651 3.72287 15.1854 4.67185C13.8876 5.36355 12.8516 6.39543 12.1056 7.73941C11.5801 8.68613 11.2128 9.77463 11.0057 10.994C11.0057 10.994 10.8617 11.938 10.763 12.8123M1.00001 11.9521V11.115C1.00001 10.3644 1.60835 9.75605 2.35894 9.75605C2.734 9.75605 3.07373 9.90825 3.3197 10.1542C3.56566 10.4002 3.71786 10.7399 3.71786 11.115V13.359M10.4151 23.107V18.0051M14.1326 25.833H6.69799V24.9328C6.69799 23.9245 7.51534 23.1071 8.52362 23.1071H12.307C13.3152 23.1071 14.1326 23.9245 14.1326 24.9328V25.833Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    JacuzziSauna: () => (
+        <svg width="23" height="27" viewBox="0 0 23 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.1641 12.5914C12.0076 11.4668 12.0076 9.92038 11.1641 8.79571C10.3206 7.67104 10.3206 6.12467 11.1641 5M1 25.3281H21.3281M2.30741 17.7367V25.3281M20.0207 25.3281V17.7367M7.36834 25.3281V21.5324M4.83787 25.3281V21.5324M4.83788 17.7367H1V15.2062H21.3281V17.7367H9.89878M7.36834 12.5914C8.21184 11.4668 8.21184 9.92038 7.36834 8.79571C6.52485 7.67104 6.52485 6.12467 7.36834 5M14.9598 12.5914C15.8033 11.4668 15.8033 9.92038 14.9598 8.79571C14.1163 7.67104 14.1163 6.12467 14.9598 5M9.89879 21.5324L9.89883 25.3281M12.4293 25.3281V17.7367M14.9598 25.3281V17.7367M17.4902 25.3281V17.7367M4.83787 15.2062V21.5324H9.89882V15.2062" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    GrandLobby: () => (
+        <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.63868 21.7555V23.7629M18.7387 21.7555V23.7629M17.8374 12.1692V11.9132C17.8374 8.09514 14.7423 5 10.9243 5H10.4122C6.59413 5 3.49899 8.09514 3.49899 11.9132V12.1692M5.17863 22.2061C2.87084 22.2061 1 20.3353 1 18.0275V16.8395C1 15.9345 1.73368 15.2008 2.63868 15.2008C3.54368 15.2008 4.27736 15.9345 4.27736 16.8395V18.0275C4.27736 18.5253 4.68089 18.9288 5.17863 18.9288H16.1578C16.6555 18.9288 17.0591 18.5253 17.0591 18.0275V16.8718C17.0591 15.953 17.811 15.1835 18.7297 15.2011C19.62 15.2181 20.3364 15.9451 20.3364 16.8395V18.0275C20.3364 20.3353 18.4656 22.2061 16.1578 22.2061H5.17863Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    OpenLibrary: () => (
+        <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.3257 23.4571V8.64571M10.3257 23.4571L8.86824 21.9997C8.04522 21.1767 6.92947 20.7143 5.76555 20.7143H2.09619C1.49025 20.7143 1 20.2231 1 19.6171V8.09714C1 7.49121 1.49121 7 2.09714 7H6.31362C7.47754 7 8.59379 7.46237 9.41681 8.28538L10.3257 9.19429L11.2346 8.28538C12.0576 7.46237 13.1739 7 14.3378 7H19.1029C19.7088 7 20.2 7.49121 20.2 8.09714V19.6171C20.2 20.2231 19.7088 20.7143 19.1029 20.7143H14.8864C13.7225 20.7143 12.6062 21.1767 11.7832 21.9997L10.3257 23.4571Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    WellnessClub: () => (
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.03228 15.3601V20.9183M13.4014 15.3601V20.9183M4.98727 20.3113V15.0285C4.98727 13.166 6.49717 11.656 8.35978 11.656H13.0739C14.9365 11.656 16.4465 13.166 16.4465 15.0285V20.3113M8.03228 15.3601V20.9183M13.4014 15.3601V20.9183M10.7169 22.158V24.5127M18.0019 19.649C17.7399 19.649 17.2558 19.7743 17.2558 19.7743L10.7168 22.158L4.17795 19.7743C4.17795 19.7743 3.69383 19.649 3.43187 19.649C2.00609 19.649 0.86685 20.876 1.01258 22.3317C1.13929 23.5974 2.29845 24.5127 3.57056 24.5127H9.39761H12.0361H17.8632C19.1353 24.5127 20.2944 23.5974 20.4211 22.3317C20.5669 20.876 19.4276 19.649 18.0019 19.649ZM14.0447 8.3282C14.0447 10.1661 12.5547 11.656 10.7169 11.656C8.87898 11.656 7.38904 10.1661 7.38904 8.3282C7.38904 6.49031 8.87898 5.00038 10.7169 5.00038C12.5547 5.00038 14.0447 6.49031 14.0447 8.3282Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" />
+        </svg>
+    ),
+    CloudKitchen: () => (
+        <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.93245 9.12488C5.04882 9.12488 5.16395 9.13021 5.27777 9.14014C5.94358 6.75213 8.13447 4.99995 10.7348 4.99995C13.3352 4.99995 15.526 6.75213 16.1919 9.14014C16.3057 9.13021 16.4208 9.12488 16.5372 9.12488C18.709 9.12488 20.4696 10.8855 20.4696 13.0573C20.4696 15.1831 18.7828 16.9146 16.6747 16.9871V22.9846H4.79495V16.9871C2.68683 16.9146 1 15.1831 1 13.0573C1 10.8855 2.76062 9.12488 4.93245 9.12488Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="22.926" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4.79701 23H16.6727V20.3744H4.79701V23Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="22.926" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    BeautyLounge: () => (
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.4235 5L15.2538 9.94621L20.2 11.7765L15.2538 13.6067L13.4235 18.5529L11.5933 13.6067L6.64706 11.7765L11.5933 9.94621L13.4235 5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <path d="M4.95294 16.2941L6.55177 18.6482L8.90588 20.2471L6.55177 21.8459L4.95294 24.2L3.35411 21.8459L1 20.2471L3.35411 18.6482L4.95294 16.2941Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        </svg>
+    ),
+    SolarPanels: () => (
+        <svg width="22" height="27" viewBox="0 0 22 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.12279 15.6648H19.7016M7.03824 20.5812L8.09668 10.7485M14.5391 20.5812L13.4807 10.7485M7.47665 10.7485C7.47665 8.85111 9.01483 7.31297 10.9122 7.31297C12.8096 7.31297 14.3478 8.85115 14.3478 10.7485M10.9432 5.31673V3M8.21902 6.0134L7.06066 4.00705M6.2081 7.97887L4.20175 6.82051M15.6163 8.08638L17.6226 6.92802M13.6508 6.07551L14.8092 4.06917M5.41011 25.2768H16.1673M20.5774 20.5812H1L3.24559 10.7485H18.8258L20.5774 20.5812ZM8.99689 20.5812H12.5804V25.2768H8.99689V20.5812Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    Generators: () => (
+        <svg width="20" height="28" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.09393 13.6019L14.8724 6.30135C15.2866 6.02083 15.8104 6.45503 15.6116 6.91405L12.5184 14.0559C12.4965 14.1066 12.5197 14.1655 12.5704 14.1874L17.1032 16.1506C17.4744 16.3114 17.511 16.8235 17.1664 17.0354L6.85828 23.3745C6.44186 23.6306 5.94325 23.1985 6.13754 22.7499L8.80584 16.5891C8.82779 16.5384 8.8045 16.4795 8.75382 16.4576L4.17562 14.4747C3.81357 14.3179 3.76727 13.8232 4.09393 13.6019Z" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+    ),
+    SewageTreatment: () => (
+        <svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.44915 16.5678H8.41525M9.69539 9.87427L7.55746 6.52917C7.42576 6.32307 7.19493 6.18644 6.9322 6.18644C6.66948 6.18644 6.43864 6.32307 6.30695 6.52917L1.93006 13.3775C1.34129 14.2987 1 15.3934 1 16.5678C1 19.8441 3.65592 22.5 6.9322 22.5C10.2085 22.5 12.8644 19.8441 12.8644 16.5678C12.8644 16.4525 12.8611 16.3379 12.8546 16.2242M6.9322 15.0847V18.0508M16.2042 5.42404L18.2151 9.66227C18.3978 10.0472 18.5 10.4778 18.5 10.9322C18.5 12.5703 17.172 13.8983 15.5339 13.8983C13.8958 13.8983 12.5678 12.5703 12.5678 10.9322C12.5678 10.4778 12.67 10.0472 12.8527 9.66227L14.8636 5.42404C14.9825 5.17333 15.238 5 15.5339 5C15.8298 5 16.0853 5.17333 16.2042 5.42404Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    CCTV: () => (
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.2264 10.305V11.9881C19.2264 16.5564 15.5231 20.2598 10.9548 20.2598C6.38647 20.2598 2.68312 16.5564 2.68312 11.9881V10.305M1 7.00049H20.9096V10.305H1V7.00049ZM14.6723 14.0225C14.6723 16.0757 13.0079 17.7401 10.9548 17.7401C8.90162 17.7401 7.23723 16.0757 7.23723 14.0225C7.23723 11.9694 8.90162 10.305 10.9548 10.305C13.0079 10.305 14.6723 11.9694 14.6723 14.0225ZM12.194 14.0225C12.194 14.7069 11.6391 15.2617 10.9548 15.2617C10.2704 15.2617 9.7156 14.7069 9.7156 14.0225C9.7156 13.3382 10.2704 12.7833 10.9548 12.7833C11.6391 12.7833 12.194 13.3382 12.194 14.0225Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    MiniTheatre: () => (
+        <svg width="21" height="25" viewBox="0 0 21 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.0064 23.3941H6.48464M15.5735 6H4.9176C2.75399 6 1 7.75399 1 9.9176V16.3433C1 18.5065 2.7536 20.2601 4.91678 20.2601H15.5735C17.7371 20.2601 19.4911 18.5061 19.4911 16.3425V9.9176C19.4911 7.75399 17.7371 6 15.5735 6ZM8.36508 14.8594V11.7925C8.36508 11.0063 9.23103 10.5207 9.91167 10.9252L12.4921 12.4587C13.1531 12.8515 13.1531 13.8004 12.4921 14.1933L9.91167 15.7267C9.23103 16.1311 8.36508 15.6455 8.36508 14.8594Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    DanceFloor: () => (
+        <svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.7456 8.04627H17.8836M1 7.23711H2.13796M3.04255 5.19449H4.18051M1.70574 14.6778H16.9165M9.3111 7.07249V22.2832M16.9165 14.6778C16.9165 18.8782 13.5114 22.2832 9.3111 22.2832C5.11078 22.2832 1.70574 18.8782 1.70574 14.6778C1.70574 10.4775 5.11078 7.07249 9.3111 7.07249C13.5114 7.07249 16.9165 10.4775 16.9165 14.6778ZM10.7802 5.46918C10.7802 6.28059 10.1224 6.93836 9.31101 6.93836C8.4996 6.93836 7.84183 6.28059 7.84183 5.46918C7.84183 4.65777 8.4996 4 9.31101 4C10.1224 4 10.7802 4.65777 10.7802 5.46918ZM13.6001 14.6778C13.6001 18.8782 11.6799 22.2832 9.31113 22.2832C6.94237 22.2832 5.02212 18.8782 5.02212 14.6778C5.02212 10.4775 6.94237 7.07249 9.31113 7.07249C11.6799 7.07249 13.6001 10.4775 13.6001 14.6778Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" />
+        </svg>
+    ),
+    GatheringHall: () => (
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.6121 8.42733L18.732 8.54727C19.3065 9.12178 19.3065 10.0532 18.732 10.6278L17.2053 12.1545M13.0442 7.99348L14.571 6.46675C15.1455 5.89225 16.0769 5.89225 16.6515 6.46675L16.7714 6.58665M4.42635 6.58664L4.54626 6.46669C5.1208 5.89219 6.05227 5.89219 6.62678 6.46669L8.1535 7.99342M3.9925 12.1545L2.46577 10.6278C1.89127 10.0532 1.89127 9.12174 2.46577 8.54723L2.58568 8.42737M2.58572 20.7724L2.46581 20.6524C1.89127 20.0779 1.89127 19.1465 2.46581 18.572L3.9925 17.0453M8.1535 21.2062L6.62678 22.733C6.05227 23.3075 5.1208 23.3075 4.54625 22.733L4.42639 22.6131M16.7715 22.613L16.6516 22.733C16.077 23.3075 15.1456 23.3075 14.5711 22.733L13.0443 21.2062M17.2053 17.0452L18.732 18.5719C19.3065 19.1465 19.3065 20.078 18.732 20.6525L18.6121 20.7723M3.55572 14.5999C3.55572 18.4897 6.70909 21.6431 10.5989 21.6431C14.4888 21.6431 17.6421 18.4897 17.6421 14.5999C17.6421 10.71 14.4888 7.55666 10.5989 7.55666C6.70909 7.55666 3.55572 10.71 3.55572 14.5999ZM17.2693 5.50219C16.599 6.17245 16.599 7.25916 17.2693 7.92947C17.9395 8.59974 19.0262 8.59974 19.6965 7.92947C20.3668 7.25916 20.3668 6.17245 19.6965 5.50219C19.0262 4.83196 17.9395 4.83196 17.2693 5.50219ZM1.50125 7.92947C2.17152 8.59974 3.25823 8.59974 3.92849 7.92947C4.59876 7.2592 4.59876 6.17249 3.92849 5.50219C3.25823 4.83196 2.17152 4.83196 1.50125 5.50219C0.830979 6.17249 0.830979 7.2592 1.50125 7.92947ZM3.92849 23.6975C4.59876 23.0273 4.59876 21.9405 3.92849 21.2702C3.25823 20.6 2.17152 20.6 1.50125 21.2702C0.830979 21.9405 0.830979 23.0273 1.50125 23.6975C2.17152 24.3678 3.25823 24.3678 3.92849 23.6975ZM19.6965 21.2702C19.0262 20.6 17.9395 20.6 17.2693 21.2702C16.599 21.9405 16.599 23.0272 17.2693 23.6975C17.9395 24.3678 19.0262 24.3678 19.6965 23.6975C20.3668 23.0272 20.3668 21.9405 19.6965 21.2702Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" />
+        </svg>
+    ),
+    FirefightingSystem: () => (
+        <svg width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 9.39141C1 9.39141 3.13047 5.84064 8.10159 5.84064H11.6524M8.10158 8.68124V3.71017M13.0479 7.51496C12.2418 7.36786 11.6524 6.66322 11.6524 5.84086C11.6524 5.84069 11.6524 5.84055 11.6524 5.84038C11.6524 5.01807 12.2419 4.31338 13.0479 4.16628C15.2955 3.75773 19.4641 3 19.4641 3V8.68124C19.4641 8.68124 15.2955 7.92351 13.0479 7.51496ZM3.13047 13.6524C3.13047 10.9069 5.35681 8.68124 8.10158 8.68124C10.8464 8.68124 13.0727 10.9069 13.0727 13.6524V24.3047H3.13047V13.6524Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+};
+
+type FeatureItem = {
+    icon: React.ComponentType<any>;
+    label: string;
+};
+
+const FEATURES: FeatureItem[] = [
+    { icon: Icons.SwimmingPool, label: "Infinity Rooftop Swimming Pool" },
+    { icon: Icons.GamesArea, label: "Indoor & Outdoor Games Area" },
+    { icon: Icons.Gymnasium, label: "Air Conditioned Gymnasium" },
+    { icon: Icons.Reflexology, label: "Walking Path with Reflexology" },
+    { icon: Icons.LeisureAreas, label: "Landscaped Leisure Areas" },
+    { icon: Icons.ChildrenPlay, label: "Children's Play Area" },
+    { icon: Icons.JacuzziSauna, label: "Heated Jacuzzi & Timber Sauna" },
+    { icon: Icons.GrandLobby, label: "Access Controlled Grand Entrance Lobby" },
+    { icon: Icons.OpenLibrary, label: "Open Library" },
+    { icon: Icons.WellnessClub, label: "Wellness Club" },
+    { icon: Icons.CloudKitchen, label: "24×7 Cloud Kitchen" },
+    { icon: Icons.BeautyLounge, label: "Beauty Lounge" },
+    { icon: Icons.SolarPanels, label: "Solar Electric Power Panels" },
+    { icon: Icons.Generators, label: "24×7 Backup Generators" },
+    { icon: Icons.SewageTreatment, label: "Sewage Water Treatment Plant" },
+    { icon: Icons.CCTV, label: "Security Surveillance with CCTV" },
+    { icon: Icons.MiniTheatre, label: "Air Conditioned Mini Theatre" },
+    { icon: Icons.DanceFloor, label: "Dance / Yoga / Zumba Floor" },
+    { icon: Icons.GatheringHall, label: "Residents Gathering Hall" },
+    { icon: Icons.FirefightingSystem, label: "State-of-the-art Firefighting System" },
+];
+
+const GALLERY_IMAGES = [
+    "/images/rudrakshImages/10.webp",
+    "/images/rudrakshImages/11.webp",
+    "/images/rudrakshImages/12.webp",
+    "/images/rudrakshImages/13.webp",
+    "/images/rudrakshImages/14.webp",
+    "/images/rudrakshImages/15.webp",
+];
+
+export default function FeaturesSection() {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <section className="py-20 lg:py-32 bg-white font-host">
+            <div className=" mx-auto px-6 lg:px-20 xl:px-54 ">
+                {/* Title */}
+                <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#424244] font-light text-center mb-16 lg:mb-28 tracking-tight leading-tight">
+                    Everything You’re Looking For
+                </h2>
+
+                {/* Features Grid */}
+                <div className="grid grid-cols-1  md:grid-cols-4  gap-x-6 gap-y-10 lg:gap-x-12 xl:gap-x-20 lg:gap-y-16 mb-12 lg:mb-28">
+                    {FEATURES.map((item, index) => {
+                        const Icon = item.icon;
+                        // Show all items on medium/large screens (md+).
+                        // On mobile, show only the first 3 items unless expanded.
+                        const isHiddenOnMobile = !isExpanded && index > 2;
+
+                        return (
+                            <div
+                                key={index}
+                                className={`group flex flex-row items-center gap-4 lg:gap-5 transition-all duration-300 ${isHiddenOnMobile ? "hidden md:flex" : "flex"
+                                    }`}
+                            >
+                                {/* Icon Wrapper */}
+                                <div className="w-10 h-10 flex items-center justify-center text-[#505153] group-hover:text-[#0097DC] transition-all duration-500 transform group-hover:scale-110 shrink-0">
+                                    <Icon className="w-7 h-7" strokeWidth={1} />
+                                </div>
+                                {/* Text Label */}
+                                <span className="text-[#505153] text-[15px] lg:text-[16px] leading-snug font-normal tracking-wide transition-colors duration-300 group-hover:text-[#424244]">
+                                    {item.label}
+                                </span>
+                            </div>
+                        );
+                    })}
+                </div>
+
+                {/* Read More / Read Less Button (Mobile Only) */}
+                <div className="flex justify-start md:hidden mb-20">
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="text-[#424244] text-[15px] border-b border-[#424244] pb-0.5 hover:text-[#0097DC] hover:border-[#0097DC] transition-colors duration-300"
+                    >
+                        {isExpanded ? "Read Less" : "Read More"}
+                    </button>
+                </div>
+
+                {/* Gallery Slider */}
+                <div className="relative w-full overflow-hidden pb-20">
+                    <Swiper
+                        modules={[Pagination, Autoplay]}
+                        spaceBetween={40}
+                        slidesPerView={1}
+                        loop={true}
+                        autoplay={{ delay: 6000, disableOnInteraction: false }}
+                        pagination={{ clickable: true }}
+                        className="features-swiper w-full aspect-21/9 rounded-sm overflow-visible!"
+                    >
+                        {GALLERY_IMAGES.map((img, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="relative w-full h-full rounded-sm overflow-hidden  transition-transform duration-700 hover:scale-[1.02]">
+                                    <Image
+                                        src={img}
+                                        alt={`Project Gallery ${index + 1}`}
+                                        fill
+                                        className="object-cover"
+                                        priority={index === 0}
+                                    />
+                                    <div className="absolute inset-0 bg-black/5"></div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+
+                    <style jsx global>{`
+            .features-swiper .swiper-pagination {
+              bottom: -60px !important;
+              display: flex !important;
+              justify-content: center !important;
+              width: 100% !important;
+              left: 0 !important;
+            }
+            .features-swiper .swiper-pagination-bullet {
+              width: 50px;
+              height: 2px;
+              background: #E5E7EB;
+              border-radius: 0;
+              opacity: 1;
+              transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+              margin: 0 8px !important;
+              cursor: pointer;
+            }
+            .features-swiper .swiper-pagination-bullet-active {
+              background: #0097DC;
+              width: 80px;
+            }
+          `}</style>
+                </div>
+            </div>
+        </section>
+    );
+}

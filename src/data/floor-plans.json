@@ -1,0 +1,44 @@
+{
+  "plans": [
+    {
+      "svg": "/assets/images/media/visual-search/buildings.svg",
+      "img": {
+        "md": "/assets/images/media/visual-search/plan-image@md.webp",
+        "xxl": "/assets/images/media/visual-search/plan-image@xxl.webp",
+        "xxxl": "/assets/images/media/visual-search/plan-image@xxxl.webp"
+      },
+      "config": {
+        "popovers": {
+          "template": "floor-popover",
+          "anchor": "floor-popover-corner",
+          "placement": "top-start",
+          "arrow": false
+        }
+      },
+      "items": [
+        {
+          "data": { "ref": "leaf", "title": "Nature Park" },
+          "markers": [ { "anchor": "feature-forest", "template": "feature-marker", "icon": "leaf" } ]
+        },
+        {
+          "data": { "ref": "gym", "title": "Wellness-center" },
+          "markers": [ { "anchor": "feature-gym", "template": "feature-marker", "icon": "gym" } ]
+        },
+        {
+          "data": { "ref": "parking", "title": "Parking" },
+          "markers": [ { "anchor": "feature-parking", "template": "feature-marker", "icon": "parking" } ]
+        },
+        {
+          "data": { "ref": "cutlery", "title": "Restaurant" },
+          "markers": [ { "anchor": "feature-cutlery", "template": "feature-marker", "icon": "cutlery" } ]
+        },
+        {
+          "data": { "ref": "3", "refTitle": "3", "href": "#floor-modal-3", "video": "https://player.vimeo.com/video/1064734681", "flats": [{ "title": "4BR", "square": "214-288" }] }
+        },
+        {
+          "data": { "ref": "5", "refTitle": "5", "href": "#floor-modal-5", "video": "https://player.vimeo.com/video/1064735636", "flats": [{ "title": "2BR", "square": 67 }] }
+        }
+      ]
+    }
+  ]
+}

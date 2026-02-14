@@ -1,0 +1,243 @@
+"use client";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
+
+const PROJECTS = {
+  ongoing: [
+    { name: "Rudraksh", href: "/rudraksh" }
+  ],
+  completed: [
+    "Mathura", "Ajantha Business Center", "Evanna Homes", "Kudva's Grandeur",
+    "Madhuban", "Nandagokul", "Nanda Deep", "Bhargavi Gloria Residency",
+    "Gokuldham", "Mukund Sadhan", "Kailash"
+  ].map(name => ({ name, href: `/projects/${name.toLowerCase().replace(/\s+/g, '-')}` })) // Default mapping for others if needed, or just '#'
+};
+
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(true); // Default open as per common mobile patterns or keep closed if preferred, user interaction usually toggles. Let's start closed or check preference. Actually, usually cleaner closed. Let's stick to false initially. 
+
+  // Handle Scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20); // Trigger earlier for smoother feel
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isMobileMenuOpen]);
+
+  return (
+    <>
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+          }`}
+      >
+        <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center bg-transparent">
+
+          {/* Logo Section */}
+          <Link href="/" className="z-50 relative">
+            <div className="relative w-32 md:w-36 lg:w-40 h-auto aspect-[3/1]">
+              <img src="/icons/logo.svg" alt="Mukund Realty" className="object-contain w-full h-full" />
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-12 xl:gap-16">
+            <Link href="/about" className="text-[#505153] hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300">About</Link>
+
+            {/* Desktop Dropdown */}
+            <div className="group relative py-4">
+              <button className="flex items-center gap-1 text-[#505153] group-hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300">
+                Projects <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]" />
+              </button>
+
+              {/* Dropdown Content */}
+              <div className="absolute top-full left-0 mt-2 min-w-[200px] bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] rounded-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-[100]">
+                <div className="flex flex-col p-6">
+                  {/* Ongoing Column */}
+                  <div className="flex-1">
+                    {/* <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold">Ongoing</h3> */}
+                    <div className="flex flex-col gap-3">
+                      {PROJECTS.ongoing.map(p => (
+                        <Link key={p.name} href={p.href} className="group/item flex items-center justify-between transition-colors duration-300">
+                          <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap">{p.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Completed Column */}
+                  {/* <div className="flex-1 border-l border-gray-100 pl-8">
+                    <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold">Completed</h3>
+                    <div className="flex flex-col gap-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                      {PROJECTS.completed.map(p => (
+                        <Link key={p} href={`/projects/${p}`} className="block text-[14px] text-gray-500 hover:text-black py-1 transition-colors">{p}</Link>
+                      ))}
+                    </div>
+                  </div> */}
+                </div>
+              </div>
+            </div>
+
+            {/* <Link href="/insights" className="text-[#333333] hover:text-black text-lg font-medium tracking-wide transition-colors duration-300">Insights</Link> */}
+
+            <Link href="/contact" className="text-[#505153] hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300">Contact</Link>
+          </nav>
+
+          {/* Mobile Toggle */}
+          <button
+            className="lg:hidden z-50 p-2 -mr-2 text-black"
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <Menu strokeWidth={1.5} size={32} />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Menu Overlay - Full Screen */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 bg-white z-[60] flex flex-col"
+          >
+            {/* Mobile Header */}
+            <div className="flex justify-between items-center p-6 md:p-12 border-b border-gray-50">
+              <div className="w-32">
+                <img src="/icons/logo.svg" alt="Mukund Realty" className="w-full object-contain" />
+              </div>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 -mr-2 text-black hover:bg-gray-50 rounded-full transition-colors"
+              >
+                <X strokeWidth={1.5} size={32} />
+              </button>
+            </div>
+
+            {/* Mobile Navigation Content */}
+            <div className="flex-1 overflow-y-auto bg-white px-6 md:px-12 py-8">
+              <div className="flex flex-col space-y-0">
+
+                {/* About */}
+                <Link
+                  href="/about"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center group"
+                >
+                  About
+                </Link>
+
+                {/* Projects Accordion */}
+                <div className="border-b border-gray-100">
+                  <button
+                    onClick={() => setIsMobileProjectsOpen(!isMobileProjectsOpen)}
+                    className="w-full flex justify-between items-center text-[22px] text-[#505153] font-light py-5"
+                  >
+                    Projects
+                    <ChevronDown
+                      size={24}
+                      strokeWidth={1.5}
+                      className={`transition-transform duration-300 ${isMobileProjectsOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  <AnimatePresence>
+                    {isMobileProjectsOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-8 pl-2 space-y-8">
+
+                          {/* Ongoing Projects Mobile Section */}
+                          <div className="space-y-4">
+                            <div className="flex items-center gap-4">
+                              {/* <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">Ongoing Projects</span> */}
+                              {/* <div className="h-[1px] w-full bg-gray-200"></div> */}
+                            </div>
+                            <div className="flex flex-col gap-3 pl-1">
+                              {PROJECTS.ongoing.map(p => (
+                                <Link
+                                  key={p.name}
+                                  href={p.href}
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                  className="text-[16px] text-gray-600 font-light hover:text-black transition-colors"
+                                >
+                                  {p.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Completed Projects Mobile Section */}
+                          {/* <div className="space-y-4">
+                            <div className="flex items-center gap-4">
+                              <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">Completed Projects</span>
+                              <div className="h-[1px] w-full bg-gray-200"></div>
+                            </div>
+                            <div className="flex flex-col gap-3 pl-1">
+                              {PROJECTS.completed.map(p => (
+                                <Link
+                                  key={p}
+                                  href={`/projects/${p}`}
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                  className="text-[16px] text-gray-600 font-light hover:text-black transition-colors"
+                                >
+                                  {p}
+                                </Link>
+                              ))}
+                            </div>
+                          </div> */}
+
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Insights */}
+                {/* <Link
+                  href="/insights"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
+                >
+                  Insights
+                </Link> */}
+
+                {/* Contact */}
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
+                >
+                  Contact
+                </Link>
+
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+export default Header;
