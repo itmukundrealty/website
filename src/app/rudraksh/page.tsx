@@ -42,7 +42,7 @@ export const metadata = {
         siteName: "Rudraksh by Mukund MGM Realty",
         images: [
             {
-                url: "/og-images/rudraksh-og.png",
+                url: "https://mukundrealty.vercel.app//og-images/rudraksh-og.png",
                 width: 1200,
                 height: 630,
                 alt: "Rudraksh by Mukund MGM Realty",

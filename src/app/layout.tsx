@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Mukund MGM Realty",
     images: [
       {
-        url: "/og-images/home-og.png",
+        url: "https://mukundrealty.vercel.app/og-images/home-og.png",
         width: 1200,
         height: 630,
         alt: "Mukund MGM Realty",
