@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import ThankYouModal from "../contact/ThankYouModal";
 
 export default function EnquireProject() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,7 +47,7 @@ export default function EnquireProject() {
     setStatus({ loading: true, error: null, success: false });
 
     try {
-      const response = await fetch("http://localhost:3000/api/enquiries/project", {
+      const response = await fetch("https://cms-mukund.vercel.app/api/enquiries/project", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,19 +60,24 @@ export default function EnquireProject() {
       }
 
       setStatus({ loading: false, error: null, success: true });
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        interestedIn: "",
-        consent: false,
-      });
-      alert("Form submitted successfully!");
+      setShowModal(true);
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus({ loading: false, error: "Failed to submit form. Please try again.", success: false });
       alert("Failed to submit form. Please try again.");
     }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      interestedIn: "",
+      consent: false,
+    });
+    setStatus((prev) => ({ ...prev, success: false }));
   };
 
   return (
@@ -227,6 +234,7 @@ export default function EnquireProject() {
 
         </div>
       </div>
+      <ThankYouModal isOpen={showModal} onClose={handleCloseModal} />
     </section>
   );
 }
