@@ -119,12 +119,12 @@ export default function PrinciplesSlider() {
                 Foundations of Trust
               </h3>
               <p className="text-[16px] lg:text-[20px] text-[#505153] font-light mb-2">At Mukund, integrity means complete transparency and staying true to our word.</p>
-              <button className="flex items-center gap-2 text-[#0097DC] font-semibold group text-sm lg:text-base">
+              <Link href="/about"><button className="flex items-center gap-2 text-[#0097DC] font-semibold group text-sm lg:text-base">
                 <ArrowUpRight className="w-5 h-5 lg:w-6 lg:h-6 transition-transform group-hover:rotate-45 transition-all duration-300" />
                 <span className="">
                   About Mukund Realty
                 </span>
-              </button>
+              </button></Link>
             </div>
           </div>
         </div>
