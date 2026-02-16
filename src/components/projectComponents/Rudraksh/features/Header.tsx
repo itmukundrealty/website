@@ -93,7 +93,7 @@ const ProjectHeader = () => {
 
             {/* <Link href="/insights" className="text-[#333333] hover:text-black text-lg font-medium tracking-wide transition-colors duration-300">Insights</Link> */}
 
-            <Link href="/contact" className={`hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-white'}`}>Contact</Link>
+            <Link href="/project-enquire?project=rudraksh" className={`hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-white'}`}>Contact</Link>
           </nav>
 
           {/* Mobile Toggle */}
@@ -224,7 +224,7 @@ const ProjectHeader = () => {
 
                 {/* Contact */}
                 <Link
-                  href="/contact"
+                  href="/project-enquire?project=rudraksh"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
                 >

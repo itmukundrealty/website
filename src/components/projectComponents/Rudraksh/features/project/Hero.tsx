@@ -1030,7 +1030,9 @@ const ProjectHeader = () => (
       </svg>
     </button>
     <button className="hover:text-black transition-colors">Insights</button>
-    <button className="hover:text-black transition-colors">Contact</button>
+    <Link href="/project-enquire?project=rudraksh" className="hover:text-black transition-colors">
+      Contact
+    </Link>
   </div>
 );
 

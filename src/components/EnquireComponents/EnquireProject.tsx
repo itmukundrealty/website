@@ -63,6 +63,20 @@ function EnquireProjectContent() {
     setIsOpen(false);
   };
 
+  const pushToCRM = async (data: typeof formData) => {
+    try {
+      await fetch("/api/crm", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.error("CRM Push Error:", error);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.interestedIn) {
@@ -72,6 +86,7 @@ function EnquireProjectContent() {
     setStatus({ loading: true, error: null, success: false });
 
     try {
+      // 1. Submit to internal API
       const response = await fetch("https://cms-mukund.vercel.app/api/enquiries/project", {
         method: "POST",
         headers: {
@@ -83,6 +98,9 @@ function EnquireProjectContent() {
       if (!response.ok) {
         throw new Error("Failed to submit form");
       }
+
+      // 2. Push to MGM CRM (asynchronously)
+      pushToCRM(formData);
 
       setStatus({ loading: false, error: null, success: true });
       setFormData({
