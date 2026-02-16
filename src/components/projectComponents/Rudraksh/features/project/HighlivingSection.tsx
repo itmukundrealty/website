@@ -16,7 +16,7 @@ export default function HighlivingSection() {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#505153] font-light leading-tight">
                         Luxury in the Contours of Life
                     </h2>
-                    <Link href="/project-enquire">
+                    <Link href="/project-enquire?project=rudraksh">
                         <button className="flex items-center gap-2 px-4 py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-sm font-medium">
                             <ArrowUpRight className="w-5 h-5 hover:rotate-45 transition-all duration-300" />
                             Enquire Now

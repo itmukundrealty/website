@@ -1,18 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useState, useEffect, Suspense } from "react";
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function EnquireProject() {
+
+
+function EnquireProjectContent() {
+  const searchParams = useSearchParams();
+  const projectParam = searchParams.get("project");
+
+
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     interestedIn: "",
-    consent: false,
+    project: "",
+    consent: true,
   });
+
+  useEffect(() => {
+    if (projectParam) {
+      setFormData((prev) => ({
+        ...prev,
+        project: projectParam,
+        interestedIn: projectParam.charAt(0).toUpperCase() + projectParam.slice(1)
+      }));
+    }
+  }, [projectParam]);
   const [status, setStatus] = useState<{
     loading: boolean;
     error: string | null;
@@ -63,7 +81,8 @@ export default function EnquireProject() {
         email: "",
         phone: "",
         interestedIn: "",
-        consent: false,
+        project: projectParam || "",
+        consent: true,
       });
       alert("Form submitted successfully!");
     } catch (error) {
@@ -93,7 +112,7 @@ export default function EnquireProject() {
             {/* Heading */}
             <h2 className="text-[46px] leading-[1.1] font-thin text-[#505153]">
               Enquire About <br />
-              <span className="font-semibold">This Project</span>
+              <span className="font-semibold">{formData.project ? formData.project.charAt(0).toUpperCase() + formData.project.slice(1) : "This Project"}</span>
             </h2>
 
             {/* Subtext */}
@@ -186,7 +205,12 @@ export default function EnquireProject() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute left-0 right-0 top-full mt-1 bg-white shadow-lg border border-[#e5e5e5] rounded-md overflow-hidden z-20"
                     >
-                      {["2 BHK", "3 BHK", "Commercial"].map((option) => (
+                      {[
+                        ...(formData.project ? [formData.project.charAt(0).toUpperCase() + formData.project.slice(1)] : []),
+                        "2 BHK",
+                        "3 BHK",
+                        "Commercial"
+                      ].map((option) => (
                         <div
                           key={option}
                           className="px-4 py-3 text-[15px] text-[#505153] hover:bg-[#f5f5f5] cursor-pointer transition-colors"
@@ -228,5 +252,12 @@ export default function EnquireProject() {
         </div>
       </div>
     </section>
+  );
+}
+export default function EnquireProject() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <EnquireProjectContent />
+    </Suspense>
   );
 }

@@ -125,13 +125,13 @@ export default function AmenitiesSection() {
                            and used flex-col with explicit justification to control spacing better 
                         */}
                         <div className="flex flex-col h-full justify-center gap-8 lg:gap-12">
-                            
+
                             <div className="space-y-6 lg:space-y-8">
                                 <div className="space-y-4">
                                     <span className="text-gray-400 text-[10px] tracking-[0.4em] uppercase font-bold block">
                                         Amenities
                                     </span>
-                                    
+
                                     {/* FIX: Added a fixed min-height container.
                                       lg:min-h-[320px] reserves space for ~3 lines of large text + subtitle.
                                       justify-center keeps it vertically centered in that reserved space.
@@ -141,7 +141,7 @@ export default function AmenitiesSection() {
                                         <h2 className="text-5xl lg:text-6xl  text-[#424244] font-light leading-[1.1] max-w-md whitespace-pre-line">
                                             {currentAmenity.label}
                                         </h2>
-                                        
+
                                         {/* The subtitle is conditionally rendered or always reserves space 
                                           to prevent jump if subtitle is empty 
                                         */}
@@ -151,7 +151,7 @@ export default function AmenitiesSection() {
                                     </div>
                                 </div>
 
-                                <Link href="/project-enquire" className="group flex items-center gap-3 px-6 py-3 lg:px-6 lg:py-5 border border-[#0097DC]/30 text-[#0097DC]  hover:bg-[#0097DC] hover:text-white duration-300 transition-all uppercase tracking-widest text-[11px] font-bold w-fit">
+                                <Link href="/project-enquire?project=rudraksh" className="group flex items-center gap-3 px-6 py-3 lg:px-6 lg:py-5 border border-[#0097DC]/30 text-[#0097DC]  hover:bg-[#0097DC] hover:text-white duration-300 transition-all uppercase tracking-widest text-[11px] font-bold w-fit">
                                     <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-all duration-300" />
                                     Enquire Now
                                 </Link>

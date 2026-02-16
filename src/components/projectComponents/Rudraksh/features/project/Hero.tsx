@@ -963,18 +963,20 @@ export function ProjectHero() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-                    <button className="bg-white flex items-center gap-2 text-[#0097DC] px-8 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors w-full sm:w-auto">
-                      <svg width="10" height="10" viewBox="0 0 20 20" fill="none">
-                        <path
-                          d="M3.74036 1.50016L17.6005 1.49996M17.6005 1.49996L17.6005 15.163M17.6005 1.49996L1.5 17.6005"
-                          stroke="#0097DC"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      Enquire Now
-                    </button>
+                    <Link href="/project-enquire?project=rudraksh" className="w-full sm:w-auto">
+                      <button className="bg-white flex items-center gap-2 text-[#0097DC] px-8 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors w-full">
+                        <svg width="10" height="10" viewBox="0 0 20 20" fill="none">
+                          <path
+                            d="M3.74036 1.50016L17.6005 1.49996M17.6005 1.49996L17.6005 15.163M17.6005 1.49996L1.5 17.6005"
+                            stroke="#0097DC"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        Enquire Now
+                      </button>
+                    </Link>
 
                     <a
                       href={currentFloor?.pdfPath}

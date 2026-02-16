@@ -35,7 +35,7 @@ export default function CTASection() {
                         Built for Enduring Value
                     </p>
 
-                    <Link href="/project-enquire" className="bg-white text-[#0097DC] px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+                    <Link href="/project-enquire?project=rudraksh" className="bg-white text-[#0097DC] px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
                         Contact Us
                     </Link>
                 </div>
