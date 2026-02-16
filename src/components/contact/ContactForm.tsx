@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import ThankYouModal from "./ThankYouModal";
 
 export default function ContactForm() {
     const [formData, setFormData] = React.useState({
@@ -20,6 +21,8 @@ export default function ContactForm() {
         success: false,
     });
 
+    const [showModal, setShowModal] = React.useState(false);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = e.target;
         setFormData((prev) => ({
@@ -33,7 +36,7 @@ export default function ContactForm() {
         setStatus({ loading: true, error: null, success: false });
 
         try {
-            const response = await fetch("http://localhost:3000/api/enquiries/general", {
+            const response = await fetch("https://cms-mukund.vercel.app/api/enquiries/general", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -46,19 +49,24 @@ export default function ContactForm() {
             }
 
             setStatus({ loading: false, error: null, success: true });
-            setFormData({
-                name: "",
-                email: "",
-                phone: "",
-                comments: "",
-                consent: false,
-            });
-            alert("Form submitted successfully!");
+            setShowModal(true);
         } catch (error) {
             console.error("Error submitting form:", error);
             setStatus({ loading: false, error: "Failed to submit form. Please try again.", success: false });
             alert("Failed to submit form. Please try again.");
         }
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            comments: "",
+            consent: false,
+        });
+        setStatus((prev) => ({ ...prev, success: false }));
     };
 
     return (
@@ -191,6 +199,7 @@ export default function ContactForm() {
                     </div>
                 </div>
             </div>
+            <ThankYouModal isOpen={showModal} onClose={handleCloseModal} />
         </section>
     );
 }

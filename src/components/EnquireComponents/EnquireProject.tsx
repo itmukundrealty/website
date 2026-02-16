@@ -4,15 +4,24 @@ import { useSearchParams } from "next/navigation";
 import React, { useState, useEffect, Suspense } from "react";
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import ThankYouModal from "../contact/ThankYouModal";
 
 
+
+const PROJECT_MAPS: Record<string, string> = {
+  rudraksh: "https://www.google.com/maps?q=Rudraksh%20by%20Mukund%20MGM%20Realty&output=embed",
+  default: "https://www.google.com/maps?q=Ashoka%20Business%20Center&output=embed"
+};
 
 function EnquireProjectContent() {
   const searchParams = useSearchParams();
   const projectParam = searchParams.get("project");
 
+  const mapSrc = PROJECT_MAPS[projectParam?.toLowerCase() || "default"];
+
 
   const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -63,7 +72,7 @@ function EnquireProjectContent() {
     setStatus({ loading: true, error: null, success: false });
 
     try {
-      const response = await fetch("http://localhost:3000/api/enquiries/project", {
+      const response = await fetch("https://cms-mukund.vercel.app/api/enquiries/project", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,11 +94,25 @@ function EnquireProjectContent() {
         consent: true,
       });
       alert("Form submitted successfully!");
+      setShowModal(true);
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus({ loading: false, error: "Failed to submit form. Please try again.", success: false });
       alert("Failed to submit form. Please try again.");
     }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      interestedIn: "",
+      project: projectParam || "",
+      consent: true,
+    });
+    setStatus((prev) => ({ ...prev, success: false }));
   };
 
   return (
@@ -100,7 +123,7 @@ function EnquireProjectContent() {
           {/* LEFT — MAP */}
           <div className="order-2 lg:order-1 w-full h-[400px] lg:h-full bg-gray-200 overflow-hidden">
             <iframe
-              src="https://www.google.com/maps?q=Ashoka%20Business%20Center&output=embed"
+              src={mapSrc}
               className="w-full h-full border-0 grayscale-[30%]"
               loading="lazy"
             />
@@ -251,6 +274,7 @@ function EnquireProjectContent() {
 
         </div>
       </div>
+      <ThankYouModal isOpen={showModal} onClose={handleCloseModal} />
     </section>
   );
 }
