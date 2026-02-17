@@ -57,7 +57,7 @@ export default function HighlivingSection() {
                         </>
                     ) : (
                         <video
-                            src="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
+                            src="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FRudraksh_by_Mukund_Realty_High_Living_Luxury_Homes_near_Infosys_Kottara_1080P.mp4?alt=media&token=0e0d55e6-0f5c-4301-b401-e87ed4465310"
                             controls
                             autoPlay
                             className="w-full h-full object-cover"
