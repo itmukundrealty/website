@@ -12,46 +12,19 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import Link from "next/link";
 
-const AMENITIES_DATA = [
-    {
-        id: "kitchen",
-        label: "24x7 Cloud Kitchen",
-        subtitle: "THE FIRST OF IT'S KIND IN MANGALURU",
-        image: "/images/rudrakshImages/2.webp",
-    },
-    {
-        id: "wellness",
-        label: "Wellness Club",
-        subtitle: "",
-        image: "/images/rudrakshImages/6.webp",
-    },
-    {
-        id: "lobby",
-        label: "Grand Entrance Lobby",
-        subtitle: "",
-        image: "/images/rudrakshImages/7.webp",
-    },
-    {
-        id: "pool",
-        label: "People Spaces",
-        subtitle: "",
-        image: "/images/rudrakshImages/8.webp",
-    },
-    {
-        id: "gym",
-        label: "Fitness & Activity Zones",
-        subtitle: "",
-        image: "/images/rudrakshImages/9.webp",
-    },
-    {
-        id: "sky-deck",
-        label: "Rooftop Infinity\nSwimming Pool",
-        subtitle: "",
-        image: "/images/rudrakshImages/3.webp",
-    }
-];
 
-export default function AmenitiesSection() {
+export interface AmenityItem {
+    id: string;
+    label: string;
+    subtitle: string;
+    image: string;
+}
+
+interface AmenitiesSectionProps {
+    data: AmenityItem[];
+}
+
+export default function AmenitiesSection({ data }: AmenitiesSectionProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const desktopSwiperRef = useRef<any>(null);
     const mobileSwiperRef = useRef<any>(null);
@@ -82,7 +55,9 @@ export default function AmenitiesSection() {
         else if (mobileSwiperRef.current) mobileSwiperRef.current.slideNext();
     };
 
-    const currentAmenity = AMENITIES_DATA[activeIndex] || AMENITIES_DATA[0];
+    if (!data || data.length === 0) return null;
+
+    const currentAmenity = data[activeIndex] || data[0];
 
     return (
         <section className="relative bg-white font-host overflow-hidden lg:min-h-[90vh] flex flex-col">
@@ -100,7 +75,7 @@ export default function AmenitiesSection() {
                     onSlideChange={handleSlideChange}
                     className="w-full h-full"
                 >
-                    {AMENITIES_DATA.map((item) => (
+                    {data.map((item) => (
                         <SwiperSlide key={item.id}>
                             <div className="relative w-full h-full">
                                 <Image
@@ -151,7 +126,7 @@ export default function AmenitiesSection() {
                                     </div>
                                 </div>
 
-                                <Link href="/project-enquire?project=rudraksh" className="group flex items-center gap-3 px-6 py-3 lg:px-6 lg:py-5 border border-[#0097DC]/30 text-[#0097DC]  hover:bg-[#0097DC] hover:text-white duration-300 transition-all uppercase tracking-widest text-[11px] font-bold w-fit">
+                                <Link href="/project-enquire" className="group flex items-center gap-3 px-6 py-3 lg:px-6 lg:py-5 border border-[#0097DC]/30 text-[#0097DC]  hover:bg-[#0097DC] hover:text-white duration-300 transition-all uppercase tracking-widest text-[11px] font-bold w-fit">
                                     <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-all duration-300" />
                                     Enquire Now
                                 </Link>
@@ -169,7 +144,7 @@ export default function AmenitiesSection() {
                                     onSlideChange={handleSlideChange}
                                     className="w-full h-full"
                                 >
-                                    {AMENITIES_DATA.map((item) => (
+                                    {data.map((item) => (
                                         <SwiperSlide key={item.id}>
                                             <div className="relative w-full h-full">
                                                 <Image
@@ -188,7 +163,7 @@ export default function AmenitiesSection() {
                             {/* Controls Container */}
                             <div className="flex items-center gap-12 pt-4">
                                 <div className="text-gray-400 text-sm font-medium tracking-widest min-w-[70px]">
-                                    {String(activeIndex + 1).padStart(2, '0')} {"—"} {String(AMENITIES_DATA.length).padStart(2, '0')}
+                                    {String(activeIndex + 1).padStart(2, '0')} {"—"} {String(data.length).padStart(2, '0')}
                                 </div>
 
                                 <div className="flex gap-4">
