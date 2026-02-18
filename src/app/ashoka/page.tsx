@@ -9,15 +9,9 @@ import FeaturesSection, { FeatureItem } from "@/components/projectComponents/Rud
 import { ProjectHero } from "@/components/projectComponents/Rudraksh/features/project/Hero";
 import ProjectHighLiving from "@/components/projectComponents/Rudraksh/features/project/HighLiving";
 import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
-<<<<<<< HEAD
-import PartnerSection from "@/components/projectComponents/Ashoka/PartnerSection";
-import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
-import Footer from "@/components/layout/Footer";
-=======
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
 import PartnerSection from "@/components/projectComponents/ashoka/PartnerSection";
->>>>>>> main
 
 const FEATURES: FeatureItem[] = [
     { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
