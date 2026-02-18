@@ -36,7 +36,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "Central Urban Address",
-icon: "/icons/citywideIcon.svg",
+        icon: "/icons/citywideIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -45,9 +45,9 @@ icon: "/icons/citywideIcon.svg",
     },
     {
         key: "it",
-        title: "Education & Healthcare",
-icon: "/icons/closedBookIcon.svg",
-        points: [18, 19],
+        title: "IT & Employment Zone",
+        icon: "/icons/closedBookIcon.svg",
+        points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 14
@@ -55,21 +55,21 @@ icon: "/icons/closedBookIcon.svg",
     },
     {
         key: "education",
-        title: "Business Hubs",
-icon: "/icons/businessIcon.svg",
-        points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+        title: "Education",
+        icon: "/icons/businessIcon.svg",
+        points: [59, 26, 29, 28, 22, 35],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8900, lng: 74.8400 },
             zoom: 14
         }
     },
     {
         key: "essentials",
-        title: " Commercial Zones",
-icon: "/icons/urbanIcon.svg",
-        points: [32, 33, 34],
+        title: "Healthcare",
+        icon: "/icons/urbanIcon.svg",
+        points: [41, 24, 38, 39, 37],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8800, lng: 74.8500 },
             zoom: 14
         }
     },
@@ -166,7 +166,7 @@ export default function page() {
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Elevate Your <br /> Everyday</>} subtitle="Spaces that support your next chapter." mobImg="/images/ctaImages/sadanMob.png" deskImg="/images/ctaImages/sadanDesk.png" />
-<Footer/>
+                <Footer />
             </div>
         </>
     );

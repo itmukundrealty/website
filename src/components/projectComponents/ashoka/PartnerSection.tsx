@@ -32,7 +32,7 @@ const BottomLogos: LogoItem[] = [
 
 export default function PartnerSection() {
     return (
-        <section className="w-full bg-[white] py-[80px] lg:py-[100px] overflow-hidden">
+        <section className="w-full bg-[white] pt-[80px] lg:py-[100px] overflow-hidden">
             {/* --- Top Row: Scroll Right --- */}
             <div className="w-full flex overflow-hidden mb-12 lg:mb-16">
                 <div className="flex animate-scroll-right w-max will-change-transform">

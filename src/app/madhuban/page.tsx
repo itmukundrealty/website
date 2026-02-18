@@ -30,7 +30,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "Centralized Location",
-icon: "/icons/centralized.svg",
+        icon: "/icons/centralized.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -39,9 +39,9 @@ icon: "/icons/centralized.svg",
     },
     {
         key: "it",
-        title: "Academic & Medical Access",
-icon: "/icons/medicalAccess.svg",
-        points: [18, 19],
+        title: "IT & Employment Zone",
+        icon: "/icons/medicalAccess.svg",
+        points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 14
@@ -49,21 +49,21 @@ icon: "/icons/medicalAccess.svg",
     },
     {
         key: "education",
-        title: "Lifestyle Essentials",
-icon: "/icons/industrialIcon.svg",
-        points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+        title: "Education",
+        icon: "/icons/industrialIcon.svg",
+        points: [28, 29, 21],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.9000, lng: 74.8400 },
             zoom: 14
         }
     },
     {
         key: "essentials",
-        title: "Corporate Connectivity",
-icon: "/icons/businessIcon.svg",
-        points: [32, 33, 34],
+        title: "Healthcare",
+        icon: "/icons/businessIcon.svg",
+        points: [24, 40, 57],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8900, lng: 74.8600 },
             zoom: 14
         }
     },
@@ -154,13 +154,13 @@ export default function page() {
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
-                <AmenitiesSection data={AMENITIES_DATA}  />
+                <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Tailored for Contemporary Living" variant="left" />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Elevate Your   <br />Business Presence</>} subtitle="A space designed to amplify your success." mobImg="/images/ctaImages/madhubanImagesbanMob.png" deskImg="/images/ctaImages/madhubanImagesbanDesk.png" />
-<Footer/>
+                <CTASection title={<>Elevate Your   <br />Business Presence</>} subtitle="A space designed to amplify your success." mobImg="/images/ctaImages/madhubanMob.png" deskImg="/images/ctaImages/madhubanDesk.png" />
+                <Footer />
             </div>
         </>
     );

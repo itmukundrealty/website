@@ -30,14 +30,14 @@ const FEATURES: FeatureItem[] = [
     { icon: "Visitorslounge", label: "Visitors Lounge" },
     { icon: "CCTV", label: "Security Surveillance with CCTV" },
     { icon: "Generators", label: "24x7 Power Back-up" },
-   
+
 ];
 
 const MAP_DATA = [
     {
         key: "city",
         title: "Transit Routes",
-icon: "/icons/citywideIcon.svg",
+        icon: "/icons/citywideIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -46,9 +46,9 @@ icon: "/icons/citywideIcon.svg",
     },
     {
         key: "it",
-        title: "Institutional Access",
-icon: "/icons/bookIcon.svg",
-        points: [18, 19],
+        title: "IT & Employment Zone",
+        icon: "/icons/bookIcon.svg",
+        points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 14
@@ -56,21 +56,21 @@ icon: "/icons/bookIcon.svg",
     },
     {
         key: "education",
-        title: " Daily Convenience",
-icon: "/icons/urbanIcon.svg",
-        points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+        title: "Education",
+        icon: "/icons/urbanIcon.svg",
+        points: [59, 26, 29, 28, 22, 35],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8900, lng: 74.8400 },
             zoom: 14
         }
     },
     {
         key: "essentials",
-        title: " Dining Options",
-icon: "/icons/cafeIcon.svg",
-        points: [32, 33, 34],
+        title: "Healthcare",
+        icon: "/icons/cafeIcon.svg",
+        points: [41, 24, 38, 39],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8700, lng: 74.8500 },
             zoom: 14
         }
     },
@@ -153,7 +153,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero title={<>Kailash</>} subtitle=""  mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/heroDesk.png" mobileImage="/images/kailashImages/heroMobile.png" />
+                <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/heroDesk.png" mobileImage="/images/kailashImages/heroMobile.png" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Crafted for Everyday Excellence"
@@ -161,13 +161,13 @@ export default function page() {
                     imageSrc=" https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__strict-architecture-lockpreserve-the-exact-same-to__57695%201.png?alt=media&token=3d00ef55-9ee0-45ce-828c-0d71e9d5ee52"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKailash%20Final%20Version%20Walkthrough.mp4?alt=media&token=aab4ebe5-5e4a-49c7-af15-bf915635ed50"
                 />
-                <AmenitiesSection data={AMENITIES_DATA}  />
+                <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Live with <br /> Greater Ease</>} subtitle="Where style and function align." mobImg="/images/ctaImages/nandhaMob.png" deskImg="/images/ctaImages/nandhaDesk.png" />
-<Footer/>
+                <Footer />
             </div>
         </>
     );

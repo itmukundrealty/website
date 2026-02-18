@@ -36,17 +36,15 @@ const FEATURES: FeatureItem[] = [
     { icon: "Wifi", label: "High Speed Internet" },
     { icon: "Solar", label: "Solar Electric Power Panels" },
     { icon: "Security", label: "Round-o-clock Security" },
-    
 
 
-   
 ];
 
 const MAP_DATA = [
     {
         key: "city",
         title: "Smooth Commute",
-icon: "/icons/mapLocationIcon.svg",
+        icon: "/icons/mapLocationIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -55,9 +53,9 @@ icon: "/icons/mapLocationIcon.svg",
     },
     {
         key: "it",
-        title: "Learning & Care Facilities",
-icon: "/icons/learningIcon.svg",
-        points: [18, 19],
+        title: "IT & Employment Zone",
+        icon: "/icons/learningIcon.svg",
+        points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 14
@@ -65,21 +63,21 @@ icon: "/icons/learningIcon.svg",
     },
     {
         key: "education",
-        title: " Retail Reach",
-icon: "/icons/educationIcon.svg",
-        points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+        title: "Education",
+        icon: "/icons/educationIcon.svg",
+        points: [35, 29, 45, 28, 22, 47],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8800, lng: 74.8400 },
             zoom: 14
         }
     },
     {
         key: "essentials",
-        title: " Balanced Locale",
-icon: "/icons/balancedIcon.svg",
-        points: [32, 33, 34],
+        title: "Healthcare",
+        icon: "/icons/balancedIcon.svg",
+        points: [41, 24, 37, 38],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8700, lng: 74.8500 },
             zoom: 14
         }
     },
@@ -170,13 +168,13 @@ export default function page() {
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
-                <AmenitiesSection data={AMENITIES_DATA}  />
+                <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Refined Recreational Living" variant="left" />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Find Your<br /> Ideal Home</>} subtitle="Discover refined living today." mobImg="/images/ctaImages/nandhaMob.png" deskImg="/images/ctaImages/nandhaDesk.png" />
-<Footer/>
+                <Footer />
             </div>
         </>
     );

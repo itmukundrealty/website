@@ -41,7 +41,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "City Connectivity",
-icon: "/icons/cityIcon.svg",
+        icon: "/icons/cityIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -50,9 +50,9 @@ icon: "/icons/cityIcon.svg",
     },
     {
         key: "it",
-        title: "Academic Convenience",
-icon: "/icons/academics.svg",
-        points: [18, 19],
+        title: "IT & Employment Zone",
+        icon: "/icons/academics.svg",
+        points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 14
@@ -60,21 +60,21 @@ icon: "/icons/academics.svg",
     },
     {
         key: "education",
-        title: " Commercial Reach",
-icon: "/icons/urbanIcon.svg",
-        points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+        title: "Education",
+        icon: "/icons/urbanIcon.svg",
+        points: [29, 28, 22, 47],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8900, lng: 74.8400 },
             zoom: 14
         }
     },
     {
         key: "essentials",
-        title: " Business Access",
-icon: "/icons/businessIcon.svg",
-        points: [32, 33, 34],
+        title: "Healthcare",
+        icon: "/icons/businessIcon.svg",
+        points: [24, 37, 38],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8700, lng: 74.8600 },
             zoom: 14
         }
     },
@@ -171,7 +171,7 @@ export default function page() {
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Own a Home <br /> That Matters</>} subtitle="Experience comfort crafted for you." mobImg="/images/ctaImages/bhargaviMob.png" deskImg="/images/ctaImages/bhargaviDesk.png" />
-<Footer/>
+                <Footer />
             </div>
         </>
     );

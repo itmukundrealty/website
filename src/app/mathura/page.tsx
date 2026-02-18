@@ -27,14 +27,14 @@ const FEATURES: FeatureItem[] = [
     { icon: "Solar", label: "Solar Electric Power Panels" },
     { icon: "Visitorslounge", label: "Visitors Lounge" },
     { icon: "CCTV", label: "Security Surveillance with CCTV" },
-   
+
 ];
 
 const MAP_DATA = [
     {
         key: "city",
         title: "Regional Access",
-icon: "/icons/mapLocationIcon.svg",
+        icon: "/icons/mapLocationIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -43,19 +43,19 @@ icon: "/icons/mapLocationIcon.svg",
     },
     {
         key: "it",
-        title: "Growing Infrastructure",
-icon: "/icons/infrastrucureIcon.svg",
-        points: [18, 19],
+        title: "IT Hubs",
+        icon: "/icons/infrastrucureIcon.svg",
+        points: [18],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.9020175, lng: 74.8465192 },
             zoom: 14
         }
     },
     {
         key: "education",
-        title: "Commercial Proximity",
-icon: "/icons/educationIcon.svg",
-        points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+        title: "Educational Institutions",
+        icon: "/icons/educationIcon.svg",
+        points: [22, 28, 31, 29, 35, 36],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 14
@@ -63,11 +63,11 @@ icon: "/icons/educationIcon.svg",
     },
     {
         key: "essentials",
-        title: "Cultural Appeal",
-icon: "/icons/culturalIcon.svg",
-        points: [32, 33, 34],
+        title: "Healthcare & Essentials",
+        icon: "/icons/culturalIcon.svg",
+        points: [24, 37, 38, 39, 40, 41, 42, 43],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            center: { lat: 12.8700, lng: 74.8500 },
             zoom: 14
         }
     },
@@ -150,7 +150,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero desktopImage="/images/mathuraImages/heroDesk.png" mobileImage="/images/mathuraImages/heroMobile.png" title={<>Mathura <br className="hidden lg:block" />Residency</>} subtitle=""  variant="topRight" />
+                <CompletedHero desktopImage="/images/mathuraImages/heroDesk.png" mobileImage="/images/mathuraImages/heroMobile.png" title={<>Mathura <br className="hidden lg:block" />Residency</>} subtitle="" variant="topRight" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Inspired Living Spaces"
@@ -158,13 +158,13 @@ export default function page() {
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
-                <AmenitiesSection data={AMENITIES_DATA}  />
+                <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" variant="left" />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Discover Your   <br /> Perfect Home</>} subtitle="A home that reflects your aspirations." mobImg="/images/ctaImages/mathuraDesk.png" deskImg="/images/ctaImages/mathuraMob.png" />
-<Footer/>
+                <Footer />
             </div>
         </>
     );

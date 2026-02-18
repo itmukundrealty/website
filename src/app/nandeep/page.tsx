@@ -15,7 +15,7 @@ import Footer from "@/components/layout/Footer";
 import { CompletedHero } from "@/components/projectComponents/Rudraksh/features/project/CompletedHero";
 
 const FEATURES: FeatureItem[] = [
-  { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
+    { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
     { icon: "ChildrenPlay", label: "Kid’s Play Area" },
     { icon: "Gymnasium", label: "Air Conditioned Gymnasium" },
     { icon: "WellnessClub", label: "Wellness Club" },
@@ -45,7 +45,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "City Connectivity",
-icon: "/icons/cityIcon.svg",
+        icon: "/icons/cityIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -54,9 +54,9 @@ icon: "/icons/cityIcon.svg",
     },
     {
         key: "it",
-        title: "Academic Convenience",
-icon: "/icons/academics.svg",
-        points: [18, 19],
+        title: "IT & Employment Zone",
+        icon: "/icons/academics.svg",
+        points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 14
@@ -64,9 +64,9 @@ icon: "/icons/academics.svg",
     },
     {
         key: "education",
-        title: "Commercial Reach",
-icon: "/icons/urbanIcon.svg",
-        points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+        title: "Education",
+        icon: "/icons/urbanIcon.svg",
+        points: [58, 46, 29, 28, 22, 47],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 14
@@ -74,9 +74,9 @@ icon: "/icons/urbanIcon.svg",
     },
     {
         key: "essentials",
-        title: "Business Access",
-icon: "/icons/businessIcon.svg",
-        points: [32, 33, 34],
+        title: "Healthcare",
+        icon: "/icons/businessIcon.svg",
+        points: [24, 37, 38, 57],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 14
@@ -169,13 +169,13 @@ export default function page() {
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
-                <AmenitiesSection data={AMENITIES_DATA}  />
+                <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Own Your Space     <br />of Serenity</>} subtitle="A calm, connected place to call home." mobImg="/images/ctaImages/nandeepDesk.png" deskImg="/images/ctaImages/nandeepMob.png" />
-<Footer/>
+                <CTASection title={<>Own Your Space     <br />of Serenity</>} subtitle="A calm, connected place to call home." mobImg="/images/ctaImages/nandeepDesk1.png" deskImg="/images/ctaImages/nandeepMob.png" />
+                <Footer />
             </div>
         </>
     );

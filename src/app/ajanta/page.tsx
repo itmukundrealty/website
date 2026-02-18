@@ -34,15 +34,15 @@ const FEATURES: FeatureItem[] = [
     { icon: "Fingerprint", label: "Secured Access" },
     { icon: "Visitorslounge", label: "Visitors Lounge" },
     { icon: "CCTV", label: "Security Surveillance with CCTV" },
-   
+
 ];
 
 
 const MAP_DATA = [
     {
         key: "city",
-        title: "City Connectivity",
-icon: "/icons/connectivityIcon.svg",
+        title: "Regional Access",
+        icon: "/icons/connectivityIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -51,32 +51,32 @@ icon: "/icons/connectivityIcon.svg",
     },
     {
         key: "it",
-        title: "Transport Access",
-icon: "/icons/transportIcon.svg",
-        points: [18, 19],
+        title: "IT Hubs",
+        icon: "/icons/transportIcon.svg",
+        points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 14
+            zoom: 12
         }
     },
     {
         key: "education",
-        title: "Urban Amenities",
-icon: "/icons/urbanIcon.svg",
-        points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+        title: "Educational Institutions",
+        icon: "/icons/urbanIcon.svg",
+        points: [35, 29, 45, 46, 22, 47],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 14
+            center: { lat: 12.8800, lng: 74.8400 },
+            zoom: 13
         }
     },
     {
         key: "essentials",
-        title: "Business Neighborhoods",
-icon: "/icons/businessIcon.svg",
-        points: [32, 33, 34],
+        title: "Healthcare & Essentials",
+        icon: "/icons/businessIcon.svg",
+        points: [24, 48, 41, 40],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 14
+            center: { lat: 12.8800, lng: 74.8500 },
+            zoom: 13
         }
     },
 ];
@@ -166,14 +166,14 @@ export default function page() {
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
-                <AmenitiesSection data={AMENITIES_DATA}  />
+                <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" />
 
                 <MapSection data={MAP_DATA} />
                 <PartnerSection />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Step Into Productivity   <br /> Productivity</>} subtitle="Modern spaces crafted for efficiency and growth." mobImg="/images/ctaImages/ajantaMob.png" deskImg="/images/ctaImages/ajantaDesk.png" />
-<Footer/>
+                <Footer />
             </div>
         </>
     );

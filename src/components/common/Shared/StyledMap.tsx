@@ -88,6 +88,31 @@ const LOCATIONS: Location[] = [
     { id: 32, lat: 12.8712557, lng: 74.8427679, mapLink: "https://maps.app.goo.gl/s4uVQGozdvte1SLt6" }, // City Centre Mall
     { id: 33, lat: 12.8860336, lng: 74.8408218, mapLink: "https://maps.app.goo.gl/7iZuy5q5bm9Z1RSE8" }, // Bharath Mall
     { id: 34, lat: 12.8799349, lng: 74.8402455, mapLink: "https://maps.app.goo.gl/vKGZ5pkQWRemajfz8" }, // Empire Mall
+    { id: 35, lat: 12.85937, lng: 74.83668, mapLink: "https://maps.app.goo.gl/1gX5XdP1QtnSGsvS8" }, // St. Ann's High School
+    { id: 36, lat: 12.9172, lng: 74.8560, mapLink: "https://maps.app.goo.gl/hQeG5QfHkSocbM7U7" }, // Little Einsteins Daycare & Preschool
+    { id: 37, lat: 12.8677, lng: 74.8664, mapLink: "https://maps.app.goo.gl/wE4nHbnXuMuvWKPYA" }, // Indiana Hospital & Heart Institute
+    { id: 38, lat: 12.8583, lng: 74.8478, mapLink: "https://maps.app.goo.gl/zTx1Cc4e5RyzyJW48" }, // KMC Hospital, Attavar
+    { id: 39, lat: 12.8676, lng: 74.8542, mapLink: "https://maps.app.goo.gl/xb8F4mVf4vges8AC8" }, // Unity Hospital
+    { id: 40, lat: 12.8729, lng: 74.8492, mapLink: "https://maps.app.goo.gl/AiJ5SotMsC5v63wc8" }, // KMC Hospital Mangaluru
+    { id: 41, lat: 12.8753, lng: 74.8385, mapLink: "https://maps.app.goo.gl/8KhY5EZaNgDAuBiz6" }, // Yenepoya Specialty Hospital
+    { id: 42, lat: 12.8600, lng: 74.8570, mapLink: "https://maps.app.goo.gl/TuGaZEeEZEskdAVF9" }, // Father Muller Hospital
+    { id: 43, lat: 12.8670, lng: 74.8430, mapLink: "https://maps.app.goo.gl/YGfsD2tzQVa4jTff6" }, // Wenlock District Hospital
+    { id: 44, lat: 12.8997, lng: 74.8556, mapLink: "https://maps.app.goo.gl/DuC3io2mVvTgez7L9" }, // STPI / Mangalore IT Park
+    { id: 45, lat: 12.8767, lng: 74.8395, mapLink: "https://maps.app.goo.gl/KJFRBEQLQNVPZ2Q36" }, // SHARADA VIDYALAYA
+    { id: 46, lat: 12.8705, lng: 74.8408, mapLink: "https://maps.app.goo.gl/eMTe6ivrrL8auu4t7" }, // St. Aloysius Gonzaga School
+    { id: 47, lat: 12.8739, lng: 74.8384, mapLink: "https://maps.app.goo.gl/CjuE9FBdeHqXihy97" }, // Canara College
+    { id: 48, lat: 12.8838, lng: 74.8532, mapLink: "https://maps.app.goo.gl/VQt5Xsk2rbJVoDDB6" }, // Vinaya Hospital & Research Centre
+    { id: 49, lat: 12.9980, lng: 74.8050, mapLink: "https://maps.app.goo.gl/YTwAggzYDxrC8FdGA" }, // Exelon Circuits Private Limited (Approx Iddya)
+    { id: 50, lat: 13.0092, lng: 74.7937, mapLink: "https://maps.app.goo.gl/Bwy6kS3okmWw7dCS6" }, // Serpro Consulting Private Limited (NITK-STEP)
+    { id: 51, lat: 13.0095, lng: 74.7940, mapLink: "https://maps.app.goo.gl/shrbBFdS5TcQrTKD6" }, // NITK English Medium School
+    { id: 52, lat: 13.0001, lng: 74.8207, mapLink: "https://maps.app.goo.gl/ia5E98DhMymryKYy7" }, // LITTLE FLOWER PRE SCHOOL (Krishnapura)
+    { id: 53, lat: 12.9950, lng: 74.8150, mapLink: "https://maps.app.goo.gl/Pk8jtymYW1dd43tb8" }, // Chaithanya Public School (Krishnapura)
+    { id: 54, lat: 12.9650, lng: 74.8100, mapLink: "https://maps.app.goo.gl/an7T2B17qedVHqgHA" }, // Ryan International School (Kulai)
+    { id: 55, lat: 13.0092, lng: 74.7937, mapLink: "https://maps.app.goo.gl/bnjqQHwhrCvjSkKW8" }, // NITK engineering college
+    { id: 56, lat: 13.0204, lng: 74.7921, mapLink: "https://maps.app.goo.gl/ekBCGmEfcYq5qUtM6" }, // Srinivas Hospital (Mukka)
+    { id: 57, lat: 12.9041, lng: 74.8936, mapLink: "https://maps.app.goo.gl/E7JeXM6DcgVwsREk6" }, // Tejasvini Hospital (Kudupu)
+    { id: 58, lat: 12.8679, lng: 74.8610, mapLink: "https://maps.app.goo.gl/jeAYpTQAGARHehza9" }, // St. Joseph’s High School
+    { id: 59, lat: 12.8741, lng: 74.8389, mapLink: "https://maps.app.goo.gl/p9lJpG58awDmUnNa6" }, // Canara School
 ];
 
 interface StyledMapProps {
@@ -190,7 +215,7 @@ export default function StyledMap({
                                 radius={80}
                                 onClick={() => handlePointClick(loc.mapLink)}
                                 options={{
-                                    fillColor: '#0097DC',
+                                    fillColor: isActive ? '#005a8c' : '#96d9f3d5',
                                     fillOpacity: isActive ? 1 : 0.5,
                                     strokeColor: '#ffffff',
                                     strokeWeight: 1,
