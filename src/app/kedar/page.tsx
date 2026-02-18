@@ -9,15 +9,8 @@ import FeaturesSection, { FeatureItem } from "@/components/projectComponents/Rud
 import { ProjectHero } from "@/components/projectComponents/Rudraksh/features/project/Hero";
 import ProjectHighLiving from "@/components/projectComponents/Rudraksh/features/project/HighLiving";
 import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
-<<<<<<< HEAD
-import PartnerSection from "@/components/projectComponents/Ashoka/PartnerSection";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
-=======
-import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
-import Footer from "@/components/layout/Footer";
-import PartnerSection from "@/components/projectComponents/ashoka/PartnerSection";
->>>>>>> main
 
 const FEATURES: FeatureItem[] = [
     { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
@@ -45,8 +38,8 @@ const FEATURES: FeatureItem[] = [
 const MAP_DATA = [
     {
         key: "city",
-        title: "Regional & City Access",
-        icon: "/icons/regionalIcon.svg",
+        title: "City Road Access",
+icon: "/icons/cityIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -55,8 +48,8 @@ const MAP_DATA = [
     },
     {
         key: "it",
-        title: "Workforce",
-        icon: "/icons/workForceIcon.svg",
+        title: "Schools & Hospitals",
+icon: "/icons/itIcon.svg",
         points: [18, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -65,8 +58,8 @@ const MAP_DATA = [
     },
     {
         key: "education",
-        title: "Commercial Proximity",
-        icon: "/icons/commercial.svg",
+        title: "Business Hubs",
+icon: "/icons/educationIcon.svg",
         points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -75,8 +68,8 @@ const MAP_DATA = [
     },
     {
         key: "essentials",
-        title: "Digital Infrastructure",
-        icon: "/icons/digitalIcon.svg",
+        title: "Lifestyle Conveniences",
+icon: "/icons/everydayIcon.svg",
         points: [32, 33, 34],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -85,29 +78,34 @@ const MAP_DATA = [
     },
 ];
 
+
+
+
+
+
 const SECTION_DATA = [
     {
         id: "high-living",
-        label: "Green Workspaces",
-        description: "It's more than just a workspace; it's a world unto itself. We craft a comfortable, secure and professional environment tailored to meet the needs of a diverse range of corporate businesses, surrounded by lush greenery and the beauty of Mother Nature in full bloom.",
+        label: "Elevated Living",
+        description: "More than just homes, Kedar offers a refined living experience shaped by comfort, privacy, and thoughtful design that supports everyday ease and long term well being.",
         imageSrc: "/images/rudrakshImages/1.webp"
     },
     {
         id: "kitchen",
-        label: "Smart Tech",
-        description: "Harnessing contemporary, intelligent technology enables us to streamline daily tasks, enhancing productivity and efficiency swiftly. What were once manual and time-consuming activities can now be efficiently accomplished through digital tools, self-automated systems and app management.",
+        label: "Panoramic Views",
+        description: "Designed to rise above its surroundings, the residences enjoy expansive views of greenery and the city beyond, creating a sense of openness and quiet retreat.",
         imageSrc: "/images/rudrakshImages/2.webp"
     },
     {
         id: "rooftop",
-        label: "Sustainability",
-        description: "Embrace sustainability through our comprehensive and energy-conscious ecosystem, crafted to mitigate our environmental footprint. Designed with sustainable systems that support responsible water and energy use.",
+        label: "Thoughtful Design",
+        description: "Every home is planned with clarity and balance, combining functional layouts, natural light, and refined detailing to support modern lifestyles.",
         imageSrc: "/images/rudrakshImages/3.webp"
     },
     {
         id: "location",
-        label: "Efficiency",
-        description: "Immerse yourself in the global community by embracing a fusion of modern sophistication and natural allure. Our workspace culture celebrates local ethnic artistry, harnessing its power to spark creativity, alleviate stress and cultivate a vibrant positive atmosphere.",
+        label: "Connected Yet Serene",
+        description: "Strategically located to offer city accessibility while remaining removed from noise and congestion, allowing residents to enjoy calm living without compromise.",
         imageSrc: "/images/rudrakshImages/4.webp"
     }
 ];
@@ -115,37 +113,37 @@ const SECTION_DATA = [
 const AMENITIES_DATA = [
     {
         id: "kitchen",
-        label: "Curated Workspaces",
+        label: "Rooftop Infinity Swimming Pool",
         subtitle: "",
         image: "/images/rudrakshImages/2.webp",
     },
     {
         id: "wellness",
-        label: "Recreational Zones",
+        label: "Open Air Gymnasium",
         subtitle: "",
         image: "/images/rudrakshImages/6.webp",
     },
     {
         id: "lobby",
-        label: "On Call Training/ Board Rooms",
+        label: "Indoor & Outdoor Recreation",
         subtitle: "",
         image: "/images/rudrakshImages/7.webp",
     },
     {
         id: "pool",
-        label: "Designated Ares for Customer / Client Service",
+        label: "Kids Play Area",
         subtitle: "",
         image: "/images/rudrakshImages/8.webp",
     },
     {
         id: "gym",
-        label: "Auditorium & Banquet Hall",
+        label: "Outdoor Badminton Court",
         subtitle: "",
         image: "/images/rudrakshImages/9.webp",
     },
     {
         id: "sky-deck",
-        label: "3 Tier Secured Parking",
+        label: "Spacious Visitor’s Lounge",
         subtitle: "",
         image: "/images/rudrakshImages/3.webp",
     }
@@ -169,10 +167,9 @@ export default function page() {
                 <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" />
 
                 <MapSection data={MAP_DATA} />
-                <PartnerSection />
-                <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>The Workspace <br /> You Deserve</>} subtitle="Thoughtfully planned spaces built for lasting value" mobImg="/images/rudrakshImages/ctaBg.webp" deskImg="/images/rudrakshImages/image.png" />
-      <Footer/>
+                <ExperienceSection titlePart1="Built on" titlePart2="Real Experiences" description="Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time." />
+                <CTASection title={<>The Home You’ve Been  <br /> Looking For</>} subtitle="DSpacious homes built for everyday living." mobImg="/images/rudrakshImages/ctaBg.webp" deskImg="/images/rudrakshImages/image.png" />
+<Footer/>
             </div>
         </>
     );

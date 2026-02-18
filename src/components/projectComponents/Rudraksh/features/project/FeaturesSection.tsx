@@ -18,7 +18,10 @@ export type FeatureItem = {
 interface FeaturesSectionProps {
     features: FeatureItem[];
     heading: string;
+<<<<<<< HEAD
     variant?: "center" | "left";
+=======
+>>>>>>> main
 }
 
 
@@ -31,12 +34,17 @@ const GALLERY_IMAGES = [
     "/images/rudrakshImages/15.webp",
 ];
 
+<<<<<<< HEAD
 export default function FeaturesSection({ features, heading, variant = "center" }: FeaturesSectionProps) {
+=======
+export default function FeaturesSection({ features, heading }: FeaturesSectionProps) {
+>>>>>>> main
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <section className="py-20 lg:py-32 bg-white font-host">
             <div className=" mx-auto px-6 lg:px-20 xl:px-54 ">
+<<<<<<< HEAD
                 {/* Header */}
                 {variant === "center" ? (
                     <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#424244] font-light text-center mb-16 lg:mb-28 tracking-tight leading-tight">
@@ -53,6 +61,12 @@ export default function FeaturesSection({ features, heading, variant = "center" 
                         </button>
                     </div>
                 )}
+=======
+                {/* Title */}
+                <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#424244] font-light text-center mb-16 lg:mb-28 tracking-tight leading-tight">
+                    {heading}
+                </h2>
+>>>>>>> main
 
                 {/* Features Grid */}
                 <div className="grid grid-cols-1  md:grid-cols-4  gap-x-6 gap-y-10 lg:gap-x-12 xl:gap-x-20 lg:gap-y-16 mb-12 lg:mb-28">
@@ -70,7 +84,7 @@ export default function FeaturesSection({ features, heading, variant = "center" 
                             >
                                 {/* Icon Wrapper */}
                                 <div className="w-10 h-10 flex items-center justify-center text-[#505153] group-hover:text-[#0097DC] transition-all duration-500 transform group-hover:scale-110 shrink-0">
-                                    <Icon className="w-7 h-7" strokeWidth={1} />
+                                    <Icon  />
                                 </div>
                                 {/* Text Label */}
                                 <span className="text-[#505153] text-[15px] lg:text-[16px] leading-snug font-normal tracking-wide transition-colors duration-300 group-hover:text-[#424244]">

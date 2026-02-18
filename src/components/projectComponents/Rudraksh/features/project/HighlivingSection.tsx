@@ -31,9 +31,13 @@ export default function HighlivingSection({ heading, description, imageSrc, vide
 
                 {/* Description */}
                 <div className="max-w-full mb-12">
+<<<<<<< HEAD
                     <p className="text-lg text-[#505153] font-light ">
                         {description}
                     </p>
+=======
+                
+>>>>>>> main
                 </div>
 
                 {/* Video/Image Container */}
