@@ -154,7 +154,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <ProjectHero HERO_MARKERS={HERO_MARKERS} floorData={floorData} FLOOR_PATHS={FLOOR_PATHS} heroImageDesktop="/images/ashokaImages/hero.png" heroImageMobile="/images/ashokaImages/hero.png" />
+                <ProjectHero HERO_MARKERS={HERO_MARKERS} floorData={floorData} FLOOR_PATHS={FLOOR_PATHS} heroImageDesktop="/images/ashokaImages/Frame 1000002763.png" heroImageMobile="/images/ashokaImages/Frame 1000002763.png" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Spaces That Empower Business"

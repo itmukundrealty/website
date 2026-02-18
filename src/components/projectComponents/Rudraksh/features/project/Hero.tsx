@@ -54,71 +54,83 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS,heroImageDesk
     return `${baseClasses} fill-transparent hover:fill-[#003a53]/80`;
   };
 
-  return (
-    <section className="relative h-[100vh] w-full overflow-hidden bg-black">
-      {/* 1. BACKGROUND LAYER */}
-      <div className="absolute inset-0 z-0">
-        <div className="hidden lg:block h-full w-full">
+ return (
+    // 1. Removed h-[100vh] from the main section
+    <section className="relative w-full overflow-hidden bg-black">
+      
+      {/* 2. BACKGROUND LAYER: Changed to relative so it dictates the height of the section */}
+      <div className="relative w-full z-0">
+        <div className="hidden lg:block w-full">
+          {/* 3. Removed `fill` and `object-fill`. Added native width/height and `w-full h-auto` */}
           <Image
             src={isZoomedOut ? heroImageDesktop : heroImageDesktop}
             alt="Mukund Realty Project"
-            fill
-            className="object-fill transition-all duration-1000"
+            width={1728}
+            height={857}
+            className="w-full h-auto transition-all duration-1000"
             priority
           />
         </div>
-        <div className="block lg:hidden h-full w-full">
-          <Image src={heroImageMobile} alt="Mukund Realty Project Mobile" fill className="object-cover" priority />
+        <div className="block lg:hidden w-full">
+          {/* Add a generic width/height for mobile aspect ratio, e.g., 768x1024 */}
+          <Image 
+            src={heroImageMobile} 
+            alt="Mukund Realty Project Mobile" 
+            width={768} 
+            height={1024} 
+            className="w-full h-auto" 
+            priority 
+          />
         </div>
       </div>
 
-      {/* 2. HERO TEXT CONTENT */}
-      {/* Changed items-center -> items-start. Removed all vertical padding */}
-      <div className="relative z-10 hidden lg:flex h-full items-start justify-end px-12 lg:px-24 pointer-events-none">
+      {/* 4. HERO TEXT CONTENT: Changed to absolute inset-0 to float over the image */}
+      <div className="absolute inset-0 z-10 hidden lg:flex items-start justify-end px-12 lg:px-24 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          /* USE MARGIN-TOP HERE TO CONTROL HEIGHT */
           className="text-right pointer-events-auto mt-20 lg:mt-28 xl:mt-40"
         >
-          <h1 className="text-5xl  text-white tracking-tight font-medium mb-4 lg:text-7xl">Click to Explore</h1>
-          <h2 className="text-5xl  text-white tracking-tight font-thin  lg:text-7xl">Our Floors</h2>
+          <h1 className="text-5xl text-white tracking-tight font-medium mb-4 lg:text-7xl">Click to Explore</h1>
+          <h2 className="text-5xl text-white tracking-tight font-thin lg:text-7xl">Our Floors</h2>
         </motion.div>
       </div>
 
-    <div
-  className={`absolute inset-0 z-5 pointer-events-none transition-opacity duration-700 hidden lg:block ${isZoomedOut ? "opacity-0" : "opacity-100"}`}
->
-  <svg viewBox="0 0 1728 1048" className="h-full w-full object-fill pointer-events-auto" preserveAspectRatio="none">
-    <g className="fill-transparent transition-colors duration-300">
-      {/* Building Paths mapped dynamically */}
-      {FLOOR_PATHS.map((floor) => (
-        <path
-          key={floor.id}
-          d={floor.d}
-          className={getBuildingPathClass(floor.id)}
-          onMouseEnter={() => setHoveredIndex(floor.id)}
-          onMouseLeave={() => setHoveredIndex(null)}
-          onClick={() => setSelectedIndex(floor.id)}
-        />
-      ))}
-    </g>
+      {/* 5. SVG OVERLAY: Set to absolute inset-0 to perfectly match the image bounds */}
+      <div
+        className={`absolute inset-0 z-10 pointer-events-none transition-opacity duration-700 hidden lg:block ${isZoomedOut ? "opacity-0" : "opacity-100"}`}
+      >
+        {/* Removed preserveAspectRatio="none" so it scales uniformly with the image */}
+        <svg viewBox="0 0 1728 857" className="h-full w-full pointer-events-auto">
+          <g className="fill-transparent transition-colors duration-300">
+            {FLOOR_PATHS.map((floor) => (
+              <path
+                key={floor.id}
+                d={floor.d}
+                className={getBuildingPathClass(floor.id)}
+                onMouseEnter={() => setHoveredIndex(floor.id)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => setSelectedIndex(floor.id)}
+              />
+            ))}
+          </g>
 
-    {/* 3.1 INTERACTIVE MARKERS */}
-   {HERO_MARKERS.map((marker, index) => (
-  <g
-    key={`marker-${index}`}
-    className="cursor-pointer group"
-    onMouseEnter={() => setHoveredMarkerIndex(index)}
-    onMouseLeave={() => setHoveredMarkerIndex(null)}
-  >
-    {/* All shapes, lines, and paths render directly from the array */}
-    {marker.markerElements}
-  </g>
-))}
-  </svg>
-</div>
+          {/* INTERACTIVE MARKERS */}
+          {HERO_MARKERS.map((marker, index) => (
+            <g
+              key={`marker-${index}`}
+              className="cursor-pointer group"
+              onMouseEnter={() => setHoveredMarkerIndex(index)}
+              onMouseLeave={() => setHoveredMarkerIndex(null)}
+            >
+              {marker.markerElements}
+            </g>
+          ))}
+        </svg>
+      </div>
+      
+      {/* ... Rest of your component (tooltips, modals, sidebars) remains exactly the same! ... */}
       <div className="absolute z-50 bottom-10 right-10 hidden lg:block">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
