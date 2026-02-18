@@ -9,35 +9,18 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-// --- Data ---
-const SECTION_DATA = [
-    {
-        id: "high-living",
-        label: "High Living Luxurious Homes",
-        description: "Rudraksh is envisioned as an expression of high living, where space, light, and serenity define everyday life. With two refined wings rising across 14 floors, each home feels expansive, composed, and effortlessly elegant.",
-        imageSrc: "/images/rudrakshImages/1.webp"
-    },
-    {
-        id: "kitchen",
-        label: "24×7 Cloud Kitchen",
-        description: "A first of its kind offering, the round the clock cloud kitchen brings freshly prepared, personalised meals directly to residents, adding a new level of everyday convenience to luxury living.",
-        imageSrc: "/images/rudrakshImages/2.webp"
-    },
-    {
-        id: "rooftop",
-        label: "Rooftop Living",
-        description: "An elevated rooftop experience featuring an infinity pool with panoramic city and sea views, complemented by wellness amenities that invite relaxation above the urban rhythm.",
-        imageSrc: "/images/rudrakshImages/3.webp"
-    },
-    {
-        id: "location",
-        label: "Prime Location",
-        description: "Situated behind Infosys at Kottara, Rudraksh offers seamless access to key IT hubs, highways, education, and daily essentials, balancing connectivity with calm living.",
-        imageSrc: "/images/rudrakshImages/4.webp"
-    }
-];
+export interface HighLivingSectionItem {
+    id: string;
+    label: string;
+    description: string;
+    imageSrc: string;
+}
 
-export default function ProjectHighLiving() {
+interface ProjectHighLivingProps {
+    data: HighLivingSectionItem[];
+}
+
+export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
     const titlesRef = useRef<(HTMLHeadingElement | null)[]>([]);
@@ -47,17 +30,18 @@ export default function ProjectHighLiving() {
     const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
     // State to track the active section
-    const [activeId, setActiveId] = useState(SECTION_DATA[0].id);
+    // Use data[0] safely
+    const [activeId, setActiveId] = useState(data?.[0]?.id);
 
     // Mobile View State
-    const activeData = SECTION_DATA.find((item) => item.id === activeId) || SECTION_DATA[0];
+    const activeData = data?.find((item) => item.id === activeId) || data?.[0];
 
     // Format text helper (if needed in future, currently just returns text)
     const formatText = (text: string) => text;
 
     // --- Desktop Scroll Animation ---
     useEffect(() => {
-        if (!containerRef.current) return;
+        if (!containerRef.current || !data || data.length === 0) return;
 
         let ctx = gsap.context(() => {
             const tl = gsap.timeline({
@@ -76,8 +60,9 @@ export default function ProjectHighLiving() {
                     onUpdate: (self) => {
                         // Determine active section based on progress
                         const p = self.progress;
-                        const total = SECTION_DATA.length;
-                        const step = 1 / (total - 1); // Progress step between sections
+                        const total = data.length;
+                        // Avoid division by zero if data.length is 1
+                        if (total <= 1) return;
 
                         // Calculate index based on progress (0 to total-1)
                         // Using a slightly more tolerant checking than exact matching
@@ -85,7 +70,7 @@ export default function ProjectHighLiving() {
                         index = Math.max(0, Math.min(total - 1, index));
 
                         setActiveId((prev) => {
-                            const newId = SECTION_DATA[index].id;
+                            const newId = data[index].id;
                             return prev !== newId ? newId : prev;
                         });
                     }
@@ -95,13 +80,13 @@ export default function ProjectHighLiving() {
             timelineRef.current = tl;
 
             // Define labels for snapping
-            SECTION_DATA.forEach((_, i) => {
+            data.forEach((_, i) => {
                 tl.addLabel(`section${i}`, i);
             });
 
             // --- Animations ---
             // For each section after the first one, animate it in
-            for (let i = 0; i < SECTION_DATA.length - 1; i++) {
+            for (let i = 0; i < data.length - 1; i++) {
                 const nextIndex = i + 1;
 
                 // Image Transition (Clip Path)
@@ -145,7 +130,7 @@ export default function ProjectHighLiving() {
         }, containerRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [data]);
 
     // --- Click Handler ---
     const handleTabClick = (id: string, index: number) => {
@@ -153,25 +138,31 @@ export default function ProjectHighLiving() {
         if (window.innerWidth >= 1024 && timelineRef.current && timelineRef.current.scrollTrigger) {
             const st = timelineRef.current.scrollTrigger;
             const totalDistance = st.end - st.start;
-            const totalSections = SECTION_DATA.length - 1; // 0 to 3 is 3 steps
+            const totalSections = data.length - 1; // 0 to 3 is 3 steps
 
-            // Calculate progress (0 to 1) for the target index
-            const targetProgress = index / totalSections;
+            if (totalSections > 0) {
+                // Calculate progress (0 to 1) for the target index
+                const targetProgress = index / totalSections;
 
-            // Calculate scroll position
-            const scrollPos = st.start + (totalDistance * targetProgress);
+                // Calculate scroll position
+                const scrollPos = st.start + (totalDistance * targetProgress);
 
-            gsap.to(window, {
-                scrollTo: scrollPos,
-                duration: 1.5,
-                ease: "power3.inOut"
-            });
+                gsap.to(window, {
+                    scrollTo: scrollPos,
+                    duration: 1.5,
+                    ease: "power3.inOut"
+                });
+            }
         }
         // Mobile: Instant Switch
         else {
             setActiveId(id);
         }
     };
+
+    if (!data || data.length === 0) {
+        return null;
+    }
 
     return (
         <>
@@ -180,7 +171,7 @@ export default function ProjectHighLiving() {
 
                 {/* --- Left Panel: Images --- */}
                 <div className="relative w-full lg:w-1/2 h-1/2 lg:h-full z-10 bg-black">
-                    {SECTION_DATA.map((item, index) => (
+                    {data.map((item, index) => (
                         <div
                             key={item.id}
                             ref={el => { if (el) imagesRef.current[index] = el; }}
@@ -207,7 +198,7 @@ export default function ProjectHighLiving() {
 
                     {/* Titles List - Aligned Right with significant padding */}
                     <div className="flex flex-col items-end gap-12 w-full pr-8 lg:pr-20 xl:pr-54 mb-20">
-                        {SECTION_DATA.map((item, index) => (
+                        {data.map((item, index) => (
                             <h2
                                 key={item.id}
                                 ref={el => { if (el) titlesRef.current[index] = el; }}
@@ -220,7 +211,7 @@ export default function ProjectHighLiving() {
                                     fontWeight: index === 0 ? 500 : 100, // Medium vs Thin
                                 }}
                             >
-                                <span className="text-3xl lg:text-[40px] xl:text-[3rem] tracking-wide block hover:opacity-100 transition-opacity">
+                                <span className="text-4xl lg:text-5xl xl:text-[3.5rem] tracking-wide block hover:opacity-100 transition-opacity">
                                     {item.label}
                                 </span>
                             </h2>
@@ -230,7 +221,7 @@ export default function ProjectHighLiving() {
                     {/* Descriptions - Aligned Left at the bottom */}
                     {/* 'bottom-20' and 'left-20' positions it exactly like the screenshot */}
                     <div className="absolute bottom-10 lg:bottom-20 left-8 lg:left-20 w-full max-w-[90%] lg:max-w-md pointer-events-none">
-                        {SECTION_DATA.map((item, index) => (
+                        {data.map((item, index) => (
                             <p
                                 key={item.id}
                                 ref={el => { if (el) descriptionsRef.current[index] = el; }}
@@ -255,7 +246,7 @@ export default function ProjectHighLiving() {
                 <section className="relative z-20 bg-[#0097DC] px-3 pt-20">
                     <div className="relative w-full h-[65vh] ">
                         <Image
-                            src={activeData?.imageSrc || SECTION_DATA[0]?.imageSrc || ""}
+                            src={activeData?.imageSrc || ""}
                             alt={activeData?.label || ""}
                             fill
                             className="object-cover transition-opacity duration-500"
@@ -266,7 +257,7 @@ export default function ProjectHighLiving() {
                         {/* Tabs */}
                         <div className="absolute bottom-6 left-0 w-full px-4 z-20">
                             <div className="flex justify-between w-full items-end gap-2">
-                                {SECTION_DATA.map((item, index) => (
+                                {data.map((item, index) => (
                                     <button
                                         key={item.id}
                                         onClick={() => handleTabClick(item.id, index)}

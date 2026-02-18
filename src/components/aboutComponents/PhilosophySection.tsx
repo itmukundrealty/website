@@ -3,7 +3,13 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-export default function PhilosophySection() {
+interface PhilosophySectionProps {
+    heading: React.ReactNode;
+    description: React.ReactNode;
+    imageSrc: string;
+}
+
+export default function PhilosophySection({ heading, description, imageSrc }: PhilosophySectionProps) {
     return (
         <section className="bg-white pt-2 pb-16 md:py-27">
 
@@ -37,7 +43,7 @@ export default function PhilosophySection() {
                         {/* Logo / Shape Image */}
                         <div className="relative md:ml-8 ">
                             <Image
-                                src="/icons/mukund.svg"
+                                src={imageSrc}
                                 alt="Philosophy Mark"
                                 width={180}
                                 height={120}
@@ -71,12 +77,7 @@ export default function PhilosophySection() {
                                 mb-5
                             "
                         >
-                            <span className="font-medium">At Mukund Realty, we build with responsibility,
-                                integrity, and long term intent, guiding every
-                                decision from planning through execution.</span> <span className="font-thin">We
-                            believe real estate is about shaping environments
-                            that serve people, businesses, and communities
-                            with purpose.</span>
+                            {heading}
                         </p>
 
                         <p
@@ -87,10 +88,7 @@ export default function PhilosophySection() {
                                 text-[#505153]
                             "
                         >
-                            Through disciplined processes, collaborative
-                            teams, and a focus on function and transparency,
-                            we deliver spaces that perform reliably and create
-                            lasting value.
+                            {description}
                         </p>
                     </motion.div>
 
