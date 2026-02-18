@@ -9,31 +9,25 @@ import FeaturesSection, { FeatureItem } from "@/components/projectComponents/Rud
 import { ProjectHero } from "@/components/projectComponents/Rudraksh/features/project/Hero";
 import ProjectHighLiving from "@/components/projectComponents/Rudraksh/features/project/HighLiving";
 import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
-import PartnerSection from "@/components/projectComponents/Ashoka/PartnerSection";
+// import PartnerSection from "@/components/projectComponents/Ashoka/PartnerSection";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
+import { CompletedHero } from "@/components/projectComponents/Rudraksh/features/project/CompletedHero";
 
 const FEATURES: FeatureItem[] = [
-    { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
-    { icon: "GamesArea", label: "Indoor & Outdoor Games Area" },
-    { icon: "Gymnasium", label: "Air Conditioned Gymnasium" },
-    { icon: "Reflexology", label: "Walking Path with Reflexology" },
-    { icon: "LeisureAreas", label: "Landscaped Leisure Areas" },
-    { icon: "ChildrenPlay", label: "Children's Play Area" },
-    { icon: "JacuzziSauna", label: "Heated Jacuzzi & Timber Sauna" },
-    { icon: "GrandLobby", label: "Access Controlled Grand Entrance Lobby" },
-    { icon: "OpenLibrary", label: "Open Library" },
-    { icon: "WellnessClub", label: "Wellness Club" },
-    { icon: "CloudKitchen", label: "24×7 Cloud Kitchen" },
-    { icon: "BeautyLounge", label: "Beauty Lounge" },
-    { icon: "SolarPanels", label: "Solar Electric Power Panels" },
-    { icon: "Generators", label: "24×7 Backup Generators" },
-    { icon: "SewageTreatment", label: "Sewage Water Treatment Plant" },
+    // { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
+    { icon: "ChildrenPlay", label: "Kid’s Play Area" },
+    { icon: "Gymnasium", label: "Gymnasium" },
+    { icon: "GamesArea", label: "Indoor Gaming Zone" },
+    { icon: "Drink", label: "Party Hall" },
+    { icon: "Firesafety", label: "Fire Safety System" },
+    { icon: "Minitheatre", label: "Mini Theatre" },
+    { icon: "JacuzziSauna", label: "Yoga and meditation pavilion" },
+    { icon: "Generators", label: "24x7 Power Back-up" },
+    { icon: "Solar", label: "Solar Electric Power Panels" },
+    { icon: "Visitorslounge", label: "Visitors Lounge" },
     { icon: "CCTV", label: "Security Surveillance with CCTV" },
-    { icon: "MiniTheatre", label: "Air Conditioned Mini Theatre" },
-    { icon: "DanceFloor", label: "Dance / Yoga / Zumba Floor" },
-    { icon: "GatheringHall", label: "Residents Gathering Hall" },
-    { icon: "FirefightingSystem", label: "State-of-the-art Firefighting System" },
+   
 ];
 
 const MAP_DATA = [
@@ -156,14 +150,14 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <ProjectHero />
+                <CompletedHero title={<>Evanna Homes</>} subtitle="" mobileVariant="topRight" variant="rightCentered" desktopImage="/images/evannaImages/heroDesk.png" mobileImage="/images/evannaImages/heroMob.png" />
                 <ProjectHighLiving data={SECTION_DATA} />
-                <HighlivingSection
+                {/* <HighlivingSection
                     heading="Thoughtful Residential Living"
                     description= "Welcome to Evanna Homes, a thoughtfully planned residential community with a focus on convenience, comfort, and style that is ideal for contemporary family living. From large, well-ventilated homes and modern layouts to communal areas that promote social interaction and leisure, every element of the development is designed to improve your everyday experience. Evanna Homes offers amenities that promote leisure, fitness, and daily necessities, resulting in a well-rounded lifestyle where comfort and usefulness coexist. A relaxing yet connected place to call home is provided by well-considered design, secure infrastructure, and high-quality finishes."
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
-                />
+                /> */}
                 <AmenitiesSection data={AMENITIES_DATA}  />
                 <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" />
 

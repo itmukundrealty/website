@@ -9,31 +9,28 @@ import FeaturesSection, { FeatureItem } from "@/components/projectComponents/Rud
 import { ProjectHero } from "@/components/projectComponents/Rudraksh/features/project/Hero";
 import ProjectHighLiving from "@/components/projectComponents/Rudraksh/features/project/HighLiving";
 import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
-import PartnerSection from "@/components/projectComponents/Ashoka/PartnerSection";
+// import PartnerSection from "@/components/projectComponents/Ashoka/PartnerSection";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
+import { CompletedHero } from "@/components/projectComponents/Rudraksh/features/project/CompletedHero";
 
 const FEATURES: FeatureItem[] = [
-    { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
-    { icon: "GamesArea", label: "Indoor & Outdoor Games Area" },
-    { icon: "Gymnasium", label: "Air Conditioned Gymnasium" },
-    { icon: "Reflexology", label: "Walking Path with Reflexology" },
-    { icon: "LeisureAreas", label: "Landscaped Leisure Areas" },
-    { icon: "ChildrenPlay", label: "Children's Play Area" },
-    { icon: "JacuzziSauna", label: "Heated Jacuzzi & Timber Sauna" },
-    { icon: "GrandLobby", label: "Access Controlled Grand Entrance Lobby" },
-    { icon: "OpenLibrary", label: "Open Library" },
-    { icon: "WellnessClub", label: "Wellness Club" },
-    { icon: "CloudKitchen", label: "24×7 Cloud Kitchen" },
-    { icon: "BeautyLounge", label: "Beauty Lounge" },
-    { icon: "SolarPanels", label: "Solar Electric Power Panels" },
-    { icon: "Generators", label: "24×7 Backup Generators" },
-    { icon: "SewageTreatment", label: "Sewage Water Treatment Plant" },
+    { icon: "CarParking", label: "Two-Level Parking" },
+    { icon: "Bag", label: "Luxury Retail Spaces" },
+    { icon: "FineDining", label: "Fine Dining Zones" },
+    { icon: "Generators", label: "24x7 Power Back-up" },
+    { icon: "LaptopGraph", label: "Managed Workspace" },
+    { icon: "Escalator", label: "Escalator Connectivity" },
+    { icon: "Management", label: "24×7 Facility Management" },
+    { icon: "ModernRestroom", label: "Modern Restroom Facilities" },
+    { icon: "Visitorslounge", label: "Premium Business Lounge" },
+    { icon: "Security", label: "Round-o-clock Security" },
     { icon: "CCTV", label: "Security Surveillance with CCTV" },
-    { icon: "MiniTheatre", label: "Air Conditioned Mini Theatre" },
-    { icon: "DanceFloor", label: "Dance / Yoga / Zumba Floor" },
-    { icon: "GatheringHall", label: "Residents Gathering Hall" },
-    { icon: "FirefightingSystem", label: "State-of-the-art Firefighting System" },
+    { icon: "Firesafety", label: "Fire Safety System" },
+    { icon: "AmbientLighting", label: "Smart Ambient Lighting" },
+
+
+
 ];
 
 const MAP_DATA = [
@@ -156,14 +153,14 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <ProjectHero />
+                <CompletedHero title={<>Kudva's Grandeur</>} mobileVariant="topRight" subtitle="" variant="rightCentered" desktopImage="/images/kudvaImages/heroDesk.png" mobileImage="/images/kudvaImages/heroMobile.png" />
                 <ProjectHighLiving data={SECTION_DATA} />
-                <HighlivingSection
+                {/* <HighlivingSection
                     heading="Refined Commercial Living"
                     description= "Greetings from Kudva's Grandeur, a well-planned business center in Surathkal that unites large, flexible workspaces and thriving business activity under one roof. This complex is designed to accommodate a variety of business needs, from retail and dining to offices and showrooms, and is situated in one of the most vibrant neighborhoods in the area. Business, lifestyle, and daily necessities can all coexist peacefully in Kudva's Grandeur thanks to its spacious interiors that can be customized to meet specific needs, high-quality construction, and thoughtful amenities like plenty of parking and contemporary utilities."
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
-                />
+                /> */}
                 <AmenitiesSection data={AMENITIES_DATA}  />
                 <FeaturesSection features={FEATURES} heading="Curated for Commercial Excellence" variant="left" />
 

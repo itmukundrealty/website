@@ -9,9 +9,10 @@ import FeaturesSection, { FeatureItem } from "@/components/projectComponents/Rud
 import { ProjectHero } from "@/components/projectComponents/Rudraksh/features/project/Hero";
 import ProjectHighLiving from "@/components/projectComponents/Rudraksh/features/project/HighLiving";
 import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
-import PartnerSection from "@/components/projectComponents/Ashoka/PartnerSection";
+// import PartnerSection from "@/components/projectComponents/Ashoka/PartnerSection";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
+import { CompletedHero } from "@/components/projectComponents/Rudraksh/features/project/CompletedHero";
 
 const FEATURES: FeatureItem[] = [
     { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
@@ -156,14 +157,14 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <ProjectHero />
+                <CompletedHero title={<>Gokuldham</>} subtitle="" variant="topRight" desktopImage="/images/gokuldhamImages/heroDesk.png" mobileImage="/images/gokuldhamImages/heroMobile.png" />
                 {/* <ProjectHighLiving data={SECTION_DATA} /> */}
-                <HighlivingSection
+                {/* <HighlivingSection
                     heading="Living, Well Designed"
                     description= "Welcome to Gokuldham, a thoughtfully envisioned residential development by Mukund MGM Realty that brings together comfort, functionality, and everyday convenience. Situated in the well-connected neighbourhood of Mannagudda, the project offers intelligently designed homes that respond to the needs of modern families. With practical layouts, quality construction, and reliable infrastructure, every detail is aligned to support smooth daily living. Essential amenities, dependable utilities, and a secure residential setting come together to create a balanced lifestyle — one where comfort and convenience coexist effortlessly in the heart of Mangalore."
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
-                />
+                /> */}
                 <AmenitiesSection data={AMENITIES_DATA}  />
                 {/* <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" /> */}
 

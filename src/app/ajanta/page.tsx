@@ -9,32 +9,34 @@ import FeaturesSection, { FeatureItem } from "@/components/projectComponents/Rud
 import { ProjectHero } from "@/components/projectComponents/Rudraksh/features/project/Hero";
 import ProjectHighLiving from "@/components/projectComponents/Rudraksh/features/project/HighLiving";
 import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
-// import PartnerSection from "@/components/projectComponents/Ashoka/PartnerSection";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
+import { CompletedHero } from "@/components/projectComponents/Rudraksh/features/project/CompletedHero";
+import PartnerSection from "@/components/projectComponents/ashoka/PartnerSection";
+// import PartnerSection from "@/components/projectComponents/Rudraksh/features/project/PartnerSection";
 
 const FEATURES: FeatureItem[] = [
-    { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
-    { icon: "GamesArea", label: "Indoor & Outdoor Games Area" },
-    { icon: "Gymnasium", label: "Air Conditioned Gymnasium" },
-    { icon: "Reflexology", label: "Walking Path with Reflexology" },
-    { icon: "LeisureAreas", label: "Landscaped Leisure Areas" },
-    { icon: "ChildrenPlay", label: "Children's Play Area" },
-    { icon: "JacuzziSauna", label: "Heated Jacuzzi & Timber Sauna" },
-    { icon: "GrandLobby", label: "Access Controlled Grand Entrance Lobby" },
-    { icon: "OpenLibrary", label: "Open Library" },
-    { icon: "WellnessClub", label: "Wellness Club" },
-    { icon: "CloudKitchen", label: "24×7 Cloud Kitchen" },
-    { icon: "BeautyLounge", label: "Beauty Lounge" },
-    { icon: "SolarPanels", label: "Solar Electric Power Panels" },
-    { icon: "Generators", label: "24×7 Backup Generators" },
-    { icon: "SewageTreatment", label: "Sewage Water Treatment Plant" },
+    // { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
+    { icon: "CarParking", label: "Car Parking" },
+    { icon: "Gymnasium", label: "Gymnasium" },
+    { icon: "Indoor", label: "Indoor Gaming Zone" },
+
+    { icon: "Generators", label: "24x7 Power Back-up" },
+    { icon: "LaptopGraph", label: "Managed Workspace" },
+    { icon: "Meeting", label: "Meeting / Training Rooms" },
+    { icon: "CallTraining", label: "On Call Training / Board Rooms" },
+
+    { icon: "Firesafety", label: "Fire Safety System" },
+    { icon: "GamesArea", label: "Break out Area " },
+    { icon: "Security", label: "Round-o-clock Security " },
+    { icon: "Wifi", label: "High Speed Internet " },
+    { icon: "Phone", label: "Dedicated Phone Line" },
+    { icon: "Fingerprint", label: "Secured Access" },
+    { icon: "Visitorslounge", label: "Visitors Lounge" },
     { icon: "CCTV", label: "Security Surveillance with CCTV" },
-    { icon: "MiniTheatre", label: "Air Conditioned Mini Theatre" },
-    { icon: "DanceFloor", label: "Dance / Yoga / Zumba Floor" },
-    { icon: "GatheringHall", label: "Residents Gathering Hall" },
-    { icon: "FirefightingSystem", label: "State-of-the-art Firefighting System" },
+   
 ];
+
 
 const MAP_DATA = [
     {
@@ -156,20 +158,21 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <ProjectHero />
+                <CompletedHero desktopImage="/images/ajantaImages/heroDesk.png" mobileImage="/images/ajantaImages/heroMobile.png" title={<>Ajanta Business <br className="hidden lg:block" />Center</>} subtitle="" variant="rightCentered" />
                 <ProjectHighLiving data={SECTION_DATA} />
-                <HighlivingSection
+                {/* <HighlivingSection
                     heading="Elevated Work Environments"
                     description= "Welcome to Mukund MGM Realty Mathura, a thoughtfully planned residential community created for modern families seeking affordable luxury. Every detail is designed to enhance comfort, functionality, and everyday ease. Spaciously planned homes, dependable infrastructure, and carefully curated amenities come together to create a balanced living environment. From wellness-focused facilities and secure surroundings to inviting common spaces that encourage connection, the development supports both relaxation and active lifestyles."
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
-                />
+                /> */}
                 <AmenitiesSection data={AMENITIES_DATA}  />
                 <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" />
 
                 <MapSection data={MAP_DATA} />
+                <PartnerSection />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Step Into Productivity   <br /> Productivity</>} subtitle="Modern spaces crafted for efficiency and growth." mobImg="/images/ctaImages/mathuraDesk.png" deskImg="/images/ctaImages/mathuraMob.png" />
+                <CTASection title={<>Step Into Productivity   <br /> Productivity</>} subtitle="Modern spaces crafted for efficiency and growth." mobImg="/images/ctaImages/ajantaMob.png" deskImg="/images/ctaImages/ajantaDesk.png" />
 <Footer/>
             </div>
         </>
