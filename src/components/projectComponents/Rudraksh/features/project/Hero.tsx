@@ -11,11 +11,12 @@ interface ProjectHeroProps {
   HERO_MARKERS: any[];
   floorData: any[];
   FLOOR_PATHS: any[];
+  FLOOR_PATHS_VIEWBOX: string;
   heroImageDesktop: string;
   heroImageMobile: string;
 }
 
-export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS,heroImageDesktop,heroImageMobile }: ProjectHeroProps) {
+export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS,FLOOR_PATHS_VIEWBOX,heroImageDesktop,heroImageMobile }: ProjectHeroProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [planHoveredIndex, setPlanHoveredIndex] = useState<number | null>(null);
@@ -102,7 +103,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS,heroImageDesk
         className={`absolute inset-0 z-10 pointer-events-none transition-opacity duration-700 hidden lg:block ${isZoomedOut ? "opacity-0" : "opacity-100"}`}
       >
         {/* Removed preserveAspectRatio="none" so it scales uniformly with the image */}
-        <svg viewBox="0 0 1728 857" className="h-full w-full pointer-events-auto">
+        <svg viewBox={FLOOR_PATHS_VIEWBOX} className="h-full w-full pointer-events-auto">
           <g className="fill-transparent transition-colors duration-300">
             {FLOOR_PATHS.map((floor) => (
               <path

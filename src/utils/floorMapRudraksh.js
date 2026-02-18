@@ -602,3 +602,5 @@ export const FLOOR_PATHS = [
     d: "M181.5 431.5V442.5L211.75 431.222V419L181.5 431.5Z",
   },
 ];
+
+export const FLOOR_PATHS_VIEWBOX = "0 0 1728 1048";

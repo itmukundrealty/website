@@ -15,6 +15,7 @@ import PartnerSection from "@/components/projectComponents/ashoka/PartnerSection
 import { HERO_MARKERS } from "@/utils/floorMapAshoka.js";
 import { floorData } from "@/utils/floorMapAshoka.js";
 import { FLOOR_PATHS } from "@/utils/floorMapAshoka.js";
+import { FLOOR_PATHS_VIEWBOX } from "@/utils/floorMapAshoka.js";
 
 const FEATURES: FeatureItem[] = [
     { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
@@ -154,7 +155,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <ProjectHero HERO_MARKERS={HERO_MARKERS} floorData={floorData} FLOOR_PATHS={FLOOR_PATHS} heroImageDesktop="/images/ashokaImages/Frame 1000002763.png" heroImageMobile="/images/ashokaImages/Frame 1000002763.png" />
+                <ProjectHero FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX} HERO_MARKERS={HERO_MARKERS} floorData={floorData} FLOOR_PATHS={FLOOR_PATHS} heroImageDesktop="/images/ashokaImages/Untitled-1 2 (5).png" heroImageMobile="/images/ashokaImages/Untitled-1 2 (5).png" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Spaces That Empower Business"
