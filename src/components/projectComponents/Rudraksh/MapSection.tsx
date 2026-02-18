@@ -7,59 +7,27 @@ import Image from 'next/image';
 /* -----------------------------------
    Types
 ----------------------------------- */
-type SectionKey =
-    | "city"
-    | "it"
-    | "education"
-    | "essentials";
-
-/* -----------------------------------
-   Active Circles Per Section
------------------------------------ */
-const SECTION_POINTS: Record<SectionKey, number[]> = {
-    city: [0],
-    it: [18, 19],
-    education: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-    essentials: [32, 33, 34],
+export type MapSectionItem = {
+    key: string;
+    title: string;
+    icon: string;
+    points: number[];
+    viewport: { center: { lat: number, lng: number }, zoom: number };
 };
 
-/* -----------------------------------
-   Viewports Per Section
------------------------------------ */
-const SECTION_VIEWPORTS: Record<SectionKey, { center: { lat: number, lng: number }, zoom: number }> = {
-    city: {
-        center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-        zoom: 14
-    },
-    it: {
-        // Center between Rudraksh and Infosys (taking average lat/lng roughly)
-        center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-        zoom: 14
-    },
-    education: {
-        center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-        zoom: 14
-    },
-    essentials: {
-        center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-        zoom: 14
-    }
-};
+export interface MapSectionProps {
+    data: MapSectionItem[];
+}
 
-/* -----------------------------------
-   Sections
------------------------------------ */
-const SECTIONS = [
-    { key: "city", title: "City & Highway Access", icon: "/icons/cityIcon.svg" },
-    { key: "it", title: "IT & Employment Zones", icon: "/icons/itIcon.svg" },
-    { key: "education", title: "Education & Healthcare", icon: "/icons/educationIcon.svg" },
-    { key: "essentials", title: "Everyday Essentials", icon: "/icons/everydayIcon.svg" },
-];
+export default function MapSection({ data }: MapSectionProps) {
+    // Initialize active section with the first item's key, or an empty string if data is empty
+    const [activeSection, setActiveSection] = useState<string>(data[0]?.key || "");
 
-export default function MapSection() {
-    const [activeSection, setActiveSection] = useState<SectionKey>("city");
-    const activePoints = SECTION_POINTS[activeSection];
-    const { center, zoom } = SECTION_VIEWPORTS[activeSection];
+    const activeItem = data.find(item => item.key === activeSection) || data[0];
+    const activePoints = activeItem?.points || [];
+    const { center, zoom } = activeItem?.viewport || { center: { lat: 0, lng: 0 }, zoom: 1 };
+
+    if (!data || data.length === 0) return null;
 
     return (
         <section className="relative h-screen w-full bg-white overflow-hidden">
@@ -82,12 +50,12 @@ export default function MapSection() {
                     </h2>
 
                     <div className="space-y-7">
-                        {SECTIONS.map((item) => {
-                            const isActive = activeSection === (item.key as SectionKey);
+                        {data.map((item) => {
+                            const isActive = activeSection === item.key;
                             return (
                                 <button
                                     key={item.key}
-                                    onClick={() => setActiveSection(item.key as SectionKey)}
+                                    onClick={() => setActiveSection(item.key)}
                                     className={`w-full text-left flex items-center gap-5 text-[19px] transition-all duration-300 group
                                         ${isActive
                                             ? "opacity-100 font-medium"
@@ -120,12 +88,12 @@ export default function MapSection() {
             {/* MOBILE OVERLAY (Simplified bottom bar) */}
             <div className="lg:hidden absolute bottom-0 left-0 right-0 p-4 bg-[#0097DC] text-white z-20">
                 <div className="flex overflow-x-auto gap-4 scrollbar-hide">
-                    {SECTIONS.map((item) => {
-                        const isActive = activeSection === (item.key as SectionKey);
+                    {data.map((item) => {
+                        const isActive = activeSection === item.key;
                         return (
                             <button
                                 key={item.key}
-                                onClick={() => setActiveSection(item.key as SectionKey)}
+                                onClick={() => setActiveSection(item.key)}
                                 className={`flex-shrink-0 flex items-center gap-2 p-2 rounded whitespace-nowrap ${isActive ? "bg-white/20" : ""}`}
                             >
                                 <div className="relative ">

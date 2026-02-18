@@ -3,7 +3,12 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-export default function MissionStatement() {
+interface MissionStatementProps {
+    text: React.ReactNode;
+    imageSrc: string;
+}
+
+export default function MissionStatement({ text, imageSrc }: MissionStatementProps) {
     return (
         <section className="relative pt-14 pb-6 md:py-28 overflow-hidden bg-white">
 
@@ -28,10 +33,7 @@ export default function MissionStatement() {
                             text-[#505153]
                         "
                     >
-                        We craft spaces that go beyond buildings, becoming places{' '} <br />
-                        <span className="font-semibold text-[#505153]">
-                            where life, relationships and legacies thrive.
-                        </span>
+                        {text}
                     </h2>
                 </motion.div>
             </div>
@@ -52,8 +54,8 @@ export default function MissionStatement() {
                 "
             >
                 <Image
-                    src="/images/aboutImages/mukundOutline.svg"
-                    alt="Outline Graphic"
+                    src={imageSrc}
+                    alt="Mission Graphic"
                     width={400}
                     height={400}
                     className="w-full h-auto object-contain -rotate-20"
