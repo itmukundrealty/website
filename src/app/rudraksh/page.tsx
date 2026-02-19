@@ -207,7 +207,7 @@ export default function Project1Page() {
     return (
         <main className="min-h-screen bg-black">
             <ProjectHeader />
-            <ProjectHero FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX} heroImageDesktop="/herosectionImage/heroection.png" heroImageMobile="/images/rudrakshImages/mobileHero1.png" HERO_MARKERS={HERO_MARKERS} floorData={floorData} FLOOR_PATHS={FLOOR_PATHS} />
+            <ProjectHero FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX} heroImageDesktop="/herosectionImage/Herosection (3).png" heroImageMobile="/images/rudrakshImages/mobileHero1.png" HERO_MARKERS={HERO_MARKERS} floorData={floorData} FLOOR_PATHS={FLOOR_PATHS} />
             <ProjectHighLiving data={SECTION_DATA} />
             <HighlivingSection
                 heading="Luxury in the Contours of Life"

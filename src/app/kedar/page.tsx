@@ -159,7 +159,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <ProjectHero FLOOR_PATHS={FLOOR_PATHS} FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX} HERO_MARKERS={HERO_MARKERS} floorData={floorData} heroImageDesktop="/images/kedarImage/sq1 2 (1).png" heroImageMobile="/images/kedarImage/sq1 2 (1).png" />
+                <ProjectHero FLOOR_PATHS={FLOOR_PATHS} FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX} HERO_MARKERS={HERO_MARKERS} floorData={floorData} heroImageDesktop="/images/kedarImage/sq1 2 (3).png" heroImageMobile="/images/kedarImage/sq1 2 (1).png" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Spaces That Empower Business"
