@@ -58,6 +58,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
   };
 
 
+
   return (
     // 1. Removed h-[100vh] from the main section
     <section className="relative w-full h-[100vh] overflow-hidden bg-black">
