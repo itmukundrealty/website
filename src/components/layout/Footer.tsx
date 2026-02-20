@@ -45,7 +45,9 @@ export default function Footer() {
     { name: "WhatsApp", href: "https://www.whatsapp.com/channel/0029VaEoD6l2phHFAQlRli1m" } // Using the phone number from the Get In Touch section
   ];
   const projects = [
-    { name: "Rudraksh", href: "/rudraksh" }
+    { name: "Rudraksh", href: "/rudraksh" },
+    { name: "Kedar", href: "/kedar" },
+    { name: "Ashoka", href: "/ashoka" }
   ];
 
   return (

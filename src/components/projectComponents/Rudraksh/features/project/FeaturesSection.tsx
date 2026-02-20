@@ -20,19 +20,9 @@ interface FeaturesSectionProps {
     heading: string;
     variant?: "center" | "left";
     completed?: boolean;
+    galleryImages?: string[];
 }
-
-
-const GALLERY_IMAGES = [
-    "/images/rudrakshImages/10.webp",
-    "/images/rudrakshImages/11.webp",
-    "/images/rudrakshImages/12.webp",
-    "/images/rudrakshImages/13.webp",
-    "/images/rudrakshImages/14.webp",
-    "/images/rudrakshImages/15.webp",
-];
-
-export default function FeaturesSection({ features, heading, variant = "center", completed = true }: FeaturesSectionProps) {
+export default function FeaturesSection({ features, heading, variant = "center", completed = true, galleryImages = [] }: FeaturesSectionProps) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
@@ -104,7 +94,7 @@ export default function FeaturesSection({ features, heading, variant = "center",
                             pagination={{ clickable: true }}
                             className="features-swiper w-full aspect-21/9 rounded-sm overflow-visible!"
                         >
-                            {GALLERY_IMAGES.map((img, index) => (
+                            {galleryImages.map((img, index) => (
                                 <SwiperSlide key={index}>
                                     <div className="relative w-full h-full rounded-sm overflow-hidden  transition-transform duration-700 hover:scale-[1.02]">
                                         <Image

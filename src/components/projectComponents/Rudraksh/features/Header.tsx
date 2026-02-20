@@ -6,7 +6,9 @@ import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 
 const PROJECTS = {
   ongoing: [
-    { name: "Rudraksh", href: "/rudraksh" }
+    { name: "Rudraksh", href: "/rudraksh" },
+    { name: "Kedar", href: "/kedar" },
+    { name: "Ashoka", href: "/ashoka" }
   ],
   completed: [
     { name: "Mathura Residency", href: "/mathura" },

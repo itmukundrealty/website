@@ -85,9 +85,19 @@ const MAP_DATA = [
 
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
+import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
 // import ProjectHeader from "@/components/projectComponents/Rudraksh/features/project/Header";
+
+const GALLERY_IMAGES = [
+    "/images/rudrakshImages/10.webp",
+    "/images/rudrakshImages/11.webp",
+    "/images/rudrakshImages/12.webp",
+    "/images/rudrakshImages/13.webp",
+    "/images/rudrakshImages/14.webp",
+    "/images/rudrakshImages/15.webp",
+];
 
 const SECTION_DATA = [
     {
@@ -216,7 +226,7 @@ export default function Project1Page() {
                 videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
             />
             <AmenitiesSection data={AMENITIES_DATA} />
-            <FeaturesSection features={FEATURES} heading="Everything You’re Looking For" completed={false} />
+            <FeaturesSection features={FEATURES} heading="Everything You’re Looking For" completed={false} galleryImages={GALLERY_IMAGES} />
             {/* <ProjectInteractivePlan /> */}
 
             <MapSection data={MAP_DATA} />
