@@ -11,6 +11,10 @@ import ProjectHighLiving from "@/components/projectComponents/Rudraksh/features/
 import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
+import { FLOOR_PATHS_VIEWBOX, HERO_MARKERS } from "@/utils/floorMapKedar";
+import { floorData } from "@/utils/floorMapKedar";
+import { FLOOR_PATHS } from "@/utils/floorMapKedar";
+
 
 const FEATURES: FeatureItem[] = [
     { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
@@ -155,7 +159,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <ProjectHero />
+                <ProjectHero FLOOR_PATHS={FLOOR_PATHS} FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX} HERO_MARKERS={HERO_MARKERS} floorData={floorData} heroImageDesktop="/images/kedarImage/hero.png" heroImageMobile="/images/kedarImage/heroMobile.png" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Spaces That Empower Business"

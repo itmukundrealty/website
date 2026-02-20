@@ -12,6 +12,10 @@ import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
 import PartnerSection from "@/components/projectComponents/ashoka/PartnerSection";
+import { HERO_MARKERS } from "@/utils/floorMapAshoka.js";
+import { floorData } from "@/utils/floorMapAshoka.js";
+import { FLOOR_PATHS } from "@/utils/floorMapAshoka.js";
+import { FLOOR_PATHS_VIEWBOX } from "@/utils/floorMapAshoka.js";
 
 const FEATURES: FeatureItem[] = [
     { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
@@ -151,7 +155,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <ProjectHero />
+                <ProjectHero FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX} HERO_MARKERS={HERO_MARKERS} floorData={floorData} FLOOR_PATHS={FLOOR_PATHS} heroImageDesktop="/images/ashokaImages/hero.png" heroImageMobile="/images/ashokaImages/heroMobile.png" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Spaces That Empower Business"

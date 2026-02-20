@@ -9,6 +9,9 @@ import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/p
 import FeaturesSection, { FeatureItem } from "@/components/projectComponents/Rudraksh/features/project/FeaturesSection";
 // import { Icons } from "@/components/projectComponents/Rudraksh/features/project/FeatureIcons";
 import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
+import { FLOOR_PATHS_VIEWBOX, HERO_MARKERS } from "@/utils/floorMapRudraksh.js";
+import { floorData } from "@/utils/floorMapRudraksh.js";
+import { FLOOR_PATHS } from "@/utils/floorMapRudraksh.js";
 
 // ... (other imports)
 
@@ -204,7 +207,7 @@ export default function Project1Page() {
     return (
         <main className="min-h-screen bg-black">
             <ProjectHeader />
-            <ProjectHero />
+            <ProjectHero FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX} heroImageDesktop="/images/rudrakshImages/hero.png" heroImageMobile="/images/rudrakshImages/mobileHero1.png" HERO_MARKERS={HERO_MARKERS} floorData={floorData} FLOOR_PATHS={FLOOR_PATHS} />
             <ProjectHighLiving data={SECTION_DATA} />
             <HighlivingSection
                 heading="Luxury in the Contours of Life"
