@@ -166,7 +166,7 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
-                {/* <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" /> */}
+                {/* <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" completed={true} /> */}
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that" titlePart2="Set the Standard" description="Stories from clients who chose Mukund Realty for quality, integrity, and reliability." />

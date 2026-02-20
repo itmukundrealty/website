@@ -9,16 +9,24 @@ const PROJECTS = {
     { name: "Rudraksh", href: "/rudraksh" }
   ],
   completed: [
-    "Mathura", "Ajantha Business Center", "Evanna Homes", "Kudva's Grandeur",
-    "Madhuban", "Nandagokul", "Nanda Deep", "Bhargavi Gloria Residency",
-    "Gokuldham", "Mukund Sadhan", "Kailash"
-  ].map(name => ({ name, href: `/projects/${name.toLowerCase().replace(/\s+/g, '-')}` })) // Default mapping for others if needed, or just '#'
+    { name: "Mathura Residency", href: "/mathura" },
+    { name: "Ajanta Business Center", href: "/ajanta" },
+    { name: "Evanna Homes", href: "/evanna" },
+    { name: "Kudva's Grandeur", href: "/kudva" },
+    { name: "Madhuban Apartments", href: "/madhuban" },
+    { name: "Nandagokul Apartments", href: "/nandagokul" },
+    { name: "Nandadeep Apartments", href: "/nandadeep" },
+    { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
+    { name: "Gokuldham", href: "/gokuldham" },
+    { name: "Mukund Sadan", href: "/mukund-sadhan" },
+    { name: "Kailash", href: "/kailash" }
+  ]
 };
 
 const ProjectHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(true); // Default open as per common mobile patterns or keep closed if preferred, user interaction usually toggles. Let's start closed or check preference. Actually, usually cleaner closed. Let's stick to false initially. 
+  const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false); // Default closed
 
   // Handle Scroll effect
   useEffect(() => {
@@ -64,29 +72,29 @@ const ProjectHeader = () => {
               </button>
 
               {/* Dropdown Content */}
-              <div className="absolute top-full left-0 mt-2 min-w-[200px] bg-none shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] rounded-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-[100]">
-                <div className="flex flex-col">
+              <div className="absolute top-full right-0 mt-2 min-w-[50vw] bg-white/95 backdrop-blur-sm  p-8 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-[100] border border-gray-100">
+                <div className="flex gap-12">
                   {/* Ongoing Column */}
-                  <div className="flex-1">
-                    {/* <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold">Ongoing</h3> */}
+                  <div className="w-[200px] shrink-0">
+                    <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Ongoing</h3>
                     <div className="flex flex-col gap-3">
                       {PROJECTS.ongoing.map(p => (
                         <Link key={p.name} href={p.href} className="group/item flex items-center justify-between transition-colors duration-300">
-                          <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap">{p.name}</span>
+                          <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap font-medium">{p.name}</span>
                         </Link>
                       ))}
                     </div>
                   </div>
 
                   {/* Completed Column */}
-                  {/* <div className="flex-1 border-l border-gray-100 pl-8">
-                    <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold">Completed</h3>
-                    <div className="flex flex-col gap-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                  <div className="flex-1 border-l border-gray-100 pl-12">
+                    <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Completed</h3>
+                    <div className="grid grid-cols-3 gap-x-8 gap-y-4">
                       {PROJECTS.completed.map(p => (
-                        <Link key={p} href={`/projects/${p}`} className="block text-[14px] text-gray-500 hover:text-black py-1 transition-colors">{p}</Link>
+                        <Link key={p.name} href={p.href} className="block text-[15px] text-gray-600 hover:text-[#0097DC] transition-colors hover:translate-x-1 duration-200">{p.name}</Link>
                       ))}
                     </div>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -188,7 +196,7 @@ const ProjectHeader = () => {
                           </div>
 
                           {/* Completed Projects Mobile Section */}
-                          {/* <div className="space-y-4">
+                          <div className="space-y-4">
                             <div className="flex items-center gap-4">
                               <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">Completed Projects</span>
                               <div className="h-[1px] w-full bg-gray-200"></div>
@@ -196,16 +204,16 @@ const ProjectHeader = () => {
                             <div className="flex flex-col gap-3 pl-1">
                               {PROJECTS.completed.map(p => (
                                 <Link
-                                  key={p}
-                                  href={`/projects/${p}`}
+                                  key={p.name}
+                                  href={p.href}
                                   onClick={() => setIsMobileMenuOpen(false)}
                                   className="text-[16px] text-gray-600 font-light hover:text-black transition-colors"
                                 >
-                                  {p}
+                                  {p.name}
                                 </Link>
                               ))}
                             </div>
-                          </div> */}
+                          </div>
 
                         </div>
                       </motion.div>

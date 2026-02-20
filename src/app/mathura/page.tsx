@@ -150,7 +150,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero desktopImage="/images/mathuraImages/heroDesk.png" mobileImage="/images/mathuraImages/heroMobile.png" title={<>Mathura <br className="hidden lg:block" />Residency</>} subtitle="" variant="topRight" />
+                <CompletedHero  desktopImage="/images/mathuraImages/heroDesk.png" mobileImage="/images/mathuraImages/heroMobile.png" title={<>Mathura <br className="hidden lg:block" />Residency</>} subtitle="" variant="topRight" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Inspired Living Spaces"
@@ -159,11 +159,11 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" variant="left" />
+                <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" completed={true} />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Discover Your   <br /> Perfect Home</>} subtitle="A home that reflects your aspirations." mobImg="/images/ctaImages/mathuraDesk.png" deskImg="/images/ctaImages/mathuraMob.png" />
+                <CTASection title={<>Discover Your   <br /> Perfect Home</>} subtitle="A home that reflects your aspirations." mobImg="/images/ctaImages/mathuraMob.png" deskImg="/images/ctaImages/mathuraDesk.png" />
                 <Footer />
             </div>
         </>

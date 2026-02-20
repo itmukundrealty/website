@@ -39,7 +39,7 @@ const MAP_DATA = [
     },
     {
         key: "it",
-        title: "IT & Employment Zone",
+        title: "Academic & Medical Access",
         icon: "/icons/medicalAccess.svg",
         points: [44, 19],
         viewport: {
@@ -49,8 +49,8 @@ const MAP_DATA = [
     },
     {
         key: "education",
-        title: "Education",
-        icon: "/icons/industrialIcon.svg",
+        title: "Lifestyle Essentials",
+        icon: "/icons/urbanIcon.svg",
         points: [28, 29, 21],
         viewport: {
             center: { lat: 12.9000, lng: 74.8400 },
@@ -59,8 +59,8 @@ const MAP_DATA = [
     },
     {
         key: "essentials",
-        title: "Healthcare",
-        icon: "/icons/businessIcon.svg",
+        title: "Corporate Connectivity",
+        icon: "/icons/industrialIcon.svg",
         points: [24, 40, 57],
         viewport: {
             center: { lat: 12.8900, lng: 74.8600 },
@@ -155,7 +155,7 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Tailored for Contemporary Living" variant="left" />
+                <FeaturesSection features={FEATURES} heading="Tailored for Contemporary Living" variant="left" completed={true} />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />

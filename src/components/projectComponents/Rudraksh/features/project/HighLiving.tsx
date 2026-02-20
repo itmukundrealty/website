@@ -43,7 +43,9 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
     useEffect(() => {
         if (!containerRef.current || !data || data.length === 0) return;
 
-        let ctx = gsap.context(() => {
+        let mm = gsap.matchMedia();
+
+        mm.add("(min-width: 1024px)", () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
@@ -129,7 +131,7 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
 
         }, containerRef);
 
-        return () => ctx.revert();
+        return () => mm.revert();
     }, [data]);
 
     // --- Click Handler ---
@@ -186,6 +188,7 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
                                 src={item.imageSrc}
                                 alt={item.label}
                                 fill
+                                sizes="50vw"
                                 className="object-cover"
                                 priority={index === 0}
                             />
@@ -249,6 +252,7 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
                             src={activeData?.imageSrc || ""}
                             alt={activeData?.label || ""}
                             fill
+                            sizes="100vw"
                             className="object-cover transition-opacity duration-500"
                             unoptimized
                         />

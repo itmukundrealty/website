@@ -41,7 +41,7 @@ const FEATURES: FeatureItem[] = [
 const MAP_DATA = [
     {
         key: "city",
-        title: "Regional Access",
+        title: "City Connectivity",
         icon: "/icons/connectivityIcon.svg",
         points: [0],
         viewport: {
@@ -51,7 +51,7 @@ const MAP_DATA = [
     },
     {
         key: "it",
-        title: "IT Hubs",
+        title: "Transport Access",
         icon: "/icons/transportIcon.svg",
         points: [44, 19],
         viewport: {
@@ -61,7 +61,7 @@ const MAP_DATA = [
     },
     {
         key: "education",
-        title: "Educational Institutions",
+        title: "Urban Amenities",
         icon: "/icons/urbanIcon.svg",
         points: [35, 29, 45, 46, 22, 47],
         viewport: {
@@ -71,7 +71,7 @@ const MAP_DATA = [
     },
     {
         key: "essentials",
-        title: "Healthcare & Essentials",
+        title: "Business Neighborhoods",
         icon: "/icons/businessIcon.svg",
         points: [24, 48, 41, 40],
         viewport: {
@@ -167,7 +167,7 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" />
+                <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" completed={true} />
 
                 <MapSection data={MAP_DATA} />
                 <PartnerSection />

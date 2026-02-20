@@ -162,11 +162,11 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKailash%20Final%20Version%20Walkthrough.mp4?alt=media&token=aab4ebe5-5e4a-49c7-af15-bf915635ed50"
                 />
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" />
+                <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" completed={true} />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Live with <br /> Greater Ease</>} subtitle="Where style and function align." mobImg="/images/ctaImages/nandhaMob.png" deskImg="/images/ctaImages/nandhaDesk.png" />
+                <CTASection title={<>Live with <br /> Greater Ease</>} subtitle="Where style and function align." mobImg="/images/ctaImages/kailashMob.png" deskImg="/images/ctaImages/kailashDesk.png" />
                 <Footer />
             </div>
         </>

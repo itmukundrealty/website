@@ -36,7 +36,7 @@ const FEATURES: FeatureItem[] = [
 const MAP_DATA = [
     {
         key: "city",
-        title: "Transit Network",
+        title: "City Connectivity",
         icon: "/icons/cityIcon.svg",
         points: [0],
         viewport: {
@@ -46,7 +46,7 @@ const MAP_DATA = [
     },
     {
         key: "it",
-        title: "IT & Employment Zone",
+        title: "Economic Hub",
         icon: "/icons/businessIcon.svg",
         points: [49, 50],
         viewport: {
@@ -56,7 +56,7 @@ const MAP_DATA = [
     },
     {
         key: "education",
-        title: "Education",
+        title: "Industrial Catchment",
         icon: "/icons/industrialIcon.svg",
         points: [51, 52, 53, 54, 55],
         viewport: {
@@ -66,7 +66,7 @@ const MAP_DATA = [
     },
     {
         key: "essentials",
-        title: "Essentials",
+        title: "Port & Airport Reach",
         icon: "/icons/portIcon.svg",
         points: [56],
         viewport: {
@@ -162,7 +162,7 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Curated for Commercial Excellence" variant="left" />
+                <FeaturesSection features={FEATURES} heading="Curated for Commercial Excellence" variant="left" completed={true} />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />

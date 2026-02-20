@@ -19,6 +19,7 @@ interface FeaturesSectionProps {
     features: FeatureItem[];
     heading: string;
     variant?: "center" | "left";
+    completed?: boolean;
 }
 
 
@@ -31,7 +32,7 @@ const GALLERY_IMAGES = [
     "/images/rudrakshImages/15.webp",
 ];
 
-export default function FeaturesSection({ features, heading, variant = "center" }: FeaturesSectionProps) {
+export default function FeaturesSection({ features, heading, variant = "center", completed = true }: FeaturesSectionProps) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
@@ -70,7 +71,7 @@ export default function FeaturesSection({ features, heading, variant = "center" 
                             >
                                 {/* Icon Wrapper */}
                                 <div className="w-10 h-10 flex items-center justify-center text-[#505153] group-hover:text-[#0097DC] transition-all duration-500 transform group-hover:scale-110 shrink-0">
-                                    <Icon  />
+                                    <Icon />
                                 </div>
                                 {/* Text Label */}
                                 <span className="text-[#505153] text-[15px] lg:text-[16px] leading-snug font-normal tracking-wide transition-colors duration-300 group-hover:text-[#424244]">
@@ -92,56 +93,58 @@ export default function FeaturesSection({ features, heading, variant = "center" 
                 </div>
 
                 {/* Gallery Slider */}
-                <div className="relative w-full overflow-hidden pb-20">
-                    <Swiper
-                        modules={[Pagination, Autoplay]}
-                        spaceBetween={40}
-                        slidesPerView={1}
-                        loop={true}
-                        autoplay={{ delay: 6000, disableOnInteraction: false }}
-                        pagination={{ clickable: true }}
-                        className="features-swiper w-full aspect-21/9 rounded-sm overflow-visible!"
-                    >
-                        {GALLERY_IMAGES.map((img, index) => (
-                            <SwiperSlide key={index}>
-                                <div className="relative w-full h-full rounded-sm overflow-hidden  transition-transform duration-700 hover:scale-[1.02]">
-                                    <Image
-                                        src={img}
-                                        alt={`Project Gallery ${index + 1}`}
-                                        fill
-                                        className="object-cover"
-                                        priority={index === 0}
-                                    />
-                                    <div className="absolute inset-0 bg-black/5"></div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                {!completed && (
+                    <div className="relative w-full overflow-hidden pb-20">
+                        <Swiper
+                            modules={[Pagination, Autoplay]}
+                            spaceBetween={40}
+                            slidesPerView={1}
+                            loop={true}
+                            autoplay={{ delay: 6000, disableOnInteraction: false }}
+                            pagination={{ clickable: true }}
+                            className="features-swiper w-full aspect-21/9 rounded-sm overflow-visible!"
+                        >
+                            {GALLERY_IMAGES.map((img, index) => (
+                                <SwiperSlide key={index}>
+                                    <div className="relative w-full h-full rounded-sm overflow-hidden  transition-transform duration-700 hover:scale-[1.02]">
+                                        <Image
+                                            src={img}
+                                            alt={`Project Gallery ${index + 1}`}
+                                            fill
+                                            className="object-cover"
+                                            priority={index === 0}
+                                        />
+                                        <div className="absolute inset-0 bg-black/5"></div>
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
 
-                    <style jsx global>{`
-            .features-swiper .swiper-pagination {
-              bottom: -60px !important;
-              display: flex !important;
-              justify-content: center !important;
-              width: 100% !important;
-              left: 0 !important;
-            }
-            .features-swiper .swiper-pagination-bullet {
-              width: 50px;
-              height: 2px;
-              background: #E5E7EB;
-              border-radius: 0;
-              opacity: 1;
-              transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-              margin: 0 8px !important;
-              cursor: pointer;
-            }
-            .features-swiper .swiper-pagination-bullet-active {
-              background: #0097DC;
-              width: 80px;
-            }
-          `}</style>
-                </div>
+                        <style jsx global>{`
+              .features-swiper .swiper-pagination {
+                bottom: -60px !important;
+                display: flex !important;
+                justify-content: center !important;
+                width: 100% !important;
+                left: 0 !important;
+              }
+              .features-swiper .swiper-pagination-bullet {
+                width: 50px;
+                height: 2px;
+                background: #E5E7EB;
+                border-radius: 0;
+                opacity: 1;
+                transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                margin: 0 8px !important;
+                cursor: pointer;
+              }
+              .features-swiper .swiper-pagination-bullet-active {
+                background: #0097DC;
+                width: 80px;
+              }
+            `}</style>
+                    </div>
+                )}
             </div>
         </section>
     );
