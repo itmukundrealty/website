@@ -67,15 +67,12 @@ export const floorData = [
     title: "Ground Floor",
     planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/ground/floor.png",
     viewBox: "0 0 764 696", // Updated to match your new SVG dimensions
-    features: [
-      "24×7 Cloud Kitchen",
-      "Entrance Lobby",
-      "Yoga Lawn & Meditation Deck",
-      "Toddler’s & Childern’s Play Areas",
-      "Outdoor Sport Courts",
-      "Car Parking",
-      "A/C Mini Theatre",
-    ],
+  features: [
+  "Visitor Lounge",
+  "Branded Franchise Outlets",
+  "Co-working Spaces",
+  "Meeting Rooms"
+],
     units: [
       {
         id: "G01",
@@ -139,15 +136,10 @@ export const floorData = [
 
     planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor1/floor.png",
     pdfPath: "/downloadFloorPlan/first floor plan.pdf",
-    features: [
-      "3 BHKs",
-      "2 BHKs",
-      "Indoor Games & Gymnasium Security",
-      "Treatment Rooms",
-      "Health Club",
-      "Multipurpose Area",
-      "Jacuzzi & Sauna Rooms",
-    ],
+ features: [
+  "Utility Block",
+  "Private Offices"
+],
     units: [
       {
         id: "101",
@@ -229,7 +221,10 @@ export const floorData = [
     viewBox: "0 0 757 781",
     planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
+    features: [
+  "Utility Block",
+  "Private Offices"
+],
     units: typicalFloorUnits,
   },
   {
@@ -237,7 +232,10 @@ export const floorData = [
     viewBox: "0 0 757 781",
     planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
+    features: [
+  "Utility Block",
+  "Private Offices"
+],
     units: typicalFloorUnits,
   },
   {
@@ -245,7 +243,10 @@ export const floorData = [
     viewBox: "0 0 757 781",
     planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
+    features: [
+  "Utility Block",
+  "Private Offices"
+],
     units: typicalFloorUnits,
   },
   {
@@ -253,7 +254,9 @@ export const floorData = [
     viewBox: "0 0 757 781",
     planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
+   features: [
+  "Full Floor Private Office Space"
+],
     units: typicalFloorUnits,
   },
   {
@@ -261,211 +264,35 @@ export const floorData = [
     viewBox: "0 0 757 781",
     planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
+features: [
+  "Auditorium",
+  "Break-Out Zone",
+  "Conference Room",
+  "Banquet Hall",
+  "Health Room",
+  "Pre-function Space"
+],
     units: typicalFloorUnits,
-  },
-  {
-    title: "Seventh Floor",
-    viewBox: "0 0 757 781",
-    planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
-    units: typicalFloorUnits,
-  },
-  {
-    title: "Eighth Floor",
-    viewBox: "0 0 757 781",
-    planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
-    units: typicalFloorUnits,
-  },
-  {
-    title: "Ninth Floor",
-    viewBox: "0 0 757 781",
-    planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
-    units: typicalFloorUnits,
-  },
-  {
-    title: "Tenth Floor",
-    viewBox: "0 0 757 781",
-    planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
-    units: typicalFloorUnits,
-  },
-  {
-    title: "Eleventh Floor",
-    viewBox: "0 0 757 781",
-    planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
-    units: typicalFloorUnits,
-  },
-  {
-    title: "Twelfth Floor",
-    viewBox: "0 0 757 781",
-    planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
-    features: ["3 BHKs", "2 BHKS"],
-    units: typicalFloorUnits,
-  },
-  {
-    title: "Thirteenth Floor",
-    viewBox: "0 0 757 781",
-    planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/floor.png",
-    pdfPath: "/downloadFloorPlan/13th floor.pdf",
-    features: ["3 BHKs", "2 BHKS"],
-    units: [
-      {
-        id: "1301",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/0.png",
-        path: "M607.75 662L551.5 729.75L586 758.25L593.448 749.638L620.198 771.638L681.25 699.25C689.353 705.694 692.897 708.306 701 714.75L730 681.25L718.875 672.125L748.625 636.625L718.875 612.125L726.75 602.5L689.25 570.75L671.5 592.25L655.625 578.75L607.75 636.25L629.5 655.5L617.5 669.75L607.75 662Z",
-        details: { number: "1301", type: "Sky Suite", sqft: "1850", balconySqft: "165", rooms: 3, washrooms: 3, floor: "Thirteenth Floor" },
-      },
-      {
-        id: "1302",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/1.png",
-        path: "M683 548.5L634.75 604L620.25 592.25L606.875 607.75L594.125 597.125L589.75 602.375L530.125 553.125L550.25 528.75L522.75 506.25L567.875 452.75L683 548.5Z",
-        details: { number: "1302", type: "Luxury 2BHK", sqft: "1450", balconySqft: "120", rooms: 2, washrooms: 2, floor: "Thirteenth Floor" },
-      },
-      {
-        id: "1303",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/2.png",
-        path: "M466.692 544.619L396.25 629L427.75 655.625L441.26 639.577L467.76 661.827L464 666.25L514 707.25L524.25 695.375L556.5 722.75L607.75 661.5L525.125 592.625L521.5 597L494.5 574.875L478.75 593.75L463.375 580.5L482.192 557.869L466.692 544.619Z",
-        details: { number: "1303", type: "Premium 3BHK", sqft: "1700", balconySqft: "145", rooms: 3, washrooms: 3, floor: "Thirteenth Floor" },
-      },
-      {
-        id: "1304",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/3.png",
-        path: "M466.5 544.5L395.75 629L313.5 560L326.265 544.5L299.765 522.25L294.25 528.5L262.25 501.75L326 426.75L342.25 439.875L322.5 462.75L337.625 475.75L357.125 452.625L466.5 544.5Z",
-        details: { number: "1304", type: "Premium 3BHK", sqft: "1720", balconySqft: "155", rooms: 3, washrooms: 3, floor: "Thirteenth Floor" },
-      },
-      {
-        id: "1305",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/4.png",
-        path: "M447.75 456.75L434.5 472L348.5 399.5L412.25 323.25L440.5 346.5L438 350.25L445.25 355.25L450.75 348.75L529.75 415L484.25 469.75L475.25 462.25L467.25 472L447.75 456.75Z",
-        details: { number: "1305", type: "Standard 2BHK", sqft: "1300", balconySqft: "100", rooms: 2, washrooms: 2, floor: "Thirteenth Floor" },
-      },
-      {
-        id: "1306",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/5.png",
-        path: "M215.75 450.25L185.25 424L248.25 347.75L263.375 361L270.375 352.625L256.625 340.625L269.25 325.5L294.5 346.25L324.75 312L330.25 316L348 295L399 338.5L291.25 467.25L238.5 422.25L215.75 450.25Z",
-        details: { number: "1306", type: "Standard 2BHK", sqft: "1280", balconySqft: "90", rooms: 2, washrooms: 2, floor: "Thirteenth Floor" },
-      },
-      {
-        id: "1307",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/6.png",
-        path: "M248.25 348.5L188.125 420.25L164.125 400.125L158.5 406.75L105 362.5L107.375 359.75L26.25 292L33.625 283.125L1.75 256.625L45.25 205.5L37.75 199L51 183L120.25 241.625L107.625 256.75L126.375 272.5L139.25 256.75L198.5 306.25L218.75 282.125L234.25 295.5L214.5 320L248.25 348.5Z",
-        details: { number: "1307", type: "Corner 3BHK", sqft: "1900", balconySqft: "175", rooms: 3, washrooms: 3, floor: "Thirteenth Floor" },
-      },
-      {
-        id: "1308",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/7.png",
-        path: "M260.375 249.125L246.75 265.375L160.125 192.125L223.875 116.125L252.25 139.25L249.25 142.75L256.5 148.125L262.75 140.5L348.625 212.125L306.75 262.75L289.5 248.25L276.875 262.75L260.375 249.125Z",
-        details: { number: "1308", type: "Compact Suite", sqft: "950", balconySqft: "60", rooms: 1, washrooms: 1, floor: "Thirteenth Floor" },
-      },
-      {
-        id: "1309",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor13/8.png",
-        path: "M162.652 192.845L120.229 242.827L40.7463 175.535L67.078 144.327L32.9443 117.02L71.2228 72.1582L60.2513 61.9181L101.943 13.6433L131.201 38.9998L140.709 27.2969L170.211 51.6781L167.529 55.3353L202.15 84.3488L195.567 91.1756L224.337 115.313L179.719 168.22L166 158L147 180.25L162.652 192.845Z",
-        details: { number: "1309", type: "Penthouse Suite", sqft: "2500", balconySqft: "350", rooms: 4, washrooms: 4, floor: "Thirteenth Floor" },
-      },
-    ],
-  },
-  {
-    title: "Fourteenth Floor",
-    viewBox: "0 0 757 781",
-    planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor14/floor.png",
-    pdfPath: "/downloadFloorPlan/14th floor.pdf",
-    features: ["3 BHKs", "2 BHKS"],
-    units: [
-      {
-        id: "1401",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor14/0.png",
-        path: "M665.249 562.5L618.188 617.5L590.75 594.187L586.063 599.937L527.813 550.812L548.188 527.625L520.187 504.062L564.499 451.375L620.749 497.875L618.499 500.687L647.188 525.312L636.438 538.687L665.249 562.5Z",
-        details: { number: "1401", type: "Sky Suite", sqft: "1650", balconySqft: "130", rooms: 3, washrooms: 3, floor: "Fourteenth Floor" },
-      },
-      {
-        id: "1402",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor14/1.png",
-        path: "M472.625 460.75L451.25 485.75L347.528 397.878L410.766 322.702L438.513 345.61L436.04 348.298L442.923 354.321L448.623 348.298L468.627 365.076L459.375 376.125L517.375 425.625L481.75 467.875L472.625 460.75Z",
-        details: { number: "1402", type: "Club Suite", sqft: "1550", balconySqft: "115", rooms: 3, washrooms: 2, floor: "Fourteenth Floor" },
-      },
-      {
-        id: "1403",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor14/2.png",
-        path: "M226.25 116.25L121.25 240.75L42.5 173.5L68 142.75L35 114.75L74 71L62 61L102.75 12.25L133.25 39L142.5 28L171 51.75L168 56L202.75 84.25L196.25 91.5L226.25 116.25Z",
-        details: { number: "1403", type: "Penthouse", sqft: "2200", balconySqft: "280", rooms: 4, washrooms: 4, floor: "Fourteenth Floor" },
-      },
-      {
-        id: "1404",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor14/3.png",
-        path: "M288.5 246.75L263 277L160.25 191.25L225.25 114.75L253.25 137.5L249.5 142L256.75 148.25L263 140.75L283 157.5L272 170.5L336.5 224.75L306.25 261.5L288.5 246.75Z",
-        details: { number: "1404", type: "Executive Suite", sqft: "1400", balconySqft: "110", rooms: 2, washrooms: 2, floor: "Fourteenth Floor" },
-      },
-      {
-        id: "1405",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor14/4.png",
-        path: "M247.496 346.25L188.496 416.5L164.183 395.767L158.245 402.75L105.745 358.5L107.468 356.215L27.2453 288.751L34.5841 279.725L3.36599 252.86L46.2453 202.251L38.4397 196.021L52.2453 180.474L120.995 239.251L108.933 253.563L127.245 269.001L139.495 254.501L198.245 303.501L217.995 280.251L233.745 293.501L214.745 317.5L247.496 346.25Z",
-        details: { number: "1405", type: "Garden Suite", sqft: "2300", balconySqft: "250", rooms: 4, washrooms: 4, floor: "Fourteenth Floor" },
-      },
-      {
-        id: "1406",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor14/5.png",
-        path: "M215.375 447.625L184.25 421.625L247.875 346L262.375 359.25L282.75 335.625L293.875 345.125L323.625 310.125L330.375 315.625L334.25 311L384.75 353.375L290.329 465.129L237.829 420.754L215.375 447.625Z",
-        details: { number: "1406", type: "Standard 2BHK", sqft: "1300", balconySqft: "105", rooms: 2, washrooms: 2, floor: "Fourteenth Floor" },
-      },
-      {
-        id: "1407",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor14/6.png",
-        path: "M438.375 636.5L424.5 652.25L312 556.25L324.869 541.228L299.119 518.978L293.25 525.75L261 499.125L324.25 424.75L339.75 437.375L332.75 445.75L347.75 459.25L356.25 450L480.5 555.5L472.75 564.5L487.5 576.75L494.75 568.25L522.75 591.75L465.625 659.875L438.375 636.5Z",
-        details: { number: "1407", type: "Premium 3BHK", sqft: "1850", balconySqft: "145", rooms: 3, washrooms: 3, floor: "Fourteenth Floor" },
-      },
-      {
-        id: "1408",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor14/7.png",
-        path: "M589.25 746L580.75 755.75L547.5 726.75L553.5 719.75L522.223 691.921L511.223 704.671L460.75 663.375L522.328 591.597L613.078 667.847L626 653.25L603.5 634.75L652.5 577.25L667.75 590L685.125 568.75L723 601.25L714.5 610.5L744.015 635.405L713.765 670.905L723 678.75L695.5 712.25L675.75 695.25L615.25 768.25L589.25 746Z",
-        details: { number: "1408", type: "Corner Suite", sqft: "1950", balconySqft: "170", rooms: 3, washrooms: 3, floor: "Fourteenth Floor" },
-      },
-    ],
-  },
-  {
-    title: "Terrace Floor",
-    viewBox: "0 0 760 786",
-    planImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/terrace/floor.png",
-    pdfPath: "/downloadFloorPlan/lower terrace.pdf",
-    features: ["Private Terrace", "Rooftop Swimming Pool"],
-    units: [
-      {
-        id: "T-01",
-        unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/terrace/0.png",
-        path: "M473.75 664.75L447 642.5L504 576L515.25 585.75L559 533L531.75 510.5L575.5 458.5L689.75 554L677.5 568.75L692.75 582.5L686.25 589.5L743.5 637.5L626 776.5L481.5 656.25L473.75 664.75Z",
-        details: { number: "T-01", type: "Sky Lounge & Pool", sqft: "3500", balconySqft: "0", rooms: 0, washrooms: 4, floor: "Terrace Floor" },
-      },
-    ],
-  },
+  }
   // Floor 2 to 12 use the typical layout
 ];
 
 export const HERO_MARKERS = [
- {
+  {
     label: "Parking Area", // <-- Change this label to match your feature!
-    cx: 1200.59,
-    cy: 861.5,
+    cx: 1174.23,
+    cy: 652.227,
     markerElements: (
       <>
         {/* Connector Line */}
-        <line x1={1201.59} y1={892.309} x2={1201.59} y2={949.809} stroke="white" strokeWidth="2" />
+        <line x1={1175.23} y1={683.035} x2={1175.23} y2={740.535} stroke="white" strokeWidth="2" />
         {/* Circle Background */}
-        <circle cx={1200.59} cy={861.5} r="31.2266" fill="white" opacity="0.5" />
-        <circle cx={1200.59} cy={861.5} r="30.2266" fill="none" stroke="white" strokeWidth="2" />
+        <circle cx={1174.23} cy={652.227} r="31.2266" fill="white" opacity="0.5" />
+        <circle cx={1174.23} cy={652.227} r="30.2266" fill="none" stroke="white" strokeWidth="2" />
         {/* Icon Path (No translation wrap needed as coordinates are absolute) */}
         <g>
           <path
-            d="M1185.45 866.231V861.823C1185.45 859.682 1187.14 857.946 1189.23 857.946M1185.45 866.231C1185.45 868.373 1187.14 870.109 1189.23 870.109H1211.94C1214.03 870.109 1215.73 868.373 1215.73 866.231M1185.45 866.231V872.163C1185.45 873.59 1186.58 874.748 1187.97 874.748H1190.49C1191.89 874.748 1193.02 873.59 1193.02 872.163V870.109M1215.73 866.231V861.823C1215.73 859.682 1214.03 857.946 1211.94 857.946H1189.23M1215.73 866.231V872.163C1215.73 873.59 1214.6 874.748 1213.2 874.748H1210.68C1209.29 874.748 1208.16 873.59 1208.16 872.163V870.109M1189.23 857.946L1191.25 850.171C1191.55 849.04 1192.55 848.252 1193.69 848.252H1207.6C1208.68 848.252 1209.65 848.964 1209.99 850.02L1212.57 857.946M1189.86 863.762H1194.28M1206.89 863.762H1211.31"
+            d="M1159.09 656.958V652.55C1159.09 650.408 1160.78 648.672 1162.87 648.672M1159.09 656.958C1159.09 659.099 1160.78 660.835 1162.87 660.835H1185.58C1187.67 660.835 1189.37 659.099 1189.37 656.958M1159.09 656.958V662.889C1159.09 664.317 1160.22 665.474 1161.61 665.474H1164.13C1165.53 665.474 1166.66 664.317 1166.66 662.889V660.835M1189.37 656.958V652.55C1189.37 650.408 1187.67 648.672 1185.58 648.672H1162.87M1189.37 656.958V662.889C1189.37 664.317 1188.24 665.474 1186.84 665.474H1184.32C1182.93 665.474 1181.8 664.317 1181.8 662.889V660.835M1162.87 648.672L1164.89 640.898C1165.19 639.766 1166.19 638.979 1167.33 638.979H1181.24C1182.33 638.979 1183.29 639.691 1183.63 640.746L1186.21 648.672M1163.5 654.488H1167.92M1180.53 654.488H1184.95"
             fill="none"
             stroke="white"
             strokeWidth="2"
@@ -482,35 +309,34 @@ export const HERO_MARKERS = [
 export const FLOOR_PATHS = [
   {
     id: 0,
-    d: "M869.014 717.048L175.014 691.548V636.048L870.014 653.048L908.575 654.3L1036.51 632.548V677.548L986.453 685.877L878.392 684.206L878.271 714.864L869.014 717.048Z",
+    d: "M909.014 717.048L215.014 691.548V636.048L910.014 653.048L948.576 654.3L1076.51 632.548V677.548L1026.45 685.877L918.393 684.206L918.271 714.865L909.014 717.048Z",
   },
   {
     id: 1,
-    d: "M176.012 581.548V635.548L909.012 653.548L1060.51 628.048V568.548L882.012 572.048L237.497 574.548V581.94L176.012 581.548Z",
+    d: "M216.012 581.548V635.548L949.012 653.548L1100.51 628.048V568.548L922.012 572.048L277.497 574.548V581.94L216.012 581.548Z",
   },
   {
     id: 2,
-    d: "M136.512 581.048V550.048H174.512V524.048H140.012V513.048L908.512 502.048L1061.01 525.048V575.048L908.512 572.048L237.512 575.048V581.048H136.512Z",
+    d: "M173.988 581.5L174 550.048H214.512V524.048H180.012V513.048L948.512 502.048L1101.01 525.048V575.048L948.512 572.048L277.512 575.048L277.5 581.5H173.988Z",
   },
   {
     id: 3,
-    d: "M911.012 502.048L139.012 513.048V450.548L911.012 430.548L1062.01 477.048L1061.01 525.048L911.012 502.048Z",
+    d: "M951.012 502.048L178.5 513V462H177.5V453H179.012V450.548L951.012 430.548L1102.01 477.048L1101.01 525.048L951.012 502.048Z",
   },
   {
     id: 4,
-    d: "M139.512 450.548V405.048L136.012 404.048L136.145 401.845L910.512 366.048L1069.01 438.048L1064.01 438.929L1039.51 427.548V452.548L1061.01 460.548V477.048L910.512 430.548L139.512 450.548Z",
+    d: "M175 403.5L213.5 410.5V429.5H178V450.5L950.512 430.548L1101.01 477.048V460.548L1079.51 452.548V427.548L1104.01 438.929L1109.01 438.048L950.512 366.048L175 402.5V403.5Z",
   },
   {
     id: 5,
-    d: "M136.512 371.548V402.548L911.012 366.548L1068.51 438.048V392.048L911.012 300.048L175.512 346.048V371.548H136.512Z",
+    d: "M174.5 371.548V402.548L951.012 366.548L1108.51 438.048V392.048L951.012 300.048L215.512 346.048V369.5L174.5 371.548Z",
   },
   {
     id: 6,
-    d: "M135.512 305.048L136.512 345.548L176.512 351.548L909.512 300.548L1068.01 391.548V363.548L1038.51 346.048V328.048H1063.01V322.048L896.512 189.548L137.512 255.048V266.048L176.512 277.048V302.548L135.512 305.048Z",
+    d: "M174.5 305V345L216.512 351.548L949.512 300.548L1108.01 391.548V363.548L1078.51 346.048V328.048H1103.01V322.048L936.512 189.548L177.512 255.048V266.048L216.512 277.048V302.548L174.5 305Z",
   }
 ];
 
-// Updated based on the new SVG header: <svg ... viewBox="0 0 1728 848">
 export const FLOOR_PATHS_VIEWBOX = "0 0 1728 848";
 
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
 import Link from "next/link";
+import OrientationLock from "@/components/common/OrientationLock";
 
 // Define the expected props (you can replace `any` with your specific types later)
 interface ProjectHeroProps {
@@ -52,16 +53,15 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
       return `${baseClasses} fill-[#003a53]/80`;
     }
 
-    // FIX ADDED: Changed 'fill-transparent' to 'fill-white/0'. 
+    // FIX ADDED: Changed 'fill-transparent' to 'fill-white/0'.
     // This looks identical (invisible), but ensures the browser registers the click.
     return `${baseClasses} fill-white/0 hover:fill-[#003a53]/80`;
   };
 
-
-
   return (
     // 1. Removed h-[100vh] from the main section
-    <section className="relative w-full h-[100vh] overflow-hidden bg-black">
+    <section className="relative w-full h-[60vh] lg:h-[100vh] overflow-hidden bg-black">
+      <OrientationLock />
       {/* 2. BACKGROUND LAYER: Full height */}
       <div className="relative w-full h-full z-0">
         <div className="hidden lg:block w-full h-full">
@@ -213,7 +213,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
                 <ProjectHeader />
 
                 {/* SVG Map */}
-                <div className="flex-1 flex items-center justify-center min-h-0 relative w-full">
+                <div className="flex-1 flex items-center justify-center min-h-0 relative px-8 pt-8 pb-4 w-full">
                   <div className="relative h-full w-full">
                     {/* UPDATED: Use currentFloor.viewBox instead of hardcoded value */}
                     <svg
@@ -246,7 +246,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
                 </div>
 
                 {/* Sidebar Footer (Text + Compass) */}
-                <div className="mt-auto flex items-center justify-between px-8 py-5 shrink-0">
+                <div className="mt-auto flex items-center justify-between px-8 pb-5 shrink-0">
                   <h2 className="text-4xl lg:text-2xl font-light text-[#0097DC] tracking-wide">{currentFloor.title}</h2>
                   <a
                     href={currentFloor?.pdfPath}
@@ -312,14 +312,14 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
                   <div className="space-y-3">
                     <div>
                       <p className="text-lg font-light opacity-90">{currentFloor?.title}</p>
-                      <h1 className="text-6xl mt-2">{currentUnit?.details.number}</h1>
+                      <h1 className="text-6xl max-w-[80%] mt-2">{currentUnit?.details.number}</h1>
                     </div>
 
                     <ul className="space-y-2 text-lg font-light opacity-90">
-                      <li>{currentUnit?.details.rooms} Bedrooms</li>
-                      <li>{currentUnit.details.washrooms} Washrooms</li>
-                      <li>{currentUnit.details.type}</li>
-                      <li>Balcony ({currentUnit.details.sqft} sq.ft.)</li>
+                      {currentUnit?.details.rooms && <li>{currentUnit?.details.rooms} Bedrooms</li>}
+                      {currentUnit.details.washrooms && <li>{currentUnit.details.washrooms} Washrooms</li>}
+                      {currentUnit.details.type && <li>{currentUnit.details.type}</li>}
+                      {currentUnit.details.sqft && <li>Balcony ({currentUnit.details.sqft} sq.ft.)</li>}
                     </ul>
                   </div>
                 </div>
@@ -327,8 +327,8 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
                 {/* BOTTOM SECTION */}
                 <div className="">
                   <div className="mb-8">
-                    <p className="text-sm font-light opacity-80">Total Sale Area</p>
-                    <p className="text-4xl font-normal">{currentUnit.details.sqft} sq. ft.</p>
+                    {currentUnit.details.sqft && <><p className="text-sm font-light opacity-80">Total Sale Area</p>
+                      <p className="text-4xl font-normal">{currentUnit.details.sqft} sq. ft.</p></>}
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -365,8 +365,8 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
               <ProjectHeader />
 
               {/* Unit Image (Different from sidebar) */}
-              <div className="flex-1 flex items-center justify-center min-h-0 relative w-full p-8">
-                <div className="relative w-full h-full max-w-4xl max-h-[70vh]">
+              <div className="flex-1 flex items-center justify-center min-h-0 relative w-full px-8 pt-8 pb-4">
+                <div className="relative w-full h-full max-w-4xl max-h-[60vh]">
                   <img
                     src={currentUnit?.unitImage}
                     alt={`Unit ${currentUnit?.details.number}`}
@@ -375,7 +375,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
                 </div>
               </div>
               {/* Compass ONLY (No text footer) */}
-              <div className="mt-auto flex items-end justify-end px-8 py-5 shrink-0">
+              <div className="mt-auto flex items-end justify-end px-8 pb-5 shrink-0">
                 <div className="flex items-center gap-3 text-sm font-semibold text-[#0097DC]">
                   <Compass />
                 </div>
