@@ -1,5 +1,6 @@
 import MissionStatement from "@/components/aboutComponents/MissionStatement";
 import PhilosophySection from "@/components/aboutComponents/PhilosophySection";
+// import FutureSection from "@/components/FutureComponents/FutureSection";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 

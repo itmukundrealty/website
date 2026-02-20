@@ -82,6 +82,7 @@ export default function AmenitiesSection({ data }: AmenitiesSectionProps) {
                                     src={item.image}
                                     alt={item.label}
                                     fill
+                                    sizes="50vw"
                                     className="object-cover"
                                     priority
                                 />
@@ -151,6 +152,7 @@ export default function AmenitiesSection({ data }: AmenitiesSectionProps) {
                                                     src={item.image}
                                                     alt={item.label}
                                                     fill
+                                                    sizes="100vw"
                                                     className="object-cover"
                                                     priority
                                                 />

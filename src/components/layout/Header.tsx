@@ -79,14 +79,14 @@ const Header = () => {
                   </div>
 
                   {/* Completed Column */}
-                  {/* <div className="flex-1 border-l border-gray-100 pl-8">
+                  <div className="flex-1 border-l border-gray-100 pl-8">
                     <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold">Completed</h3>
                     <div className="flex flex-col gap-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                       {PROJECTS.completed.map(p => (
-                        <Link key={p} href={`/projects/${p}`} className="block text-[14px] text-gray-500 hover:text-black py-1 transition-colors">{p}</Link>
+                        <Link key={p.name} href={p.href} className="block text-[14px] text-gray-500 hover:text-black py-1 transition-colors">{p.name}</Link>
                       ))}
                     </div>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -188,7 +188,7 @@ const Header = () => {
                           </div>
 
                           {/* Completed Projects Mobile Section */}
-                          {/* <div className="space-y-4">
+                          <div className="space-y-4">
                             <div className="flex items-center gap-4">
                               <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">Completed Projects</span>
                               <div className="h-[1px] w-full bg-gray-200"></div>
@@ -196,16 +196,16 @@ const Header = () => {
                             <div className="flex flex-col gap-3 pl-1">
                               {PROJECTS.completed.map(p => (
                                 <Link
-                                  key={p}
-                                  href={`/projects/${p}`}
+                                  key={p.name}
+                                  href={p.href}
                                   onClick={() => setIsMobileMenuOpen(false)}
                                   className="text-[16px] text-gray-600 font-light hover:text-black transition-colors"
                                 >
-                                  {p}
+                                  {p.name}
                                 </Link>
                               ))}
                             </div>
-                          </div> */}
+                          </div>
 
                         </div>
                       </motion.div>

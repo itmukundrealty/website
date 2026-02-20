@@ -43,7 +43,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "City Road Access",
-icon: "/icons/cityIcon.svg",
+        icon: "/icons/cityIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -53,7 +53,7 @@ icon: "/icons/cityIcon.svg",
     {
         key: "it",
         title: "Schools & Hospitals",
-icon: "/icons/itIcon.svg",
+        icon: "/icons/itIcon.svg",
         points: [18, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -63,7 +63,7 @@ icon: "/icons/itIcon.svg",
     {
         key: "education",
         title: "Business Hubs",
-icon: "/icons/educationIcon.svg",
+        icon: "/icons/educationIcon.svg",
         points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -73,7 +73,7 @@ icon: "/icons/educationIcon.svg",
     {
         key: "essentials",
         title: "Lifestyle Conveniences",
-icon: "/icons/everydayIcon.svg",
+        icon: "/icons/everydayIcon.svg",
         points: [32, 33, 34],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -168,12 +168,12 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 />
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" />
+                <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" completed={false} />
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Built on" titlePart2="Real Experiences" description="Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time." />
                 <CTASection title={<>The Home You’ve Been  <br /> Looking For</>} subtitle="DSpacious homes built for everyday living." mobImg="/images/rudrakshImages/ctaBg.webp" deskImg="/images/rudrakshImages/image.png" />
-<Footer/>
+                <Footer />
             </div>
         </>
     );

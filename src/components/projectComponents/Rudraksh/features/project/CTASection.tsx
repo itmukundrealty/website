@@ -14,13 +14,13 @@ interface ctaprops {
 
 export default function CTASection({ title, subtitle, mobImg, deskImg }: ctaprops) {
     return (
-        <section className="relative h-[100vh] w-full flex items-center  overflow-hidden">
+        <section className="relative lg:h-[100vh] h-[95vh] w-full flex items-center  overflow-hidden">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 {deskImg && (
                     <Image
                         src={deskImg}
-                        alt="Rudraksh Building"
+                        alt="Building"
                         fill
                         className="object-cover brightness-95 hidden lg:block"
                     />
@@ -28,9 +28,9 @@ export default function CTASection({ title, subtitle, mobImg, deskImg }: ctaprop
                 {mobImg && (
                     <Image
                         src={mobImg}
-                        alt="Rudraksh Building"
+                        alt="Building"
                         fill
-                        className="object-cover brightness-95 lg:hidden"
+                        className="object-cover brightness-95 lg:hidden object-top"
                     />
                 )}
                 {/* Gradient Overlay for better text readability */}
@@ -38,20 +38,27 @@ export default function CTASection({ title, subtitle, mobImg, deskImg }: ctaprop
             </div>
 
             {/* Content */}
-            <div className="px-6 lg:px-24 xl:px-54 relative z-10">
+            <div className="relative z-10 w-full h-full lg:h-auto flex flex-col lg:block justify-between pt-12 pb-10 lg:py-0 px-6 lg:px-24 xl:px-54">
                 <div className="max-w-full text-left">
-                    <h2 className="text-5xl lg:text-7xl font-medium text-white mb-4 leading-tight">
+                    <h2 className="text-4xl lg:text-7xl font-medium text-white mb-4 leading-tight">
                         {title}
                     </h2>
-                    <p className="text-3xl lg:text-4xl font-thin text-white/90 mb-10 tracking-wide">
+                    <p className="text-lg lg:text-4xl font-thin text-white/90 mb-10 tracking-wide  ">
                         {subtitle}
                     </p>
 
-                    <Link href="/project-enquire" className="bg-white text-[#0097DC] px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+                    {/* Desktop Button */}
+                    <Link href="/project-enquire" className="hidden lg:inline-block bg-white text-[#0097DC] px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
                         Contact Us
                     </Link>
                 </div>
 
+                {/* Mobile Button */}
+                <div className="w-full lg:hidden">
+                    <Link href="/project-enquire" className="block w-full bg-white text-[#0097DC] py-4 text-center text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+                        Contact Us
+                    </Link>
+                </div>
             </div>
 
             {/* Bottom bar decorative */}

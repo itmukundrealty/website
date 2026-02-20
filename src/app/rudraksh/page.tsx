@@ -216,7 +216,7 @@ export default function Project1Page() {
                 videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
             />
             <AmenitiesSection data={AMENITIES_DATA} />
-            <FeaturesSection features={FEATURES} heading="Everything You’re Looking For" />
+            <FeaturesSection features={FEATURES} heading="Everything You’re Looking For" completed={false} />
             {/* <ProjectInteractivePlan /> */}
 
             <MapSection data={MAP_DATA} />

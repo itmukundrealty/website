@@ -86,25 +86,25 @@ export default function MapSection({ data }: MapSectionProps) {
             </div>
 
             {/* MOBILE OVERLAY (Simplified bottom bar) */}
-            <div className="lg:hidden absolute bottom-0 left-0 right-0 p-4 bg-[#0097DC] text-white z-20">
-                <div className="flex overflow-x-auto gap-4 scrollbar-hide">
+            <div className="lg:hidden absolute bottom-0 left-0 right-0 p-2 bg-[#0097DC] text-white z-20">
+                <div className="grid grid-cols-4 gap-2">
                     {data.map((item) => {
                         const isActive = activeSection === item.key;
                         return (
                             <button
                                 key={item.key}
                                 onClick={() => setActiveSection(item.key)}
-                                className={`flex-shrink-0 flex items-center gap-2 p-2 rounded whitespace-nowrap ${isActive ? "bg-white/20" : ""}`}
+                                className={`flex flex-col items-center justify-center gap-1 p-2 rounded ${isActive ? "bg-white/20" : ""}`}
                             >
-                                <div className="relative ">
+                                <div className="relative w-6 h-6">
                                     <Image
                                         src={item.icon}
                                         alt={item.title}
                                         fill
-                                        className="object-contain w-4 h-4"
+                                        className="object-contain"
                                     />
                                 </div>
-                                <span className="text-sm">{item.title}</span>
+                                <span className="text-[10px] text-center leading-tight">{item.title}</span>
                             </button>
                         )
                     })}
