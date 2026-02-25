@@ -1,13 +1,11 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 
 const PROJECTS = {
-  ongoing: [
-    { name: "Rudraksh", href: "/rudraksh" }
-  ],
+  ongoing: [{ name: "Rudraksh", href: "/rudraksh" }],
   completed: [
     { name: "Mathura Residency", href: "/mathura" },
     { name: "Ajanta Business Center", href: "/ajanta" },
@@ -19,11 +17,16 @@ const PROJECTS = {
     { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
     { name: "Gokuldham", href: "/gokuldham" },
     { name: "Mukund Sadan", href: "/mukund-sadhan" },
-    { name: "Kailash", href: "/kailash" }
-  ]
+    { name: "Kailash", href: "/kailash" },
+  ],
 };
 
-const ProjectHeader = () => {
+interface ProjectHeaderProps {
+  projectLink?: string;
+  projectName?: string;
+}
+
+const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund Realty" }: ProjectHeaderProps = {}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false); // Default closed
@@ -33,27 +36,27 @@ const ProjectHeader = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20); // Trigger earlier for smoother feel
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
   }, [isMobileMenuOpen]);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
-          }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
+          isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
+        }`}
       >
         <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center bg-transparent">
-
           {/* Logo Section */}
           <Link href="/" className="z-50 relative">
             <div className="relative w-32 md:w-36 lg:w-40 h-auto aspect-[3/1]">
@@ -63,12 +66,23 @@ const ProjectHeader = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-12 xl:gap-16">
-            <Link href="/about" className={` hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-white'}`}>About</Link>
+            <Link
+              href="/about"
+              className={` hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+            >
+              About
+            </Link>
 
             {/* Desktop Dropdown */}
             <div className="group relative py-4">
-              <button className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-white'}`}>
-                Projects <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]" />
+              <button
+                className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+              >
+                Projects{" "}
+                <ChevronDown
+                  size={14}
+                  className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]"
+                />
               </button>
 
               {/* Dropdown Content */}
@@ -78,9 +92,11 @@ const ProjectHeader = () => {
                   <div className="w-[200px] shrink-0">
                     <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Ongoing</h3>
                     <div className="flex flex-col gap-3">
-                      {PROJECTS.ongoing.map(p => (
+                      {PROJECTS.ongoing.map((p) => (
                         <Link key={p.name} href={p.href} className="group/item flex items-center justify-between transition-colors duration-300">
-                          <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap font-medium">{p.name}</span>
+                          <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap font-medium">
+                            {p.name}
+                          </span>
                         </Link>
                       ))}
                     </div>
@@ -90,8 +106,14 @@ const ProjectHeader = () => {
                   <div className="flex-1 border-l border-gray-100 pl-12">
                     <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Completed</h3>
                     <div className="grid grid-cols-3 gap-x-8 gap-y-4">
-                      {PROJECTS.completed.map(p => (
-                        <Link key={p.name} href={p.href} className="block text-[15px] text-gray-600 hover:text-[#0097DC] transition-colors hover:translate-x-1 duration-200">{p.name}</Link>
+                      {PROJECTS.completed.map((p) => (
+                        <Link
+                          key={p.name}
+                          href={p.href}
+                          className="block text-[15px] text-gray-600 hover:text-[#0097DC] transition-colors hover:translate-x-1 duration-200"
+                        >
+                          {p.name}
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -101,14 +123,16 @@ const ProjectHeader = () => {
 
             {/* <Link href="/insights" className="text-[#333333] hover:text-black text-lg font-medium tracking-wide transition-colors duration-300">Insights</Link> */}
 
-            <Link href="/project-enquire?project=rudraksh" className={`hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-white'}`}>Contact</Link>
+            <Link
+              href={projectLink}
+              className={`hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+            >
+              Contact
+            </Link>
           </nav>
 
           {/* Mobile Toggle */}
-          <button
-            className="lg:hidden z-50 p-2 -mr-2 text-black"
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
+          <button className="lg:hidden z-50 p-2 -mr-2 text-black" onClick={() => setIsMobileMenuOpen(true)}>
             <Menu strokeWidth={1.5} size={32} />
           </button>
         </div>
@@ -129,10 +153,7 @@ const ProjectHeader = () => {
               <div className="w-32">
                 <img src="/icons/logo.svg" alt="Mukund Realty" className="w-full object-contain" />
               </div>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 -mr-2 text-black hover:bg-gray-50 rounded-full transition-colors"
-              >
+              <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 -mr-2 text-black hover:bg-gray-50 rounded-full transition-colors">
                 <X strokeWidth={1.5} size={32} />
               </button>
             </div>
@@ -140,7 +161,6 @@ const ProjectHeader = () => {
             {/* Mobile Navigation Content */}
             <div className="flex-1 overflow-y-auto bg-white px-6 md:px-12 py-8">
               <div className="flex flex-col space-y-0">
-
                 {/* About */}
                 <Link
                   href="/about"
@@ -160,7 +180,7 @@ const ProjectHeader = () => {
                     <ChevronDown
                       size={24}
                       strokeWidth={1.5}
-                      className={`transition-transform duration-300 ${isMobileProjectsOpen ? 'rotate-180' : ''}`}
+                      className={`transition-transform duration-300 ${isMobileProjectsOpen ? "rotate-180" : ""}`}
                     />
                   </button>
 
@@ -174,7 +194,6 @@ const ProjectHeader = () => {
                         className="overflow-hidden"
                       >
                         <div className="pb-8 pl-2 space-y-8">
-
                           {/* Ongoing Projects Mobile Section */}
                           <div className="space-y-4">
                             <div className="flex items-center gap-4">
@@ -182,7 +201,7 @@ const ProjectHeader = () => {
                               {/* <div className="h-[1px] w-full bg-gray-200"></div> */}
                             </div>
                             <div className="flex flex-col gap-3 pl-1">
-                              {PROJECTS.ongoing.map(p => (
+                              {PROJECTS.ongoing.map((p) => (
                                 <Link
                                   key={p.name}
                                   href={p.href}
@@ -198,11 +217,13 @@ const ProjectHeader = () => {
                           {/* Completed Projects Mobile Section */}
                           <div className="space-y-4">
                             <div className="flex items-center gap-4">
-                              <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">Completed Projects</span>
+                              <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                                Completed Projects
+                              </span>
                               <div className="h-[1px] w-full bg-gray-200"></div>
                             </div>
                             <div className="flex flex-col gap-3 pl-1">
-                              {PROJECTS.completed.map(p => (
+                              {PROJECTS.completed.map((p) => (
                                 <Link
                                   key={p.name}
                                   href={p.href}
@@ -214,7 +235,6 @@ const ProjectHeader = () => {
                               ))}
                             </div>
                           </div>
-
                         </div>
                       </motion.div>
                     )}
@@ -232,13 +252,12 @@ const ProjectHeader = () => {
 
                 {/* Contact */}
                 <Link
-                  href="/project-enquire?project=rudraksh"
+                  href={projectLink}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
                 >
                   Contact
                 </Link>
-
               </div>
             </div>
           </motion.div>

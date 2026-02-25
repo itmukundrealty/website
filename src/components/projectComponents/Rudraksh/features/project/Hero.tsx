@@ -15,9 +15,20 @@ interface ProjectHeroProps {
   FLOOR_PATHS_VIEWBOX: string;
   heroImageDesktop: string;
   heroImageMobile: string;
+  projectLink?: string;
+  projectName?: string;
 }
 
-export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_VIEWBOX, heroImageDesktop, heroImageMobile }: ProjectHeroProps) {
+export function ProjectHero({
+  HERO_MARKERS,
+  floorData,
+  FLOOR_PATHS,
+  FLOOR_PATHS_VIEWBOX,
+  heroImageDesktop,
+  heroImageMobile,
+  projectLink = "/project-enquire?project=rudraksh",
+  projectName = "Rudraksh",
+}: ProjectHeroProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [planHoveredIndex, setPlanHoveredIndex] = useState<number | null>(null);
@@ -210,7 +221,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
             >
               <div className="relative flex h-full flex-col">
                 {/* Header */}
-                <ProjectHeader />
+                <ProjectHeader projectLink={projectLink} projectName={projectName} />
 
                 {/* SVG Map */}
                 <div className="flex-1 flex items-center justify-center min-h-0 relative px-8 pt-8 pb-4 w-full">
@@ -327,12 +338,16 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
                 {/* BOTTOM SECTION */}
                 <div className="">
                   <div className="mb-8">
-                    {currentUnit.details.sqft && <><p className="text-sm font-light opacity-80">Total Sale Area</p>
-                      <p className="text-4xl font-normal">{currentUnit.details.sqft} sq. ft.</p></>}
+                    {currentUnit.details.sqft && (
+                      <>
+                        <p className="text-sm font-light opacity-80">Total Sale Area</p>
+                        <p className="text-4xl font-normal">{currentUnit.details.sqft} sq. ft.</p>
+                      </>
+                    )}
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-                    <Link href="/project-enquire?project=rudraksh" className="w-full sm:w-auto">
+                    <Link href={projectLink} className="w-full sm:w-auto">
                       <button className="bg-white flex items-center gap-2 text-[#0097DC] px-8 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors w-full">
                         <svg width="10" height="10" viewBox="0 0 20 20" fill="none">
                           <path
@@ -361,8 +376,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
 
             {/* RIGHT PANEL: Replaces the Sidebar (White) */}
             <div className="flex-1 bg-white relative flex flex-col h-full shadow-2xl">
-              {/* Header (Same as sidebar) */}
-              <ProjectHeader />
+              <ProjectHeader projectLink={projectLink} projectName={projectName} />
 
               {/* Unit Image (Different from sidebar) */}
               <div className="flex-1 flex items-center justify-center min-h-0 relative w-full px-8 pt-8 pb-4">
@@ -389,17 +403,17 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
 }
 
 // 1. The Header Component (Exactly the same in both)
-const ProjectHeader = () => (
+const ProjectHeader = ({ projectLink, projectName }: { projectLink: string; projectName: string }) => (
   <div className="flex items-center justify-end gap-20 text-sm font-light text-gray-500 shrink-0 px-10 pt-10">
     <button className="hover:text-black transition-colors">About</button>
     <button className="flex items-center gap-1 text-[#0097DC] font-medium">
-      Rudraksh
+      {projectName}
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
       </svg>
     </button>
     <button className="hover:text-black transition-colors">Insights</button>
-    <Link href="/project-enquire?project=rudraksh" className="hover:text-black transition-colors">
+    <Link href={projectLink} className="hover:text-black transition-colors">
       Contact
     </Link>
   </div>
