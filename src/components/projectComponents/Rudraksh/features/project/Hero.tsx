@@ -402,16 +402,70 @@ export function ProjectHero({
   );
 }
 
+const PROJECTS = {
+  ongoing: [{ name: "Rudraksh", href: "/rudraksh" }],
+  completed: [
+    { name: "Mathura Residency", href: "/mathura" },
+    { name: "Ajanta Business Center", href: "/ajanta" },
+    { name: "Evanna Homes", href: "/evanna" },
+    { name: "Kudva's Grandeur", href: "/kudva" },
+    { name: "Madhuban Apartments", href: "/madhuban" },
+    { name: "Nandagokul Apartments", href: "/nandagokul" },
+    { name: "Nandadeep Apartments", href: "/nandadeep" },
+    { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
+    { name: "Gokuldham", href: "/gokuldham" },
+    { name: "Mukund Sadan", href: "/mukund-sadhan" },
+    { name: "Kailash", href: "/kailash" },
+  ],
+};
+
 // 1. The Header Component (Exactly the same in both)
 const ProjectHeader = ({ projectLink, projectName }: { projectLink: string; projectName: string }) => (
   <div className="flex items-center justify-end gap-20 text-sm font-light text-gray-500 shrink-0 px-10 pt-10">
     <button className="hover:text-black transition-colors">About</button>
-    <button className="flex items-center gap-1 text-[#0097DC] font-medium">
-      {projectName}
-      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
+    <div className="group relative">
+      <button className="flex items-center gap-1 text-[#0097DC] font-medium group-hover:text-[#0097DC] transition-colors duration-300">
+        {projectName}
+        <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {/* Dropdown Content */}
+      <div className="absolute top-1/2 right-0 mt-4 min-w-[50vw] bg-white/95 backdrop-blur-sm p-8 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-100 border border-gray-100 shadow-xl">
+        <div className="flex gap-12">
+          {/* Ongoing Column */}
+          <div className="w-[200px] shrink-0">
+            <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2 text-left">Ongoing</h3>
+            <div className="flex flex-col gap-3">
+              {PROJECTS.ongoing.map((p) => (
+                <Link key={p.name} href={p.href} className="group/item flex items-center justify-between transition-colors duration-300 text-left">
+                  <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap font-medium">
+                    {p.name}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Completed Column */}
+          <div className="flex-1 border-l border-gray-100 pl-12 text-left">
+            <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Completed</h3>
+            <div className="grid grid-cols-3 gap-x-8 gap-y-4">
+              {PROJECTS.completed.map((p) => (
+                <Link
+                  key={p.name}
+                  href={p.href}
+                  className="block text-[15px] text-gray-600 hover:text-[#0097DC] transition-colors hover:translate-x-1 duration-200"
+                >
+                  {p.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <button className="hover:text-black transition-colors">Insights</button>
     <Link href={projectLink} className="hover:text-black transition-colors">
       Contact
