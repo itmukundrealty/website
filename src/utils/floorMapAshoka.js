@@ -659,8 +659,7 @@ export const floorData = [
     planImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/floor5/floor.png",
     pdfPath: "/downloadFloorPlan/fifth floor plan.pdf",
     features: [
-      "Utility Block",
-      "Private Offices"
+      "Full Floor Private Office Space"
     ],
     units: [
       {
@@ -791,9 +790,12 @@ export const floorData = [
     planImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/terrace/floor.png",
     pdfPath: "/downloadFloorPlan/terrace plan.pdf",
     features: [
-      "Open Terrace",
-      "Seating Area",
-      "Utility Space"
+      "Auditorium",
+      "Break-Out Zone",
+      "Conference Room",
+      "Banquet Hall",
+      "Health Room",
+      "Pre-function Space"
     ],
     units: [
       {

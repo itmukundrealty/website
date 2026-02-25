@@ -9,10 +9,12 @@ interface ctaprops {
     subtitle?: React.ReactNode;
     mobImg?: string;
     deskImg?: string;
+    cta?: string;
+    link?: string;
 
 }
 
-export default function CTASection({ title, subtitle, mobImg, deskImg }: ctaprops) {
+export default function CTASection({ title, subtitle, mobImg, deskImg, cta="Contact Us" }: ctaprops) {
     return (
         <section className="relative lg:h-[100vh] h-[95vh] w-full flex items-center  overflow-hidden">
             {/* Background Image */}
@@ -49,14 +51,14 @@ export default function CTASection({ title, subtitle, mobImg, deskImg }: ctaprop
 
                     {/* Desktop Button */}
                     <Link href="/project-enquire" className="hidden lg:inline-block bg-white text-[#0097DC] px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
-                        Contact Us
+                        {cta}
                     </Link>
                 </div>
 
                 {/* Mobile Button */}
                 <div className="w-full lg:hidden">
                     <Link href="/project-enquire" className="block w-full bg-white text-[#0097DC] py-4 text-center text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
-                        Contact Us
+                       {cta}
                     </Link>
                 </div>
             </div>

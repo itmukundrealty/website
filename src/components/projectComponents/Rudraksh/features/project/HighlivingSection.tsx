@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 interface HighlivingSectionProps {
     heading: string;
@@ -23,10 +24,11 @@ export default function HighlivingSection({ heading, description, imageSrc, vide
                         {heading}
                     </h2>
 
+                    <Link href="/project-enquire">
                     <button className="flex items-center gap-2 px-4 py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-sm font-medium">
                         <ArrowUpRight className="w-5 h-5 hover:rotate-45 transition-all duration-300" />
                         Enquire Now
-                    </button>
+                    </button></Link>
                 </div>
 
                 {/* Description */}

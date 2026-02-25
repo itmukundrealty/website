@@ -20,10 +20,16 @@ interface FeaturesSectionProps {
     heading: string;
     variant?: "center" | "left";
     completed?: boolean;
+    galleryImages?: string[];
 }
 
 
-const GALLERY_IMAGES = [
+
+
+export default function FeaturesSection({ features, heading, variant = "center", completed = true, galleryImages }: FeaturesSectionProps) {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const GALLERY_IMAGES = galleryImages || [
     "/images/rudrakshImages/10.webp",
     "/images/rudrakshImages/11.webp",
     "/images/rudrakshImages/12.webp",
@@ -31,9 +37,6 @@ const GALLERY_IMAGES = [
     "/images/rudrakshImages/14.webp",
     "/images/rudrakshImages/15.webp",
 ];
-
-export default function FeaturesSection({ features, heading, variant = "center", completed = true }: FeaturesSectionProps) {
-    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <section className="py-20 lg:py-32 bg-white font-host">

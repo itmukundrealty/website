@@ -17,27 +17,21 @@ import { floorData } from "@/utils/floorMapAshoka.js";
 import { FLOOR_PATHS } from "@/utils/floorMapAshoka.js";
 import { FLOOR_PATHS_VIEWBOX } from "@/utils/floorMapAshoka.js";
 
-const FEATURES: FeatureItem[] = [
-    { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
-    { icon: "GamesArea", label: "Indoor & Outdoor Games Area" },
-    { icon: "Gymnasium", label: "Air Conditioned Gymnasium" },
-    { icon: "Reflexology", label: "Walking Path with Reflexology" },
-    { icon: "LeisureAreas", label: "Landscaped Leisure Areas" },
-    { icon: "ChildrenPlay", label: "Children's Play Area" },
-    { icon: "JacuzziSauna", label: "Heated Jacuzzi & Timber Sauna" },
-    { icon: "GrandLobby", label: "Access Controlled Grand Entrance Lobby" },
-    { icon: "OpenLibrary", label: "Open Library" },
-    { icon: "WellnessClub", label: "Wellness Club" },
-    { icon: "CloudKitchen", label: "24×7 Cloud Kitchen" },
-    { icon: "BeautyLounge", label: "Beauty Lounge" },
-    { icon: "SolarPanels", label: "Solar Electric Power Panels" },
-    { icon: "Generators", label: "24×7 Backup Generators" },
-    { icon: "SewageTreatment", label: "Sewage Water Treatment Plant" },
-    { icon: "CCTV", label: "Security Surveillance with CCTV" },
-    { icon: "MiniTheatre", label: "Air Conditioned Mini Theatre" },
-    { icon: "DanceFloor", label: "Dance / Yoga / Zumba Floor" },
-    { icon: "GatheringHall", label: "Residents Gathering Hall" },
-    { icon: "FirefightingSystem", label: "State-of-the-art Firefighting System" },
+export const FEATURES: FeatureItem[] = [
+  { icon: "CarParking", label: "3 Levels of Car Parking" },
+  { icon: "Cafeteria", label: "24x7 Cafeteria" },
+  { icon: "PowerBackup", label: "24x7 Power Back-up" },
+  { icon: "BanquetHall", label: "Banquet Hall" },
+  { icon: "BreakOutArea", label: "Break out Area" },
+  { icon: "PhoneLine", label: "Dedicated Phone Line" },
+  { icon: "Internet", label: "High Speed Internet" },
+  { icon: "Indoor", label: "Indoor Gaming Zone" },
+  { icon: "Workspace", label: "Managed Workspace" },
+  { icon: "MeetingRooms", label: "Meeting / Training Rooms" },
+  { icon: "TrainingRooms", label: "On Call Training / Board Rooms" },
+  { icon: "Security", label: "Round-o-clock Security" },
+  { icon: "SecuredAccess", label: "Secured Access" },
+  { icon: "VisitorsLounge", label: "Visitors Lounge" },
 ];
 
 const MAP_DATA = [
@@ -88,25 +82,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Green Workspaces",
         description: "It's more than just a workspace; it's a world unto itself. We craft a comfortable, secure and professional environment tailored to meet the needs of a diverse range of corporate businesses, surrounded by lush greenery and the beauty of Mother Nature in full bloom.",
-        imageSrc: "/images/rudrakshImages/1.webp"
+        imageSrc: "/images/ashokaImages/1.webp"
     },
     {
         id: "kitchen",
         label: "Smart Tech",
         description: "Harnessing contemporary, intelligent technology enables us to streamline daily tasks, enhancing productivity and efficiency swiftly. What were once manual and time-consuming activities can now be efficiently accomplished through digital tools, self-automated systems and app management.",
-        imageSrc: "/images/rudrakshImages/2.webp"
+        imageSrc: "/images/ashokaImages/2.webp"
     },
     {
         id: "rooftop",
         label: "Sustainability",
         description: "Embrace sustainability through our comprehensive and energy-conscious ecosystem, crafted to mitigate our environmental footprint. Designed with sustainable systems that support responsible water and energy use.",
-        imageSrc: "/images/rudrakshImages/3.webp"
+        imageSrc: "/images/ashokaImages/3.webp"
     },
     {
         id: "location",
         label: "Efficiency",
         description: "Immerse yourself in the global community by embracing a fusion of modern sophistication and natural allure. Our workspace culture celebrates local ethnic artistry, harnessing its power to spark creativity, alleviate stress and cultivate a vibrant positive atmosphere.",
-        imageSrc: "/images/rudrakshImages/4.webp"
+        imageSrc: "/images/ashokaImages/4.webp"
     }
 ];
 
@@ -115,40 +109,47 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Curated Workspaces",
         subtitle: "",
-        image: "/images/rudrakshImages/2.webp",
+        image: "/images/ashokaImages/amenities/1.webp",
     },
     {
         id: "wellness",
         label: "Recreational Zones",
         subtitle: "",
-        image: "/images/rudrakshImages/6.webp",
+        image: "/images/ashokaImages/amenities/2.webp",
     },
     {
         id: "lobby",
         label: "On Call Training/ Board Rooms",
         subtitle: "",
-        image: "/images/rudrakshImages/7.webp",
+        image: "/images/ashokaImages/amenities/3.webp",
     },
     {
         id: "pool",
         label: "Designated Ares for Customer / Client Service",
         subtitle: "",
-        image: "/images/rudrakshImages/8.webp",
+        image: "/images/ashokaImages/amenities/4.webp",
     },
     {
         id: "gym",
         label: "Auditorium & Banquet Hall",
         subtitle: "",
-        image: "/images/rudrakshImages/9.webp",
+        image: "/images/ashokaImages/amenities/5.webp",
     },
     {
         id: "sky-deck",
         label: "3 Tier Secured Parking",
         subtitle: "",
-        image: "/images/rudrakshImages/3.webp",
+        image: "/images/ashokaImages/amenities/6.webp",
     }
 ];
-
+ const GALLERY_IMAGES = [
+    "/images/ashokaImages/gallery/1.webp",
+    "/images/ashokaImages/gallery/2.webp",
+    "/images/ashokaImages/gallery/3.webp",
+    "/images/ashokaImages/gallery/4.webp",
+    "/images/ashokaImages/gallery/5.webp",
+    "/images/ashokaImages/gallery/6.webp",
+];
 export default function page() {
     return (
         <>
@@ -164,12 +165,12 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 />
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" completed={false} />
+                <FeaturesSection features={FEATURES} galleryImages={GALLERY_IMAGES} heading="Designed for Everyday Work" variant="left" completed={false} />
 
                 <MapSection data={MAP_DATA} />
                 <PartnerSection />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>The Workspace <br /> You Deserve</>} subtitle="Thoughtfully planned spaces built for lasting value" mobImg="/images/rudrakshImages/ctaBg.webp" deskImg="/images/rudrakshImages/image.png" />
+                <CTASection cta="Enquire Now" title={<>The Workspace <br /> You Deserve</>} subtitle={<>Thoughtfully planned <br className="hidden lg:block"/> spaces built for lasting value</>} mobImg="/images/ashokaImages/ctabgMobile.webp" deskImg="/images/ashokaImages/ctabgDesk.webp" />
                 <Footer />
             </div>
         </>
