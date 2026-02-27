@@ -41,9 +41,9 @@ export default function Home() {
       <div className="mt-[8vh] lg:mt-[20vh]">
         <LandmarkSection />
       </div>
-      <PortfolioSection /> 
+      
       <ExperienceStandardSection />
-    <InsightsSection />
+ 
       <CraftedForMomentsSection />
       <DesignedForMatters />
       <Footer />
