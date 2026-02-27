@@ -121,6 +121,7 @@ interface StyledMapProps {
     className?: string;
     center?: { lat: number; lng: number };
     zoom?: number;
+    locations?: Location[];
 }
 
 export default function StyledMap({
@@ -128,7 +129,8 @@ export default function StyledMap({
     highlightHighway = false,
     className = "",
     center = defaultCenter,
-    zoom = 14
+    zoom = 14,
+    locations = LOCATIONS
 }: StyledMapProps) {
 
     const dynamicMapStyle = useMemo(() => {
@@ -164,6 +166,7 @@ export default function StyledMap({
     const mapOptions = useMemo(() => ({
         styles: dynamicMapStyle,
         disableDefaultUI: true,
+        gestureHandling: "cooperative", // Prevents the map from zooming when scrolling the page
     }), [dynamicMapStyle]);
 
     const handlePointClick = (link?: string) => {
@@ -186,11 +189,14 @@ export default function StyledMap({
                     options={mapOptions}
                 >
                     {/* Render Markers/Circles */}
-                    {LOCATIONS.map((loc) => {
+                    {locations.map((loc) => {
                         const isActive = activePoints.includes(loc.id);
 
-                        // Special Marker for ID 0
-                        if (loc.id === 0) {
+                        // Special Marker for ID 0 or if active and no special marker is defined else we use circle
+                        // Let's modify to: if active, show marker, else show circle? 
+                        // Actually, if it's the exact '0' ID from default LOCATIONS we show Marker.
+                        // Or if it's active in the 'locations' array from props.
+                        if (loc.id === 0 || isActive) {
                             return (
                                 <Marker
                                     key={loc.id}
