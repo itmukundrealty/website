@@ -15,9 +15,20 @@ interface ProjectHeroProps {
   FLOOR_PATHS_VIEWBOX: string;
   heroImageDesktop: string;
   heroImageMobile: string;
+  projectLink?: string;
+  projectName?: string;
 }
 
-export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_VIEWBOX, heroImageDesktop, heroImageMobile }: ProjectHeroProps) {
+export function ProjectHero({
+  HERO_MARKERS,
+  floorData,
+  FLOOR_PATHS,
+  FLOOR_PATHS_VIEWBOX,
+  heroImageDesktop,
+  heroImageMobile,
+  projectLink = "/project-enquire?project=rudraksh",
+  projectName = "Rudraksh",
+}: ProjectHeroProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [planHoveredIndex, setPlanHoveredIndex] = useState<number | null>(null);
@@ -64,7 +75,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
       <OrientationLock />
       {/* 2. BACKGROUND LAYER: Full height */}
       <div className="relative w-full h-full z-0">
-        <div className="hidden lg:block w-full h-full">
+        <div className="hidden md:block w-full h-full">
           {/* 3. Use fill and object-cover to cover the 100vh area */}
           <Image
             src={isZoomedOut ? heroImageDesktop : heroImageDesktop}
@@ -74,14 +85,14 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
             priority
           />
         </div>
-        <div className="block lg:hidden w-full h-full">
+        <div className="block md:hidden w-full h-full">
           {/* Mobile image also covers */}
           <Image src={heroImageMobile} alt="Mukund Realty Project Mobile" fill className="object-cover object-bottom" priority />
         </div>
       </div>
 
       {/* 4. HERO TEXT CONTENT */}
-      <div className="absolute inset-0 z-10 hidden lg:flex items-start justify-end px-12 lg:px-24 pointer-events-none">
+      <div className="absolute inset-0 z-10 hidden md:flex items-start justify-end px-12 lg:px-24 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -95,7 +106,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
 
       {/* 5. SVG OVERLAY: Match image scaling */}
       <div
-        className={`absolute inset-0 z-10 pointer-events-none transition-opacity duration-700 hidden lg:block ${isZoomedOut ? "opacity-0" : "opacity-100"}`}
+        className={`absolute inset-0 z-10 pointer-events-none transition-opacity duration-700 hidden md:block ${isZoomedOut ? "opacity-0" : "opacity-100"}`}
       >
         {/* FIX ADDED: 
             1. Changed preserveAspectRatio to 'xMidYMid slice' to match the background Image center alignment.
@@ -131,7 +142,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
       </div>
 
       {/* ... Rest of your component (tooltips, modals, sidebars) remains exactly the same! ... */}
-      <div className="absolute z-50 bottom-10 right-10 hidden lg:block">
+      <div className="absolute z-50 bottom-10 right-10 hidden md:block">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             opacity="0.8"
@@ -150,7 +161,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="absolute bottom-8 right-28 z-30 items-center justify-center  px-6 py-3 rounded-lg shadow-xl  pointer-events-auto hidden lg:flex"
+            className="absolute bottom-8 right-28 z-30 items-center justify-center  px-6 py-3 rounded-lg shadow-xl  pointer-events-auto hidden md:flex"
           >
             <span className="text-2xl font-semibold text-white tracking-wide uppercase whitespace-nowrap">
               {HERO_MARKERS[hoveredMarkerIndex].label}
@@ -166,7 +177,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 50 }}
-            className="absolute bottom-5 right-28 z-30 w-80 min-h-[300px] flex flex-col justify-between bg-white px-8 py-4 shadow-2xl pointer-events-auto hidden lg:flex"
+            className="absolute bottom-5 right-28 z-30 w-80 min-h-[300px]  flex-col justify-between bg-white px-8 py-4 shadow-2xl pointer-events-auto hidden md:flex"
           >
             <div>
               <h3 className="mb-2 text-xl font-medium text-[#505153]">{floorData[hoveredIndex].title}</h3>
@@ -210,7 +221,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
             >
               <div className="relative flex h-full flex-col">
                 {/* Header */}
-                <ProjectHeader />
+                <ProjectHeader projectLink={projectLink} projectName={projectName} />
 
                 {/* SVG Map */}
                 <div className="flex-1 flex items-center justify-center min-h-0 relative px-8 pt-8 pb-4 w-full">
@@ -263,7 +274,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
                   onClick={() => setSelectedIndex(null)}
                   exit={{ scale: 0, opacity: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="absolute left-0 top-1/2 z-50 flex  h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#0097DC] text-white shadow-2xl transition-transform hover:scale-105 active:scale-95 hidden lg:flex"
+                  className="absolute left-0 top-1/2 z-50   h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#0097DC] text-white shadow-2xl transition-transform hover:scale-105 active:scale-95 hidden md:flex"
                 >
                   <svg width="30" height="30" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M33.5 1.50001L1.5 33.5M33.5 33.5L1.5 1.5" stroke="white" strokeWidth="3" strokeLinecap="round" />
@@ -327,12 +338,16 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
                 {/* BOTTOM SECTION */}
                 <div className="">
                   <div className="mb-8">
-                    {currentUnit.details.sqft && <><p className="text-sm font-light opacity-80">Total Sale Area</p>
-                      <p className="text-4xl font-normal">{currentUnit.details.sqft} sq. ft.</p></>}
+                    {currentUnit.details.sqft && (
+                      <>
+                        <p className="text-sm font-light opacity-80">Total Sale Area</p>
+                        <p className="text-4xl font-normal">{currentUnit.details.sqft} sq. ft.</p>
+                      </>
+                    )}
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-                    <Link href="/project-enquire?project=rudraksh" className="w-full sm:w-auto">
+                    <Link href={projectLink} className="w-full sm:w-auto">
                       <button className="bg-white flex items-center gap-2 text-[#0097DC] px-8 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors w-full">
                         <svg width="10" height="10" viewBox="0 0 20 20" fill="none">
                           <path
@@ -361,8 +376,7 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
 
             {/* RIGHT PANEL: Replaces the Sidebar (White) */}
             <div className="flex-1 bg-white relative flex flex-col h-full shadow-2xl">
-              {/* Header (Same as sidebar) */}
-              <ProjectHeader />
+              <ProjectHeader projectLink={projectLink} projectName={projectName} />
 
               {/* Unit Image (Different from sidebar) */}
               <div className="flex-1 flex items-center justify-center min-h-0 relative w-full px-8 pt-8 pb-4">
@@ -388,18 +402,72 @@ export function ProjectHero({ HERO_MARKERS, floorData, FLOOR_PATHS, FLOOR_PATHS_
   );
 }
 
+const PROJECTS = {
+  ongoing: [{ name: "Rudraksh", href: "/rudraksh" }],
+  completed: [
+    { name: "Mathura Residency", href: "/mathura" },
+    { name: "Ajanta Business Center", href: "/ajanta" },
+    { name: "Evanna Homes", href: "/evanna" },
+    { name: "Kudva's Grandeur", href: "/kudva" },
+    { name: "Madhuban Apartments", href: "/madhuban" },
+    { name: "Nandagokul Apartments", href: "/nandagokul" },
+    { name: "Nandadeep Apartments", href: "/nandadeep" },
+    { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
+    { name: "Gokuldham", href: "/gokuldham" },
+    { name: "Mukund Sadan", href: "/mukund-sadhan" },
+    { name: "Kailash", href: "/kailash" },
+  ],
+};
+
 // 1. The Header Component (Exactly the same in both)
-const ProjectHeader = () => (
+const ProjectHeader = ({ projectLink, projectName }: { projectLink: string; projectName: string }) => (
   <div className="flex items-center justify-end gap-20 text-sm font-light text-gray-500 shrink-0 px-10 pt-10">
     <button className="hover:text-black transition-colors">About</button>
-    <button className="flex items-center gap-1 text-[#0097DC] font-medium">
-      Rudraksh
-      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
+    <div className="group relative">
+      <button className="flex items-center gap-1 text-[#0097DC] font-medium group-hover:text-[#0097DC] transition-colors duration-300">
+        {projectName}
+        <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {/* Dropdown Content */}
+      <div className="absolute top-1/2 right-0 mt-4 min-w-[50vw] bg-white/95 backdrop-blur-sm p-8 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-100 border border-gray-100 shadow-xl">
+        <div className="flex gap-12">
+          {/* Ongoing Column */}
+          <div className="w-[200px] shrink-0">
+            <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2 text-left">Ongoing</h3>
+            <div className="flex flex-col gap-3">
+              {PROJECTS.ongoing.map((p) => (
+                <Link key={p.name} href={p.href} className="group/item flex items-center justify-between transition-colors duration-300 text-left">
+                  <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap font-medium">
+                    {p.name}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Completed Column */}
+          <div className="flex-1 border-l border-gray-100 pl-12 text-left">
+            <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Completed</h3>
+            <div className="grid grid-cols-3 gap-x-8 gap-y-4">
+              {PROJECTS.completed.map((p) => (
+                <Link
+                  key={p.name}
+                  href={p.href}
+                  className="block text-[15px] text-gray-600 hover:text-[#0097DC] transition-colors hover:translate-x-1 duration-200"
+                >
+                  {p.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <button className="hover:text-black transition-colors">Insights</button>
-    <Link href="/project-enquire?project=rudraksh" className="hover:text-black transition-colors">
+    <Link href={projectLink} className="hover:text-black transition-colors">
       Contact
     </Link>
   </div>

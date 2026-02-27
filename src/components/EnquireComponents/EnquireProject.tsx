@@ -6,19 +6,19 @@ import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThankYouModal from "../contact/ThankYouModal";
 
-
-
 const PROJECT_MAPS: Record<string, string> = {
+  kedar: "https://www.google.com/maps?q=Kedar%20by%20Mukund%20MGM%20Realty&output=embed",
   rudraksh: "https://www.google.com/maps?q=Rudraksh%20by%20Mukund%20MGM%20Realty&output=embed",
-  default: "https://www.google.com/maps?q=Ashoka%20Business%20Center&output=embed"
+  default: "https://www.google.com/maps?q=Ashoka%20Business%20Center&output=embed",
 };
 
 function EnquireProjectContent() {
   const searchParams = useSearchParams();
   const projectParam = searchParams.get("project");
 
-  const mapSrc = PROJECT_MAPS[projectParam?.toLowerCase() || "default"];
+  const [currentProject, setCurrentProject] = useState<string>("");
 
+  const mapSrc = PROJECT_MAPS[currentProject?.toLowerCase()] || PROJECT_MAPS["default"];
 
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -32,11 +32,29 @@ function EnquireProjectContent() {
   });
 
   useEffect(() => {
-    if (projectParam) {
+    let sourceProject = projectParam;
+
+    if (!sourceProject && typeof window !== "undefined") {
+      const referrer = document.referrer;
+      if (referrer) {
+        try {
+          const url = new URL(referrer);
+          const pathSegments = url.pathname.split("/").filter(Boolean);
+          if (pathSegments.length > 0 && pathSegments[0] !== "project-enquire") {
+            sourceProject = pathSegments[0];
+          }
+        } catch (e) {
+          // Ignore
+        }
+      }
+    }
+
+    if (sourceProject) {
+      setCurrentProject(sourceProject);
       setFormData((prev) => ({
         ...prev,
-        project: projectParam,
-        interestedIn: projectParam.charAt(0).toUpperCase() + projectParam.slice(1)
+        project: sourceProject,
+        interestedIn: sourceProject.charAt(0).toUpperCase() + sourceProject.slice(1),
       }));
     }
   }, [projectParam]);
@@ -107,8 +125,8 @@ function EnquireProjectContent() {
         name: "",
         email: "",
         phone: "",
-        interestedIn: "",
-        project: projectParam || "",
+        interestedIn: currentProject ? currentProject.charAt(0).toUpperCase() + currentProject.slice(1) : "",
+        project: currentProject || "",
         consent: true,
       });
       alert("Form submitted successfully!");
@@ -126,8 +144,8 @@ function EnquireProjectContent() {
       name: "",
       email: "",
       phone: "",
-      interestedIn: "",
-      project: projectParam || "",
+      interestedIn: currentProject ? currentProject.charAt(0).toUpperCase() + currentProject.slice(1) : "",
+      project: currentProject || "",
       consent: true,
     });
     setStatus((prev) => ({ ...prev, success: false }));
@@ -137,34 +155,28 @@ function EnquireProjectContent() {
     <section className="w-full bg-white lg:pt-32 lg:pb-12  pt-24">
       <div className="mx-auto  px-6 md:px-12 lg:px-20 xl:px-54">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
-
           {/* LEFT — MAP */}
           <div className="order-2 lg:order-1 w-full h-[400px] lg:h-full bg-gray-200 overflow-hidden">
-            <iframe
-              src={mapSrc}
-              className="w-full h-full border-0 grayscale-[30%]"
-              loading="lazy"
-            />
+            <iframe src={mapSrc} className="w-full h-full border-0 grayscale-[30%]" loading="lazy" />
           </div>
 
           {/* RIGHT — FORM */}
           <div className="order-1 lg:order-2 pt-4">
-
             {/* Heading */}
             <h2 className="text-[46px] leading-[1.1] font-thin text-[#505153]">
               Enquire About <br />
-              <span className="font-semibold">{formData.project ? formData.project.charAt(0).toUpperCase() + formData.project.slice(1) : "This Project"}</span>
+              <span className="font-semibold">
+                {formData.project ? formData.project.charAt(0).toUpperCase() + formData.project.slice(1) : "This Project"}
+              </span>
             </h2>
 
             {/* Subtext */}
             <p className="mt-6 text-[15px] text-[#7a7a7a] leading-relaxed max-w-[420px]">
-              From availability to specifications, connect with us for
-              complete project information.
+              From availability to specifications, connect with us for complete project information.
             </p>
 
             {/* FORM */}
             <form onSubmit={handleSubmit} className="mt-14 space-y-10">
-
               {/* Full Name */}
               <div className="relative">
                 <input
@@ -215,23 +227,22 @@ function EnquireProjectContent() {
 
               {/* Interested Dropdown - Custom Implementation */}
               <div className="relative">
-                <div
-                  className="relative w-full border-b border-[#d4d4d4] pb-3 cursor-pointer group"
-                  onClick={() => setIsOpen(!isOpen)}
-                >
+                <div className="relative w-full border-b border-[#d4d4d4] pb-3 cursor-pointer group" onClick={() => setIsOpen(!isOpen)}>
                   {/* Selected Value or Placeholder Logic */}
-                  <div className={`text-[15px] transition-colors ${formData.interestedIn ? 'text-[#505153]' : 'text-transparent'}`}>
+                  <div className={`text-[15px] transition-colors ${formData.interestedIn ? "text-[#505153]" : "text-transparent"}`}>
                     {formData.interestedIn || "Select"}
                   </div>
 
                   {/* Custom Arrow */}
                   <ChevronDown
-                    className={`absolute right-0 top-0 w-5 h-5 text-[#505153] transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                    className={`absolute right-0 top-0 w-5 h-5 text-[#505153] transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
                     strokeWidth={1.5}
                   />
 
                   {/* Floating Label */}
-                  <label className={`absolute left-0 top-0 text-[15px] text-[#505153] duration-300 transform origin-[0] pointer-events-none ${(isOpen || formData.interestedIn) ? '-translate-y-6 scale-75' : 'translate-y-0 scale-100'}`}>
+                  <label
+                    className={`absolute left-0 top-0 text-[15px] text-[#505153] duration-300 transform origin-[0] pointer-events-none ${isOpen || formData.interestedIn ? "-translate-y-6 scale-75" : "translate-y-0 scale-100"}`}
+                  >
                     Interested in <span className="text-[#0097DC]">*</span>
                   </label>
                 </div>
@@ -241,7 +252,7 @@ function EnquireProjectContent() {
                   {isOpen && (
                     <motion.div
                       initial={{ opacity: 0, y: -10, height: 0 }}
-                      animate={{ opacity: 1, y: 0, height: 'auto' }}
+                      animate={{ opacity: 1, y: 0, height: "auto" }}
                       exit={{ opacity: 0, y: -10, height: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute left-0 right-0 top-full mt-1 bg-white shadow-lg border border-[#e5e5e5] rounded-md overflow-hidden z-20"
@@ -250,7 +261,7 @@ function EnquireProjectContent() {
                         ...(formData.project ? [formData.project.charAt(0).toUpperCase() + formData.project.slice(1)] : []),
                         "2 BHK",
                         "3 BHK",
-                        "Commercial"
+                        "Commercial",
                       ].map((option) => (
                         <div
                           key={option}
@@ -286,10 +297,8 @@ function EnquireProjectContent() {
                   {status.loading ? "Submitting..." : "Submit"}
                 </button>
               </div>
-
             </form>
           </div>
-
         </div>
       </div>
       <ThankYouModal isOpen={showModal} onClose={handleCloseModal} />
