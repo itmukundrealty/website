@@ -58,7 +58,7 @@ export default function MissionStatement({ text, imageSrc }: MissionStatementPro
                     alt="Mission Graphic"
                     width={400}
                     height={400}
-                    className="w-full h-auto object-contain -rotate-20"
+                    className="w-full h-auto object-contain -rotate-20 blur-lg"
                     priority
                 />
             </div>

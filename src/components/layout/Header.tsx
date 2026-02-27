@@ -9,16 +9,24 @@ const PROJECTS = {
     { name: "Rudraksh", href: "/rudraksh" }
   ],
   completed: [
-    "Mathura", "Ajantha Business Center", "Evanna Homes", "Kudva's Grandeur",
-    "Madhuban", "Nandagokul", "Nanda Deep", "Bhargavi Gloria Residency",
-    "Gokuldham", "Mukund Sadhan", "Kailash"
-  ].map(name => ({ name, href: `/projects/${name.toLowerCase().replace(/\s+/g, '-')}` })) // Default mapping for others if needed, or just '#'
+    { name: "Mathura Residency", href: "/mathura" },
+    { name: "Ajanta Business Center", href: "/ajanta" },
+    { name: "Evanna Homes", href: "/evanna" },
+    { name: "Kudva's Grandeur", href: "/kudva" },
+    { name: "Madhuban Apartments", href: "/madhuban" },
+    { name: "Nandagokul Apartments", href: "/nandagokul" },
+    { name: "Nandadeep Apartments", href: "/nandadeep" },
+    { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
+    { name: "Gokuldham", href: "/gokuldham" },
+    { name: "Mukund Sadan", href: "/mukund-sadhan" },
+    { name: "Kailash", href: "/kailash" }
+  ]
 };
 
-const Header = () => {
+const ProjectHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(true); // Default open as per common mobile patterns or keep closed if preferred, user interaction usually toggles. Let's start closed or check preference. Actually, usually cleaner closed. Let's stick to false initially. 
+  const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false); // Default closed
 
   // Handle Scroll effect
   useEffect(() => {
@@ -49,41 +57,41 @@ const Header = () => {
           {/* Logo Section */}
           <Link href="/" className="z-50 relative">
             <div className="relative w-32 md:w-36 lg:w-40 h-auto aspect-[3/1]">
-              <img src="/icons/logo.svg" alt="Mukund Realty" className="object-contain w-full h-full" />
+              <img src={isScrolled ? "/icons/logo.svg" : "/icons/logo.svg"} alt="Mukund Realty" className="object-contain w-full h-full" />
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-12 xl:gap-16">
-            <Link href="/about" className="text-[#505153] hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300">About</Link>
+            <Link href="/about" className={` hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>About</Link>
 
             {/* Desktop Dropdown */}
             <div className="group relative py-4">
-              <button className="flex items-center gap-1 text-[#505153] group-hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300">
+              <button className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>
                 Projects <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]" />
               </button>
 
               {/* Dropdown Content */}
-              <div className="absolute top-full left-0 mt-2 min-w-[200px] bg-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] rounded-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-[100]">
-                <div className="flex flex-col p-6">
+              <div className="absolute top-full right-0 mt-2 min-w-[50vw] bg-white/95 backdrop-blur-sm  p-8 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-[100] border border-gray-100">
+                <div className="flex gap-12">
                   {/* Ongoing Column */}
-                  <div className="flex-1">
-                    {/* <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold">Ongoing</h3> */}
+                  <div className="w-[200px] shrink-0">
+                    <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Ongoing</h3>
                     <div className="flex flex-col gap-3">
                       {PROJECTS.ongoing.map(p => (
                         <Link key={p.name} href={p.href} className="group/item flex items-center justify-between transition-colors duration-300">
-                          <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap">{p.name}</span>
+                          <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap font-medium">{p.name}</span>
                         </Link>
                       ))}
                     </div>
                   </div>
 
                   {/* Completed Column */}
-                  <div className="flex-1 border-l border-gray-100 pl-8">
-                    <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold">Completed</h3>
-                    <div className="flex flex-col gap-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                  <div className="flex-1 border-l border-gray-100 pl-12">
+                    <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Completed</h3>
+                    <div className="grid grid-cols-3 gap-x-8 gap-y-4">
                       {PROJECTS.completed.map(p => (
-                        <Link key={p.name} href={p.href} className="block text-[14px] text-gray-500 hover:text-black py-1 transition-colors">{p.name}</Link>
+                        <Link key={p.name} href={p.href} className="block text-[15px] text-gray-600 hover:text-[#0097DC] transition-colors hover:translate-x-1 duration-200">{p.name}</Link>
                       ))}
                     </div>
                   </div>
@@ -93,7 +101,7 @@ const Header = () => {
 
             {/* <Link href="/insights" className="text-[#333333] hover:text-black text-lg font-medium tracking-wide transition-colors duration-300">Insights</Link> */}
 
-            <Link href="/contact" className="text-[#505153] hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300">Contact</Link>
+            <Link href="/project-enquire?project=rudraksh" className={`hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>Contact</Link>
           </nav>
 
           {/* Mobile Toggle */}
@@ -224,7 +232,7 @@ const Header = () => {
 
                 {/* Contact */}
                 <Link
-                  href="/contact"
+                  href="/project-enquire?project=rudraksh"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
                 >
@@ -240,4 +248,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default ProjectHeader;
