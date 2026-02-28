@@ -9,6 +9,7 @@ import LandingHero from "@/components/sections/LandingHero";
 import LandmarkSection from "@/components/sections/LandmarkSection";
 import PrinciplesSection from "@/components/sections/PrinciplesSection";
 import Script from "next/script";
+import InsightsSection from "@/components/sections/InsightsSection";
 
 export default function Home() {
   const jsonLd = {
@@ -43,11 +44,13 @@ export default function Home() {
       </div>
       
       <ExperienceStandardSection />
+
+      <InsightsSection/>
  
       <CraftedForMomentsSection />
       <DesignedForMatters />
       <Footer />
-    </main>
+    </main> 
   );
 }
 

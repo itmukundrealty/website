@@ -17,7 +17,7 @@ export default function HeroGrid() {
                 transition={{ duration: 0.7 }}
                 className="text-left md:text-center mb-8 md:mb-12"
             >
-                <p className="text-3xl md:text-6xl text-[#505153] mb-2 font-thin">
+                <p className="text-3xl md:text-6xl text-[#505153] mb-2 font-light">
                     13+ Years of
                 </p>
 

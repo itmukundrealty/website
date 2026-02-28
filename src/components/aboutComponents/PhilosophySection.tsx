@@ -84,7 +84,7 @@ export default function PhilosophySection({ heading, description, imageSrc }: Ph
                             className="
                                 text-lg
                                 leading-[1.6]
-                                font-thin
+                                font-light
                                 text-[#505153]
                             "
                         >

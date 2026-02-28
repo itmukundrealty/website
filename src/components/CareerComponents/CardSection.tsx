@@ -81,7 +81,7 @@ export default function CareerOpportunities({ jobs }: CareerOpportunitiesProps) 
 
             <div className="max-w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-0 mb-12 md:mb-0">
                 <div className="w-full md:w-auto">
-                    <h3 className="text-4xl md:text-6xl"><span className="font-thin text-[#505153]">A Future</span></h3>
+                    <h3 className="text-4xl md:text-6xl"><span className="font-light text-[#505153]">A Future</span></h3>
                     <h2 className="text-4xl md:text-6xl text-[#505153] font-medium mt-2">Worth Building</h2>
                 </div>
             </div>

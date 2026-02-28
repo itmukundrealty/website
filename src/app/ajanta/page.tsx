@@ -56,7 +56,7 @@ const MAP_DATA = [
         points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 12
+            zoom: 14
         }
     },
     {
@@ -66,7 +66,7 @@ const MAP_DATA = [
         points: [35, 29, 45, 46, 22, 47],
         viewport: {
             center: { lat: 12.8800, lng: 74.8400 },
-            zoom: 13
+            zoom: 14
         }
     },
     {
@@ -76,7 +76,7 @@ const MAP_DATA = [
         points: [24, 48, 41, 40],
         viewport: {
             center: { lat: 12.8800, lng: 74.8500 },
-            zoom: 13
+            zoom: 14
         }
     },
 ];

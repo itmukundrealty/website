@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
 
                     <div className="space-y-8 text-[#505153] font-sans text-lg leading-relaxed font-light">
                         <p>
-                            At Mukund MGM Realty, accessible from <Link href="/" className="text-[#0097DC] hover:underline">https://mukundmgmrealty.com/</Link>, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Mukund MGM Realty and how we use it.
+                            At Mukund MGM Realty, accessible from <Link href="/" className="text-[#0097DC] hover:underline">www.mukundmgmrealty.com </Link>, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Mukund MGM Realty and how we use it.
                         </p>
 
                         <p>

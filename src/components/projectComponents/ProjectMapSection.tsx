@@ -150,7 +150,7 @@ export default function StrategicMap() {
             {/* 3. LEFT INFO PANEL */}
             <div className="relative z-20 flex h-full items-center px-6 lg:px-20 pointer-events-none">
                 <div className="pointer-events-auto w-full max-w-[450px] bg-[#0097DC] text-white p-12 ">
-                    <h2 className="text-[44px] font-thin mb-10 leading-[1.1]">
+                    <h2 className="text-[44px] font-light mb-10 leading-[1.1]">
                         Strategically <br />
                         <span className="font-semibold">Connected</span>
                     </h2>

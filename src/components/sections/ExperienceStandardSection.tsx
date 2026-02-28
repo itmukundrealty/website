@@ -152,7 +152,7 @@ export default function ExperienceStandardSection() {
                     {/* --- Left Content (Title & Pagination) --- */}
                     <div className="lg:col-span-5 space-y-8">
                         <div>
-                            <h2 className="text-4xl md:text-6xl font-thin text-[#505153] mb-2">
+                            <h2 className="text-4xl md:text-6xl font-light text-[#505153] mb-2">
                                 Experiences that
                             </h2>
                             <h2 className="text-4xl md:text-6xl font-medium text-[#505153] leading-tight ">

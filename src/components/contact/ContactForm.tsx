@@ -77,11 +77,11 @@ export default function ContactForm() {
                     {/* LEFT COLUMN - Info */}
                     <div className="flex flex-col justify-start pt-4">
                         <h1 className="text-4xl lg:text-6xl  leading-[1.1]  md:text-[56px]">
-                            <span className="font-thin text-[#505153] block">Reach Out</span>
+                            <span className="font-light text-[#505153] block">Reach Out</span>
                             <span className="font-medium text-[#505153] block">to Mukund Realty</span>
                         </h1>
 
-                        <p className="mt-8 max-w-[320px] text-lg font-thin leading-relaxed text-[#7a7a7a]">
+                        <p className="mt-8 max-w-[320px] text-lg font-light leading-relaxed text-[#7a7a7a]">
                             Whether it&apos;s a new brief or a quick question, we&apos;d love to hear from you.
                         </p>
 

@@ -38,7 +38,7 @@ const MAP_DATA = [
   {
     key: "city",
     title: "Regional & City Access",
-    icon: "/icons/regionalIcon.svg",
+    icon: "/icons/regional.svg",
     points: [0],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -58,7 +58,7 @@ const MAP_DATA = [
   {
     key: "education",
     title: "Commercial Proximity",
-    icon: "/icons/commercial.svg",
+    icon: "/icons/itIcon.svg",
     points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },

@@ -10,6 +10,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { Icons } from "./FeatureIcons";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export type FeatureItem = {
   icon: keyof typeof Icons;
@@ -33,16 +34,14 @@ export default function FeaturesSection({
   galleryImages,
   projectLink = "/project-enquire",
 }: FeaturesSectionProps) {
+  const pathname = usePathname();
+  const currentProject = pathname?.split('/')[1] || '';
+  const validProjects = ["rudraksh", "mathura", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
+  const finalLink = projectLink === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : projectLink;
+
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const GALLERY_IMAGES = galleryImages || [
-    "/images/rudrakshImages/10.webp",
-    "/images/rudrakshImages/11.webp",
-    "/images/rudrakshImages/12.webp",
-    "/images/rudrakshImages/13.webp",
-    "/images/rudrakshImages/14.webp",
-    "/images/rudrakshImages/15.webp",
-  ];
+  const GALLERY_IMAGES = galleryImages || [];
 
   return (
     <section className="py-20 lg:py-32 bg-white font-host">
@@ -55,7 +54,7 @@ export default function FeaturesSection({
         ) : (
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16 lg:mb-28">
             <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#424244] font-light tracking-tight leading-tight">{heading}</h2>
-            <Link href={projectLink}>
+            <Link href={finalLink}>
               <button className="flex items-center gap-2 px-4 py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-sm font-medium shrink-0">
                 <ArrowUpRight className="w-5 h-5 hover:rotate-45 transition-all duration-300" />
                 Explore Now
@@ -75,9 +74,8 @@ export default function FeaturesSection({
             return (
               <div
                 key={index}
-                className={`group flex flex-row items-center gap-4 lg:gap-5 transition-all duration-300 ${
-                  isHiddenOnMobile ? "hidden md:flex" : "flex"
-                }`}
+                className={`group flex flex-row items-center gap-4 lg:gap-5 transition-all duration-300 ${isHiddenOnMobile ? "hidden md:flex" : "flex"
+                  }`}
               >
                 {/* Icon Wrapper */}
                 <div className="w-10 h-10 flex items-center justify-center text-[#505153] group-hover:text-[#0097DC] transition-all duration-500 transform group-hover:scale-110 shrink-0">

@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface ctaprops {
   title?: React.ReactNode;
@@ -13,6 +14,11 @@ interface ctaprops {
 }
 
 export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Contact Us", link = "/project-enquire" }: ctaprops) {
+  const pathname = usePathname();
+  const currentProject = pathname?.split('/')[1] || '';
+  const validProjects = ["rudraksh", "mathura", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
+  const finalLink = link === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : link;
+
   return (
     <section className="relative lg:h-[100vh] h-[95vh] w-full flex items-center  overflow-hidden">
       {/* Background Image */}
@@ -27,11 +33,11 @@ export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Co
       <div className="relative z-10 w-full h-full lg:h-auto flex flex-col lg:block justify-between pt-12 pb-10 lg:py-0 px-6 lg:px-24 xl:px-54">
         <div className="max-w-full text-left">
           <h2 className="text-4xl lg:text-7xl font-medium text-white mb-4 leading-tight">{title}</h2>
-          <p className="text-lg lg:text-4xl font-thin text-white/90 mb-10 tracking-wide  ">{subtitle}</p>
+          <p className="text-lg lg:text-4xl font-light text-white/80 mb-10 md:max-w-xl tracking-wide  ">{subtitle}</p>
 
           {/* Desktop Button */}
           <Link
-            href={link}
+            href={finalLink}
             className="hidden lg:inline-block bg-white text-[#0097DC] px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
           >
             {cta}
@@ -41,7 +47,7 @@ export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Co
         {/* Mobile Button */}
         <div className="w-full lg:hidden">
           <Link
-            href={link}
+            href={finalLink}
             className="block w-full bg-white text-[#0097DC] py-4 text-center text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
           >
             {cta}

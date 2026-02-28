@@ -7,17 +7,14 @@ import { ArrowUpRight } from "lucide-react";
 import StyledMap from "@/components/common/Shared/StyledMap";
 
 const PROJECTS_DATA = [
+    // ... keep your existing PROJECTS_DATA array exactly the same
     {
         id: "ashoka",
         name: "Ashoka Business Center",
         location: "Airport Road, Kapikad | Mangalore",
         image: "/images/LandingPageImg/landmarks/2.png",
         slug: "/ashoka",
-        mapLocation: {
-            id: 0,
-            lat: 12.904891658303564,
-            lng: 74.83737591311836,
-        }
+        mapLocation: { id: 0, lat: 12.904891658303564, lng: 74.83737591311836 }
     },
     {
         id: "rudraksh",
@@ -25,11 +22,7 @@ const PROJECTS_DATA = [
         location: "Behind Infosys, Kottara | Mangalore",
         image: "/images/LandingPageImg/landmarks/3.png",
         slug: "/rudraksh",
-        mapLocation: {
-            id: 1,
-            lat: 12.8993521,
-            lng: 74.8460278,
-        }
+        mapLocation: { id: 1, lat: 12.8993521, lng: 74.8460278 }
     },
     {
         id: "mathura",
@@ -37,38 +30,35 @@ const PROJECTS_DATA = [
         location: "Kottara Chowki | Mangalore",
         image: "/images/LandingPageImg/landmarks/1.png",
         slug: "/mathura",
-        mapLocation: {
-            id: 2,
-            lat: 12.9144958,
-            lng: 74.8357808,
-        }
+        mapLocation: { id: 2, lat: 12.9144958, lng: 74.8357808 }
     }
 ];
 
 export default function ProjectsMapSection() {
     const [activeProject, setActiveProject] = useState(PROJECTS_DATA[0]);
 
-    // We pass only the map locations to StyledMap
     const mapLocations = PROJECTS_DATA.map(p => ({
         ...p.mapLocation,
         mapLink: p.slug
     }));
 
     return (
-        <section className="relative w-full h-screen overflow-hidden bg-[#e5e5e5]">
-            {/* Map Background */}
-            <div className="absolute inset-0 z-0 h-full w-full">
+        /* 1. Removed h-screen and overflow-hidden to let the section size itself to the content */
+        <section className="relative w-full bg-[#e5e5e5]">
+            
+            {/* 2. Made the Map 'sticky' to the top of the screen so it freezes while scrolling */}
+            <div className="sticky top-0 z-0 h-screen w-full">
                 <StyledMap
                     activePoints={[activeProject.mapLocation.id]}
                     center={{ lat: activeProject.mapLocation.lat, lng: activeProject.mapLocation.lng }}
-                    zoom={15}
+                    zoom={14}
                     locations={mapLocations}
                 />
             </div>
 
-            {/* Scrollable Left Section */}
-            <div className="relative z-10 h-full w-full max-w-[550px] overflow-y-auto pointer-events-auto bg-transparent px-6 md:px-12 py-32 lg:ml-10 xl:ml-32">
-                <div className="flex flex-col gap-32 pb-[30vh]">
+            {/* 3. Replaced inner scrolling with a negative top margin to pull this content OVER the sticky map */}
+            <div className="relative z-10 w-full max-w-[550px] -mt-[100vh] px-6 md:px-12 py-32 lg:ml-10 xl:ml-32 pb-[20vh]">
+                <div className="flex flex-col gap-32">
                     {PROJECTS_DATA.map((project) => (
                         <div
                             key={project.id}
@@ -87,7 +77,7 @@ export default function ProjectsMapSection() {
                             </div>
 
                             {/* Text Block */}
-                            <div className="bg-white p-6 md:p-8 shadow-sm transition-shadow duration-500 group-hover:shadow-[0px_4px_20px_rgba(0,0,0,0.08)]">
+                            <div className="bg-white p-6 md:p-8 transition-shadow duration-500">
                                 <h3 className="text-[28px] md:text-[34px] font-normal text-[#505153] leading-tight mb-2">
                                     {project.name}
                                 </h3>

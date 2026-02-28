@@ -38,7 +38,7 @@ const TeamGroupSection = () => {
         {/* Text Content Area */}
         <div className="px-8 md:px-16 py-20 max-w-3xl">
           <h2 className="text-4xl md:text-5xl text-[#505153] leading-tight mb-8">
-            <span className="font-thin ">The Minds that</span> <br />
+            <span className="font-light ">The Minds that</span> <br />
             <span className="font-bold">Shape Every Space</span>
           </h2>
 
@@ -55,7 +55,7 @@ const TeamGroupSection = () => {
             </p>
           </div>
 
-          {/* <a
+          <a
             href="#join"
             className="inline-flex items-center mt-10 text-[#0097DC] font-semibold hover:text-[#0097DC] transition-colors"
           >
@@ -63,7 +63,7 @@ const TeamGroupSection = () => {
               <path d="M3.46206 1.49928L15.6005 1.49911M15.6005 1.49911L15.6005 13.4649M15.6005 1.49911L1.5 15.5996" stroke="#0097DC" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             </span> Join Our Team
-          </a> */}
+          </a>
         </div>
       </div>
     </section>

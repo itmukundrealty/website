@@ -34,7 +34,7 @@ export default async function page() {
                 }
                 description={
                     <>
-                        <span className="font-thin">If this reflects how you prefer to work, we would be glad to connect.</span>
+                        <span className="font-light">If this reflects how you prefer to work, we would be glad to connect.</span>
                     </>
                 }
                 imageSrc="/icons/mukund.svg"

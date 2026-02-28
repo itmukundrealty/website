@@ -192,11 +192,8 @@ export default function StyledMap({
                     {locations.map((loc) => {
                         const isActive = activePoints.includes(loc.id);
 
-                        // Special Marker for ID 0 or if active and no special marker is defined else we use circle
-                        // Let's modify to: if active, show marker, else show circle? 
-                        // Actually, if it's the exact '0' ID from default LOCATIONS we show Marker.
-                        // Or if it's active in the 'locations' array from props.
-                        if (loc.id === 0 || isActive) {
+                        // Special Marker for ID 0 (Main Property)
+                        if (loc.id === 0) {
                             return (
                                 <Marker
                                     key={loc.id}
@@ -210,7 +207,7 @@ export default function StyledMap({
                             );
                         }
 
-                        // Default Circles for other points
+                        // Default Circles for other points (dots)
                         return (
                             <Circle
                                 key={loc.id}
@@ -218,13 +215,13 @@ export default function StyledMap({
                                     lat: loc.lat,
                                     lng: loc.lng,
                                 }}
-                                radius={80}
+                                radius={isActive ? 100 : 80}
                                 onClick={() => handlePointClick(loc.mapLink)}
                                 options={{
-                                    fillColor: isActive ? '#005a8c' : '#96d9f3d5',
+                                    fillColor: isActive ? '#00A3E0' : '#96d9f3d5',
                                     fillOpacity: isActive ? 1 : 0.5,
                                     strokeColor: '#ffffff',
-                                    strokeWeight: 1,
+                                    strokeWeight: isActive ? 1.5 : 1,
                                     clickable: true,
                                 }}
                             />

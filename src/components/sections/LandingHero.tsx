@@ -18,8 +18,9 @@ const SAMPLE_ITEMS: CarouselItem[] = [
     { id: 4, image: "/images/LandingPageImg/hero/4.png" },
     { id: 5, image: "/images/LandingPageImg/hero/5.png" },
     { id: 6, image: "/images/LandingPageImg/hero/6.png" },
-    { id: 7, image: "/images/LandingPageImg/hero/2.png" },
-    { id: 8, image: "/images/LandingPageImg/hero/1.png" },
+    { id: 7, image: "/images/LandingPageImg/hero/1.png" },
+    { id: 8, image: "/images/LandingPageImg/hero/2.png" },
+
 
 
 ];
@@ -38,8 +39,8 @@ export default function LandingHeroSection() {
                         {/* Vertical line/Label if needed */}
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-light tracking-tight text-[#505153] leading-[1.1]">
-                        <span className="font-thin text-[#505153]">The <br className="lg:hidden" /> Foundation of</span>  <br className="" />
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl  font-light tracking-tight text-[#505153] leading-[1.1]">
+                        <span className="font-light text-[#505153]">The <br className="lg:hidden" /> Foundation of</span>  <br className="" />
 
                         <span className="font-medium text-[#505153]">Every Great Future</span>
                     </h1>
@@ -211,7 +212,7 @@ function CarouselCard({
             <img
                 src={item.image}
                 alt="Workspace design"
-                className="w-full h-full object-cover pointer-events-none"
+                className="w-full h-full object-cover pointer-events-none object-top"
             />
         </motion.div>
     );

@@ -100,7 +100,7 @@ export function ProjectHero({
           className="text-right pointer-events-auto mt-20 lg:mt-28 xl:mt-40"
         >
           <h1 className="text-5xl text-white tracking-tight font-medium mb-4 lg:text-7xl">Click to Explore</h1>
-          <h2 className="text-5xl text-white tracking-tight font-thin lg:text-7xl">Our Floors</h2>
+          <h2 className="text-5xl text-white tracking-tight font-light lg:text-7xl">Our Floors</h2>
         </motion.div>
       </div>
 
@@ -127,17 +127,18 @@ export function ProjectHero({
           </g>
 
           {/* INTERACTIVE MARKERS */}
-          {HERO_MARKERS.map((marker, index) => (
-            <g
-              key={`marker-${index}`}
-              // FIX ADDED: Added pointer-events-auto so markers are clickable
-              className="cursor-pointer group pointer-events-auto"
-              onMouseEnter={() => setHoveredMarkerIndex(index)}
-              onMouseLeave={() => setHoveredMarkerIndex(null)}
-            >
-              {marker.markerElements}
-            </g>
-          ))}
+          {selectedIndex === null &&
+            HERO_MARKERS.map((marker, index) => (
+              <g
+                key={`marker-${index}`}
+                // FIX ADDED: Added pointer-events-auto so markers are clickable
+                className="cursor-pointer group pointer-events-auto"
+                onMouseEnter={() => setHoveredMarkerIndex(index)}
+                onMouseLeave={() => setHoveredMarkerIndex(null)}
+              >
+                {marker.markerElements}
+              </g>
+            ))}
         </svg>
       </div>
 
@@ -156,7 +157,7 @@ export function ProjectHero({
 
       {/* 4. MARKER TOOLTIPS */}
       <AnimatePresence>
-        {hoveredMarkerIndex !== null && (
+        {selectedIndex === null && hoveredMarkerIndex !== null && (
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -402,21 +403,11 @@ export function ProjectHero({
   );
 }
 
+import { PROJECTS_LIST } from "@/data/projects";
+
 const PROJECTS = {
-  ongoing: [{ name: "Rudraksh", href: "/rudraksh" }],
-  completed: [
-    { name: "Mathura Residency", href: "/mathura" },
-    { name: "Ajanta Business Center", href: "/ajanta" },
-    { name: "Evanna Homes", href: "/evanna" },
-    { name: "Kudva's Grandeur", href: "/kudva" },
-    { name: "Madhuban Apartments", href: "/madhuban" },
-    { name: "Nandagokul Apartments", href: "/nandagokul" },
-    { name: "Nandadeep Apartments", href: "/nandadeep" },
-    { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
-    { name: "Gokuldham", href: "/gokuldham" },
-    { name: "Mukund Sadan", href: "/mukund-sadhan" },
-    { name: "Kailash", href: "/kailash" },
-  ],
+  ongoing: PROJECTS_LIST.filter(p => p.type === 'ongoing'),
+  completed: PROJECTS_LIST.filter(p => p.type === 'completed')
 };
 
 // 1. The Header Component (Exactly the same in both)

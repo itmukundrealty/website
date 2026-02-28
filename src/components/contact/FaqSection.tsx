@@ -33,7 +33,7 @@ export default function FaqSection({ faqData }: FaqSectionProps) {
                             <span className="font-normal block">Frequently Asked</span>
                             <span className="font-normal block">Questions</span>
                         </h2>
-                        <p className="mt-6 max-w-[280px] text-lg leading-relaxed font-thin text-[#505153]">
+                        <p className="mt-6 max-w-[280px] text-lg leading-relaxed font-light text-[#505153]">
                             Got questions? We&apos;ve got answers no jargon, just direct clarity
                         </p>
                     </div>
@@ -62,7 +62,7 @@ export default function FaqSection({ faqData }: FaqSectionProps) {
                                         className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
                                             }`}
                                     >
-                                        <p className="pt-3 text-lg leading-relaxed font-thin text-[#505153]">
+                                        <p className="pt-3 text-lg leading-relaxed font-light text-[#505153]">
                                             {faq.answer}
                                         </p>
                                     </div>

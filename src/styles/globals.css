@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-host-grotesk);
+  --font-mono: var(--font-host-grotesk);
 
   /* Custom Breakpoints */
   --breakpoint-md: 1024px;
@@ -17,7 +17,7 @@
   --breakpoint-lg2: 1515px;
   --breakpoint-xl: 1760px;
   --font-host: var(--font-host-grotesk);
-  --font-serif: var(--font-playfair-display);
+  --font-serif: var(--font-host-grotesk);
 
   /* Custom Animations */
   --animate-scroll-left: scroll-left 30s linear infinite;

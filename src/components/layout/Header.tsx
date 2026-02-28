@@ -4,23 +4,11 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 
+import { PROJECTS_LIST } from "@/data/projects";
+
 const PROJECTS = {
-  ongoing: [
-    { name: "Rudraksh", href: "/rudraksh" }
-  ],
-  completed: [
-    { name: "Mathura Residency", href: "/mathura" },
-    { name: "Ajanta Business Center", href: "/ajanta" },
-    { name: "Evanna Homes", href: "/evanna" },
-    { name: "Kudva's Grandeur", href: "/kudva" },
-    { name: "Madhuban Apartments", href: "/madhuban" },
-    { name: "Nandagokul Apartments", href: "/nandagokul" },
-    { name: "Nandadeep Apartments", href: "/nandadeep" },
-    { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
-    { name: "Gokuldham", href: "/gokuldham" },
-    { name: "Mukund Sadan", href: "/mukund-sadhan" },
-    { name: "Kailash", href: "/kailash" }
-  ]
+  ongoing: PROJECTS_LIST.filter(p => p.type === 'ongoing'),
+  completed: PROJECTS_LIST.filter(p => p.type === 'completed')
 };
 
 const ProjectHeader = () => {
@@ -63,11 +51,11 @@ const ProjectHeader = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-12 xl:gap-16">
-            <Link href="/about" className={` hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>About</Link>
+            <Link href="/about" className={` hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>About</Link>
 
             {/* Desktop Dropdown */}
             <div className="group relative py-4">
-              <button className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>
+              <button className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>
                 Projects <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]" />
               </button>
 
@@ -101,7 +89,7 @@ const ProjectHeader = () => {
 
             {/* <Link href="/insights" className="text-[#333333] hover:text-black text-lg font-medium tracking-wide transition-colors duration-300">Insights</Link> */}
 
-            <Link href="/project-enquire?project=rudraksh" className={`hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>Contact</Link>
+            <Link href="/contact" className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>Contact</Link>
           </nav>
 
           {/* Mobile Toggle */}
@@ -232,7 +220,7 @@ const ProjectHeader = () => {
 
                 {/* Contact */}
                 <Link
-                  href="/project-enquire?project=rudraksh"
+                  href="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
                 >

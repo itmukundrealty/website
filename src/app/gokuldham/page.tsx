@@ -170,7 +170,7 @@ export default function page() {
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that" titlePart2="Set the Standard" description="Stories from clients who chose Mukund Realty for quality, integrity, and reliability." />
-                <CTASection title={<>Find Your      <br />Place Here</>} subtitle="Experience comfort in the heart of the city." mobImg="/images/ctaImages/gokuldhamDesk.png" deskImg="/images/ctaImages/gokuldhamMob.png" />
+                <CTASection title={<>Find Your      <br />Place Here</>} subtitle="Experience comfort in the heart of the city." mobImg="/images/ctaImages/gokuldhamMob.png" deskImg="/images/ctaImages/gokuldhamDesk.png" />
                 <Footer />
             </div>
         </>
