@@ -122,6 +122,7 @@ interface StyledMapProps {
     center?: { lat: number; lng: number };
     zoom?: number;
     locations?: Location[];
+    hideMainIcon?: boolean;
 }
 
 export default function StyledMap({
@@ -130,7 +131,8 @@ export default function StyledMap({
     className = "",
     center = defaultCenter,
     zoom = 14,
-    locations = LOCATIONS
+    locations = LOCATIONS,
+    hideMainIcon = false,
 }: StyledMapProps) {
 
     const dynamicMapStyle = useMemo(() => {
@@ -192,8 +194,8 @@ export default function StyledMap({
                     {locations.map((loc) => {
                         const isActive = activePoints.includes(loc.id);
 
-                        // Special Marker for ID 0 (Main Property)
-                        if (loc.id === 0) {
+                        // Special Marker for ID 0 (Main Property) — only when hideMainIcon is false
+                        if (loc.id === 0 && !hideMainIcon) {
                             return (
                                 <Marker
                                     key={loc.id}
