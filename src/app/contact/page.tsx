@@ -40,26 +40,7 @@ const CONTACT_FAQS = [
         answer:
             "The booking process is simple and transparent. Once you select your unit, you can book it by paying a token amount. Our sales team will guide you through the documentation and payment schedule.",
     },
-    {
-        question: "Do you provide assistance with interior design?",
-        answer:
-            "Yes, we collaborate with reputed interior designers who can help you customize your space to suit your personal style and requirements.",
-    },
-    {
-        question: "Are your projects RERA registered?",
-        answer:
-            "Yes, all our ongoing projects are registered with RERA (Real Estate Regulatory Authority), ensuring full compliance and transparency.",
-    },
-    {
-        question: "What happens if there is a delay in possession?",
-        answer:
-            "We are committed to timely delivery. However, in the unlikely event of a delay, we adhere strictly to the terms and compensation clauses as mandated by RERA.",
-    },
-    {
-        question: "Can Non-Resident Indians (NRIs) buy properties from you?",
-        answer:
-            "Yes, NRIs can easily invest in our properties. We provide end-to-end assistance with documentation and legal formalities required for NRI investments.",
-    },
+
 ];
 
 export default function ContactPage() {

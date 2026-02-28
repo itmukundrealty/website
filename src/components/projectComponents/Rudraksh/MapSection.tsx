@@ -44,7 +44,7 @@ export default function MapSection({ data }: MapSectionProps) {
             {/* BLUE BOX OVERLAY (Desktop) */}
             <div className="hidden lg:flex absolute z-10 top-1/2 left-[10%] -translate-y-1/2">
                 <div className="bg-[#0097DC] text-white p-14 w-[450px] shadow-xl">
-                    <h2 className="text-[52px] font-thin mb-12 leading-[1.1]">
+                    <h2 className="text-[52px] font-light mb-12 leading-[1.1]">
                         Strategically <br />
                         <span className="font-semibold">Connected</span>
                     </h2>

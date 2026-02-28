@@ -197,7 +197,7 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
                 </div>
 
                 {/* --- Right Panel: Content --- */}
-                <div className="relative w-full lg:w-1/2 h-1/2 lg:h-full z-20 flex flex-col justify-center bg-[#0097DC]">
+                <div className="relative w-full lg:w-[calc(50%+1px)] h-1/2 lg:h-full z-20 flex flex-col justify-center bg-[#0097DC] lg:-ml-[1px]">
 
                     {/* Titles List - Aligned Right with significant padding */}
                     <div className="flex flex-col items-end gap-12 w-full pr-8 lg:pr-20 xl:pr-54 mb-20">

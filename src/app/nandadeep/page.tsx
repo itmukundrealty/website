@@ -174,7 +174,7 @@ export default function page() {
 
                 <MapSection data={MAP_DATA} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Own Your Space     <br />of Serenity</>} subtitle="A calm, connected place to call home." mobImg="/images/ctaImages/nandeepDesk1.png" deskImg="/images/ctaImages/nandeepMob.png" />
+                <CTASection title={<>Own Your Space     <br />of Serenity</>} subtitle="A calm, connected place to call home." mobImg="/images/ctaImages/nandeepMob.png" deskImg="/images/ctaImages/nandeepDesk1.png" />
                 <Footer />
             </div>
         </>

@@ -76,14 +76,14 @@ export default function QuoteBanner() {
           <h2
             className="
               text-white
-              font-thin
+              font-light
               leading-[1.25]
 
-              text-[22px]
-              sm:text-[28px]
-              md:text-[36px]
-              lg:text-[44px]
-              xl:text-[52px]
+              text-2xl
+              sm:text-3xl
+              md:text-6xl
+              lg:text-6xl
+              xl:text-8xl
               text-left
             "
           >
@@ -91,7 +91,7 @@ export default function QuoteBanner() {
 
             spaces shaped by individuals <br />
 
-            <span className="font-semibold">
+            <span className="font-medium">
               who take responsibility, together.
             </span>”
           </h2>

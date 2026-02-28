@@ -29,7 +29,7 @@ export default function ShapingPage() {
                     <>
                         <span className="font-medium">At Mukund Realty, we build with responsibility,
                             integrity, and long term intent, guiding every
-                            decision from planning through execution.</span> <span className="font-thin">We
+                            decision from planning through execution.</span> <span className="font-light">We
                                 believe real estate is about shaping environments
                                 that serve people, businesses, and communities
                                 with purpose.</span>

@@ -32,9 +32,9 @@ export default function WorkspaceCarouselSection() {
           {/* Vertical line/Label if needed */}
         </div>
         
-        <h1 className="text-5xl lg:text-7xl font-thin tracking-tight text-gray-800 leading-[1.1]">
+        <h1 className="text-5xl lg:text-7xl font-light tracking-tight text-gray-800 leading-[1.1]">
           Designing <br />
-          <span className="font-thin">Workspaces</span> that <br />
+          <span className="font-light">Workspaces</span> that <br />
           unlock <span className="font-medium text-gray-900">What’s Possible</span>
         </h1>
       </div>

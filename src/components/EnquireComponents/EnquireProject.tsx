@@ -12,6 +12,9 @@ const PROJECT_MAPS: Record<string, string> = {
   default: "https://www.google.com/maps?q=Ashoka%20Business%20Center&output=embed",
 };
 
+import { PROJECTS_LIST } from "@/data/projects";
+
+
 function EnquireProjectContent() {
   const searchParams = useSearchParams();
   const projectParam = searchParams.get("project");
@@ -51,10 +54,14 @@ function EnquireProjectContent() {
 
     if (sourceProject) {
       setCurrentProject(sourceProject);
+
+      const projectData = PROJECTS_LIST.find(p => p.id.toLowerCase() === sourceProject?.toLowerCase());
+      const displayName = projectData ? projectData.name : (sourceProject.charAt(0).toUpperCase() + sourceProject.slice(1).replace(/-/g, ' '));
+
       setFormData((prev) => ({
         ...prev,
         project: sourceProject,
-        interestedIn: sourceProject.charAt(0).toUpperCase() + sourceProject.slice(1),
+        interestedIn: displayName,
       }));
     }
   }, [projectParam]);
@@ -163,10 +170,31 @@ function EnquireProjectContent() {
           {/* RIGHT — FORM */}
           <div className="order-1 lg:order-2 pt-4">
             {/* Heading */}
-            <h2 className="text-[46px] leading-[1.1] font-thin text-[#505153]">
+            <h2 className="text-4xl md:text-5xl leading-[1.1] font-light text-[#505153]">
               Enquire About <br />
               <span className="font-semibold">
-                {formData.project ? formData.project.charAt(0).toUpperCase() + formData.project.slice(1) : "This Project"}
+                {formData.project ? (
+                  (() => {
+                    const projectDisplayNames: Record<string, string> = {
+                      kedar: "Kedar",
+                      rudraksh: "Rudraksh",
+                      ashoka: "Ashoka Business Center",
+                      ajanta: "Ajanta Business Center",
+                      bhargavi: "Bhargavi Gloria Residency",
+                      evanna: "Evanna Homes",
+                      kailash: "Kailash",
+                      gokuldham: "Gokuldham",
+                      kudva: "Kudva's Grandeur",
+                      madhuban: "Madhuban Apartments",
+                      mathura: "Mathura Residency",
+                      "mukund-sadhan": "Mukund Sadan",
+                      nandadeep: "Nandadeep Apartments",
+                      nandagokul: "Nandagokul Apartments"
+                    };
+                    return projectDisplayNames[formData.project.toLowerCase()] ||
+                      formData.project.charAt(0).toUpperCase() + formData.project.slice(1).replace(/-/g, ' ');
+                  })()
+                ) : "This Project"}
               </span>
             </h2>
 
@@ -257,20 +285,24 @@ function EnquireProjectContent() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute left-0 right-0 top-full mt-1 bg-white shadow-lg border border-[#e5e5e5] rounded-md overflow-hidden z-20"
                     >
-                      {[
-                        ...(formData.project ? [formData.project.charAt(0).toUpperCase() + formData.project.slice(1)] : []),
-                        "2 BHK",
-                        "3 BHK",
-                        "Commercial",
-                      ].map((option) => (
-                        <div
-                          key={option}
-                          className="px-4 py-3 text-[15px] text-[#505153] hover:bg-[#f5f5f5] cursor-pointer transition-colors"
-                          onClick={() => handleSelect(option)}
-                        >
-                          {option}
-                        </div>
-                      ))}
+                      {(() => {
+                        const projectOptions = PROJECTS_LIST.map(p => p.name).sort((a, b) => a.localeCompare(b));
+
+                        // Reorder: put currently selected interestedIn value first if it's in the list
+                        const sortedOptions = formData.interestedIn
+                          ? [formData.interestedIn, ...projectOptions.filter(opt => opt !== formData.interestedIn)]
+                          : projectOptions;
+
+                        return sortedOptions.map((option) => (
+                          <div
+                            key={option}
+                            className="px-4 py-3 text-[15px] text-[#505153] hover:bg-[#f5f5f5] cursor-pointer transition-colors"
+                            onClick={() => handleSelect(option)}
+                          >
+                            {option}
+                          </div>
+                        ));
+                      })()}
                     </motion.div>
                   )}
                 </AnimatePresence>

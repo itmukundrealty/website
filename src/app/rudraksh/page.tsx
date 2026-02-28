@@ -94,7 +94,7 @@ const SECTION_DATA = [
     label: "High Living Homes",
     description:
       "Rudraksh is envisioned as an expression of high living, where space, light, and serenity define everyday life. With two refined wings rising across 14 floors, each home feels expansive, composed, and effortlessly elegant.",
-    imageSrc: "/images/rudrakshImages/1.webp",
+    imageSrc: "/images/rudrakshImages/liv1.png",
   },
   {
     id: "kitchen",
@@ -232,6 +232,14 @@ export default function Project1Page() {
         features={FEATURES}
         heading="Everything You’re Looking For"
         completed={false}
+        galleryImages={[
+          "/images/rudrakshImages/10.webp",
+          "/images/rudrakshImages/11.webp",
+          "/images/rudrakshImages/12.webp",
+          "/images/rudrakshImages/13.webp",
+          "/images/rudrakshImages/14.webp",
+          "/images/rudrakshImages/15.webp",
+        ]}
       />
       {/* <ProjectInteractivePlan /> */}
 

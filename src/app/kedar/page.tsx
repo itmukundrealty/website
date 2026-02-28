@@ -87,28 +87,28 @@ const SECTION_DATA = [
     label: "Elevated Living",
     description:
       "More than just homes, Kedar offers a refined living experience shaped by comfort, privacy, and thoughtful design that supports everyday ease and long term well being.",
-    imageSrc: "/images/rudrakshImages/1.webp",
+    imageSrc: "/images/kedarImage/liv1.png",
   },
   {
     id: "kitchen",
     label: "Panoramic Views",
     description:
       "Designed to rise above its surroundings, the residences enjoy expansive views of greenery and the city beyond, creating a sense of openness and quiet retreat.",
-    imageSrc: "/images/rudrakshImages/2.webp",
+    imageSrc: "/images/kedarImage/liv2.png",
   },
   {
     id: "rooftop",
     label: "Thoughtful Design",
     description:
       "Every home is planned with clarity and balance, combining functional layouts, natural light, and refined detailing to support modern lifestyles.",
-    imageSrc: "/images/rudrakshImages/3.webp",
+    imageSrc: "/images/kedarImage/liv3.png",
   },
   {
     id: "location",
     label: "Connected Yet Serene",
     description:
       "Strategically located to offer city accessibility while remaining removed from noise and congestion, allowing residents to enjoy calm living without compromise.",
-    imageSrc: "/images/rudrakshImages/4.webp",
+    imageSrc: "/images/kedarImage/liv4.png",
   },
 ];
 
@@ -117,37 +117,37 @@ const AMENITIES_DATA = [
     id: "kitchen",
     label: "Rooftop Infinity Swimming Pool",
     subtitle: "",
-    image: "/images/rudrakshImages/2.webp",
+    image: "/images/kedarImage/am1.png",
   },
   {
     id: "wellness",
     label: "Open Air Gymnasium",
     subtitle: "",
-    image: "/images/rudrakshImages/6.webp",
+    image: "/images/kedarImage/am2.png",
   },
   {
     id: "lobby",
     label: "Indoor & Outdoor Recreation",
     subtitle: "",
-    image: "/images/rudrakshImages/7.webp",
+    image: "/images/kedarImage/am3.png",
   },
   {
     id: "pool",
     label: "Kids Play Area",
     subtitle: "",
-    image: "/images/rudrakshImages/8.webp",
+    image: "/images/kedarImage/am4.png",
   },
   {
     id: "gym",
     label: "Outdoor Badminton Court",
     subtitle: "",
-    image: "/images/rudrakshImages/9.webp",
+    image: "/images/kedarImage/am5.png",
   },
   {
     id: "sky-deck",
     label: "Spacious Visitor’s Lounge",
     subtitle: "",
-    image: "/images/rudrakshImages/3.webp",
+    image: "/images/kedarImage/am6.png",
   },
 ];
 
@@ -169,13 +169,26 @@ export default function page() {
         <ProjectHighLiving data={SECTION_DATA} />
         <HighlivingSection
           projectLink="/project-enquire?project=kedar"
-          heading="Spaces That Empower Business"
-          description="Welcome to Ashoka Business Center, a commercial space created with the needs of modern businesses in mind. Every detail is planned to enhance efficiency, functionality and comfort. The development provides dependable infrastructure, smooth connectivity, and thoughtfully designed amenities. It is a place where productivity meets clarity and where businesses can operate confidently today and in the future."
-          imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
+          heading="Redefining the Essence of Living"
+          description="Introducing Kedar, a contemporary residential address shaped by Mukund MGM Realty’s long-standing approach to quality and value. Thoughtfully planned duplex residences offer generous layouts, refined interiors, and a sense of openness that supports both everyday comfort and special moments. With carefully selected amenities and a location at the heart of Mangalore, Kedar brings homes that feel considered and easy to live in for years to come."
+          imageSrc="/images/kedarImage/videoPlaceholder.png"
           videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
         />
         <AmenitiesSection projectLink="/project-enquire?project=kedar" data={AMENITIES_DATA} />
-        <FeaturesSection projectLink="/project-enquire?project=kedar" features={FEATURES} heading="Designed for Everyday Work" completed={false} />
+        <FeaturesSection
+          projectLink="/project-enquire?project=kedar"
+          features={FEATURES}
+          heading="Designed for Everyday Work"
+          completed={false}
+          galleryImages={[
+            "/images/kedarImage/ft1.png",
+            "/images/kedarImage/ft2.png",
+            "/images/kedarImage/ft3.png",
+            "/images/kedarImage/ft4.png",
+            "/images/kedarImage/ft5.png",
+            "/images/kedarImage/ft6.png",
+          ]}
+        />
 
         <MapSection data={MAP_DATA} />
         <ExperienceSection
@@ -191,8 +204,8 @@ export default function page() {
             </>
           }
           subtitle="DSpacious homes built for everyday living."
-          mobImg="/images/rudrakshImages/ctaBg.webp"
-          deskImg="/images/rudrakshImages/image.png"
+          mobImg="/images/kedarImage/ctaBg.webp"
+          deskImg="/images/ctaImages/kedarDesk.png"
         />
         <Footer />
       </div>

@@ -29,7 +29,7 @@ export default function MissionStatement({ text, imageSrc }: MissionStatementPro
                             md:text-4xl
                             lg:text-5xl
                             leading-[1.3]
-                            font-thin
+                            font-light
                             text-[#505153]
                         "
                     >

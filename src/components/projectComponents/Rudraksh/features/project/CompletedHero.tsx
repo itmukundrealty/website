@@ -94,7 +94,7 @@ export function CompletedHero({
                     <h1 className="text-4xl text-white tracking-tight font-medium mb-4 lg:text-7xl">
                         {title}
                     </h1>
-                    <h2 className="text-5xl text-white tracking-tight font-thin lg:text-7xl">
+                    <h2 className="text-5xl text-white tracking-tight font-light lg:text-7xl">
                         {subtitle}
                     </h2>
                 </motion.div>

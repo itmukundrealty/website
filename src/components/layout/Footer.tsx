@@ -38,6 +38,10 @@ export default function Footer() {
   const quickLinks = [
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
+    { name: "Careers", href: "/careers" },
+     { name: "Projects", href: "/projects" },
+      { name: "Media Center", href: "/" },
+
   ];
   const socials = [
     { name: "Facebook", href: "https://www.facebook.com/mukundmgmrealty" },
@@ -45,7 +49,9 @@ export default function Footer() {
     { name: "WhatsApp", href: "https://www.whatsapp.com/channel/0029VaEoD6l2phHFAQlRli1m" } // Using the phone number from the Get In Touch section
   ];
   const projects = [
-    { name: "Rudraksh", href: "/rudraksh" }
+    { name: "Rudraksh", href: "/rudraksh" } ,
+    { name: "Kedar", href: "/kedar" },
+    { name: "Ashoka Buisness Center", href: "/ashoka" }
   ];
 
   return (

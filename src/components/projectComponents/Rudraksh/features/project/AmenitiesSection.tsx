@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export interface AmenityItem {
   id: string;
@@ -25,6 +26,11 @@ interface AmenitiesSectionProps {
 }
 
 export default function AmenitiesSection({ data, projectLink = "/project-enquire" }: AmenitiesSectionProps) {
+  const pathname = usePathname();
+  const currentProject = pathname?.split('/')[1] || '';
+  const validProjects = ["rudraksh", "mathura", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
+  const finalLink = projectLink === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : projectLink;
+
   const [activeIndex, setActiveIndex] = useState(0);
   const desktopSwiperRef = useRef<any>(null);
   const mobileSwiperRef = useRef<any>(null);
@@ -116,7 +122,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                 </div>
 
                 <Link
-                  href={projectLink}
+                  href={finalLink}
                   className="group flex items-center gap-3 px-6 py-3 lg:px-6 lg:py-5 border border-[#0097DC]/30 text-[#0097DC]  hover:bg-[#0097DC] hover:text-white duration-300 transition-all uppercase tracking-widest text-[11px] font-bold w-fit"
                 >
                   <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-all duration-300" />

@@ -10,10 +10,10 @@ export default function InformationSection() {
 
             {/* Content Container */}
             <div className="relative z-10 container mx-auto px-4 text-center">
-                <h2 className="text-[#333333] font-serif text-4xl md:text-5xl lg:text-6xl font-thin mb-4">
+                <h2 className="text-[#333333] font-serif text-4xl md:text-5xl lg:text-6xl font-light mb-4">
                     Need more information?
                 </h2>
-                <p className="text-[#888888] font-sans text-sm md:text-base tracking-wide mb-8 font-thin">
+                <p className="text-[#888888] font-sans text-sm md:text-base tracking-wide mb-8 font-light">
                     Contact our team.
                 </p>
                 <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 font-sans font-medium text-[#009DE2]">

@@ -82,7 +82,7 @@ export default function ExperienceSection({
                     {/* --- Left Content (Title & Pagination) --- */}
                     <div className="lg:col-span-5 space-y-8">
                         <div>
-                            <h2 className="text-4xl md:text-5xl text-[#505153] leading-tight font-thin mb-2">
+                            <h2 className="text-4xl md:text-5xl text-[#505153] leading-tight font-light mb-2">
                                 {titlePart1}
                             </h2>
                             <h2 className="text-4xl md:text-5xl text-[#505153] leading-tight font-medium">
@@ -189,7 +189,7 @@ export default function ExperienceSection({
                                 <button
                                     key={index}
                                     onClick={() => swiperRef.current?.slideTo(index)}
-                                    className={`h-1.5 rounded-sm transition-all duration-300 ${activeIndex === index ? "w-10 bg-[#0097DC]" : "w-10 bg-[#e5e7eb]"
+                                    className={`h-1 transition-all duration-300 ${activeIndex === index ? "w-10 bg-[#0097DC]" : "w-10 bg-[#e5e7eb]"
                                         }`}
                                     aria-label={`Go to slide ${index + 1}`}
                                 />

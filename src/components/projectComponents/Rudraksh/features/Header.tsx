@@ -1,24 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 
+import { PROJECTS_LIST } from "@/data/projects";
+
 const PROJECTS = {
-  ongoing: [{ name: "Rudraksh", href: "/rudraksh" }],
-  completed: [
-    { name: "Mathura Residency", href: "/mathura" },
-    { name: "Ajanta Business Center", href: "/ajanta" },
-    { name: "Evanna Homes", href: "/evanna" },
-    { name: "Kudva's Grandeur", href: "/kudva" },
-    { name: "Madhuban Apartments", href: "/madhuban" },
-    { name: "Nandagokul Apartments", href: "/nandagokul" },
-    { name: "Nandadeep Apartments", href: "/nandadeep" },
-    { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
-    { name: "Gokuldham", href: "/gokuldham" },
-    { name: "Mukund Sadan", href: "/mukund-sadhan" },
-    { name: "Kailash", href: "/kailash" },
-  ],
+  ongoing: PROJECTS_LIST.filter(p => p.type === 'ongoing'),
+  completed: PROJECTS_LIST.filter(p => p.type === 'completed')
 };
 
 interface ProjectHeaderProps {
@@ -27,6 +18,11 @@ interface ProjectHeaderProps {
 }
 
 const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund Realty" }: ProjectHeaderProps = {}) => {
+  const pathname = usePathname();
+  const currentProject = pathname?.split('/')[1] || '';
+  const validProjects = ["rudraksh", "mathura", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
+  const finalProjectLink = projectLink === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : projectLink;
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false); // Default closed
@@ -52,9 +48,8 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
-          isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
+          }`}
       >
         <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center bg-transparent">
           {/* Logo Section */}
@@ -68,7 +63,7 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
           <nav className="hidden lg:flex items-center gap-12 xl:gap-16">
             <Link
               href="/about"
-              className={` hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+              className={` hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
             >
               About
             </Link>
@@ -76,7 +71,7 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
             {/* Desktop Dropdown */}
             <div className="group relative py-4">
               <button
-                className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+                className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
               >
                 Projects{" "}
                 <ChevronDown
@@ -124,8 +119,8 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
             {/* <Link href="/insights" className="text-[#333333] hover:text-black text-lg font-medium tracking-wide transition-colors duration-300">Insights</Link> */}
 
             <Link
-              href={projectLink}
-              className={`hover:text-[#0097DC] text-lg font-thin tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+              href={finalProjectLink}
+              className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
             >
               Contact
             </Link>
@@ -252,7 +247,7 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
 
                 {/* Contact */}
                 <Link
-                  href={projectLink}
+                  href={finalProjectLink}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
                 >
