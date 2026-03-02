@@ -87,7 +87,7 @@ const ProjectHeader = () => {
               </div>
             </div>
 
-            {/* <Link href="/insights" className="text-[#333333] hover:text-black text-lg font-medium tracking-wide transition-colors duration-300">Insights</Link> */}
+            <Link href="/blog" className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>Blogs</Link>
 
             <Link href="/contact" className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>Contact</Link>
           </nav>
@@ -210,13 +210,13 @@ const ProjectHeader = () => {
                 </div>
 
                 {/* Insights */}
-                {/* <Link
-                  href="/insights"
+                <Link
+                  href="/blog"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
                 >
-                  Insights
-                </Link> */}
+                  Blogs
+                </Link>
 
                 {/* Contact */}
                 <Link

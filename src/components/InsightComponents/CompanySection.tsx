@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function CompanySection() {
     const announcements = [
@@ -31,10 +32,16 @@ export default function CompanySection() {
         <section className="bg-white pt-24 pb-16 md:py-24">
             <div className=" mx-auto px-6 md:px-12 lg:px-20 xl:px-54">
                 {/* Header */}
-                <div className="mb-0">
+                <div className="flex justify-between items-center mb-0">
                     <h2 className="text-4xl md:text-5xl lg:text-7xl leading-[1.05] text-[#505153] font-medium tracking-tight">
                         Company<br />Announcements
                     </h2>
+                    <Link href="/announcements" className="flex items-center gap-2 group text-[#505153] hover:text-[#505153] transition-colors">
+                        <span className="text-lg">View more</span>
+                        <div className="w-8 h-8 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#505153] transition-colors">
+                            <ArrowRight className="w-4 h-4" />
+                        </div>
+                    </Link>
                 </div>
 
                 {/* Content Grid */}
@@ -44,8 +51,8 @@ export default function CompanySection() {
                         <div
                             key={item.id}
                             className={`flex flex-col flex-1 pb-16 pt-12 md:pt-16 ${index === 0 ? 'md:pr-10 lg:pr-14' :
-                                    index === 1 ? 'md:px-10 lg:px-14 border-t md:border-t-0 md:border-l border-zinc-300' :
-                                        'md:pl-10 lg:pl-14 border-t md:border-t-0 md:border-l border-zinc-300'
+                                index === 1 ? 'md:px-10 lg:px-14 border-t md:border-t-0 md:border-l border-zinc-300' :
+                                    'md:pl-10 lg:pl-14 border-t md:border-t-0 md:border-l border-zinc-300'
                                 }`}
                         >
                             <h3 className="text-[1.5rem] md:text-[1.8rem] leading-[1.25] text-[#505153] font-normal mb-5 whitespace-pre-line tracking-tight min-h-[4.5rem]">

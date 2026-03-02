@@ -5,6 +5,16 @@ export interface TeamMember {
     img: string; // Mapped from 'imageUrl' in CMS
 }
 
+export interface Blog {
+    id: string;
+    title: string;
+    summary: string;
+    content: string; // HTML content from Unlayer
+    imageUrl: string;
+    createdAt: string; // ISO string
+    design?: any; // Raw Unlayer design if needed
+}
+
 // Ensure this matches your CMS URL. 
 // In development, if CMS is on port 3000 and reality is on 3001, this should be http://localhost:3000
 const CMS_BASE_URL = process.env.NEXT_PUBLIC_CMS_URL || 'https://mukund-cms.vercel.app';
@@ -33,5 +43,41 @@ export async function fetchTeamMembers(): Promise<TeamMember[]> {
     } catch (error) {
         console.error('Error fetching team members:', error);
         return []; // Return empty array on error to prevent crash
+    }
+}
+
+export async function fetchBlogs(): Promise<Blog[]> {
+    try {
+        const res = await fetch(`${CMS_BASE_URL}/api/blogs`, {
+            cache: 'no-store',
+        });
+
+        if (!res.ok) {
+            throw new Error(`Failed to fetch blogs: ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        return data as Blog[];
+    } catch (error) {
+        console.error('Error fetching blogs:', error);
+        return [];
+    }
+}
+
+export async function fetchBlogById(id: string): Promise<Blog | null> {
+    try {
+        const res = await fetch(`${CMS_BASE_URL}/api/blogs/${id}`, {
+            cache: 'no-store',
+        });
+
+        if (!res.ok) {
+            throw new Error(`Failed to fetch blog with id ${id}: ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        return data as Blog;
+    } catch (error) {
+        console.error(`Error fetching blog ${id}:`, error);
+        return null;
     }
 }

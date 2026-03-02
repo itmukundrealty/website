@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 
 
@@ -16,25 +17,25 @@ const slides = [
     id: 1,
     title: "Foundations of Trust",
     desc: "At Mukund, integrity means complete transparency and staying true to our word, ensuring every development reflects the trust placed in us.",
-    image:
-      "/images/LandingPageImg/defining/1.png",
+    image: "/images/LandingPageImg/defining/1.png",
     link: "About Mukund Realty",
+    href: "/about",
   },
   {
     id: 2,
     title: "Holistic Planning",
     desc: "From concept to completion, we apply meticulous attention to detail to ensure every element is executed with accuracy and care.",
-    image:
-      "/images/LandingPageImg/defining/2.png",
+    image: "/images/LandingPageImg/defining/2.png",
     link: "View our Projects",
+    href: "/projects",
   },
   {
     id: 3,
     title: "Design with Purpose",
     desc: "Each Mukund development is shaped by clear intent, prioritizing functional design that serves real needs and stands the test of time.",
-    image:
-      "/images/LandingPageImg/defining/3.png",
+    image: "/images/LandingPageImg/defining/3.png",
     link: "Explore our insights page",
+    href: "/blog",
   },
 ];
 
@@ -194,12 +195,12 @@ function SlideCard({ data }: { data: any }) {
           {data.desc}
         </p>
 
-        <button className="flex items-center gap-2 text-[#0097DC] font-medium group text-sm lg:text-base">
-          <ArrowUpRight className="w-5 h-5 lg:w-6 lg:h-6 transition-transform group-hover:rotate-45  transition-all duration-300" />
-          <span className="">
+        <Link href={data.href} className="flex items-center gap-2 text-[#0097DC] font-medium group text-sm lg:text-base">
+          <ArrowUpRight className="w-5 h-5 lg:w-6 lg:h-6 transition-transform group-hover:rotate-45 transition-all duration-300" />
+          <span>
             {data.link}
           </span>
-        </button>
+        </Link>
       </div>
     </div>
   );

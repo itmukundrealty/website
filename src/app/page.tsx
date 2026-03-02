@@ -10,6 +10,7 @@ import LandmarkSection from "@/components/sections/LandmarkSection";
 import PrinciplesSection from "@/components/sections/PrinciplesSection";
 import Script from "next/script";
 import InsightsSection from "@/components/sections/InsightsSection";
+import PortfolioSection from "@/components/sections/PortfolioSection";
 
 export default function Home() {
   const jsonLd = {
@@ -42,6 +43,8 @@ export default function Home() {
       <div className="mt-[8vh] lg:mt-[20vh]">
         <LandmarkSection />
       </div>
+
+      <PortfolioSection />
       
       <ExperienceStandardSection />
 
