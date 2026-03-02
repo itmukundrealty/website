@@ -3,10 +3,11 @@
 import React, { useEffect, useState, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { fetchBlogById, Blog } from "@/lib/api";
+import RelatedArticleSection from "@/components/InsightComponents/RelatedArticleSection";
 
 interface BlogDetailPageProps {
     params: Promise<{ id: string }>;
@@ -52,84 +53,146 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     }
 
     const createdDate = new Date(blog.createdAt);
-    const formattedDate = createdDate.toLocaleDateString('en-US', {
+    const formattedDate = createdDate.toLocaleDateString('en-GB', {
         day: 'numeric',
-        month: 'long',
+        month: 'short',
         year: 'numeric'
     });
-    const formattedTime = createdDate.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-    });
+
+    // Estimate read time (~200 words/min)
+    const wordCount = blog.content?.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length || 0;
+    const readTime = Math.max(1, Math.ceil(wordCount / 200));
+
+    // Unlayer exports full email HTML with hardcoded max-width/padding on wrapper divs.
+    // Strip those inline styles so the content fills the page's px-20 layout naturally.
+    const sanitizeUnlayerHtml = (html: string): string => {
+        return html
+            // Remove max-width from inline styles on any element
+            .replace(/(<[^>]+style\s*=\s*["'][^"']*)max-width\s*:\s*[^;;"']+;?\s*/gi, '$1')
+            // Remove fixed width (e.g. width:600px) from inline styles, keep 100%
+            .replace(/(<[^>]+style\s*=\s*["'][^"']*)width\s*:\s*\d+px\s*;?\s*/gi, '$1')
+            // Remove padding from the outermost wrapper div only
+            .replace(/(<div[^>]+id=["']?u_body["']?[^>]+style\s*=\s*["'][^"']*)padding\s*:\s*[^;;"']+;?\s*/gi, '$1')
+            // Remove background-color override on body/wrapper that conflicts
+            .replace(/(<div[^>]+id=["']?u_body["'][^>]+style\s*=\s*["'][^"']*)background-color\s*:\s*[^;;"']+;?\s*/gi, '$1');
+    };
 
     return (
         <div className="bg-white min-h-screen">
             <Header />
 
             <main className="pt-24 md:pt-32 pb-24">
-                {/* Header Section */}
+                {/* ── HEADER SECTION ── */}
                 <div className="mx-auto px-6 md:px-12 lg:px-20 xl:px-54 mb-12">
-                    {/* Go Back Section */}
-                    <div className="mb-8 md:mb-12">
-                        <Link
-                            href="/blog"
-                            className="inline-flex items-center gap-2 group text-[#505153] hover:text-[#0097DC] transition-colors"
-                        >
-                            <div className="w-10 h-10 rounded-full border border-[#505153] group-hover:border-[#0097DC] flex items-center justify-center transition-colors">
-                                <ArrowLeft className="w-5 h-5" />
+                    <div className="flex flex-col md:flex-row">
+
+                        {/* LEFT: Title + Summary */}
+                        <div className="flex-1 py-10 pr-16">
+                            <h1
+                                style={{ fontWeight: 700, fontSize: "clamp(2rem, 4vw, 3.75rem)", lineHeight: 1.1, letterSpacing: "-0.02em", color: "#2d2d2d" }}
+                                className="mb-6"
+                            >
+                                {blog.title}
+                            </h1>
+                            <p className="text-lg text-[#999] leading-relaxed font-normal">
+                                {blog.summary}
+                            </p>
+                        </div>
+
+                        {/* DIVIDER — thin vertical line */}
+                        <div className="hidden md:block w-px bg-gray-200 self-stretch mx-0" />
+
+                        {/* RIGHT: Date · Read Time · Go Back */}
+                        <div className="md:min-w-1/4 flex flex-col justify-between py-10 pl-10 pr-4">
+
+                            {/* Top group: Date + Read Time */}
+                            <div className="flex flex-col gap-6">
+                                {/* Date */}
+                                <div>
+                                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#aaa] mb-[5px]">
+                                        DATE
+                                    </p>
+                                    <p className="text-[15px] font-semibold text-[#2d2d2d] leading-tight">
+                                        {formattedDate}
+                                    </p>
+                                </div>
+
+                                {/* Read Time */}
+                                <div>
+                                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#aaa] mb-[5px]">
+                                        READ TIME
+                                    </p>
+                                    <p className="text-[15px] font-semibold text-[#2d2d2d] leading-tight">
+                                        {readTime} {readTime === 1 ? "Min" : "Mins"}
+                                    </p>
+                                </div>
                             </div>
-                            <span className="text-lg font-medium tracking-tight">Go back to blogs</span>
-                        </Link>
-                    </div>
 
-                    {/* Date and Time Section */}
-                    <div className="flex flex-wrap items-center gap-6 mb-8 text-[#505153]/60">
-                        <div className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-[#0097DC]" />
-                            <span className="text-sm font-medium uppercase tracking-widest">{formattedDate}</span>
+                            {/* Bottom: Go Back */}
+                            <div>
+                                <Link
+                                    href="/blog"
+                                    className="inline-flex items-center gap-3 group"
+                                >
+                                    <div className="w-11 h-11 rounded-full border border-[#bbb] group-hover:border-[#505153] flex items-center justify-center transition-colors shrink-0">
+                                        <ArrowLeft className="w-4 h-4 text-[#505153]" />
+                                    </div>
+                                    <span className="text-[15px] text-[#505153] font-normal group-hover:text-[#1a1a1a] transition-colors">
+                                        Go Back
+                                    </span>
+                                </Link>
+                            </div>
                         </div>
-                        <div className="w-1 h-1 rounded-full bg-gray-300 hidden sm:block"></div>
-                        <div className="flex items-center gap-2">
-                            <Clock className="w-4 h-4 text-[#0097DC]" />
-                            <span className="text-sm font-medium uppercase tracking-widest">{formattedTime}</span>
-                        </div>
                     </div>
-
-                    {/* Title */}
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl text-[#505153] leading-[1.1] mb-8 tracking-tight font-normal">
-                        {blog.title}
-                    </h1>
-
-                    {/* Summary */}
-                    <p className="text-xl md:text-2xl text-[#505153]/80 font-light max-w-4xl leading-relaxed italic border-l-4 border-[#0097DC] pl-6 py-2">
-                        {blog.summary}
-                    </p>
                 </div>
 
                 {/* Main Feature Image */}
-                <div className="w-full h-[50vh] md:h-[70vh] relative mb-16 md:mb-24 overflow-hidden">
-                    <Image
-                        src={blog.imageUrl || "/images/placeholder.jpg"}
-                        alt={blog.title}
-                        fill
-                        className="object-cover"
-                        priority
-                    />
+                <div className="mx-auto px-6 md:px-12 lg:px-20 xl:px-54 mt-10 mb-16 md:mb-24">
+                    <div className="w-full h-[50vh] md:h-[80vh] relative overflow-hidden">
+                        <Image
+                            src={blog.imageUrl || "/images/placeholder.jpg"}
+                            alt={blog.title}
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
                 </div>
 
                 {/* Content Section */}
-                <div className="mx-auto px-6 md:px-12 lg:px-20 xl:px-54 max-w-screen-xl">
+                <div className="mx-auto px-20">
                     <div
                         className="blog-content prose prose-lg md:prose-xl max-w-none text-[#505153] font-light leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: blog.content }}
+                        dangerouslySetInnerHTML={{ __html: sanitizeUnlayerHtml(blog.content) }}
                     />
                 </div>
             </main>
+            <RelatedArticleSection currentBlogId={id} />
+
 
             <Footer />
 
             <style jsx global>{`
+                /* ── Reset Unlayer email wrapper styles ── */
+                .blog-content body,
+                .blog-content center,
+                .blog-content > div,
+                .blog-content > div > div {
+                    max-width: 100% !important;
+                    width: 100% !important;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                }
+                .blog-content table {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                }
+                .blog-content td {
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                }
+
+                /* ── Typography ── */
                 .blog-content p {
                     margin-bottom: 2rem;
                     line-height: 1.8;
@@ -156,7 +219,6 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                     padding-left: 1.5rem;
                     margin: 2rem 0;
                     font-style: italic;
-                    color: #505153/80;
                 }
                 .blog-content ul, .blog-content ol {
                     margin: 2rem 0;

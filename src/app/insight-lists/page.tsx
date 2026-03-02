@@ -67,7 +67,7 @@ const page = () => {
 
             <section className=" mx-auto py-16 px-6 md:px-12 lg:px-20 xl:px-54 font-sans bg-white">
                 {/* Heading */}
-                <h2 className="text-[44px] leading-tight font-normal text-gray-900 mb-14 tracking-tight mt-20">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight font-normal text-gray-900 mb-14 tracking-tight mt-20">
                     Insights
                 </h2>
 
@@ -96,7 +96,7 @@ const page = () => {
                                 </div>
 
                                 {/* Text Content */}
-                                <h3 className="text-[15px] leading-snug font-normal text-gray-600 mb-3 pr-2">
+                                <h3 className="textmd:-[15pxl text-lg text-[#505153]ding-snug font-normal text pr-2">
                                     {item.title}
                                 </h3>
 

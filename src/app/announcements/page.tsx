@@ -50,7 +50,7 @@ const page = () => {
 
             <section className=" mx-auto py-16 px-6 md:px-12 lg:px-20 xl:px-54 font-sans bg-white">
                 {/* Heading */}
-                <h2 className="text-[44px] leading-tight font-normal text-gray-900 mb-14 tracking-tight mt-20">
+                <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-7xl leading-tight font-normal text-[#505153] mb-14 tracking-tight mt-20">
                      Company Announcements
                 </h2>
 
