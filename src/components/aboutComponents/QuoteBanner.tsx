@@ -80,7 +80,6 @@ export default function QuoteBanner() {
               leading-[1.25]
 
               text-2xl
-              sm:text-3xl
               md:text-6xl
               lg:text-6xl
               xl:text-8xl

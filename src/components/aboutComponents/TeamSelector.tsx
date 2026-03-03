@@ -10,36 +10,89 @@ import { TeamMember, fetchTeamMembers } from '@/lib/api';
 function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
     const targetRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
+    const isScrollingRef = useRef(false);
 
-    // Guard clause for empty data needs to be inside or handled before calls that need data
-    if (!members || members.length === 0) {
-        return null;
-    }
+    // ── ALL HOOKS MUST BE CALLED BEFORE ANY EARLY RETURN ──────────────────────
+    // Framer-motion hooks
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+        offset: ['start start', 'end end'],
+    });
+    const yEvens = useTransform(scrollYProgress, [0, 1], ['20vh', '-1650vh']);
+    const yOdds = useTransform(scrollYProgress, [0, 1], ['-1650vh', '20vh']);
 
-    // --- Extended Data for "Infinite" Effect ---
+    // ── SCROLL-UP JUMP LOGIC ───────────────────────────────────────────────────
+    // Registered on document in the capture phase so nothing can swallow it first.
+    // When any upward wheel occurs while we're inside this section, jump instantly
+    // to the previous section — no scrolling back through all team members.
+    useEffect(() => {
+        const handleWheel = (e: WheelEvent) => {
+            // If a jump is already in flight, eat every wheel event silently
+            // (this neutralises trackpad momentum / inertia).
+            if (isScrollingRef.current) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+
+            if (!targetRef.current) return;
+
+            const section = targetRef.current;
+            // getBoundingClientRect is viewport-relative; add scrollY for page-absolute position.
+            const rect = section.getBoundingClientRect();
+            const sectionTop = rect.top + window.scrollY;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            const currentScroll = window.scrollY;
+
+            // We require the scroll to be >50px past the section top to avoid
+            // accidentally triggering while the user is naturally entering the section.
+            const isDeepInsideSection =
+                currentScroll > sectionTop + 50 &&
+                currentScroll < sectionBottom;
+
+            if (e.deltaY < 0 && isDeepInsideSection) {
+                e.preventDefault();
+                e.stopPropagation();
+                isScrollingRef.current = true;
+
+                const previousSection = section.previousElementSibling as HTMLElement | null;
+                let targetTop = 0;
+                if (previousSection) {
+                    // Scroll to the TOP of the previous section
+                    targetTop = previousSection.getBoundingClientRect().top + window.scrollY;
+                }
+
+                // 'instant' is critical: 'smooth' from deep inside 4500vh takes several
+                // seconds and lets inertia events leak through before the lock expires.
+                window.scrollTo({ top: targetTop, behavior: 'instant' });
+
+                // Hold the lock long enough to absorb trackpad momentum (≈1.5 s).
+                setTimeout(() => {
+                    isScrollingRef.current = false;
+                }, 1500);
+            }
+        };
+
+        // capture:true → fires before any child listener; passive:false → allows preventDefault
+        document.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+        return () => document.removeEventListener('wheel', handleWheel, { capture: true });
+    }, []); // empty deps — relies only on refs, never stale
+
+    // ── EARLY RETURN (after ALL hooks) ────────────────────────────────────────
+    if (!members || members.length === 0) return null;
+
+    // ── DATA ──────────────────────────────────────────────────────────────────
     const loopCount = 6;
     const extendedTeam = Array(loopCount).fill(members).flat().map((member, i) => ({
         ...member,
-        uniqueId: `${member.id}-${i}`
+        uniqueId: `${member.id}-${i}`,
     }));
-
     const originalLength = members.length;
 
-    // --- Scroll Logic ---
-    const { scrollYProgress } = useScroll({
-        target: targetRef,
-        offset: ["start start", "end end"],
-    });
-
-    // Split extended data into two columns for Zig-Zag
     const leftColumnMembers = extendedTeam;
     const rightColumnMembers = extendedTeam;
 
-    // --- Transform Logic ---
-    const yEvens = useTransform(scrollYProgress, [0, 1], ["20vh", "-1650vh"]);
-    const yOdds = useTransform(scrollYProgress, [0, 1], ["-1650vh", "20vh"]);
-
-    // Controls
+    // ── BUTTON CONTROLS ───────────────────────────────────────────────────────
     const handleSkipUp = () => {
         const previousSection = targetRef.current?.previousElementSibling as HTMLElement;
         if (previousSection) {
@@ -55,16 +108,15 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
         if (nextSection) {
             const top = nextSection.getBoundingClientRect().top + window.scrollY;
             window.scrollTo({ top, behavior: 'smooth' });
-        } else {
-            if (targetRef.current) {
-                const top = targetRef.current.offsetTop + targetRef.current.offsetHeight;
-                window.scrollTo({ top, behavior: 'smooth' });
-            }
+        } else if (targetRef.current) {
+            const top = targetRef.current.offsetTop + targetRef.current.offsetHeight;
+            window.scrollTo({ top, behavior: 'smooth' });
         }
     };
 
     const activeMember = extendedTeam[activeIndex];
 
+    // ── RENDER ────────────────────────────────────────────────────────────────
     return (
         <section ref={targetRef} className="relative h-[4500vh]">
             <div className="sticky top-0 h-screen w-full overflow-hidden block font-sans">
@@ -110,7 +162,7 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
                                                 className={`relative transition-all duration-500 ease-out
                                                     ${isActive ? 'opacity-100 scale-105 z-10 grayscale-0' : 'opacity-30 scale-90'}`}
                                                 onViewportEnter={() => setActiveIndex(indexInExtended)}
-                                                viewport={{ margin: "-48% 0px -48% 0px" }}
+                                                viewport={{ margin: '-48% 0px -48% 0px' }}
                                             >
                                                 <div className="w-32 h-32 md:w-[300px] md:h-[300px] rounded-full overflow-hidden border-2 border-white/20 relative">
                                                     <Image
@@ -118,8 +170,8 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
                                                         alt={member.name}
                                                         fill
                                                         className="object-cover"
-                                                        loading="eager" // Ensure images invoke network request immediately
-                                                        priority={idx < 10} // Prioritize initial set
+                                                        loading="eager"
+                                                        priority={idx < 10}
                                                     />
                                                 </div>
                                             </motion.div>
@@ -140,7 +192,7 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
-                                    transition={{ duration: 0.4, ease: "easeOut" }} // Slightly smoother
+                                    transition={{ duration: 0.4, ease: 'easeOut' }}
                                     className="absolute top-1/2 left-0 -translate-y-1/2 w-full px-8 md:px-20 flex flex-col items-start"
                                 >
                                     <h2 className="text-5xl md:text-7xl text-[#505153] font-bold leading-tight mb-4">
@@ -195,9 +247,9 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
                                     className={`flex flex-col items-center justify-center transition-all duration-500 ease-out
                                         ${isActive ? 'opacity-100 scale-105 z-10' : 'opacity-60 scale-90 blur-[1px]'}`}
                                     onViewportEnter={() => setActiveIndex(indexInExtended)}
-                                    viewport={{ margin: "-45% 0px -45% 0px" }}
+                                    viewport={{ margin: '-45% 0px -45% 0px' }}
                                 >
-                                    <div className="w-64 h-64 rounded-full overflow-hidden relative  mb-6">
+                                    <div className="w-64 h-64 rounded-full overflow-hidden relative mb-6">
                                         <Image
                                             src={member.img}
                                             alt={member.name}
@@ -264,7 +316,7 @@ export default function TeamSelector() {
                 const data = await fetchTeamMembers();
                 setTeamMembers(data);
             } catch (error) {
-                console.error("Failed to load team members:", error);
+                console.error('Failed to load team members:', error);
             } finally {
                 setLoading(false);
             }
@@ -274,12 +326,11 @@ export default function TeamSelector() {
     }, []);
 
     if (loading) {
-        // Optional: Add a loading state UI here if desired
         return <div className="h-screen w-full flex items-center justify-center">Loading...</div>;
     }
 
     if (teamMembers.length === 0) {
-        return null; // Or some empty state
+        return null;
     }
 
     return <TeamScrollAnimation members={teamMembers} />;

@@ -45,7 +45,7 @@ const MAP_DATA = [
     points: [0],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-      zoom: 14,
+      zoom: 13,
     },
   },
   {
@@ -55,7 +55,7 @@ const MAP_DATA = [
     points: [18, 19],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-      zoom: 14,
+      zoom: 13,
     },
   },
   {
@@ -65,7 +65,7 @@ const MAP_DATA = [
     points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-      zoom: 14,
+      zoom: 13,
     },
   },
   {
@@ -75,7 +75,7 @@ const MAP_DATA = [
     points: [32, 33, 34],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-      zoom: 14,
+      zoom: 13,
     },
   },
 ];
@@ -115,7 +115,7 @@ const SECTION_DATA = [
     label: "Prime Location",
     description:
       "Situated behind Infosys at Kottara, Rudraksh offers seamless access to key IT hubs, highways, education, and daily essentials, balancing connectivity with calm living.",
-    imageSrc: "/images/rudrakshImages/4.webp",
+    imageSrc: "/images/rudrakshImages/liv5.png",
   },
 ];
 
@@ -124,37 +124,37 @@ const AMENITIES_DATA = [
     id: "kitchen",
     label: "24x7 Cloud Kitchen",
     subtitle: "THE FIRST OF IT'S KIND IN MANGALURU",
-    image: "/images/rudrakshImages/2.webp",
+    image: "/images/rudrakshImages/am1.webp",
   },
   {
     id: "wellness",
     label: "Wellness Club",
     subtitle: "",
-    image: "/images/rudrakshImages/6.webp",
+    image: "/images/rudrakshImages/am2.webp",
   },
   {
     id: "lobby",
     label: "Grand Entrance Lobby",
     subtitle: "",
-    image: "/images/rudrakshImages/7.webp",
+    image: "/images/rudrakshImages/am3.webp",
   },
   {
     id: "pool",
     label: "People Spaces",
     subtitle: "",
-    image: "/images/rudrakshImages/8.webp",
+    image: "/images/rudrakshImages/am4.webp",
   },
   {
     id: "gym",
     label: "Fitness & Activity Zones",
     subtitle: "",
-    image: "/images/rudrakshImages/9.webp",
+    image: "/images/rudrakshImages/am5.webp",
   },
   {
     id: "sky-deck",
     label: "Rooftop Infinity\nSwimming Pool",
     subtitle: "",
-    image: "/images/rudrakshImages/3.webp",
+    image: "/images/rudrakshImages/am6.webp",
   },
 ];
 
@@ -233,17 +233,16 @@ export default function Project1Page() {
         heading="Everything You’re Looking For"
         completed={false}
         galleryImages={[
-          "/images/rudrakshImages/10.webp",
-          "/images/rudrakshImages/11.webp",
-          "/images/rudrakshImages/12.webp",
-          "/images/rudrakshImages/13.webp",
-          "/images/rudrakshImages/14.webp",
-          "/images/rudrakshImages/15.webp",
+          "/images/rudrakshImages/am1.webp",
+          "/images/rudrakshImages/am2.webp",
+          "/images/rudrakshImages/am3.webp",
+          "/images/rudrakshImages/am4.webp",
+          "/images/rudrakshImages/am5.webp",
+          "/images/rudrakshImages/am6.webp",
         ]}
       />
       {/* <ProjectInteractivePlan /> */}
-
-      <MapSection data={MAP_DATA} />
+      <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.90477577287541, lng: 74.83732199444988 }} />
       <ExperienceSection
         titlePart1="Built on"
         titlePart2="Real Experiences"
@@ -257,8 +256,8 @@ export default function Project1Page() {
           </>
         }
         subtitle="Built for Enduring Value"
-        mobImg="/images/rudrakshImages/ctaBg.webp"
-        deskImg="/images/rudrakshImages/image.png"
+        mobImg="/images/rudrakshImages/mobileCta2.png"
+        deskImg="/images/rudrakshImages/ctaImg1.png"
       />
 
       {/* Other sections can be implemented here */}

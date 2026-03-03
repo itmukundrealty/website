@@ -17,7 +17,7 @@ export interface Blog {
 
 // Ensure this matches your CMS URL. 
 // In development, if CMS is on port 3000 and reality is on 3001, this should be http://localhost:3000
-const CMS_BASE_URL = process.env.NEXT_PUBLIC_CMS_URL || 'https://mukund-cms.vercel.app';
+const CMS_BASE_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3001';
 
 export async function fetchTeamMembers(): Promise<TeamMember[]> {
     try {

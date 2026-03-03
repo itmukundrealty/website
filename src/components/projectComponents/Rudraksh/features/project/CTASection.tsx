@@ -20,7 +20,7 @@ export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Co
   const finalLink = link === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : link;
 
   return (
-    <section className="relative lg:h-[100vh] h-[95vh] w-full flex items-center  overflow-hidden">
+    <section className="relative lg:h-[100vh] h-[70vh] w-full flex items-center  overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         {deskImg && <Image src={deskImg} alt="Building" fill className="object-cover brightness-95 hidden lg:block" />}

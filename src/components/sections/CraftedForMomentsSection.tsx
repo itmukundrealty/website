@@ -51,7 +51,7 @@ export default function CraftedForMomentsSection() {
     const activeContent = slides[currentSlide];
 
     return (
-        <section className="lg:py-24 py-12 bg-white overflow-hidden relative mt-12 md:mt-16 lg:mt-0 ">
+        <section className="lg:py-24 py-12 bg-white overflow-hidden relative mt-0 md:mt-0 lg:mt-0 ">
             {/* Background Decorative Blurs */}
             {/* <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div> */}
             {/* <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div> */}
@@ -71,7 +71,7 @@ export default function CraftedForMomentsSection() {
 
                 {/* Carousel Area */}
                 <div className="relative">
-                    <div className="relative h-[400px] md:h-[500px] w-full md:w-[65%] overflow-hidden">
+                    <div className="relative h-[50vh] md:h-[70vh] w-full md:w-[65%] overflow-hidden">
                         {/* Image */}
                         <AnimatePresence mode="wait">
                             <motion.div
@@ -102,7 +102,7 @@ export default function CraftedForMomentsSection() {
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.5, ease: "easeInOut" }}
                             className={`
-                                relative -mt-24 mx-auto md:mt-0 
+                                relative -mt-24 mx-auto md:-mt-10 
                                 md:absolute md:top-[50%] md:right-0 md:bottom-auto md:left-auto md:translate-y-0
                                 w-[90%] md:w-[45%] lg:w-[40%]
                                 p-6 md:p-12 
@@ -114,19 +114,19 @@ export default function CraftedForMomentsSection() {
                             <div className={`space-y-4 md:space-y-8  ${activeContent.theme === 'dark' ? 'text-white' : 'text-slate-800'}`}>
 
                                 <div>
-                                    <h3 className={`text-2xl md:text-3xl font-normal mb-4 leading-tight ${activeContent.theme === 'dark' ? 'text-white' : 'text-[#505153]'}`}>
+                                    <h3 className={`text-xl md:text-3xl font-normal mb-4 leading-tight ${activeContent.theme === 'dark' ? 'text-white' : 'text-[#505153]'}`}>
                                         {activeContent.title}
                                     </h3>
-                                    <p className={`text-lg lg:text-lg font-light  leading-relaxed ${activeContent.theme === 'dark' ? 'text-white' : 'text-[#505153]'}`}>
+                                    <p className={`text-md lg:text-lg font-light  leading-relaxed ${activeContent.theme === 'dark' ? 'text-white' : 'text-[#505153]'}`}>
                                         {activeContent.description}
                                     </p>
                                 </div>
 
                                 <div className="pt-2">
-                                    <div className={`text-3xl md:text-5xl font-medium mb-2 ${activeContent.theme === 'dark' ? 'text-white' : 'text-[#505153]'}`}>
+                                    <div className={`text-2xl md:text-5xl font-medium mb-2 ${activeContent.theme === 'dark' ? 'text-white' : 'text-[#505153]'}`}>
                                         {activeContent.stat}
                                     </div>
-                                    <p className={`text-lg lg:text-lg font-light ${activeContent.theme === 'dark' ? 'text-white' : 'text-[#505153]'}`}>
+                                    <p className={`text-md lg:text-lg font-light ${activeContent.theme === 'dark' ? 'text-white' : 'text-[#505153]'}`}>
                                         {activeContent.statDesc}
                                     </p>
                                 </div>
@@ -137,9 +137,9 @@ export default function CraftedForMomentsSection() {
                 </div>
 
                 {/* Navigation Controls */}
-                <div className="mt-8 md:mt-12 flex items-center justify-center relative">
+                <div className="mt-8 md:mt-12 flex flex-col md:flex-row items-center justify-center md:relative gap-6 md:gap-0">
                     {/* Indicators */}
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 flex gap-3">
+                    <div className="static md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 flex gap-3 order-2 md:order-none">
                         {slides.map((_, index) => (
                             <div
                                 key={index}
@@ -149,7 +149,7 @@ export default function CraftedForMomentsSection() {
                     </div>
 
                     {/* Buttons */}
-                    <div className="flex gap-3 pl-0 md:pr-12">
+                    <div className="flex gap-3 order-1 md:order-none md:pr-12">
                         <button
                             onClick={prevSlide}
                             className="w-12 h-12 rounded-full border border-blue-200 flex items-center justify-center text-blue-400 hover:border-blue-500 hover:text-blue-500 transition-colors bg-white"
@@ -166,24 +166,24 @@ export default function CraftedForMomentsSection() {
                 </div>
 
             </div>
-               <div className="absolute -bottom-20 -left-40 pointer-events-none z-0 hidden lg:block">
-                    <Image
-                      src="/icons/mukund.svg"
-                      alt="Mukund Abstract Shape"
-                      width={250}
-                      height={250}
-                      className=" object-contain blur-lg -rotate-45"
-                    />
-                  </div>
-                  <div className="absolute top-4 -right-15 pointer-events-none z-0">
-                    <Image
-                      src="/icons/mukund.svg"
-                      alt="Mukund Abstract Shape"
-                      width={150}
-                      height={150}
-                      className=" object-contain blur-sm -rotate-45"
-                    />
-                  </div>
+            <div className="absolute -bottom-20 -left-40 pointer-events-none z-0 hidden lg:block">
+                <Image
+                    src="/icons/mukund.svg"
+                    alt="Mukund Abstract Shape"
+                    width={250}
+                    height={250}
+                    className=" object-contain blur-lg -rotate-45"
+                />
+            </div>
+            <div className="absolute top-4 -right-15 pointer-events-none z-0">
+                <Image
+                    src="/icons/mukund.svg"
+                    alt="Mukund Abstract Shape"
+                    width={150}
+                    height={150}
+                    className=" object-contain blur-sm -rotate-45"
+                />
+            </div>
         </section>
     );
 }

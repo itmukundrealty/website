@@ -37,7 +37,7 @@ export default function InsightsSection() {
                 </div>
                 {/* Header */}
                 <div className="flex justify-between items-center mb-16">
-                    <h2 className="text-4xl md:text-5xl lg:text-7xl  text-[#505153] tracking-tight">Insights</h2>
+                    <h2 className="text-3xl md:text-5xl lg:text-7xl  text-[#505153] tracking-tight">Insights</h2>
                     <Link href="/blog" className="flex items-center gap-2 group text-[#505153] hover:text-[#505153] transition-colors">
                         <span className="text-lg">View more</span>
                         <div className="w-8 h-8 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#505153] transition-colors">
