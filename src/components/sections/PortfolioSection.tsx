@@ -9,7 +9,7 @@ export default function PortfolioSection() {
     <section className="relative w-full h-[60vh] xl:h-[40vh] bg-white overflow-hidden flex items-center justify-center">
 
       {/* Container for Dots (Left Side) - Adjusted to fade out */}
-      <div className="absolute top-0 bottom-0 left-[10%] w-[70%] pointer-events-none">
+      <div className="absolute top-0 bottom-0 left-[10%] w-[70%] pointer-events-none hidden md:block">
         <div
           className="w-full h-full"
           style={{
@@ -28,16 +28,16 @@ export default function PortfolioSection() {
           alt="Abstract Shape"
           width={150}
           height={150}
-          className="opacity-90 object-contain blur-sm"
+          className="opacity-90 h-20 w-20 md:h-40 md:w-40 object-contain blur-sm"
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-20 w-full h-full flex items-center justify-end z-10">
+      <div className="relative max-w-7xl mx-auto px-6 md:px-20 w-full h-full flex items-center md:justify-end z-10">
         {/* Right Content */}
         <div className="text-left flex flex-col w-full md:w-auto pt-4">
           <h2 className="text-3xl lg:text-6xl leading-[1.1] text-[#505153] tracking-tight font-light">
             Explore
-            <span className="font-semibold block text-[#333333]">Our Portfolio</span>
+            <span className="font-medium block text-[#505153]">Our Portfolio</span>
           </h2>
 
           <div className="mt-8 w-full md:w-auto">

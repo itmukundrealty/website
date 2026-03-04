@@ -25,3 +25,4 @@ export const PROJECTS_LIST: Project[] = [
     { id: "bhargavi", name: "Bhargavi Gloria Residency", href: "/bhargavi-gloria-residency", type: 'completed', mapSrc: "https://www.google.com/maps?q=12.896839540060913,74.84863444232855&output=embed" },
     { id: "mukund-sadhan", name: "Mukund Sadan", href: "/mukund-sadan", type: 'completed', mapSrc: "https://www.google.com/maps?q=12.874191610994334,74.83616109749772&output=embed" },
 ];
+

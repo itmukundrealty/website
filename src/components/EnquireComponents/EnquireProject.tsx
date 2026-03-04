@@ -6,11 +6,8 @@ import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThankYouModal from "../contact/ThankYouModal";
 
-const PROJECT_MAPS: Record<string, string> = {
-  kedar: "https://www.google.com/maps?q=Kedar%20by%20Mukund%20MGM%20Realty&output=embed",
-  rudraksh: "https://www.google.com/maps?q=Rudraksh%20by%20Mukund%20MGM%20Realty&output=embed",
-  default: "https://www.google.com/maps?q=Ashoka%20Business%20Center&output=embed",
-};
+// Map sources are now derived from PROJECTS_LIST in @/data/projects
+const DEFAULT_MAP = "https://www.google.com/maps?q=12.904891658303564,74.83737591311836&output=embed"; // Ashoka Business Center
 
 import { PROJECTS_LIST } from "@/data/projects";
 
@@ -21,7 +18,8 @@ function EnquireProjectContent() {
 
   const [currentProject, setCurrentProject] = useState<string>("");
 
-  const mapSrc = PROJECT_MAPS[currentProject?.toLowerCase()] || PROJECT_MAPS["default"];
+  const projectData = PROJECTS_LIST.find(p => p.id.toLowerCase() === currentProject?.toLowerCase());
+  const mapSrc = projectData?.mapSrc || DEFAULT_MAP;
 
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -84,7 +82,15 @@ function EnquireProjectContent() {
   };
 
   const handleSelect = (option: string) => {
-    setFormData((prev) => ({ ...prev, interestedIn: option }));
+    const project = PROJECTS_LIST.find(p => p.name === option);
+    setFormData((prev) => ({
+      ...prev,
+      interestedIn: option,
+      project: project ? project.id : prev.project
+    }));
+    if (project) {
+      setCurrentProject(project.id);
+    }
     setIsOpen(false);
   };
 

@@ -84,7 +84,7 @@ export default function Footer() {
             <ul className="space-y-3 text-[16px] leading-relaxed font-light text-black">
               <li className="flex gap-4 lg:gap-5 items-start justify-center lg:justify-start">
                 <Image src='/icons/locationIcon.svg' className="w-5 h-5 " height={20} width={20} alt="location" />
-                <span className="text-center lg:text-left">Suprabhath Building, 1st Floor<br />Bejai Kapikad Road<br />Mangalore – 575 004, India</span>
+                <span className="text-center lg:text-left">Suprabhath Building, 1st Floor,<br />Bejai Kapikad Road<br />Mangalore – 575 004, India</span>
               </li>
               <li className="flex gap-4 lg:gap-5 items-center justify-center lg:justify-start">
                 <Image src='/icons/phoneIcon.svg' className="w-5 h-5 " height={20} width={20} alt="phone" />
@@ -161,7 +161,7 @@ export default function Footer() {
             </div>
 
             <div className="flex gap-2 order-1 lg:order-2 uppercase lg:capitalize">
-              <Link href="/privacy-policy" className="hover:text-[#009FE3] transition-colors">Legal Disclaimers</Link>
+              <Link href="/privacy-policy" className="hover:text-[#009FE3] transition-colors">Privacy Policy</Link>
               {/* <span>|</span> */}
               {/* <Link href="#" className="hover:text-[#009FE3] transition-colors">Terms of Service</Link> */}
             </div>

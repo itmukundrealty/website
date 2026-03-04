@@ -71,7 +71,7 @@ export function ProjectHero({
 
   return (
     // 1. Removed h-[100vh] from the main section
-    <section className="relative w-full h-[60vh] lg:h-[100vh] overflow-hidden bg-black">
+    <section className="relative w-full h-[100vh] lg:h-[100vh] overflow-hidden bg-black">
       <OrientationLock />
       {/* 2. BACKGROUND LAYER: Full height */}
       <div className="relative w-full h-full z-0">
@@ -81,7 +81,7 @@ export function ProjectHero({
             src={isZoomedOut ? heroImageDesktop : heroImageDesktop}
             alt="Mukund Realty Project"
             fill
-            className="object-cover  transition-all duration-1000"
+            className="object-cover object-top  transition-all duration-1000"
             priority
           />
         </div>
@@ -89,6 +89,27 @@ export function ProjectHero({
           {/* Mobile image also covers */}
           <Image src={heroImageMobile} alt="Mukund Realty Project Mobile" fill className="object-cover object-bottom" priority />
         </div>
+
+        {/* BOTTOM GRADIENT OVERLAY FOR MOBILE */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent md:hidden z-10 pointer-events-none" />
+      </div>
+
+      {/* MOBILE PROJECT NAME OVERLAY */}
+      <div className="absolute bottom-6 inset-x-0 z-20 flex justify-center md:hidden pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            duration: 1.2,
+            delay: 0.5,
+            ease: [0.22, 1, 0.36, 1]
+          }}
+          className="px-8 py-3"
+        >
+          <h2 className="text-4xl text-white tracking-tight font-medium mb-4 lg:text-7xl">
+            {projectName}
+          </h2>
+        </motion.div>
       </div>
 
       {/* 4. HERO TEXT CONTENT */}
@@ -311,16 +332,16 @@ export function ProjectHero({
                 <div>
                   <button
                     onClick={() => setShowUnitDetails(false)}
-                    className="flex items-center gap-2 text-sm font-medium hover:opacity-80 cursor-pointer transition-opacity"
+                    className="flex items-center gap-2 text-sm font-medium hover:opacity-80 cursor-pointer transition-opacity group"
                   >
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                     Go Back
                   </button>
                 </div>
-                <div>
-                  <div className="space-y-3">
+                <div className="flex-1 flex flex-col justify-center">
+                  <div className="space-y-6">
                     <div>
                       <p className="text-lg font-light opacity-90">{currentFloor?.title}</p>
                       <h1 className="text-3xl md:text-4xl lg:text-6xl font-normal leading-tight tracking-tight">

@@ -82,7 +82,7 @@ const PrivacyPolicy = () => {
                         </div>
 
                         <div>
-                            <h2 className="text-2xl md:text-3xl  font-semibold text-[#505153] mb-4 mt-8">CONTACTING US</h2>
+                            <h2 className="text-2xl md:text-3xl  font-semibold text-[#505153] mb-4 mt-8">Contacting Us</h2>
                             <p>
                                 If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at: <br />
                                 <a href="mailto:sales@mukundmgmrealty.com" className="text-[#0097DC] hover:underline">sales@mukundmgmrealty.com</a>

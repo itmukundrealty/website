@@ -81,22 +81,22 @@ export default function ContactForm() {
                             <span className="font-medium text-[#505153] block">to Mukund Realty</span>
                         </h1>
 
-                        <p className="mt-8 max-w-[320px] text-lg font-light leading-relaxed text-[#7a7a7a]">
+                        <p className="mt-8 max-w-[320px] text-lg font-light leading-relaxed text-[#505153]">
                             Whether it&apos;s a new brief or a quick question, we&apos;d love to hear from you.
                         </p>
 
                         <div className="my-10 h-[1px] w-full max-w-[320px] bg-[#d4d4d4]"></div>
 
                         <div className="space-y-1">
-                            <p className="text-[14px] text-[#7a7a7a]">
+                            <p className="text-lg font-light text-[#505153]">
                                 Alternately for your Queries contact
                             </p>
-                            <p className="gap-2 text-[16px] font-medium text-[#1e88c8]">
+                            <p className="gap-2 text-lg font-medium text-[#0097DC]">
                                 <a href="tel:+917090933700" className="hover:underline">
                                     +91 70909 33700
                                 </a>
                             </p>
-                            <p className="text-[16px] font-medium text-[#1e88c8]">
+                            <p className="text-lg font-medium text-[#0097DC]">
                                 <a href="mailto:sales@mukundrealty.com" className="hover:underline">
                                     sales@mukundrealty.com
                                 </a>

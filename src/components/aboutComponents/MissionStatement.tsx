@@ -52,6 +52,7 @@ export default function MissionStatement({ text, imageSrc, imageClassName }: Mis
                     lg:w-[400px]
                     opacity-100
                     pointer-events-none
+                    md:-mr-20 -mr-4
                 "
             >
                 <Image

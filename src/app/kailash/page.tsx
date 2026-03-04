@@ -41,7 +41,7 @@ const MAP_DATA = [
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 14
+            zoom: 13
         }
     },
     {
@@ -51,7 +51,7 @@ const MAP_DATA = [
         points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 14
+            zoom: 13
         }
     },
     {
@@ -60,8 +60,8 @@ const MAP_DATA = [
         icon: "/icons/urbanIcon.svg",
         points: [59, 26, 29, 28, 22, 35],
         viewport: {
-            center: { lat: 12.8900, lng: 74.8400 },
-            zoom: 14
+            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            zoom: 13
         }
     },
     {
@@ -70,8 +70,8 @@ const MAP_DATA = [
         icon: "/icons/cafeIcon.svg",
         points: [41, 24, 38, 39],
         viewport: {
-            center: { lat: 12.8700, lng: 74.8500 },
-            zoom: 14
+            center: { lat: 12.904891658303564, lng: 74.83737591311836                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                },
+            zoom: 13
         }
     },
 ];
@@ -86,25 +86,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Spacious Living",
         description: "Experience thoughtfully designed homes with ample space, natural light, and functional layouts that make every corner comfortable and inviting. ",
-        imageSrc: "/images/kailashImages/liv1.png"
+        imageSrc: "/images/kailashImages/liv1.webp"
     },
     {
         id: "kitchen",
         label: "Social Spaces",
         description: "Connect and unwind in community lounges, landscaped gardens, and multi-purpose halls crafted for gatherings, celebrations, and meaningful interactions. ",
-        imageSrc: "/images/kailashImages/liv2.png"
+        imageSrc: "/images/kailashImages/liv2.webp"
     },
     {
         id: "rooftop",
         label: "Fitness Zones",
         description: "Stay active and energized with fully equipped gyms, yoga & meditation pavilions, and dedicated outdoor play and recreation areas.",
-        imageSrc: "/images/kailashImages/liv3.png"
+        imageSrc: "/images/kailashImages/liv3.webp"
     },
     {
         id: "location",
         label: "Smart Living",
         description: "Enjoy modern conveniences with integrated technology, reliable utilities, safety features, and eco-friendly solutions for a seamless lifestyle.",
-        imageSrc: "/images/kailashImages/liv4.png"
+        imageSrc: "/images/kailashImages/liv4.webp"
     }
 ];
 
@@ -153,7 +153,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/heroDesk.png" mobileImage="/images/kailashImages/heroMobile.png" />
+                <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/heroDesk.webp" mobileImage="/images/kailashImages/heroMobile.png" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Crafted for Everyday Excellence"
@@ -164,9 +164,9 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" completed={true} />
 
-                <MapSection data={MAP_DATA} />
+                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.908957222908294, lng: 74.83897934417861 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Live with <br /> Greater Ease</>} subtitle="Where style and function align." mobImg="/images/ctaImages/kailashMob.png" deskImg="/images/ctaImages/kailashDesk.png" />
+                <CTASection title={<>Live with <br /> Greater Ease</>} subtitle={<>Where style and  <br className="hidden md:block" /> function align.</>} mobImg="/images/ctaImages/kailashMob.png" deskImg="/images/ctaImages/kailashDesk.png" />
                 <Footer />
             </div>
         </>

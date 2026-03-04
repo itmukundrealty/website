@@ -32,7 +32,7 @@ export default function MapSection({ data, mainMarkerPosition, customMarkerImage
     if (!data || data.length === 0) return null;
 
     return (
-        <section className="relative h-screen w-full bg-white overflow-hidden">
+        <section className="relative md:h-screen h-[80vh] w-full bg-white overflow-hidden">
             {/* FULL SCREEN MAP BACKGROUND */}
             <div className="absolute inset-0 w-full h-full z-0">
                 <StyledMap

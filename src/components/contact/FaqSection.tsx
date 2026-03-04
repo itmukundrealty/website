@@ -33,7 +33,7 @@ export default function FaqSection({ faqData }: FaqSectionProps) {
                             <span className="font-normal block">Frequently Asked</span>
                             <span className="font-normal block">Questions</span>
                         </h2>
-                        <p className="mt-6 max-w-[280px] text-lg leading-relaxed font-light text-[#505153]">
+                        <p className="mt-6 max-w-sm text-lg leading-relaxed font-light text-[#505153]">
                             Got questions? We&apos;ve got answers no jargon, just direct clarity
                         </p>
                     </div>
