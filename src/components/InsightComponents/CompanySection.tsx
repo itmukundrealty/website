@@ -34,7 +34,7 @@ export default function CompanySection() {
                 {/* Header */}
                   <div className="flex justify-between items-center mb-16">
                     <h2 className="text-3xl md:text-5xl lg:text-7xl  text-[#505153] tracking-tight">Company<br />Announcements</h2>
-                    <Link href="/insight-lists" className="flex items-center gap-2 group text-[#505153] hover:text-[#0C9CDE]  transition-colors duration-300">
+                    <Link href="/insights" className="flex items-center gap-2 group text-[#505153] hover:text-[#0C9CDE]  transition-colors duration-300">
                         <span className="text-lg">View more</span>
                         <div className="w-6 h-6 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2  transition-colors ">
                             <ChevronRight className="w-4 h-4" />
