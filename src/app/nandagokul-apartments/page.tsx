@@ -171,7 +171,7 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Refined Recreational Living" variant="left" completed={true} />
 
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.893646774824788, lng: 74.84442105767145 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/nandagokulIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.893646774824788, lng: 74.84442105767145 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Find Your<br /> Ideal Home</>} subtitle={<>Discover refined  <br className="hidden md:block" /> living today.</>} mobImg="/images/ctaImages/nandhaMob.png" deskImg="/images/ctaImages/nandhaDesk.png" />
                 <Footer />

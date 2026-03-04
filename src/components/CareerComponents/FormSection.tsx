@@ -7,14 +7,17 @@ import { db, storage } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp, getDocs, query, where } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
-export const TextInput = ({ label, required = false, type = "text", id, onChange, isTextArea = false, maxWords = 250 }: { label: string, required?: boolean, type?: string, id: string, onChange?: (e: any) => void, isTextArea?: boolean, maxWords?: number }) => {
+export const TextInput = ({ label, required = false, type = "text", id, onChange, isTextArea = false, maxWords = 100 }: { label: string, required?: boolean, type?: string, id: string, onChange?: (e: any) => void, isTextArea?: boolean, maxWords?: number }) => {
     const [hasValue, setHasValue] = useState(false);
     const [wordCount, setWordCount] = useState(0);
+    const [charCount, setCharCount] = useState(0);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setHasValue(e.target.value.length > 0);
+        const value = e.target.value;
+        setHasValue(value.length > 0);
+        setCharCount(value.length);
         if (isTextArea) {
-            const words = e.target.value.trim().split(/\s+/).filter(Boolean);
+            const words = value.trim().split(/\s+/).filter(Boolean);
             setWordCount(words.length);
         }
         if (onChange) onChange(e);
@@ -23,9 +26,11 @@ export const TextInput = ({ label, required = false, type = "text", id, onChange
     return (
         <div className="relative mb-10 w-full group">
             {isTextArea && (
-                <span className={`absolute right-0 -top-5 text-[12px] font-light ${wordCount > maxWords ? 'text-red-500' : 'text-[#808080]'}`}>
-                    {wordCount} / {maxWords} words
-                </span>
+                <div className="absolute right-0 -top-6 flex gap-3 text-[11px] font-medium tracking-wide items-center">
+                    <span className={`${wordCount > maxWords ? 'text-red-500' : 'text-[#808080]'} transition-colors duration-300`}>
+                        {wordCount} / {maxWords} WORDS
+                    </span>
+                </div>
             )}
             {isTextArea ? (
                 <textarea

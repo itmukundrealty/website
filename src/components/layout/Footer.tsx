@@ -130,7 +130,7 @@ export default function Footer() {
         {/* 3. Ongoing Projects Section */}
         <div className="py-10 lg:py-0 lg:mt-12 border-t lg:border-t-0 border-slate-200">
           <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-16">
-            <h4 className="text-[12px] lg:text-[14px] text-[#505153] uppercase  font-light shrink-0">
+            <h4 className="text-[12px] lg:text-[14px] text-[#505153] uppercase  font-light shrink-0 tracking-wide">
               ONGOING PROJECTS
             </h4>
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-16 text-[16px] text-[black] font-light text-center lg:text-left">

@@ -161,7 +161,7 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" completed={true} />
 
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.903875173703936, lng: 74.83892547301431 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/evannaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.903875173703936, lng: 74.83892547301431 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Step Into    <br /> Better Living</>} subtitle={<>In a home crafted for <br className="hidden md:block" /> comfort and care.</>} mobImg="/images/ctaImages/evannaMob.png" deskImg="/images/ctaImages/evannaDesk.png" />
                 <Footer />

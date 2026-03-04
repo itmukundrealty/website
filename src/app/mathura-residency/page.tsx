@@ -161,7 +161,7 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" completed={true} />
 
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.90551016701943, lng: 74.84966575701976 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/mathuraIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.90551016701943, lng: 74.84966575701976 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Discover Your   <br /> Perfect Home</>} subtitle={<>A home that reflects <br className="hidden md:block" /> your aspirations.</>} mobImg="/images/ctaImages/mathuraMob.png" deskImg="/images/ctaImages/mathuraDesk.png" />
                 <Footer />

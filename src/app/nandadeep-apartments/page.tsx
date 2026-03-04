@@ -172,7 +172,7 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" completed={true} />
 
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.895899486705401, lng: 74.82442483598062 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/nandadeepIcon.svg"  data={MAP_DATA} mainMarkerPosition={{ lat: 12.895899486705401, lng: 74.82442483598062 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Own Your Space     <br />of Serenity</>} subtitle={<>A calm, connected place <br className="hidden md:block" /> to call home.</>} mobImg="/images/ctaImages/nandeepMob.png" deskImg="/images/ctaImages/nandeepDesk1.png" />
                 <Footer />

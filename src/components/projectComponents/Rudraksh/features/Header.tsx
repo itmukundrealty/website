@@ -99,7 +99,7 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                 {displayProjectName}{" "}
                 <ChevronDown
                   size={14}
-                  className="group-hover:rotate-180 transition-transform duration-300 text-white group-hover:text-[#0097DC]"
+                  className="group-hover:rotate-180 transition-transform duration-300 text-[#0097DC] group-hover:text-[#0097DC]"
                 />
               </button>
 

@@ -168,7 +168,7 @@ export default function page() {
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" completed={true} />
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.892277985021787, lng: 74.84131965767145 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/ajantaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.892277985021787, lng: 74.84131965767145 }} />
                 <PartnerSection />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Step Into    <br /> Productivity</>} subtitle="Modern spaces crafted for efficiency and growth." mobImg="/images/ctaImages/ajantaMob.png" deskImg="/images/ctaImages/ajantaDesk.png" />

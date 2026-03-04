@@ -164,7 +164,7 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Curated for Commercial Excellence" variant="left" completed={true} />
 
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.989402030376874, lng: 74.80207348030677 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/kudvaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.989402030376874, lng: 74.80207348030677 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Elevate Your   <br />Business Presence</>} subtitle="A space designed to amplify your success." mobImg="/images/ctaImages/kudvaMob.png" deskImg="/images/ctaImages/kudvaDesk.png" />
                 <Footer />

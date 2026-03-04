@@ -25,16 +25,16 @@ const testimonials = [
         id: 2,
         thumbnail: "",
         videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/DOoumWd6iJw",
-        name: "Dr.Devadas Kapikad",
-        role: "Residents at Mukund Villas"
+        iframeSrc: "https://www.youtube.com/embed/YTbDJpuQIvw?si=vBjMx8zK1Nx8SQxK",
+        name: "Prajwal & Poornima",
+        role: "Residents at Mukund Sadan"
     },
     {
         id: 3,
         thumbnail: "",
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/i1FvfPn_AyY",
-        name: "Harish Sherigar",
+        name: "Ajay Shenava & Anusha Shenava",
         role: "Investor in Mukund Commercial Spaces"
     },
     {
@@ -42,7 +42,7 @@ const testimonials = [
         thumbnail: "",
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/0Kr2E7fPxcY",
-        name: "Mr.Nagraj Nayak",
+        name: "Mr. Nagraj Nayak",
         role: "Investor in Mukund Commercial Spaces"
     },
     {
@@ -58,7 +58,7 @@ const testimonials = [
         thumbnail: "",
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/mwlgn3Cuq68",
-        name: "Mr.Jaggannath Bhandary",
+        name: "Mr. Jaggannath Bhandary",
         role: "Investor in Mukund Commercial Spaces"
     },
     {
@@ -66,8 +66,8 @@ const testimonials = [
         thumbnail: "",
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/DOoumWd6iJw",
-        name: "Dr Prashanth Bhat",
-        role: "Residents at Mukund Villas"
+        name: "Dr. Prashanth Bhat",
+        role: "Residents at Mukund Sadan"
     },
     {
         id: 8,
@@ -75,7 +75,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/FPvLjrtQZUI",
         name: "Mr. Vasuki Ganapati Shanbhag",
-        role: "Residents at Mukund Villas"
+        role: "Residents at Mukund Sadan"
     },
     {
         id: 9,
@@ -89,9 +89,9 @@ const testimonials = [
         id: 10,
         thumbnail: "",
         videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/i1FvfPn_AyY",
-        name: "Ajay Shenava & Anusha Shenava",
-        role: "Residents at Mukund Villas"
+        iframeSrc: "https://www.youtube.com/embed/Rb1AN7Jn2H4?si=SUxSQaqYAe6xThc0",
+        name: "Dr. Devadas Kapikad",
+        role: "Residents at Mukund Sadan"
     },
 
 ];

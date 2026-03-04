@@ -164,7 +164,7 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" completed={true} />
 
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.908957222908294, lng: 74.83897934417861 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/kailashIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.908957222908294, lng: 74.83897934417861 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Live with <br /> Greater Ease</>} subtitle={<>Where style and  <br className="hidden md:block" /> function align.</>} mobImg="/images/ctaImages/kailashMob.png" deskImg="/images/ctaImages/kailashDesk.png" />
                 <Footer />

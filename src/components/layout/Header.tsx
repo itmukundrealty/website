@@ -88,11 +88,11 @@ const ProjectHeader = () => {
             <div className="group relative py-4">
               {displayProjectName === "Projects" ? (
                 <Link href="/projects" className={`flex items-center gap-1 group-hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${activeProject ? "text-[#0097DC]" : "text-[#505153]"}`}>
-                  {displayProjectName} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]" />
+                  {displayProjectName} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-[#0097DC] group-hover:text-[#0097DC]" />
                 </Link>
               ) : (
                 <div className={`flex items-center gap-1 group-hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${activeProject ? "text-[#0097DC]" : "text-[#505153]"} cursor-default`}>
-                  {displayProjectName} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]" />
+                  {displayProjectName} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-[#0097DC] group-hover:text-[#0097DC]" />
                 </div>
               )}
 

@@ -10,21 +10,21 @@ export default function CompanySection() {
             title: "New Project Launch\nAnnounced",
             description: "Expanding our portfolio with a\nthoughtfully planned new\ndevelopment.",
             link: "#",
-            image: "/images/ashokaImages/2.webp"
+            image: "/images/company11.png"
         },
         {
             id: 2,
             title: "Construction\nMilestone Achieved",
             description: "Key phase completed with precision\nand on schedule delivery.",
             link: "#",
-            image: "/images/rudrakshImages/1.webp"
+            image: "/images/company12.png"
         },
         {
             id: 3,
             title: "Strengthening\nCommunity Partnerships",
             description: "Collaborating with local stakeholders\nto build responsibly and sustainably.",
             link: "#",
-            image: "/images/LandingPageImg/defining/3.png"
+            image: "/images/company13.png"
         }
     ];
 

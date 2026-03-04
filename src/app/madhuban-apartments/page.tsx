@@ -157,7 +157,7 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Tailored for Contemporary Living" variant="left" completed={true} />
 
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.912372680974913, lng: 74.8329861441786 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/madhubanIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.912372680974913, lng: 74.8329861441786 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Explore Your<br />Future Home</>} subtitle={<>A space created for  <br className="hidden md:block" /> inspired living.</>} mobImg="/images/ctaImages/madhubanMob.png" deskImg="/images/ctaImages/madhubanDesk.png" />
                 <Footer />

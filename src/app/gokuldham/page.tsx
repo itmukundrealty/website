@@ -168,7 +168,7 @@ export default function page() {
                 />
                 <AmenitiesSection data={AMENITIES_DATA} />
                 {/* <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" completed={true} /> */}
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.879975036772368, lng: 74.83332710185005 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/gokuldamIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.879975036772368, lng: 74.83332710185005 }} />
                 <ExperienceSection titlePart1="Experiences that" titlePart2="Set the Standard" description="Stories from clients who chose Mukund Realty for quality, integrity, and reliability." />
                 <CTASection title={<>Find Your      <br />Place Here</>} subtitle={<>Experience comfort in the <br className="hidden md:block" /> heart of the city.</>} mobImg="/images/ctaImages/gokuldhamMob.png" deskImg="/images/ctaImages/gokuldhamDesk.png" />
                 <Footer />

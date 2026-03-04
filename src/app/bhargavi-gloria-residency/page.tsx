@@ -170,7 +170,7 @@ export default function page() {
                 {/* <AmenitiesSection data={AMENITIES_DATA}  /> */}
                 {/* <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" variant="left" completed={true} /> */}
 
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.896839540060913, lng: 74.84863444232855 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/bhargaviIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.896839540060913, lng: 74.84863444232855 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Own a Home <br /> That Matters</>} subtitle={<>Experience comfort <br className="hidden md:block" /> crafted for you.</>} mobImg="/images/ctaImages/bhargaviMob.png" deskImg="/images/ctaImages/bhargaviDesk1.png" />
                 <Footer />

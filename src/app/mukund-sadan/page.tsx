@@ -162,7 +162,7 @@ export default function page() {
                 />
                 {/* <AmenitiesSection data={AMENITIES_DATA}  /> */}
                 <FeaturesSection features={FEATURES} heading="Curated Amenities" variant="left" completed={true} />
-                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.874191610994334, lng: 74.83616109749772 }} />
+                <MapSection customMarkerImage="/icons/mapIcons/sadanIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.874191610994334, lng: 74.83616109749772 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Elevate Your <br /> Everyday</>} subtitle={<>Spaces that support your  <br className="hidden md:block" /> next chapter.</>} mobImg="/images/ctaImages/sadanMob.png" deskImg="/images/ctaImages/sadanDesk.png" />
                 <Footer />
