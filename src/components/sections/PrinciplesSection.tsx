@@ -34,7 +34,7 @@ const slides = [
     title: "Design with Purpose",
     desc: "Each Mukund development is shaped by clear intent, prioritizing functional design that serves real needs and stands the test of time.",
     image: "/images/LandingPageImg/defining/3.png",
-    link: "Explore our insights page",
+    link: "Explore our Insights page",
     href: "/insights",
   },
 ];
