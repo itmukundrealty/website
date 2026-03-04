@@ -7,22 +7,32 @@ import { db, storage } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp, getDocs, query, where } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
-export const TextInput = ({ label, required = false, type = "text", id, onChange, isTextArea = false }: { label: string, required?: boolean, type?: string, id: string, onChange?: (e: any) => void, isTextArea?: boolean }) => {
+export const TextInput = ({ label, required = false, type = "text", id, onChange, isTextArea = false, maxWords = 250 }: { label: string, required?: boolean, type?: string, id: string, onChange?: (e: any) => void, isTextArea?: boolean, maxWords?: number }) => {
     const [hasValue, setHasValue] = useState(false);
+    const [wordCount, setWordCount] = useState(0);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setHasValue(e.target.value.length > 0);
+        if (isTextArea) {
+            const words = e.target.value.trim().split(/\s+/).filter(Boolean);
+            setWordCount(words.length);
+        }
         if (onChange) onChange(e);
     };
 
     return (
         <div className="relative mb-10 w-full group">
+            {isTextArea && (
+                <span className={`absolute right-0 -top-5 text-[12px] font-light ${wordCount > maxWords ? 'text-red-500' : 'text-[#808080]'}`}>
+                    {wordCount} / {maxWords} words
+                </span>
+            )}
             {isTextArea ? (
                 <textarea
                     id={id}
                     name={id}
                     required={required}
-                    rows={1}
+                    rows={4}
                     onChange={handleChange}
                     className={`peer w-full border-b border-gray-300 bg-transparent pb-3 pt-2 text-[#505153] placeholder-transparent focus:border-[#0097DC]  focus:outline-none resize-none ${hasValue ? 'border-[#505153]' : ''}`}
                     placeholder={label}
@@ -254,7 +264,7 @@ export default function FormSection() {
                             options={jobOptions}
                         />
 
-                        <TextInput id="about" label="Tell Us About Yourself (200-250 words)" isTextArea />
+                        <TextInput id="about" label="Tell Us About Yourself" isTextArea maxWords={250} />
 
                         {/* File Upload */}
                         <div className="mb-10 w-full">

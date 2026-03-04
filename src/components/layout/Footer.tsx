@@ -39,8 +39,8 @@ export default function Footer() {
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
     { name: "Careers", href: "/careers" },
-     { name: "Projects", href: "/projects" },
-      { name: "Insights", href: "/insights" },
+    { name: "Projects", href: "/projects" },
+    { name: "Insights", href: "/insights" },
 
   ];
   const socials = [
@@ -49,7 +49,7 @@ export default function Footer() {
     { name: "WhatsApp", href: "https://www.whatsapp.com/channel/0029VaEoD6l2phHFAQlRli1m" } // Using the phone number from the Get In Touch section
   ];
   const projects = [
-    { name: "Rudraksh", href: "/rudraksh" } ,
+    { name: "Rudraksh", href: "/rudraksh" },
     { name: "Kedar", href: "/kedar" },
     { name: "Ashoka Business Center", href: "/ashoka-business-center" }
   ];
@@ -84,7 +84,7 @@ export default function Footer() {
             <ul className="space-y-3 text-[16px] leading-relaxed font-light text-black">
               <li className="flex gap-4 lg:gap-5 items-start justify-center lg:justify-start">
                 <Image src='/icons/locationIcon.svg' className="w-5 h-5 " height={20} width={20} alt="location" />
-                <span className="text-center lg:text-left">Suprabhath Building, 1st Floor,<br />Bejai Kapikad Road<br />Mangalore – 575 004, India</span>
+                <a href="https://maps.app.goo.gl/PsXbioXdNkfS7dK28" target="_blank" rel="noopener noreferrer" className="text-center lg:text-left hover:text-[#009FE3] transition-colors">Suprabhath Building, 1st Floor,<br />Bejai Kapikad Road<br />Mangalore – 575 004, India</a>
               </li>
               <li className="flex gap-4 lg:gap-5 items-center justify-center lg:justify-start">
                 <Image src='/icons/phoneIcon.svg' className="w-5 h-5 " height={20} width={20} alt="phone" />

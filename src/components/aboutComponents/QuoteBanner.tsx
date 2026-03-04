@@ -82,7 +82,7 @@ export default function QuoteBanner() {
               text-2xl
               md:text-6xl
               lg:text-6xl
-              xl:text-8xl
+              xl:text-6xl
               text-left
             "
           >
