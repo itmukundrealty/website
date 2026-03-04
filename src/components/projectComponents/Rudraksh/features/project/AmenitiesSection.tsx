@@ -66,7 +66,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
   const currentAmenity = data[activeIndex] || data[0];
 
   return (
-    <section className="relative bg-white font-host overflow-hidden lg:min-h-[90vh] flex flex-col">
+    <section className="relative bg-white font-host overflow-hidden lg:min-h-[100vh] flex flex-col">
       {/* --- Desktop Flush Image --- */}
       <div className="hidden lg:block lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full z-0">
         <Swiper
@@ -109,7 +109,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                                       justify-center keeps it vertically centered in that reserved space.
                                       items-start keeps text aligned left.
                                     */}
-                  <div className="flex flex-col justify-center items-start min-h-[150px] lg:min-h-[320px] gap-4">
+                  <div className="flex flex-col justify-center items-start min-h-[150px] lg:min-h-[270px] gap-4">
                     <h2 className="text-5xl lg:text-6xl  text-[#424244] font-light leading-[1.1] max-w-md whitespace-pre-line">
                       {currentAmenity.label}
                     </h2>
@@ -153,7 +153,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
               </div>
 
               {/* Controls Container */}
-              <div className="flex items-center gap-12 pt-4">
+              <div className="flex flex-col-reverse lg:flex-row items-center lg:items-center gap-6 lg:gap-12 pt-7">
                 <div className="text-gray-400 text-sm font-medium tracking-widest min-w-[70px]">
                   {String(activeIndex + 1).padStart(2, "0")} {"—"} {String(data.length).padStart(2, "0")}
                 </div>
@@ -161,7 +161,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                 <div className="flex gap-4">
                   <button
                     onClick={handlePrev}
-                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-gray-100 flex items-center justify-center text-gray-300 hover:border-[#0097DC] hover:text-[#0097DC] transition-all bg-white"
+                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC] hover:text-white transition-all bg-white"
                   >
                     <ArrowLeft className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={1.5} />
                   </button>

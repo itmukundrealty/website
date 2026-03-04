@@ -153,13 +153,13 @@ export default function PrinciplesSlider() {
           className=" object-contain blur-lg -rotate-45"
         />
       </div>
-      <div className="absolute -top-30 right-0 pointer-events-none z-0">
+      <div className="absolute -top-10 md:-top-30 right-0 pointer-events-none z-0  ">
         <Image
           src="/icons/mukund.svg"
           alt="Mukund Abstract Shape"
           width={150}
           height={150}
-          className=" object-contain blur-sm "
+          className=" object-contain blur-sm h-25 w-25 md:h-40 md:w-40 "
         />
       </div>
     </section>
@@ -182,7 +182,7 @@ function SlideCard({ data }: { data: any }) {
       />
 
       {/* Overlay */}
-      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-white to-transparent z-10" />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[30vh] md:h-[55vh] bg-gradient-to-t from-white via-white to-transparent z-10" />
 
       {/* Content */}
       <div className="absolute bottom-0 left-0 px-6 py-5 lg:px-12 lg:py-5 max-w-full lg:max-w-3xl z-20">

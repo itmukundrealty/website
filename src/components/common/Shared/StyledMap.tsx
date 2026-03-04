@@ -123,6 +123,7 @@ interface StyledMapProps {
     zoom?: number;
     locations?: Location[];
     hideMainIcon?: boolean;
+    mainMarkerPosition?: { lat: number; lng: number };
 }
 
 export default function StyledMap({
@@ -133,6 +134,7 @@ export default function StyledMap({
     zoom = 14,
     locations = LOCATIONS,
     hideMainIcon = false,
+    mainMarkerPosition,
 }: StyledMapProps) {
 
     const dynamicMapStyle = useMemo(() => {
@@ -190,12 +192,25 @@ export default function StyledMap({
                     zoom={zoom}
                     options={mapOptions}
                 >
+                    {/* Render Main Project Marker if provided as prop */}
+                    {mainMarkerPosition && !hideMainIcon && (
+                        <Marker
+                            position={mainMarkerPosition}
+                            icon={{
+                                url: "/icons/mapIcon.svg",
+                                scaledSize: typeof google !== 'undefined' ? new google.maps.Size(50, 50) : undefined
+                            }}
+                        />
+                    )}
+
                     {/* Render Markers/Circles */}
                     {locations.map((loc) => {
                         const isActive = activePoints.includes(loc.id);
 
-                        // Special Marker for ID 0 (Main Property) — only when hideMainIcon is false
-                        if (loc.id === 0 && !hideMainIcon) {
+                        // If mainMarkerPosition is provided, we skip rendering the hardcoded id:0 marker
+                        if (loc.id === 0) {
+                            if (mainMarkerPosition || hideMainIcon) return null;
+
                             return (
                                 <Marker
                                     key={loc.id}

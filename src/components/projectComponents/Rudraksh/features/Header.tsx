@@ -20,19 +20,40 @@ interface ProjectHeaderProps {
 const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund Realty" }: ProjectHeaderProps = {}) => {
   const pathname = usePathname();
   const currentProject = pathname?.split('/')[1] || '';
-  const validProjects = ["rudraksh", "mathura", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
+  const validProjects = ["mathura", "rudraksh", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
   const finalProjectLink = projectLink === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : projectLink;
 
+  const activeProject = PROJECTS_LIST.find(p => p.href === pathname);
+  const displayProjectName = activeProject ? activeProject.name : "Projects";
+
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false); // Default closed
 
-  // Handle Scroll effect
+  // Handle Scroll — hide on scroll down, show on scroll up
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20); // Trigger earlier for smoother feel
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 20);
+
+      if (currentScrollY < 20) {
+        // At the top — always show
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling DOWN — hide
+        setIsVisible(false);
+      } else {
+        // Scrolling UP — show
+        setIsVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -48,8 +69,10 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
-          }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out
+          ${isVisible ? "translate-y-0" : "-translate-y-full"}
+          ${isScrolled ? "bg-white shadow-sm py-4" : "bg-transparent py-6"}
+        `}
       >
         <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center bg-transparent">
           {/* Logo Section */}
@@ -71,9 +94,9 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
             {/* Desktop Dropdown */}
             <div className="group relative py-4">
               <button
-                className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+                className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? (activeProject ? "text-[#0097DC]" : "text-[#505153]") : "text-white"}`}
               >
-                Projects{" "}
+                {displayProjectName}{" "}
                 <ChevronDown
                   size={14}
                   className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]"
@@ -87,13 +110,16 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                   <div className="w-[200px] shrink-0">
                     <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Ongoing</h3>
                     <div className="flex flex-col gap-3">
-                      {PROJECTS.ongoing.map((p) => (
-                        <Link key={p.name} href={p.href} className="group/item flex items-center justify-between transition-colors duration-300">
-                          <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap font-medium">
-                            {p.name}
-                          </span>
-                        </Link>
-                      ))}
+                      {PROJECTS.ongoing.map((p) => {
+                        const isActive = pathname === p.href;
+                        return (
+                          <Link key={p.name} href={p.href} className="group/item flex items-center justify-between transition-colors duration-300">
+                            <span className={`text-lg transition-colors whitespace-nowrap font-medium ${isActive ? "text-[#0097DC]" : "text-[#505153] group-hover/item:text-[#0097DC]"}`}>
+                              {p.name}
+                            </span>
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -101,15 +127,18 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                   <div className="flex-1 border-l border-gray-100 pl-12">
                     <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Completed</h3>
                     <div className="grid grid-cols-3 gap-x-8 gap-y-4">
-                      {PROJECTS.completed.map((p) => (
-                        <Link
-                          key={p.name}
-                          href={p.href}
-                          className="block text-[15px] text-gray-600 hover:text-[#0097DC] transition-colors hover:translate-x-1 duration-200"
-                        >
-                          {p.name}
-                        </Link>
-                      ))}
+                      {PROJECTS.completed.map((p) => {
+                        const isActive = pathname === p.href;
+                        return (
+                          <Link
+                            key={p.name}
+                            href={p.href}
+                            className={`block text-[15px] transition-colors hover:translate-x-1 duration-200 ${isActive ? "text-[#0097DC]" : "text-gray-600 hover:text-[#0097DC]"}`}
+                          >
+                            {p.name}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -127,7 +156,8 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
           </nav>
 
           {/* Mobile Toggle */}
-          <button className="lg:hidden z-50 p-2 -mr-2 text-black" onClick={() => setIsMobileMenuOpen(true)}>
+          {/* on scroll make text black */}
+          <button className={`lg:hidden z-50 p-2 -mr-2 ${isScrolled ? "text-[#505153]" : "text-white"}`} onClick={() => setIsMobileMenuOpen(true)}>
             <Menu strokeWidth={1.5} size={32} />
           </button>
         </div>
@@ -169,9 +199,9 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                 <div className="border-b border-gray-100">
                   <button
                     onClick={() => setIsMobileProjectsOpen(!isMobileProjectsOpen)}
-                    className="w-full flex justify-between items-center text-[22px] text-[#505153] font-light py-5"
+                    className={`w-full flex justify-between items-center text-[22px] font-light py-5 ${activeProject ? "text-[#0097DC]" : "text-[#505153]"}`}
                   >
-                    Projects
+                    {displayProjectName}
                     <ChevronDown
                       size={24}
                       strokeWidth={1.5}
@@ -196,16 +226,19 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                               {/* <div className="h-[1px] w-full bg-gray-200"></div> */}
                             </div>
                             <div className="flex flex-col gap-3 pl-1">
-                              {PROJECTS.ongoing.map((p) => (
-                                <Link
-                                  key={p.name}
-                                  href={p.href}
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                  className="text-[16px] text-gray-600 font-light hover:text-black transition-colors"
-                                >
-                                  {p.name}
-                                </Link>
-                              ))}
+                              {PROJECTS.ongoing.map((p) => {
+                                const isActive = pathname === p.href;
+                                return (
+                                  <Link
+                                    key={p.name}
+                                    href={p.href}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className={`text-[16px] font-light transition-colors ${isActive ? "text-[#0097DC]" : "text-gray-600 hover:text-black"}`}
+                                  >
+                                    {p.name}
+                                  </Link>
+                                );
+                              })}
                             </div>
                           </div>
 
@@ -218,16 +251,19 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                               <div className="h-[1px] w-full bg-gray-200"></div>
                             </div>
                             <div className="flex flex-col gap-3 pl-1">
-                              {PROJECTS.completed.map((p) => (
-                                <Link
-                                  key={p.name}
-                                  href={p.href}
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                  className="text-[16px] text-gray-600 font-light hover:text-black transition-colors"
-                                >
-                                  {p.name}
-                                </Link>
-                              ))}
+                              {PROJECTS.completed.map((p) => {
+                                const isActive = pathname === p.href;
+                                return (
+                                  <Link
+                                    key={p.name}
+                                    href={p.href}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className={`text-[16px] font-light transition-colors ${isActive ? "text-[#0097DC]" : "text-gray-600 hover:text-black"}`}
+                                  >
+                                    {p.name}
+                                  </Link>
+                                );
+                              })}
                             </div>
                           </div>
                         </div>

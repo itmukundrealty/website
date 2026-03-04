@@ -46,7 +46,7 @@ const MAP_DATA = [
     points: [0],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-      zoom: 14,
+      zoom: 13,
     },
   },
   {
@@ -56,7 +56,7 @@ const MAP_DATA = [
     points: [18, 19],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-      zoom: 14,
+      zoom: 13,
     },
   },
   {
@@ -66,7 +66,7 @@ const MAP_DATA = [
     points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-      zoom: 14,
+      zoom: 13,
     },
   },
   {
@@ -76,7 +76,7 @@ const MAP_DATA = [
     points: [32, 33, 34],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-      zoom: 14,
+      zoom: 13,
     },
   },
 ];
@@ -87,28 +87,28 @@ const SECTION_DATA = [
     label: "Elevated Living",
     description:
       "More than just homes, Kedar offers a refined living experience shaped by comfort, privacy, and thoughtful design that supports everyday ease and long term well being.",
-    imageSrc: "/images/kedarImage/liv1.png",
+    imageSrc: "/images/kedarImage/liv1.webp",
   },
   {
     id: "kitchen",
     label: "Panoramic Views",
     description:
       "Designed to rise above its surroundings, the residences enjoy expansive views of greenery and the city beyond, creating a sense of openness and quiet retreat.",
-    imageSrc: "/images/kedarImage/liv2.png",
+    imageSrc: "/images/kedarImage/liv2.webp",
   },
   {
     id: "rooftop",
     label: "Thoughtful Design",
     description:
       "Every home is planned with clarity and balance, combining functional layouts, natural light, and refined detailing to support modern lifestyles.",
-    imageSrc: "/images/kedarImage/liv3.png",
+    imageSrc: "/images/kedarImage/liv3.webp",
   },
   {
     id: "location",
     label: "Connected Yet Serene",
     description:
       "Strategically located to offer city accessibility while remaining removed from noise and congestion, allowing residents to enjoy calm living without compromise.",
-    imageSrc: "/images/kedarImage/liv4.png",
+    imageSrc: "/images/kedarImage/liv4.webp",
   },
 ];
 
@@ -117,37 +117,37 @@ const AMENITIES_DATA = [
     id: "kitchen",
     label: "Rooftop Infinity Swimming Pool",
     subtitle: "",
-    image: "/images/kedarImage/am1.png",
+    image: "/images/kedarImage/am1.webp",
   },
   {
     id: "wellness",
     label: "Open Air Gymnasium",
     subtitle: "",
-    image: "/images/kedarImage/am2.png",
+    image: "/images/kedarImage/am2.webp",
   },
   {
     id: "lobby",
     label: "Indoor & Outdoor Recreation",
     subtitle: "",
-    image: "/images/kedarImage/am3.png",
+    image: "/images/kedarImage/am3.webp",
   },
   {
     id: "pool",
     label: "Kids Play Area",
     subtitle: "",
-    image: "/images/kedarImage/am4.png",
+    image: "/images/kedarImage/am4.webp",
   },
   {
     id: "gym",
     label: "Outdoor Badminton Court",
     subtitle: "",
-    image: "/images/kedarImage/am5.png",
+    image: "/images/kedarImage/am5.webp",
   },
   {
     id: "sky-deck",
     label: "Spacious Visitor’s Lounge",
     subtitle: "",
-    image: "/images/kedarImage/am6.png",
+    image: "/images/kedarImage/am6.webp",
   },
 ];
 
@@ -190,7 +190,7 @@ export default function page() {
           ]}
         />
 
-        <MapSection data={MAP_DATA} />
+        <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.908991556397066, lng: 74.85044859337258 }} />
         <ExperienceSection
           titlePart1="Built on"
           titlePart2="Real Experiences"
@@ -203,7 +203,7 @@ export default function page() {
               The Home You’ve Been <br /> Looking For
             </>
           }
-          subtitle="DSpacious homes built for everyday living."
+          subtitle="Spacious homes built for everyday living."
           mobImg="/images/kedarImage/ctaBg.webp"
           deskImg="/images/ctaImages/kedarDesk.png"
         />

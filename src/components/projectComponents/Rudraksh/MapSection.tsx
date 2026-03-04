@@ -17,9 +17,10 @@ export type MapSectionItem = {
 
 export interface MapSectionProps {
     data: MapSectionItem[];
+    mainMarkerPosition?: { lat: number, lng: number };
 }
 
-export default function MapSection({ data }: MapSectionProps) {
+export default function MapSection({ data, mainMarkerPosition }: MapSectionProps) {
     // Initialize active section with the first item's key, or an empty string if data is empty
     const [activeSection, setActiveSection] = useState<string>(data[0]?.key || "");
 
@@ -30,7 +31,7 @@ export default function MapSection({ data }: MapSectionProps) {
     if (!data || data.length === 0) return null;
 
     return (
-        <section className="relative h-screen w-full bg-white overflow-hidden">
+        <section className="relative md:h-screen h-[80vh] w-full bg-white overflow-hidden">
             {/* FULL SCREEN MAP BACKGROUND */}
             <div className="absolute inset-0 w-full h-full z-0">
                 <StyledMap
@@ -38,6 +39,7 @@ export default function MapSection({ data }: MapSectionProps) {
                     highlightHighway={activeSection === "city"}
                     center={center}
                     zoom={zoom}
+                    mainMarkerPosition={mainMarkerPosition}
                 />
             </div>
 

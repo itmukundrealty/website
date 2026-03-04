@@ -62,6 +62,43 @@ const JobCard = ({ title, type, description, color, slug, i, progress, range, ta
     );
 };
 
+interface StaticJobCardProps {
+    title: string;
+    type: string;
+    description: string;
+    color: string;
+    slug: string;
+    onApply: () => void;
+}
+
+const StaticJobCard = ({ title, type, description, color, slug, onApply }: StaticJobCardProps) => {
+    return (
+        <div
+            style={{ backgroundColor: color }}
+            className="flex flex-col justify-between min-h-[220px] md:min-h-[350px] p-4 md:p-8 text-white w-full transition-transform hover:-translate-y-2"
+        >
+            <div>
+                <h2 className="text-lg md:text-2xl font-medium mb-1 tracking-tight leading-tight">{title}</h2>
+                <p className="text-[10px] md:text-sm font-normal mb-3 md:mb-4 tracking-wide text-white/90">{type}</p>
+                <p className="hidden md:block text-sm font-light leading-relaxed mb-auto opacity-90 line-clamp-5">
+                    {description}
+                </p>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 mt-4 md:mt-6 self-start md:self-end w-full">
+                <Link href={`/careers/${slug}`} className="w-full md:w-auto">
+                    <button className="text-[10px] md:text-sm underline underline-offset-4 font-light hover:text-white/80 transition-colors">
+                        Read More
+                    </button>
+                </Link>
+                <button onClick={onApply} className="w-full md:w-auto border border-white px-2 md:px-4 py-1.5 md:py-2 pb-2 md:pb-2.5 text-[10px] md:text-sm font-medium hover:bg-white hover:text-[#0097DC] transition-colors">
+                    Apply Now
+                </button>
+            </div>
+        </div>
+    );
+};
+
 // import { jobs } from "@/data/jobs";
 
 interface CareerOpportunitiesProps {
@@ -86,20 +123,34 @@ export default function CareerOpportunities({ jobs }: CareerOpportunitiesProps) 
                 </div>
             </div>
 
-            {jobs.map((job, i) => {
-                const targetScale = 1 - ((jobs.length - i) * 0.04);
-                return (
-                    <JobCard
+            {/* Desktop: Stacked Animation (<=4 jobs), Mobile: 2-column Grid */}
+            <div className="md:block hidden">
+                {jobs.length <= 4 && jobs.map((job, i) => {
+                    const targetScale = 1 - ((jobs.length - i) * 0.04);
+                    return (
+                        <JobCard
+                            key={i}
+                            i={i}
+                            {...job}
+                            progress={scrollYProgress}
+                            range={[i * 0.33, 1]}
+                            targetScale={targetScale}
+                            onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
+                        />
+                    );
+                })}
+            </div>
+
+            {/* Mobile: 2-column Grid (always), Desktop: Grid (>4 jobs) */}
+            <div className={`${jobs.length <= 4 ? "md:hidden" : "grid"} grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 justify-center mt-12 md:mt-16 w-full mx-auto xl:px-0`}>
+                {jobs.map((job, i) => (
+                    <StaticJobCard
                         key={i}
-                        i={i}
                         {...job}
-                        progress={scrollYProgress}
-                        range={[i * 0.33, 1]}
-                        targetScale={targetScale}
                         onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
                     />
-                );
-            })}
+                ))}
+            </div>
 
             <ApplyModal
                 isOpen={modalData.isOpen}

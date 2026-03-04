@@ -68,7 +68,7 @@ export function CompletedHero({
                         src={desktopImage}
                         alt="Hero Background"
                         fill
-                        className="object-fill transition-all duration-1000"
+                        className="object-cover transition-all duration-1000"
                         priority
                     />
                 </div>

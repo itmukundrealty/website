@@ -45,7 +45,7 @@ const MAP_DATA = [
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 14
+            zoom: 13
         }
     },
     {
@@ -55,7 +55,7 @@ const MAP_DATA = [
         points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 14
+            zoom: 13
         }
     },
     {
@@ -64,8 +64,8 @@ const MAP_DATA = [
         icon: "/icons/urbanIcon.svg",
         points: [59, 26, 29, 28, 22, 35],
         viewport: {
-            center: { lat: 12.8900, lng: 74.8400 },
-            zoom: 14
+            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            zoom: 13
         }
     },
     {
@@ -74,8 +74,8 @@ const MAP_DATA = [
         icon: "/icons/cafeIcon.svg",
         points: [41, 24, 38, 39],
         viewport: {
-            center: { lat: 12.8700, lng: 74.8500 },
-            zoom: 14
+            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
+            zoom: 13
         }
     },
 ];
@@ -117,37 +117,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Air-conditioned Gymnasium",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv1.png",
+        image: "/images/gokuldhamImages/liv1.webp",
     },
     {
         id: "wellness",
         label: "Smart Utility Network",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv2.png",
+        image: "/images/gokuldhamImages/liv2.webp",
     },
     {
         id: "lobby",
         label: "Kid’s Play Area",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv3.png",
+        image: "/images/gokuldhamImages/liv3.webp",
     },
     {
         id: "pool",
         label: "Visitor's Lounge",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv4.png",
+        image: "/images/gokuldhamImages/liv4.webp",
     },
     {
         id: "gym",
         label: "Dedicated Parking",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv5.png",
+        image: "/images/gokuldhamImages/liv5.webp",
     },
     {
         id: "sky-deck",
         label: "Bedroom AC Provisioning",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv6.png",
+        image: "/images/gokuldhamImages/liv6.webp",
     }
 ];
 
@@ -157,20 +157,20 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero title={<>Gokuldham</>} subtitle="" variant="topRight" desktopImage="/images/gokuldhamImages/heroDesk.png" mobileImage="/images/gokuldhamImages/heroMobile.png" />
+                <CompletedHero title={<>Gokuldham</>} subtitle="" variant="topRight" desktopImage="/images/gokuldhamImages/heroDesk.webp" mobileImage="/images/gokuldhamImages/heroMobile.png" />
                 {/* <ProjectHighLiving data={SECTION_DATA} /> */}
-                {/* <HighlivingSection
+                <HighlivingSection
                     heading="Living, Well Designed"
                     description= "Welcome to Gokuldham, a thoughtfully envisioned residential development by Mukund MGM Realty that brings together comfort, functionality, and everyday convenience. Situated in the well-connected neighbourhood of Mannagudda, the project offers intelligently designed homes that respond to the needs of modern families. With practical layouts, quality construction, and reliable infrastructure, every detail is aligned to support smooth daily living. Essential amenities, dependable utilities, and a secure residential setting come together to create a balanced lifestyle — one where comfort and convenience coexist effortlessly in the heart of Mangalore."
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
-                /> */}
+                    video={false}
+                />
                 <AmenitiesSection data={AMENITIES_DATA} />
                 {/* <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" completed={true} /> */}
-
-                <MapSection data={MAP_DATA} />
+                <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.879975036772368, lng: 74.83332710185005 }} />
                 <ExperienceSection titlePart1="Experiences that" titlePart2="Set the Standard" description="Stories from clients who chose Mukund Realty for quality, integrity, and reliability." />
-                <CTASection title={<>Find Your      <br />Place Here</>} subtitle="Experience comfort in the heart of the city." mobImg="/images/ctaImages/gokuldhamMob.png" deskImg="/images/ctaImages/gokuldhamDesk.png" />
+                <CTASection title={<>Find Your      <br />Place Here</>} subtitle={<>Experience comfort in the <br className="hidden md:block" /> heart of the city.</>} mobImg="/images/ctaImages/gokuldhamMob.png" deskImg="/images/ctaImages/gokuldhamDesk.png" />
                 <Footer />
             </div>
         </>
