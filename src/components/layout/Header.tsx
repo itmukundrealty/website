@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 
@@ -15,6 +16,15 @@ const ProjectHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false); // Default closed
+  const pathname = usePathname();
+
+  // Find the active project based on the current pathname
+  const activeProject = useMemo(() => {
+    return PROJECTS_LIST.find(p => p.href === pathname);
+  }, [pathname]);
+
+  // Determine what to display for the project link
+  const displayProjectName = activeProject ? activeProject.name : "Projects";
 
   // Handle Scroll effect
   useEffect(() => {
@@ -55,9 +65,15 @@ const ProjectHeader = () => {
 
             {/* Desktop Dropdown */}
             <div className="group relative py-4">
-              <button className={`flex items-center gap-1  group-hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>
-                Projects <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]" />
-              </button>
+              {displayProjectName === "Projects" ? (
+                <Link href="/projects" className={`flex items-center gap-1 group-hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${activeProject ? "text-[#0097DC]" : "text-[#505153]"}`}>
+                  {displayProjectName} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]" />
+                </Link>
+              ) : (
+                <div className={`flex items-center gap-1 group-hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${activeProject ? "text-[#0097DC]" : "text-[#505153]"} cursor-default`}>
+                  {displayProjectName} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]" />
+                </div>
+              )}
 
               {/* Dropdown Content */}
               <div className="absolute top-full right-0 mt-2 min-w-[50vw] bg-white/95 backdrop-blur-sm  p-8 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-[100] border border-gray-100">
@@ -87,7 +103,7 @@ const ProjectHeader = () => {
               </div>
             </div>
 
-            <Link href="/blog" className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>Blogs</Link>
+            <Link href="/insights" className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>Insights</Link>
 
             <Link href="/contact" className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : 'text-[#505153]'}`}>Contact</Link>
           </nav>
@@ -140,17 +156,25 @@ const ProjectHeader = () => {
 
                 {/* Projects Accordion */}
                 <div className="border-b border-gray-100">
-                  <button
-                    onClick={() => setIsMobileProjectsOpen(!isMobileProjectsOpen)}
-                    className="w-full flex justify-between items-center text-[22px] text-[#505153] font-light py-5"
-                  >
-                    Projects
-                    <ChevronDown
-                      size={24}
-                      strokeWidth={1.5}
-                      className={`transition-transform duration-300 ${isMobileProjectsOpen ? 'rotate-180' : ''}`}
-                    />
-                  </button>
+                  <div className={`w-full flex justify-between items-center text-[22px] font-light py-5 ${activeProject ? "text-[#0097DC]" : "text-[#505153]"}`}>
+                    {displayProjectName === "Projects" ? (
+                      <Link href="/projects" onClick={() => setIsMobileMenuOpen(false)}>
+                        {displayProjectName}
+                      </Link>
+                    ) : (
+                      <span className="cursor-default">{displayProjectName}</span>
+                    )}
+                    <button
+                      onClick={() => setIsMobileProjectsOpen(!isMobileProjectsOpen)}
+                      className="p-2 -mr-2"
+                    >
+                      <ChevronDown
+                        size={24}
+                        strokeWidth={1.5}
+                        className={`transition-transform duration-300 ${isMobileProjectsOpen ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                  </div>
 
                   <AnimatePresence>
                     {isMobileProjectsOpen && (
@@ -211,7 +235,7 @@ const ProjectHeader = () => {
 
                 {/* Insights */}
                 <Link
-                  href="/blog"
+                  href="/insights"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
                 >

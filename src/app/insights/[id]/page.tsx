@@ -45,7 +45,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                 <Header />
                 <div className="flex flex-col justify-center items-center h-[70vh]">
                     <h1 className="text-3xl text-[#505153] mb-4">Blog not found</h1>
-                    <Link href="/blog" className="text-[#0097DC] hover:underline">Back to Blogs</Link>
+                    <Link href="/insights" className="text-[#0097DC] hover:underline">Back to Blogs</Link>
                 </div>
                 <Footer />
             </div>
@@ -87,10 +87,10 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                     <div className="flex flex-col md:flex-row">
 
                         {/* LEFT: Title + Summary */}
-                        <div className="flex-1 py-10 pr-16">
+                        <div className="flex-1 md:py-10 pr-16">
                             <h1
-                                style={{ fontWeight: 700, fontSize: "clamp(2rem, 4vw, 3.75rem)", lineHeight: 1.1, letterSpacing: "-0.02em", color: "#2d2d2d" }}
-                                className="mb-6"
+                                style={{ fontSize: "clamp(2rem, 4vw, 3.75rem)", lineHeight: 1.1, letterSpacing: "-0.02em", color: "#2d2d2d" }}
+                                className="mb-6 font-medium"
                             >
                                 {blog.title}
                             </h1>
@@ -103,12 +103,12 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                         <div className="hidden md:block w-px bg-gray-200 self-stretch mx-0" />
 
                         {/* RIGHT: Date · Read Time · Go Back */}
-                        <div className="md:min-w-1/4 flex flex-col justify-between py-10 pl-10 pr-4">
+                        <div className="md:min-w-1/4 flex flex-col justify-between py-10 md:pl-10 pr-4">
 
                             {/* Top group: Date + Read Time */}
-                            <div className="flex flex-col gap-6">
+                            <div className="flex flex-col gap-6 md:gap-6">
                                 {/* Date */}
-                                <div>
+                                <div className="flex flex-col gap-4 md:gap-0">
                                     <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#aaa] mb-[5px]">
                                         DATE
                                     </p>
@@ -118,7 +118,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                                 </div>
 
                                 {/* Read Time */}
-                                <div>
+                                <div className="flex flex-col gap-4 md:gap-0">
                                     <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#aaa] mb-[5px]">
                                         READ TIME
                                     </p>
@@ -129,9 +129,9 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                             </div>
 
                             {/* Bottom: Go Back */}
-                            <div>
+                            <div className="mt-6 md:mt-0">
                                 <Link
-                                    href="/blog"
+                                    href="/insights"
                                     className="inline-flex items-center gap-3 group"
                                 >
                                     <div className="w-11 h-11 rounded-full border border-[#bbb] group-hover:border-[#505153] flex items-center justify-center transition-colors shrink-0">
@@ -194,19 +194,19 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
 
                 /* ── Typography ── */
                 .blog-content p {
-                    margin-bottom: 2rem;
-                    line-height: 1.8;
+                    margin-bottom: 0.75rem;
+                    line-height: 1.6;
                 }
                 .blog-content h1, .blog-content h2, .blog-content h3 {
                     color: #505153;
-                    margin-top: 3rem;
-                    margin-bottom: 1.5rem;
+                    margin-top: 1.5rem;
+                    margin-bottom: 0.75rem;
                     font-weight: 500;
                     line-height: 1.2;
                 }
                 .blog-content img {
                     border-radius: 0.5rem;
-                    margin: 3rem auto;
+                    margin: 1.5rem auto;
                     max-width: 100%;
                 }
                 .blog-content a {
@@ -217,15 +217,15 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                 .blog-content blockquote {
                     border-left: 4px solid #0097DC;
                     padding-left: 1.5rem;
-                    margin: 2rem 0;
+                    margin: 1rem 0;
                     font-style: italic;
                 }
                 .blog-content ul, .blog-content ol {
-                    margin: 2rem 0;
+                    margin: 1rem 0;
                     padding-left: 1.5rem;
                 }
                 .blog-content li {
-                    margin-bottom: 0.75rem;
+                    margin-bottom: 0.4rem;
                 }
             `}</style>
         </div>

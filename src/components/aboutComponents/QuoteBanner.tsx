@@ -20,7 +20,7 @@ export default function QuoteBanner() {
             md:top-10
             md:left-12
             lg:top-16
-            lg:left-20
+            lg:left-15
             w-[70px]
             md:w-[110px]
             lg:w-[140px]
@@ -32,7 +32,7 @@ export default function QuoteBanner() {
             alt="Decor Left"
             width={140}
             height={100}
-            className="w-full h-auto blur-lg"
+            className="w-full h-auto blur-lg -rotate-10"
             priority
           />
         </div>
@@ -59,7 +59,7 @@ export default function QuoteBanner() {
             alt="Decor Right"
             width={180}
             height={120}
-            className="w-full h-auto blur-lg"
+            className="w-full h-auto blur-lg -rotate-20"
             priority
           />
         </div>
@@ -80,7 +80,6 @@ export default function QuoteBanner() {
               leading-[1.25]
 
               text-2xl
-              sm:text-3xl
               md:text-6xl
               lg:text-6xl
               xl:text-8xl
@@ -88,9 +87,9 @@ export default function QuoteBanner() {
             "
           >
             “That’s what makes our work matter… <br />
-
-            spaces shaped by individuals <br />
-
+            <span className="font-medium">
+              Spaces shaped by individuals <br />
+            </span>
             <span className="font-medium">
               who take responsibility, together.
             </span>”

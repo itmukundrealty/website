@@ -100,7 +100,7 @@ export default function ExperienceSection({
                                 <button
                                     key={index}
                                     onClick={() => swiperRef.current?.slideTo(index)}
-                                    className={`h-1.5 rounded-sm transition-all duration-300 ${activeIndex === index ? "w-12 bg-[#0097DC]" : "w-12 bg-[#e5e7eb]"
+                                    className={`h-1.5  transition-all duration-300 ${activeIndex === index ? "w-12 bg-[#0097DC]" : "w-6 bg-[#e5e7eb]"
                                         }`}
                                     aria-label={`Go to slide ${index + 1}`}
                                 />
@@ -189,7 +189,7 @@ export default function ExperienceSection({
                                 <button
                                     key={index}
                                     onClick={() => swiperRef.current?.slideTo(index)}
-                                    className={`h-1 transition-all duration-300 ${activeIndex === index ? "w-10 bg-[#0097DC]" : "w-10 bg-[#e5e7eb]"
+                                    className={`h-1 transition-all duration-300 ${activeIndex === index ? "w-10 bg-[#0097DC]" : "w-5 bg-[#e5e7eb]"
                                         }`}
                                     aria-label={`Go to slide ${index + 1}`}
                                 />

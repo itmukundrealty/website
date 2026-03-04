@@ -72,7 +72,7 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
                 {/* --- DESKTOP UI (Hidden on Mobile) --- */}
                 <div className="hidden md:flex h-full w-full relative">
                     {/* --- Left Half: Image Columns (Zig-Zag) --- */}
-                    <div className="w-1/2 h-full flex justify-center items-center relative overflow-hidden">
+                    <div className="w-1/2 h-full flex justify-center items-start relative overflow-hidden">
                         <div className="flex gap-4 md:gap-8 lg:gap-12 pl-4 md:pl-16">
 
                             {/* Column A: Left (Moves DOWN - Passive) */}
@@ -165,12 +165,12 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
                         </div>
 
                         <div className="flex flex-col items-start mt-4">
-                            <button
+                            {/* <button
                                 onClick={handleSkipUp}
                                 className="text-[#00AEEF] hover:text-[#008CBA] transition-colors mb-2"
                             >
                                 <ArrowUp size={16} strokeWidth={3} />
-                            </button>
+                            </button> */}
                             <button
                                 onClick={handleSkipDown}
                                 className="flex items-center gap-2 text-[#00AEEF] hover:text-[#008CBA] transition-colors text-sm font-bold tracking-widest uppercase"
@@ -183,7 +183,7 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
                 </div>
 
                 {/* --- MOBILE UI (Hidden on Desktop) --- */}
-                <div className="flex md:hidden h-full w-full justify-center items-center relative overflow-hidden">
+                <div className="flex md:hidden h-full w-full justify-center items-start relative overflow-hidden">
                     <motion.div style={{ y: yEvens }} className="flex flex-col gap-12 items-center pt-[10vh]">
                         {extendedTeam.map((member) => {
                             const indexInExtended = extendedTeam.findIndex(m => m.uniqueId === member.uniqueId);
@@ -230,15 +230,15 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
                     <div className="absolute bottom-0 w-full flex justify-center z-50 pointer-events-none">
                         <div className="relative w-80 h-24 pointer-events-auto">
                             <div className="absolute bottom-[-50%] left-1/2 -translate-x-1/2 w-full h-[200%] flex flex-col items-center justify-start pt-8">
-                                <button
+                                {/* <button
                                     onClick={handleSkipUp}
                                     className="text-white hover:text-white transition-colors mb-2"
                                 >
                                     <ArrowUp size={20} strokeWidth={3} />
-                                </button>
+                                </button> */}
                                 <button
                                     onClick={handleSkipDown}
-                                    className="flex items-center gap-1 text-white hover:text-white transition-colors text-sm uppercase tracking-widest"
+                                    className="flex items-center gap-1 text-[#0097DC] hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
                                 >
                                     <ArrowDown size={20} className="mb-1" />
                                     Skip this Section

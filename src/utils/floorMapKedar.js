@@ -1,40 +1,40 @@
 const typicalFloorUnits = [
-   {
-        id: "F01",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/0.png",
-        path: "M264.5 158.75H210.75V0.5H275.25V22.75H366.5V220.5H264.5V158.75Z",
-        details: { number: "F-01", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-      },
-      {
-        id: "F02",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/1.png",
-        path: "M210.5 22.5V159H168.75V188H125V198.875H153.25V247.25H44V188H22.75V0.75H94V22.5H210.5Z",
-        details: { number: "F-02", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-      },
-      {
-        id: "F03",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/2.png",
-        path: "M153.5 462H79.5V427.25H0.25V307.5H22.25V247H153.5V295.75H124.5V307.5H162.25V402.25H153.5V462Z",
-        details: { number: "F-03", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-      },
-      {
-        id: "F04",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/3.png",
-        path: "M22.5 493.5H153.25V555.75H168.75V583.75H210.5V720.5H22.5V493.5Z",
-        details: { number: "F-04", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-      },
-      {
-        id: "F05",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/4.png",
-        path: "M367 720.5H210.5V583.75H272V522.75H367V720.5Z",
-        details: { number: "F-05", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-      },
-      {
-        id: "F06",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/5.png",
-        path: "M366.75 524.5H301.75V512.75H208.75V411.75H264.75V353H293.5V307.5H366.75V367.5H388.75V416H366.75V524.5Z",
-        details: { number: "F-06", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-      }
+  {
+    id: "F01",
+    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/0.png",
+    path: "M264.5 158.75H210.75V0.5H275.25V22.75H366.5V220.5H264.5V158.75Z",
+    details: { number: "F-01", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
+  },
+  {
+    id: "F02",
+    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/1.png",
+    path: "M210.5 22.5V159H168.75V188H125V198.875H153.25V247.25H44V188H22.75V0.75H94V22.5H210.5Z",
+    details: { number: "F-02", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
+  },
+  {
+    id: "F03",
+    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/2.png",
+    path: "M153.5 462H79.5V427.25H0.25V307.5H22.25V247H153.5V295.75H124.5V307.5H162.25V402.25H153.5V462Z",
+    details: { number: "F-03", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
+  },
+  {
+    id: "F04",
+    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/3.png",
+    path: "M22.5 493.5H153.25V555.75H168.75V583.75H210.5V720.5H22.5V493.5Z",
+    details: { number: "F-04", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
+  },
+  {
+    id: "F05",
+    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/4.png",
+    path: "M367 720.5H210.5V583.75H272V522.75H367V720.5Z",
+    details: { number: "F-05", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
+  },
+  {
+    id: "F06",
+    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/5.png",
+    path: "M366.75 524.5H301.75V512.75H208.75V411.75H264.75V353H293.5V307.5H366.75V367.5H388.75V416H366.75V524.5Z",
+    details: { number: "F-06", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
+  }
 ];
 
 // 1. Updated floorData with new Ground Floor units and dynamic viewBoxes
@@ -49,7 +49,7 @@ export const floorData = [
       "Meditation Pavilion",
       "Outdoor Seating Area",
     ],
-units: [
+    units: [
       {
         id: "U01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/ground/0.png",
@@ -90,22 +90,22 @@ units: [
   },
   {
     title: "First Floor",
-viewBox: "0 0 516 743",
+    viewBox: "0 0 516 743",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/floor.png",
     pdfPath: "/downloadFloorPlan/first floor plan.pdf",
-   features: [
-  "Shops",
-  "Car Parking",
-  "Visitor’s Lounge"
-],
-  units: [
+    features: [
+      "Shops",
+      "Car Parking",
+      "Visitor’s Lounge"
+    ],
+    units: [
       {
         id: "G01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/0.png",
         path: "M199.5 638L178.5 645.5V382.5L199.5 376.001V638Z M146.5 354.501L122.25 404.5L89.9005 416.076L39.9348 257.972L307.625 126.42L376.902 213.317V355H338.5V345.125H315.812V390.688L243.5 390.249V279.251L212.5 248.751C205.806 254.647 202.547 259.045 199.5 273.001V334.001L146.5 354.501Z M438.157 594.086L420.75 598.75V453H438.157V594.086Z",
         details: { number: "Ample Parking Space", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
-     
+
       {
         id: "G04",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/1.png",
@@ -147,13 +147,13 @@ viewBox: "0 0 516 743",
   // Floor 2 to 12 use the typical layout
   {
     title: "Second Floor",
-   viewBox: "0 0 530 764",
+    viewBox: "0 0 530 764",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor2/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
-features: [
-  "Car Parking"
-],
- units: [
+    features: [
+      "Car Parking"
+    ],
+    units: [
       {
         id: "U01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor2/0.png",
@@ -162,7 +162,7 @@ features: [
       }
     ]
   },
- 
+
 
   {
     title: "Third Floor",
@@ -170,14 +170,14 @@ features: [
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs",
-  "Kids Play Area",
-  "Meditation Pavilion",
-  "Badminton Court",
-  "Skating Rink"
-],
-      units: [
+      "3 BHKs",
+      "2 BHKs",
+      "Kids Play Area",
+      "Meditation Pavilion",
+      "Badminton Court",
+      "Skating Rink"
+    ],
+    units: [
       {
         id: "S01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/0.png",
@@ -264,119 +264,119 @@ features: [
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
-   units: typicalFloorUnits,
+      "3 BHKs",
+      "2 BHKs"
+    ],
+    units: typicalFloorUnits,
   },
   {
     title: "Fifth Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
   {
     title: "Sixth Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
   {
     title: "Seventh Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
   {
     title: "Eighth Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
   {
     title: "Ninth Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
   {
     title: "Tenth Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
   {
     title: "Eleventh Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
   {
     title: "Twelfth Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
-   {
+  {
     title: "Thirteenth Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
-   {
+  {
     title: "Fourteenth Floor",
     viewBox: "0 0 389 734",
-     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
-  "3 BHKs",
-  "2 BHKs"
-],
+      "3 BHKs",
+      "2 BHKs"
+    ],
     units: typicalFloorUnits,
   },
   {
@@ -384,11 +384,11 @@ features: [
     viewBox: "0 0 379 714",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/floor.png",
     pdfPath: "/downloadFloorPlan/13th floor.pdf",
- features: [
-  "4 BHKs",
-  "Duplex - Lower Floor"
-],
-  units: [
+    features: [
+      "4 BHKs",
+      "Duplex - Lower Floor"
+    ],
+    units: [
       {
         id: "U01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/0.png",
@@ -420,11 +420,11 @@ features: [
     viewBox: "0 0 393 741",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/floor.png",
     pdfPath: "/downloadFloorPlan/14th floor.pdf",
- features: [
-  "4 BHKs",
-  "Duplex - Upper Floor"
-],
- units: [
+    features: [
+      "4 BHKs",
+      "Duplex - Upper Floor"
+    ],
+    units: [
       {
         id: "U01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/0.png",
@@ -456,11 +456,11 @@ features: [
     viewBox: "0 0 383 729",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/terrace/floor.png",
     pdfPath: "/downloadFloorPlan/lower terrace.pdf",
-   features: [
-  "Library",
-  "Cardio Machines",
-  "Indoor Games Area"
-],
+    features: [
+      "Library",
+      "Cardio Machines",
+      "Indoor Games Area"
+    ],
     units: [
       {
         id: "U01",
@@ -482,18 +482,18 @@ features: [
       }
     ]
   },
-   {
+  {
     title: "Upper Terrace Floor",
     viewBox: "0 0 384 720",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/upperTerrace/floor.png",
     pdfPath: "/downloadFloorPlan/lower terrace.pdf",
-   features: [
-  "Infinity Swimming Pool",
-  "Baby Pool",
-  "Changing Rooms",
-  "Seated Chalk Gallery"
-],
-  units: [
+    features: [
+      "Infinity Swimming Pool",
+      "Baby Pool",
+      "Changing Rooms",
+      "Seated Chalk Gallery"
+    ],
+    units: [
       {
         id: "U01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/upperTerrace/0.png",
@@ -508,12 +508,12 @@ features: [
       }
     ]
   },
-  
+
 ];
 
 export const HERO_MARKERS = [
   {
-    label: "Swimming Pool", // Leftmost marker (cx: 533.227)
+    label: "meditation lawn", // Leftmost marker (cx: 533.227)
     cx: 533.227,
     cy: 613.227,
     markerElements: (
@@ -524,15 +524,17 @@ export const HERO_MARKERS = [
         <circle cx={533.227} cy={613.227} r="31.2266" fill="white" opacity="0.5" />
         <circle cx={533.227} cy={613.227} r="30.2266" stroke="white" strokeWidth="2" fill="none" />
         {/* Icon Path */}
-        <path
-          d="M530.548 612.065L533.422 606.296M537.976 618.428L545.214 614.49C545.74 614.19 546.213 613.778 546.597 613.261C548.09 611.251 547.671 608.413 545.662 606.92C544.575 606.113 543.246 605.865 542.018 606.125C541.913 604.874 541.291 603.673 540.205 602.866C539.118 602.059 537.789 601.811 536.561 602.071C536.455 600.82 535.834 599.619 534.747 598.812C532.738 597.319 529.899 597.738 528.407 599.747C528.023 600.265 527.765 600.836 527.629 601.426L525.949 609.494M538.879 610.35L534.186 614.768M524.259 624.331C521.245 622.092 520.617 617.833 522.856 614.82C523.602 613.815 525.021 613.606 526.026 614.352L533.302 619.757C534.307 620.503 534.516 621.923 533.77 622.928C531.531 625.941 527.273 626.57 524.259 624.331Z"
-          stroke="white"
-          strokeWidth="2"
-          strokeMiterlimit="10"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
+        <g transform="translate(522.227, 602.227)">
+          <path
+            d="M8.03228 11.3601V16.9183M13.4014 11.3601V16.9183M4.98727 16.3113V11.0285C4.98727 9.16596 6.49717 7.65602 8.35978 7.65602H13.0739C14.9365 7.65602 16.4465 9.16596 16.4465 11.0285V16.3113M8.03228 11.3601V16.9183M13.4014 11.3601V16.9183M10.7169 18.158V20.5127M18.0019 15.649C17.7399 15.649 17.2558 15.7743 17.2558 15.7743L10.7168 18.158L4.17795 15.7743C4.17795 15.7743 3.69383 15.649 3.43187 15.649C2.00609 15.649 0.86685 16.876 1.01258 18.3317C1.13929 19.5974 2.29845 20.5127 3.57056 20.5127H9.39761H12.0361H17.8632C19.1353 20.5127 20.2944 19.5974 20.4211 18.3317C20.5669 16.876 19.4276 15.649 18.0019 15.649ZM14.0447 4.3282C14.0447 6.16608 12.5547 7.65602 10.7169 7.65602C8.87898 7.65602 7.38904 6.16608 7.38904 4.3282C7.38904 2.49031 8.87898 1.00038 10.7169 1.00038C12.5547 1.00038 14.0447 2.49031 14.0447 4.3282Z"
+            stroke="white"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+        </g>
       </>
     ),
   },

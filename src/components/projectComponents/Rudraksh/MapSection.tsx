@@ -17,9 +17,11 @@ export type MapSectionItem = {
 
 export interface MapSectionProps {
     data: MapSectionItem[];
+    mainMarkerPosition?: { lat: number, lng: number };
+    customMarkerImage?: string;
 }
 
-export default function MapSection({ data }: MapSectionProps) {
+export default function MapSection({ data, mainMarkerPosition, customMarkerImage }: MapSectionProps) {
     // Initialize active section with the first item's key, or an empty string if data is empty
     const [activeSection, setActiveSection] = useState<string>(data[0]?.key || "");
 
@@ -38,6 +40,8 @@ export default function MapSection({ data }: MapSectionProps) {
                     highlightHighway={activeSection === "city"}
                     center={center}
                     zoom={zoom}
+                    mainMarkerPosition={mainMarkerPosition}
+                    customMarkerImage={customMarkerImage}
                 />
             </div>
 

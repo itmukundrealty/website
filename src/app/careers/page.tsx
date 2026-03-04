@@ -17,12 +17,14 @@ export default async function page() {
                 text={
                     <>
                         We're not building just any team.{' '} <br />
-                        <span className="font-semibold text-[#505153]">
-                            We seek visionaries who shape futures.
+                        <span className="font-medium text-[#505153]">
+                            We seek visionaries who<br />
+                            shape futures.
                         </span>
                     </>
                 }
                 imageSrc="/icons/mukund.svg"
+                imageClassName="blur-lg"
             />
 
 

@@ -190,7 +190,11 @@ export default function page() {
           ]}
         />
 
-        <MapSection data={MAP_DATA} />
+        <MapSection
+          data={MAP_DATA}
+          mainMarkerPosition={{ lat: 12.908991556397066, lng: 74.85044859337258 }}
+          customMarkerImage="/icons/mapIcons/kedarIcon.svg"
+        />
         <ExperienceSection
           titlePart1="Built on"
           titlePart2="Real Experiences"
@@ -203,8 +207,8 @@ export default function page() {
               The Home You’ve Been <br /> Looking For
             </>
           }
-          subtitle="DSpacious homes built for everyday living."
-          mobImg="/images/kedarImage/ctaBg.webp"
+          subtitle="Spacious homes built for everyday living."
+          mobImg="/images/ctaImages/kedarDesk.png"
           deskImg="/images/ctaImages/kedarDesk.png"
         />
         <Footer />

@@ -5,6 +5,10 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { Job } from "@/data/jobs";
 import ApplyModal from "./ApplyModal";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
+import 'swiper/css';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface JobCardProps {
     title: string;
@@ -62,6 +66,43 @@ const JobCard = ({ title, type, description, color, slug, i, progress, range, ta
     );
 };
 
+interface StaticJobCardProps {
+    title: string;
+    type: string;
+    description: string;
+    color: string;
+    slug: string;
+    onApply: () => void;
+}
+
+const StaticJobCard = ({ title, type, description, color, slug, onApply }: StaticJobCardProps) => {
+    return (
+        <div
+            style={{ backgroundColor: color }}
+            className="flex flex-col justify-between h-full min-h-[280px] md:min-h-[420px] p-4 md:p-8 text-white w-full transition-transform hover:-translate-y-2"
+        >
+            <div>
+                <h2 className="text-lg md:text-2xl font-medium mb-1 tracking-tight leading-tight">{title}</h2>
+                <p className="text-[10px] md:text-sm font-normal mb-3 md:mb-4 tracking-wide text-white/90">{type}</p>
+                <p className="hidden md:block text-sm font-light leading-relaxed mb-auto opacity-90 line-clamp-5">
+                    {description}
+                </p>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 mt-4 md:mt-6 self-start md:self-end w-full">
+                <Link href={`/careers/${slug}`} className="w-full md:w-auto">
+                    <button className="text-[10px] md:text-sm underline underline-offset-4 font-light hover:text-white/80 transition-colors">
+                        Read More
+                    </button>
+                </Link>
+                <button onClick={onApply} className="w-full md:w-auto border border-white px-2 md:px-4 py-1.5 md:py-2 pb-2 md:pb-2.5 text-[10px] md:text-sm font-medium hover:bg-white hover:text-[#0097DC] transition-colors">
+                    Apply Now
+                </button>
+            </div>
+        </div>
+    );
+};
+
 // import { jobs } from "@/data/jobs";
 
 interface CareerOpportunitiesProps {
@@ -76,6 +117,11 @@ export default function CareerOpportunities({ jobs }: CareerOpportunitiesProps) 
         offset: ['start start', 'end end']
     });
 
+    const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [isBeginning, setIsBeginning] = useState(true);
+    const [isEnd, setIsEnd] = useState(false);
+
     return (
         <div ref={container} className="relative pb-[20vh] bg-white px-6 lg:px-20 xl:px-52 pt-30">
 
@@ -86,20 +132,98 @@ export default function CareerOpportunities({ jobs }: CareerOpportunitiesProps) 
                 </div>
             </div>
 
-            {jobs.map((job, i) => {
-                const targetScale = 1 - ((jobs.length - i) * 0.04);
-                return (
-                    <JobCard
-                        key={i}
-                        i={i}
-                        {...job}
-                        progress={scrollYProgress}
-                        range={[i * 0.33, 1]}
-                        targetScale={targetScale}
-                        onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
-                    />
-                );
-            })}
+            {/* Desktop: Stacked Animation (<=4 jobs), Mobile: 2-column Grid */}
+            <div className="md:block hidden">
+                {jobs.length <= 4 && jobs.map((job, i) => {
+                    const targetScale = 1 - ((jobs.length - i) * 0.04);
+                    return (
+                        <JobCard
+                            key={i}
+                            i={i}
+                            {...job}
+                            progress={scrollYProgress}
+                            range={[i * 0.33, 1]}
+                            targetScale={targetScale}
+                            onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
+                        />
+                    );
+                })}
+            </div>
+
+            {/* Mobile: 2-column Grid (when <= 4 jobs) */}
+            {jobs.length <= 4 && (
+                <div className="md:hidden grid grid-cols-2 gap-4 justify-center mt-12 w-full mx-auto xl:px-0">
+                    {jobs.map((job, i) => (
+                        <StaticJobCard
+                            key={i}
+                            {...job}
+                            onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
+                        />
+                    ))}
+                </div>
+            )}
+
+            {/* Swiper Layout (when > 4 jobs) */}
+            {jobs.length > 4 && (
+                <div className="mt-12 md:mt-16 w-full mx-auto xl:px-0">
+                    <Swiper
+                        spaceBetween={16}
+                        slidesPerView={1.2}
+                        breakpoints={{
+                            640: { slidesPerView: 2, spaceBetween: 16 },
+                            1024: { slidesPerView: 3, spaceBetween: 24 }
+                        }}
+                        onSwiper={(swiper) => {
+                            setSwiperInstance(swiper);
+                            setIsBeginning(swiper.isBeginning);
+                            setIsEnd(swiper.isEnd);
+                        }}
+                        onSlideChange={(swiper) => {
+                            setCurrentSlide(swiper.activeIndex);
+                            setIsBeginning(swiper.isBeginning);
+                            setIsEnd(swiper.isEnd);
+                        }}
+                        className="w-full !pb-4"
+                    >
+                        {jobs.map((job, i) => (
+                            <SwiperSlide key={i} className="!h-auto">
+                                <StaticJobCard
+                                    {...job}
+                                    color="#0097DC"
+                                    onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+
+                    {/* Navigation Controls */}
+                    <div className="mt-8 md:mt-12 flex justify-center w-full">
+                        {/* Buttons */}
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => swiperInstance?.slidePrev()}
+                                disabled={isBeginning}
+                                className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors bg-white z-10 ${isBeginning
+                                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                                    : 'border-[#0C9CDE] text-[#0C9CDE] hover:bg-[#0C9CDE]/10 hover:border-[#0C9CDE]'
+                                    }`}
+                            >
+                                <ChevronLeft className="w-5 h-5" />
+                            </button>
+                            <button
+                                onClick={() => swiperInstance?.slideNext()}
+                                disabled={isEnd}
+                                className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors bg-white z-10 ${isEnd
+                                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                                    : 'border-[#0C9CDE] text-[#0C9CDE] hover:bg-[#0C9CDE]/10 hover:border-[#0C9CDE]'
+                                    }`}
+                            >
+                                <ChevronRight className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <ApplyModal
                 isOpen={modalData.isOpen}

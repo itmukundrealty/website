@@ -40,7 +40,7 @@ export default function Footer() {
     { name: "Contact", href: "/contact" },
     { name: "Careers", href: "/careers" },
      { name: "Projects", href: "/projects" },
-      { name: "Media Center", href: "/" },
+      { name: "Insights", href: "/insights" },
 
   ];
   const socials = [
@@ -51,7 +51,7 @@ export default function Footer() {
   const projects = [
     { name: "Rudraksh", href: "/rudraksh" } ,
     { name: "Kedar", href: "/kedar" },
-    { name: "Ashoka Buisness Center", href: "/ashoka" }
+    { name: "Ashoka Business Center", href: "/ashoka-business-center" }
   ];
 
   return (
@@ -66,8 +66,8 @@ export default function Footer() {
           </div>
 
           {/* Breadcrumb / Label */}
-          <div className="w-full border-y lg:border-y-0 lg:border-b border-slate-200 py-4 lg:pb-6">
-            <p className="text-[11px] text-slate-500 uppercase tracking-[0.2em] font-normal text-left">
+          <div className="w-full border-y lg:border-y-0 lg:border-b border-slate-200 py-4 lg:pb-6 ">
+            <p className="text-[11px] text-slate-500 uppercase tracking-[0.2em] font-normal text-left md:ms-0 ms-3">
               {getBreadcrumbs()}
             </p>
           </div>
@@ -157,7 +157,7 @@ export default function Footer() {
 
           <div className="py-10 flex flex-col lg:flex-row justify-between items-center gap-6 text-[10px] lg:text-[12px] text-slate-500 tracking-wide text-center">
             <div className="order-2 lg:order-1">
-              <p>All Rights Reserved. Copyright © 2026–27, Mukund MGM Realty</p>
+              <p>All Rights Reserved. Copyright © 2026–27, Mukund Realty</p>
             </div>
 
             <div className="flex gap-2 order-1 lg:order-2 uppercase lg:capitalize">

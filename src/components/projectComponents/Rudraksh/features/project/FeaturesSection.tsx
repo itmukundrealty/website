@@ -44,7 +44,7 @@ export default function FeaturesSection({
   const GALLERY_IMAGES = galleryImages || [];
 
   return (
-    <section className="py-20 lg:py-32 bg-white font-host">
+    <section className="py-10 lg:py-32 bg-white font-host">
       <div className=" mx-auto px-6 lg:px-20 xl:px-54 ">
         {/* Header */}
         {variant === "center" ? (
@@ -54,11 +54,12 @@ export default function FeaturesSection({
         ) : (
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16 lg:mb-28">
             <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#424244] font-light tracking-tight leading-tight">{heading}</h2>
-            <Link href={finalLink}>
-              <button className="flex items-center gap-2 px-4 py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-sm font-medium shrink-0">
-                <ArrowUpRight className="w-5 h-5 hover:rotate-45 transition-all duration-300" />
-                Explore Now
-              </button>
+            <Link
+              href={finalLink}
+              className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-sm font-bold shrink-0 w-full md:w-fit"
+            >
+              <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+              Explore Now
             </Link>
           </div>
         )}

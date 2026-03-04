@@ -5,15 +5,18 @@ import {
     LoadScript,
     Circle,
     Marker,
+    OverlayView,
 } from '@react-google-maps/api';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 type Location = {
     id: number; // changed to number to match index
     lat: number;
     lng: number;
     mapLink?: string;
+    name?: string;
+    markerIcon?: string;
 };
 
 const containerStyle = {
@@ -123,6 +126,9 @@ interface StyledMapProps {
     zoom?: number;
     locations?: Location[];
     hideMainIcon?: boolean;
+    mainMarkerPosition?: { lat: number; lng: number };
+    customMarkerImage?: string;
+    renderAsMarkers?: boolean;
 }
 
 export default function StyledMap({
@@ -133,7 +139,12 @@ export default function StyledMap({
     zoom = 14,
     locations = LOCATIONS,
     hideMainIcon = false,
+    mainMarkerPosition,
+    customMarkerImage = "/icons/mapIcon.svg",
+    renderAsMarkers = false,
 }: StyledMapProps) {
+
+    const [hoveredLocation, setHoveredLocation] = useState<number | null>(null);
 
     const dynamicMapStyle = useMemo(() => {
         return [
@@ -190,19 +201,51 @@ export default function StyledMap({
                     zoom={zoom}
                     options={mapOptions}
                 >
+                    {/* Render Main Project Marker if provided as prop */}
+                    {mainMarkerPosition && !hideMainIcon && (
+                        <Marker
+                            position={mainMarkerPosition}
+                            icon={{
+                                url: customMarkerImage,
+                                scaledSize: typeof google !== 'undefined' ? new google.maps.Size(50, 50) : undefined
+                            }}
+                        />
+                    )}
+
                     {/* Render Markers/Circles */}
                     {locations.map((loc) => {
                         const isActive = activePoints.includes(loc.id);
 
-                        // Special Marker for ID 0 (Main Property) — only when hideMainIcon is false
-                        if (loc.id === 0 && !hideMainIcon) {
+                        if (renderAsMarkers) {
+                            return (
+                                <Marker
+                                    key={loc.id}
+                                    position={{ lat: loc.lat, lng: loc.lng }}
+                                    onClick={() => handlePointClick(loc.mapLink)}
+                                    onMouseOver={() => setHoveredLocation(loc.id)}
+                                    onMouseOut={() => setHoveredLocation(null)}
+                                    options={{
+                                        opacity: isActive ? 1 : 0.5,
+                                    }}
+                                    icon={{
+                                        url: loc.markerIcon || customMarkerImage,
+                                        scaledSize: typeof google !== 'undefined' ? new google.maps.Size(isActive ? 60 : 50, isActive ? 60 : 50) : undefined
+                                    }}
+                                />
+                            );
+                        }
+
+                        // If mainMarkerPosition is provided, we skip rendering the hardcoded id:0 marker
+                        if (loc.id === 0) {
+                            if (mainMarkerPosition || hideMainIcon) return null;
+
                             return (
                                 <Marker
                                     key={loc.id}
                                     position={{ lat: loc.lat, lng: loc.lng }}
                                     onClick={() => handlePointClick(loc.mapLink)}
                                     icon={{
-                                        url: "/icons/mapIcon.svg",
+                                        url: customMarkerImage,
                                         scaledSize: typeof google !== 'undefined' ? new google.maps.Size(50, 50) : undefined
                                     }}
                                 />
@@ -229,6 +272,27 @@ export default function StyledMap({
                             />
                         );
                     })}
+
+                    {hoveredLocation !== null && (() => {
+                        const hLoc = locations.find(l => l.id === hoveredLocation);
+                        if (hLoc && hLoc.name) {
+                            return (
+                                <OverlayView
+                                    position={{ lat: hLoc.lat, lng: hLoc.lng }}
+                                    mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                                    getPixelPositionOffset={(x, y) => ({
+                                        x: -(x / 2),
+                                        y: -(y + 40),
+                                    })}
+                                >
+                                    <div className="text-sm font-bold text-gray-800 drop-shadow-md bg-white/70 backdrop-blur-sm px-3 py-1 rounded-full whitespace-nowrap pointer-events-none transition-opacity duration-300">
+                                        {hLoc.name}
+                                    </div>
+                                </OverlayView>
+                            );
+                        }
+                        return null;
+                    })()}
                 </GoogleMap>
             </LoadScript>
         </div>

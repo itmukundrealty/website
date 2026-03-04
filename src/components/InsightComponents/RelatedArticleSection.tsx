@@ -64,7 +64,7 @@ export default function RelatedArticleSection({ currentBlogId }: RelatedArticleS
                                         {article.summary}
                                     </p>
                                     <Link
-                                        href={`/blog/${article.id}`}
+                                        href={`/insights/${article.id}`}
                                         className="text-[#505153] text-[16px] md:text-[18px] font-normal w-fit border-b border-[#505153]/40 pb-0.5 hover:border-[#505153] transition-colors"
                                     >
                                         Read More
@@ -77,7 +77,7 @@ export default function RelatedArticleSection({ currentBlogId }: RelatedArticleS
                     {/* Circular Arrow Button — redirects to blogs page */}
                     <div className="flex-shrink-0 md:pl-4 lg:pl-12">
                         <Link
-                            href="/blog"
+                            href="/insights"
                             className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-full border border-zinc-400 flex items-center justify-center transition-all duration-300 hover:bg-zinc-50 group shadow-sm"
                         >
                             <ArrowRight className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 stroke-[0.8] text-[#505153] group-hover:translate-x-1 transition-transform" />

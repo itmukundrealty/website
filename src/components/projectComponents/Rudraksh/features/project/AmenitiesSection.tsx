@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
-import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight, ChevronRight, ChevronLeft } from "lucide-react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -104,13 +104,13 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                 <div className="space-y-4">
                   <span className="text-gray-400 text-[10px] tracking-[0.4em] uppercase font-bold block">Amenities</span>
 
-                  {/* FIX: Added a fixed min-height container.
-                                      lg:min-h-[320px] reserves space for ~3 lines of large text + subtitle.
+                  {/* FIX: Changed to fixed height container to prevent button movement.
+                                      lg:h-[270px] reserves space for ~3-4 lines of large text + subtitle.
                                       justify-center keeps it vertically centered in that reserved space.
                                       items-start keeps text aligned left.
                                     */}
-                  <div className="flex flex-col justify-center items-start min-h-[150px] lg:min-h-[320px] gap-4">
-                    <h2 className="text-5xl lg:text-6xl  text-[#424244] font-light leading-[1.1] max-w-md whitespace-pre-line">
+                  <div className="flex flex-col justify-center items-start h-[180px] lg:h-[270px] gap-4">
+                    <h2 className="text-4xl lg:text-6xl  text-[#424244] font-light leading-[1.1] max-w-md whitespace-pre-line">
                       {currentAmenity.label}
                     </h2>
 
@@ -123,9 +123,9 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
 
                 <Link
                   href={finalLink}
-                  className="group flex items-center gap-3 px-6 py-3 lg:px-6 lg:py-5 border border-[#0097DC]/30 text-[#0097DC]  hover:bg-[#0097DC] hover:text-white duration-300 transition-all uppercase tracking-widest text-[11px] font-bold w-fit"
+                  className="group flex items-center justify-center md:justify-start gap-3 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC]/30 text-[#0097DC] hover:bg-[#0097DC] hover:text-white duration-300 transition-all uppercase tracking-widest md:text-sm font-bold w-full md:w-fit"
                 >
-                  <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-all duration-300" />
+                  <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                   Enquire Now
                 </Link>
               </div>
@@ -163,13 +163,13 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                     onClick={handlePrev}
                     className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-gray-100 flex items-center justify-center text-gray-300 hover:border-[#0097DC] hover:text-[#0097DC] transition-all bg-white"
                   >
-                    <ArrowLeft className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={1.5} />
+                    <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={1.5} />
                   </button>
                   <button
                     onClick={handleNext}
                     className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC] hover:text-white transition-all bg-white"
                   >
-                    <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={1.5} />
+                    <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={1.5} />
                   </button>
                 </div>
               </div>

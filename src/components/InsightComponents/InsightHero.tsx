@@ -54,10 +54,10 @@ export default function InsightHero() {
 
                             {latestBlog && (
                                 <Link
-                                    href={`/blog/${latestBlog.id}`}
+                                    href={`/insights/${latestBlog.id}`}
                                     className="flex items-center gap-1.5 text-[#00A3E0] font-semibold hover:text-[#008CBE] transition-colors w-fit pt-1"
                                 >
-                                    <ArrowUpRight className="w-[17px] h-[17px]" strokeWidth={2} />
+                                    <ArrowUpRight className="w-[17px] h-[17px] hover:rotate-45 transition-transform duration-300" strokeWidth={2} />
                                     <span className="text-[14px]">Read More</span>
                                 </Link>
                             )}
