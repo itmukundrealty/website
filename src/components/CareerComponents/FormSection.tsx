@@ -254,7 +254,7 @@ export default function FormSection() {
                             options={jobOptions}
                         />
 
-                        <TextInput id="about" label="Tell Us About Yourself" isTextArea required />
+                        <TextInput id="about" label="Tell Us About Yourself (200-250 words)" isTextArea />
 
                         {/* File Upload */}
                         <div className="mb-10 w-full">

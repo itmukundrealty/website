@@ -121,7 +121,7 @@ export function ProjectHero({
           className="text-right pointer-events-auto mt-20 lg:mt-28 xl:mt-40"
         >
           <h1 className="text-5xl text-white tracking-tight font-medium mb-4 lg:text-7xl">Click to Explore</h1>
-          <h2 className="text-5xl text-white tracking-tight font-light lg:text-7xl">Our Floors</h2>
+          <h2 className="text-5xl text-white tracking-tight font-thin lg:text-7xl">Our Floors</h2>
         </motion.div>
       </div>
 
@@ -148,18 +148,17 @@ export function ProjectHero({
           </g>
 
           {/* INTERACTIVE MARKERS */}
-          {selectedIndex === null &&
-            HERO_MARKERS.map((marker, index) => (
-              <g
-                key={`marker-${index}`}
-                // FIX ADDED: Added pointer-events-auto so markers are clickable
-                className="cursor-pointer group pointer-events-auto"
-                onMouseEnter={() => setHoveredMarkerIndex(index)}
-                onMouseLeave={() => setHoveredMarkerIndex(null)}
-              >
-                {marker.markerElements}
-              </g>
-            ))}
+          {HERO_MARKERS.map((marker, index) => (
+            <g
+              key={`marker-${index}`}
+              // FIX ADDED: Added pointer-events-auto so markers are clickable
+              className="cursor-pointer group pointer-events-auto"
+              onMouseEnter={() => setHoveredMarkerIndex(index)}
+              onMouseLeave={() => setHoveredMarkerIndex(null)}
+            >
+              {marker.markerElements}
+            </g>
+          ))}
         </svg>
       </div>
 
@@ -178,7 +177,7 @@ export function ProjectHero({
 
       {/* 4. MARKER TOOLTIPS */}
       <AnimatePresence>
-        {selectedIndex === null && hoveredMarkerIndex !== null && (
+        {hoveredMarkerIndex !== null && (
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -344,26 +343,20 @@ export function ProjectHero({
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="space-y-6">
                     <div>
-                      <p className="text-lg font-light text-gray-200 tracking-wider mb-2">{currentFloor?.title}</p>
+                      <p className="text-lg font-light opacity-90">{currentFloor?.title}</p>
                       <h1 className="text-3xl md:text-4xl lg:text-6xl font-normal leading-tight tracking-tight">
                         {currentUnit?.details.number}
                       </h1>
                     </div>
 
-                    {(currentUnit?.details.rooms || currentUnit?.details.washrooms || currentUnit?.details.type || currentUnit?.details.balconySqft !== undefined) && (
-                      <ul className="space-y-3 text-xl font-light opacity-90 border-l border-white/20 pl-6 mt-8">
-                        {currentUnit?.details.rooms && <li>{currentUnit?.details.rooms} Bedrooms</li>}
-                        {currentUnit.details.washrooms && <li>{currentUnit.details.washrooms} Washrooms</li>}
-                        {currentUnit.details.type && <li>{currentUnit.details.type}</li>}
-                        {currentUnit.details.balconySqft !== undefined && (
-                          <li>
-                            {currentUnit.details.balconySqft && currentUnit.details.balconySqft !== "0"
-                              ? `Balcony Area: ${currentUnit.details.balconySqft} sq.ft.`
-                              : "Balcony"}
-                          </li>
-                        )}
-                      </ul>
-                    )}
+                    <ul className="space-y-2 text-lg font-light opacity-90">
+                      {currentUnit?.details.rooms && <li>{currentUnit?.details.rooms} Bedrooms</li>}
+                      {currentUnit.details.washrooms && <li>{currentUnit.details.washrooms} Washrooms</li>}
+                      {currentUnit.details.type && <li>{currentUnit.details.type}</li>}
+                      {currentUnit.details.balconySqft && currentUnit.details.balconySqft !== "0"
+                        ? `Balcony Area: ${currentUnit.details.balconySqft} sq.ft.`
+                        : "Balcony"}
+                    </ul>
                   </div>
                 </div>
 
@@ -434,11 +427,21 @@ export function ProjectHero({
   );
 }
 
-import { PROJECTS_LIST } from "@/data/projects";
-
 const PROJECTS = {
-  ongoing: PROJECTS_LIST.filter(p => p.type === 'ongoing'),
-  completed: PROJECTS_LIST.filter(p => p.type === 'completed')
+  ongoing: [{ name: "Rudraksh", href: "/rudraksh" }],
+  completed: [
+    { name: "Mathura Residency", href: "/mathura" },
+    { name: "Ajanta Business Center", href: "/ajanta" },
+    { name: "Evanna Homes", href: "/evanna" },
+    { name: "Kudva's Grandeur", href: "/kudva" },
+    { name: "Madhuban Apartments", href: "/madhuban" },
+    { name: "Nandagokul Apartments", href: "/nandagokul" },
+    { name: "Nandadeep Apartments", href: "/nandadeep" },
+    { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
+    { name: "Gokuldham", href: "/gokuldham" },
+    { name: "Mukund Sadan", href: "/mukund-sadhan" },
+    { name: "Kailash", href: "/kailash" },
+  ],
 };
 
 // 1. The Header Component (Exactly the same in both)

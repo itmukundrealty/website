@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Image from "next/image";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronLast, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
@@ -141,9 +141,11 @@ export default function CraftedForMomentsSection() {
                     {/* Indicators */}
                     <div className="static md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 flex gap-3 order-2 md:order-none">
                         {slides.map((_, index) => (
-                            <div
+                            <button
                                 key={index}
-                                className={`h-0.5 transition-all duration-300 ${index === currentSlide ? 'w-8 bg-blue-400' : 'w-4 bg-gray-200'}`}
+                                onClick={() => setCurrentSlide(index)}
+                                className={`h-1 transition-all duration-300 rounded-full ${index === currentSlide ? 'w-8 md:w-10 bg-[#0097dc]' : 'w-4 md:w-5 bg-gray-200'}`}
+                                aria-label={`Go to slide ${index + 1}`}
                             />
                         ))}
                     </div>
@@ -152,15 +154,15 @@ export default function CraftedForMomentsSection() {
                     <div className="flex gap-3 order-1 md:order-none md:pr-12">
                         <button
                             onClick={prevSlide}
-                            className="w-12 h-12 rounded-full border border-blue-200 flex items-center justify-center text-blue-400 hover:border-blue-500 hover:text-blue-500 transition-colors bg-white"
+                            className="w-12 h-12 rounded-full border border-[#0C9CDE] flex items-center justify-center text-[#0C9CDE] hover:border-[#0C9CDE] hover:text-[#0C9CDE] hover:bg-[#0C9CDE]/10 transition-colors bg-white"
                         >
-                            <ArrowLeft className="w-5 h-5" />
+                            <ChevronLeft className="w-5 h-5" />
                         </button>
                         <button
                             onClick={nextSlide}
-                            className="w-12 h-12 rounded-full border border-blue-400 flex items-center justify-center text-blue-500 hover:bg-blue-50 transition-colors bg-white"
+                            className="w-12 h-12 rounded-full border border-[#0C9CDE] flex items-center justify-center text-[#0C9CDE] hover:border-[#0C9CDE] hover:text-[#0C9CDE] hover:bg-[#0C9CDE]/10 transition-colors bg-white"
                         >
-                            <ArrowRight className="w-5 h-5" />
+                            <ChevronRight className="w-5 h-5" />
                         </button>
                     </div>
                 </div>

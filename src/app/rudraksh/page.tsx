@@ -242,7 +242,11 @@ export default function Project1Page() {
         ]}
       />
       {/* <ProjectInteractivePlan /> */}
-      <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.90477577287541, lng: 74.83732199444988 }} />
+      <MapSection
+        data={MAP_DATA}
+        mainMarkerPosition={{ lat: 12.90477577287541, lng: 74.83732199444988 }}
+        customMarkerImage="/icons/mapIcon.svg"
+      />
       <ExperienceSection
         titlePart1="Built on"
         titlePart2="Real Experiences"

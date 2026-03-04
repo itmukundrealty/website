@@ -2,11 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { fetchBlogs, Blog } from "@/lib/api";
+import { usePathname } from "next/navigation";
 
 export default function InsightsSection() {
     const [blogs, setBlogs] = useState<Blog[]>([]);
+    const pathname = usePathname();
+
+    const viewMoreHref = pathname === "/insight-lists" ? "/insights" : "/insight-lists";
+
 
     useEffect(() => {
         const getBlogs = async () => {
@@ -26,7 +31,7 @@ export default function InsightsSection() {
     return (
         <section className="py-24 bg-white relative">
             <div className=" mx-auto px-6 md:px-12 lg:px-20 xl:px-54">
-                <div className="absolute -top-20 -left-40 pointer-events-none z-0">
+                <div className="absolute -top-20 -left-40 pointer-events-none z-0 hidden md:block">
                     <Image
                         src="/icons/mukund.svg"
                         alt="Mukund Abstract Shape"
@@ -38,10 +43,10 @@ export default function InsightsSection() {
                 {/* Header */}
                 <div className="flex justify-between items-center mb-16">
                     <h2 className="text-3xl md:text-5xl lg:text-7xl  text-[#505153] tracking-tight">Insights</h2>
-                    <Link href="/blog" className="flex items-center gap-2 group text-[#505153] hover:text-[#505153] transition-colors">
+                    <Link href={viewMoreHref} className="flex items-center gap-2 group text-[#505153] hover:text-[#0C9CDE]  transition-colors duration-300">
                         <span className="text-lg">View more</span>
-                        <div className="w-8 h-8 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#505153] transition-colors">
-                            <ArrowRight className="w-4 h-4" />
+                        <div className="w-6 h-6 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2  transition-colors ">
+                            <ChevronRight className="w-4 h-4" />
                         </div>
                     </Link>
                 </div>
@@ -59,7 +64,7 @@ export default function InsightsSection() {
                                 {leftBlog ? leftBlog.summary : ""}
                             </p>
                             {leftBlog && (
-                                <Link href={`/blog/${leftBlog.id}`} className="inline-block text-[#505153] font-medium border-b border-slate-600 hover:text-[#505153] hover:border-slate-900 transition-colors pb-0.5">
+                                <Link href={`/insights/${leftBlog.id}`} className="inline-block text-[#505153] font-medium border-b border-slate-600 hover:text-[#0C9CDE] hover:border-[#0C9CDE] transition-colors pb-0.5">
                                     Read More
                                 </Link>
                             )}
@@ -95,8 +100,8 @@ export default function InsightsSection() {
                                 {rightBlog ? rightBlog.summary : ""}
                             </p>
                             {rightBlog && (
-                                <Link href={`/blog/${rightBlog.id}`} className="inline-flex items-center gap-2 group">
-                                    <span className="text-[#505153]  font-medium border-b border-[#505153] group-hover:text-[#505153] group-hover:border-[#505153] transition-colors pb-0.5">
+                                <Link href={`/insights/${rightBlog.id}`} className="inline-flex items-center gap-2 group">
+                                    <span className="text-[#505153]  font-medium border-b border-[#505153] group-hover:text-[#0C9CDE] group-hover:border-[#0C9CDE] transition-colors pb-0.5">
                                         Read More
                                     </span>
                                 </Link>

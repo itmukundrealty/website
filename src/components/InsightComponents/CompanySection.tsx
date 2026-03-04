@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 
 export default function CompanySection() {
     const announcements = [
@@ -32,17 +32,16 @@ export default function CompanySection() {
         <section className="bg-white pt-24 pb-16 md:py-24">
             <div className=" mx-auto px-6 md:px-12 lg:px-20 xl:px-54">
                 {/* Header */}
-                <div className="flex justify-between items-center mb-0">
-                    <h2 className="text-4xl md:text-5xl lg:text-7xl leading-[1.05] text-[#505153] font-medium tracking-tight">
-                        Company<br />Announcements
-                    </h2>
-                    <Link href="/announcements" className="flex items-center gap-2 group text-[#505153] hover:text-[#505153] transition-colors">
+                  <div className="flex justify-between items-center mb-16">
+                    <h2 className="text-3xl md:text-5xl lg:text-7xl  text-[#505153] tracking-tight">Company<br />Announcements</h2>
+                    <Link href="/insight-lists" className="flex items-center gap-2 group text-[#505153] hover:text-[#0C9CDE]  transition-colors duration-300">
                         <span className="text-lg">View more</span>
-                        <div className="w-8 h-8 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#505153] transition-colors">
-                            <ArrowRight className="w-4 h-4" />
+                        <div className="w-6 h-6 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2  transition-colors ">
+                            <ChevronRight className="w-4 h-4" />
                         </div>
                     </Link>
                 </div>
+
 
                 {/* Content Grid */}
                 <div className="flex flex-col md:flex-row relative mt-8 md:mt-10">
@@ -63,7 +62,7 @@ export default function CompanySection() {
                             </p>
                             <Link
                                 href={item.link}
-                                className="text-[#505153] text-[15px] font-medium w-fit underline underline-offset-[5px] decoration-1 decoration-zinc-400 hover:text-[#505153] hover:decoration-[#505153] transition-colors mb-14"
+                                className="text-[#505153] text-[15px] font-medium w-fit underline underline-offset-[5px] decoration-1 decoration-zinc-400 hover:text-[#0D9CDE] hover:decoration-[#0D9CDE] transition-colors mb-14"
                             >
                                 Read More
                             </Link>

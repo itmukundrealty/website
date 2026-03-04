@@ -23,6 +23,7 @@ export default function ShapingPage() {
                     </>
                 }
                 imageSrc="/images/aboutImages/mukundOutline.svg"
+                imageClassName=""
             />
             <PhilosophySection
                 heading={

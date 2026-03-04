@@ -106,7 +106,7 @@ export default function ExperienceStandardSection() {
                 <button
                     key={index}
                     onClick={() => swiperRef?.slideTo(index)}
-                    className={`h-[2px] transition-all duration-300 ${activeIndex === index ? 'w-[20px] md:w-[40px] bg-[#3DADFF]' : 'w-[20px] md:w-[40px] bg-[#e5e7eb]'
+                    className={`h-[4px] transition-all duration-300 ${activeIndex === index ? 'w-[20px] md:w-[40px] bg-[#3DADFF]' : 'w-[10px] md:w-[20px] bg-[#e5e7eb]'
                         }`}
                     aria-label={`Go to slide ${index + 1}`}
                 />
@@ -126,7 +126,7 @@ export default function ExperienceStandardSection() {
                 </div>
 
                 {/* Right side curve lines - Specific SVG provided by user */}
-                <svg className="absolute top-1/2 -right-1 -translate-y-1/2 lg:h-[100%] h-[100%] lg:w-auto w-[80%] text-gray-200/60 pointer-events-none z-0" viewBox="0 0 1140 710" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="absolute top-[45%] -right-0 -translate-y-1/2 lg:h-[90%] h-[100%] lg:w-auto w-[80%] text-gray-200/60 pointer-events-none z-0" viewBox="0 0 1140 710" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M530.434 1423.73C430.299 1423.73 336.993 1369.86 286.93 1283.15L38.5509 852.959C-11.5114 766.249 -11.5225 658.507 38.5509 571.786L286.919 141.592C336.993 54.8714 430.299 1 530.434 1H1027.17C1127.31 1 1220.62 54.8714 1270.69 141.603L1519.05 571.775C1569.13 658.495 1569.13 766.238 1519.05 852.959L1270.69 1283.14C1220.62 1369.86 1127.31 1423.73 1027.17 1423.73H530.434Z" stroke="currentColor" strokeWidth="1" strokeMiterlimit="10" />
                     <path d="M530.435 1318.09C467.923 1318.09 409.677 1284.46 378.415 1230.33L130.047 800.143C98.7971 746.005 98.786 678.752 130.047 624.603L378.415 194.42C409.677 140.282 467.923 106.645 530.435 106.645H1027.17C1089.68 106.645 1147.94 140.282 1179.19 194.42L1427.56 624.603C1458.82 678.741 1458.82 746.005 1427.56 800.143L1179.19 1230.33C1147.94 1284.46 1089.68 1318.09 1027.17 1318.09H530.435Z" stroke="currentColor" strokeWidth="1" strokeMiterlimit="10" />
                     <path d="M1076 226.979L1347.76 697.674C1353.01 706.769 1353.01 717.974 1347.76 727.069L1076 1197.76C1070.75 1206.86 1061.05 1212.46 1050.55 1212.46H507.035C496.53 1212.46 486.835 1206.86 481.582 1197.76L209.826 727.069C204.574 717.974 204.574 706.769 209.826 697.674L481.582 226.979C486.835 217.884 496.53 212.287 507.035 212.287H1050.55C1061.05 212.287 1070.75 217.884 1076 226.979Z" stroke="currentColor" strokeWidth="1" strokeMiterlimit="10" />
@@ -152,12 +152,12 @@ export default function ExperienceStandardSection() {
                     {/* --- Left Content (Title & Pagination) --- */}
                     <div className="lg:col-span-5 space-y-8">
                         <div>
-                            <h2 className="text-3xl md:text-6xl font-light text-[#505153] mb-2">
-                                Experiences that
+                            <h2 className="text-3xl md:text-6xl font-light text-[#505153] mb-2 leading-[1.1]">
+                                Experiences that <br />
+
+                                <span className="font-medium block text-[#505153]">Set the Standard</span>
                             </h2>
-                            <h2 className="text-3xl md:text-6xl font-medium text-[#505153] leading-tight ">
-                                Set the Standard
-                            </h2>
+
                         </div>
 
                         <p className="text-lg lg:text-lg font-light text-[#505153]/90  max-w-sm">
@@ -226,7 +226,7 @@ export default function ExperienceStandardSection() {
 
                 </div>
             </div>
-            
+
         </section>
     );
 }

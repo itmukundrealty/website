@@ -35,7 +35,7 @@ const slides = [
     desc: "Each Mukund development is shaped by clear intent, prioritizing functional design that serves real needs and stands the test of time.",
     image: "/images/LandingPageImg/defining/3.png",
     link: "Explore our insights page",
-    href: "/blog",
+    href: "/insights",
   },
 ];
 
@@ -48,14 +48,14 @@ export default function PrinciplesSlider() {
 
   return (
     <section className="w-full bg-white relative py-12 lg:py-0">
-      <h1 className="text-4xl lg:text-6xl font-light mb-6 lg:mb-8 text-center text-[#505153]">Our <span className="text-[#505153] font-medium">Defining Principles</span></h1>
+      <h1 className="text-4xl lg:text-6xl font-light mb-6 lg:mb-8 text-left md:text-center text-[#505153] px-6 md:px-0">Our <span className="text-[#505153] font-medium">Defining <br className="md:hidden" /> Principles</span></h1>
 
 
       <div className="max-w-full mx-auto flex flex-col lg:flex-row lg:space-x-12 space-y-10 lg:space-y-0">
 
 
         {/* LEFT PANEL */}
-        <div className="w-full lg:w-[40%] pt-10 lg:pt-[120px] px-6 lg:pl-[80px] lg:pr-[40px] text-center lg:text-left">
+        <div className="w-full lg:w-[40%] pt-10 lg:pt-[120px] px-6 lg:pl-[80px] lg:pr-[40px] text-left">
 
           <h2 className="text-lg text-[#505153] font-semibold mb-2">
             What we live by.
@@ -191,7 +191,7 @@ function SlideCard({ data }: { data: any }) {
           {data.title}
         </h3>
 
-        <p className="text-[14px] lg:text-[17px] text-[#505153] font-light leading-[1.6] mb-5 hidden lg:block">
+        <p className="text-[14px] lg:text-[17px] text-[#505153] font-light leading-[1.6] mb-5 hidden lg:block md:max-w-md">
           {data.desc}
         </p>
 

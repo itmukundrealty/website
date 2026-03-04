@@ -8,21 +8,19 @@ import Link from "next/link";
 interface CarouselItem {
     id: number;
     image: string;
+    mobileImage?: string;
 }
 
 // --- Sample Data (Placeholders) ---
 const SAMPLE_ITEMS: CarouselItem[] = [
-    { id: 1, image: "/images/LandingPageImg/hero/1.png" },
-    { id: 2, image: "/images/LandingPageImg/hero/2.png" },
-    { id: 3, image: "/images/LandingPageImg/hero/3.png" },
-    { id: 4, image: "/images/LandingPageImg/hero/4.png" },
-    { id: 5, image: "/images/LandingPageImg/hero/5.png" },
-    { id: 6, image: "/images/LandingPageImg/hero/6.png" },
-    { id: 7, image: "/images/LandingPageImg/hero/1.png" },
-    { id: 8, image: "/images/LandingPageImg/hero/2.png" },
-
-
-
+    { id: 1, image: "/images/LandingPageImg/hero/11.png", mobileImage: "/images/LandingPageImg/hero/mob1.png" },
+    { id: 2, image: "/images/LandingPageImg/hero/12.png", mobileImage: "/images/LandingPageImg/hero/mob2.png" },
+    { id: 3, image: "/images/LandingPageImg/hero/13.png", mobileImage: "/images/LandingPageImg/hero/mob3.png" },
+    { id: 4, image: "/images/LandingPageImg/hero/14.png", mobileImage: "/images/LandingPageImg/hero/mob4.png" },
+    { id: 5, image: "/images/LandingPageImg/hero/13.png", mobileImage: "/images/LandingPageImg/hero/mob1.png" },
+    { id: 6, image: "/images/LandingPageImg/hero/11.png", mobileImage: "/images/LandingPageImg/hero/mob2.png" },
+    { id: 7, image: "/images/LandingPageImg/hero/14.png", mobileImage: "/images/LandingPageImg/hero/mob3.png" },
+    { id: 8, image: "/images/LandingPageImg/hero/12.png", mobileImage: "/images/LandingPageImg/hero/mob4.png" },
 ];
 
 export default function LandingHeroSection() {
@@ -209,11 +207,14 @@ function CarouselCard({
                 transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
             }}
         >
-            <img
-                src={item.image}
-                alt="Workspace design"
-                className="w-full h-full object-cover pointer-events-none object-top"
-            />
+            <picture className="w-full h-full block">
+                {item.mobileImage && <source media="(max-width: 767px)" srcSet={item.mobileImage} />}
+                <img
+                    src={item.image}
+                    alt="Workspace design"
+                    className="w-full h-full object-cover pointer-events-none object-top"
+                />
+            </picture>
         </motion.div>
     );
 }

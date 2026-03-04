@@ -31,12 +31,12 @@ export default function DesignedForMatters() {
             <div className=" mx-auto px-6 md:px-12 lg:px-20 xl:px-54 py-16 lg:py-0 lg:px-20 relative z-10 h-full flex lg:items-center">
                 <div className="max-w-2xl text-white">
                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium mb-6 leading-tight tracking-tight">
-                        Designed for <br className='hidden lg:block' /> What Matters
+                        Designed for <br /> What Matters
                     </h2>
                     <p className="text-white/90 text-lg md:text-3xl xl:text-4xl font-light   mb-10 max-w-xs lg:max-w-lg">
                         A commitment to crafting environments for life's most meaningful moments.
                     </p>
-                    <button className="px-6 py-3 md:px-6 md:py-4 bg-white text-[#0097DC] font-bold text-lg   transition-colors">
+                    <button className="px-6 py-3 md:px-6 md:py-4 bg-white text-[#0097DC] font-bold text-lg hover:bg-[#0C9CDE] hover:text-white transition-colors">
                       <Link href="/contact">
                       Contact Us
                       </Link>

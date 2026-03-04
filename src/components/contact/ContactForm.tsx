@@ -164,10 +164,10 @@ export default function ContactForm() {
                                     onChange={handleChange}
                                     placeholder=" "
                                     className="peer w-full border-b border-[#d4d4d4] bg-transparent pb-3 text-[15px] text-[#505153] focus:border-[#2b2b2b] focus:outline-none transition-colors"
-                                    required
+
                                 />
                                 <label className="absolute left-0 top-0 text-[15px] text-[#505153] duration-300 transform -translate-y-6 scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pointer-events-none">
-                                    Your Comments <span className="text-[#0097DC]">*</span>
+                                    Your Comments
                                 </label>
                             </div>
 
@@ -181,7 +181,7 @@ export default function ContactForm() {
                                         onChange={handleChange}
                                         className="mt-1 h-4 w-4 accent-[#1e88c8] rounded-none"
                                     />
-                                    <span className="max-w-[300px] text-[10px] text-[#505153]">
+                                    <span className="text-[14px] text-[#505153] md:mt-1">
                                         Consent to contact me via Call, SMS, Email, or WhatsApp
                                     </span>
                                 </label>

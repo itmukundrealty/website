@@ -25,17 +25,18 @@ export default function HighlivingSection({
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="py-24 bg-white font-sans">
+    <section className="md:py-24 py-14 bg-white font-sans">
       <div className=" mx-auto px-6 lg:px-20 xl:px-54">
         {/* Header Area */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
           <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#505153] font-light leading-tight">{heading}</h2>
 
-          <Link href={projectLink}>
-            <button className="flex items-center gap-2 px-4 py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-sm font-medium">
-              <ArrowUpRight className="w-5 h-5 hover:rotate-45 transition-all duration-300" />
-              Enquire Now
-            </button>
+          <Link
+            href={projectLink}
+            className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-sm font-bold w-full md:w-fit"
+          >
+            <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+            Enquire Now
           </Link>
         </div>
 

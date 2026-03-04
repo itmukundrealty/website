@@ -6,9 +6,10 @@ import Image from 'next/image';
 interface MissionStatementProps {
     text: React.ReactNode;
     imageSrc: string;
+    imageClassName?: string;
 }
 
-export default function MissionStatement({ text, imageSrc }: MissionStatementProps) {
+export default function MissionStatement({ text, imageSrc, imageClassName }: MissionStatementProps) {
     return (
         <section className="relative pt-14 pb-6 md:py-28 overflow-hidden bg-white">
 
@@ -21,7 +22,7 @@ export default function MissionStatement({ text, imageSrc }: MissionStatementPro
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7 }}
-                    className="w-[60vw] md:w-1/2"
+                    className="w-[60vw] md:w-[55%]"
                 >
                     <h2
                         className="
@@ -59,7 +60,7 @@ export default function MissionStatement({ text, imageSrc }: MissionStatementPro
                     alt="Mission Graphic"
                     width={400}
                     height={400}
-                    className="w-full h-auto object-contain -rotate-12"
+                    className={`w-full h-auto object-contain -rotate-12 ${imageClassName || ""} `}
                     priority
                 />
             </div>

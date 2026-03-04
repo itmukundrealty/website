@@ -476,7 +476,7 @@ export const HERO_MARKERS = [
     ),
   },
   {
-    label: "Badminton Court", // Middle marker (cx: 475.227) - Uses the Tree/Garden icon
+    label: "Scenic Garden", // Middle marker (cx: 475.227) - Uses the Tree/Garden icon
     cx: 475.227,
     cy: 665.227,
     markerElements: (
@@ -500,7 +500,7 @@ export const HERO_MARKERS = [
     ),
   },
   {
-    label: "Swimming Pool", // Rightmost marker (cx: 846.227)
+    label: "Badminton Court ", // Rightmost marker (cx: 846.227)
     cx: 846.227,
     cy: 665.227,
     markerElements: (

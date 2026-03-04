@@ -99,7 +99,7 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                 {displayProjectName}{" "}
                 <ChevronDown
                   size={14}
-                  className="group-hover:rotate-180 transition-transform duration-300 text-gray-400 group-hover:text-[#0097DC]"
+                  className="group-hover:rotate-180 transition-transform duration-300 text-white group-hover:text-[#0097DC]"
                 />
               </button>
 
@@ -144,6 +144,13 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                 </div>
               </div>
             </div>
+            
+            <Link
+              href="/insights"
+              className={` hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+            >
+              Insights
+            </Link>
 
             {/* <Link href="/insights" className="text-[#333333] hover:text-black text-lg font-medium tracking-wide transition-colors duration-300">Insights</Link> */}
 

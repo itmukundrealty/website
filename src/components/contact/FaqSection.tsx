@@ -73,7 +73,7 @@ export default function FaqSection({ faqData }: FaqSectionProps) {
                         <div className="mt-8">
                             <button
                                 onClick={() => setShowAll(!showAll)}
-                                className="border-b border-[#2b2b2b] pb-[1px] text-[14px] font-medium text-[#2b2b2b] hover:opacity-70"
+                                className="border-b border-[#2b2b2b] pb-[1px] text-[14px] font-medium text-[#2b2b2b] hover:text-[#0097DC] hover:border-[#0097DC] transition-colors duration-300 ease-in-out"
                             >
                                 {showAll ? "View Less" : "View More"}
                             </button>

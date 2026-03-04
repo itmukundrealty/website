@@ -187,7 +187,12 @@ export default function page() {
           completed={false}
         />
 
-        <MapSection data={MAP_DATA} mainMarkerPosition={{ lat: 12.904891658303564, lng: 74.83737591311836 }} />
+        <MapSection
+          data={MAP_DATA}
+          
+          mainMarkerPosition={{ lat: 12.896339168047138, lng: 74.84203633612658 }}
+          customMarkerImage="/icons/mapIcons/ashokaIcon.svg"
+        />
         <PartnerSection />
         <ExperienceSection
           titlePart1="Experiences that "
