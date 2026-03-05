@@ -117,37 +117,37 @@ const AMENITIES_DATA = [
     id: "kitchen",
     label: "Rooftop Infinity Swimming Pool",
     subtitle: "",
-    image: "/images/kedarImage/am1.webp",
+    image: "/images/kedarImage/amm1.webp",
   },
   {
     id: "wellness",
     label: "Open Air Gymnasium",
     subtitle: "",
-    image: "/images/kedarImage/am2.webp",
+    image: "/images/kedarImage/amm2.webp",
   },
   {
     id: "lobby",
     label: "Indoor & Outdoor Recreation",
     subtitle: "",
-    image: "/images/kedarImage/am3.webp",
+    image: "/images/kedarImage/amm3.webp",
   },
   {
     id: "pool",
     label: "Kids Play Area",
     subtitle: "",
-    image: "/images/kedarImage/am4.webp",
+    image: "/images/kedarImage/amm4.webp",
   },
   {
     id: "gym",
     label: "Outdoor Badminton Court",
     subtitle: "",
-    image: "/images/kedarImage/am5.webp",
+    image: "/images/kedarImage/amm5.webp",
   },
   {
     id: "sky-deck",
     label: "Spacious Visitor’s Lounge",
     subtitle: "",
-    image: "/images/kedarImage/am6.webp",
+    image: "/images/kedarImage/amm6.webp",
   },
 ];
 
@@ -172,7 +172,7 @@ export default function page() {
           heading="Redefining the Essence of Living"
           description="Introducing Kedar, a contemporary residential address shaped by Mukund MGM Realty’s long-standing approach to quality and value. Thoughtfully planned duplex residences offer generous layouts, refined interiors, and a sense of openness that supports both everyday comfort and special moments. With carefully selected amenities and a location at the heart of Mangalore, Kedar brings homes that feel considered and easy to live in for years to come."
           imageSrc="/images/kedarImage/videoPlaceholder.png"
-          videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
+          videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKEDAR%20FILM_45s.mp4?alt=media&token=7b45ec51-a0ac-4b3a-94db-7e8468d1d7b8"
         />
         <AmenitiesSection projectLink="/project-enquire?project=kedar" data={AMENITIES_DATA} />
         <FeaturesSection

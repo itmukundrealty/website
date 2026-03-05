@@ -94,21 +94,21 @@ const SECTION_DATA = [
     label: "High Living Homes",
     description:
       "Rudraksh is envisioned as an expression of high living, where space, light, and serenity define everyday life. With two refined wings rising across 14 floors, each home feels expansive, composed, and effortlessly elegant.",
-    imageSrc: "/images/rudrakshImages/liv1.png",
+    imageSrc: "/images/rudrakshImages/liv1.webp",
   },
   {
     id: "kitchen",
     label: "24×7 Cloud Kitchen",
     description:
       "A first of its kind offering, the round the clock cloud kitchen brings freshly prepared, personalised meals directly to residents, adding a new level of everyday convenience to luxury living.",
-    imageSrc: "/images/rudrakshImages/2.webp",
+    imageSrc: "/images/rudrakshImages/liv2.webp",
   },
   {
     id: "rooftop",
     label: "Rooftop Living",
     description:
       "An elevated rooftop experience featuring an infinity pool with panoramic city and sea views, complemented by wellness amenities that invite relaxation above the urban rhythm.",
-    imageSrc: "/images/rudrakshImages/3.webp",
+    imageSrc: "/images/rudrakshImages/liv3.webp",
   },
   {
     id: "location",
@@ -124,37 +124,37 @@ const AMENITIES_DATA = [
     id: "kitchen",
     label: "24x7 Cloud Kitchen",
     subtitle: "THE FIRST OF IT'S KIND IN MANGALURU",
-    image: "/images/rudrakshImages/am1.webp",
+    image: "/images/rudrakshImages/amm1.webp",
   },
   {
     id: "wellness",
     label: "Wellness Club",
     subtitle: "",
-    image: "/images/rudrakshImages/am2.webp",
+    image: "/images/rudrakshImages/amm2.webp",
   },
   {
     id: "lobby",
     label: "Grand Entrance Lobby",
     subtitle: "",
-    image: "/images/rudrakshImages/am3.webp",
+    image: "/images/rudrakshImages/amm3.webp",
   },
   {
     id: "pool",
     label: "People Spaces",
     subtitle: "",
-    image: "/images/rudrakshImages/am4.webp",
+    image: "/images/rudrakshImages/amm4.webp",
   },
   {
     id: "gym",
     label: "Fitness & Activity Zones",
     subtitle: "",
-    image: "/images/rudrakshImages/am5.webp",
+    image: "/images/rudrakshImages/amm5.webp",
   },
   {
     id: "sky-deck",
     label: "Rooftop Infinity\nSwimming Pool",
     subtitle: "",
-    image: "/images/rudrakshImages/am6.webp",
+    image: "/images/rudrakshImages/amm6.webp",
   },
 ];
 
@@ -233,13 +233,14 @@ export default function Project1Page() {
         heading="Everything You’re Looking For"
         completed={false}
         galleryImages={[
-          "/images/rudrakshImages/am1.webp",
-          "/images/rudrakshImages/am2.webp",
-          "/images/rudrakshImages/am3.webp",
-          "/images/rudrakshImages/am4.webp",
-          "/images/rudrakshImages/am5.webp",
-          "/images/rudrakshImages/am6.webp",
+          "/images/rudrakshImages/car1.webp",
+          "/images/rudrakshImages/car2.webp",
+          "/images/rudrakshImages/car3.webp",
+          "/images/rudrakshImages/car4.webp",
+          "/images/rudrakshImages/car5.webp",
+          "/images/rudrakshImages/car6.webp",
         ]}
+        variant="left"
       />
       {/* <ProjectInteractivePlan /> */}
       <MapSection

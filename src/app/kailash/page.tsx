@@ -46,7 +46,7 @@ const MAP_DATA = [
     },
     {
         key: "it",
-        title: "IT & Employment Zone",
+        title: "Institutional Access",
         icon: "/icons/bookIcon.svg",
         points: [44, 19],
         viewport: {
@@ -56,7 +56,7 @@ const MAP_DATA = [
     },
     {
         key: "education",
-        title: "Education",
+        title: "Daily Convenience",
         icon: "/icons/urbanIcon.svg",
         points: [59, 26, 29, 28, 22, 35],
         viewport: {
@@ -66,7 +66,7 @@ const MAP_DATA = [
     },
     {
         key: "essentials",
-        title: "Healthcare",
+        title: "Dining Options",
         icon: "/icons/cafeIcon.svg",
         points: [41, 24, 38, 39],
         viewport: {
@@ -113,37 +113,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Infinity Pool at Roof Top",
         subtitle: "",
-        image: "/images/nandagokulImages/am1.png",
+        image: "/images/kailashImages/amm1.webp",
     },
     {
         id: "wellness",
         label: "Air-Conditioned Gymnasium",
         subtitle: "",
-        image: "/images/nandagokulImages/am2.png",
+        image: "/images/kailashImages/amm2.webp",
     },
     {
         id: "lobby",
         label: "Kids Play Area",
         subtitle: "",
-        image: "/images/nandagokulImages/am3.png",
+        image: "/images/kailashImages/amm3.webp",
     },
     {
         id: "pool",
         label: "Sea view",
         subtitle: "",
-        image: "/images/kailashImages/am4.png",
+        image: "/images/kailashImages/amm4.webp",
     },
     {
         id: "gym",
         label: "Yoga & Meditation Deck",
         subtitle: "",
-        image: "/images/nandagokulImages/am5.png",
+        image: "/images/kailashImages/amm5.webp",
     },
     {
         id: "Double-Height Entrance Lobby",
         label: "Double-Height Entrance Lobby",
         subtitle: "",
-        image: "/images/kailashImages/am6.png",
+        image: "/images/kailashImages/amm6.webp",
     }
 ];
 

@@ -123,7 +123,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
 
                 <Link
                   href={finalLink}
-                  className="group flex items-center justify-center md:justify-start gap-3 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC]/30 text-[#0097DC] hover:bg-[#0097DC] hover:text-white duration-300 transition-all uppercase tracking-widest md:text-sm font-bold w-full md:w-fit"
+                  className="group flex items-center justify-center md:justify-start gap-3 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10  duration-300 transition-all uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
                 >
                   <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                   Enquire Now
@@ -161,13 +161,13 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                 <div className="flex gap-4">
                   <button
                     onClick={handlePrev}
-                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC] hover:text-white transition-all bg-white"
+                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC]/10 transition-all bg-white"
                   >
                     <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={1.5} />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC] hover:text-white transition-all bg-white"
+                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC]/10  transition-all bg-white"
                   >
                     <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={1.5} />
                   </button>

@@ -5,7 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronUp, Send, Phone, Mail } from "lucide-react";
 
-export default function Footer() {
+interface FooterProps {
+  blogTitle?: string;
+}
+
+export default function Footer({ blogTitle }: FooterProps = {}) {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const pathname = usePathname();
@@ -19,15 +23,19 @@ export default function Footer() {
       <>
         <Link href="/" className="hover:text-blue-500 transition-colors">HOME</Link>
         {segments.map((segment, index) => {
-          // Determine the path for this segment (optional, if we want clickable breadcrumbs)
-          // For now, adhering to user request for text display, but making previous steps clickable is good UX.
-          // However, user just asked for text "show as home and that corresponding page".
-          // I'll keep it simple: Text only, like the design, or maybe Home is clickable.
+          let displayText = segment.replace(/-/g, " ").toUpperCase();
+
+          // If this is the last segment and a blog title is provided, use the truncated blog title instead of the segment
+          if (index === segments.length - 1 && blogTitle) {
+            const words = blogTitle.split(" ");
+            displayText = words.slice(0, 3).join(" ") + (words.length > 3 ? "..." : "");
+            displayText = displayText.toUpperCase();
+          }
 
           return (
             <span key={index}>
               <span className="mx-1">{'>'}</span>
-              {segment.replace(/-/g, " ").toUpperCase()}
+              {displayText}
             </span>
           );
         })}
@@ -40,7 +48,7 @@ export default function Footer() {
     { name: "Contact", href: "/contact" },
     { name: "Careers", href: "/careers" },
     { name: "Projects", href: "/projects" },
-    { name: "Insights", href: "/insights" },
+    { name: "Insights", href: "/insight-lists" },
 
   ];
   const socials = [
@@ -78,10 +86,10 @@ export default function Footer() {
 
           {/* Get In Touch */}
           <div className="col-span-2 lg:col-span-4 order-3 lg:order-1 space-y-6 lg:space-y-8 border-t lg:border-none border-slate-200 pt-10 lg:pt-0">
-            <h4 className="text-[12px] lg:text-[11px] text-slate-500 uppercase tracking-widest font-normal text-center lg:text-left">
+            <h4 className="text-[12px] lg:text-[11px] text-slate-500 uppercase  font-normal text-center lg:text-left">
               GET IN TOUCH
             </h4>
-            <ul className="space-y-3 text-[16px] leading-relaxed font-light text-black">
+            <ul className="space-y-3 text-[16ptracking-widestx] leading-relaxed font-light text-black">
               <li className="flex gap-4 lg:gap-5 items-start justify-center lg:justify-start">
                 <Image src='/icons/locationIcon.svg' className="w-5 h-5 " height={20} width={20} alt="location" />
                 <a href="https://maps.app.goo.gl/PsXbioXdNkfS7dK28" target="_blank" rel="noopener noreferrer" className="text-center lg:text-left hover:text-[#009FE3] transition-colors">Suprabhath Building, 1st Floor,<br />Bejai Kapikad Road<br />Mangalore – 575 004, India</a>
@@ -130,7 +138,7 @@ export default function Footer() {
         {/* 3. Ongoing Projects Section */}
         <div className="py-10 lg:py-0 lg:mt-12 border-t lg:border-t-0 border-slate-200">
           <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-16">
-            <h4 className="text-[12px] lg:text-[14px] text-[#505153] uppercase  font-light shrink-0 tracking-wide">
+            <h4 className="text-[12px] lg:text-[14px] text-[#505153] uppercase  font-light shrink-0 tracking-widest">
               ONGOING PROJECTS
             </h4>
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-16 text-[16px] text-[black] font-light text-center lg:text-left">

@@ -18,7 +18,7 @@ export default function ShapingPage() {
                     <>
                         We craft spaces that go beyond buildings, becoming places{' '} <br />
                         <span className="font-semibold text-[#505153]">
-                            where life, relationships and legacies thrive.
+                            where life, relationships and <br className="hidden md:block" /> legacies thrive.
                         </span>
                     </>
                 }
@@ -32,7 +32,7 @@ export default function ShapingPage() {
                             integrity, and long term intent, guiding every
                             decision from planning through execution.</span> <span className="font-light">We
                                 believe real estate is about shaping environments
-                                that serve people, businesses, and communities
+                                that serve people, businesses, and communities <br className='md:hidden' />
                                 with purpose.</span>
                     </>
                 }

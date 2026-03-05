@@ -45,7 +45,7 @@ const MAP_DATA = [
     },
     {
         key: "it",
-        title: "IT & Employment Zone",
+        title: "Education & Healthcare",
         icon: "/icons/closedBookIcon.svg",
         points: [44, 19],
         viewport: {
@@ -55,7 +55,7 @@ const MAP_DATA = [
     },
     {
         key: "education",
-        title: "Education",
+        title: "Business Hubs",
         icon: "/icons/businessIcon.svg",
         points: [59, 26, 29, 28, 22, 35],
         viewport: {
@@ -65,7 +65,7 @@ const MAP_DATA = [
     },
     {
         key: "essentials",
-        title: "Healthcare",
+        title: "Commercial Zones",
         icon: "/icons/urbanIcon.svg",
         points: [41, 24, 38, 39, 37],
         viewport: {

@@ -106,7 +106,7 @@ export default function ExperienceStandardSection() {
                 <button
                     key={index}
                     onClick={() => swiperRef?.slideTo(index)}
-                    className={`h-[4px] transition-all duration-300 ${activeIndex === index ? 'w-[20px] md:w-[40px] bg-[#3DADFF]' : 'w-[10px] md:w-[20px] bg-[#e5e7eb]'
+                    className={`h-[4px] transition-all duration-300 ${activeIndex === index ? 'w-[20px] md:w-[40px] bg-[#0097DC]' : 'w-[10px] md:w-[20px] bg-[#e5e7eb]'
                         }`}
                     aria-label={`Go to slide ${index + 1}`}
                 />

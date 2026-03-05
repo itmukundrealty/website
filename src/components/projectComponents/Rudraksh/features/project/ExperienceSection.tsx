@@ -1,10 +1,8 @@
 "use client";
 import React, { useState, useRef } from 'react';
 
-import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import { Play } from 'lucide-react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -16,46 +14,85 @@ import 'swiper/css/effect-fade';
 const testimonials = [
     {
         id: 1,
-        thumbnail: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2FDOoumWd6iJw-HD.jpg?alt=media&token=f8699aab-8b60-42bf-a4e1-212dc6256bf8",
-        videoUrl: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/Portfolios%2FDr._Prashanth_Bhat_-_Embracing_serenity_in_Retirement_at_Kailash_High_living_luxury_apartments._1080P.mp4?alt=media&token=d466db88-d05c-4706-b158-db8416bd2f5c", // Placeholder
-        name: "Dr. Prashanth Bhat",
+        thumbnail: "",
+        videoUrl: "#", // Placeholder
+        iframeSrc: "https://www.youtube.com/embed/R9MQVfJkNfI",
+        name: "Dr. Prajwal K Rao & Dr. Shruthi J's",
         role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 2,
-        thumbnail: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2FR9MQVfJkNfI-HD.jpg?alt=media&token=992cac5e-6d52-4842-970e-78bdf74a23f2",
-        videoUrl: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/Portfolios%2FLuxury_Living_Dr._Prajwal_K_Rao_Dr._Shruthi_J_s_Journey_at_Kailash_High_Living_Luxury_Homes_1080P.mp4?alt=media&token=59aa0de9-43cc-4240-9d8f-e975fc6e7650",
-        name: "Dr. Prajwal K Rao & Dr. Shruthi J's",
-        role: "Residents at Mukund Villas"
+        thumbnail: "",
+        videoUrl: "#",
+        iframeSrc: "https://www.youtube.com/embed/YTbDJpuQIvw?si=vBjMx8zK1Nx8SQxK",
+        name: "Prajwal & Poornima",
+        role: "Residents at Mukund Sadan"
     },
     {
         id: 3,
-        thumbnail: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Fi1FvfPn_AyY-HD.jpg?alt=media&token=71f2e4a6-1350-4113-a8e2-f80f8abf575e",
-        videoUrl: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/Portfolios%2FShenavas_Dream_home_experience_at_Kailash_High_Living_Luxury_home._1080P.mp4?alt=media&token=2f67da37-499b-49ab-b297-d020849a7c41",
+        thumbnail: "",
+        videoUrl: "#",
+        iframeSrc: "https://www.youtube.com/embed/i1FvfPn_AyY",
         name: "Ajay Shenava & Anusha Shenava",
         role: "Investor in Mukund Commercial Spaces"
     },
     {
         id: 4,
-        thumbnail: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2F0Kr2E7fPxcY-HD.jpg?alt=media&token=90b64e90-7a50-4157-b1bb-d4b4968e144c",
-        videoUrl: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/Portfolios%2FKailash_Luxury_Apartments_-_Customer_Testimonial_1080P.mp4?alt=media&token=0fcef84b-b649-4c45-8e81-7bf248b7b17a",
+        thumbnail: "",
+        videoUrl: "#",
+        iframeSrc: "https://www.youtube.com/embed/0Kr2E7fPxcY",
         name: "Mr. Nagraj Nayak",
-        role: "Residents at Mukund Villas"
+        role: "Investor in Mukund Commercial Spaces"
     },
     {
         id: 5,
-        thumbnail: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2FWgVckaoq5No-HQ.jpg?alt=media&token=fe772f19-d0be-4d61-b100-2c48f7c3e203",
-        videoUrl: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/Portfolios%2FNagaraj%20Bhat%20%20Proud%20Owner%20at%20%20of%20his%20flat%20at%20Nandadeep%20by%20Nirmaan%20Homes.mp4?alt=media&token=a989323b-7528-494c-8f0f-0e6d3ce0d9e6",
-        name: "Nagaraj Bhat",
-        role: "Proud Owner at Nandadeep by Mukund MGM Realty"
+        thumbnail: "",
+        videoUrl: "#",
+        iframeSrc: "https://www.youtube.com/embed/OaiUlvvu1pU",
+        name: "Dinesh Kumar",
+        role: "Investor in Mukund Commercial Spaces"
     },
     {
         id: 6,
-        thumbnail: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2FmPJszdjJdb8-HD.jpg?alt=media&token=e9d4eb0b-1e91-4a4e-8534-d929dda5bffa",
-        videoUrl: "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/Portfolios%2FSatish_Honnagatte_is_the_proud_owner_of_his_flat_in_Nandadeep_by_Nirmaan_Homes_1080P.mp4?alt=media&token=e5ebfad2-f0a8-43c2-9b0a-54236dec72b9",
-        name: "Satish Honnagatte",
-        role: "Proud Owner at Nandadeep by Mukund MGM Realty"
+        thumbnail: "",
+        videoUrl: "#",
+        iframeSrc: "https://www.youtube.com/embed/mwlgn3Cuq68",
+        name: "Mr. Jaggannath Bhandary",
+        role: "Investor in Mukund Commercial Spaces"
     },
+    {
+        id: 7,
+        thumbnail: "",
+        videoUrl: "#",
+        iframeSrc: "https://www.youtube.com/embed/DOoumWd6iJw",
+        name: "Dr. Prashanth Bhat",
+        role: "Residents at Mukund Sadan"
+    },
+    {
+        id: 8,
+        thumbnail: "",
+        videoUrl: "#",
+        iframeSrc: "https://www.youtube.com/embed/FPvLjrtQZUI",
+        name: "Mr. Vasuki Ganapati Shanbhag",
+        role: "Residents at Mukund Sadan"
+    },
+    {
+        id: 9,
+        thumbnail: "",
+        videoUrl: "#",
+        iframeSrc: "https://www.youtube.com/embed/6tDa2MZunhY?si=tRelWm7-61QH0l__",
+        name: "Subhashini",
+        role: "Investor in Mukund Commercial Spaces"
+    },
+    {
+        id: 10,
+        thumbnail: "",
+        videoUrl: "#",
+        iframeSrc: "https://www.youtube.com/embed/Rb1AN7Jn2H4?si=SUxSQaqYAe6xThc0",
+        name: "Dr. Devadas Kapikad",
+        role: "Residents at Mukund Sadan"
+    },
+
 ];
 
 
@@ -71,7 +108,6 @@ export default function ExperienceSection({
     description = "Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time."
 }: ExperienceSectionProps) {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [playingId, setPlayingId] = useState<number | null>(null);
     const swiperRef = useRef<any>(null);
 
     return (
@@ -100,7 +136,7 @@ export default function ExperienceSection({
                                 <button
                                     key={index}
                                     onClick={() => swiperRef.current?.slideTo(index)}
-                                    className={`h-1.5  transition-all duration-300 ${activeIndex === index ? "w-12 bg-[#0097DC]" : "w-6 bg-[#e5e7eb]"
+                                    className={`h-[4px]  transition-all duration-300 ${activeIndex === index ? "w-12 bg-[#0097DC]" : "w-6 bg-[#e5e7eb]"
                                         }`}
                                     aria-label={`Go to slide ${index + 1}`}
                                 />
@@ -111,67 +147,37 @@ export default function ExperienceSection({
                     {/* --- Right Content (Swiper) --- */}
                     <div className="lg:col-span-7 relative pl-0 lg:pl-10">
                         <Swiper
-                            onSwiper={(swiper) => (swiperRef.current = swiper)}
                             modules={[Autoplay, EffectFade]}
                             spaceBetween={30}
                             slidesPerView={1}
                             effect={'fade'}
                             fadeEffect={{ crossFade: true }}
+                            onSwiper={(swiper) => (swiperRef.current = swiper)}
                             autoplay={{
                                 delay: 5000,
                                 disableOnInteraction: false,
                             }}
-                            onSlideChange={(swiper) => {
-                                setActiveIndex(swiper.activeIndex);
-                                setPlayingId(null);
-                                swiperRef.current?.autoplay?.start();
-                            }}
-                            className="w-full overflow-visible!"
+                            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                            className="w-full !overflow-visible"
                         >
                             {testimonials.map((item) => (
                                 <SwiperSlide key={item.id}>
                                     <div className="flex flex-col gap-6">
-
-                                        {/* Video/Image Container */}
-                                        <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden shadow-xl rounded-sm bg-gray-100 group">
-                                            {playingId !== item.id ? (
-                                                <>
-                                                    <Image
-                                                        src={item.thumbnail}
-                                                        alt={item.name}
-                                                        fill
-                                                        className="object-cover cursor-pointer"
-                                                        onClick={() => setPlayingId(item.id)}
-                                                    />
-
-                                                    {/* Play Button Overlay */}
-                                                    <div
-                                                        onClick={() => setPlayingId(item.id)}
-                                                        className="absolute inset-0 flex items-center justify-center bg-black/10 hover:bg-black/20 transition cursor-pointer"
-                                                    >
-                                                        <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/60 group-hover:scale-105 transition-transform">
-                                                            <Play className="w-8 h-8 text-white fill-white ml-1" />
-                                                        </div>
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <video
-                                                    src={item.videoUrl}
-                                                    controls
-                                                    autoPlay
-                                                    className="w-full h-full object-cover"
-                                                    onPlay={() => swiperRef.current?.autoplay?.stop()}
-                                                    onEnded={() => {
-                                                        setPlayingId(null);
-                                                        swiperRef.current?.autoplay?.start();
-                                                    }}
-                                                />
-                                            )}
+                                        {/* Video/Image Container - NOW IFRAME */}
+                                        <div className="relative h-[30vh] md:h-[40vh] lg:h-[55vh] w-full overflow-hidden bg-gray-100 group">
+                                            <iframe
+                                                src={item.iframeSrc}
+                                                title={item.name}
+                                                className="w-full h-full object-cover border-0"
+                                                allowFullScreen
+                                                loading="lazy"
+                                                referrerPolicy="no-referrer-when-downgrade"
+                                            />
                                         </div>
 
-                                        {/* Text */}
+                                        {/* Text Content */}
                                         <div className="text-left space-y-1 relative pl-2">
-                                            <h3 className="text-2xl md:text-3xl text-[#505153] font-light">
+                                            <h3 className="text-xl md:text-3xl text-[#505153] font-light">
                                                 {item.name}
                                             </h3>
                                             <p className="text-[#0097DC] font-medium text-sm md:text-base">

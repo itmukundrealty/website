@@ -51,7 +51,7 @@ export default function PrinciplesSlider() {
       <h1 className="text-4xl lg:text-6xl font-light mb-6 lg:mb-8 text-left md:text-center text-[#505153] px-6 md:px-0">Our <span className="text-[#505153] font-medium">Defining <br className="md:hidden" /> Principles</span></h1>
 
 
-      <div className="max-w-full mx-auto flex flex-col lg:flex-row lg:space-x-12 space-y-10 lg:space-y-0">
+      <div className="max-w-full mx-auto flex flex-col  lg:flex-row lg:space-x-12 space-y-10 lg:space-y-0">
 
 
         {/* LEFT PANEL */}
@@ -196,7 +196,7 @@ function SlideCard({ data }: { data: any }) {
         </p>
 
         <Link href={data.href} className="flex items-center gap-2 text-[#0097DC] font-medium group text-sm lg:text-base">
-          <ArrowUpRight className="w-5 h-5 lg:w-6 lg:h-6 transition-transform group-hover:rotate-45 transition-all duration-300" />
+          <ArrowUpRight className="w-5 h-5 lg:w-5 lg:h-5 transition-transform group-hover:rotate-45 transition-all duration-300" />
           <span>
             {data.link}
           </span>

@@ -37,7 +37,7 @@ const slides = [
     }
 ];
 
-export default function CraftedForMomentsSection() {
+export default function     CraftedForMomentsSection() {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const nextSlide = () => {
@@ -144,7 +144,7 @@ export default function CraftedForMomentsSection() {
                             <button
                                 key={index}
                                 onClick={() => setCurrentSlide(index)}
-                                className={`h-1 transition-all duration-300 rounded-full ${index === currentSlide ? 'w-8 md:w-10 bg-[#0097dc]' : 'w-4 md:w-5 bg-gray-200'}`}
+                                className={`h-1 transition-all duration-300  ${index === currentSlide ? 'w-8 md:w-10 bg-[#0097DC]' : 'w-4 md:w-5 bg-gray-200'}`}
                                 aria-label={`Go to slide ${index + 1}`}
                             />
                         ))}
@@ -183,7 +183,7 @@ export default function CraftedForMomentsSection() {
                     alt="Mukund Abstract Shape"
                     width={150}
                     height={150}
-                    className=" object-contain blur-sm -rotate-45"
+                    className=" h-16 md:h-32 object-contain blur-sm -rotate-45"
                 />
             </div>
         </section>

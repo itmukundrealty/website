@@ -29,7 +29,7 @@ export default function InsightsSection() {
     const rightBlog = blogs[1];
 
     return (
-        <section className="py-24 bg-white relative">
+        <section className="py-12 md:p  y-24 bg-white relative">
             <div className=" mx-auto px-6 md:px-12 lg:px-20 xl:px-54">
                 <div className="absolute -top-20 -left-40 pointer-events-none z-0 hidden md:block">
                     <Image
@@ -41,12 +41,12 @@ export default function InsightsSection() {
                     />
                 </div>
                 {/* Header */}
-                <div className="flex justify-between items-center mb-16">
+                    <div className="flex justify-between items-center mb-0 md:mb-16">
                     <h2 className="text-3xl md:text-5xl lg:text-7xl  text-[#505153] tracking-tight">Insights</h2>
-                    <Link href={viewMoreHref} className="flex items-center gap-2 group text-[#505153] hover:text-[#0C9CDE]  transition-colors duration-300">
-                        <span className="text-lg">View more</span>
-                        <div className="w-6 h-6 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2  transition-colors ">
-                            <ChevronRight className="w-4 h-4" />
+                    <Link href="/insights" className="hidden md:flex items-center gap-2 group text-[#505153] hover:text-[#0C9CDE] transition-colors duration-300" >
+                        <span className="text-[16px] md:text-[16px]">View more</span>
+                        <div className="md:w-6 md:h-6 w-5 h-5 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2 transition-colors">
+                            <ChevronRight className="md:w-4 md:h-4 w-3 h-3" />
                         </div>
                     </Link>
                 </div>
@@ -64,7 +64,7 @@ export default function InsightsSection() {
                                 {leftBlog ? leftBlog.summary : ""}
                             </p>
                             {leftBlog && (
-                                <Link href={`/insights/${leftBlog.id}`} className="inline-block text-[#505153] font-medium border-b border-slate-600 hover:text-[#0C9CDE] hover:border-[#0C9CDE] transition-colors pb-0.5">
+                                <Link href={`/insights/${leftBlog.id}`} className="inline-block text-[#505153] font-medium border-b border-[#505153] hover:text-[#0C9CDE] hover:border-[#0C9CDE] transition-colors pb-0.5">
                                     Read More
                                 </Link>
                             )}
@@ -124,7 +124,12 @@ export default function InsightsSection() {
                             )}
                         </div>
                     </div>
-
+<Link href={viewMoreHref} className="flex items-end justify-center  mt-12 gap-2 group text-[#505153] hover:text-[#0C9CDE]  transition-colors duration-300 md:hidden block">
+                        <span className="text-[16px] md:text-lg">View more</span>
+                        <div className="md:w-6 md:h-6 w-5 h-5 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2  transition-colors ">
+                            <ChevronRight className="md:w-4 md:h-4 w-3 h-3" />
+                        </div>
+                    </Link>
                 </div>
             </div>
         </section>

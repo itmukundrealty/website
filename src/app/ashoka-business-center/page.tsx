@@ -48,7 +48,7 @@ const MAP_DATA = [
   {
     key: "it",
     title: "Workforce",
-    icon: "/icons/workForceIcon.svg",
+    icon: "/icons/workforceIcon.svg",
     points: [18, 19],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -113,46 +113,46 @@ const AMENITIES_DATA = [
     id: "kitchen",
     label: "Curated Workspaces",
     subtitle: "",
-    image: "/images/ashokaImages/amenities/am1.webp",
+    image: "/images/ashokaImages/amenities/amm1.webp",
   },
   {
     id: "wellness",
     label: "Recreational Zones",
     subtitle: "",
-    image: "/images/ashokaImages/amenities/am2.webp",
+    image: "/images/ashokaImages/amenities/amm2.webp",
   },
   {
     id: "lobby",
-    label: "On Call Training / Board Rooms",
+    label: "On Call Training/\n Board Rooms",
     subtitle: "",
-    image: "/images/ashokaImages/amenities/am3.webp",
+    image: "/images/ashokaImages/amenities/amm3.webp",
   },
   {
     id: "pool",
-    label: "Designated Ares for Customer / Client Service",
+    label: "Designated Ares for Customer/ Client Service",
     subtitle: "",
-    image: "/images/ashokaImages/amenities/am4.webp",
+    image: "/images/ashokaImages/amenities/amm4.webp",
   },
   {
     id: "gym",
     label: "Auditorium & Banquet Hall",
     subtitle: "",
-    image: "/images/ashokaImages/amenities/am5.webp",
+    image: "/images/ashokaImages/amenities/amm5.webp",
   },
   {
     id: "sky-deck",
     label: "3 Tier Secured Parking",
     subtitle: "",
-    image: "/images/ashokaImages/amenities/am6.webp",
+    image: "/images/ashokaImages/amenities/amm6.webp",
   },
 ];
 const GALLERY_IMAGES = [
-  "/images/ashokaImages/amenities/am1.webp",
-  "/images/ashokaImages/amenities/am2.webp",
-  "/images/ashokaImages/amenities/am3.webp",
-  "/images/ashokaImages/amenities/am4.webp",
-  "/images/ashokaImages/amenities/am5.webp",
-  "/images/ashokaImages/amenities/am6.webp",
+  "/images/ashokaImages/gallery/11.webp",
+  "/images/ashokaImages/gallery/12.webp",
+  "/images/ashokaImages/gallery/13.webp",
+  "/images/ashokaImages/gallery/14.webp",
+  "/images/ashokaImages/gallery/15.webp",
+  "/images/ashokaImages/gallery/16.webp",
 ];
 export default function page() {
   return (

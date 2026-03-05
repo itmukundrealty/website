@@ -26,7 +26,7 @@ export const TextInput = ({ label, required = false, type = "text", id, onChange
     return (
         <div className="relative mb-10 w-full group">
             {isTextArea && (
-                <div className="absolute right-0 -top-6 flex gap-3 text-[11px] font-medium tracking-wide items-center">
+                <div className={`absolute right-0 flex gap-3 text-[11px] font-medium tracking-wide items-center transition-all pointer-events-none ${hasValue ? '-top-4' : 'top-2 group-focus-within:-top-4'}`}>
                     <span className={`${wordCount > maxWords ? 'text-red-500' : 'text-[#808080]'} transition-colors duration-300`}>
                         {wordCount} / {maxWords} WORDS
                     </span>

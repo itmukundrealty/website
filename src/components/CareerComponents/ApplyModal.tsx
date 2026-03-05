@@ -138,7 +138,7 @@ export default function ApplyModal({ isOpen, onClose, jobTitle = "" }: ApplyModa
 
                         <div className="mb-10 mt-2">
                             <h2 className="text-[32px] md:text-[40px] font-medium text-[#505153] leading-tight mb-2">Apply Now</h2>
-                            <p className="text-[#808080] text-[15px] font-light">Join the Mukund Team{jobTitle ? ` as a ${jobTitle}` : ''}</p>
+                            <p className="text-[#808080] text-[15px] font-light">Join the Mukund Team as a <br className='md:hidden ' />{jobTitle ? `  ${jobTitle}` : ''}</p>
                         </div>
 
                         {submitSuccess ? (
