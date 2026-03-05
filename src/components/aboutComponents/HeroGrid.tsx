@@ -47,7 +47,7 @@ export default function HeroGrid() {
                     className="relative w-full h-full overflow-hidden "
                 >
                     <Image
-                        src="/images/aboutImages/heroImg/11.webp"
+                        src="/images/aboutImages/heroImg/12.webp"
                         alt="Hero 1"
                         fill
                         className="object-cover"
@@ -64,7 +64,7 @@ export default function HeroGrid() {
                     className="relative w-full h-full overflow-hidden "
                 >
                     <Image
-                        src="/images/aboutImages/heroImg/12.webp"
+                        src="/images/aboutImages/heroImg/13.webp"
                         alt="Hero 2"
                         fill
                         className="object-cover"
@@ -81,7 +81,7 @@ export default function HeroGrid() {
                     className="relative w-full h-full overflow-hidden "
                 >
                     <Image
-                        src="/images/aboutImages/heroImg/1.png"
+                        src="/images/aboutImages/heroImg/11.webp"
                         alt="Hero 3"
                         fill
                         className="object-cover"

@@ -84,7 +84,7 @@ const StaticJobCard = ({ title, type, description, color, slug, onApply }: Stati
             <div>
                 <h2 className="text-lg md:text-2xl font-medium mb-1 tracking-tight leading-tight">{title}</h2>
                 <p className="text-[10px] md:text-sm font-normal mb-3 md:mb-4 tracking-wide text-white/90">{type}</p>
-                <p className="hidden md:block text-sm font-light leading-relaxed mb-auto opacity-90 line-clamp-5">
+                <p className="text-xs md:text-sm font-light leading-relaxed mb-auto opacity-90 line-clamp-3 md:line-clamp-5">
                     {description}
                 </p>
             </div>
@@ -132,99 +132,88 @@ export default function CareerOpportunities({ jobs }: CareerOpportunitiesProps) 
                 </div>
             </div>
 
-            {/* Desktop: Stacked Animation (<=4 jobs), Mobile: 2-column Grid */}
-            <div className="md:block hidden">
-                {jobs.length <= 4 && jobs.map((job, i) => {
-                    const targetScale = 1 - ((jobs.length - i) * 0.04);
-                    return (
-                        <JobCard
-                            key={i}
-                            i={i}
-                            {...job}
-                            progress={scrollYProgress}
-                            range={[i * 0.33, 1]}
-                            targetScale={targetScale}
-                            onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
-                        />
-                    );
-                })}
-            </div>
-
-            {/* Mobile: 2-column Grid (when <= 4 jobs) */}
-            {jobs.length <= 4 && (
-                <div className="md:hidden grid grid-cols-2 gap-4 justify-center mt-12 w-full mx-auto xl:px-0">
-                    {jobs.map((job, i) => (
-                        <StaticJobCard
-                            key={i}
-                            {...job}
-                            onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
-                        />
-                    ))}
-                </div>
-            )}
-
-            {/* Swiper Layout (when > 4 jobs) */}
-            {jobs.length > 4 && (
-                <div className="mt-12 md:mt-16 w-full mx-auto xl:px-0">
-                    <Swiper
-                        spaceBetween={16}
-                        slidesPerView={1.2}
-                        breakpoints={{
-                            640: { slidesPerView: 2, spaceBetween: 16 },
-                            1024: { slidesPerView: 3, spaceBetween: 24 }
-                        }}
-                        onSwiper={(swiper) => {
-                            setSwiperInstance(swiper);
-                            setIsBeginning(swiper.isBeginning);
-                            setIsEnd(swiper.isEnd);
-                        }}
-                        onSlideChange={(swiper) => {
-                            setCurrentSlide(swiper.activeIndex);
-                            setIsBeginning(swiper.isBeginning);
-                            setIsEnd(swiper.isEnd);
-                        }}
-                        className="w-full !pb-4"
-                    >
-                        {jobs.map((job, i) => (
-                            <SwiperSlide key={i} className="!h-auto">
-                                <StaticJobCard
+            {/* Desktop: Stacked Animation (when <= 3 jobs) */}
+            <div className="hidden md:block">
+                {jobs.length <= 3 && (
+                    <div className="w-full">
+                        {jobs.map((job, i) => {
+                            const targetScale = 1 - ((jobs.length - i) * 0.04);
+                            return (
+                                <JobCard
+                                    key={i}
+                                    i={i}
                                     {...job}
-                                    color="#0097DC"
+                                    progress={scrollYProgress}
+                                    range={[i * 0.33, 1]}
+                                    targetScale={targetScale}
                                     onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
                                 />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                            );
+                        })}
+                    </div>
+                )}
+            </div>
 
-                    {/* Navigation Controls */}
-                    <div className="mt-8 md:mt-12 flex justify-center w-full">
-                        {/* Buttons */}
-                        <div className="flex gap-3">
-                            <button
-                                onClick={() => swiperInstance?.slidePrev()}
-                                disabled={isBeginning}
-                                className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors bg-white z-10 ${isBeginning
-                                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
-                                    : 'border-[#0C9CDE] text-[#0C9CDE] hover:bg-[#0C9CDE]/10 hover:border-[#0C9CDE]'
-                                    }`}
-                            >
-                                <ChevronLeft className="w-5 h-5" />
-                            </button>
-                            <button
-                                onClick={() => swiperInstance?.slideNext()}
-                                disabled={isEnd}
-                                className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors bg-white z-10 ${isEnd
-                                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
-                                    : 'border-[#0C9CDE] text-[#0C9CDE] hover:bg-[#0C9CDE]/10 hover:border-[#0C9CDE]'
-                                    }`}
-                            >
-                                <ChevronRight className="w-5 h-5" />
-                            </button>
-                        </div>
+
+            {/* Swiper Layout (Always on Mobile, > 3 jobs on Desktop) */}
+            <div className={`mt-12 md:mt-16 w-full mx-auto xl:px-0 ${jobs.length <= 3 ? 'block md:hidden' : 'block'}`}>
+                <Swiper
+                    spaceBetween={16}
+                    slidesPerView={1.2}
+                    breakpoints={{
+                        640: { slidesPerView: 2, spaceBetween: 16 },
+                        1024: { slidesPerView: 3, spaceBetween: 24 }
+                    }}
+                    onSwiper={(swiper) => {
+                        setSwiperInstance(swiper);
+                        setIsBeginning(swiper.isBeginning);
+                        setIsEnd(swiper.isEnd);
+                    }}
+                    onSlideChange={(swiper) => {
+                        setCurrentSlide(swiper.activeIndex);
+                        setIsBeginning(swiper.isBeginning);
+                        setIsEnd(swiper.isEnd);
+                    }}
+                    className="w-full !pb-4"
+                >
+                    {jobs.map((job, i) => (
+                        <SwiperSlide key={i} className="!h-auto">
+                            <StaticJobCard
+                                {...job}
+                                color="#0097DC"
+                                onApply={() => setModalData({ isOpen: true, jobTitle: job.title })}
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+
+                {/* Navigation Controls */}
+                <div className="mt-8 md:mt-12 flex justify-center w-full">
+                    {/* Buttons */}
+                    <div className="flex gap-3">
+                        <button
+                            onClick={() => swiperInstance?.slidePrev()}
+                            disabled={isBeginning}
+                            className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors bg-white z-10 ${isBeginning
+                                ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                                : 'border-[#0C9CDE] text-[#0C9CDE] hover:bg-[#0C9CDE]/10 hover:border-[#0C9CDE]'
+                                }`}
+                        >
+                            <ChevronLeft className="w-5 h-5" />
+                        </button>
+                        <button
+                            onClick={() => swiperInstance?.slideNext()}
+                            disabled={isEnd}
+                            className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors bg-white z-10 ${isEnd
+                                ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                                : 'border-[#0C9CDE] text-[#0C9CDE] hover:bg-[#0C9CDE]/10 hover:border-[#0C9CDE]'
+                                }`}
+                        >
+                            <ChevronRight className="w-5 h-5" />
+                        </button>
                     </div>
                 </div>
-            )}
-
+            </div>
             <ApplyModal
                 isOpen={modalData.isOpen}
                 onClose={() => setModalData({ isOpen: false, jobTitle: "" })}

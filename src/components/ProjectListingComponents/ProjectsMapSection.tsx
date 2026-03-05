@@ -12,7 +12,7 @@ const PROJECTS_DATA = [
     {
         id: "ashoka",
         name: "Ashoka Business Center",
-        location: "Airport Road , Kapikad , Mangalore",
+        location: "Airport Road, Kapikad, Mangalore",
         image: "/images/LandingPageImg/landmarks/2.png",
         slug: "/ashoka-business-center",
         type: "ongoing" as const,
@@ -22,7 +22,7 @@ const PROJECTS_DATA = [
     {
         id: "rudraksh",
         name: "Rudraksh",
-        location: "Behind Infosys, Kottara | Mangalore",
+        location: "Behind Infosys, Kottara, Mangalore",
         image: "/images/LandingPageImg/landmarks/3.png",
         slug: "/rudraksh",
         type: "ongoing" as const,
@@ -32,7 +32,7 @@ const PROJECTS_DATA = [
     {
         id: "kedar",
         name: "Kedar",
-        location: "Bejai Main Road , Derebail , Mangalore",
+        location: "Bejai Main Road, Derebail, Mangalore",
         image: "/images/LandingPageImg/landmarks/1.png",
         slug: "/kedar",
         type: "ongoing" as const,
@@ -54,7 +54,7 @@ const PROJECTS_DATA = [
     {
         id: "ajanta",
         name: "Ajanta Business Center",
-        location: "Kapikad Mangalore ",
+        location: "Kapikad, Mangalore",
         image: "/images/ajantaImages/heroDesk.png",
         slug: "/ajanta-business-center",
         type: "completed" as const,
@@ -65,7 +65,7 @@ const PROJECTS_DATA = [
     {
         id: "evanna",
         name: "Evanna Homes",
-        location: "Near Infosys , Kottara , Mangalore ",
+        location: "Near Infosys, Kottara, Mangalore",
         image: "/images/evannaImages/heroDesk.png",
         slug: "/evanna-homes",
         type: "completed" as const,
@@ -76,7 +76,7 @@ const PROJECTS_DATA = [
     {
         id: "kudva",
         name: "Kudva's Grandeur",
-        location: "Surathkal Mangalore",
+        location: "Surathkal, Mangalore",
         image: "/images/kudvaImages/heroDesk.png",
         slug: "/kudva-grandeur",
         type: "completed" as const,
@@ -87,7 +87,7 @@ const PROJECTS_DATA = [
     {
         id: "madhuban",
         name: "Madhuban Apartments",
-        location: "Kottara Chowki , Mangalore",
+        location: "Kottara Chowki, Mangalore",
         image: "/images/madhubanImages/heroDesk.png",
         slug: "/madhuban-apartments",
         type: "completed" as const,
@@ -98,7 +98,7 @@ const PROJECTS_DATA = [
     {
         id: "nandagokul",
         name: "Nandagokul Apartments",
-        location: " Bejai , Mangalore",
+        location: "Bejai, Mangalore",
         image: "/images/nandagokulImages/heroDesk.png",
         slug: "/nandagokul-apartments",
         type: "completed" as const,
@@ -109,7 +109,7 @@ const PROJECTS_DATA = [
     {
         id: "nandadeep",
         name: "Nandadeep Apartments",
-        location: "Urwa , Mangalore",
+        location: "Urwa, Mangalore",
         image: "/images/nandeepImages/heroDesk.png",
         slug: "/nandadeep-apartments",
         type: "completed" as const,
@@ -120,7 +120,7 @@ const PROJECTS_DATA = [
     {
         id: "bhargavi",
         name: "Bhargavi Gloria Residency",
-        location: "Kuntikana , Mangalore ",
+        location: "Kuntikana, Mangalore",
         image: "/images/bhargaviImages/heroDesk.png",
         slug: "/bhargavi-gloria-residency",
         type: "completed" as const,
@@ -201,7 +201,8 @@ export default function ProjectsMapSection() {
             <div className="relative z-10 w-full max-w-[550px] -mt-[100vh] px-6 md:px-12 py-32 lg:ml-10 xl:ml-32 pb-[20vh]">
                 <div className="flex flex-col gap-20">
                     {PROJECTS_DATA.map((project) => (
-                        <div
+                        <Link
+                            href={project.slug}
                             key={project.id}
                             className="flex flex-col w-full cursor-pointer group"
                             onClick={() => setActiveProject(project)}
@@ -235,14 +236,14 @@ export default function ProjectsMapSection() {
                                 <div className="mt-8 flex justify-start w-full">
                                     <Link
                                         href={project.slug}
-                                        className="flex items-center justify-center gap-3 border border-[#0097DC] text-[#0097DC] px-6 py-4 bg-white font-medium hover:bg-[#0097DC] hover:text-white transition-all duration-300 text-[14px] md:text-[15px] w-full md:w-auto inline-flex "
+                                        className="flex items-center justify-center gap-3 border border-[#0097DC] text-[#0097DC] px-6 py-4 bg-white font-bold hover:bg-[#0097DC]/10  transition-all duration-300 text-[14px] md:text-[16px] w-full md:w-auto inline-flex "
                                     >
-                                        <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                                        <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:rotate-45" />
                                         Explore the Project
                                     </Link>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

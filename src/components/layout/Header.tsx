@@ -274,7 +274,7 @@ const ProjectHeader = () => {
 
                 {/* Insights */}
                 <Link
-                  href="/insights"
+                  href="/insight-lists"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
                 >

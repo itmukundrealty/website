@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useMotionValueEvent } from 'framer-motion';
 import { ArrowUp, ArrowDown } from 'lucide-react';
 import Image from 'next/image';
 import { TeamMember, fetchTeamMembers } from '@/lib/api';
@@ -11,6 +11,8 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
     const targetRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const isScrollingRef = useRef(false);
+    const frozenOffsetRef = useRef<number | null>(null);
+    const prevLatest = useRef(0);
 
     // ── ALL HOOKS MUST BE CALLED BEFORE ANY EARLY RETURN ──────────────────────
     // Framer-motion hooks
@@ -18,8 +20,55 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
         target: targetRef,
         offset: ['start start', 'end end'],
     });
-    const yEvens = useTransform(scrollYProgress, [0, 1], ['20vh', '-1650vh']);
-    const yOdds = useTransform(scrollYProgress, [0, 1], ['-1650vh', '20vh']);
+
+    const activeProgress = useMotionValue(0);
+
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        const isScrollingDown = latest > prevLatest.current;
+        prevLatest.current = latest;
+
+        if (frozenOffsetRef.current !== null) {
+            // We are frozen. Check if user is scrolling down into the section from above
+            if (isScrollingDown && latest > 0 && targetRef.current) {
+                const sectionTop = targetRef.current.getBoundingClientRect().top + window.scrollY;
+                const savedOffset = frozenOffsetRef.current;
+                frozenOffsetRef.current = null; // Unfreeze
+
+                // Lock scrolling briefly so trackpad momentum doesn't override the jump
+                isScrollingRef.current = true;
+                setTimeout(() => {
+                    isScrollingRef.current = false;
+                }, 500);
+
+                // Instantly restore scroll position so visuals seamlessly continue
+                window.scrollTo({ top: sectionTop + savedOffset, behavior: 'auto' });
+
+                // Force the visual progress to instantly align with the restored position 
+                // so it doesn't flash back to index 0 while waiting for the next scroll frame.
+                // It is important that this line happens, otherwise `latest` evaluates to 0 
+                // on the current frame that triggered the unfreeze.
+                const sectionHeight = targetRef.current.offsetHeight - window.innerHeight;
+                const restoredProgress = savedOffset / sectionHeight;
+                activeProgress.set(restoredProgress);
+
+                // Also instantly set the active index to match the restored progress
+                // to prevent the counter and name from blinking '01'
+                const totalItems = loopCount * members.length;
+                let restoredIndex = Math.floor(restoredProgress * totalItems);
+
+                // Keep it in bounds
+                if (restoredIndex < 0) restoredIndex = 0;
+                if (restoredIndex >= totalItems) restoredIndex = totalItems - 1;
+
+                setActiveIndex(restoredIndex);
+            }
+        } else {
+            activeProgress.set(latest);
+        }
+    });
+
+    const yEvens = useTransform(activeProgress, [0, 1], ['20vh', '-1650vh']);
+    const yOdds = useTransform(activeProgress, [0, 1], ['-1650vh', '20vh']);
 
     // ── SCROLL-UP JUMP LOGIC ───────────────────────────────────────────────────
     // Registered on document in the capture phase so nothing can swallow it first.
@@ -53,6 +102,9 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
             if (e.deltaY < 0 && isDeepInsideSection) {
                 e.preventDefault();
                 e.stopPropagation();
+
+                // Freeze the visual progress at our current location
+                frozenOffsetRef.current = currentScroll - sectionTop;
                 isScrollingRef.current = true;
 
                 const previousSection = section.previousElementSibling as HTMLElement | null;
@@ -62,14 +114,13 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
                     targetTop = previousSection.getBoundingClientRect().top + window.scrollY;
                 }
 
-                // 'instant' is critical: 'smooth' from deep inside 4500vh takes several
-                // seconds and lets inertia events leak through before the lock expires.
-                window.scrollTo({ top: targetTop, behavior: 'instant' });
+                // Smoothly scroll to the previous section
+                window.scrollTo({ top: targetTop, behavior: 'smooth' });
 
-                // Hold the lock long enough to absorb trackpad momentum (≈1.5 s).
+                // Hold lock long enough to absorb trackpad momentum and let smooth scroll finish
                 setTimeout(() => {
                     isScrollingRef.current = false;
-                }, 1500);
+                }, 1000);
             }
         };
 
@@ -82,11 +133,19 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
     if (!members || members.length === 0) return null;
 
     // ── DATA ──────────────────────────────────────────────────────────────────
+    // Memoize the extended array so `uniqueId`s are completely stable across renders.
+    // Otherwise, every time `activeProgress` causes a render or the component remounts,
+    // the ids are newly generated, which forces Framer Motion to destroy the 
+    // active images and restart layout from index 0.
     const loopCount = 6;
-    const extendedTeam = Array(loopCount).fill(members).flat().map((member, i) => ({
-        ...member,
-        uniqueId: `${member.id}-${i}`,
-    }));
+    const extendedTeam = React.useMemo(() => {
+        return Array(loopCount).fill(members).flat().map((member, i) => ({
+            ...member,
+            // Prefixing with 'team-' to ensure no accidental clashes if ids are simple numbers
+            uniqueId: `team-${member.id}-${i}`,
+        }));
+    }, [members]);
+
     const originalLength = members.length;
 
     const leftColumnMembers = extendedTeam;

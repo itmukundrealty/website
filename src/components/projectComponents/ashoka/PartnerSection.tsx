@@ -56,7 +56,7 @@ export default function PartnerSection() {
                 <h2 className="text-[36px] md:text-[48px] lg:text-[54px] font-normal text-[#4A4A4A] mb-3 tracking-wide leading-tight">
                     Partners with Leading Brands.
                 </h2>
-                <p className="text-[15px] md:text-[17px] lg:text-[19px] font-light text-[#9E9E9E] max-w-2xl mx-auto leading-relaxed">
+                <p className="text-[15px] md:text-[17px] lg:text-[19px] font-light text-[#9E9E9E] max-w-3xl mx-auto leading-relaxed">
                     We create spaces tailored to the needs of established firms to fast-growing startups.
                 </p>
             </div>

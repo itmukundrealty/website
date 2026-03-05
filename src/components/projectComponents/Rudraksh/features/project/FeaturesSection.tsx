@@ -56,7 +56,7 @@ export default function FeaturesSection({
             <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#424244] font-light tracking-tight leading-tight">{heading}</h2>
             <Link
               href={finalLink}
-              className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-sm font-bold shrink-0 w-full md:w-fit"
+              className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-wide  font-bold shrink-0 w-full md:w-fit text-[16px]"
             >
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
               Explore Now

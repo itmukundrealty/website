@@ -26,7 +26,7 @@ export default function BlogListingPage() {
             <section className="mx-auto py-16 px-6 md:px-12 lg:px-20 xl:px-54 font-sans bg-white">
                 {/* Heading */}
                 <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight font-normal text-gray-900 mb-14 tracking-tight mt-20">
-                    Insights 
+                    Insights
                 </h2>
 
                 {/* Grid Container */}
@@ -40,10 +40,11 @@ export default function BlogListingPage() {
                             const isFirstCol = index % 3 === 0;
                             const isMiddleCol = index % 3 === 1;
                             const isLastCol = index % 3 === 2;
+                            const isLastItem = index === blogs.length - 1;
 
                             let colStyles = "";
-                            if (isFirstCol) colStyles = "pr-8 md:border-r border-gray-200";
-                            if (isMiddleCol) colStyles = "px-8 md:border-r border-gray-200";
+                            if (isFirstCol) colStyles = `pr-8 ${!isLastItem ? "md:border-r border-gray-200" : ""}`;
+                            if (isMiddleCol) colStyles = `px-8 ${!isLastItem ? "md:border-r border-gray-200" : ""}`;
                             if (isLastCol) colStyles = "pl-8";
 
                             return (
@@ -58,14 +59,14 @@ export default function BlogListingPage() {
                                     </div>
 
                                     {/* Text Content */}
-                                    <h3 className="text-lg text-[#505153] leading-snug font-normal pr-2 mb-3">
+                                    <h3 className="text-lg md:text-[1.5rem] text-[#505153] leading-snug font-normal pr-2 mb-3">
                                         {blog.title}
                                     </h3>
 
                                     {/* Link */}
                                     <Link
                                         href={`/insights/${blog.id}`}
-                                        className="text-[11px] text-gray-500 underline decoration-gray-400 underline-offset-[3px] hover:text-gray-800 transition-colors mt-auto self-start"
+                                        className="text-[16px] text-[#505153] underline decoration-[#505153] underline-offset-[3px] hover:text-[#0097DC] hover:decoration-[#0097DC] transition-colors mt-auto self-start"
                                     >
                                         Read More
                                     </Link>

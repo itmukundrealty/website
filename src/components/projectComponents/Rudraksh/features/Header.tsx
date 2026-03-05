@@ -144,9 +144,9 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                 </div>
               </div>
             </div>
-            
+
             <Link
-              href="/insights"
+              href="/insight-lists"
               className={` hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
             >
               Insights

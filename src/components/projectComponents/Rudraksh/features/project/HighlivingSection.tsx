@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -23,9 +23,32 @@ export default function HighlivingSection({
   video = true
 }: HighlivingSectionProps) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting && videoRef.current) {
+            videoRef.current.pause();
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <section className="md:py-24 py-14 bg-white font-sans">
+    <section ref={sectionRef} className="md:py-24 py-14 bg-white font-sans">
       <div className=" mx-auto px-6 lg:px-20 xl:px-54">
         {/* Header Area */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
@@ -33,7 +56,7 @@ export default function HighlivingSection({
 
           <Link
             href={projectLink}
-            className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-sm font-bold w-full md:w-fit"
+            className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
           >
             <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
             Enquire Now
@@ -68,7 +91,7 @@ export default function HighlivingSection({
                 </div>
               </>
             ) : (
-              <video src={videoSrc} controls autoPlay className="w-full h-full object-cover" onEnded={() => setIsPlaying(false)} />
+              <video ref={videoRef} src={videoSrc} controls autoPlay className="w-full h-full object-cover" onEnded={() => setIsPlaying(false)} />
             )}
           </div>
         )}

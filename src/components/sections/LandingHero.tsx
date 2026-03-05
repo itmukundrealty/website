@@ -28,10 +28,10 @@ export default function LandingHeroSection() {
         <div className="w-full bg-white overflow-hidden flex flex-col">
 
             {/* --- Section 1: Text Left / Carousel Right --- */}
-            <section className="relative w-full lg:min-h-[90vh] xl:min-h-[80vh]  flex flex-col lg:flex-row items-center md:gap-30 lg2:gap-0 py-20 lg:py-0">
+            <section className="relative w-full md:min-h-[90vh] lg:min-h-[90vh] xl:min-h-[80vh]  flex flex-col lg:flex-row items-center md:gap-30 lg2:gap-0 py-20 lg:py-0">
 
                 {/* Left Side: Text Content */}
-                <div className="w-full lg:w-1/1 px-8 lg:pl-20 z-10 flex flex-col justify-center mt-12 lg:mt-0">
+                <div className="w-full lg:w-1/1 px-8 md:pl-20 lg:pl-20 z-10 flex flex-col justify-center mt-12 lg:mt-0">
                     <div className="flex items-center gap-4 mb-6">
 
                         {/* Vertical line/Label if needed */}
@@ -45,7 +45,7 @@ export default function LandingHeroSection() {
                 </div>
 
                 {/* Right Side: The 3D Carousel */}
-                <div className="w-full lg:w-1/2 h-[350px] lg:h-[100vh] lg2:h-[70vh] relative flex items-center justify-center perspective-container overflow-visible ms-[22vh] ">
+                <div className="w-full lg:w-1/2 h-[350px] md:h-[90vh] lg:h-[100vh] lg2:h-[70vh] relative flex items-center justify-center perspective-container overflow-visible ms-[22vh] ">
                     {/* Reduced radius to 350 for smaller look */}
                     <InfiniteCircularCarousel items={SAMPLE_ITEMS} radius={350} mobileRadius={180} mobileItemCount={5} duration={30} />
                 </div>
@@ -53,10 +53,10 @@ export default function LandingHeroSection() {
             </section>
 
             {/* --- Section 2: Carousel Left / Text Right --- */}
-            <section className="relative w-full lg:min-h-[90vh] xl:min-h-[80vh]  flex flex-col-reverse lg:flex-row md:gap-36 items-center py-0 lg:py-0">
+            <section className="relative w-full md:min-h-[80vh] lg:min-h-[90vh] xl:min-h-[80vh]  flex flex-col-reverse lg:flex-row md:gap-36 items-center py-0 lg:py-0">
 
                 {/* Left Side: The 3D Carousel */}
-                <div className="w-full lg:w-1/2 h-[350px] lg:h-[600px] relative flex items-center justify-center perspective-container overflow-visible z-0  -ms-[22vh]">
+                <div className="w-full lg:w-1/2 h-[350px] md:h-[80vh] lg:h-[600px] relative flex items-center justify-center perspective-container overflow-visible z-0  -ms-[22vh]">
                     <InfiniteCircularCarousel items={SAMPLE_ITEMS} radius={350} mobileRadius={180} mobileItemCount={5} duration={30} clockwise={true} />
                 </div>
 
@@ -64,7 +64,7 @@ export default function LandingHeroSection() {
                 <div className="w-full lg:w-1/2 px-8 lg:pl-12 lg:pr-20 z-10 flex flex-col justify-center mb-12 lg:mb-0">
                     <div className="max-w-lg">
                         <p className="text-lg lg:text-lg font-light text-[#505153] leading-relaxed mb-8">
-                            Since 2012, <span className="font-medium text-[#505153]">Mukund Realty</span> has been committed to creating thoughtfully built residential and commercial spaces rooted in integrity, precision and long-term value. Our approach blends disciplined planning with purposeful design, resulting in spaces that inspire confidence and lasting relevance.
+                            Since 2012, <span className="font-medium text-[#505153]">Mukund Realty</span> has been committed to creating thoughtfully built residential and commercial spaces rooted in integrity, precision and long-term value. Our approach blends disciplined planning with purposeful design, resulting in spaces that inspire confidence and  <br className="md:hidden" /> lasting relevance.
                         </p>
 
                         <Link href="/about" className="inline-flex items-center text-[#0097DC] font-semibold hover:text-[#0097DC] transition-colors group">

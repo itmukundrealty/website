@@ -95,7 +95,7 @@ const projects = [
         desktopSrc: "/images/LandingPageImg/landmarks/2.png",
         mobileSrc: "/images/LandingPageImg/landmarks/12.png",
         color: "#E1DAD6",
-        link: "/ashoka"
+        link: "/ashoka-business-center"
     },
     {
         title: "Rudraksh",

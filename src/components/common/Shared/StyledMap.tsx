@@ -129,6 +129,7 @@ interface StyledMapProps {
     mainMarkerPosition?: { lat: number; lng: number };
     customMarkerImage?: string;
     renderAsMarkers?: boolean;
+    allowedPoints?: number[];
 }
 
 export default function StyledMap({
@@ -142,6 +143,7 @@ export default function StyledMap({
     mainMarkerPosition,
     customMarkerImage = "/icons/mapIcon.svg",
     renderAsMarkers = false,
+    allowedPoints,
 }: StyledMapProps) {
 
     const [hoveredLocation, setHoveredLocation] = useState<number | null>(null);
@@ -214,6 +216,10 @@ export default function StyledMap({
 
                     {/* Render Markers/Circles */}
                     {locations.map((loc) => {
+                        if (allowedPoints && !allowedPoints.includes(loc.id)) {
+                            return null;
+                        }
+
                         const isActive = activePoints.includes(loc.id);
 
                         if (renderAsMarkers) {

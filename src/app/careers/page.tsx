@@ -18,7 +18,7 @@ export default async function page() {
                     <>
                         We're not building just any team.{' '} <br />
                         <span className="font-medium text-[#505153]">
-                            We seek visionaries who<br />
+                            We seek visionaries who <br className="hidden md:block" />
                             shape futures.
                         </span>
                     </>
@@ -31,7 +31,7 @@ export default async function page() {
             <PhilosophySection
                 heading={
                     <>
-                        <span className="font-medium">At Mukund </span> Realty, meaningful work is shaped by people who value responsibility and approach every task with care. When the right individuals come together in a thoughtful setting, strong ideas take form and enduring value is created.
+                        <span className="font-light">At <span className="font-medium"> Mukund  Realty</span> , meaningful work is shaped by people who value responsibility and approach every task with care. When the right individuals come together in a thoughtful setting, strong ideas take form and enduring value is created.</span>
                     </>
                 }
                 description={

@@ -43,9 +43,9 @@ export default function PortfolioSection() {
           <div className="mt-8 w-full md:w-auto">
             <Link
               href="/projects"
-              className="group flex w-full justify-center md:inline-flex md:w-auto items-center gap-3 px-4 py-3 md:px-6 md:py-5 border border-[#38bdf8] text-[#0ea5e9] font-bold text-[15px] hover:bg-[#bae6fd]/10 transition-colors duration-300"
+              className="group flex w-full justify-center md:inline-flex md:w-auto items-center gap-3 px-4 py-3 md:px-6 md:py-5 border border-[#0097DC] text-[#0097DC] font-bold text-[16px] hover:bg-[#0097DC]/10 transition-colors duration-300"
             >
-              Explore our projects
+              Explore our Projects
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45 transition-all duration-300" strokeWidth={2.5} />
             </Link>
           </div>

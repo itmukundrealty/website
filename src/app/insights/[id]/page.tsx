@@ -3,7 +3,8 @@
 import React, { useEffect, useState, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft, ChevronLeft } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { fetchBlogById, Blog } from "@/lib/api";
@@ -15,6 +16,7 @@ interface BlogDetailPageProps {
 
 export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     const { id } = use(params);
+    const router = useRouter();
     const [blog, setBlog] = useState<Blog | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -130,17 +132,18 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
 
                             {/* Bottom: Go Back */}
                             <div className="mt-6 md:mt-0">
-                                <Link
-                                    href="/insights"
+                                <button
+                                    type="button"
+                                    onClick={() => router.back()}
                                     className="inline-flex items-center gap-3 group"
                                 >
-                                    <div className="w-11 h-11 rounded-full border border-[#bbb] group-hover:border-[#505153] flex items-center justify-center transition-colors shrink-0">
-                                        <ArrowLeft className="w-4 h-4 text-[#505153]" />
+                                    <div className="w-8 h-8 rounded-full border border-[#505153] group-hover:border-[#0097DC] flex items-center justify-center transition-colors shrink-0">
+                                        <ChevronLeft className="w-4 h-4 text-[#505153] group-hover:text-[#0097DC]" />
                                     </div>
-                                    <span className="text-[15px] text-[#505153] font-normal group-hover:text-[#1a1a1a] transition-colors">
+                                    <span className="text-[15px] text-[#505153] font-normal group-hover:text-[#0097DC] transition-colors">
                                         Go Back
                                     </span>
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -169,8 +172,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
             </main>
             <RelatedArticleSection currentBlogId={id} />
 
-
-            <Footer />
+            <Footer blogTitle={blog.title} />
 
             <style jsx global>{`
                 /* ── Reset Unlayer email wrapper styles ── */

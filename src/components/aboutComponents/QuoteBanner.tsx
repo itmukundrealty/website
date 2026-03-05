@@ -88,7 +88,7 @@ export default function QuoteBanner() {
           >
             “That’s what makes our work matter… <br />
             <span className="font-medium">
-              Spaces shaped by individuals <br />
+              Spaces shaped by individuals <br className='md:block hidden' />
             </span>
             <span className="font-medium">
               who take responsibility, together.
