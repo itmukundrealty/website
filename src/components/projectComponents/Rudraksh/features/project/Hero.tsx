@@ -355,7 +355,7 @@ export function ProjectHero({
                       {currentUnit.details.type && <li>{currentUnit.details.type}</li>}
                       {currentUnit.details.balconySqft && currentUnit.details.balconySqft !== "0"
                         ? `Balcony Area: ${currentUnit.details.balconySqft} sq.ft.`
-                        : "Balcony"}
+                        : ""}
                     </ul>
                   </div>
                 </div>
