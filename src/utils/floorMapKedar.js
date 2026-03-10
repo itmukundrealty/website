@@ -1,41 +1,38 @@
-const typicalFloorUnits = [
-  {
-    id: "F01",
-    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/0.png",
-    path: "M264.5 158.75H210.75V0.5H275.25V22.75H366.5V220.5H264.5V158.75Z",
-    details: { number: "F-01", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-  },
-  {
-    id: "F02",
-    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/1.png",
-    path: "M210.5 22.5V159H168.75V188H125V198.875H153.25V247.25H44V188H22.75V0.75H94V22.5H210.5Z",
-    details: { number: "F-02", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-  },
-  {
-    id: "F03",
-    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/2.png",
-    path: "M153.5 462H79.5V427.25H0.25V307.5H22.25V247H153.5V295.75H124.5V307.5H162.25V402.25H153.5V462Z",
-    details: { number: "F-03", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-  },
-  {
-    id: "F04",
-    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/3.png",
-    path: "M22.5 493.5H153.25V555.75H168.75V583.75H210.5V720.5H22.5V493.5Z",
-    details: { number: "F-04", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-  },
-  {
-    id: "F05",
-    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/4.png",
-    path: "M367 720.5H210.5V583.75H272V522.75H367V720.5Z",
-    details: { number: "F-05", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-  },
-  {
-    id: "F06",
-    unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/5.png",
-    path: "M366.75 524.5H301.75V512.75H208.75V411.75H264.75V353H293.5V307.5H366.75V367.5H388.75V416H366.75V524.5Z",
-    details: { number: "F-06", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
-  }
-];
+// Helper to generate per-floor units with correct numbering
+function makeFloorUnits(floorNumber, floorLabel) {
+  // Unit suffix numbers per position (matching original 4th floor: 406,405,404,402,403,401)
+  const suffixes = [6, 5, 4, 2, 3, 1];
+  const types = [
+    { sqft: "1200", rooms: 2, washrooms: 2 },
+    { sqft: "1555", rooms: 3, washrooms: 3 },
+    { sqft: "1555", rooms: 3, washrooms: 3 },
+    { sqft: "1555", rooms: 3, washrooms: 3 },
+    { sqft: "1555", rooms: 3, washrooms: 3 },
+    { sqft: "1125", rooms: 2, washrooms: 2 },
+  ];
+  const paths = [
+    "M264.5 158.75H210.75V0.5H275.25V22.75H366.5V220.5H264.5V158.75Z",
+    "M210.5 22.5V159H168.75V188H125V198.875H153.25V247.25H44V188H22.75V0.75H94V22.5H210.5Z",
+    "M153.5 462H79.5V427.25H0.25V307.5H22.25V247H153.5V295.75H124.5V307.5H162.25V402.25H153.5V462Z",
+    "M22.5 493.5H153.25V555.75H168.75V583.75H210.5V720.5H22.5V493.5Z",
+    "M367 720.5H210.5V583.75H272V522.75H367V720.5Z",
+    "M366.75 524.5H301.75V512.75H208.75V411.75H264.75V353H293.5V307.5H366.75V367.5H388.75V416H366.75V524.5Z",
+  ];
+  return suffixes.map((suffix, i) => ({
+    id: `F0${i + 1}`,
+    unitImage: `/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/${i}.png`,
+    path: paths[i],
+    details: {
+      number: `${floorNumber}0${suffix}`,
+      type: "Kitchen + Utility Space",
+      sqft: types[i].sqft,
+      balconySqft: "",
+      rooms: types[i].rooms,
+      washrooms: types[i].washrooms,
+      floor: floorLabel,
+    },
+  }));
+}
 
 // 1. Updated floorData with new Ground Floor units and dynamic viewBoxes
 export const floorData = [
@@ -224,37 +221,37 @@ export const floorData = [
         id: "S08",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/7.png",
         path: "M330.5 325H309.75V272.375H369.75V347.875H330.5V325Z",
-        details: { number: "S-08", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
+        details: { number: "306", type: "Kitchen + Utility Space", sqft: "1140", balconySqft: "", rooms: 2, washrooms: 2, floor: "" },
       },
       {
         id: "S09",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/8.png",
         path: "M237.125 272.5V359.125H287V340.75H276.125V334.875H293.625V325.125H309.75V272.5H237.125Z",
-        details: { number: "S-09", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
+        details: { number: "305", type: "Kitchen + Utility Space", sqft: "1125", balconySqft: "", rooms: 3, washrooms: 3, floor: "", },
       },
       {
         id: "S10",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/9.png",
         path: "M287.875 382.75H290.75V418.625H287.875V441.75H258.625V428.125H228.75V382.125H237.125V359.125H287.875V382.75Z",
-        details: { number: "S-10", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
+        details: { number: "304", type: "Kitchen + Utility Space", sqft: "1210", balconySqft: "", rooms: 2, washrooms: 2, floor: "" },
       },
       {
         id: "S11",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/10.png",
         path: "M309.75 541.5H237.375V453.625H287.75V477.375H293.5V488.625H309.75V541.5Z",
-        details: { number: "S-11", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
+        details: { number: "303", type: "Kitchen + Utility Space", sqft: "1555", balconySqft: "", rooms: 3, washrooms: 3, floor: "" },
       },
       {
         id: "S12",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/11.png",
         path: "M370 465.625V541.375H309.75V488.75H333.125V465.625H370Z",
-        details: { number: "S-12", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
+        details: { number: "302", type: "Kitchen + Utility Space", sqft: "1115", balconySqft: "", rooms: 2, washrooms: 2, floor: "" },
       },
       {
         id: "S13",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/12.png",
         path: "M309 422.5V461.375H344.625V465.75H369.75V423.875H378.375V404.5H369.75V381.875H341.625V399.625H330.625V422.5H309Z",
-        details: { number: "S-13", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
+        details: { number: "301", type: "Kitchen + Utility Space", sqft: "1125", balconySqft: "", rooms: 2, washrooms: 2, floor: "" },
       }
     ]
   },
@@ -267,7 +264,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(4, "Fourth Floor"),
   },
   {
     title: "Fifth Floor",
@@ -278,7 +275,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(5, "Fifth Floor"),
   },
   {
     title: "Sixth Floor",
@@ -289,7 +286,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(6, "Sixth Floor"),
   },
   {
     title: "Seventh Floor",
@@ -300,7 +297,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(7, "Seventh Floor"),
   },
   {
     title: "Eighth Floor",
@@ -311,7 +308,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(8, "Eighth Floor"),
   },
   {
     title: "Ninth Floor",
@@ -322,7 +319,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(9, "Ninth Floor"),
   },
   {
     title: "Tenth Floor",
@@ -333,7 +330,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(10, "Tenth Floor"),
   },
   {
     title: "Eleventh Floor",
@@ -344,7 +341,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(11, "Eleventh Floor"),
   },
   {
     title: "Twelfth Floor",
@@ -355,7 +352,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(12, "Twelfth Floor"),
   },
   {
     title: "Thirteenth Floor",
@@ -366,7 +363,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(13, "Thirteenth Floor"),
   },
   {
     title: "Fourteenth Floor",
@@ -377,7 +374,7 @@ export const floorData = [
       "3 BHKs",
       "2 BHKs"
     ],
-    units: typicalFloorUnits,
+    units: makeFloorUnits(14, "Fourteenth Floor"),
   },
   {
     title: "Fifteenth Floor",
@@ -393,25 +390,25 @@ export const floorData = [
         id: "U01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/0.png",
         path: "M257.75 214.75V154.75H149.25V240.25H43V182.25H21.75V0.25H91.5V21.25H203.75V0.25H268.25V21.25H357.25V214.75H257.75Z",
-        details: { number: "U-01", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "1506", type: "Kitchen + Utility Space", sqft: "2745", balconySqft: "", rooms: "4", washrooms: "4", floor: "" },
       },
       {
         id: "U02",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/1.png",
         path: "M22 298.5V238.75H149.25V287.75H121V298.5H157.5V391H149.25V449.25H77V415.5H0.5V298.5H22Z",
-        details: { number: "U-02", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "1504 - 1st Floor", type: "Kitchen + Utility Space", sqft: "2445", balconySqft: "", rooms: "1", washrooms: "2", floor: "" },
       },
       {
         id: "U03",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/2.png",
         path: "M149 480.5H22.042V701.271H357.347V508.558H264.633V568H164V539.75H149V480.5Z",
-        details: { number: "U-03", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "1502", type: "Kitchen + Utility Space", sqft: "", balconySqft: "", rooms: "1", washrooms: "2", floor: "" },
       },
       {
         id: "U04",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/3.png",
         path: "M292.5 512V499H203.75V400.5H258V298.5H357.5V357.25H379V404.5H357.5V512H292.5Z",
-        details: { number: "U-04", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "1501 - 1st Floor", type: "Kitchen + Utility Space", sqft: "2670", balconySqft: "", rooms: "4", washrooms: "4", floor: "" },
       }
     ]
   },
@@ -429,25 +426,25 @@ export const floorData = [
         id: "U01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/0.png",
         path: "M154.5 251.25H22.5V230.125H44.4375V188.812H22.5V-0.5H95V21H211V-0.5H278.5V21H371.25V222H267.5V159.5H154.5V251.25Z",
-        details: { number: "U-01", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "1606", type: "Kitchen + Utility Space", sqft: "2875", balconySqft: "", rooms: "4", washrooms: "4", floor: "" },
       },
       {
         id: "U02",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/1.png",
         path: "M371.25 369V309.5H297V355.75H268V415.5H211.25V517.5H275V529.75H371.25V419.75H393.5V369H371.25Z",
-        details: { number: "U-02", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "1504 - 2nd Floor", type: "Family Room", sqft: "2445", balconySqft: "", rooms: "2", washrooms: "2", floor: "" },
       },
       {
         id: "U03",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/2.png",
         path: "M154.5 466H79.75V430.75H0.25V309.25H23V247H154.5V298.5H125.5V309.25H177.5V376.75H154.5V466Z",
-        details: { number: "U-03", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "1501 - 2nd Floor", type: "", sqft: "2265", balconySqft: "", rooms: "2", washrooms: "2", floor: "" },
       },
       {
         id: "U04",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/3.png",
         path: "M154.75 498H22.75L22.25 727.5H371V527.75H275.75V589H170.5V560H154.75V498Z",
-        details: { number: "U-04", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "1602", type: "Kitchen + Utility Space", sqft: "2745", balconySqft: "", rooms: "4", washrooms: "4", floor: "" },
       }
     ]
   },
@@ -466,19 +463,19 @@ export const floorData = [
         id: "U01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/terrace/0.png",
         path: "M173.875 689.25H39.25V547.75H173.875V689.25Z",
-        details: { number: "U-01", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "Indoor Games Arena", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U02",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/terrace/1.png",
         path: "M39.25 547.5V484.375H150.75V534.25H132.625V547.5H39.25Z",
-        details: { number: "U-02", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "Gymnasium with Cardio Equipment", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U03",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/terrace/2.png",
         path: "M343.75 690.25H271.5V488.5H343.75V690.25Z",
-        details: { number: "U-03", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "Open Library", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       }
     ]
   },
@@ -498,13 +495,13 @@ export const floorData = [
         id: "U01",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/upperTerrace/0.png",
         path: "M121.5 241.5H23V177.75H121.5V241.5Z",
-        details: { number: "U-01", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "Baby Pool", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U02",
         unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/upperTerrace/1.png",
         path: "M121.5 177.5H23.5V22H338V181.75H206.875V207H121.5V177.5Z",
-        details: { number: "U-02", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
+        details: { number: "Rooftop Infinity  Swimming Pool", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       }
     ]
   },
@@ -539,7 +536,7 @@ export const HERO_MARKERS = [
     ),
   },
   {
-    label: "Leisure Areas", // Middle marker (cx: 582.227)
+    label: "Kids Play Area", // Middle marker (cx: 582.227)
     cx: 582.227,
     cy: 538.227,
     markerElements: (
