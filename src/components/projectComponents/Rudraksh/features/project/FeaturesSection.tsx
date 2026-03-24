@@ -113,7 +113,7 @@ export default function FeaturesSection({
             ) : (
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-black text-black hover:bg-black/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[16px]"
+                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-6 lg:py-5 border border-black text-black hover:bg-black/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px]"
               >
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                 Know More
