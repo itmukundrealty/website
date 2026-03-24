@@ -162,8 +162,8 @@ export default function FeaturesSection({
         {/* Modal */}
         {isModalOpen && btnType === "know" && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 lg:p-10">
-            <div className="absolute inset-0 bg-[#000000]/10 backdrop-blur-[2px]" onClick={() => setIsModalOpen(false)} />
-            <div data-lenis-prevent className="relative bg-white w-full max-w-[1000px] border-[1.5px] border-[#0097DC] p-10 md:p-20 lg:p-24 shadow-none max-h-[92vh] overflow-y-auto z-10 transition-all duration-500 ease-out">
+            <div className="absolute inset-0 bg-[#000000]/10 " onClick={() => setIsModalOpen(false)} />
+            <div data-lenis-prevent className="relative bg-white w-full max-w-[1000px] p-10 md:p-20 lg:p-24 shadow-none max-h-[92vh] overflow-y-auto z-10 transition-all duration-500 ease-out">
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="absolute top-6 right-6 md:top-10 md:right-10 text-gray-400 hover:text-black transition-colors"
@@ -191,21 +191,6 @@ export default function FeaturesSection({
                 </ul>
               )}
             </div>
-            <style jsx>{`
-              .relative::-webkit-scrollbar {
-                width: 6px;
-              }
-              .relative::-webkit-scrollbar-track {
-                background: transparent;
-              }
-              .relative::-webkit-scrollbar-thumb {
-                background: #0097DC33;
-                border-radius: 10px;
-              }
-              .relative::-webkit-scrollbar-thumb:hover {
-                background: #0097DC55;
-              }
-            `}</style>
           </div>
         )}
 
