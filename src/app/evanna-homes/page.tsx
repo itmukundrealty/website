@@ -144,6 +144,26 @@ const AMENITIES_DATA = [
     }
 ];
 
+const ftModal = [
+  "Framed structure with laterite stone exterior walls and concrete solid block internal walls",
+  "Multi-level interlocked car parking and yard with column guards",
+  "Attractive melamine polished main entrance door with high-quality wooden frame",
+  "Decorative interior doors with wooden frames",
+  "Granite door frame with fibrotic shutter for toilets",
+  "Provision for modular kitchen with chimney, refrigerator, washing machine, and aquaguard",
+  "5KW three-phase power supply with AC provision for all bedrooms",
+  "Modular electrical switches from reputed brands",
+  "Two automatic elevators with eight-passenger capacity",
+  "Generator backup for lifts and all apartments with soundproof enclosure",
+  "Branded toilet and kitchen fittings (Jaguar, Hindware, Parryware or equivalent)",
+  "Premium acrylic emulsion paint for interiors and weather-resistant exterior paint",
+  "UPVC or high-grade aluminum sliding windows with mosquito mesh and 5mm clear glass",
+  "Granite window sills",
+  "Superior quality 800 x 800 vitrified tiles",
+  "Two-way light control in all bedrooms",
+  "TV provision in living room and master bedroom",
+  "Neighbourhood shop and laundry shop"
+];
 export default function page() {
     return (
         <>
@@ -159,7 +179,7 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" completed={true} />
+                <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" completed={true} btnType="know" modalTitle="Evanna Homes " modalPoints={ftModal}  />
 
                 <MapSection customMarkerImage="/icons/mapIcons/evannaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.903875173703936, lng: 74.83892547301431 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />

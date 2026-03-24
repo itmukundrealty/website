@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
+import { db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 import { Icons } from "./FeatureIcons";
 import Link from "next/link";
@@ -24,6 +26,9 @@ interface FeaturesSectionProps {
   completed?: boolean;
   galleryImages?: string[];
   projectLink?: string;
+  btnType?: "explore" | "know";
+  modalTitle?: string;
+  modalPoints?: string[];
 }
 
 export default function FeaturesSection({
@@ -33,15 +38,58 @@ export default function FeaturesSection({
   completed = true,
   galleryImages,
   projectLink = "/project-enquire",
+  btnType = "explore",
+  modalTitle,
+  modalPoints,
 }: FeaturesSectionProps) {
   const pathname = usePathname();
   const currentProject = pathname?.split('/')[1] || '';
-  const validProjects = ["rudraksh", "mathura", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
+  const validProjects = [
+    "rudraksh", "mathura-residency", "ajanta-business-center", "evanna-homes", 
+    "kudva-grandeur", "madhuban-apartments", "nandagokul-apartments", 
+    "nandadeep-apartments", "bhargavi-gloria-residency", "gokuldham", 
+    "mukund-sadan", "kailash", "ashoka-business-center", "kedar"
+  ];
   const finalLink = projectLink === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : projectLink;
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [fetchedGalleryImages, setFetchedGalleryImages] = useState<string[]>([]);
 
-  const GALLERY_IMAGES = galleryImages || [];
+  useEffect(() => {
+    if (isModalOpen) {
+      // Lock background scroll without stopping Lenis entirely
+      // (stopping Lenis also kills the modal's internal scroll)
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    };
+  }, [isModalOpen]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      if (!currentProject) return;
+      try {
+        const docRef = doc(db, "projectFeatures", currentProject);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists() && docSnap.data().galleryImages && docSnap.data().galleryImages.length > 0) {
+          setFetchedGalleryImages(docSnap.data().galleryImages);
+        }
+      } catch (error) {
+        console.error("Error fetching project feature images:", error);
+      }
+    };
+    
+    fetchImages();
+  }, [currentProject]);
+
+  const GALLERY_IMAGES = fetchedGalleryImages.length > 0 ? fetchedGalleryImages : (galleryImages || []);
 
   return (
     <section className="py-10 lg:py-32 bg-white font-host">
@@ -54,13 +102,23 @@ export default function FeaturesSection({
         ) : (
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16 lg:mb-28">
             <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#424244] font-light tracking-tight leading-tight">{heading}</h2>
-            <Link
-              href={finalLink}
-              className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-wide  font-bold shrink-0 w-full md:w-fit text-[16px]"
-            >
-              <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
-              Explore Now
-            </Link>
+            {btnType === "explore" ? (
+              <Link
+                href={finalLink}
+                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[16px]"
+              >
+                <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+                Explore Now
+              </Link>
+            ) : (
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-black text-black hover:bg-black/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[16px]"
+              >
+                <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+                Know More
+              </button>
+            )}
           </div>
         )}
 
@@ -101,9 +159,59 @@ export default function FeaturesSection({
           </button>
         </div>
 
+        {/* Modal */}
+        {isModalOpen && btnType === "know" && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 lg:p-10">
+            <div className="absolute inset-0 bg-[#000000]/10 backdrop-blur-[2px]" onClick={() => setIsModalOpen(false)} />
+            <div data-lenis-prevent className="relative bg-white w-full max-w-[1000px] border-[1.5px] border-[#0097DC] p-10 md:p-20 lg:p-24 shadow-none max-h-[92vh] overflow-y-auto z-10 transition-all duration-500 ease-out">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-6 right-6 md:top-10 md:right-10 text-gray-400 hover:text-black transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-8 h-8 font-light" strokeWidth={1} />
+              </button>
+
+              <div className="mb-4 md:mb-6">{modalTitle && (
+                <h2 className="text-3xl md:text-4xl lg:text-[45px] text-[#424244] font-light  tracking-tight leading-tight">
+                  {modalTitle}
+                </h2>
+              )}
+              <p className="text-[#0097DC] text-xl md:text-4xl lg:text-[30px] font-light leading-relaxed">Specifications</p></div>
+
+
+              {modalPoints && modalPoints.length > 0 && (
+                <ul className="space-y-1.5 md:space-y-2 pb-10">
+                  {modalPoints.map((point, index) => (
+                    <li key={index} className="flex items-start text-[14px] md:text-[15px] lg:text-[16px] text-[#6b6c6e] font-light leading-relaxed">
+                      <span className="mr-3 text-sm mt-0.5">•</span>
+                      <span className="">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <style jsx>{`
+              .relative::-webkit-scrollbar {
+                width: 6px;
+              }
+              .relative::-webkit-scrollbar-track {
+                background: transparent;
+              }
+              .relative::-webkit-scrollbar-thumb {
+                background: #0097DC33;
+                border-radius: 10px;
+              }
+              .relative::-webkit-scrollbar-thumb:hover {
+                background: #0097DC55;
+              }
+            `}</style>
+          </div>
+        )}
+
         {/* Gallery Slider */}
-        {!completed && (
-          <div className="relative w-full overflow-hidden pb-20">
+        {GALLERY_IMAGES.length > 0 && (
+          <div className="relative w-full overflow-hidden pb-20 mt-10 lg:mt-20">
             <Swiper
               modules={[Pagination, Autoplay]}
               spaceBetween={40}

@@ -152,6 +152,17 @@ const AMENITIES_DATA = [
     }
 ];
 
+const ftModal = [
+  "High-quality CP plumbing fittings in all toilets",
+  "Aluminium windows and ventilators with necessary fixtures",
+  "Granite kitchen platform with stainless steel sink",
+  "AC point provision in all bedrooms",
+  "Overhead water tank and underground sump tank",
+  "Premium acrylic emulsion paint for interiors and moss-resistant exterior paint",
+  "Pressure-tested plumbing and drainage lines for leak-proof toilets"
+];
+
+
 export default function page() {
     return (
         <>
@@ -168,7 +179,7 @@ export default function page() {
                     video={false}
                 />
                 {/* <AmenitiesSection data={AMENITIES_DATA}  /> */}
-                {/* <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" variant="left" completed={true} /> */}
+                <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" variant="left" completed={true} btnType="know" modalTitle="Bhargavi Gloria Residency" modalPoints={ftModal} />
 
                 <MapSection customMarkerImage="/icons/mapIcons/bhargaviIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.896839540060913, lng: 74.84863444232855 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
