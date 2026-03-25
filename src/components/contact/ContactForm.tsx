@@ -70,18 +70,18 @@ export default function ContactForm() {
     };
 
     return (
-        <section className="w-full  lg:min-h-[60vh] lg2:min-h-[90vh] flex items-center justify-center bg-white  px-6 md:px-12 lg:px-20 xl:px-54 xl:py-24 py-26 md:py-24">
+        <section className="w-full  md:min-h-[60vh] lg2:min-h-[90vh] flex items-center justify-center bg-white  px-6 md:px-12 md:px-20 xl:px-54 xl:py-24 py-26 md:py-24">
             <div className="mx-auto w-full">
-                <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-24 items-start">
+                <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-24 items-start">
 
                     {/* LEFT COLUMN - Info */}
                     <div className="flex flex-col justify-start pt-4">
-                        <h1 className="text-4xl lg:text-6xl  leading-[1.1]  md:text-[56px]">
+                        <h1 className="text-4xl lg:text-6xl  leading-[1.1]  md:text-[50px]">
                             <span className="font-light text-[#505153] block">Reach Out</span>
                             <span className="font-medium text-[#505153] block">to Mukund Realty</span>
                         </h1>
 
-                        <p className="mt-8 max-w-[320px] text-lg font-light leading-relaxed text-[#505153]">
+                        <p className="mt-8 max-w-[320px] text-md md:text-lg font-light leading-relaxed text-[#505153]">
                             Whether it&apos;s a new brief or a quick question, we&apos;d love to hear from you.
                         </p>
 
