@@ -188,6 +188,7 @@ export default function page() {
             "/images/kedarImage/ft5.png",
             "/images/kedarImage/ft6.png",
           ]}
+          variant="left"
         />
 
         <MapSection

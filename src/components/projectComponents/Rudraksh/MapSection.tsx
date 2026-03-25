@@ -50,7 +50,7 @@ export default function MapSection({ data, mainMarkerPosition, customMarkerImage
             </div>
 
             {/* BLUE BOX OVERLAY (Desktop) */}
-            <div className="hidden lg:flex absolute z-10 top-1/2 left-[10%] -translate-y-1/2">
+            <div className="hidden md:flex absolute z-10 top-1/2 md:left-5 lg:left-[10%] -translate-y-1/2">
                 <div className="bg-[#0097DC] text-white p-14 w-[450px] shadow-xl">
                     <h2 className="text-[52px] font-light mb-12 leading-[1.1]">
                         Strategically <br />
@@ -94,7 +94,7 @@ export default function MapSection({ data, mainMarkerPosition, customMarkerImage
             </div>
 
             {/* MOBILE OVERLAY (Simplified bottom bar) */}
-            <div className="lg:hidden absolute bottom-0 left-0 right-0 p-2 bg-[#0097DC] text-white z-20">
+            <div className="md:hidden absolute bottom-0 left-0 right-0 p-2 bg-[#0097DC] text-white z-20">
                 <div className="grid grid-cols-4 gap-2">
                     {data.map((item) => {
                         const isActive = activeSection === item.key;

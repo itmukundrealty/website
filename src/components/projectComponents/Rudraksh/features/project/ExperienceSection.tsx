@@ -112,11 +112,11 @@ export default function ExperienceSection({
 
     return (
         <section className="py-24 bg-white relative overflow-hidden font-sans">
-            <div className=" mx-auto px-6 lg:px-20 xl:px-54 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className=" mx-auto px-6 md:px-20 xl:px-54 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
 
                     {/* --- Left Content (Title & Pagination) --- */}
-                    <div className="lg:col-span-5 space-y-8">
+                    <div className="md:col-span-5 space-y-8">
                         <div>
                             <h2 className="text-4xl md:text-5xl text-[#505153] leading-tight font-light mb-2">
                                 {titlePart1}
@@ -131,7 +131,7 @@ export default function ExperienceSection({
                         </p>
 
                         {/* Custom Pagination Container (Desktop) */}
-                        <div className="hidden lg:flex gap-2 pt-4">
+                        <div className="hidden md:flex gap-2 pt-4">
                             {testimonials.map((_, index) => (
                                 <button
                                     key={index}
@@ -145,7 +145,7 @@ export default function ExperienceSection({
                     </div>
 
                     {/* --- Right Content (Swiper) --- */}
-                    <div className="lg:col-span-7 relative pl-0 lg:pl-10">
+                    <div className="md:col-span-7 relative pl-0 md:pl-10">
                         <Swiper
                             modules={[Autoplay, EffectFade]}
                             spaceBetween={30}
@@ -164,7 +164,7 @@ export default function ExperienceSection({
                                 <SwiperSlide key={item.id}>
                                     <div className="flex flex-col gap-6">
                                         {/* Video/Image Container - NOW IFRAME */}
-                                        <div className="relative h-[30vh] md:h-[40vh] lg:h-[55vh] w-full overflow-hidden bg-gray-100 group">
+                                        <div className="relative h-[30vh] md:h-[55vh] w-full overflow-hidden bg-gray-100 group">
                                             <iframe
                                                 src={item.iframeSrc}
                                                 title={item.name}
@@ -190,7 +190,7 @@ export default function ExperienceSection({
                         </Swiper>
 
                         {/* Custom Pagination Container (Mobile) */}
-                        <div className="flex lg:hidden justify-center gap-2 pt-8">
+                        <div className="flex md:hidden justify-center gap-2 pt-8">
                             {testimonials.map((_, index) => (
                                 <button
                                     key={index}

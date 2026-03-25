@@ -101,7 +101,7 @@ export default function ExperienceStandardSection() {
     const [swiperRef, setSwiperRef] = useState<any>(null);
 
     const paginationDots = (
-        <div className="flex gap-2 flex-wrap justify-center lg:justify-start">
+        <div className="flex gap-2 flex-wrap justify-center md:justify-start">
             {testimonials.map((_, index) => (
                 <button
                     key={index}
@@ -115,7 +115,7 @@ export default function ExperienceStandardSection() {
     );
 
     return (
-        <section className="lg:py-24 bg-white relative overflow-hidden font-sans ">
+        <section className="md:py-24 bg-white relative overflow-hidden font-sans ">
             {/* --- Background SVG Lines --- */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 {/* Top center dots */}
@@ -126,7 +126,7 @@ export default function ExperienceStandardSection() {
                 </div>
 
                 {/* Right side curve lines - Specific SVG provided by user */}
-                <svg className="absolute top-[45%] -right-0 -translate-y-1/2 lg:h-[90%] h-[100%] lg:w-auto w-[80%] text-gray-200/60 pointer-events-none z-0" viewBox="0 0 1140 710" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="absolute top-[45%] -right-0 -translate-y-1/2 md:h-[90%] h-[100%] md:w-auto w-[80%] text-gray-200/60 pointer-events-none z-0" viewBox="0 0 1140 710" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M530.434 1423.73C430.299 1423.73 336.993 1369.86 286.93 1283.15L38.5509 852.959C-11.5114 766.249 -11.5225 658.507 38.5509 571.786L286.919 141.592C336.993 54.8714 430.299 1 530.434 1H1027.17C1127.31 1 1220.62 54.8714 1270.69 141.603L1519.05 571.775C1569.13 658.495 1569.13 766.238 1519.05 852.959L1270.69 1283.14C1220.62 1369.86 1127.31 1423.73 1027.17 1423.73H530.434Z" stroke="currentColor" strokeWidth="1" strokeMiterlimit="10" />
                     <path d="M530.435 1318.09C467.923 1318.09 409.677 1284.46 378.415 1230.33L130.047 800.143C98.7971 746.005 98.786 678.752 130.047 624.603L378.415 194.42C409.677 140.282 467.923 106.645 530.435 106.645H1027.17C1089.68 106.645 1147.94 140.282 1179.19 194.42L1427.56 624.603C1458.82 678.741 1458.82 746.005 1427.56 800.143L1179.19 1230.33C1147.94 1284.46 1089.68 1318.09 1027.17 1318.09H530.435Z" stroke="currentColor" strokeWidth="1" strokeMiterlimit="10" />
                     <path d="M1076 226.979L1347.76 697.674C1353.01 706.769 1353.01 717.974 1347.76 727.069L1076 1197.76C1070.75 1206.86 1061.05 1212.46 1050.55 1212.46H507.035C496.53 1212.46 486.835 1206.86 481.582 1197.76L209.826 727.069C204.574 717.974 204.574 706.769 209.826 697.674L481.582 226.979C486.835 217.884 496.53 212.287 507.035 212.287H1050.55C1061.05 212.287 1070.75 217.884 1076 226.979Z" stroke="currentColor" strokeWidth="1" strokeMiterlimit="10" />
@@ -146,13 +146,13 @@ export default function ExperienceStandardSection() {
             </div>
 
 
-            <div className=" mx-auto px-6 lg:px-20 xl:px-54 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className=" mx-auto px-6 md:px-20 xl:px-54 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
 
                     {/* --- Left Content (Title & Pagination) --- */}
-                    <div className="lg:col-span-5 space-y-8">
+                    <div className="md:col-span-5 space-y-8">
                         <div>
-                            <h2 className="text-3xl md:text-6xl font-light text-[#505153] mb-2 leading-[1.1]">
+                            <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-[#505153] mb-2 leading-[1.1]">
                                 Experiences that <br />
 
                                 <span className="font-medium block text-[#505153]">Set the Standard</span>
@@ -160,18 +160,18 @@ export default function ExperienceStandardSection() {
 
                         </div>
 
-                        <p className="text-lg lg:text-lg font-light text-[#505153]/90  max-w-sm">
+                        <p className="text-lg md:text-lg font-light text-[#505153]/90  max-w-sm">
                             Testimonials from those who appreciate the uncompromising Mukund standard.
                         </p>
 
                         {/* DESKTOP PAGINATION: Hidden on mobile, visible on LG */}
-                        <div className="hidden lg:block pt-4 cursor-pointer">
+                        <div className="hidden md:block pt-4 cursor-pointer">
                             {paginationDots}
                         </div>
                     </div>
 
                     {/* --- Right Content (Swiper) --- */}
-                    <div className="lg:col-span-7 relative pl-0 lg:pl-10">
+                    <div className="md:col-span-7 relative pl-0 md:pl-10">
 
                         <Swiper
                             modules={[Autoplay, EffectFade]}
@@ -191,7 +191,7 @@ export default function ExperienceStandardSection() {
                                 <SwiperSlide key={item.id}>
                                     <div className="flex flex-col gap-6">
                                         {/* Video/Image Container - NOW IFRAME */}
-                                        <div className="relative h-[30vh] md:h-[40vh] lg:h-[55vh] w-full overflow-hidden bg-gray-100 group">
+                                        <div className="relative h-[30vh] md:h-[55vh] w-full overflow-hidden bg-gray-100 group">
                                             <iframe
                                                 src={item.iframeSrc}
                                                 title={item.name}
@@ -217,7 +217,7 @@ export default function ExperienceStandardSection() {
                         </Swiper>
 
                         {/* MOBILE PAGINATION: Visible on mobile, hidden on LG */}
-                        <div className="flex lg:hidden pt-4 justify-center cursor-pointer">
+                        <div className="flex md:hidden pt-4 justify-center cursor-pointer">
                             {paginationDots}
                         </div>
 

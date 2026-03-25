@@ -74,16 +74,16 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
           ${isScrolled ? "bg-white shadow-sm py-4" : "bg-transparent py-6"}
         `}
       >
-        <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center bg-transparent">
+        <div className="max-w-[1920px] mx-auto px-6 md:px-12 md:px-20 flex justify-between items-center bg-transparent">
           {/* Logo Section */}
           <Link href="/" className="z-50 relative">
-            <div className="relative w-32 md:w-36 lg:w-40 h-auto aspect-[3/1]">
+            <div className="relative w-32 md:w-36 md:w-40 h-auto aspect-[3/1]">
               <img src={isScrolled ? "/icons/logo.svg" : "/icons/mukundIcon.svg"} alt="Mukund Realty" className="object-contain w-full h-full" />
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-12 xl:gap-16">
+          <nav className="hidden md:flex items-center gap-12 xl:gap-16">
             <Link
               href="/about"
               className={` hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
@@ -164,7 +164,7 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
 
           {/* Mobile Toggle */}
           {/* on scroll make text black */}
-          <button className={`lg:hidden z-50 p-2 -mr-2 ${isScrolled ? "text-[#505153]" : "text-white"}`} onClick={() => setIsMobileMenuOpen(true)}>
+          <button className={`md:hidden z-50 p-2 -mr-2 ${isScrolled ? "text-[#505153]" : "text-white"}`} onClick={() => setIsMobileMenuOpen(true)}>
             <Menu strokeWidth={1.5} size={32} />
           </button>
         </div>

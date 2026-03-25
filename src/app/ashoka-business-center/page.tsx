@@ -161,7 +161,7 @@ export default function page() {
         <ProjectHeader projectLink="/project-enquire?project=ashoka" projectName="Ashoka" />
         <ProjectHero
           projectLink="/project-enquire?project=ashoka"
-          projectName="Ashoka"
+          projectName="Ashoka Business Center"
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}
           floorData={floorData}

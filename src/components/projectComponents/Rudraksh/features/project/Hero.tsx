@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
 import Link from "next/link";
 import OrientationLock from "@/components/common/OrientationLock";
+import { PROJECTS_LIST } from "@/data/projects";
 
 // Define the expected props (you can replace `any` with your specific types later)
 interface ProjectHeroProps {
@@ -71,7 +72,7 @@ export function ProjectHero({
 
   return (
     // 1. Removed h-[100vh] from the main section
-    <section className="relative w-full h-[60vh] lg:h-[100vh] overflow-hidden bg-black">
+    <section className="relative w-full h-[60vh] md:h-[100vh] overflow-hidden bg-black">
       <OrientationLock />
       {/* 2. BACKGROUND LAYER: Full height */}
       <div className="relative w-full h-full z-0">
@@ -92,15 +93,15 @@ export function ProjectHero({
       </div>
 
       {/* 4. HERO TEXT CONTENT */}
-      <div className="absolute inset-0 z-10 hidden md:flex items-start justify-end px-12 lg:px-24 pointer-events-none">
+      <div className="absolute inset-0 z-10 hidden md:flex items-start justify-end px-12 md:px-24 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-right pointer-events-auto mt-20 lg:mt-28 xl:mt-40"
+          className="text-right pointer-events-auto mt-20 md:mt-28 xl:mt-40"
         >
-          <h1 className="text-5xl text-white tracking-tight font-medium mb-4 lg:text-7xl">Click to Explore</h1>
-          <h2 className="text-5xl text-white tracking-tight font-thin lg:text-7xl">Our Floors</h2>
+          <h1 className="text-5xl text-white tracking-tight font-medium mb-4 md:text-7xl">Click to Explore</h1>
+          <h2 className="text-5xl text-white tracking-tight font-thin md:text-7xl">Our Floors</h2>
         </motion.div>
       </div>
 
@@ -217,7 +218,7 @@ export function ProjectHero({
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute right-0 top-0 z-50 h-full w-full lg:w-[50%] bg-white shadow-2xl"
+              className="absolute right-0 top-0 z-50 h-full w-full md:w-[50%] bg-white shadow-2xl"
             >
               <div className="relative flex h-full flex-col">
                 {/* Header */}
@@ -258,7 +259,7 @@ export function ProjectHero({
 
                 {/* Sidebar Footer (Text + Compass) */}
                 <div className="mt-auto flex items-center justify-between px-8 pb-5 shrink-0">
-                  <h2 className="text-4xl lg:text-2xl font-light text-[#0097DC] tracking-wide">{currentFloor.title}</h2>
+                  <h2 className="text-4xl md:text-2xl font-light text-[#0097DC] tracking-wide">{currentFloor.title}</h2>
                   <a
                     href={currentFloor?.pdfPath}
                     download="FLOOR PLAN"
@@ -293,13 +294,13 @@ export function ProjectHero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 z-[60] flex flex-col lg:flex-row bg-white"
+            className="absolute inset-0 z-[60] flex flex-col md:flex-row bg-white"
           >
             {/* LEFT PANEL: The "Expanded" part (Blue) */}
-            <div className="w-full lg:w-[50%] bg-[#0097DC] text-white px-8 lg:px-12 py-5 flex flex-col justify-between relative">
+            <div className="w-full md:w-[50%] bg-[#0097DC] text-white px-8 md:px-12 py-5 flex flex-col justify-between relative">
               <div className="mb-8 mt-1">
                 <Link href="/" className="flex items-center z-50 relative">
-                  <div className="relative w-48 h-12 lg:w-56 lg:h-14 transition-opacity duration-300">
+                  <div className="relative w-48 h-12 md:w-56 md:h-14 transition-opacity duration-300">
                     <Image src={"/logo/whiteLogo.svg"} alt="Mukund Realty" fill className="object-contain" priority />
                   </div>
                 </Link>
@@ -323,7 +324,7 @@ export function ProjectHero({
                   <div className="space-y-6">
                     <div>
                       <p className="text-lg font-light opacity-90">{currentFloor?.title}</p>
-                      <h1 className="text-3xl md:text-4xl lg:text-6xl font-normal leading-tight tracking-tight">
+                      <h1 className="text-3xl md:text-4xl md:text-6xl font-normal leading-tight tracking-tight">
                         {currentUnit?.details.number}
                       </h1>
                     </div>
@@ -407,28 +408,17 @@ export function ProjectHero({
 }
 
 const PROJECTS = {
-  ongoing: [{ name: "Rudraksh", href: "/rudraksh" }],
-  completed: [
-    { name: "Mathura Residency", href: "/mathura" },
-    { name: "Ajanta Business Center", href: "/ajanta" },
-    { name: "Evanna Homes", href: "/evanna" },
-    { name: "Kudva's Grandeur", href: "/kudva" },
-    { name: "Madhuban Apartments", href: "/madhuban" },
-    { name: "Nandagokul Apartments", href: "/nandagokul" },
-    { name: "Nandadeep Apartments", href: "/nandadeep" },
-    { name: "Bhargavi Gloria Residency", href: "/bhargavi" },
-    { name: "Gokuldham", href: "/gokuldham" },
-    { name: "Mukund Sadan", href: "/mukund-sadhan" },
-    { name: "Kailash", href: "/kailash" },
-  ],
+  ongoing: PROJECTS_LIST.filter((p) => p.type === "ongoing").map((p) => ({ name: p.name, href: p.href })),
+  completed: PROJECTS_LIST.filter((p) => p.type === "completed").map((p) => ({ name: p.name, href: p.href })),
 };
 
 // 1. The Header Component (Exactly the same in both)
 const ProjectHeader = ({ projectLink, projectName }: { projectLink: string; projectName: string }) => (
-  <div className="flex items-center justify-end gap-20 text-sm font-light text-gray-500 shrink-0 px-10 pt-10">
-    <button className="hover:text-black transition-colors">About</button>
-    <div className="group relative">
-      <button className="flex items-center gap-1 text-[#0097DC] font-medium group-hover:text-[#0097DC] transition-colors duration-300">
+  <div className="flex items-center justify-end gap-20 text-sm font-light text-gray-500 shrink-0 px-20 pt-10">
+<Link href='/about' className="hover:text-black text-lg transition-colors">
+      About
+    </Link>     <div className="group relative">
+      <button className="flex items-center text-[16px] gap-1 text-[#0097DC] font-medium group-hover:text-[#0097DC] transition-colors duration-300">
         {projectName}
         <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -470,8 +460,10 @@ const ProjectHeader = ({ projectLink, projectName }: { projectLink: string; proj
         </div>
       </div>
     </div>
-    <button className="hover:text-black transition-colors">Insights</button>
-    <Link href={projectLink} className="hover:text-black transition-colors">
+<Link href='/insight-lists' className="hover:text-black text-lg transition-colors">
+      Insights
+    </Link> 
+       <Link href={projectLink} className="hover:text-black text-lg transition-colors">
       Contact
     </Link>
   </div>

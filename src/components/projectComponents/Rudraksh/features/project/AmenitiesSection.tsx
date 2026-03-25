@@ -25,7 +25,7 @@ interface AmenitiesSectionProps {
   projectLink?: string;
 }
 
-export default function AmenitiesSection({ data, projectLink = "/project-enquire" }: AmenitiesSectionProps) {
+export default function   AmenitiesSection({ data, projectLink = "/project-enquire" }: AmenitiesSectionProps) {
   const pathname = usePathname();
   const currentProject = pathname?.split('/')[1] || '';
   const validProjects = ["rudraksh", "mathura", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
@@ -66,9 +66,9 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
   const currentAmenity = data[activeIndex] || data[0];
 
   return (
-    <section className="relative bg-white font-host overflow-hidden lg:min-h-[100vh] flex flex-col">
+    <section className="relative bg-white font-host overflow-hidden md:min-h-[100vh] flex flex-col">
       {/* --- Desktop Flush Image --- */}
-      <div className="hidden lg:block lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full z-0">
+      <div className="hidden md:block md:absolute md:right-0 md:top-0 md:w-1/2 md:h-full z-0">
         <Swiper
           onSwiper={(swiper) => (desktopSwiperRef.current = swiper)}
           modules={[Navigation, Autoplay, EffectFade]}
@@ -93,14 +93,14 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
       </div>
 
       {/* --- Content --- */}
-      <div className="w-full px-6 lg:px-20 xl:px-54 relative z-10 flex-1 flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-12">
-          <div className="lg:col-span-6 py-12 lg:py-0">
+      <div className="w-full px-6 md:px-20 xl:px-54 relative z-10 flex-1 flex flex-col justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 w-full gap-12">
+          <div className="md:col-span-6 py-12 md:py-0">
             {/* I removed space-y-8 lg:space-y-12 from this parent 
                            and used flex-col with explicit justification to control spacing better 
                         */}
-            <div className="flex flex-col h-full justify-center gap-8 lg:gap-12">
-              <div className="space-y-6 lg:space-y-8">
+            <div className="flex flex-col h-full justify-center gap-8 md:gap-12">
+              <div className="space-y-6 md:space-y-8">
                 <div className="space-y-4">
                   <span className="text-gray-400 text-[10px] tracking-[0.4em] uppercase font-bold block">Amenities</span>
 
@@ -109,8 +109,8 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                                       justify-center keeps it vertically centered in that reserved space.
                                       items-start keeps text aligned left.
                                     */}
-                  <div className="flex flex-col justify-center items-start h-[180px] lg:h-[270px] gap-4">
-                    <h2 className="text-4xl lg:text-6xl  text-[#424244] font-light leading-[1.1] max-w-md whitespace-pre-line">
+                  <div className="flex flex-col justify-center items-start h-[180px] md:h-[270px] gap-4">
+                    <h2 className="text-4xl md:text-6xl  text-[#424244] font-light leading-[1.1] max-w-md whitespace-pre-line">
                       {currentAmenity.label}
                     </h2>
 
@@ -123,7 +123,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
 
                 <Link
                   href={finalLink}
-                  className="group flex items-center justify-center md:justify-start gap-3 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10  duration-300 transition-all uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
+                  className="group flex items-center justify-center md:justify-start gap-3 px-6 py-5 md:px-4 md:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10  duration-300 transition-all uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
                 >
                   <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                   Enquire Now
@@ -131,7 +131,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
               </div>
 
               {/* --- Mobile Image --- */}
-              <div className="lg:hidden w-full h-[50vh] relative rounded-sm overflow-hidden">
+              <div className="md:hidden w-full h-[50vh] relative rounded-sm overflow-hidden">
                 <div className="absolute inset-0 bg-gray-100 animate-pulse" />
                 <Swiper
                   onSwiper={(swiper) => (mobileSwiperRef.current = swiper)}
@@ -153,7 +153,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
               </div>
 
               {/* Controls Container */}
-              <div className="flex flex-col-reverse lg:flex-row items-center lg:items-center gap-6 lg:gap-12 pt-7">
+              <div className="flex flex-col-reverse md:flex-row items-center md:items-center gap-6 md:gap-12 pt-7">
                 <div className="text-gray-400 text-sm font-medium tracking-widest min-w-[70px]">
                   {String(activeIndex + 1).padStart(2, "0")} {"—"} {String(data.length).padStart(2, "0")}
                 </div>
@@ -161,15 +161,15 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                 <div className="flex gap-4">
                   <button
                     onClick={handlePrev}
-                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC]/10 transition-all bg-white"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC]/10 transition-all bg-white"
                   >
-                    <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={1.5} />
+                    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC]/10  transition-all bg-white"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC]/10  transition-all bg-white"
                   >
-                    <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" strokeWidth={1.5} />
+                    <ChevronRight className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
                   </button>
                 </div>
               </div>
