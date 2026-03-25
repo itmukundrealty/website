@@ -80,6 +80,50 @@ const MAP_DATA = [
     },
 ];
 
+const ftModal = [
+  "Automatic lifts with 8 and 13 passenger capacity",
+  "Ground floor car parking area",
+  "Generator backup for lighting",
+  "Reinforced cement concrete framed structure",
+  "External walls built with laterite stone and double plastering",
+  "Internal walls constructed with concrete blocks",
+  "Terrace roofing",
+  "Attractive melamine polished main entrance door",
+  "Wooden door frames with flush shutters for rooms",
+  "Aluminium windows with safety grills",
+  "Granite door frame with FRP shutters for bathrooms",
+  "Designer locks for all interior doors",
+  "GI railings for balconies",
+  "Entrance lobby and corridors with superior quality tiles",
+  "Granite flooring for staircase",
+  "Modular electrical switches and wires of reputed quality",
+  "ELCB and MCB with adequate capacity for each apartment",
+  "MESCOM power supply: 5KW for 3 BHK, 3KW for 2 and 1 BHK",
+  "Provision for AC points in all bedrooms",
+  "Provision for geyser points in all bathrooms",
+  "Provision for TV cable and telephone connections",
+  "2’x2’ vitrified flooring of good quality",
+  "Designer ceramic tiles in bathrooms",
+  "Glazed tile cladding up to 8 ft height in toilet walls",
+  "Premium emulsion paint on putty-finished internal walls and ceilings",
+  "Exterior walls finished with superior quality weather-resistant paint",
+  "Enamel paint for metal works",
+  "PVC pressure-tested plumbing lines with ISI certification",
+  "White sanitaryware",
+  "Underground sump tank and overhead water tank",
+  "Automatic water level controller for overhead tank",
+  "Exhaust fan provision in bathrooms",
+  "Plumbing provision for geysers in bathrooms",
+  "Hot and cold mixer units for all toilets",
+  "Stainless steel single bowl sink with drainboard on granite counter",
+  "Wall cladding up to 2 ft above granite kitchen counter",
+  "Sufficient electrical points for kitchen appliances",
+  "Provision for water purifier",
+  "Exhaust fan provision in kitchen",
+  "Washing machine point in utility area",
+  "All fittings from Jaguar or equivalent brands"
+];
+
 
 
 
@@ -167,7 +211,7 @@ export default function page() {
                     video={false}
                 />
                 <AmenitiesSection data={AMENITIES_DATA} />
-                {/* <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" completed={true} /> */}
+                <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" completed={true} btnType="know" modalTitle="Gokuldham " modalPoints={ftModal} />
                 <MapSection customMarkerImage="/icons/mapIcons/gokuldamIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.879975036772368, lng: 74.83332710185005 }} />
                 <ExperienceSection titlePart1="Experiences that" titlePart2="Set the Standard" description="Stories from clients who chose Mukund Realty for quality, integrity, and reliability." />
                 <CTASection title={<>Find Your      <br />Place Here</>} subtitle={<>Experience comfort in the <br className="hidden md:block" /> heart of the city.</>} mobImg="/images/ctaImages/gokuldhamMob.png" deskImg="/images/ctaImages/gokuldhamDesk.png" />

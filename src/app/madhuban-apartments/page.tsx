@@ -140,6 +140,21 @@ const AMENITIES_DATA = [
     }
 ];
 
+const ftModal = [
+  "Aluminium windows and ventilators with necessary fixtures",
+  "Granite kitchen platform with stainless steel sink",
+  "AC point provision in all bedrooms",
+  "Overhead water tank and underground sump tank",
+  "Premium acrylic emulsion paint for interiors and moss-resistant exterior paint",
+  "Pressure-tested plumbing and drainage lines for leak-proof toilets",
+  "Concrete door frames with high-quality decorative flush doors for all rooms",
+  "Terrace covered with high-quality heat-retardant sheets for thermal insulation",
+  "Designer wall tiles in bathrooms and kitchen working area",
+  "Kitchen with 2-inch wide granite platform on two sides",
+  "Glazed tile cladding on kitchen walls up to 2-foot height",
+  "Stainless steel sink with drainboard in kitchen"
+];
+
 export default function page() {
     return (
         <>
@@ -155,7 +170,7 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Tailored for Contemporary Living" variant="left" completed={true} />
+                <FeaturesSection features={FEATURES} heading="Tailored for Contemporary Living" variant="left" completed={true} btnType="know" modalTitle="Madhuban Apartments" modalPoints={ftModal} />
 
                 <MapSection customMarkerImage="/icons/mapIcons/madhubanIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.912372680974913, lng: 74.8329861441786 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />

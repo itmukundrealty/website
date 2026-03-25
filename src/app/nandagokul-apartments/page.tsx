@@ -154,6 +154,39 @@ const AMENITIES_DATA = [
     }
 ];
 
+
+
+const ftModal = [
+  "Framed structure with laterite stone exterior walls and concrete solid block internal walls",
+  "Multi-level interlocked car parking and yard with column guards",
+  "Attractive melamine polished main entrance door with high-quality wooden frame",
+  "Decorative interior doors with RCC door frames",
+  "RCC door frame with fibrotic shutter for toilets",
+  "Provision for modular kitchen with chimney, refrigerator, washing machine, and aquaguard",
+  "3KW single-phase power supply with AC provision for all bedrooms",
+  "Modular electrical switches from reputed brands",
+  "Two automatic elevators with 13-passenger capacity",
+  "Generator backup for lifts and all apartments with soundproof enclosure",
+  "Branded toilet and kitchen fittings (Jaguar, Hindware, Parryware or equivalent)",
+  "Premium acrylic emulsion paint for interiors and weather-resistant exterior paint",
+  "UPVC or high-grade aluminum sliding windows with mosquito mesh and 5mm clear glass",
+  "Granite window sills",
+  "Superior quality 2x2 vitrified tiles",
+  "Full-height designer wall tiles in toilets",
+  "2-foot wall tiles in kitchen working area",
+  "Rainwater harvesting system",
+  "Well water supply in addition to corporation water",
+  "Provision for exhaust fans and water heaters in all toilets",
+  "Sewage treatment plant",
+  "Split AC provision in all bedrooms",
+  "Overhead tank and underground sump with automatic level control",
+  "Terrace covered with heat-resistant truss sheets",
+  "Electrical wiring using Havells, RR Cable, or Finolex",
+  "Telephone points in living room and master bedroom",
+  "Two-way light control in all bedrooms",
+  "TV provision in living room and master bedroom"
+];
+
 export default function page() {
     return (
         <>
@@ -169,7 +202,7 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
-                <FeaturesSection features={FEATURES} heading="Refined Recreational Living" variant="left" completed={true} />
+                <FeaturesSection features={FEATURES} heading="Refined Recreational Living" variant="left" completed={true} btnType="know" modalTitle="Nandagokul Apartments" modalPoints={ftModal} />
 
                 <MapSection customMarkerImage="/icons/mapIcons/nandagokulIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.893646774824788, lng: 74.84442105767145 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
