@@ -47,21 +47,21 @@ export default function PrinciplesSlider() {
   const isEnd = activeIndex === slides.length - 1;
 
   return (
-    <section className="w-full bg-white relative py-12 lg:py-0">
-      <h1 className="text-4xl lg:text-6xl font-light mb-6 lg:mb-8 text-left md:text-center text-[#505153] px-6 md:px-0">Our <span className="text-[#505153] font-medium">Defining <br className="md:hidden" /> Principles</span></h1>
+    <section className="w-full bg-white relative py-12 md:py-0">
+      <h1 className="text-4xl md:text-6xl font-light mb-6 md:mb-8 text-left md:text-center text-[#505153] px-6 md:px-0">Our <span className="text-[#505153] font-medium">Defining <br className="md:hidden" /> Principles</span></h1>
 
 
-      <div className="max-w-full mx-auto flex flex-col  lg:flex-row lg:space-x-12 space-y-10 lg:space-y-0">
+      <div className="max-w-full mx-auto flex flex-col  md:flex-row md:space-x-12 space-y-10 md:space-y-0">
 
 
         {/* LEFT PANEL */}
-        <div className="w-full lg:w-[40%] pt-10 lg:pt-[120px] px-6 lg:pl-[80px] lg:pr-[40px] text-left">
+        <div className="w-full md:w-[40%] pt-10 md:pt-[120px] px-6 md:pl-[80px] md:pr-[40px] text-left">
 
           <h2 className="text-lg text-[#505153] font-semibold mb-2">
             What we live by.
           </h2>
 
-          <p className="text-[17px] leading-[1.7] font-light text-[#505153] max-w-full lg:max-w-xs mx-auto lg:mx-0">
+          <p className="text-[17px] leading-[1.7] font-light text-[#505153] max-w-full md:max-w-xs mx-auto md:mx-0">
             Every project reflects our core standards,
             focusing on purposeful design that serves
             people, businesses and futures long-term.
@@ -69,7 +69,7 @@ export default function PrinciplesSlider() {
         </div>
 
         {/* RIGHT SLIDER */}
-        <div className="w-full lg:w-[60%] relative pt-0 lg:pt-[80px]">
+        <div className="w-full md:w-[60%] relative pt-0 md:pt-[80px]">
 
           {/* Swiper */}
           <Swiper
@@ -87,7 +87,7 @@ export default function PrinciplesSlider() {
             }}
             onSwiper={(s) => setSwiper(s)}
             onSlideChange={(s) => setActiveIndex(s.activeIndex)}
-            className="pb-[80px] lg:pb-[120px]"
+            className="pb-[80px] md:pb-[120px]"
           >
             {slides.map((item, i) => (
               <SwiperSlide key={i}>
@@ -100,7 +100,7 @@ export default function PrinciplesSlider() {
           {/* <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-white to-transparent z-10" /> */}
 
           {/* Progress Line & Navigation */}
-          <div className="mt-8 lg:mt-12 flex items-center gap-8 relative z-20 px-6 lg:px-[40px]">
+          <div className="mt-8 md:mt-12 flex items-center gap-8 relative z-20 px-6 md:px-[40px]">
             {/* Progress Bar Track */}
             <div className="h-[1px] bg-gray-200 flex-1 relative">
               <div
@@ -144,7 +144,7 @@ export default function PrinciplesSlider() {
           </div>
         </div>
       </div>
-      <div className="absolute -bottom-20 -left-40 pointer-events-none z-0 hidden lg:block">
+      <div className="absolute -bottom-20 -left-40 pointer-events-none z-0 hidden md:block">
         <Image
           src="/icons/mukund.svg"
           alt="Mukund Abstract Shape"
@@ -170,7 +170,7 @@ export default function PrinciplesSlider() {
 
 function SlideCard({ data }: { data: any }) {
   return (
-    <div className="relative h-[50vh] lg:h-[70vh] overflow-hidden">
+    <div className="relative h-[50vh] md:h-[70vh] overflow-hidden">
 
       {/* Image */}
       <Image
@@ -185,18 +185,18 @@ function SlideCard({ data }: { data: any }) {
       <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[30vh] md:h-[55vh] bg-gradient-to-t from-white via-white to-transparent z-10" />
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 px-6 py-5 lg:px-12 lg:py-5 max-w-full lg:max-w-3xl z-20">
+      <div className="absolute bottom-0 left-0 px-6 py-5 md:px-12 md:py-5 max-w-full md:max-w-3xl z-20">
 
-        <h3 className="text-[24px] lg:text-[34px] text-[#505153] font-medium mb-2">
+        <h3 className="text-[24px] md:text-[28px] lg:text-[34px] text-[#505153] font-medium mb-2">
           {data.title}
         </h3>
 
-        <p className="text-[14px] lg:text-[17px] text-[#505153] font-light leading-[1.6] mb-5 hidden lg:block md:max-w-md">
+        <p className="text-[14px] md:text-[15px] lg:text-[17px] text-[#505153] font-light leading-[1.6] mb-5 hidden md:block md:max-w-md">
           {data.desc}
         </p>
 
-        <Link href={data.href} className="flex items-center gap-2 text-[#0097DC] font-medium group text-sm lg:text-base">
-          <ArrowUpRight className="w-5 h-5 lg:w-5 lg:h-5 transition-transform group-hover:rotate-45 transition-all duration-300" />
+        <Link href={data.href} className="flex items-center gap-2 text-[#0097DC] font-medium group text-sm md:text-base">
+          <ArrowUpRight className="w-5 h-5 md:w-5 md:h-5 transition-transform group-hover:rotate-45 transition-all duration-300" />
           <span>
             {data.link}
           </span>

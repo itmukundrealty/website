@@ -50,7 +50,7 @@ export default function HeroGrid() {
                         src="/images/aboutImages/heroImg/12.webp"
                         alt="Hero 1"
                         fill
-                        className="object-cover"
+                        className="object-fill"
                         priority
                     />
                 </motion.div>
@@ -67,7 +67,7 @@ export default function HeroGrid() {
                         src="/images/aboutImages/heroImg/13.webp"
                         alt="Hero 2"
                         fill
-                        className="object-cover"
+                        className="object-fill"
                         priority
                     />
                 </motion.div>

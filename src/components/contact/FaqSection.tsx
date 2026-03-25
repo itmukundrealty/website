@@ -23,17 +23,17 @@ export default function FaqSection({ faqData }: FaqSectionProps) {
     const visibleFaqs = showAll ? faqData : faqData.slice(0, 4);
 
     return (
-        <section className="w-full  bg-white px-6 md:px-12 lg:px-20 xl:px-54 py-16 md:py-24 ">
+        <section className="w-full  bg-white px-6 md:px-12 md:px-20 xl:px-54 py-16 md:py-24 ">
             <div className="mx-auto max-w-full">
-                <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
+                <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
 
                     {/* LEFT SIDE */}
                     <div className="flex flex-col justify-start">
-                        <h2 className="text-4xl lg:text-6xl leading-[1.1] text-[#505153]  ">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-[#505153]  ">
                             <span className="font-normal block">Frequently Asked</span>
                             <span className="font-normal block">Questions</span>
                         </h2>
-                        <p className="mt-6 max-w-sm text-lg leading-relaxed font-light text-[#505153]">
+                        <p className="mt-6 max-w-sm text-md md:text-lg leading-relaxed font-light text-[#505153]">
                             Got questions? We&apos;ve got answers no jargon, just direct clarity
                         </p>
                     </div>

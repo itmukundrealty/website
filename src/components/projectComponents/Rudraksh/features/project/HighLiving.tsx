@@ -169,10 +169,10 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
     return (
         <>
             {/* Desktop View */}
-            <div ref={containerRef} className="hidden lg:flex relative w-full h-screen overflow-hidden flex-col lg:flex-row bg-[#0097DC]">
+            <div ref={containerRef} className="hidden md:flex relative w-full h-screen overflow-hidden flex-col md:flex-row bg-[#0097DC]">
 
                 {/* --- Left Panel: Images --- */}
-                <div className="relative w-full lg:w-1/2 h-1/2 lg:h-full z-10 bg-black">
+                <div className="relative w-full md:w-1/2 h-1/2 md:h-full z-10 bg-black">
                     {data.map((item, index) => (
                         <div
                             key={item.id}
@@ -197,10 +197,10 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
                 </div>
 
                 {/* --- Right Panel: Content --- */}
-                <div className="relative w-full lg:w-[calc(50%+1px)] h-1/2 lg:h-full z-20 flex flex-col justify-start py-12 bg-[#0097DC] lg:-ml-[1px]">
+                <div className="relative w-full md:w-[calc(50%+1px)] h-1/2 md:h-full z-20 flex flex-col justify-start py-12 bg-[#0097DC] md:-ml-[1px]">
 
                     {/* Titles List - Aligned Right with significant padding */}
-                    <div className="flex flex-col items-end gap-12 w-full pr-8 lg:pr-20 xl:pr-54 mb-20">
+                    <div className="flex flex-col items-end gap-12 w-full pr-8 md:pr-20 xl:pr-54 mb-20">
                         {data.map((item, index) => (
                             <h2
                                 key={item.id}
@@ -214,7 +214,7 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
                                     fontWeight: index === 0 ? 500 : 100, // Medium vs Thin
                                 }}
                             >
-                                <span className="text-4xl lg:text-5xl xl:text-[3.5rem] tracking-wide block hover:opacity-100 transition-opacity">
+                                <span className="text-4xl md:text-4xl lg:text-5xl xl:text-[3.5rem] tracking-wide block hover:opacity-100 transition-opacity">
                                     {item.label}
                                 </span>
                             </h2>
@@ -223,12 +223,12 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
 
                     {/* Descriptions - Aligned Left at the bottom */}
                     {/* 'bottom-20' and 'left-20' positions it exactly like the screenshot */}
-                    <div className="absolute bottom-10 lg:bottom-20 left-8 lg:left-20 w-full max-w-[90%] lg:max-w-md pointer-events-none">
+                    <div className="absolute bottom-10 md:bottom-20 left-8 md:left-10 lg:left-20 w-full max-w-[90%] md:max-w-md pointer-events-none">
                         {data.map((item, index) => (
                             <p
                                 key={item.id}
                                 ref={el => { if (el) descriptionsRef.current[index] = el; }}
-                                className="absolute bottom-0 left-0 text-white/90 text-sm lg:text-[15px] font-light leading-relaxed tracking-wide text-left"
+                                className="absolute bottom-0 left-0 text-white/90 text-sm md:text-[15px] font-light leading-relaxed tracking-wide text-left"
                                 style={{
                                     opacity: index === 0 ? 1 : 0,
                                     transform: index === 0 ? "translateY(0)" : "translateY(20px)",
@@ -245,7 +245,7 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
             </div>
 
             {/* Mobile View - UNCHANGED logic from previous step, ensure consistent handlers */}
-            <div className="lg:hidden relative w-full bg-[#0097DC]">
+            <div className="md:hidden relative w-full bg-[#0097DC]">
                 <section className="relative z-20 bg-[#0097DC] px-3 pt-20">
                     <div className="relative w-full h-[65vh] ">
                         <Image

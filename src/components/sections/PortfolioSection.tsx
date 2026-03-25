@@ -35,7 +35,7 @@ export default function PortfolioSection() {
       <div className="relative max-w-7xl mx-auto px-6 md:px-20 w-full h-full flex items-center md:justify-end z-10">
         {/* Right Content */}
         <div className="text-left flex flex-col w-full md:w-auto pt-4">
-          <h2 className="text-3xl lg:text-6xl leading-[1.1] text-[#505153] tracking-tight font-light">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-[#505153] tracking-tight font-light">
             Explore
             <span className="font-medium block text-[#505153]">Our Portfolio</span>
           </h2>

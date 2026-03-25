@@ -38,7 +38,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <LandingHero />
+      <LandingHero /> 
       <PrinciplesSection />
       <div className="mt-[8vh] lg:mt-[20vh]">
         <LandmarkSection />

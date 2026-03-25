@@ -105,7 +105,7 @@ export default function FeaturesSection({
             {btnType === "explore" ? (
               <Link
                 href={finalLink}
-                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[16px]"
+                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px]"
               >
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                 Explore Now

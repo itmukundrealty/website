@@ -32,11 +32,11 @@ export default function InsightHero() {
     return (
         <section className="bg-white pt-24 pb-16 md:pt-32 md:pb-24">
             <div className=" mx-auto px-6 md:px-12 lg:px-20 xl:px-54">
-                <div className="flex flex-col md:flex-row items-center gap-12 md:gap-0">
+                <div className="flex flex-col md:flex-row items-start gap-12 md:gap-0">
 
                     {/* Left Content */}
                     <div className="flex-1 md:pr-12 lg:pr-24 flex flex-col justify-center">
-                        <h1 className="text-[3.5rem] md:text-[5.5rem] leading-[1.05] font-medium text-[#191919] mb-12 tracking-tight">
+                        <h1 className="text-[2.5rem] md:text-6xl lg:text-[5.5rem] leading-[1.05] font-medium text-[#191919] mb-12 tracking-tight">
                             What&apos;s New<br />at Mukund
                         </h1>
 
