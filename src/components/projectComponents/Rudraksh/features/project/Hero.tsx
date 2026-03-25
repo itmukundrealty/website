@@ -311,30 +311,32 @@ export function ProjectHero({
                 <div>
                   <button
                     onClick={() => setShowUnitDetails(false)}
-                    className="flex items-center gap-2 text-sm font-medium hover:opacity-80 cursor-pointer transition-opacity group"
+                    className="flex items-center gap-2 text-sm font-medium hover:opacity-80 cursor-pointer transition-opacity"
                   >
-                    <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                     Go Back
                   </button>
                 </div>
-                <div className="flex-1 flex flex-col justify-center">
-                  <div className="space-y-6">
+                <div>
+                  <div className="space-y-3">
                     <div>
-                      <p className="text-lg font-light opacity-90">{currentFloor?.title}</p>
-                      <h1 className="text-3xl md:text-4xl lg:text-6xl font-normal leading-tight tracking-tight">
-                        {currentUnit?.details.number}
-                      </h1>
+                      <p className="text-lg font-light opacity-90">{currentUnit?.details.floor || currentFloor?.title}</p>
+                      <h1 className="text-6xl max-w-[80%] mt-2">{currentUnit?.details.number}</h1>
                     </div>
 
                     <ul className="space-y-2 text-lg font-light opacity-90">
                       {currentUnit?.details.rooms && <li>{currentUnit?.details.rooms} Bedrooms</li>}
                       {currentUnit.details.washrooms && <li>{currentUnit.details.washrooms} Washrooms</li>}
                       {currentUnit.details.type && <li>{currentUnit.details.type}</li>}
-                      {currentUnit.details.balconySqft && currentUnit.details.balconySqft !== "0"
-                        ? `Balcony Area: ${currentUnit.details.balconySqft} sq.ft.`
-                        : "Balcony"}
+                      {'balconySqft' in currentUnit.details && (
+                        <li>
+                          {currentUnit.details.balconySqft
+                            ? `Balcony (${currentUnit.details.balconySqft} sq.ft.)`
+                            : 'Balcony'}
+                        </li>
+                      )}
                     </ul>
                   </div>
                 </div>
