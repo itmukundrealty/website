@@ -43,14 +43,27 @@ export default function FeaturesSection({
   modalPoints,
 }: FeaturesSectionProps) {
   const pathname = usePathname();
-  const currentProject = pathname?.split('/')[1] || '';
-  const validProjects = [
-    "rudraksh", "mathura-residency", "ajanta-business-center", "evanna-homes", 
-    "kudva-grandeur", "madhuban-apartments", "nandagokul-apartments", 
-    "nandadeep-apartments", "bhargavi-gloria-residency", "gokuldham", 
-    "mukund-sadan", "kailash", "ashoka-business-center", "kedar"
-  ];
-  const finalLink = projectLink === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : projectLink;
+  const currentProject = pathname?.split("/")[1] || "";
+
+  const projectMapping: Record<string, string> = {
+    rudraksh: "rudraksh",
+    "mathura-residency": "mathura",
+    "ajanta-business-center": "ajanta",
+    "ashoka-business-center": "ashoka",
+    "bhargavi-gloria-residency": "bhargavi",
+    "evanna-homes": "evanna",
+    gokuldham: "gokuldham",
+    kailash: "kailash",
+    kedar: "kedar",
+    "kudva-grandeur": "kudva",
+    "madhuban-apartments": "madhuban",
+    "mukund-sadan": "mukund-sadhan",
+    "nandadeep-apartments": "nandadeep",
+    "nandagokul-apartments": "nandagokul",
+  };
+
+  const projectKey = projectMapping[currentProject];
+  const finalLink = projectLink === "/project-enquire" && projectKey ? `/project-enquire?project=${projectKey}` : projectLink;
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);

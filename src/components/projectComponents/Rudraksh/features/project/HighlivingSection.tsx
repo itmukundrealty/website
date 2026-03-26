@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface HighlivingSectionProps {
   heading: string;
@@ -20,11 +21,34 @@ export default function HighlivingSection({
   imageSrc,
   videoSrc,
   projectLink = "/project-enquire",
-  video = true
+  video = true,
 }: HighlivingSectionProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const pathname = usePathname();
+  const currentPath = pathname?.split("/")[1] || "";
+
+  const projectMapping: Record<string, string> = {
+    rudraksh: "rudraksh",
+    "mathura-residency": "mathura",
+    "ajanta-business-center": "ajanta",
+    "ashoka-business-center": "ashoka",
+    "bhargavi-gloria-residency": "bhargavi",
+    "evanna-homes": "evanna",
+    gokuldham: "gokuldham",
+    kailash: "kailash",
+    kedar: "kedar",
+    "kudva-grandeur": "kudva",
+    "madhuban-apartments": "madhuban",
+    "mukund-sadan": "mukund-sadhan",
+    "nandadeep-apartments": "nandadeep",
+    "nandagokul-apartments": "nandagokul",
+  };
+
+  const projectKey = projectMapping[currentPath];
+  const finalLink = projectLink === "/project-enquire" && projectKey ? `/project-enquire?project=${projectKey}` : projectLink;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,7 +79,7 @@ export default function HighlivingSection({
           <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#505153] font-light leading-tight">{heading}</h2>
 
           <Link
-            href={projectLink}
+            href={finalLink}
             className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
           >
             <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />

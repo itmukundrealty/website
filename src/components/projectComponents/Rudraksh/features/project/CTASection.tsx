@@ -15,9 +15,27 @@ interface ctaprops {
 
 export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Contact Us", link = "/project-enquire" }: ctaprops) {
   const pathname = usePathname();
-  const currentProject = pathname?.split('/')[1] || '';
-  const validProjects = ["rudraksh", "mathura", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
-  const finalLink = link === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : link;
+  const currentPath = pathname?.split("/")[1] || "";
+
+  const projectMapping: Record<string, string> = {
+    rudraksh: "rudraksh",
+    "mathura-residency": "mathura",
+    "ajanta-business-center": "ajanta",
+    "ashoka-business-center": "ashoka",
+    "bhargavi-gloria-residency": "bhargavi",
+    "evanna-homes": "evanna",
+    gokuldham: "gokuldham",
+    kailash: "kailash",
+    kedar: "kedar",
+    "kudva-grandeur": "kudva",
+    "madhuban-apartments": "madhuban",
+    "mukund-sadan": "mukund-sadhan",
+    "nandadeep-apartments": "nandadeep",
+    "nandagokul-apartments": "nandagokul",
+  };
+
+  const projectKey = projectMapping[currentPath];
+  const finalLink = link === "/project-enquire" && projectKey ? `/project-enquire?project=${projectKey}` : link;
 
   return (
     <section className="relative md:h-[100vh] h-[70vh] w-full flex items-center  overflow-hidden">

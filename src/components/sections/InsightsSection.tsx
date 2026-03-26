@@ -74,14 +74,14 @@ export default function InsightsSection() {
                                 <img
                                     src={leftBlog.imageUrl || "/images/LandingPageImg/insights/1.png"}
                                     alt={leftBlog.title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-fill"
                                 />
                             ) : (
                                 <Image
                                     src="/images/LandingPageImg/insights/1.png"
                                     alt="Insight"
                                     fill
-                                    className="object-cover"
+                                    className="object-fill"
                                 />
                             )}
                         </div>
@@ -112,14 +112,14 @@ export default function InsightsSection() {
                                 <img
                                     src={rightBlog.imageUrl || "/images/LandingPageImg/insights/2.png"}
                                     alt={rightBlog.title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-"
                                 />
                             ) : (
                                 <Image
                                     src="/images/LandingPageImg/insights/2.png"
                                     alt="Insight"
                                     fill
-                                    className="object-cover"
+                                    className="object-fill"
                                 />
                             )}
                         </div>

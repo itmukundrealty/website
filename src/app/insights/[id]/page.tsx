@@ -152,12 +152,12 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
 
                 {/* Main Feature Image */}
                 <div className="mx-auto px-6 md:px-12 lg:px-20 xl:px-54 mt-10 mb-16 md:mb-24">
-                    <div className="w-full h-[50vh] md:h-[80vh] relative overflow-hidden">
+                    <div className="w-full h-[50vh] md:h-[100vh] relative overflow-hidden">
                         <Image
                             src={blog.imageUrl || "/images/placeholder.jpg"}
                             alt={blog.title}
                             fill
-                            className="object-cover"
+                            className="object-fill"
                             priority
                         />
                     </div>

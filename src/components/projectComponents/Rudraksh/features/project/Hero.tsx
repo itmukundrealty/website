@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import OrientationLock from "@/components/common/OrientationLock";
 import { PROJECTS_LIST } from "@/data/projects";
 
@@ -27,9 +28,32 @@ export function ProjectHero({
   FLOOR_PATHS_VIEWBOX,
   heroImageDesktop,
   heroImageMobile,
-  projectLink = "/project-enquire?project=rudraksh",
+  projectLink = "/project-enquire",
   projectName = "Rudraksh",
 }: ProjectHeroProps) {
+  const pathname = usePathname();
+  const currentPath = pathname?.split("/")[1] || "";
+
+  const projectMapping: Record<string, string> = {
+    rudraksh: "rudraksh",
+    "mathura-residency": "mathura",
+    "ajanta-business-center": "ajanta",
+    "ashoka-business-center": "ashoka",
+    "bhargavi-gloria-residency": "bhargavi",
+    "evanna-homes": "evanna",
+    gokuldham: "gokuldham",
+    kailash: "kailash",
+    kedar: "kedar",
+    "kudva-grandeur": "kudva",
+    "madhuban-apartments": "madhuban",
+    "mukund-sadan": "mukund-sadhan",
+    "nandadeep-apartments": "nandadeep",
+    "nandagokul-apartments": "nandagokul",
+  };
+
+  const projectKey = projectMapping[currentPath];
+  const finalLink = projectLink === "/project-enquire" && projectKey ? `/project-enquire?project=${projectKey}` : projectLink;
+
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [planHoveredIndex, setPlanHoveredIndex] = useState<number | null>(null);
@@ -222,7 +246,7 @@ export function ProjectHero({
             >
               <div className="relative flex h-full flex-col">
                 {/* Header */}
-                <ProjectHeader projectLink={projectLink} projectName={projectName} />
+                <ProjectHeader projectLink={finalLink} projectName={projectName} />
 
                 {/* SVG Map */}
                 <div className="flex-1 flex items-center justify-center min-h-0 relative px-8 pt-8 pb-4 w-full">
@@ -356,7 +380,7 @@ export function ProjectHero({
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-                    <Link href={projectLink} className="w-full sm:w-auto">
+                    <Link href={finalLink} className="w-full sm:w-auto">
                       <button className="bg-white flex items-center gap-2 text-[#0097DC] px-8 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors w-full">
                         <svg width="10" height="10" viewBox="0 0 20 20" fill="none">
                           <path
@@ -385,7 +409,7 @@ export function ProjectHero({
 
             {/* RIGHT PANEL: Replaces the Sidebar (White) */}
             <div className="flex-1 bg-white relative flex flex-col h-full shadow-2xl">
-              <ProjectHeader projectLink={projectLink} projectName={projectName} />
+              <ProjectHeader projectLink={finalLink} projectName={projectName} />
 
               {/* Unit Image (Different from sidebar) */}
               <div className="flex-1 flex items-center justify-center min-h-0 relative w-full px-8 pt-8 pb-4">

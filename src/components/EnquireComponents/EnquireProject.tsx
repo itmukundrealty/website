@@ -10,6 +10,7 @@ import ThankYouModal from "../contact/ThankYouModal";
 const DEFAULT_MAP = "https://www.google.com/maps?q=12.904891658303564,74.83737591311836&output=embed"; // Ashoka Business Center
 
 import { PROJECTS_LIST } from "@/data/projects";
+import { CMS_BASE_URL } from "@/lib/api";
 
 
 function EnquireProjectContent() {
@@ -116,9 +117,10 @@ function EnquireProjectContent() {
     }
     setStatus({ loading: true, error: null, success: false });
 
+    console.log("Submitting to CMS:", `${CMS_BASE_URL}/api/enquiries/project`);
     try {
       // 1. Submit to internal API
-      const response = await fetch("https://cms-mukund.vercel.app/api/enquiries/project", {
+      const response = await fetch(`${CMS_BASE_URL}/api/enquiries/project`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -127,7 +129,9 @@ function EnquireProjectContent() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to submit form");
+        const errorData = await response.json().catch(() => ({}));
+        console.error("CMS Submission Error Response:", errorData);
+        throw new Error(errorData.error || "Failed to submit form");
       }
 
       // 2. Push to MGM CRM (asynchronously)
@@ -144,10 +148,10 @@ function EnquireProjectContent() {
       });
       alert("Form submitted successfully!");
       setShowModal(true);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting form:", error);
-      setStatus({ loading: false, error: "Failed to submit form. Please try again.", success: false });
-      alert("Failed to submit form. Please try again.");
+      setStatus({ loading: false, error: error.message || "Failed to submit form. Please try again.", success: false });
+      alert(error.message || "Failed to submit form. Please try again.");
     }
   };
 

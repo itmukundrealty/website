@@ -53,8 +53,8 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
   ];
   const socials = [
     { name: "Facebook", href: "https://www.facebook.com/mukundmgmrealty" },
-    { name: "Instagram", href: "https://www.instagram.com/mukund_mgm_realty" },
-    { name: "WhatsApp", href: "https://www.whatsapp.com/channel/0029VaEoD6l2phHFAQlRli1m" } // Using the phone number from the Get In Touch section
+    { name: "Instagram", href: "https://www.instagram.com/mukund_realty?igsh=a3p6MnhjN3V5eXlm" },
+    { name: "WhatsApp", href: "https://wa.me/917090933700" } // Using the phone number from the Get In Touch section
   ];
   const projects = [
     { name: "Rudraksh", href: "/rudraksh" },
@@ -96,11 +96,11 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
               </li>
               <li className="flex gap-4 md:gap-5 items-center justify-center md:justify-start">
                 <Image src='/icons/phoneIcon.svg' className="w-5 h-5 " height={20} width={20} alt="phone" />
-                <span className="hover:text-[#009FE3] transition-colors cursor-pointer">+91 70909 33700</span>
+                <a href="tel:+917090933700" className="hover:text-[#009FE3] transition-colors cursor-pointer">+91 70909 33700</a>
               </li>
               <li className="flex gap-4 md:gap-5 items-center justify-center md:justify-start">
                 <Image src='/icons/emailIcon.svg' className="w-5 h-5 " height={24} width={24} alt="mail" />
-                <span className="hover:text-[#009FE3] transition-colors cursor-pointer break-all">sales@mukundmgmrealty.com</span>
+                <a href="mailto:sales@mukundmgmrealty.com" className="hover:text-[#009FE3] transition-colors cursor-pointer break-all">sales@mukundmgmrealty.com</a>
               </li>
             </ul>
           </div>

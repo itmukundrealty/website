@@ -19,9 +19,27 @@ interface ProjectHeaderProps {
 
 const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund Realty" }: ProjectHeaderProps = {}) => {
   const pathname = usePathname();
-  const currentProject = pathname?.split('/')[1] || '';
-  const validProjects = ["mathura", "rudraksh", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
-  const finalProjectLink = projectLink === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : projectLink;
+  const currentPath = pathname?.split("/")[1] || "";
+
+  const projectMapping: Record<string, string> = {
+    rudraksh: "rudraksh",
+    "mathura-residency": "mathura",
+    "ajanta-business-center": "ajanta",
+    "ashoka-business-center": "ashoka",
+    "bhargavi-gloria-residency": "bhargavi",
+    "evanna-homes": "evanna",
+    gokuldham: "gokuldham",
+    kailash: "kailash",
+    kedar: "kedar",
+    "kudva-grandeur": "kudva",
+    "madhuban-apartments": "madhuban",
+    "mukund-sadan": "mukund-sadhan",
+    "nandadeep-apartments": "nandadeep",
+    "nandagokul-apartments": "nandagokul",
+  };
+
+  const projectKey = projectMapping[currentPath];
+  const finalProjectLink = projectLink === "/project-enquire" && projectKey ? `/project-enquire?project=${projectKey}` : projectLink;
 
   const activeProject = PROJECTS_LIST.find(p => p.href === pathname);
   const displayProjectName = activeProject ? activeProject.name : "Projects";

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Host_Grotesk } from "next/font/google";
 import "@/styles/globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body
         className={`${hostGrotesk.variable} ${hostGrotesk.className} antialiased`}
       >
+        <ScrollToTop />
         <SmoothScroll>
           {children}
         </SmoothScroll>

@@ -54,7 +54,7 @@ export default function BlogListingPage() {
                                         <img
                                             src={blog.imageUrl || "/images/placeholder.jpg"}
                                             alt={blog.title}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-fill"
                                         />
                                     </div>
 

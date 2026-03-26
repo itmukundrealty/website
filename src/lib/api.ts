@@ -18,7 +18,7 @@ export interface Blog {
 
 // Ensure this matches your CMS URL.
 // Set NEXT_PUBLIC_CMS_URL in .env.local for local development (e.g. http://localhost:3001)
-const CMS_BASE_URL = process.env.NEXT_PUBLIC_CMS_URL || "https://cms-mukund.vercel.app";
+export const CMS_BASE_URL = process.env.NEXT_PUBLIC_CMS_URL || "https://cms-mukund.vercel.app";
 
 export async function fetchTeamMembers(): Promise<TeamMember[]> {
     try {
