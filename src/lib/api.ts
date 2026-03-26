@@ -11,6 +11,7 @@ export interface Blog {
     summary: string;
     content: string; // HTML content from Unlayer
     imageUrl: string;
+    date?: string; // Optional manually set date
     createdAt: string; // ISO string
     design?: any; // Raw Unlayer design if needed
 }
@@ -81,3 +82,39 @@ export async function fetchBlogById(id: string): Promise<Blog | null> {
         return null;
     }
 }
+
+export async function fetchAnnouncements(): Promise<Blog[]> {
+    try {
+        const res = await fetch(`${CMS_BASE_URL}/api/announcements`, {
+            cache: 'no-store',
+        });
+
+        if (!res.ok) {
+            throw new Error(`Failed to fetch announcements: ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        return data as Blog[];
+    } catch (error) {
+        console.error('Error fetching announcements:', error);
+        return [];
+    }
+}
+
+export async function fetchAnnouncementById(id: string): Promise<Blog | null> {
+    try {
+        const res = await fetch(`${CMS_BASE_URL}/api/announcements/${id}`, {
+            cache: 'no-store',
+        });
+
+        if (!res.ok) {
+            throw new Error(`Failed to fetch announcement with id ${id}: ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        return data as Blog;
+    } catch (error) {
+        console.error(`Error fetching announcement ${id}:`, error);
+        return null;
+    }
+}

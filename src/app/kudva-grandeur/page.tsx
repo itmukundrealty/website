@@ -153,7 +153,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero title={<>Kudva's Grandeur</>} mobileVariant="topRight" subtitle="" variant="rightCentered" desktopImage="/images/kudvaImages/heroDesk.png" mobileImage="/images/kudvaImages/heroMobile.png" />
+                <CompletedHero title={<>Kudva's Grandeur</>} mobileVariant="topRight" subtitle="" variant="rightCentered" desktopImage="/images/kudvaImages/heroDesk.png" mobileImage="/images/kudvaImages/heroMobile.png" pdfPath="/completedFloorplans/Kudva's Grandeur-FloorPlan.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Refined Commercial Living"

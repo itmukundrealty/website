@@ -28,7 +28,7 @@ export default function RelatedArticleSection({ currentBlogId }: RelatedArticleS
     }, [currentBlogId]);
 
     return (
-        <section className="bg-white pt-24 pb-16 md:pt-32 md:pb-24 font-host">
+        <section className="bg-white pt-24 pb-16 md:pt-3 md:pb-12 font-host">
             <div className=" mx-auto px-6 md:px-12 lg:px-20 xl:px-54 ">
                 {/* Header with Borders Matching the Photo exactly */}
                 <div className="border-t border-b border-zinc-200 py-12 mb-20">

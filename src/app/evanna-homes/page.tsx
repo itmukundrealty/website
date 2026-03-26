@@ -170,7 +170,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero title={<>Evanna Homes</>} subtitle="" mobileVariant="topRight" variant="rightCentered" desktopImage="/images/evannaImages/heroDesk.webp" mobileImage="/images/evannaImages/heroMob.png" />
+                <CompletedHero title={<>Evanna Homes</>} subtitle="" mobileVariant="topRight" variant="rightCentered" desktopImage="/images/evannaImages/heroDesk.webp" mobileImage="/images/evannaImages/heroMob.png" pdfPath="/completedFloorplans/Evanna-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Thoughtful Residential Living"

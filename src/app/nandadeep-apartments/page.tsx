@@ -161,7 +161,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero title={<>Nandadeep Apartments</>} subtitle="" variant="center" desktopImage="/images/nandeepImages/heroDesk.webp" mobileImage="/images/nandeepImages/heroMobile.png" />
+                <CompletedHero title={<>Nandadeep Apartments</>} subtitle="" variant="center" desktopImage="/images/nandeepImages/heroDesk.webp" mobileImage="/images/nandeepImages/heroMobile.png" pdfPath="/completedFloorplans/Nandadeep-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Thoughtful Urban Living"
