@@ -201,7 +201,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero title={<>Gokuldham</>} subtitle="" variant="topRight" desktopImage="/images/gokuldhamImages/heroDesk.webp" mobileImage="/images/gokuldhamImages/heroMobile.png" />
+                <CompletedHero title={<>Gokuldham</>} subtitle="" variant="topRight" desktopImage="/images/gokuldhamImages/heroDesk.webp" mobileImage="/images/gokuldhamImages/heroMobile.png" pdfPath="/completedFloorplans/Gokuldham-FloorPlan.pdf" />
                 {/* <ProjectHighLiving data={SECTION_DATA} /> */}
                 <HighlivingSection
                     heading="Living, Well Designed"

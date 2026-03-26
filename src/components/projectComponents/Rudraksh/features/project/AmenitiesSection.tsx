@@ -25,11 +25,29 @@ interface AmenitiesSectionProps {
   projectLink?: string;
 }
 
-export default function   AmenitiesSection({ data, projectLink = "/project-enquire" }: AmenitiesSectionProps) {
+export default function AmenitiesSection({ data, projectLink = "/project-enquire" }: AmenitiesSectionProps) {
   const pathname = usePathname();
-  const currentProject = pathname?.split('/')[1] || '';
-  const validProjects = ["rudraksh", "mathura", "ajanta", "evanna", "kudva", "madhuban", "nandagokul", "nandadeep", "bhargavi", "gokuldham", "mukund-sadhan", "kailash", "ashoka", "kedar"];
-  const finalLink = projectLink === "/project-enquire" && validProjects.includes(currentProject) ? `/project-enquire?project=${currentProject}` : projectLink;
+  const currentPath = pathname?.split("/")[1] || "";
+
+  const projectMapping: Record<string, string> = {
+    rudraksh: "rudraksh",
+    "mathura-residency": "mathura",
+    "ajanta-business-center": "ajanta",
+    "ashoka-business-center": "ashoka",
+    "bhargavi-gloria-residency": "bhargavi",
+    "evanna-homes": "evanna",
+    gokuldham: "gokuldham",
+    kailash: "kailash",
+    kedar: "kedar",
+    "kudva-grandeur": "kudva",
+    "madhuban-apartments": "madhuban",
+    "mukund-sadan": "mukund-sadhan",
+    "nandadeep-apartments": "nandadeep",
+    "nandagokul-apartments": "nandagokul",
+  };
+
+  const projectKey = projectMapping[currentPath];
+  const finalLink = projectLink === "/project-enquire" && projectKey ? `/project-enquire?project=${projectKey}` : projectLink;
 
   const [activeIndex, setActiveIndex] = useState(0);
   const desktopSwiperRef = useRef<any>(null);

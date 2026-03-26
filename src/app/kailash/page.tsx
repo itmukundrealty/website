@@ -153,7 +153,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/heroDesk.webp" mobileImage="/images/kailashImages/heroMobile.png" />
+                <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/heroDesk.webp" mobileImage="/images/kailashImages/heroMobile.png" pdfPath="/completedFloorplans/Kailash-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Crafted for Everyday Excellence"

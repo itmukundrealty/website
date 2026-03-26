@@ -2,13 +2,14 @@
 
 import React from "react";
 import ThankYouModal from "./ThankYouModal";
+import { CMS_BASE_URL } from "@/lib/api";
 
 export default function ContactForm() {
     const [formData, setFormData] = React.useState({
         name: "",
         email: "",
         phone: "",
-        comments: "",
+        message: "",
         consent: false,
     });
     const [status, setStatus] = React.useState<{
@@ -36,7 +37,7 @@ export default function ContactForm() {
         setStatus({ loading: true, error: null, success: false });
 
         try {
-            const response = await fetch("https://cms-mukund.vercel.app/api/enquiries/general", {
+            const response = await fetch(`${CMS_BASE_URL}/api/enquiries/general`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -45,15 +46,17 @@ export default function ContactForm() {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to submit form");
+                const errorData = await response.json().catch(() => ({}));
+                console.error("CMS Submission Error Response:", errorData);
+                throw new Error(errorData.error || "Failed to submit form");
             }
 
             setStatus({ loading: false, error: null, success: true });
             setShowModal(true);
-        } catch (error) {
+        } catch (error: any) {
             console.error("Error submitting form:", error);
-            setStatus({ loading: false, error: "Failed to submit form. Please try again.", success: false });
-            alert("Failed to submit form. Please try again.");
+            setStatus({ loading: false, error: error.message || "Failed to submit form. Please try again.", success: false });
+            alert(error.message || "Failed to submit form. Please try again.");
         }
     };
 
@@ -63,7 +66,7 @@ export default function ContactForm() {
             name: "",
             email: "",
             phone: "",
-            comments: "",
+            message: "",
             consent: false,
         });
         setStatus((prev) => ({ ...prev, success: false }));
@@ -155,19 +158,19 @@ export default function ContactForm() {
                                 </label>
                             </div>
 
-                            {/* Comments */}
+                            {/* Message */}
                             <div className="relative">
                                 <input
                                     type="text"
-                                    name="comments"
-                                    value={formData.comments}
+                                    name="message"
+                                    value={formData.message}
                                     onChange={handleChange}
                                     placeholder=" "
                                     className="peer w-full border-b border-[#d4d4d4] bg-transparent pb-3 text-[15px] text-[#505153] focus:border-[#2b2b2b] focus:outline-none transition-colors"
 
                                 />
                                 <label className="absolute left-0 top-0 text-[15px] text-[#505153] duration-300 transform -translate-y-6 scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pointer-events-none">
-                                    Your Comments
+                                    Your Message
                                 </label>
                             </div>
 

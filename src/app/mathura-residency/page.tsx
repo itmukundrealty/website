@@ -150,7 +150,7 @@ export default function page() {
             <div className="">
 
                 <ProjectHeader />
-                <CompletedHero  desktopImage="/images/mathuraImages/heroDesk.png" mobileImage="/images/mathuraImages/heroMobile.png" title={<>Mathura <br className="hidden lg:block" />Residency</>} subtitle="" variant="topRight" />
+                <CompletedHero  desktopImage="/images/mathuraImages/heroDesk.png" mobileImage="/images/mathuraImages/heroMobile.png" title={<>Mathura <br className="hidden lg:block" />Residency</>} subtitle="" variant="topRight" pdfPath="/completedFloorplans/Mathura-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Inspired Living Spaces"

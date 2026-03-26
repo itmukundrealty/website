@@ -2,31 +2,29 @@
 
 import React, { useEffect, useState, use } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ChevronLeft } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { fetchBlogById, Blog } from "@/lib/api";
-import RelatedArticleSection from "@/components/InsightComponents/RelatedArticleSection";
+import { fetchAnnouncementById, Blog as Announcement } from "@/lib/api";
 
-interface BlogDetailPageProps {
+interface AnnouncementDetailPageProps {
     params: Promise<{ id: string }>;
 }
 
-export default function BlogDetailPage({ params }: BlogDetailPageProps) {
+export default function AnnouncementDetailPage({ params }: AnnouncementDetailPageProps) {
     const { id } = use(params);
     const router = useRouter();
-    const [blog, setBlog] = useState<Blog | null>(null);
+    const [announcement, setAnnouncement] = useState<Announcement | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const getBlog = async () => {
-            const data = await fetchBlogById(id);
-            setBlog(data);
+        const getAnnouncement = async () => {
+            const data = await fetchAnnouncementById(id);
+            setAnnouncement(data);
             setLoading(false);
         };
-        getBlog();
+        getAnnouncement();
     }, [id]);
 
     if (loading) {
@@ -41,20 +39,20 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
         );
     }
 
-    if (!blog) {
+    if (!announcement) {
         return (
             <div className="bg-white min-h-screen">
                 <Header />
                 <div className="flex flex-col justify-center items-center h-[70vh]">
-                    <h1 className="text-3xl text-[#505153] mb-4">Blog not found</h1>
-                    <Link href="/insights" className="text-[#0097DC] hover:underline">Back to Blogs</Link>
+                    <h1 className="text-3xl text-[#505153] mb-4">Announcement not found</h1>
+                    <button onClick={() => router.push("/company-announcements")} className="text-[#0097DC] hover:underline">Back to Announcements</button>
                 </div>
                 <Footer />
             </div>
         );
     }
 
-    const displayDate = blog.date || blog.createdAt;
+    const displayDate = announcement.date || announcement.createdAt;
     const createdDate = new Date(displayDate);
     const formattedDate = createdDate.toLocaleDateString('en-GB', {
         day: 'numeric',
@@ -63,20 +61,14 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     });
 
     // Estimate read time (~200 words/min)
-    const wordCount = blog.content?.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length || 0;
+    const wordCount = announcement.content?.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length || 0;
     const readTime = Math.max(1, Math.ceil(wordCount / 200));
 
-    // Unlayer exports full email HTML with hardcoded max-width/padding on wrapper divs.
-    // Strip those inline styles so the content fills the page's px-20 layout naturally.
     const sanitizeUnlayerHtml = (html: string): string => {
         return html
-            // Remove max-width from inline styles on any element
             .replace(/(<[^>]+style\s*=\s*["'][^"']*)max-width\s*:\s*[^;;"']+;?\s*/gi, '$1')
-            // Remove fixed width (e.g. width:600px) from inline styles, keep 100%
             .replace(/(<[^>]+style\s*=\s*["'][^"']*)width\s*:\s*\d+px\s*;?\s*/gi, '$1')
-            // Remove padding from the outermost wrapper div only
             .replace(/(<div[^>]+id=["']?u_body["']?[^>]+style\s*=\s*["'][^"']*)padding\s*:\s*[^;;"']+;?\s*/gi, '$1')
-            // Remove background-color override on body/wrapper that conflicts
             .replace(/(<div[^>]+id=["']?u_body["'][^>]+style\s*=\s*["'][^"']*)background-color\s*:\s*[^;;"']+;?\s*/gi, '$1');
     };
 
@@ -85,32 +77,24 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
             <Header />
 
             <main className="pt-24 md:pt-32 pb-24">
-                {/* ── HEADER SECTION ── */}
                 <div className="mx-auto px-6 md:px-12 lg:px-20 xl:px-54 mb-12">
                     <div className="flex flex-col md:flex-row">
-
-                        {/* LEFT: Title + Summary */}
                         <div className="flex-1 md:py-10 pr-16">
                             <h1
                                 style={{ fontSize: "clamp(2rem, 4vw, 3.75rem)", lineHeight: 1.1, letterSpacing: "-0.02em", color: "#2d2d2d" }}
                                 className="mb-6 font-medium"
                             >
-                                {blog.title}
+                                {announcement.title}
                             </h1>
                             <p className="text-lg text-[#999] leading-relaxed font-normal">
-                                {blog.summary}
+                                {announcement.summary}
                             </p>
                         </div>
 
-                        {/* DIVIDER — thin vertical line */}
                         <div className="hidden md:block w-px bg-gray-200 self-stretch mx-0" />
 
-                        {/* RIGHT: Date · Read Time · Go Back */}
                         <div className="md:min-w-1/4 flex flex-col justify-between py-10 md:pl-10 pr-4">
-
-                            {/* Top group: Date + Read Time */}
                             <div className="flex flex-col gap-6 md:gap-6">
-                                {/* Date */}
                                 <div className="flex flex-col gap-4 md:gap-0">
                                     <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#aaa] mb-[5px]">
                                         DATE
@@ -120,7 +104,6 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                                     </p>
                                 </div>
 
-                                {/* Read Time */}
                                 <div className="flex flex-col gap-4 md:gap-0">
                                     <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#aaa] mb-[5px]">
                                         READ TIME
@@ -131,7 +114,6 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                                 </div>
                             </div>
 
-                            {/* Bottom: Go Back */}
                             <div className="mt-6 md:mt-0">
                                 <button
                                     type="button"
@@ -150,84 +132,78 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                     </div>
                 </div>
 
-                {/* Main Feature Image */}
                 <div className="mx-auto px-6 md:px-12 lg:px-20 xl:px-54 mt-10 mb-16 md:mb-24">
-                    <div className="w-full h-[50vh] md:h-[100vh] relative overflow-hidden">
+                    <div className="w-full h-[50vh] md:h-[80vh] relative overflow-hidden">
                         <Image
-                            src={blog.imageUrl || "/images/placeholder.jpg"}
-                            alt={blog.title}
+                            src={announcement.imageUrl || "/images/placeholder.jpg"}
+                            alt={announcement.title}
                             fill
-                            className="object-fill"
+                            className="object-cover"
                             priority
                         />
                     </div>
                 </div>
 
-                {/* Content Section */}
                 <div className="mx-auto px-20">
                     <div
-                        className="blog-content prose prose-lg md:prose-xl max-w-none text-[#505153] font-light leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: sanitizeUnlayerHtml(blog.content) }}
+                        className="announcement-content prose prose-lg md:prose-xl max-w-none text-[#505153] font-light leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: sanitizeUnlayerHtml(announcement.content) }}
                     />
                 </div>
             </main>
-            <RelatedArticleSection currentBlogId={id} />
 
-            <Footer blogTitle={blog.title} />
+            <Footer />
 
             <style jsx global>{`
-                /* ── Reset Unlayer email wrapper styles ── */
-                .blog-content body,
-                .blog-content center,
-                .blog-content > div,
-                .blog-content > div > div {
+                .announcement-content body,
+                .announcement-content center,
+                .announcement-content > div,
+                .announcement-content > div > div {
                     max-width: 100% !important;
                     width: 100% !important;
                     padding: 0 !important;
                     margin: 0 !important;
                 }
-                .blog-content table {
+                .announcement-content table {
                     width: 100% !important;
                     max-width: 100% !important;
                 }
-                .blog-content td {
+                .announcement-content td {
                     padding-left: 0 !important;
                     padding-right: 0 !important;
                 }
-
-                /* ── Typography ── */
-                .blog-content p {
+                .announcement-content p {
                     margin-bottom: 0.75rem;
                     line-height: 1.6;
                 }
-                .blog-content h1, .blog-content h2, .blog-content h3 {
+                .announcement-content h1, .announcement-content h2, .announcement-content h3 {
                     color: #505153;
                     margin-top: 1.5rem;
                     margin-bottom: 0.75rem;
                     font-weight: 500;
                     line-height: 1.2;
                 }
-                .blog-content img {
+                .announcement-content img {
                     border-radius: 0.5rem;
                     margin: 1.5rem auto;
                     max-width: 100%;
                 }
-                .blog-content a {
+                .announcement-content a {
                     color: #0097DC;
                     text-decoration: underline;
                     text-underline-offset: 4px;
                 }
-                .blog-content blockquote {
+                .announcement-content blockquote {
                     border-left: 4px solid #0097DC;
                     padding-left: 1.5rem;
                     margin: 1rem 0;
                     font-style: italic;
                 }
-                .blog-content ul, .blog-content ol {
+                .announcement-content ul, .announcement-content ol {
                     margin: 1rem 0;
                     padding-left: 1.5rem;
                 }
-                .blog-content li {
+                .announcement-content li {
                     margin-bottom: 0.4rem;
                 }
             `}</style>
