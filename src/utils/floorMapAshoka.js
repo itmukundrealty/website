@@ -463,7 +463,7 @@ export const floorData = [
         id: "308",
         unitImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/floor3/7.png",
         path: "M424.158 293.016V184.531H488.531V293.016H424.158Z",
-        details: { number: "Shop Space No. 303 C1", sqft: "664"},
+        details: { number: "Shop Space No. 303 C1", sqft: "676"},
       },
       {
         id: "309",
@@ -625,7 +625,7 @@ export const floorData = [
         id: "414",
         unitImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/floor4/13.png",
         path: "M127.5 332.75H21V448.375H127.5V332.75Z",
-        details: { number: "414", type: "TBD", sqft: "TBD", balconySqft: "TBD", rooms: 0, washrooms: 0, floor: "Fourth Floor" },
+        details: { number: "Shop Space No. 401 A", sqft: "672" },
       },
       {
         id: "415",

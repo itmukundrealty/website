@@ -333,9 +333,13 @@ export function ProjectHero({
                       {currentUnit?.details.rooms && <li>{currentUnit?.details.rooms} Bedrooms</li>}
                       {currentUnit.details.washrooms && <li>{currentUnit.details.washrooms} Washrooms</li>}
                       {currentUnit.details.type && <li>{currentUnit.details.type}</li>}
-                      {currentUnit.details.balconySqft && currentUnit.details.balconySqft !== "0"
-                        ? `Balcony Area: ${currentUnit.details.balconySqft} sq.ft.`
-                        : "Balcony"}
+                      {currentUnit.details.balcony === true ? (
+                        <li>Balcony</li>
+                      ) : (
+                        currentUnit.details.balconySqft && currentUnit.details.balconySqft !== "0" && (
+                          <li>Balcony Area: {currentUnit.details.balconySqft} sq.ft.</li>
+                        )
+                      )}
                     </ul>
                   </div>
                 </div>

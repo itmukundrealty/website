@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FAQItem {
     question: string;
@@ -41,44 +42,66 @@ export default function FaqSection({ faqData }: FaqSectionProps) {
                     {/* RIGHT SIDE - Accordion */}
                     <div className="w-full">
                         <div className="divide-y divide-[#d4d4d4]">
-                            {visibleFaqs.map((faq, index) => (
-                                <div key={index} className="py-5 first:pt-0">
-                                    <button
-                                        onClick={() => toggleAccordion(index)}
-                                        className="flex w-full items-center justify-between text-left group"
+                            <AnimatePresence initial={false}>
+                                {visibleFaqs.map((faq, index) => (
+                                    <motion.div
+                                        key={faq.question}
+                                        initial={showAll && index >= 4 ? { opacity: 0, height: 0 } : false}
+                                        animate={{ opacity: 1, height: "auto" }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                                        className="py-5 first:pt-0 overflow-hidden"
                                     >
-                                        <span className="text-lg font-medium text-[#505153] group-hover:text-[#2b2b2b]">
-                                            {faq.question}
-                                        </span>
-                                        <span className="ml-4 text-[#7a7a7a]">
-                                            {openIndex === index ? (
-                                                <ChevronUp size={20} color="#1e88c8" />
-                                            ) : (
-                                                <ChevronDown size={20} />
+                                        <button
+                                            onClick={() => toggleAccordion(index)}
+                                            className="flex w-full items-center justify-between text-left group"
+                                        >
+                                            <span className="text-lg font-medium text-[#505153] group-hover:text-[#2b2b2b] transition-colors duration-300">
+                                                {faq.question}
+                                            </span>
+                                            <span className="ml-4 text-[#7a7a7a]">
+                                                <motion.div
+                                                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                >
+                                                    <ChevronDown size={20} className={openIndex === index ? "text-[#0097DC]" : ""} />
+                                                </motion.div>
+                                            </span>
+                                        </button>
+                                        <AnimatePresence>
+                                            {openIndex === index && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <p className="pt-3 text-lg leading-relaxed font-light text-[#505153]">
+                                                        {faq.answer}
+                                                    </p>
+                                                </motion.div>
                                             )}
-                                        </span>
-                                    </button>
-                                    <div
-                                        className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
-                                            }`}
-                                    >
-                                        <p className="pt-3 text-lg leading-relaxed font-light text-[#505153]">
-                                            {faq.answer}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
+                                        </AnimatePresence>
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
                         </div>
 
                         {faqData.length > 4 && (
-                            <div className="mt-8">
-                                <button
+                            <motion.div 
+                                layout
+                                className="mt-8 flex justify-center"
+                            >
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.98 }}
                                     onClick={() => setShowAll(!showAll)}
-                                    className="border-b border-[#2b2b2b] pb-[1px] text-[14px] font-medium text-[#2b2b2b] hover:text-[#0097DC] hover:border-[#0097DC] transition-colors duration-300 ease-in-out"
+                                    className="border-b border-[#2b2b2b] pb-[1px] text-[14px] font-medium text-[#2b2b2b] hover:text-[#0097DC] hover:border-[#0097DC] transition-colors duration-300 ease-in-out cursor-pointer"
                                 >
                                     {showAll ? "View Less" : "View More"}
-                                </button>
-                            </div>
+                                </motion.button>
+                            </motion.div>
                         )}
                     </div>
 
