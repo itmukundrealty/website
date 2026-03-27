@@ -114,6 +114,7 @@ export default function PrinciplesSlider() {
             {/* Navigation Buttons */}
             <div className="flex gap-4">
               <button
+                aria-label="Previous Slide"
                 onClick={() => swiper?.slidePrev()}
                 disabled={isStart}
                 className={`w-12 h-12 rounded-full border flex items-center justify-center transition
@@ -127,6 +128,7 @@ export default function PrinciplesSlider() {
               </button>
 
               <button
+                aria-label="Next Slide"
                 onClick={() => swiper?.slideNext()}
                 disabled={isEnd}
                 className={`w-12 h-12 rounded-full border flex items-center justify-center transition

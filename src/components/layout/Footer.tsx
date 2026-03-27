@@ -86,9 +86,9 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
           {/* Get In Touch */}
           <div className="col-span-2 md:col-span-4 order-3 md:order-1 space-y-6 md:space-y-8 border-t md:border-none border-slate-200 pt-10 md:pt-0">
-            <h4 className="text-[12px] md:text-[11px] text-slate-500 uppercase  font-normal text-center md:text-left">
+            <h2 className="text-[12px] md:text-[11px] text-slate-500 uppercase  font-normal text-center md:text-left">
               GET IN TOUCH
-            </h4>
+            </h2>
             <ul className="space-y-3 text-[16ptracking-widestx] leading-relaxed font-light text-black">
               <li className="flex gap-4 md:gap-5 items-start justify-center md:justify-start">
                 <Image src='/icons/locationIcon.svg' className="w-5 h-5 " height={20} width={20} alt="location" />
@@ -107,7 +107,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
           {/* Quick Links */}
           <div className="col-span-1 md:col-span-3 order-1 md:order-2 space-y-6 md:space-y-8 text-center md:text-left">
-            <h4 className="text-[12px] md:text-[11px] text-slate-500 uppercase tracking-widest font-normal">QUICK LINKS</h4>
+            <h2 className="text-[12px] md:text-[11px] text-slate-500 uppercase tracking-widest font-normal">QUICK LINKS</h2>
             <ul className="grid grid-cols-1 gap-2 text-[16px] text-[#000000] font-light">
               {quickLinks.map((item) => (
                 <li key={item.name}>
@@ -119,7 +119,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
           {/* Socials */}
           <div className="col-span-1 md:col-span-2 order-2 md:order-3 space-y-6 md:space-y-8 text-center md:text-left">
-            <h4 className="text-[12px] md:text-[11px] text-slate-500 uppercase tracking-widest font-normal">SOCIALS</h4>
+            <h2 className="text-[12px] md:text-[11px] text-slate-500 uppercase tracking-widest font-normal">SOCIALS</h2>
             <ul className="space-y-2 text-[16px] text-[black] font-light">
               {socials.map((item) => (
                 <li key={item.name}>
@@ -156,6 +156,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
           {/* Scroll Button */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-white px-3">
             <button
+              aria-label="Scroll to top"
               onClick={scrollToTop}
               className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[#009FE3] bg-white flex items-center justify-center text-[#009FE3] hover:bg-[#009FE3] hover:text-white transition-all duration-300 group"
             >

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
+import Image from "next/image";
 
 // --- Types ---
 interface CarouselItem {
@@ -138,7 +139,9 @@ function CarouselCard({
         // In the photo, the cards are fixed to the ring surface.
       }}
     >
-      <img
+      <Image
+        width={500}
+        height={500}
         src={item.image}
         alt="Workspace design"
         className="w-full h-full object-cover pointer-events-none"

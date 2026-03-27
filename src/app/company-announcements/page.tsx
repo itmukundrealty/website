@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { useRouter } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { fetchAnnouncements, Blog as Announcement } from "@/lib/api";
+import Image from "next/image";
 
 const CompanyAnnouncementsPage = () => {
     const router = useRouter();
@@ -66,7 +67,9 @@ const CompanyAnnouncementsPage = () => {
                                 <div key={item.id} className={`flex flex-col ${colStyles}`}>
                                     {/* Image Container */}
                                     <div className="w-full h-[320px] mb-5 bg-gray-100 overflow-hidden">
-                                        <img
+                                        <Image
+                                            width={500}
+                                            height={500}
                                             src={item.imageUrl || "/images/placeholder.jpg"}
                                             alt={item.title}
                                             className="w-full h-full object-cover"

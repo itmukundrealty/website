@@ -153,12 +153,14 @@ export default function     CraftedForMomentsSection() {
                     {/* Buttons */}
                     <div className="flex gap-3 order-1 md:order-none md:pr-12">
                         <button
+                            aria-label='previous slide'
                             onClick={prevSlide}
                             className="w-12 h-12 rounded-full border border-[#0C9CDE] flex items-center justify-center text-[#0C9CDE] hover:border-[#0C9CDE] hover:text-[#0C9CDE] hover:bg-[#0C9CDE]/10 transition-colors bg-white"
                         >
                             <ChevronLeft className="w-5 h-5" />
                         </button>
                         <button
+                            aria-label='next slide'
                             onClick={nextSlide}
                             className="w-12 h-12 rounded-full border border-[#0C9CDE] flex items-center justify-center text-[#0C9CDE] hover:border-[#0C9CDE] hover:text-[#0C9CDE] hover:bg-[#0C9CDE]/10 transition-colors bg-white"
                         >

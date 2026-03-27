@@ -272,7 +272,9 @@ export function ProjectHero({
                       </g>
                     </svg>
                     {currentFloor.planImage && (
-                      <img
+                      <Image
+                        width={500}
+                        height={500}
                         src={currentFloor.planImage}
                         alt={`${currentFloor.title} Plan`}
                         className="absolute inset-0 h-full w-full object-contain select-none mix-blend-multiply pointer-events-none z-0"
@@ -414,7 +416,9 @@ export function ProjectHero({
               {/* Unit Image (Different from sidebar) */}
               <div className="flex-1 flex items-center justify-center min-h-0 relative w-full px-8 pt-8 pb-4">
                 <div className="relative w-full h-full max-w-4xl max-h-[60vh]">
-                  <img
+                  <Image
+                    width={500}
+                    height={500}
                     src={currentUnit?.unitImage}
                     alt={`Unit ${currentUnit?.details.number}`}
                     className="w-full h-full object-contain mix-blend-multiply"

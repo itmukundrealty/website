@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 // --- Types ---
 interface CarouselItem {
@@ -209,7 +210,9 @@ function CarouselCard({
         >
             <picture className="w-full h-full block">
                 {item.mobileImage && <source media="(max-width: 767px)" srcSet={item.mobileImage} />}
-                <img
+                <Image
+                    width={500}
+                    height={500}
                     src={item.image}
                     alt="Workspace design"
                     className="w-full h-full object-cover pointer-events-none object-top"
