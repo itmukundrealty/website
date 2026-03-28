@@ -192,6 +192,7 @@ export default function CareerOpportunities({ jobs }: CareerOpportunitiesProps) 
                     {/* Buttons */}
                     <div className="flex gap-3">
                         <button
+                            aria-label="Previous Slide"
                             onClick={() => swiperInstance?.slidePrev()}
                             disabled={isBeginning}
                             className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors bg-white z-10 ${isBeginning
@@ -202,6 +203,7 @@ export default function CareerOpportunities({ jobs }: CareerOpportunitiesProps) 
                             <ChevronLeft className="w-5 h-5" />
                         </button>
                         <button
+                            aria-label="Next Slide"
                             onClick={() => swiperInstance?.slideNext()}
                             disabled={isEnd}
                             className={`w-12 h-12 rounded-full border flex items-center justify-center transition-colors bg-white z-10 ${isEnd

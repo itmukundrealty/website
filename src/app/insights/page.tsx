@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { fetchBlogs, Blog } from "@/lib/api";
+import Image from "next/image";
 
 export default function BlogListingPage() {
     const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -51,7 +52,9 @@ export default function BlogListingPage() {
                                 <div key={blog.id} className={`flex flex-col ${colStyles}`}>
                                     {/* Image Container */}
                                     <div className="w-full h-[320px] mb-5 bg-gray-100 overflow-hidden">
-                                        <img
+                                        <Image
+                                            width={500}
+                                            height={500}
                                             src={blog.imageUrl || "/images/placeholder.jpg"}
                                             alt={blog.title}
                                             className="w-full h-full object-fill"

@@ -71,7 +71,9 @@ export default function InsightsSection() {
                         </div>
                         <div className="relative h-64 md:h-80 w-full overflow-hidden mt-auto">
                             {leftBlog ? (
-                                <img
+                                <Image
+                                    width={500}
+                                    height={500}
                                     src={leftBlog.imageUrl || "/images/LandingPageImg/insights/1.png"}
                                     alt={leftBlog.title}
                                     className="w-full h-full object-fill"
@@ -109,7 +111,9 @@ export default function InsightsSection() {
                         </div>
                         <div className="relative h-64 md:h-80 w-full overflow-hidden mt-auto">
                             {rightBlog ? (
-                                <img
+                                <Image
+                                    width={500}
+                                    height={500}
                                     src={rightBlog.imageUrl || "/images/LandingPageImg/insights/2.png"}
                                     alt={rightBlog.title}
                                     className="w-full h-full object-"

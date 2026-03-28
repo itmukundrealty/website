@@ -69,7 +69,9 @@ export default function InsightHero() {
                     <div className="flex-1 w-full max-w-[500px] md:max-w-none mx-auto md:mx-0">
                         <div className="relative w-full aspect-[4/4.5] md:aspect-[4/4] max-w-[580px] ml-auto bg-gray-100">
                             {latestBlog?.imageUrl ? (
-                                <img
+                                <Image
+                                    width={500}
+                                    height={500}
                                     src={latestBlog.imageUrl}
                                     alt={latestBlog.title}
                                     className="w-full h-full object-cover absolute inset-0"
