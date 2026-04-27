@@ -84,7 +84,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
   const currentAmenity = data[activeIndex] || data[0];
 
   return (
-    <section className="relative bg-white font-host overflow-hidden md:min-h-[100vh] flex flex-col">
+    <section id="amenities" className="relative bg-white font-host overflow-hidden md:min-h-[100vh] flex flex-col">
       {/* --- Desktop Flush Image --- */}
       <div className="hidden md:block md:absolute md:right-0 md:top-0 md:w-1/2 md:h-full z-0">
         <Swiper
@@ -141,7 +141,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
 
                 <Link
                   href={finalLink}
-                  className="group flex items-center justify-center md:justify-start gap-3 px-6 py-5 md:px-4 md:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10  duration-300 transition-all uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
+                  className="group flex items-center justify-center md:justify-start gap-3 px-6 py-5 md:px-4 md:py-5 bg-[#0097DC] hover:bg-[#0085C0] text-white  duration-300 transition-all uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
                 >
                   <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                   Enquire Now

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 import StyledMap from "@/components/common/Shared/StyledMap";
 
 const PROJECTS_DATA = [
@@ -163,8 +164,28 @@ const PROJECTS_DATA = [
     },
 ];
 
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+
+interface ProjectsMapSectionProps {
+    // filterType removed as we will read it internally
+}
+
 export default function ProjectsMapSection() {
-    const [activeProject, setActiveProject] = useState(PROJECTS_DATA[0]);
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const pathname = usePathname();
+    const typeParam = searchParams.get("type");
+    const filterType = (typeParam === "completed" || typeParam === "ongoing") ? typeParam : "ongoing";
+
+    const displayProjects = PROJECTS_DATA.filter((p) => p.type === filterType);
+
+    const handleToggle = (type: "ongoing" | "completed") => {
+        const params = new URLSearchParams(searchParams.toString());
+        params.set("type", type);
+        router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    };
+
+    const [activeProject, setActiveProject] = useState(displayProjects[0] || PROJECTS_DATA[0]);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -174,7 +195,13 @@ export default function ProjectsMapSection() {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    const mapLocations = PROJECTS_DATA.map(p => ({
+    useEffect(() => {
+        if (displayProjects.length > 0) {
+            setActiveProject(displayProjects[0]);
+        }
+    }, [filterType]);
+
+    const mapLocations = displayProjects.map(p => ({
         ...p.mapLocation,
         mapLink: p.slug,
         name: p.name,
@@ -182,14 +209,47 @@ export default function ProjectsMapSection() {
     }));
 
     return (
-        /* 1. Removed h-screen and overflow-hidden to let the section size itself to the content */
         <section className="relative w-full bg-[#e5e5e5]">
+            {/* Project Type Toggle - Sticky within this section */}
+            <div className="absolute inset-y-0 right-0 z-[40] pointer-events-none w-full">
+                <div className="sticky top-28 px-6 md:px-12 flex justify-end pointer-events-auto">
+                    <div className="bg-white/60 backdrop-blur-2xl p-1.5 rounded-2xl border border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex items-center gap-1">
+                        {(["ongoing", "completed"] as const).map((type) => (
+                            <button
+                                key={type}
+                                onClick={() => handleToggle(type)}
+                                className={`relative px-8 py-3 rounded-xl text-[12px] md:text-[13px] font-bold uppercase tracking-[0.15em] transition-all duration-500 group ${filterType === type
+                                    ? "text-white"
+                                    : "text-[#505153]/50 hover:text-[#505153]"
+                                    }`}
+                            >
+                                {filterType === type && (
+                                    <motion.div
+                                        layoutId="active-pill-modern"
+                                        className="absolute inset-0 bg-gradient-to-r from-[#0097DC] to-[#007BB5] rounded-xl shadow-[0_8px_20px_rgba(0,151,220,0.25)]"
+                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                    />
+                                )}
+                                <span className="relative z-10 flex items-center gap-2">
+                                    {type === "ongoing" && (
+                                        <span className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${filterType === type ? "bg-white" : "bg-[#0097DC] animate-pulse"}`} />
+                                    )}
+                                    {type === "completed" && (
+                                        <CheckCircle2 className={`w-3.5 h-3.5 transition-colors duration-500 ${filterType === type ? "text-white" : "text-[#505153]/30"}`} />
+                                    )}
+                                    {type}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
 
             {/* 2. Made the Map 'sticky' to the top of the screen so it freezes while scrolling */}
             <div className="sticky top-0 z-0 h-screen w-full">
                 <StyledMap
-                    activePoints={[activeProject.mapLocation.id]}
-                    center={{ lat: activeProject.mapLocation.lat, lng: activeProject.mapLocation.lng }}
+                    activePoints={[activeProject?.mapLocation?.id]}
+                    center={activeProject ? { lat: activeProject.mapLocation.lat, lng: activeProject.mapLocation.lng } : { lat: 12.9144, lng: 74.8357 }} // Fallback center
                     zoom={14}
                     locations={isMobile ? [] : mapLocations}
                     hideMainIcon={true}
@@ -200,7 +260,7 @@ export default function ProjectsMapSection() {
             {/* 3. Replaced inner scrolling with a negative top margin to pull this content OVER the sticky map */}
             <div className="relative z-10 w-full max-w-[550px] -mt-[100vh] px-6 md:px-12 py-32 lg:ml-10 xl:ml-32 pb-[20vh]">
                 <div className="flex flex-col gap-20">
-                    {PROJECTS_DATA.map((project) => (
+                    {displayProjects.map((project) => (
                         <Link
                             href={project.slug}
                             key={project.id}
@@ -236,7 +296,7 @@ export default function ProjectsMapSection() {
                                 <div className="mt-8 flex justify-start w-full">
                                     <Link
                                         href={project.slug}
-                                        className="flex items-center justify-center gap-3 border border-[#0097DC] text-[#0097DC] px-6 py-4 bg-white font-bold hover:bg-[#0097DC]/10  transition-all duration-300 text-[14px] md:text-[16px] w-full md:w-auto inline-flex "
+                                        className="bg-[#0097DC] hover:bg-[#0085C0] transition-colors text-white text-[15px] font-medium px-8 py-[14px] flex items-center justify-center gap-3  transition-all duration-300  w-full md:w-auto  "
                                     >
                                         <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:rotate-45" />
                                         Explore the Project

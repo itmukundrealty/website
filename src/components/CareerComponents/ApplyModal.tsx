@@ -126,6 +126,7 @@ export default function ApplyModal({ isOpen, onClose, jobTitle = "" }: ApplyModa
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                         className="relative bg-white w-full max-w-2xl max-h-[95vh] overflow-y-auto z-10 p-8 sm:p-12 md:p-14 flex flex-col justify-start rounded-md shadow-2xl"
+                        data-lenis-prevent
                     >
                         <button
                             onClick={onClose}

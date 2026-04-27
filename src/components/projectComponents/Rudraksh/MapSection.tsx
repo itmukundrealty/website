@@ -35,7 +35,7 @@ export default function MapSection({ data, mainMarkerPosition, customMarkerImage
     const allSectionPoints = data.flatMap(item => item.points);
 
     return (
-        <section className="relative md:h-screen h-[80vh] w-full bg-white overflow-hidden">
+        <section id="location" className="relative md:h-screen h-[80vh] w-full bg-white overflow-hidden">
             {/* FULL SCREEN MAP BACKGROUND */}
             <div className="absolute inset-0 w-full h-full z-0">
                 <StyledMap

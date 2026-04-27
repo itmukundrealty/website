@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { useLenis } from "lenis/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import OrientationLock from "@/components/common/OrientationLock";
 import { PROJECTS_LIST } from "@/data/projects";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 // Define the expected props (you can replace `any` with your specific types later)
 interface ProjectHeroProps {
@@ -19,6 +20,11 @@ interface ProjectHeroProps {
   heroImageMobile: string;
   projectLink?: string;
   projectName?: string;
+  hideAmenities?: boolean;
+  amenitiesTarget?: string;
+  title?: string | React.ReactNode;
+  subtitle?: string | React.ReactNode;
+  pdfPath?: string;
 }
 
 export function ProjectHero({
@@ -30,9 +36,25 @@ export function ProjectHero({
   heroImageMobile,
   projectLink = "/project-enquire",
   projectName = "Rudraksh",
+  hideAmenities = false,
+  amenitiesTarget = "#amenities",
+  title,
+  subtitle,
+  pdfPath,
 }: ProjectHeroProps) {
   const pathname = usePathname();
   const currentPath = pathname?.split("/")[1] || "";
+
+  const handleDownload = () => {
+    if (pdfPath) {
+      const link = document.createElement("a");
+      link.href = pdfPath;
+      link.download = pdfPath.split("/").pop() || "floor-plan.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
 
   const projectMapping: Record<string, string> = {
     rudraksh: "rudraksh",
@@ -61,6 +83,28 @@ export function ProjectHero({
   const [showUnitDetails, setShowUnitDetails] = useState(false);
   const [isZoomedOut, setIsZoomedOut] = useState(false);
   const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState<number | null>(null);
+
+  // Mouse tracking for floating label
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const springConfig = { damping: 25, stiffness: 400 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [cursorX, cursorY]);
+
+  useEffect(() => {
+    const isOpen = selectedIndex !== null;
+    // Dispatch global event for NewHeader to listen to without prop drilling through Page
+    window.dispatchEvent(new CustomEvent("floorExplorerToggle", { detail: { isOpen } }));
+  }, [selectedIndex]);
 
   const lenis = useLenis();
 
@@ -96,7 +140,7 @@ export function ProjectHero({
 
   return (
     // 1. Removed h-[100vh] from the main section
-    <section className="relative w-full h-[60vh] md:h-[100vh] overflow-hidden bg-black">
+    <section className="relative w-full h-[100vh] overflow-hidden bg-black">
       <OrientationLock />
       {/* 2. BACKGROUND LAYER: Full height */}
       <div className="relative w-full h-full z-0">
@@ -110,13 +154,61 @@ export function ProjectHero({
             priority
           />
         </div>
-        <div className="block md:hidden w-full h-full">
+        <div className="block md:hidden w-full h-full relative">
           {/* Mobile image also covers */}
           <Image src={heroImageMobile} alt="Mukund Realty Project Mobile" fill className="object-cover object-bottom" priority />
+          {/* Mobile Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-0" />
         </div>
       </div>
 
-      {/* 4. HERO TEXT CONTENT */}
+      {/* Mobile Hero Content Overlay */}
+      <div className="absolute inset-0 z-10 flex md:hidden flex-col justify-between px-6 py-16 pointer-events-none">
+        {/* Top: Heading */}
+        <motion.div
+           initial={{ opacity: 0, y: -20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.8, delay: 0.5 }}
+           className="text-center w-full mt-12"
+        >
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl text-white tracking-tight font-medium leading-tight">
+               {title || projectName}
+            </h1>
+            {subtitle && (
+              <h2 className="text-2xl text-white tracking-tight font-light leading-snug">
+                {subtitle}
+              </h2>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Bottom: Buttons */}
+        <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.8, delay: 0.7 }}
+           className="w-full flex flex-col gap-3 pointer-events-auto"
+        >
+          <Link href={finalLink} className="w-full">
+            <button className="w-full bg-[#0097DC] text-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg">
+              Book A Site Visit
+              <ArrowUpRight className="w-5 h-5" />
+            </button>
+          </Link>
+          {pdfPath && (
+            <button 
+              onClick={handleDownload}
+              className="w-full bg-white text-[#0097DC] py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg"
+            >
+              Download Floor Plan + Brochure
+              <ArrowUpRight className="w-5 h-5" />
+            </button>
+          )}
+        </motion.div>
+      </div>
+
+      {/* 4. HERO TEXT CONTENT (Desktop) */}
       <div className="absolute inset-0 z-10 hidden md:flex items-start justify-end px-12 md:px-24 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -178,6 +270,27 @@ export function ProjectHero({
           <line x1="9.16806" y1="5.57379" x2="15.0294" y2="12.7297" stroke="white" />
         </svg>
       </div>
+
+      {/* FLOATING HOVER LABEL */}
+      <AnimatePresence>
+        {hoveredIndex !== null && (
+          <motion.div
+            style={{
+              left: cursorXSpring,
+              top: cursorYSpring,
+              translateX: "-50%",
+              translateY: "-150%",
+            }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            className="fixed z-[60] pointer-events-none px-4 py-2 bg-[#0097DC] text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-xl backdrop-blur-md bg-opacity-90 flex items-center gap-2 whitespace-nowrap"
+          >
+            <div className="w-1 h-1 rounded-full bg-white animate-pulse" />
+            Click to Explore
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* 4. MARKER TOOLTIPS */}
       <AnimatePresence>
@@ -246,7 +359,13 @@ export function ProjectHero({
             >
               <div className="relative flex h-full flex-col">
                 {/* Header */}
-                <ProjectHeader projectLink={finalLink} projectName={projectName} />
+                <ProjectHeader 
+                  projectLink={finalLink} 
+                  projectName={projectName} 
+                  onClose={() => setSelectedIndex(null)}
+                  hideAmenities={hideAmenities}
+                  amenitiesTarget={amenitiesTarget}
+                />
 
                 {/* SVG Map */}
                 <div className="flex-1 flex items-center justify-center min-h-0 relative px-8 pt-8 pb-4 w-full">
@@ -334,7 +453,7 @@ export function ProjectHero({
 
               {/* Back Button: Closes Modal, reveals Sidebar underneath */}
               <div className="flex flex-col justify-between h-full">
-                      {/* TOP SECTION */}
+                {/* TOP SECTION */}
                 <div>
                   <button
                     onClick={() => setShowUnitDetails(false)}
@@ -411,7 +530,13 @@ export function ProjectHero({
 
             {/* RIGHT PANEL: Replaces the Sidebar (White) */}
             <div className="flex-1 bg-white relative flex flex-col h-full shadow-2xl">
-              <ProjectHeader projectLink={finalLink} projectName={projectName} />
+              <ProjectHeader 
+                projectLink={finalLink} 
+                projectName={projectName} 
+                onClose={() => setShowUnitDetails(false)}
+                hideAmenities={hideAmenities}
+                amenitiesTarget={amenitiesTarget}
+              />
 
               {/* Unit Image (Different from sidebar) */}
               <div className="flex-1 flex items-center justify-center min-h-0 relative w-full px-8 pt-8 pb-4">
@@ -444,62 +569,93 @@ const PROJECTS = {
   completed: PROJECTS_LIST.filter((p) => p.type === "completed").map((p) => ({ name: p.name, href: p.href })),
 };
 
-// 1. The Header Component (Exactly the same in both)
-const ProjectHeader = ({ projectLink, projectName }: { projectLink: string; projectName: string }) => (
-  <div className="flex items-center justify-end gap-20 text-sm font-light text-gray-500 shrink-0 px-20 pt-10">
-<Link href='/about' className="hover:text-black text-lg transition-colors">
-      About
-    </Link>     <div className="group relative">
-      <button className="flex items-center text-[16px] gap-1 text-[#0097DC] font-medium group-hover:text-[#0097DC] transition-colors duration-300">
-        {projectName}
-        <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
+// 1. The Header Component (Redesigned)
+const ProjectHeader = ({ 
+  projectLink, 
+  projectName, 
+  onClose,
+  hideAmenities,
+  amenitiesTarget = "#amenities"
+}: { 
+  projectLink: string; 
+  projectName: string; 
+  onClose?: () => void;
+  hideAmenities?: boolean;
+  amenitiesTarget?: string;
+}) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-      {/* Dropdown Content */}
-      <div className="absolute top-1/2 right-0 mt-4 min-w-[50vw] bg-white/95 backdrop-blur-sm p-8 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-100 border border-gray-100 shadow-xl">
-        <div className="flex gap-12">
-          {/* Ongoing Column */}
-          <div className="w-[200px] shrink-0">
-            <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2 text-left">Ongoing</h3>
-            <div className="flex flex-col gap-3">
-              {PROJECTS.ongoing.map((p) => (
-                <Link key={p.name} href={p.href} className="group/item flex items-center justify-between transition-colors duration-300 text-left">
-                  <span className="text-lg text-[#505153] group-hover/item:text-[#0097DC] transition-colors whitespace-nowrap font-medium">
-                    {p.name}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
+  const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "About", href: "#about" },
+    ...(!hideAmenities ? [{ label: "Amenities", href: amenitiesTarget }] : []),
+    { label: "Location", href: "#location" },
+  ];
 
-          {/* Completed Column */}
-          <div className="flex-1 border-l border-gray-100 pl-12 text-left">
-            <h3 className="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-semibold border-b pb-2">Completed</h3>
-            <div className="grid grid-cols-3 gap-x-8 gap-y-4">
-              {PROJECTS.completed.map((p) => (
-                <Link
-                  key={p.name}
-                  href={p.href}
-                  className="block text-[15px] text-gray-600 hover:text-[#0097DC] transition-colors hover:translate-x-1 duration-200"
-                >
-                  {p.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
+  const handleLinkClick = (e: React.MouseEvent, href: string) => {
+    if (href.startsWith("#") || href === "/") {
+      e.preventDefault();
+      onClose?.(); // Close the explorer/modal
+      
+      if (href === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const id = href.substring(1);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
+  return (
+    <div className="relative z-[100] shrink-0 bg-white">
+      <div className="flex items-center justify-between px-8 py-6 border-b border-gray-50">
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="flex items-center gap-2 px-5 py-2 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC] hover:text-white text-sm font-medium transition-all duration-300 uppercase tracking-widest"
+        >
+          {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          Menu
+        </button>
+
+        <Link href={projectLink}>
+          <button className="bg-[#0097DC] hover:bg-[#0085C0] text-white px-6 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 uppercase flex items-center gap-2">
+            Enquire Now
+            <ArrowUpRight size={18} />
+          </button>
+        </Link>
       </div>
+
+      {/* Dropdown Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="absolute top-full left-0 w-full bg-white shadow-xl overflow-hidden border-b border-gray-100"
+          >
+            <nav className="flex flex-col py-8 px-8 gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className="text-2xl text-[#505153] font-light hover:text-[#0097DC] transition-colors duration-300 py-3 border-b border-gray-50 last:border-0"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
-<Link href='/insight-lists' className="hover:text-black text-lg transition-colors">
-      Insights
-    </Link> 
-       <Link href={projectLink} className="hover:text-black text-lg transition-colors">
-      Contact
-    </Link>
-  </div>
-);
+  );
+};
 
 // 2. The Compass Component (The "N" Circle)
 const Compass = () => (

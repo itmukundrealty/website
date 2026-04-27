@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -155,16 +155,19 @@ export default function page() {
   return (
     <>
       <div className="">
-        <ProjectHeader projectLink="/project-enquire?project=kedar" projectName="Kedar" />
+        <NewHeader projectLink="/project-enquire?project=kedar" projectName="Kedar" scrolledLogo="/icons/kedarDarkLogo.svg" logo="/icons/kedarLogo.svg" view360Url="https://www.turiya.co/360/KedarHighLivingLuxuryHomes/"/>
         <ProjectHero
           projectLink="/project-enquire?project=kedar"
           projectName="Kedar"
+          title={<>A Life of Luxury Awaits</>}
+          subtitle="Luxury Living, Defined at Kedar"
+          pdfPath="/downloadFloorPlan/typical layout.pdf"
           FLOOR_PATHS={FLOOR_PATHS}
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}
           floorData={floorData}
           heroImageDesktop="/images/kedarImage/hero.png"
-          heroImageMobile="/images/kedarImage/heroMobile.png"
+          heroImageMobile="/images/kedarImage/newMobileHero.png"
         />
         <ProjectHighLiving data={SECTION_DATA} />
         <HighlivingSection

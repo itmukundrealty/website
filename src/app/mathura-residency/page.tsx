@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -35,48 +35,43 @@ const MAP_DATA = [
         key: "city",
         title: "Regional Access",
         icon: "/icons/mapLocationIcon.svg",
-        points: [0],
+        points: [],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.9055, lng: 74.8496 },
+            zoom: 14.5
         }
     },
     {
         key: "it",
-        title: "Growing Infrastructure",
+        title: "IT & Employment zones and Education",
         icon: "/icons/infrastrucureIcon.svg",
-        points: [18],
+        points: [105, 101, 103],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
-        }
-    },
-    {
-        key: "education",
-        title: "Commercial Proximity",
-        icon: "/icons/educationIcon.svg",
-        points: [22, 28, 31, 29, 35, 36],
-        viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.8974, lng: 74.8364 },
+            zoom: 14.5
         }
     },
     {
         key: "essentials",
-        title: "Cultural Appeal",
-        icon: "/icons/culturalIcon.svg",
-        points: [24, 37, 38, 39, 40, 41, 42, 43],
+        title: "Healthcare and Everyday essentials",
+        icon: "/icons/educationIcon.svg",
+        points: [102, 107],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.8929, lng: 74.8436 },
+            zoom: 14.5
+        }
+    },
+    {
+        key: "nearby",
+        title: "Nearby places",
+        icon: "/icons/culturalIcon.svg",
+        points: [100, 104, 106, 108, 109, 110, 111, 112],
+        viewport: {
+            center: { lat: 12.8964, lng: 74.8405 },
+            zoom: 14.5
         }
     },
 ];
-
-
-
-
-
 
 const SECTION_DATA = [
     {
@@ -149,15 +144,22 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
-                <CompletedHero  desktopImage="/images/mathuraImages/heroDesk.png" mobileImage="/images/mathuraImages/heroMobile.png" title={<>Mathura <br className="hidden lg:block" />Residency</>} subtitle="" variant="topRight" pdfPath="/completedFloorplans/Mathura-FloorPlans.pdf" />
+                <NewHeader projectLink="/project-enquire?project=mathura" projectName="Mathura Residency" floorPlanPdf="/completedFloorplans/Mathura-FloorPlans.pdf" />
+                <CompletedHero 
+                    desktopImage="/images/mathuraImages/heroDesk.png" 
+                    mobileImage="/images/mathuraImages/newHeroMobile.png" 
+                    title={<>Mathura <br className="hidden lg:block" />Residency</>} 
+                    subtitle="" 
+                    variant="topRight" 
+                    pdfPath="/completedFloorplans/Mathura-FloorPlans.pdf"
+                />
                 <ProjectHighLiving data={SECTION_DATA} />
-                {/* <HighlivingSection
+                <HighlivingSection
                     heading="Inspired Living Spaces"
                     description="Welcome to Mukund MGM Realty Mathura, a thoughtfully planned residential community created for modern families seeking affordable luxury. Every detail is designed to enhance comfort, functionality, and everyday ease. Spaciously planned homes, dependable infrastructure, and carefully curated amenities come together to create a balanced living environment. From wellness-focused facilities and secure surroundings to inviting common spaces that encourage connection, the development supports both relaxation and active lifestyles."
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
-                /> */}
+                />
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" completed={true} />
 

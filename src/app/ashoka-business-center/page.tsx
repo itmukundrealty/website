@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -158,16 +158,19 @@ export default function page() {
   return (
     <>
       <div className="">
-        <ProjectHeader projectLink="/project-enquire?project=ashoka" projectName="Ashoka" />
+        <NewHeader projectLink="/project-enquire?project=ashoka" projectName="Ashoka" scrolledLogo="/icons/ashokaDarkLogo.svg" logo="/icons/ashokaLogo.svg" />
         <ProjectHero
           projectLink="/project-enquire?project=ashoka"
           projectName="Ashoka Business Center"
+          title={<>Modern Business, <br /> Effortlessly Perfected</>}
+          subtitle="Commercial Workspaces at Ashoka Business Center"
+          pdfPath="/downloadFloorPlan/typical layout.pdf"
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}
           floorData={floorData}
           FLOOR_PATHS={FLOOR_PATHS}
           heroImageDesktop="/images/ashokaImages/hero.png"
-          heroImageMobile="/images/ashokaImages/heroMobile.png"
+          heroImageMobile="/images/ashokaImages/newHeroMobile.png"
         />
         <ProjectHighLiving data={SECTION_DATA} />
         <HighlivingSection
@@ -189,7 +192,7 @@ export default function page() {
 
         <MapSection
           data={MAP_DATA}
-          
+
           mainMarkerPosition={{ lat: 12.896339168047138, lng: 74.84203633612658 }}
           customMarkerImage="/icons/mapIcons/ashokaIcon.svg"
         />

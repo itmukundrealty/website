@@ -85,7 +85,8 @@ const MAP_DATA = [
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import Footer from "@/components/layout/Footer";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
+import ProjectShowcase from "@/components/projectComponents/ProjectShowcase";
 // import ProjectHeader from "@/components/projectComponents/Rudraksh/features/project/Header";
 
 const SECTION_DATA = [
@@ -207,13 +208,16 @@ export const metadata = {
 export default function Project1Page() {
   return (
     <main className="min-h-screen bg-black">
-      <ProjectHeader projectLink="/project-enquire?project=rudraksh" projectName="Rudraksh" />
+      <NewHeader projectLink="/project-enquire?project=rudraksh" projectName="Rudraksh" scrolledLogo="/icons/rudrakshDarkLogo.svg" logo="/icons/rudrakshLogo.svg" />
       <ProjectHero
         projectLink="/project-enquire?project=rudraksh"
         projectName="Rudraksh"
+        title={<>A Higher Way to Live</>}
+        subtitle="Luxury Homes at Rudraksh"
+        pdfPath="/downloadFloorPlan/typical layout.pdf"
         FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
         heroImageDesktop="/images/rudrakshImages/hero.png"
-        heroImageMobile="/images/rudrakshImages/mobileHero1.png"
+        heroImageMobile="/images/rudrakshImages/newMobileHero.png"
         HERO_MARKERS={HERO_MARKERS}
         floorData={floorData}
         FLOOR_PATHS={FLOOR_PATHS}
@@ -268,7 +272,7 @@ export default function Project1Page() {
       {/* Other sections can be implemented here */}
       {/* <ProjectAbout /> */}
       {/* <ProjectGallery /> */}
-
+<ProjectShowcase/>
       <Footer />
     </main>
   );

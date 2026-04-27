@@ -11,6 +11,7 @@ import PrinciplesSection from "@/components/sections/PrinciplesSection";
 import Script from "next/script";
 import InsightsSection from "@/components/sections/InsightsSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
+import NewLandingHero from "@/components/sections/NewLandingHero";
 
 export default function Home() {
   const jsonLd = {
@@ -37,14 +38,14 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
-      <LandingHero /> 
+      <Header variant='light' />
+      <NewLandingHero /> 
       <PrinciplesSection />
       <div className="mt-[8vh] lg:mt-[20vh]">
         <LandmarkSection />
       </div>
 
-      <PortfolioSection />
+      {/* <PortfolioSection /> */}
       
       <ExperienceStandardSection />
 

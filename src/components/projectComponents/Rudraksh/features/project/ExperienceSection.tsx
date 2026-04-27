@@ -8,6 +8,7 @@ import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 
 // --- Data ---
@@ -131,16 +132,45 @@ export default function ExperienceSection({
                         </p>
 
                         {/* Custom Pagination Container (Desktop) */}
-                        <div className="hidden md:flex gap-2 pt-4">
-                            {testimonials.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => swiperRef.current?.slideTo(index)}
-                                    className={`h-[4px]  transition-all duration-300 ${activeIndex === index ? "w-12 bg-[#0097DC]" : "w-6 bg-[#e5e7eb]"
-                                        }`}
-                                    aria-label={`Go to slide ${index + 1}`}
-                                />
-                            ))}
+                        <div className="hidden md:flex items-center gap-8 pt-4">
+                            <div className="flex gap-2">
+                                {testimonials.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => swiperRef.current?.slideTo(index)}
+                                        className={`h-[4px] transition-all duration-300 ${activeIndex === index ? "w-12 bg-[#0097DC]" : "w-6 bg-[#cacaca]"
+                                            }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
+                            
+                            <div className="flex gap-3">
+                                <button 
+                                    onClick={() => swiperRef.current?.slidePrev()}
+                                    disabled={activeIndex === 0}
+                                    className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all ${
+                                        activeIndex === 0 
+                                        ? "border-gray-200 text-gray-300 cursor-not-allowed opacity-50" 
+                                        : "border-[#cacaca] text-[#505153] hover:border-[#0097DC] hover:text-[#0097DC]"
+                                    }`}
+                                    aria-label="Previous slide"
+                                >
+                                    <ChevronLeft size={20} strokeWidth={1.5} />
+                                </button>
+                                <button 
+                                    onClick={() => swiperRef.current?.slideNext()}
+                                    disabled={activeIndex === testimonials.length - 1}
+                                    className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all ${
+                                        activeIndex === testimonials.length - 1 
+                                        ? "border-gray-200 text-gray-300 cursor-not-allowed opacity-50" 
+                                        : "border-[#cacaca] text-[#505153] hover:border-[#0097DC] hover:text-[#0097DC]"
+                                    }`}
+                                    aria-label="Next slide"
+                                >
+                                    <ChevronRight size={20} strokeWidth={1.5} />
+                                </button>
+                            </div>
                         </div>
                     </div>
 
