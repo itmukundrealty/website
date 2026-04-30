@@ -77,7 +77,9 @@ export function ProjectHero({
   const finalLink = projectLink === "/project-enquire" && projectKey ? `/project-enquire?project=${projectKey}` : projectLink;
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredWing, setHoveredWing] = useState<string | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedWing, setSelectedWing] = useState<string | null>(null);
   const [planHoveredIndex, setPlanHoveredIndex] = useState<number | null>(null);
   const [planSelectedIndex, setPlanSelectedIndex] = useState<number | null>(null);
   const [showUnitDetails, setShowUnitDetails] = useState(false);
@@ -109,6 +111,15 @@ export function ProjectHero({
   const lenis = useLenis();
 
   const currentFloor = selectedIndex !== null ? floorData[selectedIndex] : null;
+
+  // Filter units by selected wing
+  const currentFilteredUnits = currentFloor
+    ? currentFloor.units.filter((u: any) => {
+        if (!selectedWing) return true;
+        return u.details.floor?.includes(`Wing ${selectedWing}`);
+      })
+    : [];
+
   const currentUnit = currentFloor && planSelectedIndex !== null ? currentFloor.units[planSelectedIndex] : null;
 
   // --- Opaque/Transparent Fix: Using /60 for transparency ---
@@ -124,12 +135,12 @@ export function ProjectHero({
   };
 
   // --- Building Overlay Fix: Keep selected floor filled ---
-  const getBuildingPathClass = (index: number) => {
+  const getBuildingPathClass = (index: number, wing?: string) => {
     // FIX ADDED: 'pointer-events-auto' added here so the specific path captures clicks
     const baseClasses = "cursor-pointer transition-colors duration-300 pointer-events-auto";
 
-    // If this floor is currently selected (sidebar is open), keep it filled
-    if (selectedIndex === index) {
+    // If this floor and wing is currently selected (sidebar is open), keep it filled
+    if (selectedIndex === index && selectedWing === (wing || null)) {
       return `${baseClasses} fill-[#003a53]/80`;
     }
 
@@ -231,14 +242,15 @@ export function ProjectHero({
         */}
         <svg viewBox={FLOOR_PATHS_VIEWBOX} className="h-full w-full object-cover pointer-events-none" preserveAspectRatio="xMidYMid slice">
           <g className="transition-colors duration-300">
-            {FLOOR_PATHS.map((floor) => (
+            {FLOOR_PATHS.map((floor, i) => (
               <path
-                key={floor.id}
+                key={`${floor.id}-${floor.wing || 'all'}-${i}`}
                 d={floor.d}
-                className={getBuildingPathClass(floor.id)}
-                onMouseEnter={() => setHoveredIndex(floor.id)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setSelectedIndex(floor.id)}
+                transform={floor.transform || undefined}
+                className={getBuildingPathClass(floor.id, floor.wing)}
+                onMouseEnter={() => { setHoveredIndex(floor.id); setHoveredWing(floor.wing || null); }}
+                onMouseLeave={() => { setHoveredIndex(null); setHoveredWing(null); }}
+                onClick={() => { setSelectedIndex(floor.id); setSelectedWing(floor.wing || null); }}
               />
             ))}
           </g>
@@ -287,7 +299,7 @@ export function ProjectHero({
             className="fixed z-[60] pointer-events-none px-4 py-2 bg-[#0097DC] text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-xl backdrop-blur-md bg-opacity-90 flex items-center gap-2 whitespace-nowrap"
           >
             <div className="w-1 h-1 rounded-full bg-white animate-pulse" />
-            Click to Explore
+            Click to Explore {hoveredWing ? `Wing ${hoveredWing}` : ""}
           </motion.div>
         )}
       </AnimatePresence>
@@ -318,7 +330,9 @@ export function ProjectHero({
             className="absolute bottom-5 right-28 z-30 w-80 min-h-[300px]  flex-col justify-between bg-white px-8 py-4 shadow-2xl pointer-events-auto hidden md:flex"
           >
             <div>
-              <h3 className="mb-2 text-xl font-medium text-[#505153]">{floorData[hoveredIndex].title}</h3>
+              <h3 className="mb-2 text-xl font-medium text-[#505153]">
+                {floorData[hoveredIndex].title} {hoveredWing ? `- Wing ${hoveredWing}` : ""}
+              </h3>
               <ul className="mb-8 space-y-2">
                 {floorData[hoveredIndex].features.map((feature: any, idx: number) => (
                   <li key={idx} className="text-base font-light text-gray-500">
@@ -328,7 +342,7 @@ export function ProjectHero({
               </ul>
             </div>
             <button
-              onClick={() => setSelectedIndex(hoveredIndex)}
+              onClick={() => { setSelectedIndex(hoveredIndex); setSelectedWing(hoveredWing); }}
               className="flex w-full items-center justify-end border-t border-gray-100 pt-6 text-md font-semibold text-[#0097DC] transition-opacity hover:opacity-80"
             >
               Click to Explore
@@ -346,7 +360,7 @@ export function ProjectHero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelectedIndex(null)}
+              onClick={() => { setSelectedIndex(null); setSelectedWing(null); }}
               className="absolute inset-0 z-40 bg-black/20"
             />
             {/* The Sidebar Itself */}
@@ -362,7 +376,7 @@ export function ProjectHero({
                 <ProjectHeader 
                   projectLink={finalLink} 
                   projectName={projectName} 
-                  onClose={() => setSelectedIndex(null)}
+                  onClose={() => { setSelectedIndex(null); setSelectedWing(null); }}
                   hideAmenities={hideAmenities}
                   amenitiesTarget={amenitiesTarget}
                 />
@@ -370,31 +384,47 @@ export function ProjectHero({
                 {/* SVG Map */}
                 <div className="flex-1 flex items-center justify-center min-h-0 relative px-8 pt-8 pb-4 w-full">
                   <div className="relative h-full w-full">
-                    {/* UPDATED: Use currentFloor.viewBox instead of hardcoded value */}
+                    {/* UPDATED: Use currentFloor.viewBoxWingA/B or fallback to viewBox */}
                     <svg
-                      viewBox={currentFloor.viewBox || "0 0 754 769"}
+                      viewBox={
+                        (selectedWing === "A" && currentFloor.viewBoxWingA) ||
+                        (selectedWing === "B" && currentFloor.viewBoxWingB) ||
+                        currentFloor.viewBox || "0 0 754 769"
+                      }
                       preserveAspectRatio="xMidYMid meet"
                       className="absolute inset-0 h-full w-full pointer-events-auto "
                     >
                       <g className="transition-all duration-300">
-                        {currentFloor.units.map((unit: any, index: number) => (
-                          <path
-                            key={unit.id}
-                            d={unit.path}
-                            className={`cursor-pointer transition-colors duration-200 ease-in-out ${getPlanFillClass(index)}`}
-                            onMouseEnter={() => setPlanHoveredIndex(index)}
-                            onMouseLeave={() => setPlanHoveredIndex(null)}
-                            onClick={() => handleUnitClick(index)}
-                            pointerEvents="all"
-                          />
-                        ))}
+                        {currentFilteredUnits.map((unit: any, index: number) => {
+                          // Find original index for handling clicks correctly
+                          const originalIndex = currentFloor.units.findIndex((u: any) => u.id === unit.id);
+                          return (
+                            <path
+                              key={unit.id}
+                              d={unit.path}
+                              className={`cursor-pointer transition-colors duration-200 ease-in-out ${getPlanFillClass(originalIndex)}`}
+                              onMouseEnter={() => setPlanHoveredIndex(originalIndex)}
+                              onMouseLeave={() => setPlanHoveredIndex(null)}
+                              onClick={() => handleUnitClick(originalIndex)}
+                              pointerEvents="all"
+                            />
+                          );
+                        })}
                       </g>
                     </svg>
-                    {currentFloor.planImage && (
+                    {(
+                      (selectedWing === "A" && currentFloor.planImageWingA) ||
+                      (selectedWing === "B" && currentFloor.planImageWingB) ||
+                      currentFloor.planImage
+                    ) && (
                       <Image
                         width={500}
                         height={500}
-                        src={currentFloor.planImage}
+                        src={
+                          (selectedWing === "A" && currentFloor.planImageWingA) ||
+                          (selectedWing === "B" && currentFloor.planImageWingB) ||
+                          currentFloor.planImage
+                        }
                         alt={`${currentFloor.title} Plan`}
                         className="absolute inset-0 h-full w-full object-contain select-none mix-blend-multiply pointer-events-none z-0"
                       />
@@ -404,7 +434,9 @@ export function ProjectHero({
 
                 {/* Sidebar Footer (Text + Compass) */}
                 <div className="mt-auto flex items-center justify-between px-8 pb-5 shrink-0">
-                  <h2 className="text-4xl md:text-2xl font-light text-[#0097DC] tracking-wide">{currentFloor.title}</h2>
+                  <h2 className="text-4xl md:text-2xl font-light text-[#0097DC] tracking-wide">
+                    {currentFloor.title} {selectedWing ? `- Wing ${selectedWing}` : ""}
+                  </h2>
                   <a
                     href={currentFloor?.pdfPath}
                     download="FLOOR PLAN"
@@ -417,7 +449,7 @@ export function ProjectHero({
 
                 {/* Floating Close Button */}
                 <motion.button
-                  onClick={() => setSelectedIndex(null)}
+                  onClick={() => { setSelectedIndex(null); setSelectedWing(null); }}
                   exit={{ scale: 0, opacity: 0 }}
                   transition={{ delay: 0.2 }}
                   className="absolute left-0 top-1/2 z-50   h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#0097DC] text-white shadow-2xl transition-transform hover:scale-105 active:scale-95 hidden md:flex"

@@ -15,6 +15,7 @@ const projects = [
   {
     id: 1,
     title: 'Kedar',
+    label: 'RESIDENTIAL',
     location: 'Airport Road, Derebail | Mangalore',
     image: '/images/kedarImage/heroMobile.png', // Replace with your actual image path
     link: '/projects/kedar',
@@ -22,6 +23,7 @@ const projects = [
   {
     id: 2,
     title: 'Ashoka Business Center',
+    label: 'COMMERCIAL',
     location: 'Airport Road, Kapikad | Mangalore',
     image: '/images/ashokaImages/heroMobile.png', // Replace with your actual image path
     link: '/projects/ashoka',
@@ -40,10 +42,15 @@ export default function ProjectShowcase() {
         />
       </div>
       <div className="flex flex-col flex-grow">
+        {project.label && (
+          <span className="text-[#0097DC] text-[12px] font-bold tracking-[0.2em] mb-3 uppercase">
+            {project.label}
+          </span>
+        )}
         <h3 className="text-[28px] md:text-[36px] font-normal text-[#505153] leading-tight mb-2">
           {project.title}
         </h3>
-        <p className="text-[#0097DC] font-bold text-[14px] md:text-lg tracking-wide mb-8">
+        <p className="text-[#505153]/60 font-medium text-[14px] md:text-lg tracking-wide mb-8">
           {project.location}
         </p>
         <div className="mt-auto">

@@ -78,7 +78,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
   return (
     <footer className="w-full bg-white font-sans text-[#4A4A4A] pt-10 md:pt-16">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-20 lg:px-24">
+      <div className=" mx-auto px-6 md:px-20 lg:px-20">
         
         {/* DESKTOP VIEW (md and up) */}
         <div className="hidden md:block">
