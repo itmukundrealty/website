@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import { Play } from 'lucide-react';
+import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -101,16 +101,46 @@ export default function ExperienceStandardSection() {
     const [swiperRef, setSwiperRef] = useState<any>(null);
 
     const paginationDots = (
-        <div className="flex gap-2 flex-wrap justify-center md:justify-start">
-            {testimonials.map((_, index) => (
-                <button
-                    key={index}
-                    onClick={() => swiperRef?.slideTo(index)}
-                    className={`h-[4px] transition-all duration-300 ${activeIndex === index ? 'w-[20px] md:w-[40px] bg-[#0097DC]' : 'w-[10px] md:w-[20px] bg-[#e5e7eb]'
-                        }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                />
-            ))}
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 justify-center md:justify-start mt-4">
+            <div className="flex gap-2 flex-wrap justify-center md:justify-start">
+                {testimonials.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => swiperRef?.slideTo(index)}
+                        className={`h-[4px] transition-all duration-300 ${activeIndex === index ? 'w-[20px] md:w-[40px] bg-[#0097DC]' : 'w-[10px] md:w-[20px] bg-[#e5e7eb]'
+                            }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                ))}
+            </div>
+            
+            {/* Navigation Arrows */}
+            <div className="flex items-center gap-2">
+                <button 
+                    onClick={() => swiperRef?.slidePrev()}
+                    disabled={activeIndex === 0}
+                    className={`p-2 rounded-full border border-gray-200 transition-all duration-300 group ${
+                        activeIndex === 0 
+                        ? 'opacity-30 cursor-not-allowed' 
+                        : 'text-[#505153] hover:bg-[#0097DC] hover:text-white hover:border-[#0097DC] cursor-pointer'
+                    }`}
+                    aria-label="Previous slide"
+                >
+                    <ChevronLeft size={20} strokeWidth={1.5} />
+                </button>
+                <button 
+                    onClick={() => swiperRef?.slideNext()}
+                    disabled={activeIndex === testimonials.length - 1}
+                    className={`p-2 rounded-full border border-gray-200 transition-all duration-300 group ${
+                        activeIndex === testimonials.length - 1 
+                        ? 'opacity-30 cursor-not-allowed' 
+                        : 'text-[#505153] hover:bg-[#0097DC] hover:text-white hover:border-[#0097DC] cursor-pointer'
+                    }`}
+                    aria-label="Next slide"
+                >
+                    <ChevronRight size={20} strokeWidth={1.5} />
+                </button>
+            </div>
         </div>
     );
 

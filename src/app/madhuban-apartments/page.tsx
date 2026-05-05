@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -38,35 +38,35 @@ const MAP_DATA = [
         }
     },
     {
-        key: "it",
-        title: "Academic & Medical Access",
-        icon: "/icons/medicalAccess.svg",
-        points: [44, 19],
+        key: "it-education",
+        title: "IT Zone & Education",
+        icon: "/icons/culturalIcon.svg", 
+        points: [113, 114, 161], // Infosys, Mahesh PU College, Karavali College
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.9100, lng: 74.8310 },
+            zoom: 14
         }
     },
     {
-        key: "education",
-        title: "Lifestyle Essentials",
-        icon: "/icons/urbanIcon.svg",
-        points: [28, 29, 21],
+        key: "healthcare",
+        title: "Healthcare",
+        icon: "/icons/healthcareIcon.svg",
+        points: [116], // AJ Hospital
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.8329861441786 },
-            zoom: 13
+            center: { lat: 12.9100, lng: 74.8310 },
+            zoom: 14
         }
     },
     {
-        key: "essentials",
-        title: "Corporate Connectivity",
-        icon: "/icons/industrialIcon.svg",
-        points: [24, 40, 57],
+        key: "nearby-places",
+        title: "Nearby Places",
+        icon: "/icons/citywideIcon.svg", 
+        points: [118, 162], // Ladyhill Circle, Urwa Church Centenary Hall
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.8329861441786 },
-            zoom: 13
+            center: { lat: 12.9100, lng: 74.8310 },
+            zoom: 14 
         }
-    },
+    }
 ];
 
 
@@ -141,18 +141,18 @@ const AMENITIES_DATA = [
 ];
 
 const ftModal = [
-  "Aluminium windows and ventilators with necessary fixtures",
-  "Granite kitchen platform with stainless steel sink",
-  "AC point provision in all bedrooms",
-  "Overhead water tank and underground sump tank",
-  "Premium acrylic emulsion paint for interiors and moss-resistant exterior paint",
-  "Pressure-tested plumbing and drainage lines for leak-proof toilets",
-  "Concrete door frames with high-quality decorative flush doors for all rooms",
-  "Terrace covered with high-quality heat-retardant sheets for thermal insulation",
-  "Designer wall tiles in bathrooms and kitchen working area",
-  "Kitchen with 2-inch wide granite platform on two sides",
-  "Glazed tile cladding on kitchen walls up to 2-foot height",
-  "Stainless steel sink with drainboard in kitchen"
+    "Aluminium windows and ventilators with necessary fixtures",
+    "Granite kitchen platform with stainless steel sink",
+    "AC point provision in all bedrooms",
+    "Overhead water tank and underground sump tank",
+    "Premium acrylic emulsion paint for interiors and moss-resistant exterior paint",
+    "Pressure-tested plumbing and drainage lines for leak-proof toilets",
+    "Concrete door frames with high-quality decorative flush doors for all rooms",
+    "Terrace covered with high-quality heat-retardant sheets for thermal insulation",
+    "Designer wall tiles in bathrooms and kitchen working area",
+    "Kitchen with 2-inch wide granite platform on two sides",
+    "Glazed tile cladding on kitchen walls up to 2-foot height",
+    "Stainless steel sink with drainboard in kitchen"
 ];
 
 export default function page() {
@@ -160,7 +160,7 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
+                <NewHeader projectLink="/project-enquire?project=madhuban" projectName="Madhuban Apartments" floorPlanPdf="/completedFloorplans/Madhuban-FloorPlans.pdf" />
                 <CompletedHero title={<>Madhuban <br className="hidden lg:block" /> Apartments</>} subtitle="" variant="topRight" desktopImage="/images/madhubanImages/heroDesk.png" mobileImage="/images/madhubanImages/heroMobile.png" pdfPath="/completedFloorplans/Madhuban-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection

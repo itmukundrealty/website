@@ -20,7 +20,7 @@ function makeFloorUnits(floorNumber, floorLabel) {
   ];
   return suffixes.map((suffix, i) => ({
     id: `F0${i + 1}`,
-    unitImage: `/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/${i}.png`,
+    unitImage: `https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/40${suffix}.png`,
     path: paths[i],
     details: {
       number: `${floorNumber}0${suffix}`,
@@ -38,7 +38,7 @@ function makeFloorUnits(floorNumber, floorLabel) {
 export const floorData = [
   {
     title: "Ground Floor",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/ground/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newground/floor.png",
     viewBox: "0 0 473 680", // Updated to match your new SVG dimensions
     features: [
       "Shops",
@@ -49,37 +49,37 @@ export const floorData = [
     units: [
       {
         id: "U01",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/ground/0.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newground/outdoorgym.png",
         path: "M404.875 373.625V330.25H458.75V352H440V373.625H404.875Z",
         details: { number: "Outdoor Exercise Gym", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U02",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/ground/1.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newground/meditation.png",
         path: "M432.125 483.25H401.5V423.375H432.125V483.25Z",
         details: { number: "Pavilion - Seating / Meditation", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U03",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/ground/2.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newground/pavedgallery.png",
         path: "M428.562 526.625H401.438V496.75H428.562V526.625Z",
         details: { number: "Paved Seating Gallery", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U04",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/ground/3.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newground/11.png",
         path: "M224.5 505.625V573.75C262.75 567.007 284.579 565.143 324.5 566.75L345.75 559.75V521.625H332.875V505.625H224.5Z M402.5 414.5H386.5V548.5L402.5 542.75V414.5Z M183.25 341.5V583.5C176.95 585.709 164.511 590.088 164.252 590.246C164.251 590.249 164.25 590.25 164.25 590.25C164.246 590.25 164.247 590.249 164.252 590.246C164.449 589.283 164.333 430.508 164.25 351L183.25 341.5Z",
         details: { number: "Ample Parking Space", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U07",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/ground/4.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newground/space2.png",
         path: "M317 504.5H284.5V358H310.25V367H317.625V358H346V450.75H317V504.5Z",
         details: { number: "External Shop Space 2", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U08",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/ground/5.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newground/space1.png",
         path: "M284.5 505.5H223.5V357.5H284.5V505.5Z",
         details: { number: "External Shop Space 1", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       }
@@ -88,7 +88,7 @@ export const floorData = [
   {
     title: "First Floor",
     viewBox: "0 0 516 743",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor1/floor.png",
     pdfPath: "/downloadFloorPlan/first floor plan.pdf",
     features: [
       "Shops",
@@ -98,44 +98,44 @@ export const floorData = [
     units: [
       {
         id: "G01",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/0.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor1/1.png",
         path: "M199.5 638L178.5 645.5V382.5L199.5 376.001V638Z M146.5 354.501L122.25 404.5L89.9005 416.076L39.9348 257.972L307.625 126.42L376.902 213.317V355H338.5V345.125H315.812V390.688L243.5 390.249V279.251L212.5 248.751C205.806 254.647 202.547 259.045 199.5 273.001V334.001L146.5 354.501Z M438.157 594.086L420.75 598.75V453H438.157V594.086Z",
         details: { number: "Ample Parking Space", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
 
       {
         id: "G04",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/1.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor1/space1.png",
         path: "M298.375 488.375V551.875H243.25V488.375H298.375Z",
         details: { number: "External Shop Space 1", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "G05",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/2.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor1/space2.png",
         path: "M298.375 436.125H243.5V488.125H298.375V436.125Z",
         details: { number: "External Shop Space 2", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "G08",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/3.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor1/space3.png",
         path: "M298.5 390.75H243.75V436H298.5V390.75Z",
         details: { number: "External Shop Space 3", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "G09",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/4.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor1/space5.png",
         path: "M377.125 492.625H309.625V432.125H377.125V492.625Z",
         details: { number: "External Shop Space 5", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "G10",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/5.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor1/space4.png",
         path: "M338.375 390.75H310V431.5H338.375V390.75Z",
         details: { number: "External Shop Space 4", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "G11",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor1/6.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor1/space6.png",
         path: "M345.5 552.375H310.125V492.75H345.5V552.375Z",
         details: { number: "External Shop Space 6", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
@@ -145,7 +145,7 @@ export const floorData = [
   {
     title: "Second Floor",
     viewBox: "0 0 530 764",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor2/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor2/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "Car Parking"
@@ -153,7 +153,7 @@ export const floorData = [
     units: [
       {
         id: "U01",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor2/0.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor2/0.png",
         path: "M203.625 385.5V655.5L182.25 662.5V394.5L203.625 385.5Z M387 443.875H347.375V411.875H355.625V402.375H387V443.875Z M450.073 610.523L431.5 615.5V465.25H450.073V610.523Z M91 428.5L160.375 401.125L149.25 364.75L203.5 344V281.75C210.209 254.441 220.28 246.367 245.25 240H291.5V286.5H250V567.25H372.5V550.75H387.5C389.3 550.75 388.25 542.25 387.5 538H360.5C358.9 538 359.833 475.333 360.5 444H324V355.25H348V364.75H387.25V286.5H337.5V240H388.75V218.75L306.5 116.25L35.5 250L91 428.5Z",
         details: { number: "Ample Parking Space", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       }
@@ -164,7 +164,7 @@ export const floorData = [
   {
     title: "Third Floor",
     viewBox: "0 0 505 728",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -177,79 +177,79 @@ export const floorData = [
     units: [
       {
         id: "S01",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/0.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/kids.png",
         path: "M98 366.375L81.3785 372.787L47.75 313.75L62.125 305.375L49.75 283.625L71.5 271.125L88.875 300.875L103.5 292.5L128 335.375L92.375 356L98 366.375Z",
         details: { number: "Kids Play Area", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
       },
       {
         id: "S02",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/1.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/skating.png",
         path: "M143.25 327L122.125 290.5L167 264.5L188.125 301L143.25 327Z",
         details: { number: "Skating Park", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
       },
       {
         id: "S03",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/2.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/pavillion.png",
         path: "M89.625 241.25L98 256L49.75 283.625L28.5 246.875L85.75 213.875L98.75 236.25L89.625 241.25Z",
         details: { number: "Pavilion - Seating / Meditation", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
       },
       {
         id: "S04",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/3.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/tree.png",
         path: "M146.625 255L109.75 276.375L89.75 241.625L98.625 236.5L91.125 222.625L118.625 206.875L146.625 255Z",
         details: { number: "Tree Court", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
       },
       {
         id: "S05",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/4.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/badminton.png",
         path: "M307.875 174.125L213.5 228.75L189.625 187.375L284.5 132.875L307.875 174.125Z",
         details: { number: "Badminton Court", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
       },
       {
         id: "S06",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/5.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/gym.png",
         path: "M360 185.375L326 205L290 142.625L323.5 122.75L360 185.375Z",
         details: { number: "Outdoor Exercise Gym", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
       },
       {
         id: "S07",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/6.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/wall.png",
         path: "M374.875 121L357.625 131.5L324.625 74.625L342.5 64.375L374.875 121Z",
         details: { number: "Climbing Wall", type: "", sqft: "", balconySqft: "", rooms: 0, washrooms: 0, floor: "" },
       },
       {
         id: "S08",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/7.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/306.png",
         path: "M330.5 325H309.75V272.375H369.75V347.875H330.5V325Z",
         details: { number: "306", type: "Kitchen + Utility Space", sqft: "1140", balconySqft: "", rooms: 2, washrooms: 2, floor: "" },
       },
       {
         id: "S09",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/8.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/305.png",
         path: "M237.125 272.5V359.125H287V340.75H276.125V334.875H293.625V325.125H309.75V272.5H237.125Z",
         details: { number: "305", type: "Kitchen + Utility Space", sqft: "1125", balconySqft: "", rooms: 3, washrooms: 3, floor: "", },
       },
       {
         id: "S10",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/9.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/304.png",
         path: "M287.875 382.75H290.75V418.625H287.875V441.75H258.625V428.125H228.75V382.125H237.125V359.125H287.875V382.75Z",
         details: { number: "304", type: "Kitchen + Utility Space", sqft: "1210", balconySqft: "", rooms: 2, washrooms: 2, floor: "" },
       },
       {
         id: "S11",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/10.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/303.png",
         path: "M309.75 541.5H237.375V453.625H287.75V477.375H293.5V488.625H309.75V541.5Z",
         details: { number: "303", type: "Kitchen + Utility Space", sqft: "1555", balconySqft: "", rooms: 3, washrooms: 3, floor: "" },
       },
       {
         id: "S12",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/11.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/302.png",
         path: "M370 465.625V541.375H309.75V488.75H333.125V465.625H370Z",
         details: { number: "302", type: "Kitchen + Utility Space", sqft: "1115", balconySqft: "", rooms: 2, washrooms: 2, floor: "" },
       },
       {
         id: "S13",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor3/12.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/301.png",
         path: "M309 422.5V461.375H344.625V465.75H369.75V423.875H378.375V404.5H369.75V381.875H341.625V399.625H330.625V422.5H309Z",
         details: { number: "301", type: "Kitchen + Utility Space", sqft: "1125", balconySqft: "", rooms: 2, washrooms: 2, floor: "" },
       }
@@ -258,7 +258,7 @@ export const floorData = [
   {
     title: "Fourth Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -269,7 +269,7 @@ export const floorData = [
   {
     title: "Fifth Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -280,7 +280,7 @@ export const floorData = [
   {
     title: "Sixth Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -291,7 +291,7 @@ export const floorData = [
   {
     title: "Seventh Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -302,7 +302,7 @@ export const floorData = [
   {
     title: "Eighth Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -313,7 +313,7 @@ export const floorData = [
   {
     title: "Ninth Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -324,7 +324,7 @@ export const floorData = [
   {
     title: "Tenth Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -335,7 +335,7 @@ export const floorData = [
   {
     title: "Eleventh Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -346,7 +346,7 @@ export const floorData = [
   {
     title: "Twelfth Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -357,7 +357,7 @@ export const floorData = [
   {
     title: "Thirteenth Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -368,7 +368,7 @@ export const floorData = [
   {
     title: "Fourteenth Floor",
     viewBox: "0 0 389 734",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor4-14/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
     pdfPath: "/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
@@ -379,7 +379,7 @@ export const floorData = [
   {
     title: "Fifteenth Floor",
     viewBox: "0 0 379 714",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor15/floor.png",
     pdfPath: "/downloadFloorPlan/13th floor.pdf",
     features: [
       "4 BHKs",
@@ -388,25 +388,25 @@ export const floorData = [
     units: [
       {
         id: "U01",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/0.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor15/1506.png",
         path: "M257.75 214.75V154.75H149.25V240.25H43V182.25H21.75V0.25H91.5V21.25H203.75V0.25H268.25V21.25H357.25V214.75H257.75Z",
         details: { number: "1506", type: "Kitchen + Utility Space", sqft: "2745", balconySqft: "", rooms: "4", washrooms: "4", floor: "" },
       },
       {
         id: "U02",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/1.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor15/1504.png",
         path: "M22 298.5V238.75H149.25V287.75H121V298.5H157.5V391H149.25V449.25H77V415.5H0.5V298.5H22Z",
         details: { number: "1504 - 1st Floor", type: "Kitchen + Utility Space", sqft: "2445", balconySqft: "", rooms: "1", washrooms: "2", floor: "" },
       },
       {
         id: "U03",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/2.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor15/1502.png",
         path: "M149 480.5H22.042V701.271H357.347V508.558H264.633V568H164V539.75H149V480.5Z",
         details: { number: "1502", type: "Kitchen + Utility Space", sqft: "", balconySqft: "", rooms: "1", washrooms: "2", floor: "" },
       },
       {
         id: "U04",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor15/3.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor15/1501.png",
         path: "M292.5 512V499H203.75V400.5H258V298.5H357.5V357.25H379V404.5H357.5V512H292.5Z",
         details: { number: "1501 - 1st Floor", type: "Kitchen + Utility Space", sqft: "2670", balconySqft: "", rooms: "4", washrooms: "4", floor: "" },
       }
@@ -415,7 +415,7 @@ export const floorData = [
   {
     title: "Sixteenth Floor",
     viewBox: "0 0 393 741",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor16/floor.png",
     pdfPath: "/downloadFloorPlan/14th floor.pdf",
     features: [
       "4 BHKs",
@@ -424,25 +424,25 @@ export const floorData = [
     units: [
       {
         id: "U01",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/0.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor16/1606.png",
         path: "M154.5 251.25H22.5V230.125H44.4375V188.812H22.5V-0.5H95V21H211V-0.5H278.5V21H371.25V222H267.5V159.5H154.5V251.25Z",
         details: { number: "1606", type: "Kitchen + Utility Space", sqft: "2875", balconySqft: "", rooms: "4", washrooms: "4", floor: "" },
       },
       {
         id: "U02",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/1.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor16/1501.png",
         path: "M371.25 369V309.5H297V355.75H268V415.5H211.25V517.5H275V529.75H371.25V419.75H393.5V369H371.25Z",
         details: { number: "1504 - 2nd Floor", type: "Family Room", sqft: "2445", balconySqft: "", rooms: "2", washrooms: "2", floor: "" },
       },
       {
         id: "U03",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/2.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor16/1504.png",
         path: "M154.5 466H79.75V430.75H0.25V309.25H23V247H154.5V298.5H125.5V309.25H177.5V376.75H154.5V466Z",
         details: { number: "1501 - 2nd Floor", type: "", sqft: "2265", balconySqft: "", rooms: "2", washrooms: "2", floor: "" },
       },
       {
         id: "U04",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/floor16/3.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor16/1602.png",
         path: "M154.75 498H22.75L22.25 727.5H371V527.75H275.75V589H170.5V560H154.75V498Z",
         details: { number: "1602", type: "Kitchen + Utility Space", sqft: "2745", balconySqft: "", rooms: "4", washrooms: "4", floor: "" },
       }
@@ -451,7 +451,7 @@ export const floorData = [
   {
     title: "Terrace Floor",
     viewBox: "0 0 383 729",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/terrace/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newterrace/floor.png",
     pdfPath: "/downloadFloorPlan/lower terrace.pdf",
     features: [
       "Library",
@@ -461,19 +461,19 @@ export const floorData = [
     units: [
       {
         id: "U01",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/terrace/0.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newterrace/1.png",
         path: "M173.875 689.25H39.25V547.75H173.875V689.25Z",
         details: { number: "Indoor Games Arena", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U02",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/terrace/1.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newterrace/3.png",
         path: "M39.25 547.5V484.375H150.75V534.25H132.625V547.5H39.25Z",
         details: { number: "Gymnasium with Cardio Equipment", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U03",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/terrace/2.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newterrace/2.png",
         path: "M343.75 690.25H271.5V488.5H343.75V690.25Z",
         details: { number: "Open Library", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       }
@@ -482,7 +482,7 @@ export const floorData = [
   {
     title: "Upper Terrace Floor",
     viewBox: "0 0 384 720",
-    planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/upperTerrace/floor.png",
+    planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newupperTerrace/floor.png",
     pdfPath: "/downloadFloorPlan/lower terrace.pdf",
     features: [
       "Infinity Swimming Pool",
@@ -493,13 +493,13 @@ export const floorData = [
     units: [
       {
         id: "U01",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/upperTerrace/0.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newupperTerrace/2.png",
         path: "M121.5 241.5H23V177.75H121.5V241.5Z",
         details: { number: "Baby Pool", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       },
       {
         id: "U02",
-        unitImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/upperTerrace/1.png",
+        unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newupperTerrace/1.png",
         path: "M121.5 177.5H23.5V22H338V181.75H206.875V207H121.5V177.5Z",
         details: { number: "Rooftop Infinity  Swimming Pool", type: "", sqft: "", balconySqft: "", rooms: "", washrooms: "", floor: "" },
       }

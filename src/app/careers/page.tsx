@@ -1,6 +1,7 @@
 import MissionStatement from "@/components/aboutComponents/MissionStatement";
 import PhilosophySection from "@/components/aboutComponents/PhilosophySection";
-import CardSection from "@/components/CareerComponents/CardSection";
+// import CardSection from "@/components/CareerComponents/CardSection";
+import NewCardSection from "@/components/CareerComponents/NewCardSection";
 import FormSection from "@/components/CareerComponents/FormSection";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -12,7 +13,7 @@ export default async function page() {
     return (
         <div>
             <Header />
-            <CardSection jobs={jobs} />
+            <NewCardSection jobs={jobs} />
             <MissionStatement
                 text={
                     <>

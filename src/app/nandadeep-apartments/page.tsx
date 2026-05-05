@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -52,36 +52,36 @@ const MAP_DATA = [
             zoom: 13
         }
     },
-    {
-        key: "it",
-        title: "Academic Convenience",
-        icon: "/icons/academics.svg",
-        points: [44, 19],
+   {
+        key: "it-education",
+        title: "IT & Education",
+        icon: "/icons/culturalIcon.svg", 
+        points: [113, 136, 137], // Infosys, Gokarnatheshwara College, Ladyhill School
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
-        }
-    },
-    {
-        key: "education",
-        title: "Commercial Reach",
-        icon: "/icons/urbanIcon.svg",
-        points: [58, 46, 29, 28, 22, 47],
-        viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.892842, lng: 74.834272 },
+            zoom: 14
         }
     },
     {
         key: "essentials",
-        title: "Business Access",
-        icon: "/icons/businessIcon.svg",
-        points: [24, 37, 38, 57],
+        title: "Everyday Essentials",
+        icon: "/icons/healthcareIcon.svg",
+        points: [117], // Bharath Mall
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.892842, lng: 74.834272 },
+            zoom: 15
         }
     },
+    {
+        key: "nearby-places",
+        title: "Nearby Places",
+        icon: "/icons/citywideIcon.svg", 
+        points: [119, 120, 124, 138, 139, 122, 140, 141, 142, 143], 
+        viewport: {
+            center: { lat: 12.892842, lng: 74.834272 },
+            zoom: 14
+        }
+    }
 ];
 
 
@@ -160,7 +160,7 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
+                <NewHeader projectLink="/project-enquire?project=nandadeep" projectName="Nandadeep Apartments" floorPlanPdf="/completedFloorplans/Nandadeep-FloorPlans.pdf" />
                 <CompletedHero title={<>Nandadeep Apartments</>} subtitle="" variant="center" desktopImage="/images/nandeepImages/heroDesk.webp" mobileImage="/images/nandeepImages/heroMobile.png" pdfPath="/completedFloorplans/Nandadeep-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection

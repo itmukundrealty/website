@@ -29,6 +29,9 @@ interface FeaturesSectionProps {
   btnType?: "explore" | "know";
   modalTitle?: string;
   modalPoints?: string[];
+  id?: string;
+  btnAccentColor?: string;
+  accentColor?: string;
 }
 
 export default function FeaturesSection({
@@ -41,6 +44,9 @@ export default function FeaturesSection({
   btnType = "explore",
   modalTitle,
   modalPoints,
+  id,
+  btnAccentColor = "#0097DC",
+  accentColor = "#0097DC",
 }: FeaturesSectionProps) {
   const pathname = usePathname();
   const currentProject = pathname?.split("/")[1] || "";
@@ -105,7 +111,7 @@ export default function FeaturesSection({
   const GALLERY_IMAGES = fetchedGalleryImages.length > 0 ? fetchedGalleryImages : (galleryImages || []);
 
   return (
-    <section className="py-10 lg:py-32 bg-white font-host">
+    <section id={id} className="py-10 lg:py-32 bg-white font-host">
       <div className=" mx-auto px-6 lg:px-20 xl:px-54 ">
         {/* Header */}
         {variant === "center" ? (
@@ -118,7 +124,8 @@ export default function FeaturesSection({
             {btnType === "explore" ? (
               <Link
                 href={finalLink}
-                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px]"
+                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 text-white transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px]"
+                style={{ backgroundColor: btnAccentColor }}
               >
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                 Explore Now
@@ -248,7 +255,7 @@ export default function FeaturesSection({
                 cursor: pointer;
               }
               .features-swiper .swiper-pagination-bullet-active {
-                background: #0097dc;
+                background: ${accentColor};
                 width: 80px;
               }
             `}</style>
