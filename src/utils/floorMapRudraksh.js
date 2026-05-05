@@ -11,6 +11,7 @@ const typicalFloorUnits = [
     path: "M682.25 700.5L620.25 773.25L594.125 751.625L586.75 760.25L551.875 731.25L609.25 663.5L618.75 671.75L631 656.5L608.375 638.125L656.375 580.25L672.5 593.5L690.5 572.125L728.5 603.75L720.625 613.5L750 638.125L720 674.25L723.75 677L695 711.5L682.25 700.5Z",
     details: { number: "08", type: "Kitchen + Utility Space", sqft: "1880", balconySqft: "100", balcony: true, rooms: 3, washrooms: 3, floor: "Wing B - Second Floor" },
   },
+  
   {
     id: "S03",
     unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2-12/2.png",
