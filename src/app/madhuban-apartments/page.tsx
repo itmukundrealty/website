@@ -30,7 +30,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "Centralized Location",
-        icon: "/icons/mapLocationIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapLocationIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -40,7 +40,7 @@ const MAP_DATA = [
     {
         key: "it-education",
         title: "IT Zone & Education",
-        icon: "/icons/culturalIcon.svg", 
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/culturalIcon.svg", 
         points: [113, 114, 161], // Infosys, Mahesh PU College, Karavali College
         viewport: {
             center: { lat: 12.9100, lng: 74.8310 },
@@ -50,7 +50,7 @@ const MAP_DATA = [
     {
         key: "healthcare",
         title: "Healthcare",
-        icon: "/icons/healthcareIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/healthcareIcon.svg",
         points: [116], // AJ Hospital
         viewport: {
             center: { lat: 12.9100, lng: 74.8310 },
@@ -60,7 +60,7 @@ const MAP_DATA = [
     {
         key: "nearby-places",
         title: "Nearby Places",
-        icon: "/icons/citywideIcon.svg", 
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/citywideIcon.svg", 
         points: [118, 162], // Ladyhill Circle, Urwa Church Centenary Hall
         viewport: {
             center: { lat: 12.9100, lng: 74.8310 },
@@ -79,25 +79,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Light-Infused Living",
         description: "Designed to welcome natural light and openness, the residences create bright, uplifting spaces that feel airy and inviting. Thoughtful layouts and well-planned interiors enhance ventilation and spatial flow, ensuring every home feels warm, balanced, and connected to its surroundings.",
-        imageSrc: "/images/madhubanImages/liv1.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/liv1.webp"
     },
     {
         id: "kitchen",
         label: "Smart Comfort",
         description: "Modern conveniences and dependable infrastructure come together to support effortless daily living. From reliable utilities to intelligently integrated features, every element is curated to enhance comfort while simplifying everyday routines.",
-        imageSrc: "/images/madhubanImages/liv2.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/liv2.webp"
     },
     {
         id: "rooftop",
         label: "Sustainable Essentials",
         description: "Built with mindful systems that encourage responsible resource use, the development supports energy efficiency and long-term sustainability. Carefully considered provisions help reduce environmental impact while maintaining comfort and performance.",
-        imageSrc: "/images/madhubanImages/liv3.png"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/liv3.png"
     },
     {
         id: "location",
         label: "Effortless Convenience",
         description: "Seamless connectivity, essential services, and well-planned common areas ensure that everything you need is within easy reach. Designed for practicality and ease, the community allows daily life to unfold smoothly and without compromise.",
-        imageSrc: "/images/madhubanImages/liv4.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/liv4.webp"
     }
 ];
 
@@ -106,37 +106,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Premium Residences",
         subtitle: "",
-        image: "/images/madhubanImages/am1.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/am1.webp",
     },
     {
         id: "wellness",
         label: "Prime Urban Location",
         subtitle: "",
-        image: "/images/madhubanImages/am2.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/am2.webp",
     },
     {
         id: "lobby",
         label: "Rooftop Fitness Studio",
         subtitle: "",
-        image: "/images/madhubanImages/am3.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/am3.webp",
     },
     {
         id: "pool",
         label: "Serene Surroundings",
         subtitle: "",
-        image: "/images/madhubanImages/am4.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/am4.webp",
     },
     {
         id: "gym",
         label: "Dedicated Car Parking",
         subtitle: "",
-        image: "/images/madhubanImages/am5.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/am5.png",
     },
     {
         id: "sky-deck",
         label: "Spacious Interiors",
         subtitle: "",
-        image: "/images/madhubanImages/am6.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/am6.webp",
     }
 ];
 
@@ -160,8 +160,8 @@ export default function page() {
         <>
             <div className="">
 
-                <NewHeader projectLink="/project-enquire?project=madhuban" projectName="Madhuban Apartments" floorPlanPdf="/completedFloorplans/Madhuban-FloorPlans.pdf" />
-                <CompletedHero title={<>Madhuban <br className="hidden lg:block" /> Apartments</>} subtitle="" variant="topRight" desktopImage="/images/madhubanImages/heroDesk.png" mobileImage="/images/madhubanImages/heroMobile.png" pdfPath="/completedFloorplans/Madhuban-FloorPlans.pdf" />
+                <NewHeader projectLink="/project-enquire?project=madhuban" projectName="Madhuban Apartments" floorPlanPdf="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Madhuban-FloorPlans.pdf" />
+                <CompletedHero title={<>Madhuban <br className="hidden lg:block" /> Apartments</>} subtitle="" variant="topRight" desktopImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/heroDesk.png" mobileImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/heroMobile.png" pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Madhuban-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Refined Residential Living"
@@ -172,9 +172,9 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Tailored for Contemporary Living" variant="left" completed={true} btnType="know" modalTitle="Madhuban Apartments" modalPoints={ftModal} />
 
-                <MapSection customMarkerImage="/icons/mapIcons/madhubanIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.912372680974913, lng: 74.8329861441786 }} />
+                <MapSection customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/madhubanIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.912372680974913, lng: 74.8329861441786 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Explore Your<br />Future Home</>} subtitle={<>A space created for  <br className="hidden md:block" /> inspired living.</>} mobImg="/images/ctaImages/madhubanMob.png" deskImg="/images/ctaImages/madhubanDesk.png" />
+                <CTASection title={<>Explore Your<br />Future Home</>} subtitle={<>A space created for  <br className="hidden md:block" /> inspired living.</>} mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/madhubanMob.png" deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/madhubanDesk.png" />
                 <Footer />
             </div>
         </>

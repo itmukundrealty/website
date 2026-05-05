@@ -98,7 +98,7 @@ export default function StrategicMap() {
             {/* 1. BACKGROUND IMAGE */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/projectImages/bgImg.png"
+                    src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/projectImages/bgImg.png"
                     alt="Map Background"
                     fill
                     priority

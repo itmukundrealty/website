@@ -42,7 +42,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "City Connectivity",
-        icon: "/icons/connectivityIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/connectivityIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -52,7 +52,7 @@ const MAP_DATA = [
     {
         key: "it",
         title: "Transport Access",
-        icon: "/icons/transportIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/transportIcon.svg",
         points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -62,7 +62,7 @@ const MAP_DATA = [
     {
         key: "education",
         title: "Urban Amenities",
-        icon: "/icons/urbanIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/urbanIcon.svg",
         points: [35, 29, 45, 46, 22, 47],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -72,7 +72,7 @@ const MAP_DATA = [
     {
         key: "essentials",
         title: "Business Neighborhoods",
-        icon: "/icons/businessIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/businessIcon.svg",
         points: [24, 48, 41, 40],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -91,25 +91,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Focused Work",
         description: "Work in spaces thoughtfully designed to inspire productivity and comfort. Every detail supports your focus while keeping the environment welcoming and stress-free. ",
-        imageSrc: "/images/ajantaImages/liv1.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/liv1.webp"
     },
     {
         id: "kitchen",
         label: "Vitality Spaces",
         description: "Wellness zones and recreation areas encourage movement, relaxation, and balance. These spaces nurture both physical vitality and mental well-being. ",
-        imageSrc: "/images/ajantaImages/liv2.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/liv2.webp"
     },
     {
         id: "rooftop",
         label: "Professional Hubs",
         description: "Boardrooms and conference rooms crafted for seamless collaboration and impactful meetings. They provide the perfect setting for growth, learning, and connection. ",
-        imageSrc: "/images/ajantaImages/liv3.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/liv3.webp"
     },
     {
         id: "location",
         label: "Safe Haven",
         description: "A secure environment where safety and peace of mind come first. Here, you can thrive without worry and focus on what truly matters.",
-        imageSrc: "/images/ajantaImages/liv4.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/liv4.webp"
     }
 ];
 
@@ -118,37 +118,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Board & Conference Rooms",
         subtitle: "",
-        image: "/images/ajantaImages/am1.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/am1.webp",
     },
     {
         id: "wellness",
         label: "Training & Banquet Hall",
         subtitle: "",
-        image: "/images/ajantaImages/am2.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/am2.webp",
     },
     {
         id: "lobby",
         label: "Breakout & Informal Areas",
         subtitle: "",
-        image: "/images/ajantaImages/am3.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/am3.webp",
     },
     {
         id: "pool",
         label: "24×7 Security & Surveillance",
         subtitle: "",
-        image: "/images/ajantaImages/am4.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/am4.webp",
     },
     {
         id: "gym",
         label: "Spacious Parking",
         subtitle: "",
-        image: "/images/ajantaImages/am5.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/am5.webp",
     },
     {
         id: "sky-deck",
         label: "Modern Utilities & Backup",
         subtitle: "",
-        image: "/images/ajantaImages/am6.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/am6.webp",
     }
 ];
 
@@ -158,7 +158,7 @@ export default function page() {
             <div className="">
 
                 <NewHeader projectLink="/project-enquire?project=ajanta" projectName="Ajanta" />
-                <CompletedHero desktopImage="/images/ajantaImages/heroDesk.webp" mobileImage="/images/ajantaImages/heroMobile.png" title={<>Ajanta Business <br className="hidden lg:block" />Center</>} subtitle="" variant="rightCentered" />
+                <CompletedHero desktopImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/heroDesk.webp" mobileImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/heroMobile.png" title={<>Ajanta Business <br className="hidden lg:block" />Center</>} subtitle="" variant="rightCentered" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Elevated Work Environments"
@@ -168,10 +168,10 @@ export default function page() {
                 /> */}
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" completed={true} />
-                <MapSection customMarkerImage="/icons/mapIcons/ajantaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.892277985021787, lng: 74.84131965767145 }} />
+                <MapSection customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/ajantaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.892277985021787, lng: 74.84131965767145 }} />
                 <PartnerSection />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Step Into    <br /> Productivity</>} subtitle="Modern spaces crafted for efficiency and growth." mobImg="/images/ctaImages/ajantaMob.png" deskImg="/images/ctaImages/ajantaDesk.png" />
+                <CTASection title={<>Step Into    <br /> Productivity</>} subtitle="Modern spaces crafted for efficiency and growth." mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/ajantaMob.png" deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/ajantaDesk.png" />
                 <Footer />
             </div>
         </>

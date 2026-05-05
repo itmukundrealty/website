@@ -117,8 +117,8 @@ const projects = [
         location: "Airport Road, Derebail | Mangalore",
         description1: "Step into elevated living at Kedar, where spacious duplex homes, refined design, and premium amenities come together in the heart of Mangalore. ",
         description2: "Starting at 1.15 Cr, it’s luxury designed for how you truly live.",
-        desktopSrc: "/images/LandingPageImg/landmarks/new1.png",
-        mobileSrc: "/images/LandingPageImg/landmarks/11.png",
+        desktopSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/new1.png",
+        mobileSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/11.png",
         color: "#EFE8D3",
         link: "/kedar"
     },
@@ -127,8 +127,8 @@ const projects = [
         location: "Airport Road, Kapikad | Mangalore",
         description1: "Step into a refined work environment, where modern design, advanced infrastructure, and premium amenities come together to support the way you work and grow.",
         description2: "Designed for today’s enterprises, it’s a workspace that elevates productivity and presence.",
-        desktopSrc: "/images/LandingPageImg/landmarks/new2.png",
-        mobileSrc: "/images/LandingPageImg/landmarks/12.png",
+        desktopSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/new2.png",
+        mobileSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/12.png",
         color: "#E1DAD6",
         link: "/ashoka-business-center"
     },
@@ -137,8 +137,8 @@ const projects = [
         location: "Behind Infosys, Kottara | Mangalore",
         description1: "Step into thoughtfully crafted living at Rudraksh, where smart design, everyday comfort, and well-planned amenities come together to support a balanced lifestyle.",
         description2: "Built for ease and convenience, it’s a home that fits effortlessly into the way you live.",
-        desktopSrc: "/images/LandingPageImg/landmarks/new3.png",
-        mobileSrc: "/images/LandingPageImg/landmarks/13.png",
+        desktopSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/new3.png",
+        mobileSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/13.png",
         color: "#F0F0F0",
         link: "/rudraksh"
     }

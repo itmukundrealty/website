@@ -37,7 +37,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "City Connectivity",
-        icon: "/icons/cityIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/cityIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.989402030376874, lng: 74.80207348030677 },
@@ -47,7 +47,7 @@ const MAP_DATA = [
    {
         key: "education",
         title: "Education",
-        icon: "/icons/culturalIcon.svg", 
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/culturalIcon.svg", 
         points: [128], // Govinda Das College
         viewport: {
             center: { lat: 12.9892975, lng: 74.8021164 },
@@ -57,7 +57,7 @@ const MAP_DATA = [
     {
         key: "healthcare",
         title: "Healthcare",
-        icon: "/icons/healthcareIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/healthcareIcon.svg",
         points: [129], // Venus Hospital
         viewport: {
             center: { lat: 12.9892975, lng: 74.8021164 },
@@ -67,7 +67,7 @@ const MAP_DATA = [
     {
         key: "nearby-places",
         title: "Nearby Places",
-        icon: "/icons/citywideIcon.svg", 
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/citywideIcon.svg", 
         points: [130, 131, 132, 133, 134, 135], // Railway Station, Lalith, Mandovi, Sadananda, Market, Bus Stand
         viewport: {
             center: { lat: 12.9892975, lng: 74.8021164 },
@@ -86,25 +86,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Spacious Interiors",
         description: "Designed with openness and flexibility in mind, the interiors offer expansive layouts that adapt seamlessly to diverse business needs. Every space is planned to enhance functionality, comfort, and an elevated professional presence.",
-        imageSrc: "/images/kudvaImages/liv1.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/liv1.webp"
     },
     {
         id: "kitchen",
         label: "Commercial Spaces",
         description: "Versatile retail and office environments thoughtfully structured to support productivity, customer engagement, and long-term growth. The design fosters visibility, accessibility, and operational efficiency.",
-        imageSrc: "/images/kudvaImages/liv2.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/liv2.webp"
     },
     {
         id: "rooftop",
         label: "Strategic Layout",
         description: "Thoughtfully planned floor configurations that enhance visibility, movement, and functional efficiency. Designed to support seamless circulation and optimal space utilization, the layout ensures a smooth experience for businesses and visitors alike while maximizing commercial potential.",
-        imageSrc: "/images/kudvaImages/liv3.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/liv3.webp"
     },
     {
         id: "location",
         label: "Professional Ecosystem",
         description: "A dynamic setting that brings together retail, offices, and lifestyle establishments, creating an environment that encourages collaboration, steady footfall, and sustainable business success.",
-        imageSrc: "/images/kudvaImages/liv4.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/liv4.webp"
     }
 ];
 
@@ -113,37 +113,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Retail Boutiques",
         subtitle: "",
-        image: "/images/kudvaImages/am1.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/am1.webp",
     },
     {
         id: "wellness",
         label: "Dining Experiences",
         subtitle: "",
-        image: "/images/kudvaImages/am2.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/am2.webp",
     },
     {
         id: "lobby",
         label: "Entertainment Spaces",
         subtitle: "",
-        image: "/images/kudvaImages/am3.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/am3.webp",
     },
     {
         id: "pool",
         label: "Business Suites",
         subtitle: "",
-        image: "/images/kudvaImages/am4.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/am4.webp",
     },
     {
         id: "gym",
         label: "Ample Parking",
         subtitle: "",
-        image: "/images/kudvaImages/am5.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/am5.webp",
     },
     {
         id: "sky-deck",
         label: "Spacious Interiors",
         subtitle: "",
-        image: "/images/kudvaImages/am6.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/am6.webp",
     }
 ];
 
@@ -152,8 +152,8 @@ export default function page() {
         <>
             <div className="">
 
-                <NewHeader projectLink="/project-enquire?project=kudva" projectName="Kudva's Grandeur" floorPlanPdf="/completedFloorplans/Kudva's Grandeur-FloorPlan.pdf" />
-                <CompletedHero title={<>Kudva's Grandeur</>} mobileVariant="topRight" subtitle="" variant="rightCentered" desktopImage="/images/kudvaImages/heroDesk.png" mobileImage="/images/kudvaImages/heroMobile.png" pdfPath="/completedFloorplans/Kudva's Grandeur-FloorPlan.pdf" projectLink="/project-enquire?project=kudva" />
+                <NewHeader projectLink="/project-enquire?project=kudva" projectName="Kudva's Grandeur" floorPlanPdf="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Kudva's Grandeur-FloorPlan.pdf" />
+                <CompletedHero title={<>Kudva's Grandeur</>} mobileVariant="topRight" subtitle="" variant="rightCentered" desktopImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/heroDesk.png" mobileImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/heroMobile.png" pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Kudva's Grandeur-FloorPlan.pdf" projectLink="/project-enquire?project=kudva" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Refined Commercial Living"
@@ -165,9 +165,9 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Curated for Commercial Excellence" variant="left" completed={true} />
 
-                <MapSection customMarkerImage="/icons/mapIcons/kudvaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.989402030376874, lng: 74.80207348030677 }} />
+                <MapSection customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/kudvaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.989402030376874, lng: 74.80207348030677 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Elevate Your   <br />Business Presence</>} subtitle="A space designed to amplify your success." mobImg="/images/ctaImages/kudvaMob.png" deskImg="/images/ctaImages/kudvaDesk.png" />
+                <CTASection title={<>Elevate Your   <br />Business Presence</>} subtitle="A space designed to amplify your success." mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/kudvaMob.png" deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/kudvaDesk.png" />
                 <Footer />
             </div>
         </>

@@ -1,11 +1,11 @@
 {
   "plans": [
     {
-      "svg": "/assets/images/media/visual-search/buildings.svg",
+      "svg": "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/assets/images/media/visual-search/buildings.svg",
       "img": {
-        "md": "/assets/images/media/visual-search/plan-image@md.webp",
-        "xxl": "/assets/images/media/visual-search/plan-image@xxl.webp",
-        "xxxl": "/assets/images/media/visual-search/plan-image@xxxl.webp"
+        "md": "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/assets/images/media/visual-search/plan-image@md.webp",
+        "xxl": "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/assets/images/media/visual-search/plan-image@xxl.webp",
+        "xxxl": "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/assets/images/media/visual-search/plan-image@xxxl.webp"
       },
       "config": {
         "popovers": {

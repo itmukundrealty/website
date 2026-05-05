@@ -23,7 +23,7 @@ export default function ShapingPage() {
                         </span>
                     </>
                 }
-                imageSrc="/images/aboutImages/mukundOutline.svg"
+                imageSrc="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/aboutImages/mukundOutline.svg"
                 imageClassName=""
             />
             <MetricSection/>
@@ -46,7 +46,7 @@ export default function ShapingPage() {
                         lasting value.
                     </>
                 }
-                imageSrc="/icons/mukund.svg"
+                imageSrc="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
             />
             <TeamSelector />
             <QuoteBanner />

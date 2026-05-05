@@ -34,7 +34,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "Citywide Access",
-        icon: "/icons/citywideIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/citywideIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -44,7 +44,7 @@ const MAP_DATA = [
    {
         key: "it-education",
         title: "IT & Education",
-        icon: "/icons/culturalIcon.svg", 
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/culturalIcon.svg", 
         points: [113, 114, 115], // Infosys, Mahesh PU, AJ Institute
         viewport: {
             center: { lat: 12.903875173703936, lng: 74.83892547301431 },
@@ -54,7 +54,7 @@ const MAP_DATA = [
     {
         key: "healthcare-essentials",
         title: "Healthcare & Essentials",
-        icon: "/icons/healthcareIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/healthcareIcon.svg",
         points: [116, 117], // AJ Hospital, Bharath Mall
         viewport: {
             center: { lat: 12.903875173703936, lng: 74.83892547301431 },
@@ -64,7 +64,7 @@ const MAP_DATA = [
     {
         key: "nearby-places",
         title: "Nearby Places",
-        icon: "/icons/citywideIcon.svg", 
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/citywideIcon.svg", 
         points: [118, 119, 120, 121, 122, 123, 124, 125, 126], 
         viewport: {
             center: { lat: 12.903875173703936, lng: 74.83892547301431 },
@@ -83,25 +83,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Spacious Living",
         description: "Experience thoughtfully designed homes with ample space, natural light, and functional layouts that make every corner comfortable and inviting. ",
-        imageSrc: "/images/evannaImages/liv1.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/liv1.webp"
     },
     {
         id: "kitchen",
         label: "Social Spaces",
         description: "Connect and unwind in community lounges, landscaped gardens, and multi-purpose halls crafted for gatherings, celebrations, and meaningful interactions. ",
-        imageSrc: "/images/evannaImages/liv2.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/liv2.webp"
     },
     {
         id: "rooftop",
         label: "Fitness Zones",
         description: "Stay active and energized with fully equipped gyms, yoga & meditation pavilions, and dedicated outdoor play and recreation areas. ",
-        imageSrc: "/images/evannaImages/liv3.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/liv3.webp"
     },
     {
         id: "location",
         label: "Smart Living",
         description: "Enjoy modern conveniences with integrated technology, reliable utilities, safety features, and eco-friendly solutions for a seamless lifestyle.",
-        imageSrc: "/images/evannaImages/liv4.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/liv4.webp"
     }
 ];
 
@@ -110,37 +110,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Fitness Zone",
         subtitle: "",
-        image: "/images/evannaImages/am1.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/am1.webp",
     },
     {
         id: "wellness",
         label: "Kids Play Area",
         subtitle: "",
-        image: "/images/evannaImages/am2.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/am2.webp",
     },
     {
         id: "lobby",
         label: "Yoga Pavilion",
         subtitle: "",
-        image: "/images/evannaImages/am3.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/am3.webp",
     },
     {
         id: "pool",
         label: "Terrace Lounge",
         subtitle: "",
-        image: "/images/evannaImages/am4.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/am4.webp",
     },
     {
         id: "gym",
         label: "Party Hall",
         subtitle: "",
-        image: "/images/evannaImages/am5.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/am5.webp",
     },
     {
         id: "sky-deck",
         label: "Modern Interiors",
         subtitle: "",
-        image: "/images/evannaImages/am6.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/am6.webp",
     }
 ];
 
@@ -169,8 +169,8 @@ export default function page() {
         <>
             <div className="">
 
-                <NewHeader projectLink="/project-enquire?project=evanna" projectName="Evanna Homes" floorPlanPdf="/completedFloorplans/Evanna-FloorPlans.pdf" />
-                <CompletedHero title={<>Evanna Homes</>} subtitle="" mobileVariant="topRight" variant="rightCentered" desktopImage="/images/evannaImages/heroDesk.webp" mobileImage="/images/evannaImages/heroMob.png" pdfPath="/completedFloorplans/Evanna-FloorPlans.pdf" />
+                <NewHeader projectLink="/project-enquire?project=evanna" projectName="Evanna Homes" floorPlanPdf="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Evanna-FloorPlans.pdf" />
+                <CompletedHero title={<>Evanna Homes</>} subtitle="" mobileVariant="topRight" variant="rightCentered" desktopImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/heroDesk.webp" mobileImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/heroMob.png" pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Evanna-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Thoughtful Residential Living"
@@ -181,9 +181,9 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" completed={true} btnType="know" modalTitle="Evanna Homes " modalPoints={ftModal}  />
 
-                <MapSection customMarkerImage="/icons/mapIcons/evannaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.903875173703936, lng: 74.83892547301431 }} />
+                <MapSection customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/evannaIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.903875173703936, lng: 74.83892547301431 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Step Into    <br /> Better Living</>} subtitle={<>In a home crafted for <br className="hidden md:block" /> comfort and care.</>} mobImg="/images/ctaImages/evannaMob.png" deskImg="/images/ctaImages/evannaDesk.png" />
+                <CTASection title={<>Step Into    <br /> Better Living</>} subtitle={<>In a home crafted for <br className="hidden md:block" /> comfort and care.</>} mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/evannaMob.png" deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/evannaDesk.png" />
                 <Footer />
             </div>
         </>

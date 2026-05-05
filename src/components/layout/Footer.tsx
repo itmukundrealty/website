@@ -95,7 +95,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
                 {/* Column 1: Logo & Contact */}
                 <div className="md:col-span-12 lg:col-span-4 flex flex-col">
                     <Link href="/" className="mb-8 md:mb-10">
-                        <Image src="/icons/logo.svg" alt="Mukund Realty" width={220} height={80} className="object-contain" />
+                        <Image src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/logo.svg" alt="Mukund Realty" width={220} height={80} className="object-contain" />
                     </Link>
 
                     <div className="space-y-6 md:space-y-5 lg:pl-1 mt-2">
@@ -183,7 +183,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
             {/* Logo centered */}
             <div className="mb-10 w-full flex justify-center">
                 <Link href="/">
-                    <Image src="/icons/logo.svg" alt="Mukund Realty" width={180} height={60} className="object-contain" />
+                    <Image src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/logo.svg" alt="Mukund Realty" width={180} height={60} className="object-contain" />
                 </Link>
             </div>
 

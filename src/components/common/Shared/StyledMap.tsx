@@ -198,7 +198,7 @@ export default function StyledMap({
     locations = LOCATIONS,
     hideMainIcon = false,
     mainMarkerPosition,
-    customMarkerImage = "/icons/mapIcon.svg",
+    customMarkerImage = "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcon.svg",
     renderAsMarkers = false,
     allowedPoints,
     accentColor = "#0097DC",

@@ -25,7 +25,7 @@ export default function page() {
                             </span>
                         </>
                     }
-                    imageSrc="/images/aboutImages/mukundOutline.svg"
+                    imageSrc="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/aboutImages/mukundOutline.svg"
                 />
                 <PhilosophySection
                     heading={
@@ -38,7 +38,7 @@ export default function page() {
                             <span className="font-light">If this reflects how you prefer to work, we would be glad to connect.</span>
                         </>
                     }
-                    imageSrc="/icons/mukund.svg"
+                    imageSrc="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
                 />
                 <Footer/>
             </div>

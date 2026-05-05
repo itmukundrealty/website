@@ -89,7 +89,7 @@ export const floorData = [
     title: "First Floor",
     viewBox: "0 0 516 743",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor1/floor.png",
-    pdfPath: "/downloadFloorPlan/first floor plan.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/first floor plan.pdf",
     features: [
       "Shops",
       "Car Parking",
@@ -146,7 +146,7 @@ export const floorData = [
     title: "Second Floor",
     viewBox: "0 0 530 764",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor2/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "Car Parking"
     ],
@@ -165,7 +165,7 @@ export const floorData = [
     title: "Third Floor",
     viewBox: "0 0 505 728",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor3/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs",
@@ -259,7 +259,7 @@ export const floorData = [
     title: "Fourth Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -270,7 +270,7 @@ export const floorData = [
     title: "Fifth Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -281,7 +281,7 @@ export const floorData = [
     title: "Sixth Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -292,7 +292,7 @@ export const floorData = [
     title: "Seventh Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -303,7 +303,7 @@ export const floorData = [
     title: "Eighth Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -314,7 +314,7 @@ export const floorData = [
     title: "Ninth Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -325,7 +325,7 @@ export const floorData = [
     title: "Tenth Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -336,7 +336,7 @@ export const floorData = [
     title: "Eleventh Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -347,7 +347,7 @@ export const floorData = [
     title: "Twelfth Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -358,7 +358,7 @@ export const floorData = [
     title: "Thirteenth Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -369,7 +369,7 @@ export const floorData = [
     title: "Fourteenth Floor",
     viewBox: "0 0 389 734",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -380,7 +380,7 @@ export const floorData = [
     title: "Fifteenth Floor",
     viewBox: "0 0 379 714",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor15/floor.png",
-    pdfPath: "/downloadFloorPlan/13th floor.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/13th floor.pdf",
     features: [
       "4 BHKs",
       "Duplex - Lower Floor"
@@ -416,7 +416,7 @@ export const floorData = [
     title: "Sixteenth Floor",
     viewBox: "0 0 393 741",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newfloor16/floor.png",
-    pdfPath: "/downloadFloorPlan/14th floor.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/14th floor.pdf",
     features: [
       "4 BHKs",
       "Duplex - Upper Floor"
@@ -452,7 +452,7 @@ export const floorData = [
     title: "Terrace Floor",
     viewBox: "0 0 383 729",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newterrace/floor.png",
-    pdfPath: "/downloadFloorPlan/lower terrace.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/lower terrace.pdf",
     features: [
       "Library",
       "Cardio Machines",
@@ -483,7 +483,7 @@ export const floorData = [
     title: "Upper Terrace Floor",
     viewBox: "0 0 384 720",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/kedar/floorMapAndSpeceficMapImages/floorMapAndSpeceficMapImages/newupperTerrace/floor.png",
-    pdfPath: "/downloadFloorPlan/lower terrace.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/lower terrace.pdf",
     features: [
       "Infinity Swimming Pool",
       "Baby Pool",

@@ -530,7 +530,7 @@ export function ProjectHero({
               <div className="mb-8 mt-1">
                 <Link href="/" className="flex items-center z-50 relative">
                   <div className="relative w-48 h-12 md:w-56 md:h-14 transition-opacity duration-300">
-                    <Image src={"/logo/whiteLogo.svg"} alt="Mukund Realty" fill className="object-contain" priority />
+                    <Image src={"https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/logo/whiteLogo.svg"} alt="Mukund Realty" fill className="object-contain" priority />
                   </div>
                 </Link>
               </div>

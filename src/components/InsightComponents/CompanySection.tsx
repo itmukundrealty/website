@@ -72,7 +72,7 @@ export default function CompanySection() {
                             </Link>
                             <div className="relative w-full aspect-square mt-auto">
                                 <Image
-                                    src={item.imageUrl || "/images/placeholder.jpg"}
+                                    src={item.imageUrl || "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/placeholder.jpg"}
                                     alt={item.title}
                                     fill
                                     className="object-cover"

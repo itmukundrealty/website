@@ -30,7 +30,7 @@ export default function InsightsSection() {
             <div className="mx-auto px-6 md:px-12 lg:px-20 xl:px-54">
                 <div className="absolute -top-20 -left-40 pointer-events-none z-0 hidden md:block">
                     <Image
-                        src="/icons/mukund.svg"
+                        src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
                         alt="Mukund Abstract Shape"
                         width={250}
                         height={250}
@@ -71,7 +71,7 @@ export default function InsightsSection() {
                                     <Image
                                         width={600}
                                         height={400}
-                                        src={blog.imageUrl || `/images/LandingPageImg/insights/${(index % 2) + 1}.png`}
+                                        src={blog.imageUrl || `https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/insights/${(index % 2) + 1}.png`}
                                         alt={blog.title}
                                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                                     />

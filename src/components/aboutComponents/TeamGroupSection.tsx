@@ -16,7 +16,7 @@ const TeamGroupSection = () => {
           className="w-full"
         >
           <Image
-            src="/images/aboutImages/team.png"
+            src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/aboutImages/team.png"
             alt="Our Team"
             width={1000}
             height={1000}
@@ -32,7 +32,7 @@ const TeamGroupSection = () => {
         {/* Abstract SVG / Blur element at bottom left */}
         <div className="absolute lg:bottom-0 lg:-left-40 -right-10 bottom-0   pointer-events-none">
           <Image
-            src="/icons/mukund.svg"
+            src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
             alt="Blur"
             width={500}
             height={500}

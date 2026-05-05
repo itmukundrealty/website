@@ -97,7 +97,7 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
           {/* Logo Section */}
           <Link href="/" className="z-50 relative">
             <div className="relative w-32 md:w-36 md:w-40 h-auto aspect-[3/1]">
-              <Image width={500} height={500} src={isScrolled ? "/icons/logo.svg" : "/icons/mukundIcon.svg"} alt="Mukund Realty" className="object-contain w-full h-full" />
+              <Image width={500} height={500} src={isScrolled ? "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/logo.svg" : "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukundIcon.svg"} alt="Mukund Realty" className="object-contain w-full h-full" />
             </div>
           </Link>
 
@@ -202,7 +202,7 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
             {/* Mobile Header */}
             <div className="flex justify-between items-center p-6 md:p-12 border-b border-gray-50">
               <div className="w-32">
-                <Image width={500} height={500} src="/icons/logo.svg" alt="Mukund Realty" className="w-full object-contain" />
+                <Image width={500} height={500} src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/logo.svg" alt="Mukund Realty" className="w-full object-contain" />
               </div>
               <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 -mr-2 text-black hover:bg-gray-50 rounded-full transition-colors">
                 <X strokeWidth={1.5} size={32} />

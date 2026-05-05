@@ -47,7 +47,7 @@ export default function HeroGrid() {
                     className="relative w-full h-full overflow-hidden "
                 >
                     <Image
-                        src="/images/aboutImages/heroImg/new1.png"
+                        src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/aboutImages/heroImg/new1.png"
                         alt="Hero 1"
                         fill
                         className="object-cover"
@@ -64,7 +64,7 @@ export default function HeroGrid() {
                     className="relative w-full h-full overflow-hidden "
                 >
                     <Image
-                        src="/images/aboutImages/heroImg/new2.png"
+                        src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/aboutImages/heroImg/new2.png"
                         alt="Hero 2"
                         fill
                         className="object-cover"
@@ -81,7 +81,7 @@ export default function HeroGrid() {
                     className="relative w-full h-full overflow-hidden "
                 >
                     <Image
-                        src="/images/aboutImages/heroImg/new3.png"
+                        src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/aboutImages/heroImg/new3.png"
                         alt="Hero 3"
                         fill
                         className="object-cover"
@@ -107,7 +107,7 @@ export default function HeroGrid() {
                 >
                     <SwiperSlide className="relative w-full h-full overflow-hidden">
                         <Image
-                            src="/images/aboutImages/heroImg/11.webp"
+                            src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/aboutImages/heroImg/11.webp"
                             alt="Hero 1"
                             fill
                             className="object-cover"
@@ -116,7 +116,7 @@ export default function HeroGrid() {
                     </SwiperSlide>
                     <SwiperSlide className="relative w-full h-full overflow-hidden">
                         <Image
-                            src="/images/aboutImages/heroImg/12.webp"
+                            src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/aboutImages/heroImg/12.webp"
                             alt="Hero 2"
                             fill
                             className="object-cover"
@@ -125,7 +125,7 @@ export default function HeroGrid() {
                     </SwiperSlide>
                     <SwiperSlide className="relative w-full h-full overflow-hidden">
                         <Image
-                            src="/images/aboutImages/heroImg/13.webp"
+                            src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/aboutImages/heroImg/13.webp"
                             alt="Hero 3"
                             fill
                             className="object-cover"

@@ -9,8 +9,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const slides = [
   {
     id: 1,
-    image: "/landingPage/hero1.png",
-    mobileImage: "/landingPage/mobHero1.png",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/landingPage/hero1.png",
+    mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/landingPage/mobHero1.png",
     heading: "A Higher Way to Live",
     subheading: "Luxury Homes at Rudraksh",
     desc: "Mangalore's First Apartment with a 24/7 Cloud Kitchen near Infosys, Kottara Mangaluru",
@@ -19,8 +19,8 @@ const slides = [
   },
   {
     id: 2,
-    image: "/landingPage/hero2.png",
-    mobileImage: "/landingPage/mobHero2.png",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/landingPage/hero2.png",
+    mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/landingPage/mobHero2.png",
     heading: "Modern Business, Effortlessly Perfected",
     subheading: <> Commercial Workspaces at <br /> Ashoka Business Center </>,
     desc: <>Mangalore’s Premier Business Centre with World-Class Infrastructure and a Refined, <br /> Contemporary Work Environment</>,
@@ -29,8 +29,8 @@ const slides = [
   },
   {
     id: 3,
-    image: "/landingPage/hero3.png",
-    mobileImage: "/landingPage/mobHero3.png",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/landingPage/hero3.png",
+    mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/landingPage/mobHero3.png",
     heading: "A Life of Luxury Awaits",
     subheading: "Luxury Living, Defined at Kedar",
     desc: "Mangalore’s Premier Business Centre with World-Class Infrastructure and a Refined, Contemporary Work Environment",

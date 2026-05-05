@@ -34,7 +34,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "Regional Access",
-        icon: "/icons/mapLocationIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapLocationIcon.svg",
         points: [],
         viewport: {
             center: { lat: 12.9055, lng: 74.8496 },
@@ -44,7 +44,7 @@ const MAP_DATA = [
     {
         key: "it",
         title: "IT & Employment zones and Education",
-        icon: "/icons/infrastrucureIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/infrastrucureIcon.svg",
         points: [105, 101, 103],
         viewport: {
             center: { lat: 12.8974, lng: 74.8364 },
@@ -54,7 +54,7 @@ const MAP_DATA = [
     {
         key: "essentials",
         title: "Healthcare and Everyday essentials",
-        icon: "/icons/educationIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/educationIcon.svg",
         points: [102, 107],
         viewport: {
             center: { lat: 12.8929, lng: 74.8436 },
@@ -64,7 +64,7 @@ const MAP_DATA = [
     {
         key: "nearby",
         title: "Nearby places",
-        icon: "/icons/culturalIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/culturalIcon.svg",
         points: [100, 104, 106, 108, 109, 110, 111, 112],
         viewport: {
             center: { lat: 12.8964, lng: 74.8405 },
@@ -78,25 +78,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Refined Living",
         description: "It's a carefully crafted world of comfort and belonging, not just a place to live. To satisfy the demands of contemporary families, we have created a safe, connected, and hospitable environment. ",
-        imageSrc: "/images/mathuraImages/liv1.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/liv1.webp"
     },
     {
         id: "kitchen",
         label: "Active Wellness",
         description: "Encourage an active and balanced lifestyle through thoughtfully designed wellness spaces. Crafted to support everyday movement and recreation, these amenities promote physical vitality and mental well-being. ",
-        imageSrc: "/images/mathuraImages/liv2.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/liv2.webp"
     },
     {
         id: "rooftop",
         label: "Assured Protection",
         description: "Enjoy complete peace of mind with an integrated security ecosystem featuring advanced surveillance, fire safety, and reliable power backup for a safe, uninterrupted living environment.",
-        imageSrc: "/images/mathuraImages/liv3.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/liv3.webp"
     },
     {
         id: "location",
         label: "Seamless Ease",
         description: "Experience effortless living through intuitive design and user-friendly features. Our thoughtfully crafted spaces prioritize your comfort and convenience, letting you focus on what truly matters.",
-        imageSrc: "/images/mathuraImages/liv4.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/liv4.webp"
     }
 ];
 
@@ -105,37 +105,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Wellness Zone",
         subtitle: "",
-        image: "/images/mathuraImages/am6.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/am6.webp",
     },
     {
         id: "wellness",
         label: "Kids Play Area",
         subtitle: "",
-        image: "/images/mathuraImages/am1.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/am1.webp",
     },
     {
         id: "lobby",
         label: "Smart Surveillance",
         subtitle: "",
-        image: "/images/mathuraImages/am2.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/am2.webp",
     },
     {
         id: "pool",
         label: "Reliable Backup",
         subtitle: "",
-        image: "/images/mathuraImages/am3.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/am3.webp",
     },
     {
         id: "gym",
         label: "Community Spaces",
         subtitle: "",
-        image: "/images/mathuraImages/am4.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/am4.webp",
     },
     {
         id: "sky-deck",
         label: "Visitors Lounge",
         subtitle: "",
-        image: "/images/mathuraImages/am5.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/am5.webp",
     }
 ];
 
@@ -144,14 +144,14 @@ export default function page() {
         <>
             <div className="">
 
-                <NewHeader projectLink="/project-enquire?project=mathura" projectName="Mathura Residency" floorPlanPdf="/completedFloorplans/Mathura-FloorPlans.pdf" />
+                <NewHeader projectLink="/project-enquire?project=mathura" projectName="Mathura Residency" floorPlanPdf="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Mathura-FloorPlans.pdf" />
                 <CompletedHero 
-                    desktopImage="/images/mathuraImages/heroDesk.png" 
-                    mobileImage="/images/mathuraImages/newHeroMobile.png" 
+                    desktopImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/heroDesk.png" 
+                    mobileImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/newHeroMobile.png" 
                     title={<>Mathura <br className="hidden lg:block" />Residency</>} 
                     subtitle="" 
                     variant="topRight" 
-                    pdfPath="/completedFloorplans/Mathura-FloorPlans.pdf"
+                    pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Mathura-FloorPlans.pdf"
                 />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
@@ -163,9 +163,9 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Crafted for Everyday Comfort" variant="left" completed={true} />
 
-                <MapSection customMarkerImage="/icons/mapIcons/mathuraIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.90551016701943, lng: 74.84966575701976 }} />
+                <MapSection customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/mathuraIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.90551016701943, lng: 74.84966575701976 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Discover Your   <br /> Perfect Home</>} subtitle={<>A home that reflects <br className="hidden md:block" /> your aspirations.</>} mobImg="/images/ctaImages/mathuraMob.png" deskImg="/images/ctaImages/mathuraDesk.png" />
+                <CTASection title={<>Discover Your   <br /> Perfect Home</>} subtitle={<>A home that reflects <br className="hidden md:block" /> your aspirations.</>} mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/mathuraMob.png" deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/mathuraDesk.png" />
                 <Footer />
             </div>
         </>

@@ -17,7 +17,7 @@ const slides = [
     id: 1,
     title: "Foundations of Trust",
     desc: "At Mukund, integrity means complete transparency and staying true to our word, ensuring every development reflects the trust placed in us.",
-    image: "/images/LandingPageImg/defining/1.png",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/defining/1.png",
     link: "About Mukund Realty",
     href: "/about",
   },
@@ -25,7 +25,7 @@ const slides = [
     id: 2,
     title: "Holistic Planning",
     desc: "From concept to completion, we apply meticulous attention to detail to ensure every element is executed with accuracy and care.",
-    image: "/images/LandingPageImg/defining/2.png",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/defining/2.png",
     link: "View our Projects",
     href: "/projects",
   },
@@ -33,7 +33,7 @@ const slides = [
     id: 3,
     title: "Design with Purpose",
     desc: "Each Mukund development is shaped by clear intent, prioritizing functional design that serves real needs and stands the test of time.",
-    image: "/images/LandingPageImg/defining/3.png",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/defining/3.png",
     link: "Explore our Insights page",
     href: "/insights",
   },
@@ -148,7 +148,7 @@ export default function PrinciplesSlider() {
       </div>
       <div className="absolute -bottom-20 -left-40 pointer-events-none z-0 hidden md:block">
         <Image
-          src="/icons/mukund.svg"
+          src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
           alt="Mukund Abstract Shape"
           width={250}
           height={250}
@@ -157,7 +157,7 @@ export default function PrinciplesSlider() {
       </div>
       {/* <div className="absolute -top-10 md:-top-30 right-0 pointer-events-none z-0  ">
         <Image
-          src="/icons/mukund.svg"
+          src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
           alt="Mukund Abstract Shape"
           width={150}
           height={150}

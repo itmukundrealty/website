@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import StyledMap from '@/components/common/Shared/StyledMap';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
+
+const StyledMap = dynamic(() => import('@/components/common/Shared/StyledMap'), { ssr: false });
 
 /* -----------------------------------
    Types

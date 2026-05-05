@@ -37,7 +37,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "Transit Routes",
-        icon: "/icons/citywideIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/citywideIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -47,7 +47,7 @@ const MAP_DATA = [
     {
         key: "it",
         title: "Institutional Access",
-        icon: "/icons/bookIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/bookIcon.svg",
         points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -57,7 +57,7 @@ const MAP_DATA = [
     {
         key: "education",
         title: "Daily Convenience",
-        icon: "/icons/urbanIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/urbanIcon.svg",
         points: [59, 26, 29, 28, 22, 35],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -67,7 +67,7 @@ const MAP_DATA = [
     {
         key: "essentials",
         title: "Dining Options",
-        icon: "/icons/cafeIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/cafeIcon.svg",
         points: [41, 24, 38, 39],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -86,25 +86,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Spacious Living",
         description: "Experience thoughtfully designed homes with ample space, natural light, and functional layouts that make every corner comfortable and inviting. ",
-        imageSrc: "/images/kailashImages/liv1.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/liv1.webp"
     },
     {
         id: "kitchen",
         label: "Social Spaces",
         description: "Connect and unwind in community lounges, landscaped gardens, and multi-purpose halls crafted for gatherings, celebrations, and meaningful interactions. ",
-        imageSrc: "/images/kailashImages/liv2.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/liv2.webp"
     },
     {
         id: "rooftop",
         label: "Fitness Zones",
         description: "Stay active and energized with fully equipped gyms, yoga & meditation pavilions, and dedicated outdoor play and recreation areas.",
-        imageSrc: "/images/kailashImages/liv3.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/liv3.webp"
     },
     {
         id: "location",
         label: "Smart Living",
         description: "Enjoy modern conveniences with integrated technology, reliable utilities, safety features, and eco-friendly solutions for a seamless lifestyle.",
-        imageSrc: "/images/kailashImages/liv4.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/liv4.webp"
     }
 ];
 
@@ -113,37 +113,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Infinity Pool at Roof Top",
         subtitle: "",
-        image: "/images/kailashImages/amm1.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/amm1.webp",
     },
     {
         id: "wellness",
         label: "Air-Conditioned Gymnasium",
         subtitle: "",
-        image: "/images/kailashImages/amm2.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/amm2.webp",
     },
     {
         id: "lobby",
         label: "Kids Play Area",
         subtitle: "",
-        image: "/images/kailashImages/amm3.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/amm3.webp",
     },
     {
         id: "pool",
         label: "Sea view",
         subtitle: "",
-        image: "/images/kailashImages/amm4.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/amm4.webp",
     },
     {
         id: "gym",
         label: "Yoga & Meditation Deck",
         subtitle: "",
-        image: "/images/kailashImages/amm5.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/amm5.webp",
     },
     {
         id: "Double-Height Entrance Lobby",
         label: "Double-Height Entrance Lobby",
         subtitle: "",
-        image: "/images/kailashImages/amm6.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/amm6.webp",
     }
 ];
 
@@ -152,8 +152,8 @@ export default function page() {
         <>
             <div className="">
 
-                <NewHeader projectLink="/project-enquire?project=kailash" projectName="Kailash" floorPlanPdf="/completedFloorplans/Kailash-FloorPlans.pdf" view360Url="https://www.turiya.co/360/KailashLuxuryApartments/" />
-                <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/heroDesk.webp" mobileImage="/images/kailashImages/heroMobile.png" pdfPath="/completedFloorplans/Kailash-FloorPlans.pdf" />
+                <NewHeader projectLink="/project-enquire?project=kailash" projectName="Kailash" floorPlanPdf="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Kailash-FloorPlans.pdf" view360Url="https://www.turiya.co/360/KailashLuxuryApartments/" />
+                <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/heroDesk.webp" mobileImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/heroMobile.png" pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Kailash-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Crafted for Everyday Excellence"
@@ -166,9 +166,9 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" completed={true} />
 
-                <MapSection customMarkerImage="/icons/mapIcons/kailashIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.908957222908294, lng: 74.83897934417861 }} />
+                <MapSection customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/kailashIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.908957222908294, lng: 74.83897934417861 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Live with <br /> Greater Ease</>} subtitle={<>Where style and  <br className="hidden md:block" /> function align.</>} mobImg="/images/ctaImages/kailashMob.png" deskImg="/images/ctaImages/kailashDesk.png" />
+                <CTASection title={<>Live with <br /> Greater Ease</>} subtitle={<>Where style and  <br className="hidden md:block" /> function align.</>} mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/kailashMob.png" deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/kailashDesk.png" />
                 <Footer />
             </div>
         </>

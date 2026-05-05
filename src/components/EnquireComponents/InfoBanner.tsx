@@ -5,7 +5,7 @@ export default function InfoBanner() {
         <section className="w-full py-12 md:py-20 flex justify-center bg-white">
             <div
                 className="w-full max-w-[1400px] mx-auto min-h-[250px] sm:min-h-[300px] flex flex-col items-center justify-center bg-white bg-no-repeat bg-cover bg-center"
-                style={{ backgroundImage: "url('/images/enquireImages/bg.png')" }}
+                style={{ backgroundImage: "url('https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/enquireImages/bg.png')" }}
             >
                 <div className="text-center px-4">
                     <h2 className="text-4xl md:text-5xl font-light text-[#4A4A4A] mb-3">

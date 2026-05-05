@@ -24,7 +24,7 @@ export default async function page() {
                         </span>
                     </>
                 }
-                imageSrc="/icons/mukund.svg"
+                imageSrc="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
                 imageClassName="blur-lg"
             />
 
@@ -40,7 +40,7 @@ export default async function page() {
                         <span className="font-light">If this reflects how you prefer to work, we would be glad to connect.</span>
                     </>
                 }
-                imageSrc="/icons/mukund.svg"
+                imageSrc="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
             />
 
             <FormSection />

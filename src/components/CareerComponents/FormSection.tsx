@@ -229,7 +229,7 @@ export default function FormSection() {
                 <div className="absolute inset-0 bg-[#A6C0DA]">
                     {/* Assuming you will replace with actual hands image, testing placeholder for now */}
                     <Image
-                        src="/images/formImages.png"
+                        src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/formImages.png"
                         alt="Join the Mukund Team"
                         fill
                         className="object-cover"

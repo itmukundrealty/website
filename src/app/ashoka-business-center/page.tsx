@@ -38,7 +38,7 @@ const MAP_DATA = [
   {
     key: "city",
     title: "Regional & City Access",
-    icon: "/icons/regional.svg",
+    icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/regional.svg",
     points: [0],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -48,7 +48,7 @@ const MAP_DATA = [
   {
     key: "it",
     title: "Workforce",
-    icon: "/icons/workforceIcon.svg",
+    icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/workforceIcon.svg",
     points: [18, 19],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -58,7 +58,7 @@ const MAP_DATA = [
   {
     key: "education",
     title: "Commercial Proximity",
-    icon: "/icons/itIcon.svg",
+    icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/itIcon.svg",
     points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -68,7 +68,7 @@ const MAP_DATA = [
   {
     key: "essentials",
     title: "Digital Infrastructure",
-    icon: "/icons/digitalIcon.svg",
+    icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/digitalIcon.svg",
     points: [32, 33, 34],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -83,28 +83,28 @@ const SECTION_DATA = [
     label: "Green Workspaces",
     description:
       "It's more than just a workspace; it's a world unto itself. We craft a comfortable, secure and professional environment tailored to meet the needs of a diverse range of corporate businesses, surrounded by lush greenery and the beauty of Mother Nature in full bloom.",
-    imageSrc: "/images/ashokaImages/liv1.webp",
+    imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/liv1.webp",
   },
   {
     id: "kitchen",
     label: "Smart Tech",
     description:
       "Harnessing contemporary, intelligent technology enables us to streamline daily tasks, enhancing productivity and efficiency swiftly. What were once manual and time-consuming activities can now be efficiently accomplished through digital tools, self-automated systems and app management.",
-    imageSrc: "/images/ashokaImages/liv2.webp",
+    imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/liv2.webp",
   },
   {
     id: "rooftop",
     label: "Sustainability",
     description:
       "Embrace sustainability through our comprehensive and energy-conscious ecosystem, crafted to mitigate our environmental footprint. Designed with sustainable systems that support responsible water and energy use.",
-    imageSrc: "/images/ashokaImages/liv3.webp",
+    imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/liv3.webp",
   },
   {
     id: "location",
     label: "Efficiency",
     description:
       "Immerse yourself in the global community by embracing a fusion of modern sophistication and natural allure. Our workspace culture celebrates local ethnic artistry, harnessing its power to spark creativity, alleviate stress and cultivate a vibrant positive atmosphere.",
-    imageSrc: "/images/ashokaImages/liv4.webp",
+    imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/liv4.webp",
   },
 ];
 
@@ -114,69 +114,69 @@ const AMENITIES_DATA = [
     label: "Curated Workspaces",
     subtitle: "",
     description: "Workspaces should adapt to you. Designed around focus and flexibility, these spaces allow individuals and teams to work in a way that feels both productive and intuitive.",
-    image: "/images/ashokaImages/amenities/amm1.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/amenities/amm1.webp",
   },
   {
     id: "wellness",
     label: "Recreational Zones",
     subtitle: "",
     description: "Not every idea comes at a desk. These spaces create room for pauses, casual conversations, and a shift in pace, helping you return with clarity.",
-    image: "/images/ashokaImages/amenities/amm2.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/amenities/amm2.webp",
   },
   {
     id: "lobby",
     label: "On Call Training/\n Board Rooms",
     subtitle: "",
     description: "Key conversations need the right setting. With fully equipped spaces available when required, meetings and sessions happen seamlessly without external dependencies.",
-    image: "/images/ashokaImages/amenities/amm3.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/amenities/amm3.webp",
   },
   {
     id: "pool",
     label: "Designated Ares for Customer/ Client Service",
     subtitle: "",
     description: "First impressions matter. Thoughtfully designed areas ensure every interaction feels structured, professional, and aligned with your standards.",
-    image: "/images/ashokaImages/amenities/amm4.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/amenities/amm4.webp",
   },
   {
     id: "gym",
     label: "Auditorium & Banquet Hall",
     subtitle: "",
     description: "From presentations to large gatherings, having expansive venues within the same space adds ease, allowing you to host and engage without stepping out.",
-    image: "/images/ashokaImages/amenities/amm5.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/amenities/amm5.webp",
   },
   {
     id: "sky-deck",
     label: "3 Tier Secured Parking",
     subtitle: "",
     description: "Smooth movement matters. A well-planned, secure parking system across three levels keeps arrivals and departures organised and effortless.",
-    image: "/images/ashokaImages/amenities/amm6.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/amenities/amm6.webp",
   },
 ];
 const GALLERY_IMAGES = [
-  "/images/ashokaImages/gallery/11.webp",
-  "/images/ashokaImages/gallery/12.webp",
-  "/images/ashokaImages/gallery/13.webp",
-  "/images/ashokaImages/gallery/14.webp",
-  "/images/ashokaImages/gallery/15.webp",
-  "/images/ashokaImages/gallery/16.webp",
+  "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/gallery/11.webp",
+  "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/gallery/12.webp",
+  "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/gallery/13.webp",
+  "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/gallery/14.webp",
+  "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/gallery/15.webp",
+  "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/gallery/16.webp",
 ];
 export default function page() {
   return (
     <>
       <div className="">
-        <NewHeader projectLink="/project-enquire?project=ashoka" projectName="Ashoka" scrolledLogo="/icons/ashokaDarkLogo.svg" logo="/icons/ashokaLogo.svg" />
+        <NewHeader projectLink="/project-enquire?project=ashoka" projectName="Ashoka" scrolledLogo="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/ashokaDarkLogo.svg" logo="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/ashokaLogo.svg" />
         <ProjectHero
           projectLink="/project-enquire?project=ashoka"
           projectName="Ashoka Business Center"
           title={<>Modern Business, <br /> Effortlessly Perfected</>}
           subtitle="Commercial Workspaces at Ashoka Business Center"
-          pdfPath="/downloadFloorPlan/typical layout.pdf"
+          pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf"
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}
           floorData={floorData}
           FLOOR_PATHS={FLOOR_PATHS}
-          heroImageDesktop="/images/ashokaImages/hero.png"
-          heroImageMobile="/images/ashokaImages/newHeroMobile.png"
+          heroImageDesktop="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/hero.png"
+          heroImageMobile="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/newHeroMobile.png"
         />
         <ProjectHighLiving data={SECTION_DATA} />
         <HighlivingSection
@@ -200,7 +200,7 @@ export default function page() {
           data={MAP_DATA}
 
           mainMarkerPosition={{ lat: 12.896339168047138, lng: 74.84203633612658 }}
-          customMarkerImage="/icons/mapIcons/ashokaIcon.svg"
+          customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/ashokaIcon.svg"
         />
         <PartnerSection />
         <ExperienceSection
@@ -221,8 +221,8 @@ export default function page() {
               Thoughtfully planned <br className="hidden lg:block" /> spaces built for lasting value
             </>
           }
-          mobImg="/images/ashokaImages/ctabgMobile.webp"
-          deskImg="/images/ashokaImages/ctabgDesk.webp"
+          mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/ctabgMobile.webp"
+          deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/ctabgDesk.webp"
         />
         <Footer />
       </div>

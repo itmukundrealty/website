@@ -11,22 +11,22 @@ type LogoItem = {
 // --- Logos (PNG Sources) ---
 // Top Row: 1 to 6
 const TopLogos: LogoItem[] = [
-    { id: "logo-1", src: "/images/ashokaImages/partners/1.png", alt: "Partner 1" },
-    { id: "logo-2", src: "/images/ashokaImages/partners/2.png", alt: "Partner 2" },
-    { id: "logo-3", src: "/images/ashokaImages/partners/3.png", alt: "Partner 3" },
-    { id: "logo-4", src: "/images/ashokaImages/partners/4.png", alt: "Partner 4" },
-    { id: "logo-5", src: "/images/ashokaImages/partners/5.png", alt: "Partner 5" },
-    { id: "logo-6", src: "/images/ashokaImages/partners/6.png", alt: "Partner 6" },
+    { id: "logo-1", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/1.png", alt: "Partner 1" },
+    { id: "logo-2", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/2.png", alt: "Partner 2" },
+    { id: "logo-3", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/3.png", alt: "Partner 3" },
+    { id: "logo-4", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/4.png", alt: "Partner 4" },
+    { id: "logo-5", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/5.png", alt: "Partner 5" },
+    { id: "logo-6", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/6.png", alt: "Partner 6" },
 ];
 
 // Bottom Row: 7 to 12
 const BottomLogos: LogoItem[] = [
-    { id: "logo-7", src: "/images/ashokaImages/partners/7.png", alt: "Partner 7" },
-    { id: "logo-8", src: "/images/ashokaImages/partners/8.png", alt: "Partner 8" },
-    { id: "logo-9", src: "/images/ashokaImages/partners/9.png", alt: "Partner 9" },
-    { id: "logo-10", src: "/images/ashokaImages/partners/10.png", alt: "Partner 10" },
-    { id: "logo-11", src: "/images/ashokaImages/partners/11.png", alt: "Partner 11" },
-    { id: "logo-12", src: "/images/ashokaImages/partners/12.png", alt: "Partner 12" },
+    { id: "logo-7", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/7.png", alt: "Partner 7" },
+    { id: "logo-8", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/8.png", alt: "Partner 8" },
+    { id: "logo-9", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/9.png", alt: "Partner 9" },
+    { id: "logo-10", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/10.png", alt: "Partner 10" },
+    { id: "logo-11", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/11.png", alt: "Partner 11" },
+    { id: "logo-12", src: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/partners/12.png", alt: "Partner 12" },
 ];
 
 

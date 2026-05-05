@@ -44,7 +44,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "Smooth Commute",
-        icon: "/icons/mapLocationIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapLocationIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -54,7 +54,7 @@ const MAP_DATA = [
     {
         key: "it",
         title: "Learning & Care Facilities",
-        icon: "/icons/learningIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/learningIcon.svg",
         points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -64,7 +64,7 @@ const MAP_DATA = [
     {
         key: "education",
         title: " Retail Reach",
-        icon: "/icons/urbanIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/urbanIcon.svg",
         points: [35, 29, 45, 28, 22, 47],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -74,7 +74,7 @@ const MAP_DATA = [
     {
         key: "essentials",
         title: " Balanced Locale",
-        icon: "/icons/balancedIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/balancedIcon.svg",
         points: [41, 24, 37, 38],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -93,25 +93,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Refined Residences",
         description: "Thoughtfully crafted homes with elegant design, quality finishes, and layouts that balance comfort with sophistication. Spacious interiors and practical planning create a warm, welcoming space for modern families. ",
-        imageSrc: "/images/nandagokulImages/liv1.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/liv1.webp"
     },
     {
         id: "kitchen",
         label: "Prime Location",
         description: "Everything is easily accessible thanks to its excellent connections to major city thoroughfares, workplaces, schools, and daily amenities. A well-chosen address that keeps you near the things that are most important while streamlining daily life. ",
-        imageSrc: "/images/nandagokulImages/liv2.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/liv2.webp"
     },
     {
         id: "rooftop",
         label: "Assured Living",
         description: "A secure, well-managed environment designed to offer peace of mind and a seamless living experience. Reliable infrastructure and essential systems support uninterrupted comfort every day.",
-        imageSrc: "/images/nandagokulImages/liv3.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/liv3.webp"
     },
     {
         id: "location",
         label: "Safe & Serene",
         description: "A calm residential setting that blends privacy, greenery, and a sense of quiet retreat from the city’s pace. An atmosphere thoughtfully created to nurture relaxation and harmonious community living.",
-        imageSrc: "/images/nandagokulImages/liv4.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/liv4.webp"
     }
 ];
 
@@ -120,37 +120,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Poolside Party Deck",
         subtitle: "",
-        image: "/images/nandagokulImages/am1.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/am1.webp",
     },
     {
         id: "wellness",
         label: "Air-Conditioned Gymnasium",
         subtitle: "",
-        image: "/images/nandagokulImages/am2.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/am2.webp",
     },
     {
         id: "lobby",
         label: "Kids Play Area",
         subtitle: "",
-        image: "/images/nandagokulImages/am3.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/am3.webp",
     },
     {
         id: "pool",
         label: "Serene Surroundings",
         subtitle: "",
-        image: "/images/nandagokulImages/am4.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/am4.webp",
     },
     {
         id: "gym",
         label: "Yoga Pavilion",
         subtitle: "",
-        image: "/images/nandagokulImages/am5.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/am5.webp",
     },
     {
         id: "sky-deck",
         label: "Multipurpose Party Hall",
         subtitle: "",
-        image: "/images/nandagokulImages/am6.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/am6.webp",
     }
 ];
 
@@ -192,8 +192,8 @@ export default function page() {
         <>
             <div className="">
 
-                <NewHeader projectLink="/project-enquire?project=nandagokul" projectName="Nandagokul Apartments" floorPlanPdf="/completedFloorplans/Nandagokul-FloorPlans.pdf" />
-                <CompletedHero title={<>Nandagokul <br className="hidden lg:block" /> Apartments</>} subtitle="" variant="topRight" desktopImage="/images/nandagokulImages/heroDesk.png" mobileImage="/images/nandagokulImages/heroMobile.png" pdfPath="/completedFloorplans/Nandagokul-FloorPlans.pdf" />
+                <NewHeader projectLink="/project-enquire?project=nandagokul" projectName="Nandagokul Apartments" floorPlanPdf="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Nandagokul-FloorPlans.pdf" />
+                <CompletedHero title={<>Nandagokul <br className="hidden lg:block" /> Apartments</>} subtitle="" variant="topRight" desktopImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/heroDesk.png" mobileImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/heroMobile.png" pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Nandagokul-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Refined Residential Living"
@@ -204,9 +204,9 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Refined Recreational Living" variant="left" completed={true} btnType="know" modalTitle="Nandagokul Apartments" modalPoints={ftModal} />
 
-                <MapSection customMarkerImage="/icons/mapIcons/nandagokulIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.893646774824788, lng: 74.84442105767145 }} />
+                <MapSection customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/nandagokulIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.893646774824788, lng: 74.84442105767145 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Find Your<br /> Ideal Home</>} subtitle={<>Discover refined  <br className="hidden md:block" /> living today.</>} mobImg="/images/ctaImages/nandhaMob.png" deskImg="/images/ctaImages/nandhaDesk.png" />
+                <CTASection title={<>Find Your<br /> Ideal Home</>} subtitle={<>Discover refined  <br className="hidden md:block" /> living today.</>} mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/nandhaMob.png" deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/nandhaDesk.png" />
                 <Footer />
             </div>
         </>

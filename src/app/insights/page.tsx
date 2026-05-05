@@ -55,7 +55,7 @@ export default function BlogListingPage() {
                                         <Image
                                             width={500}
                                             height={500}
-                                            src={blog.imageUrl || "/images/placeholder.jpg"}
+                                            src={blog.imageUrl || "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/placeholder.jpg"}
                                             alt={blog.title}
                                             className="w-full h-full object-fill"
                                         />

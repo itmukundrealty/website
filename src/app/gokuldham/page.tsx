@@ -41,7 +41,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "Strong Connectivity",
-        icon: "/icons/cityIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/cityIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -51,7 +51,7 @@ const MAP_DATA = [
     {
         key: "it",
         title: "Institutional Services",
-        icon: "/icons/academics.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/academics.svg",
         points: [44, 19],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -61,7 +61,7 @@ const MAP_DATA = [
     {
         key: "education",
         title: "Urban Leisure",
-        icon: "/icons/urbanIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/urbanIcon.svg",
         points: [59, 26, 29, 28, 22, 35],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -71,7 +71,7 @@ const MAP_DATA = [
     {
         key: "essentials",
         title: "Cafés & Eateries",
-        icon: "/icons/cafeIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/cafeIcon.svg",
         points: [41, 24, 38, 39],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -134,25 +134,25 @@ const ftModal = [
 //         id: "high-living",
 //         label: "Thoughtful Homes",
 //         description: "Well-planned residences designed to maximize space, natural light, and ventilation. Every layout is crafted to support functional living while maintaining a sense of warmth and comfort.",
-//         imageSrc: "/images/gokuldhamImages/liv1.png"
+//         imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv1.png"
 //     },
 //     {
 //         id: "kitchen",
 //         label: "Balanced Comfort",
 //         description: "A harmonious blend of modern essentials and practical design ensures ease in everyday life, creating a home that feels both efficient and inviting. ",
-//         imageSrc: "/images/gokuldhamImages/liv2.png"
+//         imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv2.png"
 //     },
 //     {
 //         id: "rooftop",
 //         label: "Trusted Security",
 //         description: "Reliable safety measures and a secure residential setting provide complete peace of mind for you and your family.",
-//         imageSrc: "/images/gokuldhamImages/liv3.png"
+//         imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv3.png"
 //     },
 //     {
 //         id: "location",
 //         label: "Tranquil Environment",
 //         description: "Set within a calm neighbourhood ambience, the development offers a quiet retreat from the city’s pace while remaining well connected to daily conveniences.",
-//         imageSrc: "/images/gokuldhamImages/liv4.png"
+//         imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv4.png"
 //     }
 // ];
 
@@ -161,37 +161,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Air-conditioned Gymnasium",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv1.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv1.webp",
     },
     {
         id: "wellness",
         label: "Smart Utility Network",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv2.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv2.webp",
     },
     {
         id: "lobby",
         label: "Kid’s Play Area",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv3.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv3.webp",
     },
     {
         id: "pool",
         label: "Visitor's Lounge",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv4.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv4.webp",
     },
     {
         id: "gym",
         label: "Dedicated Parking",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv5.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv5.webp",
     },
     {
         id: "sky-deck",
         label: "Bedroom AC Provisioning",
         subtitle: "",
-        image: "/images/gokuldhamImages/liv6.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/liv6.webp",
     }
 ];
 
@@ -200,8 +200,8 @@ export default function page() {
         <>
             <div className="">
 
-                <NewHeader projectLink="/project-enquire?project=gokuldham" projectName="Gokuldham" floorPlanPdf="/completedFloorplans/Gokuldham-FloorPlan.pdf" />
-                <CompletedHero title={<>Gokuldham</>} subtitle="" variant="topRight" desktopImage="/images/gokuldhamImages/heroDesk.webp" mobileImage="/images/gokuldhamImages/heroMobile.png" pdfPath="/completedFloorplans/Gokuldham-FloorPlan.pdf" />
+                <NewHeader projectLink="/project-enquire?project=gokuldham" projectName="Gokuldham" floorPlanPdf="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Gokuldham-FloorPlan.pdf" />
+                <CompletedHero title={<>Gokuldham</>} subtitle="" variant="topRight" desktopImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/heroDesk.webp" mobileImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/heroMobile.png" pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Gokuldham-FloorPlan.pdf" />
                 {/* <ProjectHighLiving data={SECTION_DATA} /> */}
                 <HighlivingSection
                     heading="Living, Well Designed"
@@ -212,9 +212,9 @@ export default function page() {
                 />
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" completed={true} btnType="know" modalTitle="Gokuldham " modalPoints={ftModal} />
-                <MapSection customMarkerImage="/icons/mapIcons/gokuldamIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.879975036772368, lng: 74.83332710185005 }} />
+                <MapSection customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/gokuldamIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.879975036772368, lng: 74.83332710185005 }} />
                 <ExperienceSection titlePart1="Experiences that" titlePart2="Set the Standard" description="Stories from clients who chose Mukund Realty for quality, integrity, and reliability." />
-                <CTASection title={<>Find Your      <br />Place Here</>} subtitle={<>Experience comfort in the <br className="hidden md:block" /> heart of the city.</>} mobImg="/images/ctaImages/gokuldhamMob.png" deskImg="/images/ctaImages/gokuldhamDesk.png" />
+                <CTASection title={<>Find Your      <br />Place Here</>} subtitle={<>Experience comfort in the <br className="hidden md:block" /> heart of the city.</>} mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/gokuldhamMob.png" deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/gokuldhamDesk.png" />
                 <Footer />
             </div>
         </>

@@ -45,7 +45,7 @@ const MAP_DATA = [
     {
         key: "city",
         title: "City Connectivity",
-        icon: "/icons/cityIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/cityIcon.svg",
         points: [0],
         viewport: {
             center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -55,7 +55,7 @@ const MAP_DATA = [
    {
         key: "it-education",
         title: "IT & Education",
-        icon: "/icons/culturalIcon.svg", 
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/culturalIcon.svg", 
         points: [113, 136, 137], // Infosys, Gokarnatheshwara College, Ladyhill School
         viewport: {
             center: { lat: 12.892842, lng: 74.834272 },
@@ -65,7 +65,7 @@ const MAP_DATA = [
     {
         key: "essentials",
         title: "Everyday Essentials",
-        icon: "/icons/healthcareIcon.svg",
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/healthcareIcon.svg",
         points: [117], // Bharath Mall
         viewport: {
             center: { lat: 12.892842, lng: 74.834272 },
@@ -75,7 +75,7 @@ const MAP_DATA = [
     {
         key: "nearby-places",
         title: "Nearby Places",
-        icon: "/icons/citywideIcon.svg", 
+        icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/citywideIcon.svg", 
         points: [119, 120, 124, 138, 139, 122, 140, 141, 142, 143], 
         viewport: {
             center: { lat: 12.892842, lng: 74.834272 },
@@ -94,25 +94,25 @@ const SECTION_DATA = [
         id: "high-living",
         label: "Thoughtful Homes",
         description: "Well-planned residences designed to maximize space, natural light, and ventilation. Every layout is crafted to support functional living while maintaining a sense of warmth and comfort.",
-        imageSrc: "/images/nandeepImages/liv1.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/liv1.webp"
     },
     {
         id: "kitchen",
         label: "Balanced Comfort",
         description: "A harmonious blend of modern essentials and practical design ensures ease in everyday life, creating a home that feels both efficient and inviting. ",
-        imageSrc: "/images/nandeepImages/liv2.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/liv2.webp"
     },
     {
         id: "rooftop",
         label: "Trusted Security",
         description: "Reliable safety measures and a secure residential setting provide complete peace of mind for you and your family.",
-        imageSrc: "/images/nandeepImages/liv3.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/liv3.webp"
     },
     {
         id: "location",
         label: "Tranquil Environment",
         description: "Set within a calm neighbourhood ambience, the development offers a quiet retreat from the city’s pace while remaining well connected to daily conveniences.",
-        imageSrc: "/images/nandeepImages/liv4.webp"
+        imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/liv4.webp"
     }
 ];
 
@@ -121,37 +121,37 @@ const AMENITIES_DATA = [
         id: "kitchen",
         label: "Terrace Fitness Zone",
         subtitle: "",
-        image: "/images/nandeepImages/am1.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/am1.webp",
     },
     {
         id: "wellness",
         label: "Leisure Jogging Loop",
         subtitle: "",
-        image: "/images/nandeepImages/am2.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/am2.webp",
     },
     {
         id: "lobby",
         label: "Poolside Party Deck",
         subtitle: "",
-        image: "/images/nandeepImages/am3.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/am3.webp",
     },
     {
         id: "pool",
         label: "Yoga Pavilion",
         subtitle: "",
-        image: "/images/nandeepImages/am4.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/am4.webp",
     },
     {
         id: "gym",
         label: "Serene Surroundings",
         subtitle: "",
-        image: "/images/nandeepImages/am5.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/am5.webp",
     },
     {
         id: "sky-deck",
         label: "Multipurpose Party Hall",
         subtitle: "",
-        image: "/images/nandeepImages/am6.webp",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/am6.webp",
     }
 ];
 
@@ -160,8 +160,8 @@ export default function page() {
         <>
             <div className="">
 
-                <NewHeader projectLink="/project-enquire?project=nandadeep" projectName="Nandadeep Apartments" floorPlanPdf="/completedFloorplans/Nandadeep-FloorPlans.pdf" />
-                <CompletedHero title={<>Nandadeep Apartments</>} subtitle="" variant="center" desktopImage="/images/nandeepImages/heroDesk.webp" mobileImage="/images/nandeepImages/heroMobile.png" pdfPath="/completedFloorplans/Nandadeep-FloorPlans.pdf" />
+                <NewHeader projectLink="/project-enquire?project=nandadeep" projectName="Nandadeep Apartments" floorPlanPdf="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Nandadeep-FloorPlans.pdf" />
+                <CompletedHero title={<>Nandadeep Apartments</>} subtitle="" variant="center" desktopImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/heroDesk.webp" mobileImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/heroMobile.png" pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/completedFloorplans/Nandadeep-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
                     heading="Thoughtful Urban Living"
@@ -172,9 +172,9 @@ export default function page() {
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Spaces for Every Moment" variant="left" completed={true} />
 
-                <MapSection customMarkerImage="/icons/mapIcons/nandadeepIcon.svg"  data={MAP_DATA} mainMarkerPosition={{ lat: 12.895899486705401, lng: 74.82442483598062 }} />
+                <MapSection customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/nandadeepIcon.svg"  data={MAP_DATA} mainMarkerPosition={{ lat: 12.895899486705401, lng: 74.82442483598062 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
-                <CTASection title={<>Own Your Space     <br />of Serenity</>} subtitle={<>A calm, connected place <br className="hidden md:block" /> to call home.</>} mobImg="/images/ctaImages/nandeepMob.png" deskImg="/images/ctaImages/nandeepDesk1.png" />
+                <CTASection title={<>Own Your Space     <br />of Serenity</>} subtitle={<>A calm, connected place <br className="hidden md:block" /> to call home.</>} mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/nandeepMob.png" deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ctaImages/nandeepDesk1.png" />
                 <Footer />
             </div>
         </>

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mukund MGM Realty | Real Estate Developer in Mangalore",
     description: "Discover premium residential and commercial projects by Mukund MGM Realty in Mangalore.",
-    images: ["/og-images/home-og.png"],
+    images: ["https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/og-images/home-og.png"],
   },
   metadataBase: new URL("https://www.mukundmgmrealty.com/"),
 };

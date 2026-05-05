@@ -21,11 +21,11 @@ interface NewHeaderProps {
 export default function NewHeader({
     projectLink = "/project-enquire",
     projectName = "Rudraksh",
-    floorPlanPdf = "/downloadFloorPlan/typical layout.pdf", // Default placeholder
+    floorPlanPdf = "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf", // Default placeholder
     hideAmenities = false,
     amenitiesTarget = "#amenities",
-    logo = "/icons/mukundIcon.svg",
-    scrolledLogo = "/icons/logo.svg",
+    logo = "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukundIcon.svg",
+    scrolledLogo = "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/logo.svg",
     view360Url
 }: NewHeaderProps) {
     const pathname = usePathname();

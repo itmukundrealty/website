@@ -135,7 +135,7 @@ export default function AnnouncementDetailPage({ params }: AnnouncementDetailPag
                 <div className="mx-auto px-6 md:px-12 lg:px-20 xl:px-54 mt-10 mb-16 md:mb-24">
                     <div className="w-full h-[50vh] md:h-[80vh] relative overflow-hidden">
                         <Image
-                            src={announcement.imageUrl || "/images/placeholder.jpg"}
+                            src={announcement.imageUrl || "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/placeholder.jpg"}
                             alt={announcement.title}
                             fill
                             className="object-cover"

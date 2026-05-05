@@ -78,7 +78,7 @@ export default function InsightHero() {
                                 />
                             ) : (
                                 <Image
-                                    src="/images/InsightHero.png"
+                                    src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/InsightHero.png"
                                     alt="Speaker at Event"
                                     fill
                                     className="object-cover"

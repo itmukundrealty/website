@@ -9,14 +9,14 @@ export default function DesignedForMatters() {
             {/* Background Image */}
             <div className="absolute inset-0">
                 <Image
-                    src="/images/LandingPageImg/designedBg.png" // Father and child with blue sky
+                    src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/designedBg.png" // Father and child with blue sky
                     alt="Father and child having fun"
                     fill
                     className="object-cover object-bottom hidden md:block" // Position to show faces clearly
                     priority
                 />
                    <Image
-                    src="/images/LandingPageImg/mobDesignedBg.png" // Father and child with blue sky
+                    src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/mobDesignedBg.png" // Father and child with blue sky
                     alt="Father and child having fun"
                     fill
                     className="object-cover object-bottom md:hidden" // Position to show faces clearly

@@ -51,7 +51,7 @@ export default function RelatedArticleSection({ currentBlogId }: RelatedArticleS
                                 <div key={article.id} className="flex flex-col group">
                                     <div className="relative aspect-[1.4/1] w-full mb-10 overflow-hidden">
                                         <Image
-                                            src={article.imageUrl || "/images/placeholder.jpg"}
+                                            src={article.imageUrl || "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/placeholder.jpg"}
                                             alt={article.title}
                                             fill
                                             className="object-cover transition-transform duration-700 group-hover:scale-105"

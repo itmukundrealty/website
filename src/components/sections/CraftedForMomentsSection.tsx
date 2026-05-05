@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const slides = [
     {
         id: 1,
-        image: "/images/LandingPageImg/crafted/1.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/crafted/1.png",
         title: "Driven by Intent",
         description: "With unwavering integrity and transparency, Mukund commits to the long-term well-being of our communities.",
         stat: "13+ Years",
@@ -17,7 +17,7 @@ const slides = [
     },
     {
         id: 2,
-        image: "/images/LandingPageImg/crafted/2.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/crafted/2.png",
         title: "Spaces That Nurture Life",
         description: "Creating environments where families and relationships truly thrive.",
         stat: "500+ Clients Served",
@@ -27,7 +27,7 @@ const slides = [
     },
     {
         id: 3,
-        image: "/images/LandingPageImg/crafted/3.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/crafted/3.png",
         title: "Spaces That Reflect Vision",
         description: "Be it residences or workplaces, every project transforms vision into remarkable spaces.",
         stat: "100% Compliance",
@@ -172,7 +172,7 @@ export default function     CraftedForMomentsSection() {
             </div>
             <div className="absolute -bottom-20 -left-40 pointer-events-none z-0 hidden lg:block">
                 <Image
-                    src="/icons/mukund.svg"
+                    src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
                     alt="Mukund Abstract Shape"
                     width={250}
                     height={250}
@@ -181,7 +181,7 @@ export default function     CraftedForMomentsSection() {
             </div>
             <div className="absolute top-4 -right-15 pointer-events-none z-0">
                 <Image
-                    src="/icons/mukund.svg"
+                    src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
                     alt="Mukund Abstract Shape"
                     width={150}
                     height={150}

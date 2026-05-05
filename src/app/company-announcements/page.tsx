@@ -70,7 +70,7 @@ const CompanyAnnouncementsPage = () => {
                                         <Image
                                             width={500}
                                             height={500}
-                                            src={item.imageUrl || "/images/placeholder.jpg"}
+                                            src={item.imageUrl || "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/placeholder.jpg"}
                                             alt={item.title}
                                             className="w-full h-full object-cover"
                                         />

@@ -14,14 +14,14 @@ interface CarouselItem {
 
 // --- Sample Data (Placeholders) ---
 const SAMPLE_ITEMS: CarouselItem[] = [
-    { id: 1, image: "/images/LandingPageImg/hero/11.png", mobileImage: "/images/LandingPageImg/hero/mob1.png" },
-    { id: 2, image: "/images/LandingPageImg/hero/12.png", mobileImage: "/images/LandingPageImg/hero/mob2.png" },
-    { id: 3, image: "/images/LandingPageImg/hero/13.png", mobileImage: "/images/LandingPageImg/hero/mob3.png" },
-    { id: 4, image: "/images/LandingPageImg/hero/14.png", mobileImage: "/images/LandingPageImg/hero/mob4.png" },
-    { id: 5, image: "/images/LandingPageImg/hero/13.png", mobileImage: "/images/LandingPageImg/hero/mob1.png" },
-    { id: 6, image: "/images/LandingPageImg/hero/11.png", mobileImage: "/images/LandingPageImg/hero/mob2.png" },
-    { id: 7, image: "/images/LandingPageImg/hero/14.png", mobileImage: "/images/LandingPageImg/hero/mob3.png" },
-    { id: 8, image: "/images/LandingPageImg/hero/12.png", mobileImage: "/images/LandingPageImg/hero/mob4.png" },
+    { id: 1, image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/11.png", mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/mob1.png" },
+    { id: 2, image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/12.png", mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/mob2.png" },
+    { id: 3, image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/13.png", mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/mob3.png" },
+    { id: 4, image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/14.png", mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/mob4.png" },
+    { id: 5, image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/13.png", mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/mob1.png" },
+    { id: 6, image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/11.png", mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/mob2.png" },
+    { id: 7, image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/14.png", mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/mob3.png" },
+    { id: 8, image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/12.png", mobileImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/hero/mob4.png" },
 ];
 
 export default function LandingHeroSection() {

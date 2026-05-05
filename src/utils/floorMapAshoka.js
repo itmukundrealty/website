@@ -1,61 +1,61 @@
 const typicalFloorUnits = [
   {
     id: "S01",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/0.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/0.png",
     path: "M119.25 282.375L84.5 323.875L59.75 303L58 304.75L1.75 256.75L45 205.25L37.5 198.75L50.75 184.25L41 175.25L66.75 144.25L116.75 186.5L107.75 197.75L138.125 223.25L101.125 267.375L119.25 282.375Z",
     details: { number: "S-01", type: "Corner Office", sqft: "1600", balconySqft: "0", rooms: 2, washrooms: 1, floor: "Second Floor" },
   },
   {
     id: "S02",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/1.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/1.png",
     path: "M682.25 700.5L620.25 773.25L594.125 751.625L586.75 760.25L551.875 731.25L609.25 663.5L618.75 671.75L631 656.5L608.375 638.125L656.375 580.25L672.5 593.5L690.5 572.125L728.5 603.75L720.625 613.5L750 638.125L720 674.25L723.75 677L695 711.5L682.25 700.5Z",
     details: { number: "S-02", type: "Large Workspace", sqft: "2200", balconySqft: "100", rooms: 3, washrooms: 2, floor: "Second Floor" },
   },
   {
     id: "S03",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/2.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/2.png",
     path: "M249.5 348.5L188.625 420.625L137.75 378.75L149.75 363.75L123.5 341.75L114.5 351.5L81.625 324.375L139.375 256.125L249.5 348.5Z",
     details: { number: "S-03", type: "Meeting Room", sqft: "1400", balconySqft: "0", rooms: 1, washrooms: 0, floor: "Second Floor" },
   },
   {
     id: "S04",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/3.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/3.png",
     path: "M217.25 451.375L186 425.5L256.75 340.25L282.5 362L325 311.75L382.5 360L292 468.5L238.875 424.5L217.25 451.375Z",
     details: { number: "S-04", type: "Co-working Pod", sqft: "1550", balconySqft: "0", rooms: 1, washrooms: 1, floor: "Second Floor" },
   },
   {
     id: "S05",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/4.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/4.png",
     path: "M457 449L436 474.25L348.75 401.5L392.75 347.75L422 370.75L438.25 349.75L497.75 398.75L487.75 410.5L516 435.5L485 471.75L457 449Z",
     details: { number: "S-05", type: "Private Cabin", sqft: "1350", balconySqft: "0", rooms: 1, washrooms: 0, floor: "Second Floor" },
   },
   {
     id: "S06",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/5.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/5.png",
     path: "M468.75 545.25L417 607L384.75 578.75L373.75 591L322 549.25L326.375 544.125L301.25 523.25L295.75 530L262.5 502.75L327 426.5L343.375 440.625L323.375 463.125L338.25 475.75L357.75 452.375L468.75 545.25Z",
     details: { number: "S-06", type: "Discussion Area", sqft: "1500", balconySqft: "0", rooms: 1, washrooms: 0, floor: "Second Floor" },
   },
   {
     id: "S07",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/6.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/6.png",
     path: "M609 664L558 725L525.625 698L514.875 710.625L464.375 667.625L468.25 663.375L441.875 641.625L436.5 648.25L404.5 621.75L466.5 546.5L483.125 560.625L465 581.75L479 594L495.125 575.5L522.75 598.75L526.25 594.75L609 664Z",
     details: { number: "S-07", type: "Small Office", sqft: "1250", balconySqft: "0", rooms: 1, washrooms: 1, floor: "Second Floor" },
   },
   {
     id: "S08",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/7.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/7.png",
     path: "M670.475 565.191L636.754 604.977L609.584 582.173L591.147 603.521L532.125 554.375L552.332 529.53L524.676 506.969L568.75 454.5L596.375 477.625L594.3 480.041L652.765 529.53L642.875 541.875L670.475 565.191Z",
     details: { number: "S-08", type: "Lounge", sqft: "1450", balconySqft: "50", rooms: 1, washrooms: 0, floor: "Second Floor" },
   },
   {
     id: "S09",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/8.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/8.png",
     path: "M274 234.5L247.75 265.625L160.875 192.375L205.125 139.25L233 162.875L251 141.625L309.75 190.75L299 203.5L333.375 231.75L307.5 262.25L274 234.5Z",
     details: { number: "S-09", type: "Reception", sqft: "1100", balconySqft: "0", rooms: 0, washrooms: 1, floor: "Second Floor" },
   },
   {
     id: "S10",
-    unitImage: "/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/9.png",
+    unitImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/floor2/9.png",
     path: "M167.023 157.612L132.312 198.75L33.1874 116.562L71.7499 71.5L60.3124 61.5625L102.254 12.5601L133.531 38.6645L143.381 27.8287L171 51.1875L161.852 62.3064L225.635 115.993L180.322 169.187L167.023 157.612Z",
     details: { number: "S-10", type: "Utility Room", sqft: "900", balconySqft: "0", rooms: 0, washrooms: 0, floor: "Second Floor" },
   },
@@ -170,7 +170,7 @@ export const floorData = [
   {
     title: "First Floor",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/ashoka/floorMapAndSpeceficMapImages/newfloor1/floor.png",
-    pdfPath: "/downloadFloorPlan/first floor plan.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/first floor plan.pdf",
     viewBox: "0 0 576 624",
     features: [
       "Utility Block",
@@ -322,7 +322,7 @@ export const floorData = [
     title: "Second Floor",
     viewBox: "0 0 576 624",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/ashoka/floorMapAndSpeceficMapImages/newfloor2/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf",
     features: [
       "Utility Block",
       "Private Offices"
@@ -478,7 +478,7 @@ export const floorData = [
     title: "Third Floor",
     viewBox: "0 0 576 624",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/ashoka/floorMapAndSpeceficMapImages/newfloor3/floor.png",
-    pdfPath: "/downloadFloorPlan/third floor plan.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/third floor plan.pdf",
     features: [
       "Utility Block",
       "Private Offices"
@@ -604,7 +604,7 @@ export const floorData = [
     title: "Fourth Floor",
     viewBox: "0 0 576 624",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/ashoka/floorMapAndSpeceficMapImages/newfloor4/floor.png",
-    pdfPath: "/downloadFloorPlan/fourth floor plan.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/fourth floor plan.pdf",
     features: [
       "Utility Block",
       "Private Offices"
@@ -736,7 +736,7 @@ export const floorData = [
     title: "Fifth Floor",
     viewBox: "0 0 576 624",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/ashoka/floorMapAndSpeceficMapImages/newfloor5/floor.png",
-    pdfPath: "/downloadFloorPlan/fifth floor plan.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/fifth floor plan.pdf",
     features: [
       "Full Floor Private Office Space"
     ],
@@ -867,7 +867,7 @@ export const floorData = [
     title: "Terrace",
     viewBox: "0 0 576 629",
     planImage: "https://storage.googleapis.com/mukund-website.firebasestorage.app/ashoka/floorMapAndSpeceficMapImages/newterrace/floor.png",
-    pdfPath: "/downloadFloorPlan/terrace plan.pdf",
+    pdfPath: "https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/terrace plan.pdf",
     features: [
       "Auditorium",
       "Break-Out Zone",

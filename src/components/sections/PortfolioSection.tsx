@@ -24,7 +24,7 @@ export default function PortfolioSection() {
       {/* Blue Feature Shape (Bottom Right) */}
       <div className="absolute top-20 md:bottom-10 right-2 pointer-events-none z-0">
         <Image
-          src="/icons/mukund.svg"
+          src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
           alt="Abstract Shape"
           width={150}
           height={150}

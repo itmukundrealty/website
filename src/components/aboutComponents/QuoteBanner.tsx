@@ -28,7 +28,7 @@ export default function QuoteBanner() {
           "
         >
           <Image
-            src="/icons/mukundWhite.svg"
+            src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukundWhite.svg"
             alt="Decor Left"
             width={140}
             height={100}
@@ -55,7 +55,7 @@ export default function QuoteBanner() {
           "
         >
           <Image
-            src="/icons/mukundWhite.svg"
+            src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukundWhite.svg"
             alt="Decor Right"
             width={180}
             height={120}

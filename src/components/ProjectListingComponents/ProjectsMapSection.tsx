@@ -15,10 +15,10 @@ const PROJECTS_DATA = [
         name: "Ashoka Business Center",
         label: "Commercial",
         location: "Airport Road, Kapikad, Mangalore",
-        image: "/images/LandingPageImg/landmarks/2.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/2.png",
         slug: "/ashoka-business-center",
         type: "ongoing" as const,
-        markerIcon: "/icons/mapIcons/ashokaIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/ashokaIcon.svg", // Replace with correct logo paths if different
         mapLocation: { id: 1, lat: 12.896349626252785, lng: 74.8419397766051 }
     },
     {
@@ -26,10 +26,10 @@ const PROJECTS_DATA = [
         name: "Rudraksh",
         label: "Residential",
         location: "Behind Infosys, Kottara, Mangalore",
-        image: "/images/LandingPageImg/landmarks/3.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/3.png",
         slug: "/rudraksh",
         type: "ongoing" as const,
-        markerIcon: "/icons/mapIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcon.svg", // Replace with correct logo paths if different
         mapLocation: { id: 2, lat: 12.905064469533924, lng: 74.83753653922163 }
     },
     {
@@ -37,10 +37,10 @@ const PROJECTS_DATA = [
         name: "Kedar",
         label: "Residential",
         location: "Bejai Main Road, Derebail, Mangalore",
-        image: "/images/LandingPageImg/landmarks/1.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/1.png",
         slug: "/kedar",
         type: "ongoing" as const,
-        markerIcon: "/icons/mapIcons/kedarIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/kedarIcon.svg", // Replace with correct logo paths if different
         mapLocation: { id: 3, lat: 12.909096133143487, lng: 74.8506202547441 }
     },
     // Completed
@@ -49,11 +49,11 @@ const PROJECTS_DATA = [
         name: "Mathura Residency",
         label: "Residential",
         location: "Derebail, Mangalore",
-        image: "/images/mathuraImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mathuraImages/heroDesk.png",
         slug: "/mathura-residency",
         type: "completed" as const,
         mapLocation: { id: 4, lat: 12.9144958, lng: 74.8357808 },
-        markerIcon: "/icons/mapIcons/mathuraIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/mathuraIcon.svg", // Replace with correct logo paths if different
 
     },
     {
@@ -61,11 +61,11 @@ const PROJECTS_DATA = [
         name: "Ajanta Business Center",
         label: "Commercial",
         location: "Kapikad, Mangalore",
-        image: "/images/ajantaImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ajantaImages/heroDesk.png",
         slug: "/ajanta-business-center",
         type: "completed" as const,
         mapLocation: { id: 5, lat: 12.8690, lng: 74.8422 },
-        markerIcon: "/icons/mapIcons/ajantaIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/ajantaIcon.svg", // Replace with correct logo paths if different
 
     },
     {
@@ -73,11 +73,11 @@ const PROJECTS_DATA = [
         name: "Evanna Homes",
         label: "Residential",
         location: "Near Infosys, Kottara, Mangalore",
-        image: "/images/evannaImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/evannaImages/heroDesk.png",
         slug: "/evanna-homes",
         type: "completed" as const,
         mapLocation: { id: 6, lat: 12.8820, lng: 74.8395 },
-        markerIcon: "/icons/mapIcons/evannaIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/evannaIcon.svg", // Replace with correct logo paths if different
 
     },
     {
@@ -85,11 +85,11 @@ const PROJECTS_DATA = [
         name: "Kudva's Grandeur",
         label: "Residential",
         location: "Surathkal, Mangalore",
-        image: "/images/kudvaImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kudvaImages/heroDesk.png",
         slug: "/kudva-grandeur",
         type: "completed" as const,
         mapLocation: { id: 7, lat: 12.9010, lng: 74.8310 },
-        markerIcon: "/icons/mapIcons/kudvaIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/kudvaIcon.svg", // Replace with correct logo paths if different
 
     },
     {
@@ -97,11 +97,11 @@ const PROJECTS_DATA = [
         name: "Madhuban Apartments",
         label: "Residential",
         location: "Kottara Chowki, Mangalore",
-        image: "/images/madhubanImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/madhubanImages/heroDesk.png",
         slug: "/madhuban-apartments",
         type: "completed" as const,
         mapLocation: { id: 8, lat: 12.8760, lng: 74.8470 },
-        markerIcon: "/icons/mapIcons/madhubanIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/madhubanIcon.svg", // Replace with correct logo paths if different
 
     },
     {
@@ -109,11 +109,11 @@ const PROJECTS_DATA = [
         name: "Nandagokul Apartments",
         label: "Residential",
         location: "Bejai, Mangalore",
-        image: "/images/nandagokulImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandagokulImages/heroDesk.png",
         slug: "/nandagokul-apartments",
         type: "completed" as const,
         mapLocation: { id: 9, lat: 12.8930, lng: 74.8340 },
-        markerIcon: "/icons/mapIcons/nandagokulIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/nandagokulIcon.svg", // Replace with correct logo paths if different
 
     },
     {
@@ -121,11 +121,11 @@ const PROJECTS_DATA = [
         name: "Nandadeep Apartments",
         label: "Residential",
         location: "Urwa, Mangalore",
-        image: "/images/nandeepImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/nandeepImages/heroDesk.png",
         slug: "/nandadeep-apartments",
         type: "completed" as const,
         mapLocation: { id: 10, lat: 12.8870, lng: 74.8420 },
-        markerIcon: "/icons/mapIcons/nandadeepIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/nandadeepIcon.svg", // Replace with correct logo paths if different
 
     },
     {
@@ -133,10 +133,10 @@ const PROJECTS_DATA = [
         name: "Bhargavi Gloria Residency",
         label: "Residential",
         location: "Kuntikana, Mangalore",
-        image: "/images/bhargaviImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/bhargaviImages/heroDesk.png",
         slug: "/bhargavi-gloria-residency",
         type: "completed" as const,
-        markerIcon: "/icons/mapIcons/bhargaviIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/bhargaviIcon.svg", // Replace with correct logo paths if different
 
         mapLocation: { id: 11, lat: 12.9050, lng: 74.8260 }
     },
@@ -145,11 +145,11 @@ const PROJECTS_DATA = [
         name: "Gokuldham",
         label: "Residential",
         location: "Mannagudda Apartments, Mangalore ",
-        image: "/images/gokuldhamImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/gokuldhamImages/heroDesk.png",
         slug: "/gokuldham",
         type: "completed" as const,
         mapLocation: { id: 12, lat: 12.8960, lng: 74.8500 },
-        markerIcon: "/icons/mapIcons/gokuldamIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/gokuldamIcon.svg", // Replace with correct logo paths if different
 
     },
     {
@@ -157,11 +157,11 @@ const PROJECTS_DATA = [
         name: "Mukund Sadan",
         label: "Residential",
         location: "Dongerkery, Mangalore",
-        image: "/images/mukundSadanImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/mukundSadanImages/heroDesk.png",
         slug: "/mukund-sadan",
         type: "completed" as const,
         mapLocation: { id: 13, lat: 12.9080, lng: 74.8380 },
-        markerIcon: "/icons/mapIcons/sadanIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/sadanIcon.svg", // Replace with correct logo paths if different
 
     },
     {
@@ -169,11 +169,11 @@ const PROJECTS_DATA = [
         name: "Kailash",
         label: "Residential",
         location: "Kottara Chowki, Mangalore",
-        image: "/images/kailashImages/heroDesk.png",
+        image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kailashImages/heroDesk.png",
         slug: "/kailash",
         type: "completed" as const,
         mapLocation: { id: 14, lat: 12.8790, lng: 74.8350 },
-        markerIcon: "/icons/mapIcons/kailashIcon.svg", // Replace with correct logo paths if different
+        markerIcon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcons/kailashIcon.svg", // Replace with correct logo paths if different
 
     },
 ];
@@ -219,7 +219,7 @@ export default function ProjectsMapSection() {
         ...p.mapLocation,
         mapLink: p.slug,
         name: p.name,
-        markerIcon: p.markerIcon || "/icons/mapIcon.svg"
+        markerIcon: p.markerIcon || "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcon.svg"
     }));
 
     return (

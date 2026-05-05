@@ -17,7 +17,7 @@ const projects = [
     title: 'Kedar',
     label: 'RESIDENTIAL',
     location: 'Airport Road, Derebail | Mangalore',
-    image: '/images/kedarImage/heroMobile.png', // Replace with your actual image path
+    image: 'https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/kedarImage/heroMobile.png', // Replace with your actual image path
     link: '/projects/kedar',
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     title: 'Ashoka Business Center',
     label: 'COMMERCIAL',
     location: 'Airport Road, Kapikad | Mangalore',
-    image: '/images/ashokaImages/heroMobile.png', // Replace with your actual image path
+    image: 'https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/ashokaImages/heroMobile.png', // Replace with your actual image path
     link: '/projects/ashoka',
   },
 ];
@@ -82,7 +82,7 @@ export default function ProjectShowcase() {
         />
         <div className="relative z-10 w-24 h-24 opacity-20 blur-[0.5px]">
           <Image
-            src="/icons/mukund.svg"
+            src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mukund.svg"
             alt="Abstract Shape"
             fill
             className="object-contain"

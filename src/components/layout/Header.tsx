@@ -12,9 +12,9 @@ import Image from 'next/image';
 const PROJECTS = {
   ongoing: PROJECTS_LIST.filter(p => p.type === 'ongoing').map(p => ({
     ...p,
-    image: p.id === "rudraksh" ? "/images/LandingPageImg/landmarks/3.png" :
-      p.id === "ashoka" ? "/images/LandingPageImg/landmarks/2.png" :
-        p.id === "kedar" ? "/images/LandingPageImg/landmarks/1.png" : ""
+    image: p.id === "rudraksh" ? "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/3.png" :
+      p.id === "ashoka" ? "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/2.png" :
+        p.id === "kedar" ? "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/LandingPageImg/landmarks/1.png" : ""
   })),
   completed: PROJECTS_LIST.filter(p => p.type === 'completed')
 };
@@ -90,7 +90,7 @@ const ProjectHeader = ({ variant = 'dark' }: HeaderProps) => {
           {/* Logo Section */}
           <Link href="/" className="z-50 relative">
             <div className="relative w-32 md:w-36 md:w-40 h-auto aspect-[3/1]">
-              <Image width={500} height={500} src={isScrolled ? "/icons/logo.svg" : (isLight ? "/logo/whiteLogo.svg" : "/icons/logo.svg")} alt="Mukund Realty" className="object-contain w-full h-full" />
+              <Image width={500} height={500} src={isScrolled ? "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/logo.svg" : (isLight ? "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/logo/whiteLogo.svg" : "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/logo.svg")} alt="Mukund Realty" className="object-contain w-full h-full" />
             </div>
           </Link>
 
@@ -218,7 +218,7 @@ const ProjectHeader = ({ variant = 'dark' }: HeaderProps) => {
             {/* Mobile Header */}
             <div className="flex justify-between items-center p-6 md:p-12 border-b border-gray-50">
               <div className="w-32">
-                <Image width={500} height={500} src="/icons/logo.svg" alt="Mukund Realty" className="w-full object-contain" />
+                <Image width={500} height={500} src="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/logo.svg" alt="Mukund Realty" className="w-full object-contain" />
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}

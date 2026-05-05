@@ -1,16 +1,7 @@
-import StyledMap from "@/components/common/Shared/StyledMap";
-import StrategicMap from "@/components/projectComponents/ProjectMapSection";
-import StrategicallyConnected from "@/components/projectComponents/ProjectMapSection";
-import { ProjectHero } from "@/components/projectComponents/Rudraksh/features/project/Hero";
 import ProjectHighLiving from "@/components/projectComponents/Rudraksh/features/project/HighLiving";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import FeaturesSection, { FeatureItem } from "@/components/projectComponents/Rudraksh/features/project/FeaturesSection";
-// import { Icons } from "@/components/projectComponents/Rudraksh/features/project/FeatureIcons";
-import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
-import { FLOOR_PATHS_VIEWBOX, HERO_MARKERS } from "@/utils/floorMapRudraksh.js";
-import { floorData } from "@/utils/floorMapRudraksh.js";
-import { FLOOR_PATHS } from "@/utils/floorMapRudraksh.js";
 
 // ... (other imports)
 
@@ -41,7 +32,7 @@ const MAP_DATA = [
   {
     key: "city",
     title: "City & Highway Access",
-    icon: "/icons/cityIcon.svg",
+    icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/cityIcon.svg",
     points: [0],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -51,7 +42,7 @@ const MAP_DATA = [
   {
     key: "it",
     title: "IT & Employment Zones",
-    icon: "/icons/itIcon.svg",
+    icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/itIcon.svg",
     points: [18, 19],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -61,7 +52,7 @@ const MAP_DATA = [
   {
     key: "education",
     title: "Education & Healthcare",
-    icon: "/icons/educationIcon.svg",
+    icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/educationIcon.svg",
     points: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -71,7 +62,7 @@ const MAP_DATA = [
   {
     key: "essentials",
     title: "Everyday Essentials",
-    icon: "/icons/everydayIcon.svg",
+    icon: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/everydayIcon.svg",
     points: [32, 33, 34],
     viewport: {
       center: { lat: 12.904891658303564, lng: 74.83737591311836 },
@@ -95,28 +86,28 @@ const SECTION_DATA = [
     label: "High Living Homes",
     description:
       "Rudraksh is envisioned as an expression of high living, where space, light, and serenity define everyday life. With two refined wings rising across 14 floors, each home feels expansive, composed, and effortlessly elegant.",
-    imageSrc: "/images/rudrakshImages/liv1.webp",
+    imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/liv1.webp",
   },
   {
     id: "kitchen",
     label: "24×7 Cloud Kitchen",
     description:
       "A first of its kind offering, the round the clock cloud kitchen brings freshly prepared, personalised meals directly to residents, adding a new level of everyday convenience to luxury living.",
-    imageSrc: "/images/rudrakshImages/liv2.webp",
+    imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/liv2.webp",
   },
   {
     id: "rooftop",
     label: "Rooftop Living",
     description:
       "An elevated rooftop experience featuring an infinity pool with panoramic city and sea views, complemented by wellness amenities that invite relaxation above the urban rhythm.",
-    imageSrc: "/images/rudrakshImages/liv3.webp",
+    imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/liv3.webp",
   },
   {
     id: "location",
     label: "Prime Location",
     description:
       "Situated behind Infosys at Kottara, Rudraksh offers seamless access to key IT hubs, highways, education, and daily essentials, balancing connectivity with calm living.",
-    imageSrc: "/images/rudrakshImages/liv5.png",
+    imageSrc: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/liv5.png",
   },
 ];
 
@@ -126,42 +117,42 @@ const AMENITIES_DATA = [
     label: "24x7 Cloud Kitchen",
     subtitle: "THE FIRST OF IT'S KIND IN MANGALURU",
     description: "Some days, stepping out feels like too much. And some cravings cannot wait. With a 24x7 cloud kitchen within reach, fresh meals become part of your everyday, arriving when you want them, just the way you like.",
-    image: "/images/rudrakshImages/amm1.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/amm1.webp",
   },
   {
     id: "wellness",
     label: "Wellness Club",
     subtitle: "",
     description: "In a busy routine, taking time to reset often gets pushed aside. Here, that distance disappears. The wellness club brings calm closer to home, making restoration something you can return to whenever you need.",
-    image: "/images/rudrakshImages/amm2.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/amm2.webp",
   },
   {
     id: "lobby",
     label: "Grand Entrance Lobby",
     subtitle: "",
     description: "The way you enter shapes how you feel. Instead of something purely functional, the grand lobby feels intentional, welcoming you into a space defined by quiet confidence and considered design.",
-    image: "/images/rudrakshImages/amm3.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/amm3.webp",
   },
   {
     id: "pool",
     label: "People Spaces",
     subtitle: "",
     description: "Good conversations should not need planning. These shared spaces make it easy to meet, pause, and spend time together, all within reach of home.",
-    image: "/images/rudrakshImages/amm4.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/amm4.webp",
   },
   {
     id: "gym",
     label: "Fitness & Activity Zones",
     subtitle: "ACTIVE LIFESTYLE",
     description: "When convenience meets routine, staying active feels natural. These spaces let you move, train, or reset whenever you choose, without working around time or distance.",
-    image: "/images/rudrakshImages/amm5.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/amm5.webp",
   },
   {
     id: "sky-deck",
     label: "Rooftop Infinity\nSwimming Pool",
     subtitle: "ABOVE THE CLOUDS",
     description: "Sometimes, all you need is a quiet escape. Elevated above the everyday, the rooftop pool offers openness, calm, and a space to unwind at your own pace.",
-    image: "/images/rudrakshImages/amm6.webp",
+    image: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/amm6.webp",
   },
 ];
 
@@ -191,7 +182,7 @@ export const metadata = {
     siteName: "Rudraksh by Mukund MGM Realty",
     images: [
       {
-        url: "/og-images/rudraksh-og.png",
+        url: "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/og-images/rudraksh-og.png",
         width: 1200,
         height: 630,
         alt: "Rudraksh by Mukund MGM Realty",
@@ -205,7 +196,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Rudraksh – Luxury Apartments Mangalore",
     description: "Explore luxury 2, 3 & 4 BHK homes by Mukund MGM Realty designed for comfort, lifestyle, and modern living.",
-    images: ["/og-images/rudraksh-og.png"],
+    images: ["https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/og-images/rudraksh-og.png"],
   },
 
   metadataBase: new URL("https://www.mukundmgmrealty.com/rudraksh"),
@@ -214,16 +205,16 @@ export const metadata = {
 export default function Project1Page() {
   return (
     <main className="min-h-screen bg-black">
-      <NewHeader projectLink="/project-enquire?project=rudraksh" projectName="Rudraksh" scrolledLogo="/icons/rudrakshDarkLogo.svg" logo="/icons/rudrakshLogo.svg" />
+      <NewHeader projectLink="/project-enquire?project=rudraksh" projectName="Rudraksh" scrolledLogo="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/rudrakshDarkLogo.svg" logo="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/rudrakshLogo.svg" />
       {/* <ProjectHero
         projectLink="/project-enquire?project=rudraksh"
         projectName="Rudraksh"
         title={<>A Higher Way to Live</>}
         subtitle="Luxury Homes at Rudraksh"
-        pdfPath="/downloadFloorPlan/typical layout.pdf"
+        pdfPath="https://storage.googleapis.com/mukund-website.firebasestorage.app/downloadFloorPlan/typical layout.pdf"
         FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
-        heroImageDesktop="/images/rudrakshImages/hero.png"
-        heroImageMobile="/images/rudrakshImages/newMobileHero.png"
+        heroImageDesktop="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/hero.png"
+        heroImageMobile="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/newMobileHero.png"
         HERO_MARKERS={HERO_MARKERS}
         floorData={floorData}
         FLOOR_PATHS={FLOOR_PATHS}
@@ -247,12 +238,12 @@ export default function Project1Page() {
         heading="Everything You’re Looking For"
         completed={false}
         galleryImages={[
-          "/images/rudrakshImages/car1.webp",
-          "/images/rudrakshImages/car2.webp",
-          "/images/rudrakshImages/car3.webp",
-          "/images/rudrakshImages/car4.webp",
-          "/images/rudrakshImages/car5.webp",
-          "/images/rudrakshImages/car6.webp",
+          "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/car1.webp",
+          "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/car2.webp",
+          "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/car3.webp",
+          "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/car4.webp",
+          "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/car5.webp",
+          "https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/car6.webp",
         ]}
         variant="left"
         btnAccentColor="#5A1F26"
@@ -262,7 +253,7 @@ export default function Project1Page() {
       {/* <MapSection
         data={MAP_DATA}
         mainMarkerPosition={{ lat: 12.90477577287541, lng: 74.83732199444988 }}
-        customMarkerImage="/icons/mapIcon.svg"
+        customMarkerImage="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/icons/mapIcon.svg"
         accentColor="#4F5D4A"
         boxAccentColor="#5A1F26"
       /> */}
@@ -279,8 +270,8 @@ export default function Project1Page() {
           </>
         }
         subtitle="Built for Enduring Value"
-        mobImg="/images/rudrakshImages/mobileCta2.png"
-        deskImg="/images/rudrakshImages/ctaImg1.png"
+        mobImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/mobileCta2.png"
+        deskImg="https://storage.googleapis.com/mukund-website.firebasestorage.app/publicImages/images/rudrakshImages/ctaImg1.png"
       />
 
       {/* Other sections can be implemented here */}
