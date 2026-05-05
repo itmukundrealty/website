@@ -173,16 +173,19 @@ export default function page() {
           floorData={floorData}
           heroImageDesktop="/images/kedarImage/hero.png"
           heroImageMobile="/images/kedarImage/newMobileHero.png"
+          accentColor="#D5B27C"
+          btnAccentColor="#D5B27C"
         />
-        <ProjectHighLiving data={SECTION_DATA} />
+        <ProjectHighLiving data={SECTION_DATA} accentColor="#D5B27C" />
         <HighlivingSection
           projectLink="/project-enquire?project=kedar"
           heading="Redefining the Essence of Living"
           description="Introducing Kedar, a contemporary residential address shaped by Mukund MGM Realty’s long-standing approach to quality and value. Thoughtfully planned duplex residences offer generous layouts, refined interiors, and a sense of openness that supports both everyday comfort and special moments. With carefully selected amenities and a location at the heart of Mangalore, Kedar brings homes that feel considered and easy to live in for years to come."
           imageSrc="/images/kedarImage/videoPlaceholder.png"
           videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKEDAR%20FILM_45s.mp4?alt=media&token=7b45ec51-a0ac-4b3a-94db-7e8468d1d7b8"
+          btnAccentColor="#D5B27C"
         />
-        <AmenitiesSection projectLink="/project-enquire?project=kedar" data={AMENITIES_DATA} />
+        <AmenitiesSection projectLink="/project-enquire?project=kedar" data={AMENITIES_DATA} accentColor="#D5B27C" btnAccentColor="#5A1F26" />
         <FeaturesSection
           projectLink="/project-enquire?project=kedar"
           features={FEATURES}
@@ -197,17 +200,22 @@ export default function page() {
             "/images/kedarImage/ft6.png",
           ]}
           variant="left"
+          accentColor="#D5B27C"
+          btnAccentColor="#D5B27C"
         />
 
         <MapSection
           data={MAP_DATA}
           mainMarkerPosition={{ lat: 12.908991556397066, lng: 74.85044859337258 }}
           customMarkerImage="/icons/mapIcons/kedarIcon.svg"
+          accentColor="#D5B27C"
+          boxAccentColor="#D5B27C"
         />
         <ExperienceSection
           titlePart1="Built on"
           titlePart2="Real Experiences"
           description="Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time."
+          accentColor="#D5B27C"
         />
         <CTASection
           link="/project-enquire?project=kedar"
@@ -219,6 +227,7 @@ export default function page() {
           subtitle="Spacious homes built for everyday living."
           mobImg="/images/ctaImages/kedarDesk.png"
           deskImg="/images/ctaImages/kedarDesk.png"
+         accentColor="#5A1F26"
         />
         <Footer />
       </div>

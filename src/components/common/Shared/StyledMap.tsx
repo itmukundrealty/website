@@ -56,37 +56,37 @@ function getDistanceKm(lat1: number, lng1: number, lat2: number, lng2: number) {
 
 const LOCATIONS: Location[] = [
     { id: 0, lat: 12.904891658303564, lng: 74.83737591311836, mapLink: "https://maps.app.goo.gl/kSygmBTMH7U4kDic7" },
-    { id: 18, lat: 12.9020175, lng: 74.8465192, mapLink: "https://maps.app.goo.gl/XhmL4xmFEfdFtsHPA" },
-    { id: 19, lat: 12.8048927, lng: 74.9456618, mapLink: "https://maps.app.goo.gl/SfPjS1TCg7ax3HJt6" },
-    { id: 20, lat: 12.9064683, lng: 74.8395069, mapLink: "https://maps.app.goo.gl/PVjMnCZgo5hMg1Er9" },
-    { id: 21, lat: 12.9137376, lng: 74.8362661, mapLink: "https://maps.app.goo.gl/BRYemRxM2hVn7Mir7" },
-    { id: 22, lat: 12.9143723, lng: 74.836257, mapLink: "https://maps.app.goo.gl/RrRtoCwPhfH7K4JR8" },
-    { id: 23, lat: 12.9144958, lng: 74.8357808, mapLink: "https://maps.app.goo.gl/MtQXFaguhycqZwHT8" },
-    { id: 24, lat: 12.8993521, lng: 74.8460278, mapLink: "https://maps.app.goo.gl/rV33maqXahwciNvEA" },
-    { id: 25, lat: 12.9014696, lng: 74.8479397, mapLink: "https://maps.app.goo.gl/pGJLesqWZi3VfMBm9" },
-    { id: 26, lat: 12.9019875, lng: 74.8264663, mapLink: "https://maps.app.goo.gl/znCdoYmZcXk3iaGg7" },
-    { id: 27, lat: 12.9151968, lng: 74.828766, mapLink: "https://maps.app.goo.gl/HaMVY1hCZCnEm4DK6" },
-    { id: 28, lat: 12.9180608, lng: 74.841191, mapLink: "https://maps.app.goo.gl/UTPbHD4LL3FyHFur9" },
-    { id: 29, lat: 12.8834418, lng: 74.847673, mapLink: "https://maps.app.goo.gl/2y9W915S7S81sZtk8" },
-    { id: 30, lat: 12.8800537, lng: 74.8320551, mapLink: "https://maps.app.goo.gl/P4BxtUXzyWA4pAbJ8" },
-    { id: 31, lat: 12.907092, lng: 74.8637985, mapLink: "https://maps.app.goo.gl/35zdp6J9nd1yjdUz8" },
-    { id: 32, lat: 12.8712557, lng: 74.8427679, mapLink: "https://maps.app.goo.gl/s4uVQGozdvte1SLt6" },
-    { id: 33, lat: 12.8860336, lng: 74.8408218, mapLink: "https://maps.app.goo.gl/7iZuy5q5bm9Z1RSE8" },
-    { id: 34, lat: 12.8799349, lng: 74.8402455, mapLink: "https://maps.app.goo.gl/vKGZ5pkQWRemajfz8" },
-    { id: 35, lat: 12.85937, lng: 74.83668, mapLink: "https://maps.app.goo.gl/1gX5XdP1QtnSGsvS8" },
+    { id: 18, lat: 12.9020175, lng: 74.8465192, name: "KEONICS IT Park", mapLink: "https://maps.app.goo.gl/XhmL4xmFEfdFtsHPA" },
+    { id: 19, lat: 12.8048927, lng: 74.9456618, name: "Infosys SEZ Nethra Campus", mapLink: "https://maps.app.goo.gl/SfPjS1TCg7ax3HJt6" },
+    { id: 20, lat: 12.9064683, lng: 74.8395069, name: "A. J. Institute of Management", mapLink: "https://maps.app.goo.gl/PVjMnCZgo5hMg1Er9" },
+    { id: 21, lat: 12.9137376, lng: 74.8362661, name: "Mahesh PU College", mapLink: "https://maps.app.goo.gl/BRYemRxM2hVn7Mir7" },
+    { id: 22, lat: 12.9143723, lng: 74.836257, name: "Sri Chaitanya Techno School", mapLink: "https://maps.app.goo.gl/RrRtoCwPhfH7K4JR8" },
+    { id: 23, lat: 12.9144958, lng: 74.8357808, name: "Sri Chaitanya PU College", mapLink: "https://maps.app.goo.gl/MtQXFaguhycqZwHT8" },
+    { id: 24, lat: 12.8993521, lng: 74.8460278, name: "A.J. Hospital & Research Centre", mapLink: "https://maps.app.goo.gl/rV33maqXahwciNvEA" },
+    { id: 25, lat: 12.9014696, lng: 74.8479397, name: "Boscoss PU College", mapLink: "https://maps.app.goo.gl/pGJLesqWZi3VfMBm9" },
+    { id: 26, lat: 12.9019875, lng: 74.8264663, name: "SDM School Mangaluru", mapLink: "https://maps.app.goo.gl/znCdoYmZcXk3iaGg7" },
+    { id: 27, lat: 12.9151968, lng: 74.828766, name: "AJ Institute of Engineering & Technology", mapLink: "https://maps.app.goo.gl/HaMVY1hCZCnEm4DK6" },
+    { id: 28, lat: 12.9180608, lng: 74.841191, name: "Podar International School", mapLink: "https://maps.app.goo.gl/UTPbHD4LL3FyHFur9" },
+    { id: 29, lat: 12.8834418, lng: 74.847673, name: "Lourdes Central School", mapLink: "https://maps.app.goo.gl/2y9W915S7S81sZtk8" },
+    { id: 30, lat: 12.8800537, lng: 74.8320551, name: "Amazing Kids School", mapLink: "https://maps.app.goo.gl/P4BxtUXzyWA4pAbJ8" },
+    { id: 31, lat: 12.907092, lng: 74.8637985, name: "Mount Carmel Central School", mapLink: "https://maps.app.goo.gl/35zdp6J9nd1yjdUz8" },
+    { id: 32, lat: 12.8712557, lng: 74.8427679, name: "City Centre Mall", mapLink: "https://maps.app.goo.gl/s4uVQGozdvte1SLt6" },
+    { id: 33, lat: 12.8860336, lng: 74.8408218, name: "Bharath Mall", mapLink: "https://maps.app.goo.gl/7iZuy5q5bm9Z1RSE8" },
+    { id: 34, lat: 12.8799349, lng: 74.8402455, name: "Empire Mall", mapLink: "https://maps.app.goo.gl/vKGZ5pkQWRemajfz8" },
+    { id: 35, lat: 12.85937, lng: 74.83668, name: "St. Ann's High School", mapLink: "https://maps.app.goo.gl/1gX5XdP1QtnSGsvS8" },
     { id: 36, lat: 12.9172, lng: 74.8560, mapLink: "https://maps.app.goo.gl/hQeG5QfHkSocbM7U7" },
-    { id: 37, lat: 12.8677, lng: 74.8664, mapLink: "https://maps.app.goo.gl/wE4nHbnXuMuvWKPYA" },
-    { id: 38, lat: 12.8583, lng: 74.8478, mapLink: "https://maps.app.goo.gl/zTx1Cc4e5RyzyJW48" },
-    { id: 39, lat: 12.8676, lng: 74.8542, mapLink: "https://maps.app.goo.gl/xb8F4mVf4vges8AC8" },
-    { id: 40, lat: 12.8729, lng: 74.8492, mapLink: "https://maps.app.goo.gl/AiJ5SotMsC5v63wc8" },
-    { id: 41, lat: 12.8753, lng: 74.8385, mapLink: "https://maps.app.goo.gl/8KhY5EZaNgDAuBiz6" },
+    { id: 37, lat: 12.8677, lng: 74.8664, name: "Indiana Hospital & Heart Institute", mapLink: "https://maps.app.goo.gl/wE4nHbnXuMuvWKPYA" },
+    { id: 38, lat: 12.8583, lng: 74.8478, name: "KMC Hospital Attavar", mapLink: "https://maps.app.goo.gl/zTx1Cc4e5RyzyJW48" },
+    { id: 39, lat: 12.8676, lng: 74.8542, name: "Unity Hospital", mapLink: "https://maps.app.goo.gl/xb8F4mVf4vges8AC8" },
+    { id: 40, lat: 12.8729, lng: 74.8492, name: "KMC Hospital Mangaluru", mapLink: "https://maps.app.goo.gl/AiJ5SotMsC5v63wc8" },
+    { id: 41, lat: 12.8753, lng: 74.8385, name: "Yenepoya Specialty Hospital", mapLink: "https://maps.app.goo.gl/8KhY5EZaNgDAuBiz6" },
     { id: 42, lat: 12.8600, lng: 74.8570, mapLink: "https://maps.app.goo.gl/TuGaZEeEZEskdAVF9" },
     { id: 43, lat: 12.8670, lng: 74.8430, mapLink: "https://maps.app.goo.gl/YGfsD2tzQVa4jTff6" },
-    { id: 44, lat: 12.8997, lng: 74.8556, mapLink: "https://maps.app.goo.gl/DuC3io2mVvTgez7L9" },
-    { id: 45, lat: 12.8767, lng: 74.8395, mapLink: "https://maps.app.goo.gl/KJFRBEQLQNVPZ2Q36" },
-    { id: 46, lat: 12.8705, lng: 74.8408, mapLink: "https://maps.app.goo.gl/eMTe6ivrrL8auu4t7" },
-    { id: 47, lat: 12.8739, lng: 74.8384, mapLink: "https://maps.app.goo.gl/CjuE9FBdeHqXihy97" },
-    { id: 48, lat: 12.8838, lng: 74.8532, mapLink: "https://maps.app.goo.gl/VQt5Xsk2rbJVoDDB6" },
+    { id: 44, lat: 12.8997, lng: 74.8556, name: "STPI / Mangalore IT Park", mapLink: "https://maps.app.goo.gl/DuC3io2mVvTgez7L9" },
+    { id: 45, lat: 12.8767, lng: 74.8395, name: "Sharada Vidyalaya", mapLink: "https://maps.app.goo.gl/KJFRBEQLQNVPZ2Q36" },
+    { id: 46, lat: 12.8705, lng: 74.8408, name: "St Aloysius Gonzaga School", mapLink: "https://maps.app.goo.gl/eMTe6ivrrL8auu4t7" },
+    { id: 47, lat: 12.8739, lng: 74.8384, name: "Canara College", mapLink: "https://maps.app.goo.gl/CjuE9FBdeHqXihy97" },
+    { id: 48, lat: 12.8838, lng: 74.8532, name: "Vinaya Hospital", mapLink: "https://maps.app.goo.gl/VQt5Xsk2rbJVoDDB6" },
     { id: 49, lat: 12.9980, lng: 74.8050, mapLink: "https://maps.app.goo.gl/YTwAggzYDxrC8FdGA" },
     { id: 50, lat: 13.0092, lng: 74.7937, mapLink: "https://maps.app.goo.gl/Bwy6kS3okmWw7dCS6" },
     { id: 51, lat: 13.0095, lng: 74.7940, mapLink: "https://maps.app.goo.gl/shrbBFdS5TcQrTKD6" },
@@ -95,9 +95,9 @@ const LOCATIONS: Location[] = [
     { id: 54, lat: 12.9650, lng: 74.8100, mapLink: "https://maps.app.goo.gl/an7T2B17qedVHqgHA" },
     { id: 55, lat: 13.0092, lng: 74.7937, mapLink: "https://maps.app.goo.gl/bnjqQHwhrCvjSkKW8" },
     { id: 56, lat: 13.0204, lng: 74.7921, mapLink: "https://maps.app.goo.gl/ekBCGmEfcYq5qUtM6" },
-    { id: 57, lat: 12.9041, lng: 74.8936, mapLink: "https://maps.app.goo.gl/E7JeXM6DcgVwsREk6" },
-    { id: 58, lat: 12.8679, lng: 74.8610, mapLink: "https://maps.app.goo.gl/jeAYpTQAGARHehza9" },
-    { id: 59, lat: 12.8741, lng: 74.8389, mapLink: "https://maps.app.goo.gl/p9lJpG58awDmUnNa6" },
+    { id: 57, lat: 12.9041, lng: 74.8936, name: "Tejasvini Hospital", mapLink: "https://maps.app.goo.gl/E7JeXM6DcgVwsREk6" },
+    { id: 58, lat: 12.8679, lng: 74.8610, name: "St Joseph High School Bajal", mapLink: "https://maps.app.goo.gl/jeAYpTQAGARHehza9" },
+    { id: 59, lat: 12.8741, lng: 74.8389, name: "Canara High School Main", mapLink: "https://maps.app.goo.gl/p9lJpG58awDmUnNa6" },
     { id: 100, lat: 12.904464673600481, lng: 74.84546964309354, name: "Derebail church", mapLink: "https://maps.app.goo.gl/CDeC5AQUSjMHHqQm9" },
     { id: 101, lat: 12.90035104475791, lng: 74.84496534047851, name: "St. Anns School", mapLink: "https://maps.app.goo.gl/rVvXLt2eDL6VstSD7" },
     { id: 102, lat: 12.899592635722783, lng: 74.8460278, name: "AJ Hospital", mapLink: "https://maps.app.goo.gl/UrtDyPRTswGLvwpD7" },
@@ -166,7 +166,6 @@ const LOCATIONS: Location[] = [
 const BASE_RADIUS = 60;
 const REFERENCE_ZOOM = 14;
 const MIN_RADIUS = 8;
-const MAX_RADIUS = 80;
 
 function getDynamicRadius(currentZoom: number): number {
     if (currentZoom <= REFERENCE_ZOOM) return BASE_RADIUS;
@@ -187,6 +186,7 @@ interface StyledMapProps {
     renderAsMarkers?: boolean;
     allowedPoints?: number[];
     accentColor?: string;
+    accentColorLight?: string;
 }
 
 export default function StyledMap({
@@ -202,6 +202,7 @@ export default function StyledMap({
     renderAsMarkers = false,
     allowedPoints,
     accentColor = "#0097DC",
+    accentColorLight = "#e5e5e5",
 }: StyledMapProps) {
 
     const [hoveredLocation, setHoveredLocation] = useState<number | null>(null);
@@ -213,11 +214,11 @@ export default function StyledMap({
         return [
             { featureType: "all", elementType: "labels", stylers: [{ visibility: "off" }] },
             { featureType: "road", elementType: "geometry", stylers: [{ color: "#f0f0f0" }] },
-            { featureType: "road.highway", elementType: "geometry", stylers: [{ color: highlightHighway ? accentColor : "#e5e5e5" }] },
+            { featureType: "road.highway", elementType: "geometry", stylers: [{ color: highlightHighway ? accentColor : accentColorLight }] },
             { featureType: "water", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
             { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
         ];
-    }, [highlightHighway, accentColor]);
+    }, [highlightHighway, accentColor, accentColorLight]);
 
     const mapOptions = useMemo(() => ({
         styles: dynamicMapStyle,
@@ -298,8 +299,19 @@ export default function StyledMap({
     }, [checkOffscreenPoints]);
 
     useEffect(() => {
-        checkOffscreenPoints();
+        const timeout = window.setTimeout(checkOffscreenPoints, 0);
+        return () => window.clearTimeout(timeout);
     }, [checkOffscreenPoints]);
+
+    useEffect(() => {
+        if (!mapInstance) return;
+
+        mapInstance.setCenter(center);
+        mapInstance.setZoom(zoom);
+
+        const timeout = window.setTimeout(checkOffscreenPoints, 0);
+        return () => window.clearTimeout(timeout);
+    }, [center, checkOffscreenPoints, mapInstance, zoom]);
 
     return (
         <div className={`relative h-full w-full overflow-hidden ${className}`}>

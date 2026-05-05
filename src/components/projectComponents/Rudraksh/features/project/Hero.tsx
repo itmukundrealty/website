@@ -28,6 +28,7 @@ interface ProjectHeroProps {
   exploreTitle?: string | React.ReactNode;
   exploreSubtitle?: string | React.ReactNode;
   accentColor?: string;
+  btnAccentColor?: string;
 }
 
 export function ProjectHero({
@@ -47,6 +48,7 @@ export function ProjectHero({
   exploreTitle = "Click to Explore",
   exploreSubtitle = "Our Floors",
   accentColor = "#0097DC",
+  btnAccentColor = "#0097DC",
 }: ProjectHeroProps) {
   const pathname = usePathname();
   const currentPath = pathname?.split("/")[1] || "";
@@ -212,7 +214,10 @@ export function ProjectHero({
            className="w-full flex flex-col gap-3 pointer-events-auto"
         >
           <Link href={finalLink} className="w-full">
-            <button className="w-full bg-[#0097DC] text-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg">
+            <button 
+              className="w-full text-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg"
+              style={{ backgroundColor: btnAccentColor }}
+            >
               Book A Site Visit
               <ArrowUpRight className="w-5 h-5" />
             </button>
@@ -220,7 +225,8 @@ export function ProjectHero({
           {pdfPath && (
             <button 
               onClick={handleDownload}
-              className="w-full bg-white text-[#0097DC] py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg"
+              className="w-full bg-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg"
+              style={{ color: btnAccentColor }}
             >
               Download Floor Plan + Brochure
               <ArrowUpRight className="w-5 h-5" />

@@ -170,7 +170,7 @@ export default function ProjectHighLiving({ data, accentColor = "#0097DC" }: Pro
     return (
         <>
             {/* Desktop View */}
-            <div ref={containerRef} className="hidden md:flex relative w-full h-screen overflow-hidden flex-col md:flex-row bg-[#0097DC]">
+            <div ref={containerRef} className="hidden md:flex relative w-full h-screen overflow-hidden flex-col md:flex-row" style={{ backgroundColor: accentColor }}>
 
                 {/* --- Left Panel: Images --- */}
                 <div className="relative w-full md:w-1/2 h-1/2 md:h-full z-10 bg-black">

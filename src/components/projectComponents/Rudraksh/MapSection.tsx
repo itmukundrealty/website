@@ -7,12 +7,14 @@ import Image from 'next/image';
 /* -----------------------------------
    Types
 ----------------------------------- */
+type MapViewport = { center: { lat: number, lng: number }, zoom: number };
+
 export type MapSectionItem = {
     key: string;
     title: string;
     icon: string;
     points: number[];
-    viewport: { center: { lat: number, lng: number }, zoom: number };
+    viewport: MapViewport;
 };
 export interface MapSectionProps {
     data: MapSectionItem[];
@@ -20,7 +22,40 @@ export interface MapSectionProps {
     customMarkerImage?: string;
     accentColor?: string;
     boxAccentColor?: string;
-    accentColorLight?: string;
+}
+
+const DEFAULT_MAP_CENTER = {
+    lat: 12.904891658303564,
+    lng: 74.83737591311836,
+};
+
+const FALLBACK_VIEWPORT: MapViewport = {
+    center: { lat: 0, lng: 0 },
+    zoom: 1,
+};
+
+const PROJECT_FOCUS_ZOOM = 14.5;
+const COORDINATE_TOLERANCE = 0.000001;
+
+function isDefaultViewport(viewport?: MapViewport) {
+    if (!viewport) return true;
+
+    return (
+        Math.abs(viewport.center.lat - DEFAULT_MAP_CENTER.lat) < COORDINATE_TOLERANCE &&
+        Math.abs(viewport.center.lng - DEFAULT_MAP_CENTER.lng) < COORDINATE_TOLERANCE &&
+        viewport.zoom <= 13.5
+    );
+}
+
+function getEffectiveViewport(viewport?: MapViewport, mainMarkerPosition?: MapViewport["center"]) {
+    if (isDefaultViewport(viewport) && mainMarkerPosition) {
+        return {
+            center: mainMarkerPosition,
+            zoom: PROJECT_FOCUS_ZOOM,
+        };
+    }
+
+    return viewport || FALLBACK_VIEWPORT;
 }
 
 export default function MapSection({
@@ -28,15 +63,14 @@ export default function MapSection({
     mainMarkerPosition,
     customMarkerImage,
     accentColor = "#0097DC",
-    boxAccentColor = "#0097DC",
-    accentColorLight
+    boxAccentColor = "#0097DC"
 }: MapSectionProps) {
     // Initialize active section with the first item's key, or an empty string if data is empty
     const [activeSection, setActiveSection] = useState<string>(data[0]?.key || "");
 
     const activeItem = data.find(item => item.key === activeSection) || data[0];
     const activePoints = activeItem?.points || [];
-    const { center, zoom } = activeItem?.viewport || { center: { lat: 0, lng: 0 }, zoom: 1 };
+    const { center, zoom } = getEffectiveViewport(activeItem?.viewport, mainMarkerPosition);
 
     if (!data || data.length === 0) return null;
 
@@ -56,7 +90,6 @@ export default function MapSection({
                     mainMarkerPosition={mainMarkerPosition}
                     customMarkerImage={customMarkerImage}
                     accentColor={accentColor}
-                    accentColorLight={accentColorLight}
                 />
             </div>
 
