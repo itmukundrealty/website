@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useRef } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -100,12 +101,14 @@ interface ExperienceSectionProps {
     titlePart1: string;
     titlePart2: string;
     description: string;
+    accentColor?: string;
 }
 
 export default function ExperienceSection({
     titlePart1 = "Built on",
     titlePart2 = "Real Experiences",
-    description = "Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time."
+    description = "Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time.",
+    accentColor = "#0097DC"
 }: ExperienceSectionProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef<any>(null);
@@ -136,8 +139,9 @@ export default function ExperienceSection({
                                 <button
                                     key={index}
                                     onClick={() => swiperRef.current?.slideTo(index)}
-                                    className={`h-[4px]  transition-all duration-300 ${activeIndex === index ? "w-12 bg-[#0097DC]" : "w-6 bg-[#e5e7eb]"
+                                    className={`h-[4px]  transition-all duration-300 ${activeIndex === index ? "w-12" : "w-6 bg-[#e5e7eb]"
                                         }`}
+                                    style={{ backgroundColor: activeIndex === index ? accentColor : undefined }}
                                     aria-label={`Go to slide ${index + 1}`}
                                 />
                             ))}
@@ -180,7 +184,7 @@ export default function ExperienceSection({
                                             <h3 className="text-xl md:text-3xl text-[#505153] font-light">
                                                 {item.name}
                                             </h3>
-                                            <p className="text-[#0097DC] font-medium text-sm md:text-base">
+                                            <p className="font-medium text-sm md:text-base" style={{ color: accentColor }}>
                                                 {item.role}
                                             </p>
                                         </div>
@@ -195,8 +199,9 @@ export default function ExperienceSection({
                                 <button
                                     key={index}
                                     onClick={() => swiperRef.current?.slideTo(index)}
-                                    className={`h-1 transition-all duration-300 ${activeIndex === index ? "w-10 bg-[#0097DC]" : "w-5 bg-[#e5e7eb]"
+                                    className={`h-1 transition-all duration-300 ${activeIndex === index ? "w-10" : "w-5 bg-[#e5e7eb]"
                                         }`}
+                                    style={{ backgroundColor: activeIndex === index ? accentColor : undefined }}
                                     aria-label={`Go to slide ${index + 1}`}
                                 />
                             ))}

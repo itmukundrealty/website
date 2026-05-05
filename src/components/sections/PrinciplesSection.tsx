@@ -47,7 +47,7 @@ export default function PrinciplesSlider() {
   const isEnd = activeIndex === slides.length - 1;
 
   return (
-    <section className="w-full bg-white relative py-12 md:py-0">
+    <section className="w-full bg-white relative py-12 md:pt-30">
       <h1 className="text-4xl md:text-6xl font-light mb-6 md:mb-8 text-left md:text-center text-[#505153] px-6 md:px-0">Our <span className="text-[#505153] font-medium">Defining <br className="md:hidden" /> Principles</span></h1>
 
 
@@ -55,7 +55,7 @@ export default function PrinciplesSlider() {
 
 
         {/* LEFT PANEL */}
-        <div className="w-full md:w-[40%] pt-10 md:pt-[120px] px-6 md:pl-[80px] md:pr-[40px] text-left">
+        <div className="w-full md:w-[40%] pt-3 md:pt-[120px] px-6 md:pl-[80px] md:pr-[40px] text-left">
 
           <h2 className="text-lg text-[#505153] font-semibold mb-2">
             What we live by.
@@ -155,7 +155,7 @@ export default function PrinciplesSlider() {
           className=" object-contain blur-lg -rotate-45"
         />
       </div>
-      <div className="absolute -top-10 md:-top-30 right-0 pointer-events-none z-0  ">
+      {/* <div className="absolute -top-10 md:-top-30 right-0 pointer-events-none z-0  ">
         <Image
           src="/icons/mukund.svg"
           alt="Mukund Abstract Shape"
@@ -163,7 +163,7 @@ export default function PrinciplesSlider() {
           height={150}
           className=" object-contain blur-sm h-25 w-25 md:h-40 md:w-40 "
         />
-      </div>
+      </div> */}
     </section>
   );
 }

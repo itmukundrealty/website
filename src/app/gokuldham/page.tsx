@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -200,7 +200,7 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
+                <NewHeader projectLink="/project-enquire?project=gokuldham" projectName="Gokuldham" floorPlanPdf="/completedFloorplans/Gokuldham-FloorPlan.pdf" />
                 <CompletedHero title={<>Gokuldham</>} subtitle="" variant="topRight" desktopImage="/images/gokuldhamImages/heroDesk.webp" mobileImage="/images/gokuldhamImages/heroMobile.png" pdfPath="/completedFloorplans/Gokuldham-FloorPlan.pdf" />
                 {/* <ProjectHighLiving data={SECTION_DATA} /> */}
                 <HighlivingSection

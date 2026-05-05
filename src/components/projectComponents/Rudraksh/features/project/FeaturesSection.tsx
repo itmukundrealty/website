@@ -29,6 +29,9 @@ interface FeaturesSectionProps {
   btnType?: "explore" | "know";
   modalTitle?: string;
   modalPoints?: string[];
+  id?: string;
+  accentColor?: string;
+  btnAccentColor?: string;
 }
 
 export default function FeaturesSection({
@@ -41,6 +44,9 @@ export default function FeaturesSection({
   btnType = "explore",
   modalTitle,
   modalPoints,
+  id,
+  accentColor = "#0097DC",
+  btnAccentColor = "#0097DC",
 }: FeaturesSectionProps) {
   const pathname = usePathname();
   const currentProject = pathname?.split("/")[1] || "";
@@ -105,7 +111,7 @@ export default function FeaturesSection({
   const GALLERY_IMAGES = fetchedGalleryImages.length > 0 ? fetchedGalleryImages : (galleryImages || []);
 
   return (
-    <section className="py-10 lg:py-32 bg-white font-host">
+    <section id={id} className="py-10 lg:py-32 bg-white font-host" style={{ "--accent-color": accentColor, "--btn-accent-color": btnAccentColor } as React.CSSProperties}>
       <div className=" mx-auto px-6 lg:px-20 xl:px-54 ">
         {/* Header */}
         {variant === "center" ? (
@@ -118,7 +124,8 @@ export default function FeaturesSection({
             {btnType === "explore" ? (
               <Link
                 href={finalLink}
-                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px]"
+                style={{ borderColor: btnAccentColor, color: btnAccentColor }}
+                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px] hover:opacity-80 transition-all"
               >
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                 Explore Now
@@ -126,7 +133,8 @@ export default function FeaturesSection({
             ) : (
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-6 lg:py-5 border border-black text-black hover:bg-black/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px]"
+                style={{ borderColor: btnAccentColor, color: btnAccentColor }}
+                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-6 lg:py-5 border uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px] hover:opacity-80 transition-all"
               >
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                 Know More
@@ -166,7 +174,8 @@ export default function FeaturesSection({
         <div className="flex justify-start md:hidden mb-20">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-[#424244] text-[15px] border-b border-[#424244] pb-0.5 hover:text-[#0097DC] hover:border-[#0097DC] transition-colors duration-300"
+            style={{ color: "#424244", borderBottomColor: "#424244" }}
+            className="text-[15px] border-b pb-0.5 transition-colors duration-300 hover-accent"
           >
             {isExpanded ? "Read Less" : "Read More"}
           </button>
@@ -190,7 +199,7 @@ export default function FeaturesSection({
                   {modalTitle}
                 </h2>
               )}
-              <p className="text-[#0097DC] text-xl md:text-4xl lg:text-[30px] font-light leading-relaxed">Specifications</p></div>
+              <p className="text-xl md:text-4xl lg:text-[30px] font-light leading-relaxed" style={{ color: accentColor }}>Specifications</p></div>
 
 
               {modalPoints && modalPoints.length > 0 && (
@@ -248,8 +257,12 @@ export default function FeaturesSection({
                 cursor: pointer;
               }
               .features-swiper .swiper-pagination-bullet-active {
-                background: #0097dc;
+                background: var(--accent-color, #0097dc);
                 width: 80px;
+              }
+              .hover-accent:hover {
+                color: var(--accent-color, #0097dc) !important;
+                border-color: var(--accent-color, #0097dc) !important;
               }
             `}</style>
           </div>

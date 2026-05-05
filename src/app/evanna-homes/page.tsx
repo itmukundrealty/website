@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -41,36 +41,36 @@ const MAP_DATA = [
             zoom: 13
         }
     },
+   {
+        key: "it-education",
+        title: "IT & Education",
+        icon: "/icons/culturalIcon.svg", 
+        points: [113, 114, 115], // Infosys, Mahesh PU, AJ Institute
+        viewport: {
+            center: { lat: 12.903875173703936, lng: 74.83892547301431 },
+            zoom: 14.5
+        }
+    },
     {
-        key: "it",
-        title: "Healthcare Proximity",
+        key: "healthcare-essentials",
+        title: "Healthcare & Essentials",
         icon: "/icons/healthcareIcon.svg",
-        points: [44, 19],
+        points: [116, 117], // AJ Hospital, Bharath Mall
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.903875173703936, lng: 74.83892547301431 },
+            zoom: 14.5
         }
     },
     {
-        key: "education",
-        title: "Daily Convenience",
-        icon: "/icons/urbanIcon.svg",
-        points: [28, 22, 29, 35, 46, 47],
+        key: "nearby-places",
+        title: "Nearby Places",
+        icon: "/icons/citywideIcon.svg", 
+        points: [118, 119, 120, 121, 122, 123, 124, 125, 126], 
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.903875173703936, lng: 74.83892547301431 },
+            zoom: 14.5 // Slightly zoomed out to fit all nearby places
         }
-    },
-    {
-        key: "essentials",
-        title: "Local Heritage",
-        icon: "/icons/culturalIcon.svg",
-        points: [24, 38, 42, 41],
-        viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
-        }
-    },
+    }
 ];
 
 
@@ -169,7 +169,7 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
+                <NewHeader projectLink="/project-enquire?project=evanna" projectName="Evanna Homes" floorPlanPdf="/completedFloorplans/Evanna-FloorPlans.pdf" />
                 <CompletedHero title={<>Evanna Homes</>} subtitle="" mobileVariant="topRight" variant="rightCentered" desktopImage="/images/evannaImages/heroDesk.webp" mobileImage="/images/evannaImages/heroMob.png" pdfPath="/completedFloorplans/Evanna-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection

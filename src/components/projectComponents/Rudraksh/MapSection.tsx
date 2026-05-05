@@ -14,14 +14,23 @@ export type MapSectionItem = {
     points: number[];
     viewport: { center: { lat: number, lng: number }, zoom: number };
 };
-
 export interface MapSectionProps {
     data: MapSectionItem[];
     mainMarkerPosition?: { lat: number, lng: number };
     customMarkerImage?: string;
+    accentColor?: string;
+    boxAccentColor?: string;
+    accentColorLight?: string;
 }
 
-export default function MapSection({ data, mainMarkerPosition, customMarkerImage }: MapSectionProps) {
+export default function MapSection({
+    data,
+    mainMarkerPosition,
+    customMarkerImage,
+    accentColor = "#0097DC",
+    boxAccentColor = "#0097DC",
+    accentColorLight
+}: MapSectionProps) {
     // Initialize active section with the first item's key, or an empty string if data is empty
     const [activeSection, setActiveSection] = useState<string>(data[0]?.key || "");
 
@@ -46,12 +55,14 @@ export default function MapSection({ data, mainMarkerPosition, customMarkerImage
                     zoom={zoom}
                     mainMarkerPosition={mainMarkerPosition}
                     customMarkerImage={customMarkerImage}
+                    accentColor={accentColor}
+                    accentColorLight={accentColorLight}
                 />
             </div>
 
             {/* BLUE BOX OVERLAY (Desktop) */}
             <div className="hidden md:flex absolute z-10 top-1/2 md:left-5 lg:left-[10%] -translate-y-1/2">
-                <div className="bg-[#0097DC] text-white p-14 w-[450px] shadow-xl">
+                <div className="text-white p-14 w-[450px] shadow-xl" style={{ backgroundColor: boxAccentColor }}>
                     <h2 className="text-[52px] font-light mb-12 leading-[1.1]">
                         Strategically <br />
                         <span className="font-semibold">Connected</span>
@@ -94,7 +105,7 @@ export default function MapSection({ data, mainMarkerPosition, customMarkerImage
             </div>
 
             {/* MOBILE OVERLAY (Simplified bottom bar) */}
-            <div className="md:hidden absolute bottom-0 left-0 right-0 p-2 bg-[#0097DC] text-white z-20">
+            <div className="md:hidden absolute bottom-0 left-0 right-0 p-2 text-white z-20" style={{ backgroundColor: boxAccentColor }}>
                 <div className="grid grid-cols-4 gap-2">
                     {data.map((item) => {
                         const isActive = activeSection === item.key;

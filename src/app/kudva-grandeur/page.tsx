@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -44,36 +44,36 @@ const MAP_DATA = [
             zoom: 13
         }
     },
-    {
-        key: "it",
-        title: "Economic Hub",
-        icon: "/icons/businessIcon.svg",
-        points: [49, 50],
-        viewport: {
-            center: { lat: 12.989402030376874, lng: 74.80207348030677 },
-            zoom: 13
-        }
-    },
-    {
+   {
         key: "education",
-        title: "Industrial Catchment",
-        icon: "/icons/industrialIcon.svg",
-        points: [51, 52, 53, 54, 55],
+        title: "Education",
+        icon: "/icons/culturalIcon.svg", 
+        points: [128], // Govinda Das College
         viewport: {
-            center: { lat: 12.989402030376874, lng: 74.80207348030677 },
-            zoom: 13
+            center: { lat: 12.9892975, lng: 74.8021164 },
+            zoom: 14.5
         }
     },
     {
-        key: "essentials",
-        title: "Port & Airport Reach",
-        icon: "/icons/portIcon.svg",
-        points: [56],
+        key: "healthcare",
+        title: "Healthcare",
+        icon: "/icons/healthcareIcon.svg",
+        points: [129], // Venus Hospital
         viewport: {
-            center: { lat: 12.999402030376874, lng: 74.80207348030677 },
-            zoom: 13
+            center: { lat: 12.9892975, lng: 74.8021164 },
+            zoom: 14.5
         }
     },
+    {
+        key: "nearby-places",
+        title: "Nearby Places",
+        icon: "/icons/citywideIcon.svg", 
+        points: [130, 131, 132, 133, 134, 135], // Railway Station, Lalith, Mandovi, Sadananda, Market, Bus Stand
+        viewport: {
+            center: { lat: 12.9892975, lng: 74.8021164 },
+            zoom: 14.5 // Zoomed out slightly to fit railway station and Lalith hotel
+        }
+    }
 ];
 
 
@@ -152,15 +152,16 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
-                <CompletedHero title={<>Kudva's Grandeur</>} mobileVariant="topRight" subtitle="" variant="rightCentered" desktopImage="/images/kudvaImages/heroDesk.png" mobileImage="/images/kudvaImages/heroMobile.png" pdfPath="/completedFloorplans/Kudva's Grandeur-FloorPlan.pdf" />
+                <NewHeader projectLink="/project-enquire?project=kudva" projectName="Kudva's Grandeur" floorPlanPdf="/completedFloorplans/Kudva's Grandeur-FloorPlan.pdf" />
+                <CompletedHero title={<>Kudva's Grandeur</>} mobileVariant="topRight" subtitle="" variant="rightCentered" desktopImage="/images/kudvaImages/heroDesk.png" mobileImage="/images/kudvaImages/heroMobile.png" pdfPath="/completedFloorplans/Kudva's Grandeur-FloorPlan.pdf" projectLink="/project-enquire?project=kudva" />
                 <ProjectHighLiving data={SECTION_DATA} />
-                {/* <HighlivingSection
+                <HighlivingSection
                     heading="Refined Commercial Living"
-                    description= "Greetings from Kudva's Grandeur, a well-planned business center in Surathkal that unites large, flexible workspaces and thriving business activity under one roof. This complex is designed to accommodate a variety of business needs, from retail and dining to offices and showrooms, and is situated in one of the most vibrant neighborhoods in the area. Business, lifestyle, and daily necessities can all coexist peacefully in Kudva's Grandeur thanks to its spacious interiors that can be customized to meet specific needs, high-quality construction, and thoughtful amenities like plenty of parking and contemporary utilities."
+                    description="Greetings from Kudva's Grandeur, a well-planned business center in Surathkal that unites large, flexible workspaces and thriving business activity under one roof. This complex is designed to accommodate a variety of business needs, from retail and dining to offices and showrooms, and is situated in one of the most vibrant neighborhoods in the area. Business, lifestyle, and daily necessities can all coexist peacefully in Kudva's Grandeur thanks to its spacious interiors that can be customized to meet specific needs, high-quality construction, and thoughtful amenities like plenty of parking and contemporary utilities."
                     imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
-                /> */}
+                    video={false}
+                />
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Curated for Commercial Excellence" variant="left" completed={true} />
 

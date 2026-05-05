@@ -11,9 +11,10 @@ interface ctaprops {
   deskImg?: string;
   cta?: string;
   link?: string;
+  accentColor?: string;
 }
 
-export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Contact Us", link = "/project-enquire" }: ctaprops) {
+export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Contact Us", link = "/project-enquire", accentColor = "#0097DC" }: ctaprops) {
   const pathname = usePathname();
   const currentPath = pathname?.split("/")[1] || "";
 
@@ -56,7 +57,8 @@ export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Co
           {/* Desktop Button */}
           <Link
             href={finalLink}
-            className="hidden md:inline-block bg-white text-[#0097DC] px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+            className="hidden md:inline-block bg-white px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+            style={{ color: accentColor }}
           >
             {cta}
           </Link>
@@ -66,7 +68,8 @@ export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Co
         <div className="w-full md:hidden">
           <Link
             href={finalLink}
-            className="block w-full bg-white text-[#0097DC] py-4 text-center text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+            className="block w-full bg-white py-4 text-center text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+            style={{ color: accentColor }}
           >
             {cta}
           </Link>
