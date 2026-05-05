@@ -18,6 +18,7 @@ interface HighlivingSectionProps {
   videoSrc: string | string[];
   projectLink?: string;
   video?: boolean;
+  btnAccentColor?: string;
 }
 
 const VideoItem = ({ image, video, isActive }: { image: string, video: string, isActive: boolean }) => {
@@ -68,6 +69,7 @@ export default function HighlivingSection({
   videoSrc,
   projectLink = "/project-enquire",
   video = true,
+  btnAccentColor = "#0097DC"
 }: HighlivingSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -129,7 +131,8 @@ export default function HighlivingSection({
 
           <Link
             href={finalLink}
-            className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 bg-[#0097DC] hover:bg-[#0085C0] text-white  transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
+            className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 text-white transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
+            style={{ backgroundColor: btnAccentColor }}
           >
             <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
             Enquire Now
@@ -182,7 +185,7 @@ export default function HighlivingSection({
         }
         .swiper-pagination-bullet-active {
           opacity: 1;
-          background: #0097DC;
+          background: ${btnAccentColor};
         }
       `}} />
     </section>

@@ -25,6 +25,9 @@ interface ProjectHeroProps {
   title?: string | React.ReactNode;
   subtitle?: string | React.ReactNode;
   pdfPath?: string;
+  exploreTitle?: string | React.ReactNode;
+  exploreSubtitle?: string | React.ReactNode;
+  accentColor?: string;
 }
 
 export function ProjectHero({
@@ -41,6 +44,9 @@ export function ProjectHero({
   title,
   subtitle,
   pdfPath,
+  exploreTitle = "Click to Explore",
+  exploreSubtitle = "Our Floors",
+  accentColor = "#0097DC",
 }: ProjectHeroProps) {
   const pathname = usePathname();
   const currentPath = pathname?.split("/")[1] || "";
@@ -85,6 +91,7 @@ export function ProjectHero({
   const [showUnitDetails, setShowUnitDetails] = useState(false);
   const [isZoomedOut, setIsZoomedOut] = useState(false);
   const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState<number | null>(null);
+  const [terraceType, setTerraceType] = useState<"upper" | "lower">("lower");
 
   // Mouse tracking for floating label
   const cursorX = useMotionValue(-100);
@@ -115,6 +122,9 @@ export function ProjectHero({
   // Filter units by selected wing
   const currentFilteredUnits = currentFloor
     ? currentFloor.units.filter((u: any) => {
+        if (currentFloor.title === "Terrace Floor" && projectName === "Rudraksh") {
+          return u.details.terraceType === terraceType;
+        }
         if (!selectedWing) return true;
         return u.details.floor?.includes(`Wing ${selectedWing}`);
       })
@@ -227,8 +237,8 @@ export function ProjectHero({
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-right pointer-events-auto mt-20 md:mt-28 xl:mt-40"
         >
-          <h1 className="text-5xl text-white tracking-tight font-medium mb-4 md:text-7xl">Click to Explore</h1>
-          <h2 className="text-5xl text-white tracking-tight font-thin md:text-7xl">Our Floors</h2>
+          <h1 className="text-5xl text-white tracking-tight font-medium mb-4 md:text-7xl">{exploreTitle}</h1>
+          <h2 className="text-5xl text-white tracking-tight font-thin md:text-7xl">{exploreSubtitle}</h2>
         </motion.div>
       </div>
 
@@ -292,11 +302,12 @@ export function ProjectHero({
               top: cursorYSpring,
               translateX: "-50%",
               translateY: "-150%",
+              backgroundColor: accentColor,
             }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
-            className="fixed z-[60] pointer-events-none px-4 py-2 bg-[#0097DC] text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-xl backdrop-blur-md bg-opacity-90 flex items-center gap-2 whitespace-nowrap"
+            className="fixed z-[60] pointer-events-none px-4 py-2 text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-xl backdrop-blur-md bg-opacity-90 flex items-center gap-2 whitespace-nowrap"
           >
             <div className="w-1 h-1 rounded-full bg-white animate-pulse" />
             Click to Explore {hoveredWing ? `Wing ${hoveredWing}` : ""}
@@ -343,7 +354,8 @@ export function ProjectHero({
             </div>
             <button
               onClick={() => { setSelectedIndex(hoveredIndex); setSelectedWing(hoveredWing); }}
-              className="flex w-full items-center justify-end border-t border-gray-100 pt-6 text-md font-semibold text-[#0097DC] transition-opacity hover:opacity-80"
+              className="flex w-full items-center justify-end border-t border-gray-100 pt-6 text-md font-semibold transition-opacity hover:opacity-80"
+              style={{ color: accentColor }}
             >
               Click to Explore
             </button>
@@ -379,6 +391,7 @@ export function ProjectHero({
                   onClose={() => { setSelectedIndex(null); setSelectedWing(null); }}
                   hideAmenities={hideAmenities}
                   amenitiesTarget={amenitiesTarget}
+                  accentColor={accentColor}
                 />
 
                 {/* SVG Map */}
@@ -402,6 +415,7 @@ export function ProjectHero({
                             <path
                               key={unit.id}
                               d={unit.path}
+                              transform={unit.transform || undefined}
                               className={`cursor-pointer transition-colors duration-200 ease-in-out ${getPlanFillClass(originalIndex)}`}
                               onMouseEnter={() => setPlanHoveredIndex(originalIndex)}
                               onMouseLeave={() => setPlanHoveredIndex(null)}
@@ -412,18 +426,23 @@ export function ProjectHero({
                         })}
                       </g>
                     </svg>
+
                     {(
-                      (selectedWing === "A" && currentFloor.planImageWingA) ||
-                      (selectedWing === "B" && currentFloor.planImageWingB) ||
-                      currentFloor.planImage
+                      currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
+                        ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
+                        : (selectedWing === "A" && currentFloor.planImageWingA) ||
+                          (selectedWing === "B" && currentFloor.planImageWingB) ||
+                          currentFloor.planImage
                     ) && (
                       <Image
                         width={500}
                         height={500}
                         src={
-                          (selectedWing === "A" && currentFloor.planImageWingA) ||
-                          (selectedWing === "B" && currentFloor.planImageWingB) ||
-                          currentFloor.planImage
+                          currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
+                            ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
+                            : (selectedWing === "A" && currentFloor.planImageWingA) ||
+                              (selectedWing === "B" && currentFloor.planImageWingB) ||
+                              currentFloor.planImage
                         }
                         alt={`${currentFloor.title} Plan`}
                         className="absolute inset-0 h-full w-full object-contain select-none mix-blend-multiply pointer-events-none z-0"
@@ -433,18 +452,50 @@ export function ProjectHero({
                 </div>
 
                 {/* Sidebar Footer (Text + Compass) */}
-                <div className="mt-auto flex items-center justify-between px-8 pb-5 shrink-0">
-                  <h2 className="text-4xl md:text-2xl font-light text-[#0097DC] tracking-wide">
-                    {currentFloor.title} {selectedWing ? `- Wing ${selectedWing}` : ""}
-                  </h2>
-                  <a
-                    href={currentFloor?.pdfPath}
-                    download="FLOOR PLAN"
-                    className="flex items-center gap-3 text-sm font-semibold text-[#0097DC] hover:opacity-70 transition-opacity"
-                  >
-                    Download Floorplan
-                    <Compass />
-                  </a>
+                <div className="mt-auto flex flex-col items-start px-8 pb-5 shrink-0 gap-3">
+                   {currentFloor.title === "Terrace Floor" && projectName === "Rudraksh" && (
+                    <div className="bg-white/60 backdrop-blur-2xl p-1.5 border shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex items-center gap-1 pointer-events-auto" style={{ borderColor: `${accentColor}33` }}>
+                        {(["lower", "upper"] as const).map((type) => (
+                            <button
+                                key={type}
+                                onClick={() => setTerraceType(type)}
+                                className={`relative px-6 py-2 md:px-8 md:py-2.5 text-[11px] md:text-[12px] font-bold uppercase tracking-[0.15em] transition-all duration-500 group ${terraceType === type
+                                    ? "text-white"
+                                    : "text-[#505153]/60 hover:text-[#505153]"
+                                    }`}
+                            >
+                                {terraceType === type && (
+                                    <motion.div
+                                        layoutId="active-terrace-pill"
+                                        className="absolute inset-0"
+                                        style={{ backgroundColor: accentColor }}
+                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                    />
+                                )}
+                                <span className="relative z-10 flex items-center gap-2">
+                                    {type}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                  )}
+                  <div className="w-full flex items-center justify-between">
+                    <h2 className="text-4xl md:text-2xl font-light tracking-wide" style={{ color: accentColor }}>
+                      {currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
+                          ? (terraceType === "upper" ? "Upper Terrace Floor" : "Terrace Floor")
+                          : `${currentFloor.title}${selectedWing ? ` - Wing ${selectedWing}` : ""}`}
+
+                      </h2>
+                    <a
+                      href={currentFloor?.pdfPath}
+                      download="FLOOR PLAN"
+                      className="flex items-center gap-3 text-sm font-semibold hover:opacity-70 transition-opacity"
+                      style={{ color: accentColor }}
+                    >
+                      Download Floorplan
+                      <Compass accentColor={accentColor} />
+                    </a>
+                  </div>
                 </div>
 
                 {/* Floating Close Button */}
@@ -452,7 +503,8 @@ export function ProjectHero({
                   onClick={() => { setSelectedIndex(null); setSelectedWing(null); }}
                   exit={{ scale: 0, opacity: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="absolute left-0 top-1/2 z-50   h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#0097DC] text-white shadow-2xl transition-transform hover:scale-105 active:scale-95 hidden md:flex"
+                  className="absolute left-0 top-1/2 z-50 h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-white shadow-2xl transition-transform hover:scale-105 active:scale-95 hidden md:flex"
+                  style={{ backgroundColor: accentColor }}
                 >
                   <svg width="30" height="30" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M33.5 1.50001L1.5 33.5M33.5 33.5L1.5 1.5" stroke="white" strokeWidth="3" strokeLinecap="round" />
@@ -473,8 +525,8 @@ export function ProjectHero({
             exit={{ opacity: 0 }}
             className="absolute inset-0 z-[60] flex flex-col md:flex-row bg-white"
           >
-            {/* LEFT PANEL: The "Expanded" part (Blue) */}
-            <div className="w-full md:w-[50%] bg-[#0097DC] text-white px-8 md:px-12 py-5 flex flex-col justify-between relative">
+            {/* LEFT PANEL: The "Expanded" part (Accent Color) */}
+            <div className="w-full md:w-[50%] text-white px-8 md:px-12 py-5 flex flex-col justify-between relative" style={{ backgroundColor: accentColor }}>
               <div className="mb-8 mt-1">
                 <Link href="/" className="flex items-center z-50 relative">
                   <div className="relative w-48 h-12 md:w-56 md:h-14 transition-opacity duration-300">
@@ -534,11 +586,14 @@ export function ProjectHero({
 
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                     <Link href={finalLink} className="w-full sm:w-auto">
-                      <button className="bg-white flex items-center gap-2 text-[#0097DC] px-8 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors w-full">
+                      <button 
+                        className="bg-white flex items-center gap-2 px-8 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors w-full"
+                        style={{ color: accentColor }}
+                      >
                         <svg width="10" height="10" viewBox="0 0 20 20" fill="none">
                           <path
                             d="M3.74036 1.50016L17.6005 1.49996M17.6005 1.49996L17.6005 15.163M17.6005 1.49996L1.5 17.6005"
-                            stroke="#0097DC"
+                            stroke={accentColor}
                             strokeWidth="3"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -568,6 +623,7 @@ export function ProjectHero({
                 onClose={() => setShowUnitDetails(false)}
                 hideAmenities={hideAmenities}
                 amenitiesTarget={amenitiesTarget}
+                accentColor={accentColor}
               />
 
               {/* Unit Image (Different from sidebar) */}
@@ -584,8 +640,8 @@ export function ProjectHero({
               </div>
               {/* Compass ONLY (No text footer) */}
               <div className="mt-auto flex items-end justify-end px-8 pb-5 shrink-0">
-                <div className="flex items-center gap-3 text-sm font-semibold text-[#0097DC]">
-                  <Compass />
+                <div className="flex items-center gap-3 text-sm font-semibold" style={{ color: accentColor }}>
+                  <Compass accentColor={accentColor} />
                 </div>
               </div>
             </div>
@@ -607,13 +663,15 @@ const ProjectHeader = ({
   projectName, 
   onClose,
   hideAmenities,
-  amenitiesTarget = "#amenities"
+  amenitiesTarget = "#amenities",
+  accentColor = "#0097DC"
 }: { 
   projectLink: string; 
   projectName: string; 
   onClose?: () => void;
   hideAmenities?: boolean;
   amenitiesTarget?: string;
+  accentColor?: string;
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -646,14 +704,22 @@ const ProjectHeader = ({
       <div className="flex items-center justify-between px-8 py-6 border-b border-gray-50">
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="flex items-center gap-2 px-5 py-2 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC] hover:text-white text-sm font-medium transition-all duration-300 uppercase tracking-widest"
+          className="flex items-center gap-2 px-5 py-2 border text-sm font-medium transition-all duration-300 uppercase tracking-widest"
+          style={{ 
+            borderColor: accentColor, 
+            color: isMenuOpen ? "white" : accentColor,
+            backgroundColor: isMenuOpen ? accentColor : "transparent"
+          }}
         >
           {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
           Menu
         </button>
 
         <Link href={projectLink}>
-          <button className="bg-[#0097DC] hover:bg-[#0085C0] text-white px-6 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 uppercase flex items-center gap-2">
+          <button 
+            className="text-white px-6 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 uppercase flex items-center gap-2"
+            style={{ backgroundColor: accentColor }}
+          >
             Enquire Now
             <ArrowUpRight size={18} />
           </button>
@@ -676,7 +742,8 @@ const ProjectHeader = ({
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className="text-2xl text-[#505153] font-light hover:text-[#0097DC] transition-colors duration-300 py-3 border-b border-gray-50 last:border-0"
+                  className="text-2xl text-[#505153] font-light transition-colors duration-300 py-3 border-b border-gray-50 last:border-0 hover:text-[var(--accent-color)]"
+                  style={{ "--accent-color": accentColor } as React.CSSProperties}
                 >
                   {link.label}
                 </Link>
@@ -690,14 +757,14 @@ const ProjectHeader = ({
 };
 
 // 2. The Compass Component (The "N" Circle)
-const Compass = () => (
+const Compass = ({ accentColor = "#0097DC" }: { accentColor?: string }) => (
   <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       opacity="0.8"
       d="M21.7942 30.8097V21.2182H23.0274L28.0561 28.7681V21.2182H29.2893V30.8097H28.0561L23.0274 23.2461V30.8097H21.7942Z"
-      fill="#0097DC"
+      fill={accentColor}
     />
-    <circle cx="25.8093" cy="25.8093" r="17.75" transform="rotate(134.898 25.8093 25.8093)" stroke="#0097DC" />
-    <line x1="31.6313" y1="19.2583" x2="38.1604" y2="12.7059" stroke="#0097DC" />
+    <circle cx="25.8093" cy="25.8093" r="17.75" transform="rotate(134.898 25.8093 25.8093)" stroke={accentColor} />
+    <line x1="31.6313" y1="19.2583" x2="38.1604" y2="12.7059" stroke={accentColor} />
   </svg>
 );

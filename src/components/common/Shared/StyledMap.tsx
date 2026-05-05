@@ -186,6 +186,7 @@ interface StyledMapProps {
     customMarkerImage?: string;
     renderAsMarkers?: boolean;
     allowedPoints?: number[];
+    accentColor?: string;
 }
 
 export default function StyledMap({
@@ -200,6 +201,7 @@ export default function StyledMap({
     customMarkerImage = "/icons/mapIcon.svg",
     renderAsMarkers = false,
     allowedPoints,
+    accentColor = "#0097DC",
 }: StyledMapProps) {
 
     const [hoveredLocation, setHoveredLocation] = useState<number | null>(null);
@@ -211,7 +213,7 @@ export default function StyledMap({
         return [
             { featureType: "all", elementType: "labels", stylers: [{ visibility: "off" }] },
             { featureType: "road", elementType: "geometry", stylers: [{ color: "#e5e5e5" }] },
-            { featureType: "road.highway", elementType: "geometry", stylers: [{ color: highlightHighway ? "#0097DC" : "#7fcbed" }] },
+            { featureType: "road.highway", elementType: "geometry", stylers: [{ color: highlightHighway ? accentColor : "#7fcbed" }] },
             { featureType: "water", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
             { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
         ];
@@ -365,9 +367,9 @@ export default function StyledMap({
     radius={circleRadius}
     onClick={() => handlePointClick(loc.mapLink)}
     options={{
-        fillColor: isActive ? '#00A3E0' : '#96d9f3d5',
+        fillColor: isActive ? accentColor : '#96d9f3d5',
         fillOpacity: isActive ? 1 : 0.4,
-        strokeColor: isActive ? '#00A3E0' : '#96d9f3d5',  // ← match fill, no white ring
+        strokeColor: isActive ? accentColor : '#96d9f3d5',  // ← match fill, no white ring
         strokeWeight: 0,                                    // ← remove stroke entirely
         clickable: true,
     }}
@@ -390,8 +392,11 @@ export default function StyledMap({
                                     <div className="relative transform -translate-x-1/2 -translate-y-full">
                                         <div className="flex flex-col items-center">
                                             <span
-                                                className={`text-[9px] sm:text-[10px] font-bold tracking-tight whitespace-nowrap uppercase transition-colors duration-300 ${isActive ? 'text-[#0097DC]' : 'text-gray-600'}`}
-                                                style={{ textShadow: '1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff' }}
+                                                className={`text-[9px] sm:text-[10px] font-bold tracking-tight whitespace-nowrap uppercase transition-colors duration-300`}
+                                                style={{ 
+                                                    color: isActive ? accentColor : '#4B5563',
+                                                    textShadow: '1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff' 
+                                                }}
                                             >
                                                 {loc.name}
                                             </span>
@@ -415,8 +420,14 @@ export default function StyledMap({
                                 >
                                     <div className="relative group transition-all duration-300 transform -translate-x-1/2 -translate-y-full">
                                         <div className="flex flex-col items-center">
-                                            <div className="bg-white/90 backdrop-blur-sm border border-[#0097DC]/20 px-3 py-1.5 rounded-lg shadow-[0_4px_15px_rgba(0,0,0,0.1)] flex items-center gap-2">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-[#0097DC] animate-pulse" />
+                                            <div 
+                                                className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-[0_4px_15px_rgba(0,0,0,0.1)] flex items-center gap-2"
+                                                style={{ borderColor: `${accentColor}33`, borderWidth: '1px' }}
+                                            >
+                                                <div 
+                                                    className="w-1.5 h-1.5 rounded-full animate-pulse" 
+                                                    style={{ backgroundColor: accentColor }}
+                                                />
                                                 <span className="text-[11px] font-bold tracking-tight text-gray-800 whitespace-nowrap uppercase">
                                                     {loc.name}
                                                 </span>
@@ -479,18 +490,23 @@ export default function StyledMap({
                     >
                         {/* Rotated Directional Pointer */}
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: `rotate(${point.angle}deg)` }}>
-                            <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-[#0097DC] transform translate-x-[12px]"></div>
+                            <div 
+                                className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent transform translate-x-[12px]"
+                                style={{ borderLeft: `6px solid ${accentColor}` }}
+                            ></div>
                         </div>
 
                         {/* Anchor Dot */}
-                        <div className="w-2.5 h-2.5 bg-[#0097DC] rounded-full shadow-sm relative z-10">
-                            <div className="absolute inset-0 rounded-full bg-[#0097DC] animate-ping opacity-60"></div>
+                        <div className="w-2.5 h-2.5 rounded-full shadow-sm relative z-10" style={{ backgroundColor: accentColor }}>
+                            <div className="absolute inset-0 rounded-full animate-ping opacity-60" style={{ backgroundColor: accentColor }}></div>
                         </div>
 
                         {/* Label Pill */}
                         <div
-                            className="absolute bg-white/95 backdrop-blur-md border border-[#0097DC]/15 px-2 py-1 rounded-md shadow-lg flex items-center gap-1.5 min-w-max z-20 pointer-events-none"
+                            className="absolute bg-white/95 backdrop-blur-md px-2 py-1 rounded-md shadow-lg flex items-center gap-1.5 min-w-max z-20 pointer-events-none"
                             style={{
+                                borderColor: `${accentColor}26`, 
+                                borderWidth: '1px',
                                 ...(isHorizontalEdge
                                     ? {
                                         top: '50%',
@@ -509,7 +525,7 @@ export default function StyledMap({
                                 {point.name}
                             </span>
                             <div className="w-px h-2.5 bg-gray-300"></div>
-                            <span className="text-[9.5px] font-bold text-[#0097DC]">
+                            <span className="text-[9.5px] font-bold" style={{ color: accentColor }}>
                                 {point.distance < 1
                                     ? `${(point.distance * 1000).toFixed(0)}m`
                                     : `${point.distance.toFixed(1)}km`}

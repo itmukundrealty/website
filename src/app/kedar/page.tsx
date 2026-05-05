@@ -117,40 +117,45 @@ const AMENITIES_DATA = [
     id: "kitchen",
     label: "Rooftop Infinity Swimming Pool",
     subtitle: "",
+    description: "Some days call for a shift in perspective. Set above it all, the rooftop pool offers a space to pause, unwind, and let time move at your pace.",
     image: "/images/kedarImage/amm1.webp",
   },
   {
     id: "wellness",
     label: "Open Air Gymnasium",
     subtitle: "",
+    description: "Workouts feel different in open air. With space around you, staying active becomes something you look forward to, not just follow.",
     image: "/images/kedarImage/amm2.webp",
   },
   {
     id: "lobby",
     label: "Indoor & Outdoor Recreation",
     subtitle: "",
+    description: "Leisure should be within reach. With spaces for both indoor and outdoor activities, there is always a way to unwind or break the routine.",
     image: "/images/kedarImage/amm3.webp",
   },
   {
     id: "pool",
     label: "Kids Play Area",
     subtitle: "",
+    description: "A safe, lively space for children to play and explore makes everyday living easier, while keeping them close and within sight.",
     image: "/images/kedarImage/amm4.webp",
   },
   {
     id: "gym",
     label: "Outdoor Badminton Court",
     subtitle: "",
+    description: "A quick game can reset your day. With a dedicated court, staying active or enjoying a match becomes effortless.",
     image: "/images/kedarImage/amm5.webp",
   },
   {
     id: "sky-deck",
     label: "Spacious Visitor’s Lounge",
     subtitle: "",
+    description: "Welcoming someone over feels more considered with a space designed for it. The visitor’s lounge keeps interactions comfortable, without entering your private space.",
     image: "/images/kedarImage/amm6.webp",
   },
 ];
-
 export default function page() {
   return (
     <>
