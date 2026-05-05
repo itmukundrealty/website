@@ -7,6 +7,7 @@ import PhilosophySection from '@/components/aboutComponents/PhilosophySection';
 import TeamSelector from '@/components/aboutComponents/TeamSelector';
 import QuoteBanner from '@/components/aboutComponents/QuoteBanner';
 import TeamGroupSection from '@/components/aboutComponents/TeamGroupSection';
+import MetricSection from '@/components/aboutComponents/MetricSection';
 
 export default function ShapingPage() {
     return (
@@ -25,6 +26,7 @@ export default function ShapingPage() {
                 imageSrc="/images/aboutImages/mukundOutline.svg"
                 imageClassName=""
             />
+            <MetricSection/>
             <PhilosophySection
                 heading={
                     <>

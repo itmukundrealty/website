@@ -15,6 +15,7 @@ export interface CompletedHeroProps {
     variant?: "topRight" | "center" | "rightCentered";
     mobileVariant?: "topRight" | "center";
     pdfPath?: string;
+    projectLink?: string;
 }
 
 export function CompletedHero({
@@ -25,6 +26,7 @@ export function CompletedHero({
     variant = "topRight",
     mobileVariant = "center",
     pdfPath,
+    projectLink = "/project-enquire",
 }: CompletedHeroProps) {
     const desktopStyles = {
         topRight: {
@@ -84,6 +86,7 @@ export function CompletedHero({
         <section className="relative h-[100vh] w-full overflow-hidden bg-black">
             {/* 1. BACKGROUND LAYER */}
             <div className="absolute inset-0 z-0">
+                {/* Desktop image */}
                 <div className="hidden lg:block h-full w-full">
                     <Image
                         src={desktopImage}
@@ -93,19 +96,66 @@ export function CompletedHero({
                         priority
                     />
                 </div>
-                <div className="block lg:hidden h-full w-full">
+                {/* Mobile image */}
+                <div className="block lg:hidden h-full w-full relative">
                     <Image
                         src={mobileImage}
                         alt="Hero Background Mobile"
                         fill
-                        className="object-cover"
+                        className="object-cover object-bottom"
                         priority
                     />
+                    {/* Mobile gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-0" />
                 </div>
             </div>
 
-            {/* 2. HERO TEXT CONTENT */}
-            <div className={`relative z-10 flex h-full px-12 lg:px-24 pointer-events-none ${containerClasses}`}>
+            {/* ===================== MOBILE LAYOUT (hidden on lg+) ===================== */}
+            <div className="absolute inset-0 z-10 flex lg:hidden flex-col justify-between px-6 py-16 pointer-events-none">
+                {/* Top: Title (Center Aligned) */}
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className="text-center mt-12"
+                >
+                    <h1 className="text-4xl text-white tracking-tight font-medium leading-tight">
+                        {title}
+                    </h1>
+                    {subtitle && (
+                        <h2 className="text-2xl text-white/80 tracking-tight font-light mt-1">
+                            {subtitle}
+                        </h2>
+                    )}
+                </motion.div>
+
+                {/* Bottom: Buttons */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.7 }}
+                    className="w-full flex flex-col gap-3 pointer-events-auto"
+                >
+                    <Link href={projectLink} className="w-full">
+                        <button className="w-full bg-white text-[#0097DC] py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg">
+                            Enquire Now
+                            <ArrowUpRight className="w-5 h-5" />
+                        </button>
+                    </Link>
+                    {pdfPath && (
+                        <button
+                            onClick={handleDownload}
+                            className="w-full bg-[#0097DC] text-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg"
+                        >
+                            Download Floor Plans
+                            <ArrowUpRight className="w-5 h-5" />
+                        </button>
+                    )}
+                </motion.div>
+            </div>
+
+            {/* ===================== DESKTOP LAYOUT (hidden on mobile) ===================== */}
+            <div className={`relative z-10 hidden lg:flex h-full px-12 lg:px-24 pointer-events-none ${containerClasses}`}>
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -140,9 +190,9 @@ export function CompletedHero({
                             {subtitle}
                         </h2>
                     )}
-                    
+
                     {variant !== 'center' && pdfPath && (
-                        <motion.div 
+                        <motion.div
                             className={`flex w-full mt-8 ${buttonAlignClasses}`}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}

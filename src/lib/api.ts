@@ -9,11 +9,13 @@ export interface Blog {
     id: string;
     title: string;
     summary: string;
-    content: string; // HTML content from Unlayer
+    content: string; // HTML content
     imageUrl: string;
     date?: string; // Optional manually set date
     createdAt: string; // ISO string
     design?: any; // Raw Unlayer design if needed
+    tableOfContents?: { title: string }[]; // Table of contents items
+    source?: string; // Source attribution (e.g. "Daijiworld Media Network – Bengaluru")
 }
 
 // Ensure this matches your CMS URL.

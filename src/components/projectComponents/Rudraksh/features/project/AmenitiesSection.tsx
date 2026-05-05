@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import { ArrowUpRight, ArrowLeft, ArrowRight, ChevronRight, ChevronLeft } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Import Swiper styles
 import "swiper/css";
@@ -17,15 +18,23 @@ export interface AmenityItem {
   id: string;
   label: string;
   subtitle: string;
+  description?: string;
   image: string;
 }
 
 interface AmenitiesSectionProps {
   data: AmenityItem[];
   projectLink?: string;
+  accentColor?: string;
+  btnAccentColor?: string;
 }
 
-export default function AmenitiesSection({ data, projectLink = "/project-enquire" }: AmenitiesSectionProps) {
+export default function AmenitiesSection({ 
+  data, 
+  projectLink = "/project-enquire",
+  accentColor = "#0097DC",
+  btnAccentColor = "#0097DC"
+}: AmenitiesSectionProps) {
   const pathname = usePathname();
   const currentPath = pathname?.split("/")[1] || "";
 
@@ -84,7 +93,7 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
   const currentAmenity = data[activeIndex] || data[0];
 
   return (
-    <section className="relative bg-white font-host overflow-hidden md:min-h-[100vh] flex flex-col">
+    <section id="amenities" className="relative bg-white font-host overflow-hidden md:min-h-[100vh] flex flex-col">
       {/* --- Desktop Flush Image --- */}
       <div className="hidden md:block md:absolute md:right-0 md:top-0 md:w-1/2 md:h-full z-0">
         <Swiper
@@ -127,21 +136,43 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                                       justify-center keeps it vertically centered in that reserved space.
                                       items-start keeps text aligned left.
                                     */}
-                  <div className="flex flex-col justify-center items-start h-[180px] md:h-[270px] gap-4">
-                    <h2 className="text-4xl md:text-6xl  text-[#424244] font-light leading-[1.1] max-w-md whitespace-pre-line">
-                      {currentAmenity.label}
-                    </h2>
+                  <div className="flex flex-col justify-center items-start min-h-[180px] md:min-h-[270px] gap-6">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeIndex}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        className="space-y-6"
+                      >
+                        <div className="space-y-4">
+                          <h2 className="text-4xl md:text-6xl text-[#424244] font-light leading-[1.1] max-w-md whitespace-pre-line">
+                            {currentAmenity.label}
+                          </h2>
 
-                    {/* The subtitle is conditionally rendered or always reserves space 
-                                          to prevent jump if subtitle is empty 
-                                        */}
-                    <p className="text-[#0097DC] text-[13px] font-bold tracking-widest uppercase min-h-[20px]">{currentAmenity.subtitle}</p>
+                          {/* The subtitle is conditionally rendered or always reserves space 
+                                                to prevent jump if subtitle is empty 
+                                              */}
+                          <p className="text-[13px] font-bold tracking-widest uppercase min-h-[20px]" style={{ color: accentColor }}>
+                            {currentAmenity.subtitle}
+                          </p>
+                        </div>
+
+                        {currentAmenity.description && (
+                          <p className="text-gray-500 text-sm md:text-base leading-relaxed max-w-md">
+                            {currentAmenity.description}
+                          </p>
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
 
                 <Link
                   href={finalLink}
-                  className="group flex items-center justify-center md:justify-start gap-3 px-6 py-5 md:px-4 md:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10  duration-300 transition-all uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
+                  className="group flex items-center justify-center md:justify-start gap-3 px-6 py-5 md:px-4 md:py-5 text-white duration-300 transition-all uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
+                  style={{ backgroundColor: btnAccentColor }}
                 >
                   <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                   Enquire Now
@@ -179,15 +210,17 @@ export default function AmenitiesSection({ data, projectLink = "/project-enquire
                 <div className="flex gap-4">
                   <button
                     onClick={handlePrev}
-                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC]/10 transition-all bg-white"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border flex items-center justify-center hover:opacity-80 transition-all bg-white"
+                    style={{ borderColor: accentColor, color: accentColor }}
                   >
-                    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2} />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[#0097DC] flex items-center justify-center text-[#0097DC] hover:bg-[#0097DC]/10  transition-all bg-white"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border flex items-center justify-center hover:opacity-80 transition-all bg-white"
+                    style={{ borderColor: accentColor, color: accentColor }}
                   >
-                    <ChevronRight className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                    <ChevronRight className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2} />
                   </button>
                 </div>
               </div>

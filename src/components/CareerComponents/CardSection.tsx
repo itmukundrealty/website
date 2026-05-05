@@ -134,7 +134,7 @@ export default function CareerOpportunities({ jobs }: CareerOpportunitiesProps) 
 
             {/* Desktop: Stacked Animation (when <= 3 jobs) */}
             <div className="hidden md:block">
-                {jobs.length <= 3 && (
+                {jobs.length <= 0 && (
                     <div className="w-full">
                         {jobs.map((job, i) => {
                             const targetScale = 1 - ((jobs.length - i) * 0.04);
@@ -156,7 +156,7 @@ export default function CareerOpportunities({ jobs }: CareerOpportunitiesProps) 
 
 
             {/* Swiper Layout (Always on Mobile, > 3 jobs on Desktop) */}
-            <div className={`mt-12 md:mt-16 w-full mx-auto xl:px-0 ${jobs.length <= 3 ? 'block md:hidden' : 'block'}`}>
+            <div className={`mt-12 md:mt-16 w-full mx-auto xl:px-0 ${jobs.length <= 0 ? 'block md:hidden' : 'block'}`}>
                 <Swiper
                     spaceBetween={16}
                     slidesPerView={1.2}

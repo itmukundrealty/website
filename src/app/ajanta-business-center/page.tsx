@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -157,7 +157,7 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
+                <NewHeader projectLink="/project-enquire?project=ajanta" projectName="Ajanta" />
                 <CompletedHero desktopImage="/images/ajantaImages/heroDesk.webp" mobileImage="/images/ajantaImages/heroMobile.png" title={<>Ajanta Business <br className="hidden lg:block" />Center</>} subtitle="" variant="rightCentered" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection
