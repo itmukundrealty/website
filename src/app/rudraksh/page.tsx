@@ -215,7 +215,7 @@ export default function Project1Page() {
   return (
     <main className="min-h-screen bg-black">
       <NewHeader projectLink="/project-enquire?project=rudraksh" projectName="Rudraksh" scrolledLogo="/icons/rudrakshDarkLogo.svg" logo="/icons/rudrakshLogo.svg" />
-      <ProjectHero
+      {/* <ProjectHero
         projectLink="/project-enquire?project=rudraksh"
         projectName="Rudraksh"
         title={<>A Higher Way to Live</>}
@@ -230,7 +230,7 @@ export default function Project1Page() {
         exploreTitle={<>A Higher Way to Live</>}
         exploreSubtitle={<>Luxury Homes <br /> at Rudraksh</>}
         accentColor="#4F5D4A"
-      />
+      /> */}
       <ProjectHighLiving data={SECTION_DATA} accentColor="#4F5D4A" />
       <HighlivingSection
         projectLink="/project-enquire?project=rudraksh"
