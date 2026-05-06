@@ -37,7 +37,7 @@ export default function InsightHero() {
                     {/* Left Content */}
                     <div className="flex-1 md:pr-12 lg:pr-24 flex flex-col justify-center">
                         <h1 className="text-[2.5rem] md:text-6xl lg:text-[5.5rem] leading-[1.05] font-medium text-[#191919] mb-12 tracking-tight">
-                            What&apos;s New<br />at Mukund
+                            Mukund<br />In News
                         </h1>
 
                         <div className="flex flex-col">
@@ -54,12 +54,11 @@ export default function InsightHero() {
 
                             {latestBlog && (
 
-                                <Link
-                                    href={`/insights/${latestBlog.id}`}
-                                    className="group flex items-center gap-1.5 text-[#00A3E0] font-semibold hover:text-[#008CBE] transition-colors w-fit pt-1"
-                                >
-                                    <ArrowUpRight className="w-[17px] h-[17px] group-hover:rotate-45 transition-transform duration-300" strokeWidth={2} />
-                                    <span className="text-[16px]">Read More</span>
+                                <Link href={`/insights/${latestBlog.id}`}>
+                                    <button className="w-full md:w-auto group bg-[#0097DC] hover:bg-[#0085C0] transition-colors text-white text-[13px] md:text-[16px] font-medium px-5 py-3 md:px-8 md:py-4 flex items-center justify-center gap-2 min-w-[130px]">
+                                        <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 mb-[1px] group-hover:rotate-45 transition-all duration-300" strokeWidth={2.5} />
+                                        Read More
+                                    </button>
                                 </Link>
                             )}
                         </div>

@@ -29,6 +29,9 @@ interface FeaturesSectionProps {
   btnType?: "explore" | "know";
   modalTitle?: string;
   modalPoints?: string[];
+  id?: string;
+  accentColor?: string;
+  btnAccentColor?: string;
 }
 
 export default function FeaturesSection({
@@ -41,6 +44,9 @@ export default function FeaturesSection({
   btnType = "explore",
   modalTitle,
   modalPoints,
+  id,
+  accentColor = "#0097DC",
+  btnAccentColor = "#0097DC",
 }: FeaturesSectionProps) {
   const pathname = usePathname();
   const currentProject = pathname?.split("/")[1] || "";
@@ -105,28 +111,30 @@ export default function FeaturesSection({
   const GALLERY_IMAGES = fetchedGalleryImages.length > 0 ? fetchedGalleryImages : (galleryImages || []);
 
   return (
-    <section className="py-10 lg:py-32 bg-white font-host">
+    <section id={id} className="py-10 lg:py-32 bg-white font-host" style={{ "--accent-color": accentColor, "--btn-accent-color": btnAccentColor } as React.CSSProperties}>
       <div className=" mx-auto px-6 lg:px-20 xl:px-54 ">
         {/* Header */}
         {variant === "center" ? (
-          <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#424244] font-light lg:text-center text-start  mb-16 lg:mb-28 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#1E1E1E] font-light lg:text-center text-start  mb-16 lg:mb-28 tracking-tight leading-tight">
             {heading}
           </h2>
         ) : (
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16 lg:mb-28">
-            <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#424244] font-light tracking-tight leading-tight">{heading}</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#1E1E1E] font-light tracking-tight leading-tight">{heading}</h2>
             {btnType === "explore" ? (
               <Link
-                href={finalLink}
-                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 border border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC]/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px]"
-              >
-                <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
-                Explore Now
-              </Link>
+            href={finalLink}
+            className="hidden md:flex group items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 text-white transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
+            style={{ backgroundColor: btnAccentColor }}
+          >
+            <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+            Explore Now
+          </Link>
             ) : (
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-6 lg:py-5 border border-black text-black hover:bg-black/10 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px]"
+                style={{ borderColor: btnAccentColor, color: btnAccentColor }}
+                className="hidden md:flex group items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-6 lg:py-5 border uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px] hover:opacity-80 transition-all"
               >
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                 Know More
@@ -163,13 +171,39 @@ export default function FeaturesSection({
         </div>
 
         {/* Read More / Read Less Button (Mobile Only) */}
-        <div className="flex justify-start md:hidden mb-20">
+        <div className="flex flex-col justify-start md:hidden mb-20 gap-8">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-[#424244] text-[15px] border-b border-[#424244] pb-0.5 hover:text-[#0097DC] hover:border-[#0097DC] transition-colors duration-300"
+            style={{ color: "#424244", borderBottomColor: "#424244" }}
+            className="text-[15px] border-b pb-0.5 transition-colors duration-300 hover-accent w-fit"
           >
             {isExpanded ? "Read Less" : "Read More"}
           </button>
+
+          {/* Mobile Action Button (Rendered below Read More on Mobile) */}
+          {variant !== "center" && (
+            <div className="w-full">
+              {btnType === "explore" ? (
+                <Link
+                  href={finalLink}
+                  className="group flex items-center justify-center gap-2 px-6 py-4 text-white transition-colors uppercase tracking-widest text-[14px] font-bold w-full"
+                  style={{ backgroundColor: btnAccentColor }}
+                >
+                  <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+                  Explore Now
+                </Link>
+              ) : (
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  style={{ borderColor: btnAccentColor, color: btnAccentColor }}
+                  className="group flex items-center justify-center gap-2 px-6 py-4 border uppercase tracking-wide font-bold w-full text-[14px] hover:opacity-80 transition-all"
+                >
+                  <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+                  Know More
+                </button>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Modal */}
@@ -186,11 +220,11 @@ export default function FeaturesSection({
               </button>
 
               <div className="mb-4 md:mb-6">{modalTitle && (
-                <h2 className="text-3xl md:text-4xl lg:text-[45px] text-[#424244] font-light  tracking-tight leading-tight">
+                <h2 className="text-3xl md:text-4xl lg:text-[45px] text-[#1E1E1E] font-light  tracking-tight leading-tight">
                   {modalTitle}
                 </h2>
               )}
-              <p className="text-[#0097DC] text-xl md:text-4xl lg:text-[30px] font-light leading-relaxed">Specifications</p></div>
+              <p className="text-xl md:text-4xl lg:text-[30px] font-light leading-relaxed" style={{ color: accentColor }}>Specifications</p></div>
 
 
               {modalPoints && modalPoints.length > 0 && (
@@ -248,8 +282,12 @@ export default function FeaturesSection({
                 cursor: pointer;
               }
               .features-swiper .swiper-pagination-bullet-active {
-                background: #0097dc;
+                background: var(--accent-color, #0097dc);
                 width: 80px;
+              }
+              .hover-accent:hover {
+                color: var(--accent-color, #0097dc) !important;
+                border-color: var(--accent-color, #0097dc) !important;
               }
             `}</style>
           </div>

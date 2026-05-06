@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag SVGs</title>
+  <style>
+    body { margin: 0; background: #333; }
+    #container {
+      position: relative;
+      width: 760px;
+      height: 786px;
+      margin: 20px auto;
+      background: url('/floorPlans/Rudrarsh/floorMapAndSpeceficMapImages/newground/floor.png') no-repeat center center;
+      background-size: contain;
+      border: 1px solid #fff;
+    }
+    svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .draggable {
+      pointer-events: all;
+      cursor: grab;
+      fill: rgba(0, 151, 220, 0.5);
+      stroke: #0097DC;
+      stroke-width: 2px;
+    }
+    .draggable:active { cursor: grabbing; }
+    #output {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: white;
+      padding: 10px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div id="output"></div>
+  <div id="container">
+    <svg viewBox="0 0 760 786" xmlns="http://www.w3.org/2000/svg">
+      <g id="G-parking" class="draggable" transform="translate(0,0)"><path d="M60.1206 0.502441V28.9248L216.258 30.0645V33.9301H301.008V5.4045H258.84V4.68102H216.258V1.27035L60.1206 0.502441Z M101.806 63.5707H53.0691V92.2541H101.806V63.5707Z M107.644 63.5707V92.2541H122.366V63.5707H107.644Z M150.796 61.2862V90.4773H175.33V121.574L219.082 122.194V132.947H213.261V137.407H208.196H176.298L49.5695 138.624V111.251L0.5 112.062V168.836H49.5695V165.189H54.3383H208.196V160.745H213.261H248.269V159.013H267.56V131.091H275.175V88.4466H280.506V73.978H252.076V67.8859H233.038V64.8399H165.011V61.2862H150.796Z"/></g>
+      <g id="G-play" class="draggable" transform="translate(0,0)"><path d="M57.9905 45.0539L68.4497 0.261963C65.6565 4.80169 62.3139 6.21553 56.71 3.81122C50.3631 7.39246 48.67 7.95331 43.4438 9.25749H25.1891C21.5303 13.4633 21.7044 13.89 21.4811 14.1064L27.1857 25.8009H17.7731C19.2881 30.1369 19.504 32.4916 19.4844 36.6397L11.2128 115.221C6.57046 116.684 4.18589 118.063 1.22985 123.778C-0.749238 132.674 1.06884 136.481 9.50151 141.177L32.7476 144.314V149.306L48.15 143.459L50.004 118.358H46.2961L49.0057 81.1357L57.9905 45.0539Z"/></g>
+      <g id="G-meditation" class="draggable" transform="translate(0,0)"><path d="M6.80447 16.2934H38.4752V5.9595C37.7954 2.09427 37.1862 0.898917 33.9066 0.5H0.5V10.769C1.12317 15.0278 2.87984 15.8065 6.80447 16.2934Z"/></g>
+      <g id="G-badminton" class="draggable" transform="translate(0,0)"><path d="M75.5707 35.0028V0.5H0.5V38.6418H75.5707V35.0028Z"/></g>
+      <g id="G-theatre" class="draggable" transform="translate(0,0)"><path d="M0.5 0.5V52.28H32.7901V0.5H0.5Z"/></g>
+      <g id="G-laundry" class="draggable" transform="translate(0,0)"><path d="M17.8047 0.5H0.5V39.9434H17.8047V0.5Z"/></g>
+      <g id="G-kitchen" class="draggable" transform="translate(0,0)"><path d="M40.3709 115.209H111.797V80.2419H59.9864V35.2537H38.2387V0.5H0.5V5.19076L7.74932 31.4159H18.1967V61.0526H29.2837V80.2419H35.0405V90.0495H40.3709V115.209Z"/></g>
+      <g id="G-gathering" class="draggable" transform="translate(0,0)"><path d="M0.5 0.5V41.0244H84.2646V21.5374H95.2124V2.6561H36.3846V0.5H0.5Z"/></g>
+    </svg>
+  </div>
+  <script>
+    const draggables = document.querySelectorAll('.draggable');
+    let active = null;
+    let offset = { x: 0, y: 0 };
+    const transforms = {};
+
+    draggables.forEach(g => {
+      transforms[g.id] = { x: 0, y: 0 };
+      g.addEventListener('mousedown', e => {
+        active = g;
+        // SVG coordinates
+        const ctm = g.getCTM();
+        offset.x = e.clientX - transforms[g.id].x;
+        offset.y = e.clientY - transforms[g.id].y;
+      });
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (active) {
+        const id = active.id;
+        transforms[id].x = e.clientX - offset.x;
+        transforms[id].y = e.clientY - offset.y;
+        active.setAttribute('transform', `translate(${transforms[id].x}, ${transforms[id].y})`);
+        updateOutput();
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      active = null;
+    });
+
+    function updateOutput() {
+      const out = Object.keys(transforms).map(k => `${k}: translate(${transforms[k].x}, ${transforms[k].y})`).join('\\n');
+      document.getElementById('output').textContent = out;
+      console.log(JSON.stringify(transforms));
+    }
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -14,6 +14,24 @@ import Footer from "@/components/layout/Footer";
 import { FLOOR_PATHS_VIEWBOX, HERO_MARKERS } from "@/utils/floorMapKedar";
 import { floorData } from "@/utils/floorMapKedar";
 import { FLOOR_PATHS } from "@/utils/floorMapKedar";
+import localFont from "next/font/local";
+
+const swis721 = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/SWIS721/Swis721 Lt BT Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../../public/fonts/SWIS721/Swis721 BT Roman.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-swis721",
+});
+
 
 const FEATURES: FeatureItem[] = [
   { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
@@ -117,64 +135,89 @@ const AMENITIES_DATA = [
     id: "kitchen",
     label: "Rooftop Infinity Swimming Pool",
     subtitle: "",
+    description: "Some days call for a shift in perspective. Set above it all, the rooftop pool offers a space to pause, unwind, and let time move at your pace.",
     image: "/images/kedarImage/amm1.webp",
   },
   {
     id: "wellness",
     label: "Open Air Gymnasium",
     subtitle: "",
+    description: "Workouts feel different in open air. With space around you, staying active becomes something you look forward to, not just follow.",
     image: "/images/kedarImage/amm2.webp",
   },
   {
     id: "lobby",
     label: "Indoor & Outdoor Recreation",
     subtitle: "",
+    description: "Leisure should be within reach. With spaces for both indoor and outdoor activities, there is always a way to unwind or break the routine.",
     image: "/images/kedarImage/amm3.webp",
   },
   {
     id: "pool",
     label: "Kids Play Area",
     subtitle: "",
+    description: "A safe, lively space for children to play and explore makes everyday living easier, while keeping them close and within sight.",
     image: "/images/kedarImage/amm4.webp",
   },
   {
     id: "gym",
     label: "Outdoor Badminton Court",
     subtitle: "",
+    description: "A quick game can reset your day. With a dedicated court, staying active or enjoying a match becomes effortless.",
     image: "/images/kedarImage/amm5.webp",
   },
   {
     id: "sky-deck",
     label: "Spacious Visitor’s Lounge",
     subtitle: "",
+    description: "Welcoming someone over feels more considered with a space designed for it. The visitor’s lounge keeps interactions comfortable, without entering your private space.",
     image: "/images/kedarImage/amm6.webp",
   },
 ];
-
 export default function page() {
   return (
     <>
-      <div className="">
-        <ProjectHeader projectLink="/project-enquire?project=kedar" projectName="Kedar" />
+      <div className={`${swis721.variable} font-swis721 font-light [&_h1]:font-normal [&_h2]:font-normal [&_h3]:font-normal [&_h4]:font-normal [&_h5]:font-normal [&_h6]:font-normal`}>
+
+        <NewHeader
+          projectLink="/project-enquire?project=kedar"
+          projectName="Kedar"
+          scrolledLogo="/icons/kedarDarkLogo.svg"
+          logo="/icons/kedarLogo.svg"
+          view360Url="https://www.turiya.co/360/KedarHighLivingLuxuryHomes/"
+          btnAccentColor="#D5B27C"
+        />
         <ProjectHero
           projectLink="/project-enquire?project=kedar"
           projectName="Kedar"
+          title={<>A Life of Luxury Awaits</>}
+          subtitle="Luxury Living, Defined at Kedar"
+          pdfPath="/downloadFloorPlan/typical layout.pdf"
           FLOOR_PATHS={FLOOR_PATHS}
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}
           floorData={floorData}
           heroImageDesktop="/images/kedarImage/hero.png"
-          heroImageMobile="/images/kedarImage/heroMobile.png"
+          heroImageMobile="/images/kedarImage/newMobileHero.png"
+          exploreTitle={<>A Life of Luxury Awaits</>}
+          exploreSubtitle={<>Luxury Living, <br />Defined at Kedar</>}
+          accentColor="#5A1F26"
+          btnAccentColor="#D5B27C"
+          view360Url="https://www.turiya.co/360/KedarHighLivingLuxuryHomes/"
         />
-        <ProjectHighLiving data={SECTION_DATA} />
+        <ProjectHighLiving data={SECTION_DATA} accentColor="#D5B27C" />
         <HighlivingSection
           projectLink="/project-enquire?project=kedar"
           heading="Redefining the Essence of Living"
           description="Introducing Kedar, a contemporary residential address shaped by Mukund MGM Realty’s long-standing approach to quality and value. Thoughtfully planned duplex residences offer generous layouts, refined interiors, and a sense of openness that supports both everyday comfort and special moments. With carefully selected amenities and a location at the heart of Mangalore, Kedar brings homes that feel considered and easy to live in for years to come."
           imageSrc="/images/kedarImage/videoPlaceholder.png"
-          videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKEDAR%20FILM_45s.mp4?alt=media&token=7b45ec51-a0ac-4b3a-94db-7e8468d1d7b8"
+          videoSrc={[
+            "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKEDAR%20FILM_45s.mp4?alt=media&token=7b45ec51-a0ac-4b3a-94db-7e8468d1d7b8",
+            "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/videos%2FKEDAR%20FILM_45s%20(1).mp4?alt=media&token=910ea9d7-be92-4f8c-8cec-b272ea24e969"
+          ]}
+          btnAccentColor="#5A1F26"
         />
-        <AmenitiesSection projectLink="/project-enquire?project=kedar" data={AMENITIES_DATA} />
+        <AmenitiesSection projectLink="/project-enquire?project=kedar" data={AMENITIES_DATA} accentColor="#D5B27C" btnAccentColor="#5A1F26" />
         <FeaturesSection
           projectLink="/project-enquire?project=kedar"
           features={FEATURES}
@@ -189,17 +232,22 @@ export default function page() {
             "/images/kedarImage/ft6.png",
           ]}
           variant="left"
+          accentColor="#5A1F26"
+          btnAccentColor="#5A1F26"
         />
 
         <MapSection
           data={MAP_DATA}
           mainMarkerPosition={{ lat: 12.908991556397066, lng: 74.85044859337258 }}
           customMarkerImage="/icons/mapIcons/kedarIcon.svg"
+          accentColor="#D5B27C"
+          boxAccentColor="#D5B27C"
         />
         <ExperienceSection
           titlePart1="Built on"
           titlePart2="Real Experiences"
           description="Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time."
+          accentColor="#D5B27C"
         />
         <CTASection
           link="/project-enquire?project=kedar"
@@ -211,6 +259,7 @@ export default function page() {
           subtitle="Spacious homes built for everyday living."
           mobImg="/images/ctaImages/kedarDesk.png"
           deskImg="/images/ctaImages/kedarDesk.png"
+          accentColor="#5A1F26"
         />
         <Footer />
       </div>

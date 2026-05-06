@@ -18,9 +18,10 @@ export interface HighLivingSectionItem {
 
 interface ProjectHighLivingProps {
     data: HighLivingSectionItem[];
+    accentColor?: string;
 }
 
-export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
+export default function ProjectHighLiving({ data, accentColor = "#0097DC" }: ProjectHighLivingProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
     const titlesRef = useRef<(HTMLHeadingElement | null)[]>([]);
@@ -169,7 +170,7 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
     return (
         <>
             {/* Desktop View */}
-            <div ref={containerRef} className="hidden md:flex relative w-full h-screen overflow-hidden flex-col md:flex-row bg-[#0097DC]">
+            <div ref={containerRef} className="hidden md:flex relative w-full h-screen overflow-hidden flex-col md:flex-row" style={{ backgroundColor: accentColor }}>
 
                 {/* --- Left Panel: Images --- */}
                 <div className="relative w-full md:w-1/2 h-1/2 md:h-full z-10 bg-black">
@@ -197,7 +198,10 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
                 </div>
 
                 {/* --- Right Panel: Content --- */}
-                <div className="relative w-full md:w-[calc(50%+1px)] h-1/2 md:h-full z-20 flex flex-col justify-start py-12 bg-[#0097DC] md:-ml-[1px]">
+                <div 
+                    className="relative w-full md:w-[calc(50%+1px)] h-1/2 md:h-full z-20 flex flex-col justify-start py-12 md:-ml-[1px]"
+                    style={{ backgroundColor: accentColor }}
+                >
 
                     {/* Titles List - Aligned Right with significant padding */}
                     <div className="flex flex-col items-end gap-12 w-full pr-8 md:pr-20 xl:pr-54 mb-20">
@@ -245,8 +249,8 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
             </div>
 
             {/* Mobile View - UNCHANGED logic from previous step, ensure consistent handlers */}
-            <div className="md:hidden relative w-full bg-[#0097DC]">
-                <section className="relative z-20 bg-[#0097DC] px-3 pt-20">
+            <div className="md:hidden relative w-full" style={{ backgroundColor: accentColor }}>
+                <section className="relative z-20 px-3 pt-20" style={{ backgroundColor: accentColor }}>
                     <div className="relative w-full h-[65vh] ">
                         <Image
                             src={activeData?.imageSrc || ""}
@@ -256,7 +260,10 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
                             className="object-cover transition-opacity duration-500"
                             unoptimized
                         />
-                        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0097DC]/90 via-[#0097DC]/40 to-transparent pointer-events-none z-10" />
+                        <div 
+                            className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10" 
+                            style={{ backgroundImage: `linear-gradient(to top, ${accentColor}E6, ${accentColor}66, transparent)` }}
+                        />
 
                         {/* Tabs */}
                         <div className="absolute bottom-6 left-0 w-full px-4 z-20">
@@ -267,14 +274,14 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
                                         onClick={() => handleTabClick(item.id, index)}
                                         className="flex flex-col gap-2 flex-1 group"
                                     >
-                                        <span
+                                        {/* <span
                                             className={`uppercase text-[8px] md:text-lg tracking-widest font-medium transition-all text-center ${activeId === item.id
                                                 ? "text-[#FFFAF6]"
                                                 : "text-[#FFFAF6]/70 group-hover:text-[#FFFAF6]/80"
                                                 }`}
                                         >
                                             {item.label}
-                                        </span>
+                                        </span> */}
                                         <div className="w-full h-[2px] bg-[#FFFAF6]/50 rounded-full overflow-hidden">
                                             <div
                                                 className={`h-full bg-white transition-all duration-500 ${activeId === item.id ? "w-full" : "w-0"
@@ -287,7 +294,7 @@ export default function ProjectHighLiving({ data }: ProjectHighLivingProps) {
                         </div>
                     </div>
 
-                    <div className="px-3 pt-8 pb-16 bg-[#0097DC] max-w-md">
+                    <div className="px-3 pt-8 pb-16 max-w-md" style={{ backgroundColor: accentColor }}>
                         <h3 className="font-theSeasons text-3xl mb-4 text-[#E0E0E0]">{activeData?.label}</h3>
                         <div className="text-[#FFFAF6] text-sm leading-tight ">
                             {formatText(activeData?.description || "")}

@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -43,36 +43,36 @@ const MAP_DATA = [
             zoom: 13
         }
     },
-    {
-        key: "it",
-        title: "Education & Healthcare",
-        icon: "/icons/closedBookIcon.svg",
-        points: [44, 19],
+ {
+        key: "it-education",
+        title: "IT & Education",
+        icon: "/icons/culturalIcon.svg", 
+        points: [144, 145, 146, 147, 148], // Vertex, Sharada, Expert, Canara Schools
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.8765, lng: 74.8405 },
+            zoom: 15
         }
     },
     {
-        key: "education",
-        title: "Business Hubs",
-        icon: "/icons/businessIcon.svg",
-        points: [59, 26, 29, 28, 22, 35],
+        key: "essentials-healthcare",
+        title: "Everyday Essentials & Healthcare",
+        icon: "/icons/healthcareIcon.svg",
+        points: [149, 150, 151, 152, 153], // Malls, Market, Yenepoya Hospital
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13
+            center: { lat: 12.8765, lng: 74.8405 },
+            zoom: 15
         }
     },
     {
-        key: "essentials",
-        title: "Commercial Zones",
-        icon: "/icons/urbanIcon.svg",
-        points: [41, 24, 38, 39, 37],
+        key: "nearby-places",
+        title: "Nearby Places",
+        icon: "/icons/citywideIcon.svg", 
+        points: [119, 124, 154, 155, 156, 157, 158, 159, 160], // Lalbagh, Pabbas, Hotels, Temples
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
-            zoom: 13    
+            center: { lat: 12.8765, lng: 74.8405 },
+            zoom: 15
         }
-    },
+    }
 ];
 
 
@@ -151,7 +151,7 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
+                <NewHeader projectLink="/project-enquire?project=mukund-sadhan" projectName="Mukund Sadan" floorPlanPdf="/completedFloorplans/MukundSadan-FloorPlans.pdf" amenitiesTarget="#features" />
                 <CompletedHero title={<>Mukund Sadan</>} subtitle="" variant="rightCentered" desktopImage="/images/mukundSadanImages/heroDesk.webp" mobileImage="/images/mukundSadanImages/heroMobile.png" pdfPath="/completedFloorplans/MukundSadan-FloorPlans.pdf" />
                 {/* <ProjectHighLiving data={SECTION_DATA} /> */}
                 <HighlivingSection
@@ -161,9 +161,12 @@ export default function page() {
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMukund%20Sadan%20Walkthrough.mp4?alt=media&token=59618d1d-476d-4360-a238-a81e5b384422"
                 />
                 {/* <AmenitiesSection data={AMENITIES_DATA}  /> */}
-                <FeaturesSection features={FEATURES} heading="Curated Amenities" variant="left" completed={true} />
-                <MapSection customMarkerImage="/icons/mapIcons/sadanIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.874191610994334, lng: 74.83616109749772 }} />
-                <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
+                <FeaturesSection features={FEATURES} heading="Curated Amenities" variant="left" completed={true} id="features" />
+<MapSection 
+    customMarkerImage="/icons/mapIcons/mukundSadanIcon.svg" 
+    data={MAP_DATA} 
+    mainMarkerPosition={{ lat: 12.8765, lng: 74.8405 }} 
+/>                <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />
                 <CTASection title={<>Elevate Your <br /> Everyday</>} subtitle={<>Spaces that support your  <br className="hidden md:block" /> next chapter.</>} mobImg="/images/ctaImages/sadanMob.png" deskImg="/images/ctaImages/sadanDesk.png" />
                 <Footer />
             </div>

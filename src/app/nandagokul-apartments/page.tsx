@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -157,34 +157,34 @@ const AMENITIES_DATA = [
 
 
 const ftModal = [
-  "Framed structure with laterite stone exterior walls and concrete solid block internal walls",
-  "Multi-level interlocked car parking and yard with column guards",
-  "Attractive melamine polished main entrance door with high-quality wooden frame",
-  "Decorative interior doors with RCC door frames",
-  "RCC door frame with fibrotic shutter for toilets",
-  "Provision for modular kitchen with chimney, refrigerator, washing machine, and aquaguard",
-  "3KW single-phase power supply with AC provision for all bedrooms",
-  "Modular electrical switches from reputed brands",
-  "Two automatic elevators with 13-passenger capacity",
-  "Generator backup for lifts and all apartments with soundproof enclosure",
-  "Branded toilet and kitchen fittings (Jaguar, Hindware, Parryware or equivalent)",
-  "Premium acrylic emulsion paint for interiors and weather-resistant exterior paint",
-  "UPVC or high-grade aluminum sliding windows with mosquito mesh and 5mm clear glass",
-  "Granite window sills",
-  "Superior quality 2x2 vitrified tiles",
-  "Full-height designer wall tiles in toilets",
-  "2-foot wall tiles in kitchen working area",
-  "Rainwater harvesting system",
-  "Well water supply in addition to corporation water",
-  "Provision for exhaust fans and water heaters in all toilets",
-  "Sewage treatment plant",
-  "Split AC provision in all bedrooms",
-  "Overhead tank and underground sump with automatic level control",
-  "Terrace covered with heat-resistant truss sheets",
-  "Electrical wiring using Havells, RR Cable, or Finolex",
-  "Telephone points in living room and master bedroom",
-  "Two-way light control in all bedrooms",
-  "TV provision in living room and master bedroom"
+    "Framed structure with laterite stone exterior walls and concrete solid block internal walls",
+    "Multi-level interlocked car parking and yard with column guards",
+    "Attractive melamine polished main entrance door with high-quality wooden frame",
+    "Decorative interior doors with RCC door frames",
+    "RCC door frame with fibrotic shutter for toilets",
+    "Provision for modular kitchen with chimney, refrigerator, washing machine, and aquaguard",
+    "3KW single-phase power supply with AC provision for all bedrooms",
+    "Modular electrical switches from reputed brands",
+    "Two automatic elevators with 13-passenger capacity",
+    "Generator backup for lifts and all apartments with soundproof enclosure",
+    "Branded toilet and kitchen fittings (Jaguar, Hindware, Parryware or equivalent)",
+    "Premium acrylic emulsion paint for interiors and weather-resistant exterior paint",
+    "UPVC or high-grade aluminum sliding windows with mosquito mesh and 5mm clear glass",
+    "Granite window sills",
+    "Superior quality 2x2 vitrified tiles",
+    "Full-height designer wall tiles in toilets",
+    "2-foot wall tiles in kitchen working area",
+    "Rainwater harvesting system",
+    "Well water supply in addition to corporation water",
+    "Provision for exhaust fans and water heaters in all toilets",
+    "Sewage treatment plant",
+    "Split AC provision in all bedrooms",
+    "Overhead tank and underground sump with automatic level control",
+    "Terrace covered with heat-resistant truss sheets",
+    "Electrical wiring using Havells, RR Cable, or Finolex",
+    "Telephone points in living room and master bedroom",
+    "Two-way light control in all bedrooms",
+    "TV provision in living room and master bedroom"
 ];
 
 export default function page() {
@@ -192,7 +192,7 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
+                <NewHeader projectLink="/project-enquire?project=nandagokul" projectName="Nandagokul Apartments" floorPlanPdf="/completedFloorplans/Nandagokul-FloorPlans.pdf" />
                 <CompletedHero title={<>Nandagokul <br className="hidden lg:block" /> Apartments</>} subtitle="" variant="topRight" desktopImage="/images/nandagokulImages/heroDesk.png" mobileImage="/images/nandagokulImages/heroMobile.png" pdfPath="/completedFloorplans/Nandagokul-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 {/* <HighlivingSection

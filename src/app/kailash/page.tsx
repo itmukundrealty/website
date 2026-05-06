@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -70,7 +70,7 @@ const MAP_DATA = [
         icon: "/icons/cafeIcon.svg",
         points: [41, 24, 38, 39],
         viewport: {
-            center: { lat: 12.904891658303564, lng: 74.83737591311836                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                },
+            center: { lat: 12.904891658303564, lng: 74.83737591311836 },
             zoom: 13
         }
     },
@@ -152,7 +152,7 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
+                <NewHeader projectLink="/project-enquire?project=kailash" projectName="Kailash" floorPlanPdf="/completedFloorplans/Kailash-FloorPlans.pdf" view360Url="https://www.turiya.co/360/KailashLuxuryApartments/" />
                 <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/heroDesk.webp" mobileImage="/images/kailashImages/heroMobile.png" pdfPath="/completedFloorplans/Kailash-FloorPlans.pdf" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
@@ -160,6 +160,8 @@ export default function page() {
                     description="Introducing Kailash, a carefully envisioned residential community by Bhargavi Builders, designed to harmonize comfort, connectivity, and contemporary aesthetics. Situated in the well-established locale of Kottara Chowki, it offers an ideal setting for modern family life. Each residence is planned to maximise space, ventilation, and functionality, while thoughtfully designed common areas create opportunities for relaxation and neighbourly interaction. A curated selection of amenities supports wellness, recreation, and daily convenience, shaping a lifestyle that feels both balanced and effortless. With dependable infrastructure, secure surroundings, and quality finishes, Kailash presents a serene yet well-connected address in Mangalore."
                     imageSrc=" https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__strict-architecture-lockpreserve-the-exact-same-to__57695%201.png?alt=media&token=3d00ef55-9ee0-45ce-828c-0d71e9d5ee52"
                     videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKailash%20Final%20Version%20Walkthrough.mp4?alt=media&token=aab4ebe5-5e4a-49c7-af15-bf915635ed50"
+                    
+
                 />
                 <AmenitiesSection data={AMENITIES_DATA} />
                 <FeaturesSection features={FEATURES} heading="Built for Modern Comfort" variant="left" completed={true} />

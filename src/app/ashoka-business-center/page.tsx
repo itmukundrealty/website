@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -113,36 +113,42 @@ const AMENITIES_DATA = [
     id: "kitchen",
     label: "Curated Workspaces",
     subtitle: "",
+    description: "Workspaces should adapt to you. Designed around focus and flexibility, these spaces allow individuals and teams to work in a way that feels both productive and intuitive.",
     image: "/images/ashokaImages/amenities/amm1.webp",
   },
   {
     id: "wellness",
     label: "Recreational Zones",
     subtitle: "",
+    description: "Not every idea comes at a desk. These spaces create room for pauses, casual conversations, and a shift in pace, helping you return with clarity.",
     image: "/images/ashokaImages/amenities/amm2.webp",
   },
   {
     id: "lobby",
     label: "On Call Training/\n Board Rooms",
     subtitle: "",
+    description: "Key conversations need the right setting. With fully equipped spaces available when required, meetings and sessions happen seamlessly without external dependencies.",
     image: "/images/ashokaImages/amenities/amm3.webp",
   },
   {
     id: "pool",
     label: "Designated Ares for Customer/ Client Service",
     subtitle: "",
+    description: "First impressions matter. Thoughtfully designed areas ensure every interaction feels structured, professional, and aligned with your standards.",
     image: "/images/ashokaImages/amenities/amm4.webp",
   },
   {
     id: "gym",
     label: "Auditorium & Banquet Hall",
     subtitle: "",
+    description: "From presentations to large gatherings, having expansive venues within the same space adds ease, allowing you to host and engage without stepping out.",
     image: "/images/ashokaImages/amenities/amm5.webp",
   },
   {
     id: "sky-deck",
     label: "3 Tier Secured Parking",
     subtitle: "",
+    description: "Smooth movement matters. A well-planned, secure parking system across three levels keeps arrivals and departures organised and effortless.",
     image: "/images/ashokaImages/amenities/amm6.webp",
   },
 ];
@@ -158,16 +164,21 @@ export default function page() {
   return (
     <>
       <div className="">
-        <ProjectHeader projectLink="/project-enquire?project=ashoka" projectName="Ashoka" />
+        <NewHeader projectLink="/project-enquire?project=ashoka" projectName="Ashoka" scrolledLogo="/icons/ashokaDarkLogo.svg" logo="/icons/ashokaLogo.svg" />
         <ProjectHero
           projectLink="/project-enquire?project=ashoka"
           projectName="Ashoka Business Center"
+          title={<>Modern Business, <br /> Effortlessly Perfected</>}
+          subtitle="Commercial Workspaces at Ashoka Business Center"
+          exploreTitle={<>Modern Business,<br /> Effortlessly Perfected</>}
+          exploreSubtitle={<>Commercial Workspaces <br /> at Ashoka Business Center</>}
+          pdfPath="/downloadFloorPlan/typical layout.pdf"
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}
           floorData={floorData}
           FLOOR_PATHS={FLOOR_PATHS}
           heroImageDesktop="/images/ashokaImages/hero.png"
-          heroImageMobile="/images/ashokaImages/heroMobile.png"
+          heroImageMobile="/images/ashokaImages/newHeroMobile.png"
         />
         <ProjectHighLiving data={SECTION_DATA} />
         <HighlivingSection
@@ -189,7 +200,7 @@ export default function page() {
 
         <MapSection
           data={MAP_DATA}
-          
+
           mainMarkerPosition={{ lat: 12.896339168047138, lng: 74.84203633612658 }}
           customMarkerImage="/icons/mapIcons/ashokaIcon.svg"
         />

@@ -2,6 +2,8 @@
 import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 
 const TeamGroupSection = () => {
   return (
@@ -69,15 +71,12 @@ const TeamGroupSection = () => {
             </p>
           </div>
 
-          <a
-            href="/careers"
-            className="inline-flex items-center mt-10 text-[#0097DC] font-semibold hover:text-[#0097DC] transition-colors group"
-          >
-            <span className="mr-2 group-hover:rotate-45 transition-all duration-300"><svg width="12" height="12" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3.46206 1.49928L15.6005 1.49911M15.6005 1.49911L15.6005 13.4649M15.6005 1.49911L1.5 15.5996" stroke="#0097DC" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            </span> Join Our Team
-          </a>
+          <Link href="/careers" className="inline-block mt-10 group">
+            <button className="w-auto bg-[#0097DC] hover:bg-[#0085C0] transition-colors text-white text-[13px] md:text-[16px] font-medium px-6 py-3 md:px-8 md:py-4 flex items-center justify-center gap-2 min-w-[130px]">
+              <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 mb-[1px] group-hover:rotate-45 transition-all duration-300" strokeWidth={2.5} />
+              Join Our Team
+            </button>
+          </Link>
         </motion.div>
       </div>
     </section>

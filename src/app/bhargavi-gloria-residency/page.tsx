@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import ProjectHeader from "@/components/projectComponents/Rudraksh/features/Header";
+import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
 import ExperienceSection from "@/components/projectComponents/Rudraksh/features/project/ExperienceSection";
@@ -168,7 +168,7 @@ export default function page() {
         <>
             <div className="">
 
-                <ProjectHeader />
+                <NewHeader projectLink="/project-enquire?project=bhargavi" projectName="Bhargavi Gloria Residency" floorPlanPdf="/completedFloorplans/Bhargavi-FloorPlans.pdf" hideAmenities={true} />
                 <CompletedHero title={<>Bhargavi <br className="hidden lg:block" /> Gloria Residency</>} subtitle="" variant="rightCentered" desktopImage="/images/bhargaviImages/heroDesk.webp" mobileImage="/images/bhargaviImages/heroMobile.png" pdfPath="/completedFloorplans/Bhargavi-FloorPlans.pdf" />
                 {/* <ProjectHighLiving data={SECTION_DATA} /> */}
                 <HighlivingSection
@@ -179,7 +179,7 @@ export default function page() {
                     video={false}
                 />
                 {/* <AmenitiesSection data={AMENITIES_DATA}  /> */}
-                <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" variant="left" completed={true} btnType="know" modalTitle="Bhargavi Gloria Residency" modalPoints={ftModal} />
+                {/* <FeaturesSection features={FEATURES} heading="Designed for Everyday Work" variant="left" completed={true} btnType="know" modalTitle="Bhargavi Gloria Residency" modalPoints={ftModal} /> */}
 
                 <MapSection customMarkerImage="/icons/mapIcons/bhargaviIcon.svg" data={MAP_DATA} mainMarkerPosition={{ lat: 12.896839540060913, lng: 74.84863444232855 }} />
                 <ExperienceSection titlePart1="Experiences that " titlePart2="Set the Standard" description="Testimonials from those who appreciate the uncompromising Mukund standard." />

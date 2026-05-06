@@ -108,7 +108,7 @@ export default function ContactForm() {
                     </div>
 
                     {/* RIGHT COLUMN - Form */}
-                    <div className="w-full">
+                    <div className="w-full mt-8">
                         <form onSubmit={handleSubmit} className="space-y-10">
                             {/* Full Name */}
                             <div className="relative">
