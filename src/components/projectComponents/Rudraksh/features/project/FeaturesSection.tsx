@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -115,30 +116,56 @@ export default function FeaturesSection({
       <div className=" mx-auto px-6 lg:px-20 xl:px-54 ">
         {/* Header */}
         {variant === "center" ? (
-          <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#1E1E1E] font-light lg:text-center text-start  mb-16 lg:mb-28 tracking-tight leading-tight">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-4xl md:text-5xl lg:text-[68px] text-[#1E1E1E] font-light lg:text-center text-start  mb-16 lg:mb-28 tracking-tight leading-tight"
+          >
             {heading}
-          </h2>
+          </motion.h2>
         ) : (
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16 lg:mb-28">
-            <h2 className="text-4xl md:text-5xl lg:text-[68px] text-[#1E1E1E] font-light tracking-tight leading-tight">{heading}</h2>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-4xl md:text-5xl lg:text-[68px] text-[#1E1E1E] font-light tracking-tight leading-tight"
+            >
+              {heading}
+            </motion.h2>
             {btnType === "explore" ? (
-              <Link
-            href={finalLink}
-            className="hidden md:flex group items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 text-white transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
-            style={{ backgroundColor: btnAccentColor }}
-          >
-            <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
-            Explore Now
-          </Link>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+                className="hidden md:flex w-full md:w-fit"
+              >
+                <Link
+                  href={finalLink}
+                  className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 text-white transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full"
+                  style={{ backgroundColor: btnAccentColor }}
+                >
+                  <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+                  Explore Now
+                </Link>
+              </motion.div>
             ) : (
-              <button
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                 onClick={() => setIsModalOpen(true)}
                 style={{ borderColor: btnAccentColor, color: btnAccentColor }}
                 className="hidden md:flex group items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-6 lg:py-5 border uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px] hover:opacity-80 transition-all"
               >
                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                 Know More
-              </button>
+              </motion.button>
             )}
           </div>
         )}

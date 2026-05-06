@@ -156,9 +156,18 @@ export default function LandmarkSection() {
 
             {/* Header Section from photo */}
             <div className="max-w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-0 mb-12 md:mb-16">
-                <div className="w-full md:w-auto">
-                    <h3 className="text-4xl md:text-6xl tracking-tight leading-[1.1] "><span className="font-light text-[#505153]">Landmarks Of</span> <br /><span className="font-medium text-[#505153]">Modern Sophistication</span></h3>
-                </div>
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="w-full md:w-auto"
+                >
+                    <h3 className="text-4xl md:text-6xl tracking-tight leading-[1.1] ">
+                        <span className="font-light text-[#505153]">Landmarks Of</span> <br />
+                        <span className="font-medium text-[#505153]">Modern Sophistication</span>
+                    </h3>
+                </motion.div>
             </div>
 
             <div className="relative">

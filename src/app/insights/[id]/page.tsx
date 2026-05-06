@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, use, useRef } from "react";
+import React, { useEffect, useState, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,56 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { fetchBlogById, Blog } from "@/lib/api";
 import RelatedArticleSection from "@/components/InsightComponents/RelatedArticleSection";
+
+/** Decode common HTML entities so TOC titles display as plain readable text. */
+function decodeHtmlEntities(str: string): string {
+    return str
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+        .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+        // Collapse multiple consecutive spaces introduced by &nbsp; sequences
+        .replace(/ {2,}/g, ' ')
+        .trim();
+}
+
+/** Extract headings (h1–h4) from an HTML string and return TOC items. */
+function extractTocFromHtml(html: string): { id: string; title: string; level: number }[] {
+    const items: { id: string; title: string; level: number }[] = [];
+    const regex = /<(h[1-4])[^>]*>(.*?)<\/\1>/gis;
+    let match;
+    let index = 0;
+    while ((match = regex.exec(html)) !== null) {
+        const level = Number(match[1].charAt(1));
+        // Strip inner HTML tags then decode HTML entities to get clean plain text
+        const raw = match[2].replace(/<[^>]*>/g, '');
+        const title = decodeHtmlEntities(raw);
+        if (!title) continue;
+        const safeId = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        const id = `heading-${safeId}-${index++}`;
+        items.push({ id, title, level });
+    }
+    return items;
+}
+
+/**
+ * Stamp the same IDs used by the TOC onto the matching heading tags in the HTML
+ * so that smooth-scroll (getElementById) can find them after injection.
+ */
+function addHeadingIds(html: string, toc: { id: string; title: string; level: number }[]): string {
+    let tocIndex = 0;
+    return html.replace(/<(h[1-4])([^>]*)>(.*?)<\/\1>/gis, (fullMatch, tag, attrs, inner) => {
+        const title = inner.replace(/<[^>]*>/g, '').trim();
+        if (!title || tocIndex >= toc.length) return fullMatch;
+        // Remove any existing id attribute then inject the pre-computed one
+        const cleanAttrs = attrs.replace(/\s*id="[^"]*"/gi, '');
+        const id = toc[tocIndex++].id;
+        return `<${tag}${cleanAttrs} id="${id}">${inner}</${tag}>`;
+    });
+}
 
 interface BlogDetailPageProps {
     params: Promise<{ id: string }>;
@@ -20,44 +70,18 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     const [blog, setBlog] = useState<Blog | null>(null);
     const [loading, setLoading] = useState(true);
     const [toc, setToc] = useState<{ id: string; title: string; level: number }[]>([]);
-    const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const getBlog = async () => {
             const data = await fetchBlogById(id);
             setBlog(data);
+            if (data?.content) {
+                setToc(extractTocFromHtml(data.content));
+            }
             setLoading(false);
         };
         getBlog();
     }, [id]);
-
-    useEffect(() => {
-        if (!blog || !contentRef.current) return;
-        
-        // Find all headings inside the content
-        const headings = contentRef.current.querySelectorAll('h2, h3, h4');
-        const generatedToc: { id: string; title: string; level: number }[] = [];
-        
-        headings.forEach((heading, index) => {
-            const textContent = heading.textContent?.trim();
-            if (!textContent) return;
-            
-            // Create a safe, URL-friendly ID based on the heading text
-            const safeId = textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-            const headingId = heading.id || `heading-${safeId}-${index}`;
-            heading.id = headingId;
-            
-            generatedToc.push({
-                id: headingId,
-                title: textContent,
-                level: Number(heading.tagName.charAt(1))
-            });
-        });
-        
-        requestAnimationFrame(() => {
-            setToc(generatedToc);
-        });
-    }, [blog]);
 
     if (loading) {
         return (
@@ -95,15 +119,6 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     // Estimate read time (~200 words/min)
     const wordCount = blog.content?.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length || 0;
     // const readTime = Math.max(1, Math.ceil(wordCount / 200));
-
-    // Fallback to backend TOC if no headings found in content
-    const displayToc = toc.length > 0 
-        ? toc 
-        : (blog.tableOfContents || []).map((item: { title: string } | string, idx: number) => ({
-            id: `fallback-${idx}`,
-            title: typeof item === 'string' ? item : item.title,
-            level: 2
-          }));
 
     return (
         <div className="bg-white min-h-screen">
@@ -159,12 +174,12 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                 <div className="mx-auto px-6 md:px-12 lg:px-20 xl:px-54">
                     <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
                         {/* LEFT: Blog Content (scrollable) */}
-                        <div className="flex-1 min-w-0 order-2 lg:order-1" style={{ overflowWrap: 'break-word', wordBreak: 'break-word' }}>
+                        <div className="flex-1 min-w-0 order-2 lg:order-1" style={{ overflowWrap: 'break-word', wordBreak: 'normal' }}>
                             <div
-                                ref={contentRef}
+                                id="blog-content-body"
                                 className="blog-content prose prose-lg max-w-none text-[#505153] font-light leading-relaxed"
                                 style={{ maxWidth: '100%', overflow: 'hidden' }}
-                                dangerouslySetInnerHTML={{ __html: blog.content }}
+                                dangerouslySetInnerHTML={{ __html: addHeadingIds(blog.content, toc) }}
                             />
                         </div>
 
@@ -184,33 +199,28 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                                     </div>
                                 )}
 
-                                {/* Table of Contents Card */}
-                                {displayToc.length > 0 && (
+                                {/* Table of Contents — auto-generated from content headings */}
+                                {toc.length > 0 && (
                                     <div className="bg-[#f8f9fa] border border-[#e8eaed] rounded-sm p-6">
                                         <h3 className="text-[20px] font-semibold text-[#2d2d2d] mb-5 pb-4 border-b border-[#e0e0e0]">
-                                            Table of content
+                                            Table of Contents
                                         </h3>
                                         <ol className="space-y-3">
-                                            {displayToc.map((item, index) => (
-                                                <li key={index} className="flex gap-3">
+                                            {toc.map((item, index) => (
+                                                <li key={item.id} className="flex gap-3" style={{ paddingLeft: item.level > 2 ? `${(item.level - 2) * 12}px` : undefined }}>
                                                     <span className="text-[15px] font-medium text-[#505153] shrink-0 mt-[2px]">
                                                         {index + 1}.
                                                     </span>
-                                                    <button 
+                                                    <button
                                                         onClick={() => {
-                                                            if (item.id.startsWith('fallback-')) return;
                                                             const el = document.getElementById(item.id);
                                                             if (el) {
-                                                                const yOffset = -120; // Offset for sticky header
+                                                                const yOffset = -120;
                                                                 const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
-                                                                window.scrollTo({top: y, behavior: 'smooth'});
+                                                                window.scrollTo({ top: y, behavior: 'smooth' });
                                                             }
                                                         }}
-                                                        className={`text-[15px] font-normal leading-snug text-left transition-colors ${
-                                                            item.id.startsWith('fallback-') 
-                                                                ? 'text-[#505153]' 
-                                                                : 'text-[#505153] hover:text-[#0097DC] cursor-pointer'
-                                                        }`}
+                                                        className="text-[15px] font-normal leading-snug text-left text-[#505153] hover:text-[#0097DC] transition-colors cursor-pointer"
                                                     >
                                                         {item.title}
                                                     </button>
@@ -301,7 +311,8 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                     max-width: 100% !important;
                     box-sizing: border-box !important;
                     overflow-wrap: break-word !important;
-                    word-break: break-word !important;
+                    word-break: normal !important;
+                    hyphens: none !important;
                 }
                 .blog-content body,
                 .blog-content center,
@@ -320,7 +331,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                     padding-left: 0 !important;
                     padding-right: 0 !important;
                     overflow-wrap: break-word !important;
-                    word-break: break-word !important;
+                    word-break: normal !important;
                 }
 
                 /* Enforce minimum 18px on all text inside blog content */

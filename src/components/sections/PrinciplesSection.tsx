@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { motion } from "framer-motion";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -48,7 +49,15 @@ export default function PrinciplesSlider() {
 
   return (
     <section className="w-full bg-white relative py-12 md:pt-30">
-      <h1 className="text-4xl md:text-6xl font-light mb-6 md:mb-8 text-left md:text-center text-[#505153] px-6 md:px-0">Our <span className="text-[#505153] font-medium">Defining <br className="md:hidden" /> Principles</span></h1>
+      <motion.h1 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="text-4xl md:text-6xl font-light mb-6 md:mb-8 text-left md:text-center text-[#505153] px-6 md:px-0"
+      >
+        Our <span className="text-[#505153] font-medium">Defining <br className="md:hidden" /> Principles</span>
+      </motion.h1>
 
 
       <div className="max-w-full mx-auto flex flex-col  md:flex-row md:space-x-12 space-y-10 md:space-y-0">
@@ -57,15 +66,27 @@ export default function PrinciplesSlider() {
         {/* LEFT PANEL */}
         <div className="w-full md:w-[40%] pt-3 md:pt-[120px] px-6 md:pl-[80px] md:pr-[40px] text-left">
 
-          <h2 className="text-lg text-[#505153] font-semibold mb-2">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="text-lg text-[#505153] font-semibold mb-2"
+          >
             What we live by.
-          </h2>
+          </motion.h2>
 
-          <p className="text-[17px] leading-[1.7] font-light text-[#505153] max-w-full md:max-w-xs mx-auto md:mx-0">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="text-[17px] leading-[1.7] font-light text-[#505153] max-w-full md:max-w-xs mx-auto md:mx-0"
+          >
             Every project reflects our core standards,
             focusing on purposeful design that serves
             people, businesses and futures long-term.
-          </p>
+          </motion.p>
         </div>
 
         {/* RIGHT SLIDER */}
@@ -146,7 +167,10 @@ export default function PrinciplesSlider() {
           </div>
         </div>
       </div>
+
+
       <div className="absolute -bottom-20 -left-40 pointer-events-none z-0 hidden md:block">
+
         <Image
           src="/icons/mukund.svg"
           alt="Mukund Abstract Shape"
