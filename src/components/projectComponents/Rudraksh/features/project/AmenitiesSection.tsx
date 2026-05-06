@@ -220,14 +220,14 @@ export default function AmenitiesSection({
                 <div className="flex gap-2 shrink-0">
                   <button
                     onClick={handlePrev}
-                    className="w-12 h-12 rounded-full border flex items-center justify-center hover:opacity-80 transition-all bg-white"
+                    className="w-12 h-12 rounded-full border flex items-center justify-center hover:opacity-80 transition-all "
                     style={{ borderColor: accentColor, color: accentColor }}
                   >
                     <ChevronLeft className="w-5 h-5" strokeWidth={2} />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="w-12 h-12 rounded-full border flex items-center justify-center hover:opacity-80 transition-all bg-white"
+                    className="w-12 h-12 rounded-full border flex items-center justify-center hover:opacity-80 transition-all "
                     style={{ borderColor: accentColor, color: accentColor }}
                   >
                     <ChevronRight className="w-5 h-5" strokeWidth={2} />
@@ -244,15 +244,15 @@ export default function AmenitiesSection({
                 <div className="flex gap-4">
                   <button
                     onClick={handlePrev}
-                    className="w-14 h-14 rounded-full border flex items-center justify-center hover:opacity-80 transition-all bg-white"
-                    style={{ borderColor: accentColor, color: accentColor }}
+                    className="w-14 h-14 rounded-full border flex items-center justify-center hover:opacity-80 transition-all "
+                    style={{ borderColor: btnAccentColor, color: btnAccentColor }}
                   >
                     <ChevronLeft className="w-6 h-6" strokeWidth={2} />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="w-14 h-14 rounded-full border flex items-center justify-center hover:opacity-80 transition-all bg-white"
-                    style={{ borderColor: accentColor, color: accentColor }}
+                    className="w-14 h-14 rounded-full border flex items-center justify-center hover:opacity-80 transition-all "
+                    style={{ borderColor: btnAccentColor, color: btnAccentColor }}
                   >
                     <ChevronRight className="w-6 h-6" strokeWidth={2} />
                   </button>

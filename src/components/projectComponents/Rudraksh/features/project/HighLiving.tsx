@@ -5,6 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -163,6 +164,18 @@ export default function ProjectHighLiving({ data, accentColor = "#0097DC" }: Pro
         }
     };
 
+    const handleNextMobile = () => {
+        const currentIndex = data.findIndex(item => item.id === activeId);
+        const nextIndex = (currentIndex + 1) % data.length;
+        setActiveId(data[nextIndex].id);
+    };
+
+    const handlePrevMobile = () => {
+        const currentIndex = data.findIndex(item => item.id === activeId);
+        const prevIndex = (currentIndex - 1 + data.length) % data.length;
+        setActiveId(data[prevIndex].id);
+    };
+
     if (!data || data.length === 0) {
         return null;
     }
@@ -248,18 +261,37 @@ export default function ProjectHighLiving({ data, accentColor = "#0097DC" }: Pro
 
             </div>
 
-            {/* Mobile View - UNCHANGED logic from previous step, ensure consistent handlers */}
+            {/* Mobile View - Swipeable implementation */}
             <div className="md:hidden relative w-full" style={{ backgroundColor: accentColor }}>
-                <section className="relative z-20 px-3 pt-20" style={{ backgroundColor: accentColor }}>
-                    <div className="relative w-full h-[65vh] ">
-                        <Image
-                            src={activeData?.imageSrc || ""}
-                            alt={activeData?.label || ""}
-                            fill
-                            sizes="100vw"
-                            className="object-cover transition-opacity duration-500"
-                            unoptimized
-                        />
+                <motion.section 
+                    className="relative z-20 px-3 pt-20" 
+                    style={{ backgroundColor: accentColor }}
+                    onPanEnd={(e, info) => {
+                        if (info.offset.x < -50) handleNextMobile();
+                        else if (info.offset.x > 50) handlePrevMobile();
+                    }}
+                >
+                    <div className="relative w-full h-[65vh]">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeId}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="absolute inset-0"
+                            >
+                                <Image
+                                    src={activeData?.imageSrc || ""}
+                                    alt={activeData?.label || ""}
+                                    fill
+                                    sizes="100vw"
+                                    className="object-cover"
+                                    unoptimized
+                                />
+                            </motion.div>
+                        </AnimatePresence>
+                        
                         <div 
                             className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10" 
                             style={{ backgroundImage: `linear-gradient(to top, ${accentColor}E6, ${accentColor}66, transparent)` }}
@@ -272,16 +304,8 @@ export default function ProjectHighLiving({ data, accentColor = "#0097DC" }: Pro
                                     <button
                                         key={item.id}
                                         onClick={() => handleTabClick(item.id, index)}
-                                        className="flex flex-col gap-2 flex-1 group"
+                                        className="flex flex-col gap-2 flex-1 group py-4 -my-4" // Increased touch area
                                     >
-                                        {/* <span
-                                            className={`uppercase text-[8px] md:text-lg tracking-widest font-medium transition-all text-center ${activeId === item.id
-                                                ? "text-[#FFFAF6]"
-                                                : "text-[#FFFAF6]/70 group-hover:text-[#FFFAF6]/80"
-                                                }`}
-                                        >
-                                            {item.label}
-                                        </span> */}
                                         <div className="w-full h-[2px] bg-[#FFFAF6]/50 rounded-full overflow-hidden">
                                             <div
                                                 className={`h-full bg-white transition-all duration-500 ${activeId === item.id ? "w-full" : "w-0"
@@ -295,12 +319,22 @@ export default function ProjectHighLiving({ data, accentColor = "#0097DC" }: Pro
                     </div>
 
                     <div className="px-3 pt-8 pb-16 max-w-md" style={{ backgroundColor: accentColor }}>
-                        <h3 className="font-theSeasons text-3xl mb-4 text-[#E0E0E0]">{activeData?.label}</h3>
-                        <div className="text-[#FFFAF6] text-sm leading-tight ">
-                            {formatText(activeData?.description || "")}
-                        </div>
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeId}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <h3 className="font-theSeasons text-3xl mb-4 text-[#E0E0E0]">{activeData?.label}</h3>
+                                <div className="text-[#FFFAF6] text-sm leading-tight">
+                                    {formatText(activeData?.description || "")}
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
-                </section>
+                </motion.section>
             </div>
         </>
     );
