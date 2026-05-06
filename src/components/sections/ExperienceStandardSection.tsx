@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
@@ -99,6 +99,16 @@ const testimonials = [
 export default function ExperienceStandardSection() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [swiperRef, setSwiperRef] = useState<any>(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const paginationDots = (
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 justify-center md:justify-start mt-4">
@@ -204,10 +214,11 @@ export default function ExperienceStandardSection() {
                     <div className="md:col-span-7 relative pl-0 md:pl-10">
 
                         <Swiper
+                            key={isMobile ? 'mobile' : 'desktop'}
                             modules={[Autoplay, EffectFade]}
                             spaceBetween={30}
                             slidesPerView={1}
-                            effect={'fade'}
+                            effect={isMobile ? 'slide' : 'fade'}
                             fadeEffect={{ crossFade: true }}
                             onSwiper={setSwiperRef}
                             autoplay={{

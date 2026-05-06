@@ -170,6 +170,8 @@ export default function page() {
           projectName="Ashoka Business Center"
           title={<>Modern Business, <br /> Effortlessly Perfected</>}
           subtitle="Commercial Workspaces at Ashoka Business Center"
+          exploreTitle={<>Modern Business,<br /> Effortlessly Perfected</>}
+          exploreSubtitle={<>Commercial Workspaces <br /> at Ashoka Business Center</>}
           pdfPath="/downloadFloorPlan/typical layout.pdf"
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}

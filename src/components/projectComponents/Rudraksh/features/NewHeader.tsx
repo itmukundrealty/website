@@ -16,6 +16,7 @@ interface NewHeaderProps {
     logo?: string;
     scrolledLogo?: string;
     view360Url?: string;
+    btnAccentColor?: string;
 }
 
 export default function NewHeader({
@@ -26,7 +27,8 @@ export default function NewHeader({
     amenitiesTarget = "#amenities",
     logo = "/icons/mukundIcon.svg",
     scrolledLogo = "/icons/logo.svg",
-    view360Url
+    view360Url,
+    btnAccentColor
 }: NewHeaderProps) {
     const pathname = usePathname();
     const currentPath = pathname?.split("/")[1] || "";
@@ -58,6 +60,7 @@ export default function NewHeader({
     const [isVisible, setIsVisible] = useState(true);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isExplorerOpen, setIsExplorerOpen] = useState(false);
+    const [isPastHero, setIsPastHero] = useState(false);
 
     // Listen for floor explorer toggle events
     useEffect(() => {
@@ -75,6 +78,7 @@ export default function NewHeader({
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             setIsScrolled(currentScrollY > 20);
+            setIsPastHero(currentScrollY > window.innerHeight * 0.9);
 
             if (currentScrollY < 20) {
                 setIsVisible(true);
@@ -157,15 +161,16 @@ export default function NewHeader({
                         </nav>
 
                         {/* Buttons Section */}
-                        <div className="flex items-center gap-4">
+                        <div className={`flex items-center gap-4 transition-all duration-500 overflow-hidden ${isPastHero ? "opacity-100 max-w-2xl translate-x-0" : "opacity-0 max-w-0 translate-x-10"}`}>
                             {!isCompleted && (
                                 <a
                                     href={floorPlanPdf}
                                     download
+                                    style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
                                     className={`px-8 py-2 border text-sm font-medium text-center tracking-wide transition-all duration-300 uppercase
                   ${isScrolled
-                                            ? "border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC] hover:text-white"
-                                            : "border-white text-white hover:bg-white hover:text-[#0097DC]"
+                                            ? "border-[var(--btn-accent)] text-[var(--btn-accent)] hover:opacity-80"
+                                            : "border-white text-white hover:bg-white hover:text-[var(--btn-accent)]"
                                         }`}
                                 >
                                     Download <br /> Floor Plans
@@ -176,10 +181,11 @@ export default function NewHeader({
                                     href={view360Url}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
                                     className={`px-6 py-4.5 border text-sm font-medium tracking-wide transition-all duration-300 uppercase flex items-center gap-2
                   ${isScrolled
-                                            ? "border-[#0097DC] text-[#0097DC] hover:bg-[#0097DC] hover:text-white"
-                                            : "border-white text-white hover:bg-white hover:text-[#0097DC]"
+                                            ? "border-[var(--btn-accent)] text-[var(--btn-accent)] hover:bg-[var(--btn-accent)] hover:text-white"
+                                            : "border-white text-white hover:bg-white hover:text-[var(--btn-accent)]"
                                         }`}
                                 >
                                     360° View
@@ -188,7 +194,8 @@ export default function NewHeader({
                             )}
                             <Link
                                 href={finalProjectLink}
-                                className="bg-[#0097DC] hover:bg-[#0085C0] text-white px-6 py-4.5 text-sm font-medium tracking-wide transition-all duration-300 uppercase flex items-center gap-2"
+                                style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+                                className="bg-[var(--btn-accent)] hover:opacity-90 text-white px-6 py-4.5 text-sm font-medium tracking-wide transition-all duration-300 uppercase flex items-center gap-2"
                             >
                                 Enquire Now
                                 <ArrowUpRight size={18} />
@@ -242,7 +249,8 @@ export default function NewHeader({
                                         <a
                                             href={floorPlanPdf}
                                             download
-                                            className="w-full py-4 px-8 border border-[#0097DC] text-[#0097DC] text-center font-medium tracking-widest uppercase"
+                                            style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+                                            className="w-full py-4 px-8 border border-[var(--btn-accent)] text-[var(--btn-accent)] hover:bg-[var(--btn-accent)] hover:text-white transition-colors text-center font-medium tracking-widest uppercase"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
                                             Download Floor Plans
@@ -253,7 +261,8 @@ export default function NewHeader({
                                             href={view360Url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="w-full py-4 border border-[#0097DC] text-[#0097DC] text-center font-medium tracking-widest uppercase flex items-center justify-center gap-2"
+                                            style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+                                            className="w-full py-4 border border-[var(--btn-accent)] text-[var(--btn-accent)] hover:bg-[var(--btn-accent)] hover:text-white transition-colors text-center font-medium tracking-widest uppercase flex items-center justify-center gap-2"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
                                             360° View
@@ -262,7 +271,8 @@ export default function NewHeader({
                                     )}
                                     <Link
                                         href={finalProjectLink}
-                                        className="w-full py-4 bg-[#0097DC] text-white text-center font-medium tracking-widest uppercase flex items-center justify-center gap-2"
+                                        style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+                                        className="w-full py-4 bg-[var(--btn-accent)] text-white hover:opacity-90 transition-opacity text-center font-medium tracking-widest uppercase flex items-center justify-center gap-2"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         Enquire Now

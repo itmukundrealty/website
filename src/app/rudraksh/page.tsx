@@ -11,6 +11,18 @@ import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
 import { FLOOR_PATHS_VIEWBOX, HERO_MARKERS } from "@/utils/floorMapRudraksh.js";
 import { floorData } from "@/utils/floorMapRudraksh.js";
 import { FLOOR_PATHS } from "@/utils/floorMapRudraksh.js";
+import localFont from "next/font/local";
+
+const playfair = localFont({
+  src: "../../../public/fonts/PlayfairDisplay-VariableFont_wght.ttf",
+  variable: "--font-playfair",
+});
+
+const montserrat = localFont({
+  src: "../../../public/fonts/Montserrat-VariableFont_wght.ttf",
+  variable: "--font-montserrat",
+});
+
 
 // ... (other imports)
 
@@ -152,14 +164,14 @@ const AMENITIES_DATA = [
   {
     id: "gym",
     label: "Fitness & Activity Zones",
-    subtitle: "ACTIVE LIFESTYLE",
+    subtitle: "",
     description: "When convenience meets routine, staying active feels natural. These spaces let you move, train, or reset whenever you choose, without working around time or distance.",
     image: "/images/rudrakshImages/amm5.webp",
   },
   {
     id: "sky-deck",
     label: "Rooftop Infinity\nSwimming Pool",
-    subtitle: "ABOVE THE CLOUDS",
+    subtitle: "",
     description: "Sometimes, all you need is a quiet escape. Elevated above the everyday, the rooftop pool offers openness, calm, and a space to unwind at your own pace.",
     image: "/images/rudrakshImages/amm6.webp",
   },
@@ -213,8 +225,15 @@ export const metadata = {
 
 export default function Project1Page() {
   return (
-    <main className="min-h-screen bg-black">
-      <NewHeader projectLink="/project-enquire?project=rudraksh" projectName="Rudraksh" scrolledLogo="/icons/rudrakshDarkLogo.svg" logo="/icons/rudrakshLogo.svg" />
+    <main className={`min-h-screen bg-black ${playfair.variable} ${montserrat.variable} font-montserrat [&_h1]:font-playfair [&_h2]:font-playfair [&_h3]:font-playfair [&_h4]:font-playfair [&_h5]:font-playfair [&_h6]:font-playfair`}>
+
+      <NewHeader 
+        projectLink="/project-enquire?project=rudraksh" 
+        projectName="Rudraksh" 
+        scrolledLogo="/icons/rudrakshDarkLogo.svg" 
+        logo="/icons/rudrakshLogo.svg" 
+        btnAccentColor="#5A1F26"
+      />
       <ProjectHero
         projectLink="/project-enquire?project=rudraksh"
         projectName="Rudraksh"
@@ -230,6 +249,7 @@ export default function Project1Page() {
         exploreTitle={<>A Higher Way to Live</>}
         exploreSubtitle={<>Luxury Homes <br /> at Rudraksh</>}
         accentColor="#4F5D4A"
+        btnAccentColor="#5A1F26"
       />
       <ProjectHighLiving data={SECTION_DATA} accentColor="#4F5D4A" />
       <HighlivingSection
@@ -238,7 +258,11 @@ export default function Project1Page() {
         heading="Luxury in the Contours of Life"
         description="Welcome to Rudraksh, an exquisite residential address envisioned for those who seek the true essence of high living. Thoughtfully crafted with a focus on space, comfort, and timeless elegance, the project offers well-planned homes, curated lifestyle amenities, and a setting that balances serenity with city connectivity. Every detail is shaped to create an elevated living experience where design, luxury, and everyday ease come together."
         imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
-        videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FMGM_Rudraksh_FHD.mp4?alt=media&token=8e11695c-384c-431e-91f4-f5ace13790ab"
+        videoSrc={[ 
+          "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/videos%2Frudraksh2.mp4?alt=media&token=23553c65-102c-497c-bfeb-462fda653e78",
+          "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/videos%2Frudraksh1.mp4?alt=media&token=beb814c8-a722-4cdf-b6b4-1ad42c503121",
+          "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/videos%2Frudraksh3.mp4?alt=media&token=ed5cf04f-ece8-441e-82c2-995cfaa964e8"
+        ]}
       />
       <AmenitiesSection projectLink="/project-enquire?project=rudraksh" data={AMENITIES_DATA} accentColor="#4F5D4A" btnAccentColor="#5A1F26" />
       <FeaturesSection

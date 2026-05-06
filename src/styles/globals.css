@@ -18,6 +18,10 @@
   --breakpoint-xl: 1760px;
   --font-host: var(--font-host-grotesk);
   --font-serif: var(--font-host-grotesk);
+  --font-playfair: var(--font-playfair);
+  --font-montserrat: var(--font-montserrat);
+  --font-swis721: var(--font-swis721);
+
 
   /* Custom Animations */
   --animate-scroll-left: scroll-left 30s linear infinite;

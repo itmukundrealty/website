@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, ChevronLast, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -37,8 +37,12 @@ const slides = [
     }
 ];
 
-export default function     CraftedForMomentsSection() {
+export default function CraftedForMomentsSection() {
     const [currentSlide, setCurrentSlide] = useState(0);
+
+    const touchStartX = useRef<number | null>(null);
+    const touchEndX = useRef<number | null>(null);
+    const SWIPE_THRESHOLD = 50;
 
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -46,6 +50,25 @@ export default function     CraftedForMomentsSection() {
 
     const prevSlide = () => {
         setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    };
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.touches[0].clientX;
+        touchEndX.current = null;
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        touchEndX.current = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+        if (touchStartX.current === null || touchEndX.current === null) return;
+        const diff = touchStartX.current - touchEndX.current;
+        if (Math.abs(diff) >= SWIPE_THRESHOLD) {
+            diff > 0 ? nextSlide() : prevSlide();
+        }
+        touchStartX.current = null;
+        touchEndX.current = null;
     };
 
     const activeContent = slides[currentSlide];
@@ -70,7 +93,12 @@ export default function     CraftedForMomentsSection() {
                 </div>
 
                 {/* Carousel Area */}
-                <div className="relative">
+                <div
+                    className="relative"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                >
                     <div className="relative h-[50vh] md:h-[70vh] w-full md:w-[65%] overflow-hidden">
                         {/* Image */}
                         <AnimatePresence mode="wait">

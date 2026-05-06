@@ -124,14 +124,14 @@ export default function HighlivingSection({
 
   return (
     <section id="about" ref={sectionRef} className="md:py-24 py-14 bg-white font-sans">
-      <div className=" mx-auto px-6 lg:px-20 xl:px-54">
+      <div className="mx-auto px-6 lg:px-20 xl:px-54 flex flex-col md:block">
         {/* Header Area */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#505153] font-light leading-tight">{heading}</h2>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6 md:mb-8 order-1 md:order-none">
+          <h2 className="text-4xl text-[#1E1E1E] md:text-5xl lg:text-6xl  font-light leading-tight">{heading}</h2>
 
           <Link
             href={finalLink}
-            className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 text-white transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
+            className="hidden md:flex group items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 text-white transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
             style={{ backgroundColor: btnAccentColor }}
           >
             <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
@@ -140,19 +140,19 @@ export default function HighlivingSection({
         </div>
 
         {/* Description */}
-        <div className={`max-w-full ${video ? "mb-12" : "mb-0"}`}>
+        <div className={`max-w-full ${video ? "mb-8 md:mb-12" : "mb-0"} order-3 md:order-none`}>
           <p className="text-lg text-[#505153] font-light ">{description}</p>
         </div>
 
         {/* Video/Image Container */}
         {video && (
-          <div className="relative w-full aspect-video md:aspect-21/9 overflow-hidden bg-gray-100 group">
+          <div className="relative w-full aspect-video md:aspect-21/9 overflow-hidden bg-gray-100 group order-2 md:order-none mb-8 md:mb-0">
             <Swiper
               modules={[Navigation, Pagination]}
-              navigation={videos.length > 1}
+              navigation={false}
               pagination={videos.length > 1 ? { clickable: true } : false}
               onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-              className="w-full h-full"
+              className="highliving-swiper w-full h-full"
             >
               {videos.map((vid, idx) => (
                 <SwiperSlide key={idx} className="w-full h-full">
@@ -162,30 +162,41 @@ export default function HighlivingSection({
             </Swiper>
           </div>
         )}
+
+        {/* Mobile Button */}
+        <div className="w-full order-4 md:hidden">
+          <Link
+            href={finalLink}
+            className="group flex items-center justify-center gap-2 px-6 py-4 text-white transition-colors uppercase tracking-widest text-[14px] font-bold w-full"
+            style={{ backgroundColor: btnAccentColor }}
+          >
+            <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+            Enquire Now
+          </Link>
+        </div>
       </div>
       
       <style dangerouslySetInnerHTML={{__html: `
-        .swiper-button-next, .swiper-button-prev {
-          color: white;
-          background: rgba(0,0,0,0.3);
+        .highliving-swiper .swiper-pagination {
+          bottom: 20px !important;
+          display: flex !important;
+          justify-content: center !important;
+          width: 100% !important;
+          left: 0 !important;
+        }
+        .highliving-swiper .swiper-pagination-bullet {
           width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          transition: 0.3s;
-        }
-        .swiper-button-next:after, .swiper-button-prev:after {
-          font-size: 20px;
-        }
-        .swiper-button-next:hover, .swiper-button-prev:hover {
-          background: rgba(0,0,0,0.6);
-        }
-        .swiper-pagination-bullet {
-          background: white;
-          opacity: 0.5;
-        }
-        .swiper-pagination-bullet-active {
+          height: 2px;
+          background: rgba(255, 255, 255, 0.5);
+          border-radius: 0;
           opacity: 1;
-          background: ${btnAccentColor};
+          transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          margin: 0 8px !important;
+          cursor: pointer;
+        }
+        .highliving-swiper .swiper-pagination-bullet-active {
+          background: white;
+          width: 80px;
         }
       `}} />
     </section>

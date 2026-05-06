@@ -29,6 +29,7 @@ interface ProjectHeroProps {
   exploreSubtitle?: string | React.ReactNode;
   accentColor?: string;
   btnAccentColor?: string;
+  view360Url?: string;
 }
 
 export function ProjectHero({
@@ -49,6 +50,7 @@ export function ProjectHero({
   exploreSubtitle = "Our Floors",
   accentColor = "#0097DC",
   btnAccentColor = "#0097DC",
+  view360Url,
 }: ProjectHeroProps) {
   const pathname = usePathname();
   const currentPath = pathname?.split("/")[1] || "";
@@ -124,41 +126,19 @@ export function ProjectHero({
   // Filter units by selected wing
   const currentFilteredUnits = currentFloor
     ? currentFloor.units.filter((u: any) => {
-        if (currentFloor.title === "Terrace Floor" && projectName === "Rudraksh") {
-          return u.details.terraceType === terraceType;
-        }
-        if (!selectedWing) return true;
-        return u.details.floor?.includes(`Wing ${selectedWing}`);
-      })
+      if (currentFloor.title === "Terrace Floor" && projectName === "Rudraksh") {
+        return u.details.terraceType === terraceType;
+      }
+      if (!selectedWing) return true;
+      return u.details.floor?.includes(`Wing ${selectedWing}`);
+    })
     : [];
 
   const currentUnit = currentFloor && planSelectedIndex !== null ? currentFloor.units[planSelectedIndex] : null;
 
-  // --- Opaque/Transparent Fix: Using /60 for transparency ---
-  const getPlanFillClass = (index: number) => {
-    // This makes the fill 60% opaque so you can see the image under it
-    if (planHoveredIndex === index) return "fill-[#0097DC]/90 stroke-[#0097DC] stroke-2";
-    return "fill-transparent stroke-none";
-  };
-
   const handleUnitClick = (index: number) => {
     setPlanSelectedIndex(index);
     setShowUnitDetails(true);
-  };
-
-  // --- Building Overlay Fix: Keep selected floor filled ---
-  const getBuildingPathClass = (index: number, wing?: string) => {
-    // FIX ADDED: 'pointer-events-auto' added here so the specific path captures clicks
-    const baseClasses = "cursor-pointer transition-colors duration-300 pointer-events-auto";
-
-    // If this floor and wing is currently selected (sidebar is open), keep it filled
-    if (selectedIndex === index && selectedWing === (wing || null)) {
-      return `${baseClasses} fill-[#003a53]/80`;
-    }
-
-    // FIX ADDED: Changed 'fill-transparent' to 'fill-white/0'.
-    // This looks identical (invisible), but ensures the browser registers the click.
-    return `${baseClasses} fill-white/0 hover:fill-[#003a53]/80`;
   };
 
   return (
@@ -189,14 +169,14 @@ export function ProjectHero({
       <div className="absolute inset-0 z-10 flex md:hidden flex-col justify-between px-6 py-16 pointer-events-none">
         {/* Top: Heading */}
         <motion.div
-           initial={{ opacity: 0, y: -20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.5 }}
-           className="text-center w-full mt-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-center w-full mt-12"
         >
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl text-white tracking-tight font-medium leading-tight">
-               {title || projectName}
+              {title || projectName}
             </h1>
             {subtitle && (
               <h2 className="text-2xl text-white tracking-tight font-light leading-snug">
@@ -208,30 +188,42 @@ export function ProjectHero({
 
         {/* Bottom: Buttons */}
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.7 }}
-           className="w-full flex flex-col gap-3 pointer-events-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="w-full flex flex-col gap-3 pointer-events-auto"
         >
-          <Link href={finalLink} className="w-full">
-            <button 
-              className="w-full text-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg"
-              style={{ backgroundColor: btnAccentColor }}
-            >
-              Book A Site Visit
-              <ArrowUpRight className="w-5 h-5" />
-            </button>
-          </Link>
           {pdfPath && (
-            <button 
+            <button
               onClick={handleDownload}
-              className="w-full bg-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg"
-              style={{ color: btnAccentColor }}
+              className="w-full py-4 border bg-transparent hover:bg-white text-white hover:text-[var(--btn-accent)] font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg transition-colors"
+              style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
             >
-              Download Floor Plan + Brochure
+              Download Floor Plan
               <ArrowUpRight className="w-5 h-5" />
             </button>
           )}
+          {view360Url && (
+            <Link
+              href={view360Url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-4 border bg-transparent hover:bg-white text-white hover:text-[var(--btn-accent)] font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg transition-colors hidden md:block"
+              style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+            >
+              360° View
+              <ArrowUpRight className="w-5 h-5" />
+            </Link>
+          )}
+          <Link href={finalLink} className="w-full">
+            <button
+              className="w-full text-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg hover:opacity-90 transition-opacity bg-[var(--btn-accent)]"
+              style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+            >
+              Enquire Now
+              <ArrowUpRight className="w-5 h-5" />
+            </button>
+          </Link>
         </motion.div>
       </div>
 
@@ -241,10 +233,43 @@ export function ProjectHero({
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-right pointer-events-auto mt-20 md:mt-28 xl:mt-40"
+          className="text-right pointer-events-auto mt-20 md:mt-28 xl:mt-40 flex flex-col items-end"
         >
-          <h1 className="text-5xl text-white tracking-tight font-medium mb-4 md:text-7xl">{exploreTitle}</h1>
-          <h2 className="text-5xl text-white tracking-tight font-thin md:text-7xl">{exploreSubtitle}</h2>
+          <h1 className="text-5xl text-white tracking-tight font-medium mb-4 md:text-6xl">{exploreTitle}</h1>
+          <h2 className="text-5xl text-white tracking-tight font-thin md:text-4xl">{exploreSubtitle}</h2>
+
+          {/* DESKTOP BUTTONS */}
+          <div className="flex flex-wrap items-center justify-end gap-4 mt-8 pointer-events-auto">
+            {pdfPath && (
+              <button
+                onClick={handleDownload}
+                className="px-8 py-2 border text-sm font-medium text-center tracking-wide transition-all duration-300 uppercase border-white hover:opacity-80 bg-white text-[var(--btn-accent)]"
+                style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+              >
+                Download <br /> Floor Plans
+              </button>
+            )}
+            {view360Url && (
+              <Link
+                href={view360Url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-4.5 border text-sm font-medium tracking-wide transition-all duration-300 uppercase flex items-center gap-2 border-white text-white hover:bg-white hover:text-[var(--btn-accent)]"
+                style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+              >
+                360° View
+                <ArrowUpRight size={18} />
+              </Link>
+            )}
+            <Link
+              href={finalLink}
+              className="bg-[var(--btn-accent)] hover:opacity-90 text-white px-6 py-4.5 text-sm font-medium tracking-wide transition-all duration-300 uppercase flex items-center gap-2"
+              style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+            >
+              Enquire Now
+              <ArrowUpRight size={18} />
+            </Link>
+          </div>
         </motion.div>
       </div>
 
@@ -258,17 +283,27 @@ export function ProjectHero({
         */}
         <svg viewBox={FLOOR_PATHS_VIEWBOX} className="h-full w-full object-cover pointer-events-none" preserveAspectRatio="xMidYMid slice">
           <g className="transition-colors duration-300">
-            {FLOOR_PATHS.map((floor, i) => (
-              <path
-                key={`${floor.id}-${floor.wing || 'all'}-${i}`}
-                d={floor.d}
-                transform={floor.transform || undefined}
-                className={getBuildingPathClass(floor.id, floor.wing)}
-                onMouseEnter={() => { setHoveredIndex(floor.id); setHoveredWing(floor.wing || null); }}
-                onMouseLeave={() => { setHoveredIndex(null); setHoveredWing(null); }}
-                onClick={() => { setSelectedIndex(floor.id); setSelectedWing(floor.wing || null); }}
-              />
-            ))}
+            {FLOOR_PATHS.map((floor, i) => {
+              const isHovered = hoveredIndex === floor.id && hoveredWing === (floor.wing || null);
+              const isSelected = selectedIndex === floor.id && selectedWing === (floor.wing || null);
+              const shouldHighlight = isHovered || isSelected;
+
+              return (
+                <path
+                  key={`${floor.id}-${floor.wing || 'all'}-${i}`}
+                  d={floor.d}
+                  transform={floor.transform || undefined}
+                  className="cursor-pointer transition-all duration-300 pointer-events-auto"
+                  style={{
+                    fill: shouldHighlight ? accentColor : "rgba(255, 255, 255, 0)",
+                    fillOpacity: shouldHighlight ? 0.8 : 0
+                  }}
+                  onMouseEnter={() => { setHoveredIndex(floor.id); setHoveredWing(floor.wing || null); }}
+                  onMouseLeave={() => { setHoveredIndex(null); setHoveredWing(null); }}
+                  onClick={() => { setSelectedIndex(floor.id); setSelectedWing(floor.wing || null); }}
+                />
+              );
+            })}
           </g>
 
           {/* INTERACTIVE MARKERS */}
@@ -391,9 +426,9 @@ export function ProjectHero({
             >
               <div className="relative flex h-full flex-col">
                 {/* Header */}
-                <ProjectHeader 
-                  projectLink={finalLink} 
-                  projectName={projectName} 
+                <ProjectHeader
+                  projectLink={finalLink}
+                  projectName={projectName}
                   onClose={() => { setSelectedIndex(null); setSelectedWing(null); }}
                   hideAmenities={hideAmenities}
                   amenitiesTarget={amenitiesTarget}
@@ -422,7 +457,13 @@ export function ProjectHero({
                               key={unit.id}
                               d={unit.path}
                               transform={unit.transform || undefined}
-                              className={`cursor-pointer transition-colors duration-200 ease-in-out ${getPlanFillClass(originalIndex)}`}
+                              className="cursor-pointer transition-all duration-200 ease-in-out"
+                              style={{
+                                fill: planHoveredIndex === originalIndex ? accentColor : "transparent",
+                                fillOpacity: planHoveredIndex === originalIndex ? 0.9 : 0,
+                                stroke: planHoveredIndex === originalIndex ? accentColor : "transparent",
+                                strokeWidth: planHoveredIndex === originalIndex ? 2 : 0
+                              }}
                               onMouseEnter={() => setPlanHoveredIndex(originalIndex)}
                               onMouseLeave={() => setPlanHoveredIndex(null)}
                               onClick={() => handleUnitClick(originalIndex)}
@@ -437,61 +478,61 @@ export function ProjectHero({
                       currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
                         ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
                         : (selectedWing === "A" && currentFloor.planImageWingA) ||
-                          (selectedWing === "B" && currentFloor.planImageWingB) ||
-                          currentFloor.planImage
+                        (selectedWing === "B" && currentFloor.planImageWingB) ||
+                        currentFloor.planImage
                     ) && (
-                      <Image
-                        width={500}
-                        height={500}
-                        src={
-                          currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
-                            ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
-                            : (selectedWing === "A" && currentFloor.planImageWingA) ||
+                        <Image
+                          width={500}
+                          height={500}
+                          src={
+                            currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
+                              ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
+                              : (selectedWing === "A" && currentFloor.planImageWingA) ||
                               (selectedWing === "B" && currentFloor.planImageWingB) ||
                               currentFloor.planImage
-                        }
-                        alt={`${currentFloor.title} Plan`}
-                        className="absolute inset-0 h-full w-full object-contain select-none mix-blend-multiply pointer-events-none z-0"
-                      />
-                    )}
+                          }
+                          alt={`${currentFloor.title} Plan`}
+                          className="absolute inset-0 h-full w-full object-contain select-none mix-blend-multiply pointer-events-none z-0"
+                        />
+                      )}
                   </div>
                 </div>
 
                 {/* Sidebar Footer (Text + Compass) */}
                 <div className="mt-auto flex flex-col items-start px-8 pb-5 shrink-0 gap-3">
-                   {currentFloor.title === "Terrace Floor" && projectName === "Rudraksh" && (
+                  {currentFloor.title === "Terrace Floor" && projectName === "Rudraksh" && (
                     <div className="bg-white/60 backdrop-blur-2xl p-1.5 border shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex items-center gap-1 pointer-events-auto" style={{ borderColor: `${accentColor}33` }}>
-                        {(["lower", "upper"] as const).map((type) => (
-                            <button
-                                key={type}
-                                onClick={() => setTerraceType(type)}
-                                className={`relative px-6 py-2 md:px-8 md:py-2.5 text-[11px] md:text-[12px] font-bold uppercase tracking-[0.15em] transition-all duration-500 group ${terraceType === type
-                                    ? "text-white"
-                                    : "text-[#505153]/60 hover:text-[#505153]"
-                                    }`}
-                            >
-                                {terraceType === type && (
-                                    <motion.div
-                                        layoutId="active-terrace-pill"
-                                        className="absolute inset-0"
-                                        style={{ backgroundColor: accentColor }}
-                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                    />
-                                )}
-                                <span className="relative z-10 flex items-center gap-2">
-                                    {type}
-                                </span>
-                            </button>
-                        ))}
+                      {(["lower", "upper"] as const).map((type) => (
+                        <button
+                          key={type}
+                          onClick={() => setTerraceType(type)}
+                          className={`relative px-6 py-2 md:px-8 md:py-2.5 text-[11px] md:text-[12px] font-bold uppercase tracking-[0.15em] transition-all duration-500 group ${terraceType === type
+                            ? "text-white"
+                            : "text-[#505153]/60 hover:text-[#505153]"
+                            }`}
+                        >
+                          {terraceType === type && (
+                            <motion.div
+                              layoutId="active-terrace-pill"
+                              className="absolute inset-0"
+                              style={{ backgroundColor: accentColor }}
+                              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                            />
+                          )}
+                          <span className="relative z-10 flex items-center gap-2">
+                            {type}
+                          </span>
+                        </button>
+                      ))}
                     </div>
                   )}
                   <div className="w-full flex items-center justify-between">
                     <h2 className="text-4xl md:text-2xl font-light tracking-wide" style={{ color: accentColor }}>
                       {currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
-                          ? (terraceType === "upper" ? "Upper Terrace Floor" : "Terrace Floor")
-                          : `${currentFloor.title}${selectedWing ? ` - Wing ${selectedWing}` : ""}`}
+                        ? (terraceType === "upper" ? "Upper Terrace Floor" : "Terrace Floor")
+                        : `${currentFloor.title}${selectedWing ? ` - Wing ${selectedWing}` : ""}`}
 
-                      </h2>
+                    </h2>
                     <a
                       href={currentFloor?.pdfPath}
                       download="FLOOR PLAN"
@@ -592,7 +633,7 @@ export function ProjectHero({
 
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                     <Link href={finalLink} className="w-full sm:w-auto">
-                      <button 
+                      <button
                         className="bg-white flex items-center gap-2 px-8 py-3 font-semibold text-sm hover:bg-gray-100 transition-colors w-full"
                         style={{ color: accentColor }}
                       >
@@ -623,9 +664,9 @@ export function ProjectHero({
 
             {/* RIGHT PANEL: Replaces the Sidebar (White) */}
             <div className="flex-1 bg-white relative flex flex-col h-full shadow-2xl">
-              <ProjectHeader 
-                projectLink={finalLink} 
-                projectName={projectName} 
+              <ProjectHeader
+                projectLink={finalLink}
+                projectName={projectName}
                 onClose={() => setShowUnitDetails(false)}
                 hideAmenities={hideAmenities}
                 amenitiesTarget={amenitiesTarget}
@@ -664,16 +705,16 @@ const PROJECTS = {
 };
 
 // 1. The Header Component (Redesigned)
-const ProjectHeader = ({ 
-  projectLink, 
-  projectName, 
+const ProjectHeader = ({
+  projectLink,
+  projectName,
   onClose,
   hideAmenities,
   amenitiesTarget = "#amenities",
   accentColor = "#0097DC"
-}: { 
-  projectLink: string; 
-  projectName: string; 
+}: {
+  projectLink: string;
+  projectName: string;
   onClose?: () => void;
   hideAmenities?: boolean;
   amenitiesTarget?: string;
@@ -692,7 +733,7 @@ const ProjectHeader = ({
     if (href.startsWith("#") || href === "/") {
       e.preventDefault();
       onClose?.(); // Close the explorer/modal
-      
+
       if (href === "/") {
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
@@ -708,11 +749,11 @@ const ProjectHeader = ({
   return (
     <div className="relative z-[100] shrink-0 bg-white">
       <div className="flex items-center justify-between px-8 py-6 border-b border-gray-50">
-        <button 
+        <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="flex items-center gap-2 px-5 py-2 border text-sm font-medium transition-all duration-300 uppercase tracking-widest"
-          style={{ 
-            borderColor: accentColor, 
+          style={{
+            borderColor: accentColor,
             color: isMenuOpen ? "white" : accentColor,
             backgroundColor: isMenuOpen ? accentColor : "transparent"
           }}
@@ -722,7 +763,7 @@ const ProjectHeader = ({
         </button>
 
         <Link href={projectLink}>
-          <button 
+          <button
             className="text-white px-6 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 uppercase flex items-center gap-2"
             style={{ backgroundColor: accentColor }}
           >

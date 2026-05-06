@@ -14,6 +14,24 @@ import Footer from "@/components/layout/Footer";
 import { FLOOR_PATHS_VIEWBOX, HERO_MARKERS } from "@/utils/floorMapKedar";
 import { floorData } from "@/utils/floorMapKedar";
 import { FLOOR_PATHS } from "@/utils/floorMapKedar";
+import localFont from "next/font/local";
+
+const swis721 = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/SWIS721/Swis721 Lt BT Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../../public/fonts/SWIS721/Swis721 BT Roman.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-swis721",
+});
+
 
 const FEATURES: FeatureItem[] = [
   { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
@@ -159,8 +177,16 @@ const AMENITIES_DATA = [
 export default function page() {
   return (
     <>
-      <div className="">
-        <NewHeader projectLink="/project-enquire?project=kedar" projectName="Kedar" scrolledLogo="/icons/kedarDarkLogo.svg" logo="/icons/kedarLogo.svg" view360Url="https://www.turiya.co/360/KedarHighLivingLuxuryHomes/"/>
+      <div className={`${swis721.variable} font-swis721 font-light [&_h1]:font-normal [&_h2]:font-normal [&_h3]:font-normal [&_h4]:font-normal [&_h5]:font-normal [&_h6]:font-normal`}>
+
+        <NewHeader
+          projectLink="/project-enquire?project=kedar"
+          projectName="Kedar"
+          scrolledLogo="/icons/kedarDarkLogo.svg"
+          logo="/icons/kedarLogo.svg"
+          view360Url="https://www.turiya.co/360/KedarHighLivingLuxuryHomes/"
+          btnAccentColor="#D5B27C"
+        />
         <ProjectHero
           projectLink="/project-enquire?project=kedar"
           projectName="Kedar"
@@ -173,8 +199,11 @@ export default function page() {
           floorData={floorData}
           heroImageDesktop="/images/kedarImage/hero.png"
           heroImageMobile="/images/kedarImage/newMobileHero.png"
-          accentColor="#D5B27C"
+          exploreTitle={<>A Life of Luxury Awaits</>}
+          exploreSubtitle={<>Luxury Living, <br />Defined at Kedar</>}
+          accentColor="#5A1F26"
           btnAccentColor="#D5B27C"
+          view360Url="https://www.turiya.co/360/KedarHighLivingLuxuryHomes/"
         />
         <ProjectHighLiving data={SECTION_DATA} accentColor="#D5B27C" />
         <HighlivingSection
@@ -182,8 +211,11 @@ export default function page() {
           heading="Redefining the Essence of Living"
           description="Introducing Kedar, a contemporary residential address shaped by Mukund MGM Realty’s long-standing approach to quality and value. Thoughtfully planned duplex residences offer generous layouts, refined interiors, and a sense of openness that supports both everyday comfort and special moments. With carefully selected amenities and a location at the heart of Mangalore, Kedar brings homes that feel considered and easy to live in for years to come."
           imageSrc="/images/kedarImage/videoPlaceholder.png"
-          videoSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKEDAR%20FILM_45s.mp4?alt=media&token=7b45ec51-a0ac-4b3a-94db-7e8468d1d7b8"
-          btnAccentColor="#D5B27C"
+          videoSrc={[
+            "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKEDAR%20FILM_45s.mp4?alt=media&token=7b45ec51-a0ac-4b3a-94db-7e8468d1d7b8",
+            "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/videos%2FKEDAR%20FILM_45s%20(1).mp4?alt=media&token=910ea9d7-be92-4f8c-8cec-b272ea24e969"
+          ]}
+          btnAccentColor="#5A1F26"
         />
         <AmenitiesSection projectLink="/project-enquire?project=kedar" data={AMENITIES_DATA} accentColor="#D5B27C" btnAccentColor="#5A1F26" />
         <FeaturesSection
@@ -200,8 +232,8 @@ export default function page() {
             "/images/kedarImage/ft6.png",
           ]}
           variant="left"
-          accentColor="#D5B27C"
-          btnAccentColor="#D5B27C"
+          accentColor="#5A1F26"
+          btnAccentColor="#5A1F26"
         />
 
         <MapSection
@@ -227,7 +259,7 @@ export default function page() {
           subtitle="Spacious homes built for everyday living."
           mobImg="/images/ctaImages/kedarDesk.png"
           deskImg="/images/ctaImages/kedarDesk.png"
-         accentColor="#5A1F26"
+          accentColor="#5A1F26"
         />
         <Footer />
       </div>

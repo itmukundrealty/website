@@ -274,14 +274,14 @@ export default function ProjectHighLiving({ data, accentColor = "#0097DC" }: Pro
                                         onClick={() => handleTabClick(item.id, index)}
                                         className="flex flex-col gap-2 flex-1 group"
                                     >
-                                        <span
+                                        {/* <span
                                             className={`uppercase text-[8px] md:text-lg tracking-widest font-medium transition-all text-center ${activeId === item.id
                                                 ? "text-[#FFFAF6]"
                                                 : "text-[#FFFAF6]/70 group-hover:text-[#FFFAF6]/80"
                                                 }`}
                                         >
                                             {item.label}
-                                        </span>
+                                        </span> */}
                                         <div className="w-full h-[2px] bg-[#FFFAF6]/50 rounded-full overflow-hidden">
                                             <div
                                                 className={`h-full bg-white transition-all duration-500 ${activeId === item.id ? "w-full" : "w-0"

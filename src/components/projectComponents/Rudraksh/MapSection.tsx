@@ -78,7 +78,7 @@ export default function MapSection({
     const allSectionPoints = data.flatMap(item => item.points);
 
     return (
-        <section className="relative md:h-screen h-[80vh] w-full bg-white overflow-hidden">
+        <section id="location" className="relative md:h-screen h-[80vh] w-full bg-white overflow-hidden">
             {/* FULL SCREEN MAP BACKGROUND */}
             <div className="absolute inset-0 w-full h-full z-0">
                 <StyledMap
@@ -95,8 +95,8 @@ export default function MapSection({
 
             {/* BLUE BOX OVERLAY (Desktop) */}
             <div className="hidden md:flex absolute z-10 top-1/2 md:left-5 lg:left-[10%] -translate-y-1/2">
-                <div className="text-white p-14 w-[450px] shadow-xl" style={{ backgroundColor: boxAccentColor }}>
-                    <h2 className="text-[52px] font-light mb-12 leading-[1.1]">
+                <div className=" p-14 w-[450px] shadow-xl" style={{ backgroundColor: boxAccentColor }}>
+                    <h2 className="text-[52px] text-white font-light mb-12 leading-[1.1]">
                         Strategically <br />
                         <span className="font-semibold">Connected</span>
                     </h2>

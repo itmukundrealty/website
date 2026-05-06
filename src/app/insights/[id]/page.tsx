@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, use } from "react";
+import React, { useEffect, useState, use, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -19,6 +19,8 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     const router = useRouter();
     const [blog, setBlog] = useState<Blog | null>(null);
     const [loading, setLoading] = useState(true);
+    const [toc, setToc] = useState<{ id: string; title: string; level: number }[]>([]);
+    const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const getBlog = async () => {
@@ -28,6 +30,34 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
         };
         getBlog();
     }, [id]);
+
+    useEffect(() => {
+        if (!blog || !contentRef.current) return;
+        
+        // Find all headings inside the content
+        const headings = contentRef.current.querySelectorAll('h2, h3, h4');
+        const generatedToc: { id: string; title: string; level: number }[] = [];
+        
+        headings.forEach((heading, index) => {
+            const textContent = heading.textContent?.trim();
+            if (!textContent) return;
+            
+            // Create a safe, URL-friendly ID based on the heading text
+            const safeId = textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            const headingId = heading.id || `heading-${safeId}-${index}`;
+            heading.id = headingId;
+            
+            generatedToc.push({
+                id: headingId,
+                title: textContent,
+                level: Number(heading.tagName.charAt(1))
+            });
+        });
+        
+        requestAnimationFrame(() => {
+            setToc(generatedToc);
+        });
+    }, [blog]);
 
     if (loading) {
         return (
@@ -64,9 +94,16 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
 
     // Estimate read time (~200 words/min)
     const wordCount = blog.content?.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length || 0;
-    const readTime = Math.max(1, Math.ceil(wordCount / 200));
+    // const readTime = Math.max(1, Math.ceil(wordCount / 200));
 
-    const tableOfContents = blog.tableOfContents || [];
+    // Fallback to backend TOC if no headings found in content
+    const displayToc = toc.length > 0 
+        ? toc 
+        : (blog.tableOfContents || []).map((item: { title: string } | string, idx: number) => ({
+            id: `fallback-${idx}`,
+            title: typeof item === 'string' ? item : item.title,
+            level: 2
+          }));
 
     return (
         <div className="bg-white min-h-screen">
@@ -124,6 +161,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                         {/* LEFT: Blog Content (scrollable) */}
                         <div className="flex-1 min-w-0 order-2 lg:order-1" style={{ overflowWrap: 'break-word', wordBreak: 'break-word' }}>
                             <div
+                                ref={contentRef}
                                 className="blog-content prose prose-lg max-w-none text-[#505153] font-light leading-relaxed"
                                 style={{ maxWidth: '100%', overflow: 'hidden' }}
                                 dangerouslySetInnerHTML={{ __html: blog.content }}
@@ -147,20 +185,35 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                                 )}
 
                                 {/* Table of Contents Card */}
-                                {tableOfContents.length > 0 && (
+                                {displayToc.length > 0 && (
                                     <div className="bg-[#f8f9fa] border border-[#e8eaed] rounded-sm p-6">
                                         <h3 className="text-[20px] font-semibold text-[#2d2d2d] mb-5 pb-4 border-b border-[#e0e0e0]">
                                             Table of content
                                         </h3>
                                         <ol className="space-y-3">
-                                            {tableOfContents.map((item, index) => (
+                                            {displayToc.map((item, index) => (
                                                 <li key={index} className="flex gap-3">
-                                                    <span className="text-[15px] font-medium text-[#505153] shrink-0">
+                                                    <span className="text-[15px] font-medium text-[#505153] shrink-0 mt-[2px]">
                                                         {index + 1}.
                                                     </span>
-                                                    <span className="text-[15px] font-normal text-[#505153] leading-snug">
+                                                    <button 
+                                                        onClick={() => {
+                                                            if (item.id.startsWith('fallback-')) return;
+                                                            const el = document.getElementById(item.id);
+                                                            if (el) {
+                                                                const yOffset = -120; // Offset for sticky header
+                                                                const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+                                                                window.scrollTo({top: y, behavior: 'smooth'});
+                                                            }
+                                                        }}
+                                                        className={`text-[15px] font-normal leading-snug text-left transition-colors ${
+                                                            item.id.startsWith('fallback-') 
+                                                                ? 'text-[#505153]' 
+                                                                : 'text-[#505153] hover:text-[#0097DC] cursor-pointer'
+                                                        }`}
+                                                    >
                                                         {item.title}
-                                                    </span>
+                                                    </button>
                                                 </li>
                                             ))}
                                         </ol>

@@ -32,7 +32,7 @@ const ProjectHeader = ({ variant = 'dark' }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileOngoingOpen, setIsMobileOngoingOpen] = useState(false);
+  const [isMobileOngoingOpen, setIsMobileOngoingOpen] = useState(true);
   const [isMobileCompletedOpen, setIsMobileCompletedOpen] = useState(false);
 
   const [hoveredDropdown, setHoveredDropdown] = useState<'ongoing' | 'completed' | null>(null);
@@ -114,7 +114,7 @@ const ProjectHeader = ({ variant = 'dark' }: HeaderProps) => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.98 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-1 min-w-[320px] bg-white border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden z-[100]"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-1 min-w-[320px] bg-white border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden z-[100]"
                   >
                     <div className="p-6 flex flex-col gap-1">
                       {PROJECTS.ongoing.map((p, idx) => {
@@ -163,7 +163,7 @@ const ProjectHeader = ({ variant = 'dark' }: HeaderProps) => {
                     className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-[800px] max-w-[85vw] bg-white border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden z-[100]"
                   >
                     <div className="p-6">
-                      <div className="grid grid-cols-2 md:grid-cols- gap-x-10 gap-y-2">
+                      <div className="grid grid-cols-2 md:grid-cols-2 gap-x-10 gap-y-2">
                         {PROJECTS.completed.map((p, idx) => {
                           const isActive = pathname === p.href;
                           return (
