@@ -157,7 +157,7 @@ const AMENITIES_DATA = [
     label: "Kids Play Area",
     subtitle: "",
     description: "A safe, lively space for children to play and explore makes everyday living easier, while keeping them close and within sight.",
-    image: "/images/kedarImage/amm4.webp",
+    image: "/images/kedarImage/am4.webp",
   },
   {
     id: "gym",
@@ -185,7 +185,7 @@ export default function page() {
           scrolledLogo="/icons/kedarDarkLogo.svg"
           logo="/icons/kedarLogo.svg"
           view360Url="https://www.turiya.co/360/KedarHighLivingLuxuryHomes/"
-          btnAccentColor="#D5B27C"
+          btnAccentColor="#5A1F26"
         />
         <ProjectHero
           projectLink="/project-enquire?project=kedar"
@@ -202,8 +202,9 @@ export default function page() {
           exploreTitle={<>A Life of Luxury Awaits</>}
           exploreSubtitle={<>Luxury Living, <br />Defined at Kedar</>}
           accentColor="#5A1F26"
-          btnAccentColor="#D5B27C"
+          btnAccentColor="#5A1F26"
           view360Url="https://www.turiya.co/360/KedarHighLivingLuxuryHomes/"
+          logo="/icons/kedarLogo.svg"
         />
         <ProjectHighLiving data={SECTION_DATA} accentColor="#D5B27C" />
         <HighlivingSection
@@ -217,7 +218,7 @@ export default function page() {
           ]}
           btnAccentColor="#5A1F26"
         />
-        <AmenitiesSection projectLink="/project-enquire?project=kedar" data={AMENITIES_DATA} accentColor="#D5B27C" btnAccentColor="#5A1F26" />
+        <AmenitiesSection projectLink="/project-enquire?project=kedar" data={AMENITIES_DATA} accentColor="#D5B27C" btnAccentColor="#5A1F26" bgAccentColor="#E5D4BE" />
         <FeaturesSection
           projectLink="/project-enquire?project=kedar"
           features={FEATURES}
@@ -242,12 +243,14 @@ export default function page() {
           customMarkerImage="/icons/mapIcons/kedarIcon.svg"
           accentColor="#D5B27C"
           boxAccentColor="#D5B27C"
+          titleLight={true}
         />
         <ExperienceSection
           titlePart1="Built on"
           titlePart2="Real Experiences"
           description="Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time."
           accentColor="#D5B27C"
+          titlePart2Light={true}
         />
         <CTASection
           link="/project-enquire?project=kedar"

@@ -27,13 +27,16 @@ interface AmenitiesSectionProps {
   projectLink?: string;
   accentColor?: string;
   btnAccentColor?: string;
+  bgAccentColor?: string;
 }
 
 export default function AmenitiesSection({ 
   data, 
   projectLink = "/project-enquire",
   accentColor = "#0097DC",
-  btnAccentColor = "#0097DC"
+  btnAccentColor = "#0097DC",
+  bgAccentColor = "#ffffff"
+
 }: AmenitiesSectionProps) {
   const pathname = usePathname();
   const currentPath = pathname?.split("/")[1] || "";
@@ -93,7 +96,7 @@ export default function AmenitiesSection({
   const currentAmenity = data[activeIndex] || data[0];
 
   return (
-    <section id="amenities" className="relative bg-white font-host overflow-hidden md:min-h-[100vh] flex flex-col">
+    <section id="amenities" className={`relative font-host overflow-hidden md:min-h-[100vh] flex flex-col`} style={{ backgroundColor: bgAccentColor }}>
       {/* --- Desktop Flush Image --- */}
       <div className="hidden md:block md:absolute md:right-0 md:top-0 md:w-1/2 md:h-full z-0">
         <Swiper

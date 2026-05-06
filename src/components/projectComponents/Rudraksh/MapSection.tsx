@@ -23,6 +23,7 @@ export interface MapSectionProps {
     customMarkerImage?: string;
     accentColor?: string;
     boxAccentColor?: string;
+    titleLight?: boolean;
 }
 
 const DEFAULT_MAP_CENTER = {
@@ -64,7 +65,8 @@ export default function MapSection({
     mainMarkerPosition,
     customMarkerImage,
     accentColor = "#0097DC",
-    boxAccentColor = "#0097DC"
+    boxAccentColor = "#0097DC",
+    titleLight = false
 }: MapSectionProps) {
     // Initialize active section with the first item's key, or an empty string if data is empty
     const [activeSection, setActiveSection] = useState<string>(data[0]?.key || "");
@@ -111,7 +113,7 @@ export default function MapSection({
                         className="text-[52px] text-white font-light mb-12 leading-[1.1]"
                     >
                         Strategically <br />
-                        <span className="font-semibold">Connected</span>
+                        <span className={titleLight ? "font-light" : "font-semibold"}>Connected</span>
                     </motion.h2>
 
                     <div className="space-y-7">

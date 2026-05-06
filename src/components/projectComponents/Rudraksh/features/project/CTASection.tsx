@@ -57,7 +57,7 @@ export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Co
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-7xl font-medium text-white mb-4 leading-tight"
+            className="text-4xl md:text-6xl font-medium text-white mb-4 leading-tight"
           >
             {title}
           </motion.h2>
@@ -66,7 +66,7 @@ export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Co
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-4xl font-light text-white/80 mb-10 md:max-w-xl tracking-wide  "
+            className="text-lg md:text-3xl font-light text-white/80 mb-10 md:max-w-xl tracking-wide  "
           >
             {subtitle}
           </motion.p>

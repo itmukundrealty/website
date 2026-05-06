@@ -30,6 +30,7 @@ interface ProjectHeroProps {
   accentColor?: string;
   btnAccentColor?: string;
   view360Url?: string;
+  logo?: string;
 }
 
 export function ProjectHero({
@@ -51,6 +52,7 @@ export function ProjectHero({
   accentColor = "#0097DC",
   btnAccentColor = "#0097DC",
   view360Url,
+  logo = "/logo/whiteLogo.svg",
 }: ProjectHeroProps) {
   const pathname = usePathname();
   const currentPath = pathname?.split("/")[1] || "";
@@ -147,21 +149,23 @@ export function ProjectHero({
       <OrientationLock />
       {/* 2. BACKGROUND LAYER: Full height */}
       <div className="relative w-full h-full z-0">
-        <div className="hidden md:block w-full h-full">
+        <div className="hidden md:block w-full h-full relative">
           {/* 3. Use fill and object-cover to cover the 100vh area */}
           <Image
             src={isZoomedOut ? heroImageDesktop : heroImageDesktop}
             alt="Mukund Realty Project"
             fill
-            className="object-cover  transition-all duration-1000"
+            className="object-cover transition-all duration-1000"
             priority
           />
+          {/* Desktop Gradient Overlay: Left to Center */}
+          <div className="absolute inset-0 bg-gradient-to-l from-black/30 via-black/20 to-transparent pointer-events-none z-0" />
         </div>
         <div className="block md:hidden w-full h-full relative">
           {/* Mobile image also covers */}
           <Image src={heroImageMobile} alt="Mukund Realty Project Mobile" fill className="object-cover object-bottom" priority />
           {/* Mobile Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-0" />
         </div>
       </div>
 
@@ -208,7 +212,7 @@ export function ProjectHero({
               href={view360Url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-4 border bg-transparent hover:bg-white text-white hover:text-[var(--btn-accent)] font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg transition-colors hidden md:block"
+              className="w-full py-4 border bg-white text-[var(--btn-accent)] font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg transition-colors hidden md:block"
               style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
             >
               360° View
@@ -228,7 +232,7 @@ export function ProjectHero({
       </div>
 
       {/* 4. HERO TEXT CONTENT (Desktop) */}
-      <div className="absolute inset-0 z-10 hidden md:flex items-start justify-end px-12 md:px-24 pointer-events-none">
+      <div className="absolute inset-0 z-10 hidden md:flex items-center justify-end px-12 md:px-24 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -254,7 +258,7 @@ export function ProjectHero({
                 href={view360Url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-4.5 border text-sm font-medium tracking-wide transition-all duration-300 uppercase flex items-center gap-2 border-white text-white hover:bg-white hover:text-[var(--btn-accent)]"
+                className="px-6 py-4.5 border text-sm font-medium tracking-wide transition-all duration-300 uppercase flex items-center gap-2 border-white hover:opacity-80 bg-white text-[var(--btn-accent)]"
                 style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
               >
                 360° View
@@ -577,7 +581,7 @@ export function ProjectHero({
               <div className="mb-8 mt-1">
                 <Link href="/" className="flex items-center z-50 relative">
                   <div className="relative w-48 h-12 md:w-56 md:h-14 transition-opacity duration-300">
-                    <Image src={"/logo/whiteLogo.svg"} alt="Mukund Realty" fill className="object-contain" priority />
+                    <Image src={logo} alt="Mukund Realty" fill className="object-contain" priority />
                   </div>
                 </Link>
               </div>

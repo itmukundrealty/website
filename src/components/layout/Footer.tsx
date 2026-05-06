@@ -49,7 +49,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
     const ongoingProjects = [
         { name: "Rudraksh", href: "/rudraksh" },
-        { name: "Ashoka Business Centre", href: "/ashoka-business-centre" },
+        { name: "Ashoka Business Centre", href: "/ashoka-business-center" },
         { name: "Kedar", href: "/kedar" },
     ];
 

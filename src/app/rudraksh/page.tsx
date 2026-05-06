@@ -250,6 +250,7 @@ export default function Project1Page() {
         exploreSubtitle={<>Luxury Homes <br /> at Rudraksh</>}
         accentColor="#4F5D4A"
         btnAccentColor="#5A1F26"
+        logo="/icons/rudrakshLogo.svg"
       />
       <ProjectHighLiving data={SECTION_DATA} accentColor="#4F5D4A" />
       <HighlivingSection
@@ -264,7 +265,7 @@ export default function Project1Page() {
           "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/videos%2Frudraksh3.mp4?alt=media&token=ed5cf04f-ece8-441e-82c2-995cfaa964e8"
         ]}
       />
-      <AmenitiesSection projectLink="/project-enquire?project=rudraksh" data={AMENITIES_DATA} accentColor="#4F5D4A" btnAccentColor="#5A1F26" />
+      <AmenitiesSection projectLink="/project-enquire?project=rudraksh" data={AMENITIES_DATA} accentColor="#4F5D4A" btnAccentColor="#5A1F26" bgAccentColor="#F3EFE8" />
       <FeaturesSection
         projectLink="/project-enquire?project=rudraksh"
         features={FEATURES}
@@ -283,18 +284,19 @@ export default function Project1Page() {
         accentColor="#4F5D4A"
       />
       {/* <ProjectInteractivePlan /> */}
-      <MapSection
-        data={MAP_DATA}
-        mainMarkerPosition={{ lat: 12.90477577287541, lng: 74.83732199444988 }}
-        customMarkerImage="/icons/mapIcon.svg"
-        accentColor="#4F5D4A"
-        boxAccentColor="#4F5D4A"
+      <MapSection 
+        customMarkerImage="/icons/mapIcons/rudrakshIcon.svg" 
+        data={MAP_DATA} 
+        mainMarkerPosition={{ lat: 12.9055, lng: 74.8496 }} 
+        boxAccentColor="#4F5D4A" 
+        titleLight={true}
       />
       <ExperienceSection
         titlePart1="Built on"
         titlePart2="Real Experiences"
         description="Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time."
         accentColor="#4F5D4A"
+        titlePart2Light={true}
       />
       <CTASection
         link="/project-enquire?project=rudraksh"
