@@ -307,6 +307,15 @@ export default function FeaturesSection({
                 transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
                 margin: 0 8px !important;
                 cursor: pointer;
+                position: relative;
+              }
+              .features-swiper .swiper-pagination-bullet::after {
+                content: "";
+                position: absolute;
+                top: -15px;
+                bottom: -15px;
+                left: 0;
+                right: 0;
               }
               .features-swiper .swiper-pagination-bullet-active {
                 background: var(--accent-color, #0097dc);

@@ -13,7 +13,7 @@ const slides = [
         stat: "13+ Years",
         statDesc: "of established expertise, with a history of trusted outcomes.",
         theme: "light",
-        boxColor: "bg-[#E8F6FC]/80 "
+        boxColor: "bg-[#E8F6FC]/90 "
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ const slides = [
         stat: "500+ Clients Served",
         statDesc: "served with care, with 80% referrals from existing clients",
         theme: "dark",
-        boxColor: "bg-[#37A0D0]/80 "
+        boxColor: "bg-[#37A0D0]/60 "
     },
     {
         id: 3,
@@ -33,7 +33,7 @@ const slides = [
         stat: "100% Compliance",
         statDesc: "across all projects, with 2+ Million Sq. Ft. thoughtfully developed",
         theme: "dark",
-        boxColor: "bg-[#37A0D0]/80 "
+        boxColor: "bg-[#37A0D0] "
     }
 ];
 

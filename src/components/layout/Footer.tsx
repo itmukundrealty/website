@@ -101,7 +101,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
                             <div className="space-y-6 md:space-y-5 lg:pl-1 mt-2">
                                 <div className="flex gap-4 md:gap-5 items-start">
                                     <Image src="/icons/locationIcon.svg" alt="Location" width={18} height={18} className="text-[#009FE3] mt-7 shrink-0 " />
-                                    <p className="text-[14px] leading-relaxed max-w-[280px] text-[#1a1a1a]">
+                                    <p className="text-[18px] leading-relaxed max-w-[280px] text-[#1a1a1a]">
                                         Suprabhath Building,<br />
                                         1st Floor Bejai Kapikad Road,<br />
                                         Mangalore - 575 004, India
@@ -109,13 +109,13 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
                                 </div>
                                 <div className="flex gap-4 md:gap-5 items-center">
                                     <Phone size={18} className="text-[#009FE3] shrink-0" strokeWidth={1.5} />
-                                    <Link href="tel:+917090933700" className="text-[14px] text-[#1a1a1a] hover:text-[#009FE3] transition-colors">
+                                    <Link href="tel:+917090933700" className="text-[18px] text-[#1a1a1a] hover:text-[#009FE3] transition-colors">
                                         +91 70909 33700
                                     </Link>
                                 </div>
                                 <div className="flex gap-4 md:gap-5 items-center">
                                     <Mail size={18} className="text-[#009FE3] shrink-0" strokeWidth={1.5} />
-                                    <Link href="mailto:sales@mukundmgmrealty.com" className="text-[14px] text-[#1a1a1a] hover:text-[#009FE3] transition-colors">
+                                    <Link href="mailto:sales@mukundmgmrealty.com" className="text-[18px] text-[#1a1a1a] hover:text-[#009FE3] transition-colors">
                                         sales@mukundmgmrealty.com
                                     </Link>
                                 </div>
@@ -124,8 +124,8 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
                         {/* Column 2: Quick Links */}
                         <div className="md:col-span-4 lg:col-span-2 space-y-6 pt-2 lg:pt-1">
-                            <h2 className="text-[11px] text-slate-500 uppercase tracking-widest font-normal">QUICK LINKS</h2>
-                            <ul className="space-y-3.5 text-[14px]">
+                            <h2 className="text-[14px] text-slate-500 uppercase tracking-widest font-normal">QUICK LINKS</h2>
+                            <ul className="space-y-3.5 text-[18px]">
                                 {quickLinks.map((item) => (
                                     <li key={item.name}>
                                         <Link href={item.href} className="text-[#1a1a1a] hover:text-[#009FE3] transition-colors">{item.name}</Link>
@@ -136,8 +136,8 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
                         {/* Column 3: Ongoing Projects */}
                         <div className="md:col-span-4 lg:col-span-3 space-y-6 pt-2 lg:pt-1">
-                            <h2 className="text-[11px] text-slate-500 uppercase tracking-widest font-normal">ONGOING PROJECTS</h2>
-                            <ul className="space-y-3.5 text-[14px]">
+                            <h2 className="text-[14px] text-slate-500 uppercase tracking-widest font-normal">ONGOING PROJECTS</h2>
+                            <ul className="space-y-3.5 text-[18px]">
                                 {ongoingProjects.map((item) => (
                                     <li key={item.name}>
                                         <Link href={item.href} className="text-[#1a1a1a] hover:text-[#009FE3] transition-colors">{item.name}</Link>
@@ -148,8 +148,8 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
                         {/* Column 4: Completed Projects */}
                         <div className="md:col-span-4 lg:col-span-3 space-y-6 pt-2 lg:pt-1">
-                            <h2 className="text-[11px] text-slate-500 uppercase tracking-widest font-normal">COMPLETED PROJECTS</h2>
-                            <ul className="grid grid-cols-1 gap-y-3.5 text-[14px]">
+                            <h2 className="text-[14px] text-slate-500 uppercase tracking-widest font-normal">COMPLETED PROJECTS</h2>
+                            <ul className="grid grid-cols-1 gap-y-3.5 text-[18px]">
                                 {completedProjects.map((item) => (
                                     <li key={item.name}>
                                         <Link href={item.href} className="text-[#1a1a1a] hover:text-[#009FE3] transition-colors">{item.name}</Link>
@@ -169,7 +169,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
                                     href={item.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-[14px] text-[#1a1a1a] hover:text-[#009FE3] transition-colors"
+                                    className="text-[18px] text-[#1a1a1a] hover:text-[#009FE3] transition-colors"
                                 >
                                     {item.name}
                                 </Link>

@@ -258,7 +258,9 @@ export default function Project1Page() {
         btnAccentColor="#5A1F26"
         heading="Luxury in the Contours of Life"
         description="Welcome to Rudraksh, an exquisite residential address envisioned for those who seek the true essence of high living. Thoughtfully crafted with a focus on space, comfort, and timeless elegance, the project offers well-planned homes, curated lifestyle amenities, and a setting that balances serenity with city connectivity. Every detail is shaped to create an elevated living experience where design, luxury, and everyday ease come together."
-        imageSrc="https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/testmonials%20thumbnail%2Ffreepik__ultra-premium-photorealistic-3d-architectural-rend__45469%201%20(1).png?alt=media&token=68d22cd0-b635-47cf-a44c-93c8b544673a"
+        imageSrc={["https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/publicImages%2Fthumbnails%2F2.jpeg?alt=media&token=689048d8-996f-43b3-a991-8269bc60b32f",
+                   "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/publicImages%2Fthumbnails%2F3.jpeg?alt=media&token=63437684-bb54-4964-829b-2335b79cd08f" ,
+                   "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/publicImages%2Fthumbnails%2F1.jpeg?alt=media&token=334917a6-3dd4-4ea2-a46e-d7c88405ee44" ]}
         videoSrc={[ 
           "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/videos%2Frudraksh2.mp4?alt=media&token=23553c65-102c-497c-bfeb-462fda653e78",
           "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/videos%2Frudraksh1.mp4?alt=media&token=beb814c8-a722-4cdf-b6b4-1ad42c503121",

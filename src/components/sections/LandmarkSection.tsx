@@ -81,18 +81,18 @@ const LandmarkCard = ({ title, location, description1, description2, desktopSrc,
 
                 {/* Content Container - Below image on mobile, absolute overlay on desktop */}
                 <div className="relative md:absolute md:bottom-0 md:left-0 px-0 pt-5 md:p-12 w-full md:w-[40%] md:h-full flex flex-col justify-start md:justify-center z-20 bg-white md:bg-transparent">
-                    <h2 className="text-[24px] md:text-[40px] font-normal mb-2 md:mb-3 tracking-tight text-[#505153] leading-tight whitespace-pre-wrap">
+                    <h2 className="text-[24px] md:text-[40px] font-normal mb-2 md:mb-3 tracking-tight text-[#505153] leading-none md:leading-tight whitespace-pre-wrap">
                         {title}
                     </h2>
-                    <div className="flex items-center gap-2 text-[#0097DC] text-sm md:text-[15px] font-semibold mb-4 md:mb-8 pointer-events-auto">
+                    <div className="flex items-center gap-2 text-[#0097DC] text-sm md:text-[15px] font-semibold mb-2 md:mb-8 pointer-events-auto">
                         <ArrowUpRight className="w-3.5 h-3.5 md:w-[18px] md:h-[18px]" strokeWidth={2.5} />
                         <span className="tracking-wide">{location}</span>
                     </div>
                     
-                    <p className="text-[#505153] text-[17px] md:text-[17px] font-light leading-relaxed mb-3 md:mb-6 pr-4">
+                    <p className="text-[#505153] text-[17px] md:text-[17px] font-light leading-relaxed mb-1 md:mb-6 pr-4">
                         {description1}
                     </p>
-                    <p className="text-[#505153] text-[17px] md:text-[17px] font-light leading-relaxed mb-6 md:mb-12 pr-4">
+                    <p className="text-[#505153] text-[17px] md:text-[17px] font-light leading-relaxed mb-3 md:mb-12 pr-4">
                         {description2}
                     </p>
                     
@@ -155,7 +155,7 @@ export default function LandmarkSection() {
         <div ref={container} className="relative mb-[10vh] px-6 lg:px-20 xl:px-52 pt-1">
 
             {/* Header Section from photo */}
-            <div className="max-w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-0 mb-12 md:mb-16">
+            <div className="max-w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-0 mb-8 md:mb-16">
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -163,7 +163,7 @@ export default function LandmarkSection() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="w-full md:w-auto"
                 >
-                    <h3 className="text-4xl md:text-6xl tracking-tight leading-[1.1] ">
+                    <h3 className="text-4xl md:text-6xl tracking-tight leading-none md:leading-[1.1] ">
                         <span className="font-light text-[#505153]">Landmarks Of</span> <br />
                         <span className="font-medium text-[#505153]">Modern Sophistication</span>
                     </h3>

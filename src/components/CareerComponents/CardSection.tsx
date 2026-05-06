@@ -43,9 +43,9 @@ const JobCard = ({ title, type, description, color, slug, i, progress, range, ta
                 <div className="flex flex-col justify-between h-full p-8 md:p-12 lg:p-16">
                     <div>
                         <h2 className="text-3xl md:text-5xl font-medium mb-1 md:mb-2 tracking-tight leading-tight">{title}</h2>
-                        <p className="text-base md:text-lg font-normal mb-6 md:mb-8 tracking-wide text-white/90">{type}</p>
+                        <p className="text-lg md:text-lg font-normal mb-6 md:mb-8 tracking-wide text-white/90">{type}</p>
 
-                        <p className="text-sm md:text-base font-light leading-relaxed mb-auto opacity-90 max-w-4xl">
+                        <p className="text-lg md:text-base font-light leading-relaxed mb-auto opacity-90 max-w-4xl">
                             {description}
                         </p>
                     </div>
@@ -82,9 +82,9 @@ const StaticJobCard = ({ title, type, description, color, slug, onApply }: Stati
             className="flex flex-col justify-between h-full min-h-[280px] md:min-h-[420px] p-4 md:p-8 text-white w-full transition-transform hover:-translate-y-2"
         >
             <div>
-                <h2 className="text-lg md:text-2xl font-medium mb-1 tracking-tight leading-tight">{title}</h2>
-                <p className="text-[10px] md:text-sm font-normal mb-3 md:mb-4 tracking-wide text-white/90">{type}</p>
-                <p className="text-xs md:text-sm font-light leading-relaxed mb-auto opacity-90 line-clamp-3 md:line-clamp-5">
+                <h2 className="text-xl md:text-2xl font-medium mb-1 tracking-tight leading-tight">{title}</h2>
+                <p className="text-sm md:text-sm font-normal mb-3 md:mb-4 tracking-wide text-white/90">{type}</p>
+                <p className="text-md md:text-sm font-light leading-relaxed mb-auto opacity-90 line-clamp-3 md:line-clamp-5">
                     {description}
                 </p>
             </div>

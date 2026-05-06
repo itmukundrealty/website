@@ -30,8 +30,8 @@ interface AmenitiesSectionProps {
   bgAccentColor?: string;
 }
 
-export default function AmenitiesSection({ 
-  data, 
+export default function AmenitiesSection({
+  data,
   projectLink = "/project-enquire",
   accentColor = "#0097DC",
   btnAccentColor = "#0097DC",
@@ -96,7 +96,7 @@ export default function AmenitiesSection({
   const currentAmenity = data[activeIndex] || data[0];
 
   return (
-    <section id="amenities" className={`relative font-host overflow-hidden md:min-h-[100vh] flex flex-col`} style={{ backgroundColor: bgAccentColor }}>
+    <section id="amenities" className={`relative font-host overflow-hidden  md:min-h-[100vh] flex flex-col`} style={{ backgroundColor: bgAccentColor }}>
       {/* --- Desktop Flush Image --- */}
       <div className="hidden md:block md:absolute md:right-0 md:top-0 md:w-1/2 md:h-full z-0">
         <Swiper
@@ -157,11 +157,11 @@ export default function AmenitiesSection({
                           {/* The subtitle is conditionally rendered or always reserves space 
                                                 to prevent jump if subtitle is empty 
                                               */}
-                         {currentAmenity.subtitle && (
-                           <p className="text-[13px] font-bold tracking-widest uppercase min-h-[20px]" style={{ color: accentColor }}>
-                            {currentAmenity.subtitle}
-                          </p>
-                         )}
+                          {currentAmenity.subtitle && (
+                            <p className="text-[13px] font-bold tracking-widest uppercase min-h-[20px]" style={{ color: accentColor }}>
+                              {currentAmenity.subtitle}
+                            </p>
+                          )}
                         </div>
 
                         {currentAmenity.description && (

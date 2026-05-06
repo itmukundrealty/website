@@ -29,7 +29,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/YTbDJpuQIvw?si=vBjMx8zK1Nx8SQxK",
         name: "Prajwal & Poornima",
-        role: "Residents at Mukund Sadan"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 3,
@@ -37,7 +37,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/i1FvfPn_AyY",
         name: "Ajay Shenava & Anusha Shenava",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 4,
@@ -45,7 +45,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/0Kr2E7fPxcY",
         name: "Mr. Nagraj Nayak",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 5,
@@ -53,7 +53,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/OaiUlvvu1pU",
         name: "Dinesh Kumar",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 6,
@@ -61,7 +61,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/mwlgn3Cuq68",
         name: "Mr. Jaggannath Bhandary",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 7,
@@ -69,7 +69,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/DOoumWd6iJw",
         name: "Dr. Prashanth Bhat",
-        role: "Residents at Mukund Sadan"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 8,
@@ -77,7 +77,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/FPvLjrtQZUI",
         name: "Mr. Vasuki Ganapati Shanbhag",
-        role: "Residents at Mukund Sadan"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 9,
@@ -85,7 +85,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/6tDa2MZunhY?si=tRelWm7-61QH0l__",
         name: "Subhashini",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 10,
@@ -93,7 +93,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/Rb1AN7Jn2H4?si=SUxSQaqYAe6xThc0",
         name: "Dr. Devadas Kapikad",
-        role: "Residents at Mukund Sadan"
+        role: "Proud Owner at Kedar Apartments"
     },
 
 ];
@@ -167,7 +167,7 @@ export default function ExperienceSection({
                                 <button 
                                     onClick={() => swiperRef.current?.slidePrev()}
                                     disabled={activeIndex === 0}
-                                    className={`p-2 rounded-full border border-gray-200 transition-all duration-300 group ${
+                                    className={`p-2 rounded-full border-2 border-gray-400 transition-all duration-300 group ${
                                         activeIndex === 0 
                                         ? 'opacity-30 cursor-not-allowed' 
                                         : 'text-[#505153] hover:bg-[var(--hover-bg)] hover:border-[var(--hover-border)] hover:text-white cursor-pointer'
@@ -180,7 +180,7 @@ export default function ExperienceSection({
                                 <button 
                                     onClick={() => swiperRef.current?.slideNext()}
                                     disabled={activeIndex === testimonials.length - 1}
-                                    className={`p-2 rounded-full border border-gray-200 transition-all duration-300 group ${
+                                    className={`p-2 rounded-full border-2 border-gray-400 transition-all duration-300 group ${
                                         activeIndex === testimonials.length - 1 
                                         ? 'opacity-30 cursor-not-allowed' 
                                         : 'text-[#505153] hover:bg-[var(--hover-bg)] hover:border-[var(--hover-border)] hover:text-white cursor-pointer'

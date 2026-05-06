@@ -235,9 +235,13 @@ export function ProjectHero({
       <div className="absolute inset-0 z-10 hidden md:flex items-center justify-end px-12 md:px-24 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-right pointer-events-auto mt-20 md:mt-28 xl:mt-40 flex flex-col items-end"
+          animate={{ 
+            opacity: hoveredIndex === null ? 1 : 0, 
+            x: hoveredIndex === null ? 0 : 20,
+            pointerEvents: hoveredIndex === null ? "auto" : "none"
+          }}
+          transition={{ duration: 0.4 }}
+          className="text-right mt-20 md:mt-28 xl:mt-40 flex flex-col items-end"
         >
           <h1 className="text-5xl text-white tracking-tight font-medium mb-4 md:text-6xl">{exploreTitle}</h1>
           <h2 className="text-5xl text-white tracking-tight font-thin md:text-4xl">{exploreSubtitle}</h2>
