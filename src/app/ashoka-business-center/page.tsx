@@ -179,6 +179,7 @@ export default function page() {
           FLOOR_PATHS={FLOOR_PATHS}
           heroImageDesktop="/images/ashokaImages/hero.png"
           heroImageMobile="/images/ashokaImages/newHeroMobile.png"
+          logo="/icons/ashokaLogo.svg"
         />
         <ProjectHighLiving data={SECTION_DATA} />
         <HighlivingSection

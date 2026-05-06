@@ -169,20 +169,28 @@ export default function HighlivingSection({
 
         {/* Video/Image Container */}
         {video && (
-          <div className="relative w-full aspect-video md:aspect-21/9 overflow-hidden bg-gray-100 group order-2 md:order-none mb-8 md:mb-0">
-            <Swiper
-              modules={[Navigation, Pagination]}
-              navigation={false}
-              pagination={videos.length > 1 ? { clickable: true } : false}
-              onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-              className="highliving-swiper w-full h-full"
-            >
-              {videos.map((vid, idx) => (
-                <SwiperSlide key={idx} className="w-full h-full">
-                  <VideoItem image={images[idx] || images[0]} video={vid} isActive={activeIndex === idx} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+          <div className="order-2 md:order-none mb-8 md:mb-0">
+            {/* Video wrapper — no overflow hidden so pagination sits outside */}
+            <div className="relative w-full aspect-video md:aspect-21/9 overflow-hidden bg-gray-100 group">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                navigation={false}
+                pagination={videos.length > 1 ? { clickable: true, el: '.highliving-pagination' } : false}
+                onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                className="w-full h-full"
+              >
+                {videos.map((vid, idx) => (
+                  <SwiperSlide key={idx} className="w-full h-full">
+                    <VideoItem image={images[idx] || images[0]} video={vid} isActive={activeIndex === idx} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/* Pagination rendered outside the video div */}
+            {videos.length > 1 && (
+              <div className="highliving-pagination flex justify-center mt-4" />
+            )}
           </div>
         )}
 
@@ -206,25 +214,23 @@ export default function HighlivingSection({
       </div>
       
       <style dangerouslySetInnerHTML={{__html: `
-        .highliving-swiper .swiper-pagination {
-          bottom: 20px !important;
+        .highliving-pagination {
           display: flex !important;
           justify-content: center !important;
           width: 100% !important;
-          left: 0 !important;
         }
-        .highliving-swiper .swiper-pagination-bullet {
+        .highliving-pagination .swiper-pagination-bullet {
           width: 50px;
           height: 2px;
-          background: rgba(255, 255, 255, 0.5);
+          background: rgba(0, 0, 0, 0.2);
           border-radius: 0;
           opacity: 1;
           transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
           margin: 0 8px !important;
           cursor: pointer;
         }
-        .highliving-swiper .swiper-pagination-bullet-active {
-          background: white;
+        .highliving-pagination .swiper-pagination-bullet-active {
+          background: #1E1E1E;
           width: 80px;
         }
       `}} />

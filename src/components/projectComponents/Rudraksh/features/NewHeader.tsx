@@ -147,13 +147,13 @@ export default function NewHeader({
                     {/* Right Aligned Content Block */}
                     <div className="hidden md:flex items-center gap-8 lg:gap-12 xl:gap-16">
                         {/* Desktop Navigation */}
-                        <nav className="flex items-center gap-8 lg:gap-10 xl:gap-16">
+                        <nav className="flex items-center gap-8 lg:gap-10 xl:gap-16" style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}>
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.label}
                                     href={link.href}
                                     onClick={(e) => scrollToSection(e, link.href)}
-                                    className={`hover:text-[#0097DC] text-[15px] lg:text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+                                    className={`hover:text-[var(--btn-accent)] text-[15px] lg:text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
                                 >
                                     {link.label}
                                 </Link>
@@ -204,7 +204,11 @@ export default function NewHeader({
                     </div>
 
                     {/* Mobile Toggle */}
-                    <button className={`md:hidden z-50 p-2 -mr-2 ${isScrolled ? "text-[#505153]" : "text-white"}`} onClick={() => setIsMobileMenuOpen(true)}>
+                    <button 
+                        className={`md:hidden z-50 p-2 -mr-2 transition-colors duration-300 ${isScrolled ? "text-[#505153] hover:text-[var(--btn-accent)]" : "text-white hover:text-[var(--btn-accent)]"}`} 
+                        style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+                        onClick={() => setIsMobileMenuOpen(true)}
+                    >
                         <Menu strokeWidth={1.5} size={32} />
                     </button>
                 </div>
@@ -225,7 +229,11 @@ export default function NewHeader({
                             <div className="w-32">
                                 <Image width={500} height={500} src={scrolledLogo} alt="Mukund Realty" className="w-full object-contain" />
                             </div>
-                            <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 -mr-2 text-black hover:bg-gray-50 rounded-full transition-colors">
+                            <button 
+                                onClick={() => setIsMobileMenuOpen(false)} 
+                                className="p-2 -mr-2 text-black hover:text-[var(--btn-accent)] rounded-full transition-colors duration-300"
+                                style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
+                            >
                                 <X strokeWidth={1.5} size={32} />
                             </button>
                         </div>
@@ -238,7 +246,8 @@ export default function NewHeader({
                                         key={link.label}
                                         href={link.href}
                                         onClick={(e) => scrollToSection(e, link.href)}
-                                        className="text-2xl text-[#505153] font-light py-4 border-b border-gray-100 flex justify-between items-center"
+                                        className="text-2xl text-[#505153] hover:text-[var(--btn-accent)] font-light py-4 border-b border-gray-100 flex justify-between items-center transition-colors duration-300"
+                                        style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
                                     >
                                         {link.label}
                                     </Link>

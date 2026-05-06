@@ -104,13 +104,15 @@ interface ExperienceSectionProps {
     titlePart2: string;
     description: string;
     accentColor?: string;
+    titlePart2Light?: boolean;
 }
 
 export default function ExperienceSection({
     titlePart1 = "Built on",
     titlePart2 = "Real Experiences",
     description = "Every great future begins with the right foundation. Discover spaces that are planned with intent, built with integrity, and designed to stand the test of time.",
-    accentColor = "#0097DC"
+    accentColor = "#0097DC",
+    titlePart2Light = false
 }: ExperienceSectionProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef<any>(null);
@@ -131,7 +133,7 @@ export default function ExperienceSection({
                             <h2 className="text-4xl md:text-5xl text-[#1E1E1E] leading-tight font-light mb-2">
                                 {titlePart1}
                             </h2>
-                            <h2 className="text-4xl md:text-5xl text-[#1E1E1E] leading-tight font-medium">
+                            <h2 className={`text-4xl md:text-5xl text-[#1E1E1E] leading-tight ${titlePart2Light ? 'font-light' : 'font-medium'}`}>
                                 {titlePart2}
                             </h2>
                         </motion.div>
