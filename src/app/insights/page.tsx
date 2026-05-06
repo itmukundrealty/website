@@ -49,7 +49,11 @@ export default function BlogListingPage() {
                             if (isLastCol) colStyles = "pl-8";
 
                             return (
-                                <div key={blog.id} className={`flex flex-col ${colStyles}`}>
+                                <Link 
+                                    key={blog.id} 
+                                    href={`/insights/${blog.id}`} 
+                                    className={`flex flex-col group ${colStyles}`}
+                                >
                                     {/* Image Container */}
                                     <div className="w-full h-[320px] mb-5 bg-gray-100 overflow-hidden">
                                         <Image
@@ -57,23 +61,22 @@ export default function BlogListingPage() {
                                             height={500}
                                             src={blog.imageUrl || "/images/placeholder.jpg"}
                                             alt={blog.title}
-                                            className="w-full h-full object-fill"
+                                            className="w-full h-full object-fill hover:scale-105 transition-transform duration-500"
                                         />
                                     </div>
 
                                     {/* Text Content */}
-                                    <h3 className="text-lg md:text-[1.5rem] text-[#505153] leading-snug font-normal pr-2 mb-3">
+                                    <h3 className="text-lg md:text-[1.5rem] text-[#505153] leading-snug font-normal pr-2 mb-3 group-hover:text-[#0097DC] transition-colors">
                                         {blog.title}
                                     </h3>
 
                                     {/* Link */}
-                                    <Link
-                                        href={`/insights/${blog.id}`}
-                                        className="text-[16px] text-[#505153] underline decoration-[#505153] underline-offset-[3px] hover:text-[#0097DC] hover:decoration-[#0097DC] transition-colors mt-auto self-start"
+                                    <span
+                                        className="text-[16px] text-[#505153] underline decoration-[#505153] underline-offset-[3px] group-hover:text-[#0097DC] group-hover:decoration-[#0097DC] transition-colors mt-auto self-start"
                                     >
                                         Read More
-                                    </Link>
-                                </div>
+                                    </span>
+                                </Link>
                             );
                         })}
                     </div>

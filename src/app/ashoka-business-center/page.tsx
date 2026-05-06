@@ -168,9 +168,9 @@ export default function page() {
         <ProjectHero
           projectLink="/project-enquire?project=ashoka"
           projectName="Ashoka Business Center"
-          title={<>Modern Business, <br /> Effortlessly Perfected</>}
+          title={<>Modern Business,<br /> Effortlessly Perfected</>}
           subtitle="Commercial Workspaces at Ashoka Business Center"
-          exploreTitle={<>Modern Business,<br /> Effortlessly Perfected</>}
+          exploreTitle={<>Modern Business,<br /> Perfected</>}
           exploreSubtitle={<>Commercial Workspaces <br /> at Ashoka Business Center</>}
           pdfPath="/downloadFloorPlan/typical layout.pdf"
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}

@@ -211,7 +211,7 @@ export default function page() {
           projectLink="/project-enquire?project=kedar"
           heading="Redefining the Essence of Living"
           description="Introducing Kedar, a contemporary residential address shaped by Mukund MGM Realty’s long-standing approach to quality and value. Thoughtfully planned duplex residences offer generous layouts, refined interiors, and a sense of openness that supports both everyday comfort and special moments. With carefully selected amenities and a location at the heart of Mangalore, Kedar brings homes that feel considered and easy to live in for years to come."
-          imageSrc="/images/kedarImage/videoPlaceholder.png"
+          imageSrc={["/images/kedarImage/videoPlaceholder.png","https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/publicImages%2Fthumbnails%2F4.jpeg?alt=media&token=e71732fb-081f-4981-baf7-fadcc0930c9c"]}
           videoSrc={[
             "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/ProjectVideos%2FKEDAR%20FILM_45s.mp4?alt=media&token=7b45ec51-a0ac-4b3a-94db-7e8468d1d7b8",
             "https://firebasestorage.googleapis.com/v0/b/mukund-website.firebasestorage.app/o/videos%2FKEDAR%20FILM_45s%20(1).mp4?alt=media&token=910ea9d7-be92-4f8c-8cec-b272ea24e969"
@@ -241,7 +241,7 @@ export default function page() {
           customMarkerImage="/icons/mapIcons/kedarIcon.svg"
           data={MAP_DATA}
           mainMarkerPosition={{ lat: 12.915725281488176, lng: 74.83961129311836 }}
-          boxAccentColor="#5A1F26"
+          boxAccentColor="#D5B27C"
           accentColor="#D5B27C"
           titleLight={true}
         />

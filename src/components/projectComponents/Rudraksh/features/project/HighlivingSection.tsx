@@ -124,10 +124,10 @@ export default function HighlivingSection({
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="md:py-24 py-14 bg-white font-sans">
+    <section id="about" ref={sectionRef} className="md:pt-24 md:pb-18 py-14 bg-white font-sans">
       <div className="mx-auto px-6 lg:px-20 xl:px-54 flex flex-col md:block">
         {/* Header Area */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6 md:mb-8 order-1 md:order-none">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6 md:mb-18 order-1 md:order-none">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -189,7 +189,7 @@ export default function HighlivingSection({
 
             {/* Pagination rendered outside the video div */}
             {videos.length > 1 && (
-              <div className="highliving-pagination flex justify-center mt-4" />
+              <div className="highliving-pagination flex justify-center mt-16" />
             )}
           </div>
         )}
@@ -228,6 +228,15 @@ export default function HighlivingSection({
           transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
           margin: 0 8px !important;
           cursor: pointer;
+          position: relative;
+        }
+        .highliving-pagination .swiper-pagination-bullet::after {
+          content: "";
+          position: absolute;
+          top: -15px;
+          bottom: -15px;
+          left: 0;
+          right: 0;
         }
         .highliving-pagination .swiper-pagination-bullet-active {
           background: #1E1E1E;

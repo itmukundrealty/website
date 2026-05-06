@@ -38,9 +38,9 @@ export default function CompanySection() {
                 {/* Header */}
                 <div className="flex justify-between items-center mb-0 md:mb-16">
                     <h2 className="text-3xl md:text-5xl lg:text-7xl  text-[#505153] tracking-tight">Company<br />Announcements</h2>
-                    <Link href="/company-announcements" className="hidden md:flex items-center gap-2 group text-[#505153] hover:text-[#0C9CDE] transition-colors duration-300" >
+                    <Link href="/company-announcements" className="hidden md:flex items-center gap-2 group  text-[#0C9CDE] transition-colors duration-300" >
                         <span className="text-[16px] md:text-[16px]">View more</span>
-                        <div className="md:w-6 md:h-6 w-5 h-5 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2 transition-colors">
+                        <div className="md:w-6 md:h-6 w-5 h-5 rounded-full border border-[#0C9CDE] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2 transition-colors">
                             <ChevronRight className="md:w-4 md:h-4 w-3 h-3" />
                         </div>
                     </Link>
@@ -82,9 +82,9 @@ export default function CompanySection() {
                     ))}
 
                 </div>
-                <Link href="/insights" className="flex items-center justify-center    gap-2 group text-[#505153] hover:text-[#0C9CDE]  transition-colors duration-300 md:hidden block">
+                <Link href="/insights" className="flex items-center justify-center text-[#0C9CDE]    gap-2 group  transition-colors duration-300 md:hidden block">
                     <span className="text-lg">View more</span>
-                    <div className="w-6 h-6 rounded-full border border-[#505153] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2  transition-colors  ">
+                    <div className="w-6 h-6 rounded-full border border-[#0C9CDE] flex items-center justify-center group-hover:border-[#0C9CDE] group-hover:translate-x-2  transition-colors  ">
                         <ChevronRight className="w-4 h-4" />
                     </div>
                 </Link>

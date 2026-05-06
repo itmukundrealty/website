@@ -21,7 +21,7 @@ const slides = [
     id: 2,
     image: "/landingPage/hero2.png",
     mobileImage: "/landingPage/mobHero2.png",
-    heading: "Modern Business, Effortlessly Perfected",
+    heading: "Modern Business, Perfected",
     subheading: <> Commercial Workspaces at <br /> Ashoka Business Center </>,
     desc: <>Mangalore’s Premier Business Centre with World-Class Infrastructure and a Refined, <br /> Contemporary Work Environment</>,
     href: "/ashoka-business-center",
@@ -157,7 +157,7 @@ export default function NewLandingHero() {
                 <button 
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`h-[4px] transition-all duration-500 ease-in-out ${index === currentIndex ? "w-16 bg-white" : "w-12 bg-white/30 hover:bg-white/50"}`} 
+                    className={`relative h-[4px] transition-all duration-500 ease-in-out before:absolute before:-inset-y-4 before:inset-x-0 before:content-[''] ${index === currentIndex ? "w-16 bg-white" : "w-12 bg-white/30 hover:bg-white/50"}`} 
                     aria-label={`Go to slide ${index + 1}`}
                 />
               ))}

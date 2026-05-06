@@ -6,15 +6,15 @@ import { motion, useMotionValue, useTransform, animate, useInView, AnimatePresen
 const metrics = [
   {
     value: "13+",
-    label: "years of experience",
+    label: "Years Of Experience",
   },
   {
     value: "500+",
-    label: "happy families",
+    label: "Happy Families",
   },
   {
     value: "13+",
-    label: "projects",
+    label: "Projects",
   },
 ];
 

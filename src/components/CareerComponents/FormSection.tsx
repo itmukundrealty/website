@@ -302,7 +302,7 @@ export default function FormSection() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className={`bg-[#0097DC] hover:bg-[#007bb5] transition-colors text-white px-10 py-3 text-[15px] font-medium w-fit mt-2 flex items-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                            className={`bg-[#0097DC] hover:bg-[#007bb5] transition-colors text-white px-10 py-3 text-[15px] font-medium w-full md:w-fit mt-2 flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
                             {isSubmitting ? (
                                 <>

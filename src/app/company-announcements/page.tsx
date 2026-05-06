@@ -64,7 +64,11 @@ const CompanyAnnouncementsPage = () => {
                             if (isLastCol) colStyles = "pl-8";
 
                             return (
-                                <div key={item.id} className={`flex flex-col ${colStyles}`}>
+                                <Link 
+                                    key={item.id} 
+                                    href={`/company-announcements/${item.id}`} 
+                                    className={`flex flex-col group ${colStyles}`}
+                                >
                                     {/* Image Container */}
                                     <div className="w-full h-[320px] mb-5 bg-gray-100 overflow-hidden">
                                         <Image
@@ -72,23 +76,22 @@ const CompanyAnnouncementsPage = () => {
                                             height={500}
                                             src={item.imageUrl || "/images/placeholder.jpg"}
                                             alt={item.title}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
                                     </div>
 
                                     {/* Text Content */}
-                                    <h3 className="text-lg md:text-[1.5rem] text-[#505153] leading-snug font-normal pr-2 mb-3 line-clamp-2">
+                                    <h3 className="text-lg md:text-[1.5rem] text-[#505153] leading-snug font-normal pr-2 mb-3 line-clamp-2 group-hover:text-[#0097DC] transition-colors">
                                         {item.title}
                                     </h3>
 
                                     {/* Link */}
-                                    <Link
-                                        href={`/company-announcements/${item.id}`}
-                                        className="text-[16px] text-[#505153] underline decoration-[#505153] underline-offset-[3px] hover:text-[#0097DC] hover:decoration-[#0097DC] transition-colors mt-auto self-start"
+                                    <span
+                                        className="text-[16px] text-[#505153] underline decoration-[#505153] underline-offset-[3px] group-hover:text-[#0097DC] group-hover:decoration-[#0097DC] transition-colors mt-auto self-start"
                                     >
                                         Read More
-                                    </Link>
-                                </div>
+                                    </span>
+                                </Link>
                             );
                         })}
                     </div>
