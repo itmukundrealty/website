@@ -289,6 +289,7 @@ export default function Project1Page() {
         data={MAP_DATA} 
         mainMarkerPosition={{ lat: 12.9055, lng: 74.8496 }} 
         boxAccentColor="#4F5D4A" 
+        accentColor="#4F5D4A"
         titleLight={true}
       />
       <ExperienceSection

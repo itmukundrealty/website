@@ -238,11 +238,11 @@ export default function page() {
         />
 
         <MapSection
-          data={MAP_DATA}
-          mainMarkerPosition={{ lat: 12.908991556397066, lng: 74.85044859337258 }}
           customMarkerImage="/icons/mapIcons/kedarIcon.svg"
+          data={MAP_DATA}
+          mainMarkerPosition={{ lat: 12.915725281488176, lng: 74.83961129311836 }}
+          boxAccentColor="#5A1F26"
           accentColor="#D5B27C"
-          boxAccentColor="#D5B27C"
           titleLight={true}
         />
         <ExperienceSection
