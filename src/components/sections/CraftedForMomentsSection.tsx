@@ -83,13 +83,25 @@ export default function CraftedForMomentsSection() {
 
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-start lg:mb-20 mb-12 gap-8">
-                    <h2 className="text-3xl md:text-5xl lg:text-[3.5rem] text-slate-800 leading-[1.1]">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="text-3xl md:text-5xl lg:text-[3.5rem] text-slate-800 leading-[1.1]"
+                    >
                         <span className=" font-light text-[#505153] block mb-1">Crafted For</span>
                         <span className="text-[#505153] font-medium  ">Life&apos;s Finest Moments</span>
-                    </h2>
-                    <p className="max-w-xs text-lg lg:text-lg font-light text-[#505153] leading-relaxed md:text-left pt-2">
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                        className="max-w-xs text-lg lg:text-lg font-light text-[#505153] leading-relaxed md:text-left pt-2"
+                    >
                         Every project is shaped by a vision that elevates the everyday into something extraordinary.
-                    </p>
+                    </motion.p>
                 </div>
 
                 {/* Carousel Area */}

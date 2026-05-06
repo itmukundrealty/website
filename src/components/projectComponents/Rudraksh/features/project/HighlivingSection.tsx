@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -127,22 +128,44 @@ export default function HighlivingSection({
       <div className="mx-auto px-6 lg:px-20 xl:px-54 flex flex-col md:block">
         {/* Header Area */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6 md:mb-8 order-1 md:order-none">
-          <h2 className="text-4xl text-[#1E1E1E] md:text-5xl lg:text-6xl  font-light leading-tight">{heading}</h2>
-
-          <Link
-            href={finalLink}
-            className="hidden md:flex group items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 text-white transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full md:w-fit"
-            style={{ backgroundColor: btnAccentColor }}
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-4xl text-[#1E1E1E] md:text-5xl lg:text-6xl  font-light leading-tight"
           >
-            <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
-            Enquire Now
-          </Link>
+            {heading}
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+            className="hidden md:flex w-full md:w-fit"
+          >
+            <Link
+              href={finalLink}
+              className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 lg:px-4 lg:py-5 text-white transition-colors uppercase tracking-widest text-[16px] md:text-sm font-bold w-full"
+              style={{ backgroundColor: btnAccentColor }}
+            >
+              <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+              Enquire Now
+            </Link>
+          </motion.div>
         </div>
 
         {/* Description */}
-        <div className={`max-w-full ${video ? "mb-8 md:mb-12" : "mb-0"} order-3 md:order-none`}>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className={`max-w-full ${video ? "mb-8 md:mb-12" : "mb-0"} order-3 md:order-none`}
+        >
           <p className="text-lg text-[#505153] font-light ">{description}</p>
-        </div>
+        </motion.div>
 
         {/* Video/Image Container */}
         {video && (
@@ -164,7 +187,13 @@ export default function HighlivingSection({
         )}
 
         {/* Mobile Button */}
-        <div className="w-full order-4 md:hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          className="w-full order-4 md:hidden"
+        >
           <Link
             href={finalLink}
             className="group flex items-center justify-center gap-2 px-6 py-4 text-white transition-colors uppercase tracking-widest text-[14px] font-bold w-full"
@@ -173,7 +202,7 @@ export default function HighlivingSection({
             <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
             Enquire Now
           </Link>
-        </div>
+        </motion.div>
       </div>
       
       <style dangerouslySetInnerHTML={{__html: `

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -121,18 +122,29 @@ export default function ExperienceSection({
 
                     {/* --- Left Content (Title & Pagination) --- */}
                     <div className="md:col-span-5 space-y-8">
-                        <div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
                             <h2 className="text-4xl md:text-5xl text-[#1E1E1E] leading-tight font-light mb-2">
                                 {titlePart1}
                             </h2>
                             <h2 className="text-4xl md:text-5xl text-[#1E1E1E] leading-tight font-medium">
                                 {titlePart2}
                             </h2>
-                        </div>
+                        </motion.div>
 
-                        <p className="text-[#505153] font-light text-lg leading-relaxed max-w-sm">
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                            className="text-[#505153] font-light text-lg leading-relaxed max-w-sm"
+                        >
                             {description}
-                        </p>
+                        </motion.p>
 
                         {/* Custom Pagination Container (Desktop) */}
                         <div className="hidden md:flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 justify-start pt-4">

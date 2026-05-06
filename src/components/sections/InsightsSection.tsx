@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
@@ -39,7 +40,13 @@ export default function InsightsSection() {
                 </div>
 
                 {/* Header */}
-                <div className="flex justify-between items-center mb-10 md:mb-16">
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="flex justify-between items-center mb-10 md:mb-16"
+                >
                     <h2 className="text-3xl md:text-5xl lg:text-7xl text-[#505153] tracking-tight">Insights</h2>
                     <Link href="/insights" className="hidden md:flex items-center gap-2 group text-[#505153] hover:text-[#0C9CDE] transition-colors duration-300">
                         <span className="text-[16px]">View more</span>
@@ -47,7 +54,7 @@ export default function InsightsSection() {
                             <ChevronRight className="w-4 h-4" />
                         </div>
                     </Link>
-                </div>
+                </motion.div>
 
                 {/* Content Grid */}
                 <div className="flex flex-col md:flex-row gap-y-12 md:gap-0 relative">

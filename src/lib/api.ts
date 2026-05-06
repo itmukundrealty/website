@@ -14,7 +14,9 @@ export interface Blog {
     date?: string; // Optional manually set date
     createdAt: string; // ISO string
     design?: any; // Raw Unlayer design if needed
-    tableOfContents?: { title: string }[]; // Table of contents items
+
+    // tableOfContents?: { title: string }[]; // Table of contents items
+    
     source?: string; // Source attribution (e.g. "Daijiworld Media Network – Bengaluru")
 }
 
@@ -119,4 +121,4 @@ export async function fetchAnnouncementById(id: string): Promise<Blog | null> {
         console.error(`Error fetching announcement ${id}:`, error);
         return null;
     }
-}
+}

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
@@ -27,7 +28,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/YTbDJpuQIvw?si=vBjMx8zK1Nx8SQxK",
         name: "Prajwal & Poornima",
-        role: "Residents at Mukund Sadan"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 3,
@@ -35,7 +36,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/i1FvfPn_AyY",
         name: "Ajay Shenava & Anusha Shenava",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 4,
@@ -43,7 +44,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/0Kr2E7fPxcY",
         name: "Mr. Nagraj Nayak",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 5,
@@ -51,7 +52,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/OaiUlvvu1pU",
         name: "Dinesh Kumar",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 6,
@@ -59,7 +60,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/mwlgn3Cuq68",
         name: "Mr. Jaggannath Bhandary",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 7,
@@ -67,7 +68,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/DOoumWd6iJw",
         name: "Dr. Prashanth Bhat",
-        role: "Residents at Mukund Sadan"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 8,
@@ -75,7 +76,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/FPvLjrtQZUI",
         name: "Mr. Vasuki Ganapati Shanbhag",
-        role: "Residents at Mukund Sadan"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 9,
@@ -83,7 +84,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/6tDa2MZunhY?si=tRelWm7-61QH0l__",
         name: "Subhashini",
-        role: "Investor in Mukund Commercial Spaces"
+        role: "Proud Owner at Kailash High Living Luxury Apartments"
     },
     {
         id: 10,
@@ -91,7 +92,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/Rb1AN7Jn2H4?si=SUxSQaqYAe6xThc0",
         name: "Dr. Devadas Kapikad",
-        role: "Residents at Mukund Sadan"
+        role: "Proud Owner at Kedar Apartments"
     },
 
 ];
@@ -191,18 +192,27 @@ export default function ExperienceStandardSection() {
 
                     {/* --- Left Content (Title & Pagination) --- */}
                     <div className="md:col-span-5 space-y-8">
-                        <div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
                             <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-[#505153] mb-2 leading-[1.1]">
                                 Experiences that <br />
-
                                 <span className="font-medium block text-[#505153]">Set the Standard</span>
                             </h2>
+                        </motion.div>
 
-                        </div>
-
-                        <p className="text-lg md:text-lg font-light text-[#505153]/90  max-w-sm">
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                            className="text-lg md:text-lg font-light text-[#505153]/90  max-w-sm"
+                        >
                             Testimonials from those who appreciate the uncompromising Mukund standard.
-                        </p>
+                        </motion.p>
 
                         {/* DESKTOP PAGINATION: Hidden on mobile, visible on LG */}
                         <div className="hidden md:block pt-4 cursor-pointer">

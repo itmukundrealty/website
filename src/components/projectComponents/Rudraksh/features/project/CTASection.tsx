@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 interface ctaprops {
@@ -51,21 +52,51 @@ export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Co
       {/* Content */}
       <div className="relative z-10 w-full h-full md:h-auto flex flex-col md:block justify-between pt-12 pb-10 md:py-0 px-6 md:px-24 xl:px-54">
         <div className="max-w-full text-left">
-          <h2 className="text-4xl md:text-7xl font-medium text-white mb-4 leading-tight">{title}</h2>
-          <p className="text-lg md:text-4xl font-light text-white/80 mb-10 md:max-w-xl tracking-wide  ">{subtitle}</p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-4xl md:text-7xl font-medium text-white mb-4 leading-tight"
+          >
+            {title}
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-lg md:text-4xl font-light text-white/80 mb-10 md:max-w-xl tracking-wide  "
+          >
+            {subtitle}
+          </motion.p>
 
           {/* Desktop Button */}
-          <Link
-            href={finalLink}
-            className="hidden md:inline-block bg-white px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
-            style={{ color: accentColor }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="hidden md:inline-block"
           >
-            {cta}
-          </Link>
+            <Link
+              href={finalLink}
+              className="bg-white px-10 py-4 text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg inline-block"
+              style={{ color: accentColor }}
+            >
+              {cta}
+            </Link>
+          </motion.div>
         </div>
 
         {/* Mobile Button */}
-        <div className="w-full md:hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="w-full md:hidden"
+        >
           <Link
             href={finalLink}
             className="block w-full bg-white py-4 text-center text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
@@ -73,7 +104,7 @@ export default function CTASection({ title, subtitle, mobImg, deskImg, cta = "Co
           >
             {cta}
           </Link>
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom bar decorative */}

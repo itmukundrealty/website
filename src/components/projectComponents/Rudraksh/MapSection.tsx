@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import StyledMap from '@/components/common/Shared/StyledMap';
 import Image from 'next/image';
 
@@ -94,19 +95,35 @@ export default function MapSection({
             </div>
 
             {/* BLUE BOX OVERLAY (Desktop) */}
-            <div className="hidden md:flex absolute z-10 top-1/2 md:left-5 lg:left-[10%] -translate-y-1/2">
+            <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="hidden md:flex absolute z-10 top-1/2 md:left-5 lg:left-[10%] -translate-y-1/2"
+            >
                 <div className=" p-14 w-[450px] shadow-xl" style={{ backgroundColor: boxAccentColor }}>
-                    <h2 className="text-[52px] text-white font-light mb-12 leading-[1.1]">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                        className="text-[52px] text-white font-light mb-12 leading-[1.1]"
+                    >
                         Strategically <br />
                         <span className="font-semibold">Connected</span>
-                    </h2>
+                    </motion.h2>
 
                     <div className="space-y-7">
-                        {data.map((item) => {
+                        {data.map((item, index) => {
                             const isActive = activeSection === item.key;
                             return (
-                                <button
+                                <motion.button
                                     key={item.key}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: 0.4 + (index * 0.05), ease: "easeOut" }}
                                     onClick={() => setActiveSection(item.key)}
                                     className={`w-full text-left flex items-center gap-5 text-[19px] transition-all duration-300 group
                                         ${isActive
@@ -130,15 +147,22 @@ export default function MapSection({
                                         />
                                     </div>
                                     <span>{item.title}</span>
-                                </button>
+                                </motion.button>
                             );
                         })}
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
             {/* MOBILE OVERLAY (Simplified bottom bar) */}
-            <div className="md:hidden absolute bottom-0 left-0 right-0 p-2 text-white z-20" style={{ backgroundColor: boxAccentColor }}>
+            <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="md:hidden absolute bottom-0 left-0 right-0 p-2 text-white z-20" 
+                style={{ backgroundColor: boxAccentColor }}
+            >
                 <div className="grid grid-cols-4 gap-2">
                     {data.map((item) => {
                         const isActive = activeSection === item.key;
@@ -161,7 +185,7 @@ export default function MapSection({
                         )
                     })}
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }
