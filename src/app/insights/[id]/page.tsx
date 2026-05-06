@@ -28,7 +28,7 @@ function decodeHtmlEntities(str: string): string {
 /** Extract headings (h1–h4) from an HTML string and return TOC items. */
 function extractTocFromHtml(html: string): { id: string; title: string; level: number }[] {
     const items: { id: string; title: string; level: number }[] = [];
-    const regex = /<(h[1-4])[^>]*>(.*?)<\/\1>/gis;
+    const regex = /<(h[1-4])[^>]*>([\s\S]*?)<\/\1>/gi;
     let match;
     let index = 0;
     while ((match = regex.exec(html)) !== null) {
@@ -50,7 +50,7 @@ function extractTocFromHtml(html: string): { id: string; title: string; level: n
  */
 function addHeadingIds(html: string, toc: { id: string; title: string; level: number }[]): string {
     let tocIndex = 0;
-    return html.replace(/<(h[1-4])([^>]*)>(.*?)<\/\1>/gis, (fullMatch, tag, attrs, inner) => {
+    return html.replace(/<(h[1-4])([^>]*)>([\s\S]*?)<\/\1>/gi, (fullMatch, tag, attrs, inner) => {
         const title = inner.replace(/<[^>]*>/g, '').trim();
         if (!title || tocIndex >= toc.length) return fullMatch;
         // Remove any existing id attribute then inject the pre-computed one
