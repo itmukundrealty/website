@@ -18,6 +18,7 @@ export interface Blog {
     // tableOfContents?: { title: string }[]; // Table of contents items
     
     source?: string; // Source attribution (e.g. "Daijiworld Media Network – Bengaluru")
+    customLinkUrl?: string;
 }
 
 // Ensure this matches your CMS URL.
