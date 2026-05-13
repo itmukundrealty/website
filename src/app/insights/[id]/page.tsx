@@ -229,6 +229,26 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                                         </ol>
                                     </div>
                                 )}
+
+                                {/* Custom Redirect Link Section */}
+                                {blog.customLinkUrl && (
+                                    <div className="mt-6 bg-white border border-[#e8eaed] rounded-sm p-6 shadow-sm hover:shadow-md transition-shadow">
+                                        <h3 className="text-[18px] font-semibold text-[#2d2d2d] mb-3">
+                                            Website Link
+                                        </h3>
+                                        <p className="text-[14px] text-[#505153] mb-4">
+                                            Visit the link below for more information.
+                                        </p>
+                                        <a
+                                            href={blog.customLinkUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center justify-center w-full bg-[#0097DC] text-white font-medium py-3 px-4 rounded-sm hover:bg-[#007bb1] transition-colors text-center"
+                                        >
+                                            {blog.title}
+                                        </a>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
