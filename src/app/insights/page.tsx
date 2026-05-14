@@ -44,15 +44,15 @@ export default function BlogListingPage() {
                             const isLastItem = index === blogs.length - 1;
 
                             let colStyles = "";
-                            if (isFirstCol) colStyles = `pr-8 ${!isLastItem ? "md:border-r border-gray-200" : ""}`;
-                            if (isMiddleCol) colStyles = `px-8 ${!isLastItem ? "md:border-r border-gray-200" : ""}`;
-                            if (isLastCol) colStyles = "pl-8";
+                            if (isFirstCol) colStyles = `md:pr-8 ${!isLastItem ? "md:border-r border-gray-200" : ""}`;
+                            if (isMiddleCol) colStyles = `md:px-8 ${!isLastItem ? "md:border-r border-gray-200" : ""}`;
+                            if (isLastCol) colStyles = "md:pl-8";
 
                             return (
                                 <Link 
                                     key={blog.id} 
                                     href={`/insights/${blog.id}`} 
-                                    className={`flex flex-col group ${colStyles}`}
+                                    className={`flex flex-col items-center md:items-start group ${colStyles}`}
                                 >
                                     {/* Image Container */}
                                     <div className="w-full h-[320px] mb-5 bg-gray-100 overflow-hidden">
@@ -66,13 +66,13 @@ export default function BlogListingPage() {
                                     </div>
 
                                     {/* Text Content */}
-                                    <h3 className="text-lg md:text-[1.5rem] text-[#505153] leading-snug font-normal pr-2 mb-3 group-hover:text-[#0097DC] transition-colors">
+                                    <h3 className="text-lg md:text-[1.5rem] text-[#505153] leading-snug font-normal md:pr-2 mb-3 group-hover:text-[#0097DC] transition-colors text-center md:text-left">
                                         {blog.title}
                                     </h3>
 
                                     {/* Link */}
                                     <span
-                                        className="text-[16px] text-[#505153] underline decoration-[#505153] underline-offset-[3px] group-hover:text-[#0097DC] group-hover:decoration-[#0097DC] transition-colors mt-auto self-start"
+                                        className="text-[16px] text-[#505153] underline decoration-[#505153] underline-offset-[3px] group-hover:text-[#0097DC] group-hover:decoration-[#0097DC] transition-colors mt-auto self-center md:self-start"
                                     >
                                         Read More
                                     </span>
