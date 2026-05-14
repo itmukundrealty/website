@@ -155,9 +155,24 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                             <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#aaa]">
                                 DATE
                             </span>
-                            <span className="text-[15px] font-medium text-[#2d2d2d]">
+                            <span className=" text-[11px] md:text-[15px] font-medium text-[#2d2d2d]">
                                 {formattedDate}
                             </span>
+                              {blog.customLinkUrl && (
+                                    <div className="  transition-shadow mx-4">
+                                        <h3 className="text-[16px] font-semibold text-[#2D2D2D] ">
+                                            Source Link : <span className="text-[#0097DC] font-medium cursor-pointer hover:text-[#0097DC]/60 ">   <a
+                                            href={blog.customLinkUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className=" text-[#0097DC] hover:text-[#0097DC]/60  font-medium   rounded-sm transition-colors  "
+                                        >
+                                           Click Here
+                                        </a></span>
+                                        </h3>
+                                      
+                                    </div>
+                                )}
                         </div>
                         {blog.source && (
                             <>
@@ -230,25 +245,8 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                                     </div>
                                 )}
 
-                                {/* Custom Redirect Link Section */}
-                                {blog.customLinkUrl && (
-                                    <div className="mt-6 bg-white border border-[#e8eaed] rounded-sm p-6 shadow-sm hover:shadow-md transition-shadow">
-                                        <h3 className="text-[18px] font-semibold text-[#2d2d2d] mb-3">
-                                            Website Link
-                                        </h3>
-                                        <p className="text-[14px] text-[#505153] mb-4">
-                                            Visit the link below for more information.
-                                        </p>
-                                        <a
-                                            href={blog.customLinkUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center justify-center w-full bg-[#0097DC] text-white font-medium py-3 px-4 rounded-sm hover:bg-[#007bb1] transition-colors text-center"
-                                        >
-                                            {blog.title}
-                                        </a>
-                                    </div>
-                                )}
+
+                        
                             </div>
                         </div>
                     </div>
