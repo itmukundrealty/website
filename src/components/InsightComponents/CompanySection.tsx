@@ -51,34 +51,34 @@ export default function CompanySection() {
                 <div className="flex flex-col md:flex-row relative mt-0 md:mt-10">
 
                     {announcements.map((item, index) => (
-                        <div
+                        <Link
                             key={item.id}
-                            className={`flex flex-col flex-1 pb-16 pt-12 md:pt-16 ${index === 0 ? 'md:pr-10 lg:pr-14' :
+                            href={`/company-announcements/${item.id}`}
+                            className={`flex flex-col flex-1 pb-16 pt-12 md:pt-16 group transition-all duration-500 hover:bg-gray-50/50 ${index === 0 ? 'md:pr-10 lg:pr-14' :
                                 index === 1 ? 'md:px-10 lg:px-14 border-t md:border-t-0 md:border-l border-zinc-300' :
                                     'md:pl-10 lg:pl-14 border-t md:border-t-0 md:border-l border-zinc-300'
                                 }`}
                         >
-                            <h3 className="text-2xl md:text-3xl font-normal text-[#505153]/80 mb-6 leading-tight max-w-[70%] line-clamp-2">
+                            <h3 className="text-2xl md:text-3xl font-normal text-[#505153]/80 mb-6 leading-tight max-w-[70%] line-clamp-2 group-hover:text-[#0D9CDE] transition-colors duration-300">
                                 {item.title}
                             </h3>
                             <p className="text-[#505153] font-light leading-relaxed text-sm  md:text-lg mb-6 line-clamp-3">
                                 {item.summary}
                             </p>
-                            <Link
-                                href={`/company-announcements/${item.id}`}
-                                className="text-[#505153] text-[16px] font-medium w-fit underline underline-offset-[5px] decoration-1 decoration-zinc-400 hover:text-[#0D9CDE] hover:decoration-[#0D9CDE] transition-colors mb-14"
+                            <div
+                                className="text-[#505153] text-[16px] font-medium w-fit underline underline-offset-[5px] decoration-1 decoration-zinc-400 group-hover:text-[#0D9CDE] group-hover:decoration-[#0D9CDE] transition-all duration-300 mb-14"
                             >
                                 Read More
-                            </Link>
-                            <div className="relative w-full aspect-square mt-auto">
+                            </div>
+                            <div className="relative w-full aspect-square mt-auto overflow-hidden">
                                 <Image
                                     src={item.imageUrl || "/images/placeholder.jpg"}
                                     alt={item.title}
                                     fill
-                                    className="object-cover"
+                                    className="object-cover transition-transform duration-700 hover:scale-105"
                                 />
                             </div>
-                        </div>
+                        </Link>
                     ))}
 
                 </div>
