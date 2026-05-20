@@ -115,8 +115,8 @@ const projects = [
     {
         title: "Live the Duplex Life\nat Kedar",
         location: "Airport Road, Derebail | Mangalore",
-        description1: "Step into elevated living at Kedar, where spacious duplex homes, refined design, and premium amenities come together in the heart of Mangalore. ",
-        description2: "Starting at 1.15 Cr, it’s luxury designed for how you truly live.",
+        description1: "Discover thoughtfully designed 2BHK residences and elegant duplex homes crafted for elevated everyday living. Spacious layouts, refined interiors, and premium amenities come together in one of Mangalore’s most connected locations.",
+        description2: <>2BHK Homes starting at Rs 82 Lakhs <br className="md:block hidden" /> Duplex Homes starting at Rs 1.85 Cr <br className="hidden md:block" />Luxury designed for the way you live.</>,
         desktopSrc: "/images/LandingPageImg/landmarks/new1.png",
         mobileSrc: "/images/LandingPageImg/landmarks/11.png",
         color: "#EFE8D3",

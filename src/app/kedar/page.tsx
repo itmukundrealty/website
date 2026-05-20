@@ -197,7 +197,7 @@ export default function page() {
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}
           floorData={floorData}
-          heroImageDesktop="/images/kedarImage/hero.png"
+          heroImageDesktop="/images/kedarImage/Hero.png"
           heroImageMobile="/images/kedarImage/newMobileHero.png"
           exploreTitle={<>A Life of Luxury Awaits</>}
           exploreSubtitle={<>Luxury Living, <br />Defined at Kedar</>}
