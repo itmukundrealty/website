@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ interface LandmarkCardProps {
     title: string;
     location: string;
     description1: string;
-    description2: string;
+    description2: ReactNode;
     desktopSrc: string;
     mobileSrc: string;
     color: string;
