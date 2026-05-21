@@ -1,6 +1,6 @@
 "use client";
 // import MapSection from "@/components/contact/MapSection";
-import Script from "next/script";
+import KenytChatbot from "@/components/common/KenytChatbot";
 import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";
 import AmenitiesSection from "@/components/projectComponents/Rudraksh/features/project/AmenitiesSection";
 import CTASection from "@/components/projectComponents/Rudraksh/features/project/CTASection";
@@ -151,13 +151,7 @@ const AMENITIES_DATA = [
 export default function page() {
     return (
         <>
-            <Script
-                id="kenyt-kailash-chatbot"
-                src="https://india.kenyt.ai/botapp/ChatbotUI/dist/js/bot-loader.js"
-                strategy="beforeInteractive"
-                defer
-                data-bot="26710585"
-            />
+            <KenytChatbot botId="26710585" />
             <div className="">
 
                 <NewHeader projectLink="/project-enquire?project=kailash" projectName="Kailash" floorPlanPdf="/completedFloorplans/Kailash-FloorPlans.pdf" view360Url="https://www.turiya.co/360/KailashLuxuryApartments/" />
