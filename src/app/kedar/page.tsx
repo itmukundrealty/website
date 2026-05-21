@@ -9,6 +9,7 @@ import FeaturesSection, { FeatureItem } from "@/components/projectComponents/Rud
 import { ProjectHero } from "@/components/projectComponents/Rudraksh/features/project/Hero";
 import ProjectHighLiving from "@/components/projectComponents/Rudraksh/features/project/HighLiving";
 import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
+import Script from "next/script";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
 import { FLOOR_PATHS_VIEWBOX, HERO_MARKERS } from "@/utils/floorMapKedar";
@@ -174,6 +175,13 @@ const AMENITIES_DATA = [
 export default function page() {
   return (
     <>
+      <Script
+        id="kenyt-kedar-chatbot"
+        src="https://india.kenyt.ai/botapp/ChatbotUI/dist/js/bot-loader.js"
+        strategy="beforeInteractive"
+        defer
+        data-bot="22056372"
+      />
       <div className={`${swis721.variable} font-swis721 font-light [&_h1]:font-normal [&_h2]:font-normal [&_h3]:font-normal [&_h4]:font-normal [&_h5]:font-normal [&_h6]:font-normal`}>
 
         <NewHeader

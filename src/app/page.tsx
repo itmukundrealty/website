@@ -34,6 +34,13 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Script
+        id="kenyt-home-chatbot"
+        src="https://india.kenyt.ai/botapp/ChatbotUI/dist/js/bot-loader.js"
+        strategy="beforeInteractive"
+        defer
+        data-bot="23710952"
+      />
+      <Script
         id="schema-org"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
