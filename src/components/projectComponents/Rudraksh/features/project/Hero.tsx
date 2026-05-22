@@ -235,8 +235,8 @@ export function ProjectHero({
       <div className="absolute inset-0 z-10 hidden md:flex items-center justify-end px-12 md:px-24 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
-          animate={{ 
-            opacity: hoveredIndex === null ? 1 : 0, 
+          animate={{
+            opacity: hoveredIndex === null ? 1 : 0,
             x: hoveredIndex === null ? 0 : 20,
             pointerEvents: hoveredIndex === null ? "auto" : "none"
           }}
@@ -290,7 +290,7 @@ export function ProjectHero({
             2. Changed className to 'pointer-events-none' so the SVG box doesn't block background interactions.
         */}
         <svg viewBox={FLOOR_PATHS_VIEWBOX} className="h-full w-full object-cover pointer-events-none" preserveAspectRatio="xMidYMid slice">
-          <g className="transition-colors duration-300" transform="translate(-3, 21 ) scale(0.95)" >
+          <g className="transition-colors duration-300">
             {FLOOR_PATHS.map((floor, i) => {
               const isHovered = hoveredIndex === floor.id && hoveredWing === (floor.wing || null);
               const isSelected = selectedIndex === floor.id && selectedWing === (floor.wing || null);
@@ -387,7 +387,7 @@ export function ProjectHero({
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 50 }}
-            className="absolute bottom-5 right-56 z-30 w-80 min-h-[300px]  flex-col justify-between bg-white px-8 py-4 shadow-2xl pointer-events-auto hidden md:flex"
+            className="absolute bottom-5 right-28 z-30 w-80 min-h-[300px]  flex-col justify-between bg-white px-8 py-4 shadow-2xl pointer-events-auto hidden md:flex"
           >
             <div>
               <h3 className="mb-2 text-xl font-medium text-[#505153]">
