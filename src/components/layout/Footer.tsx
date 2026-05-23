@@ -321,8 +321,8 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
                         <div className="flex flex-col md:flex-row gap-2 md:gap-2 order-2 md:order-2">
                             <div className="flex justify-center gap-2">
                                 <Link href="/disclaimers" className="hover:text-[#009FE3] transition-colors whitespace-nowrap">Legal Disclaimers</Link>
-                                <span className="opacity-30">|</span>
-                                <Link href="/terms-of-service" className="hover:text-[#009FE3] transition-colors whitespace-nowrap">Terms of Service</Link>
+                                {/* <span className="opacity-30">|</span>
+                                <Link href="/terms-of-service" className="hover:text-[#009FE3] transition-colors whitespace-nowrap">Terms of Service</Link> */}
                             </div>
                             <div className="md:hidden mt-1 opacity-60">All Rights Reserved.</div>
                         </div>

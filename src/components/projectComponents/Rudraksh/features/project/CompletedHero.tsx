@@ -145,7 +145,7 @@ export function CompletedHero({
                     {pdfPath && (
                         <button
                             onClick={handleDownload}
-                            className="w-full bg-[#0097DC] text-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg"
+                            className="w-full bg-[#0097DC] text-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg cursor-pointer"
                         >
                             Download Floor Plans
                             <ArrowUpRight className="w-5 h-5" />
@@ -177,7 +177,7 @@ export function CompletedHero({
                         {variant === 'center' && pdfPath && (
                             <button
                                 onClick={handleDownload}
-                                className="group flex items-center justify-center gap-2 px-6 py-5 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold w-full md:w-fit text-[14px] mb-2"
+                                className="group flex items-center justify-center gap-2 px-6 py-5 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold w-full md:w-fit text-[14px] mb-2 cursor-pointer"
                             >
                                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                                 Download Floor Plans
@@ -200,7 +200,7 @@ export function CompletedHero({
                         >
                             <button
                                 onClick={handleDownload}
-                                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 md:px-6 md:py-6 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px]"
+                                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 md:px-6 md:py-6 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px] cursor-pointer"
                             >
                                 <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
                                 Download Floor Plans
