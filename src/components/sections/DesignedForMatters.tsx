@@ -49,7 +49,7 @@ export default function DesignedForMatters() {
                     >
                         A commitment to crafting environments for life's most meaningful moments.
                     </motion.p>
-                    <button className="px-6 py-3 md:px-6 md:py-4 bg-white text-[#0097DC] font-bold text-lg hover:bg-[#0C9CDE] hover:text-white transition-colors">
+                    <button className="px-6 py-3 md:px-6 md:py-4 bg-white text-[#0097DC] font-bold text-lg hover:bg-[#0C9CDE] hover:text-white transition-colors cursor-pointer">
                       <Link href="/contact">
                       Contact Us
                       </Link>

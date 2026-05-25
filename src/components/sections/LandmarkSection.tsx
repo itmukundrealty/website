@@ -98,7 +98,7 @@ const LandmarkCard = ({ title, location, description1, description2, desktopSrc,
                     
                     <div className="pointer-events-auto w-full md:w-fit">
                         <Link href={link}>
-                            <button className="w-full md:w-auto bg-[#0097DC] hover:bg-[#0085C0] transition-colors text-white text-[13px] md:text-[16px] font-medium px-5 py-3 md:px-8 md:py-4 flex items-center justify-center gap-2 min-w-[130px]">
+                            <button className="w-full md:w-auto bg-[#0097DC] hover:bg-[#0085C0] transition-colors text-white text-[13px] md:text-[16px] font-medium px-5 py-3 md:px-8 md:py-4 flex items-center justify-center gap-2 min-w-[130px] cursor-pointer">
                                 <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 mb-[1px] group-hover:rotate-45 transition-all duration-300" strokeWidth={2.5} />
                                 View Project
                             </button>

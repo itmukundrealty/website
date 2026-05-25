@@ -303,7 +303,7 @@ export function ProjectHero({
                   transform={floor.transform || undefined}
                   className="cursor-pointer transition-all duration-300 pointer-events-auto"
                   style={{
-                    fill: shouldHighlight ? accentColor : "rgba(255, 255, 255, 0)",
+                    fill: shouldHighlight ? accentColor : "transparent",
                     fillOpacity: shouldHighlight ? 0.8 : 0
                   }}
                   onMouseEnter={() => { setHoveredIndex(floor.id); setHoveredWing(floor.wing || null); }}
@@ -445,65 +445,125 @@ export function ProjectHero({
 
                 {/* SVG Map */}
                 <div className="flex-1 flex items-center justify-center min-h-0 relative px-8 pt-8 pb-4 w-full">
-                  <div className="relative h-full w-full">
-                    {/* UPDATED: Use currentFloor.viewBoxWingA/B or fallback to viewBox */}
-                    <svg
-                      viewBox={
-                        (selectedWing === "A" && currentFloor.viewBoxWingA) ||
-                        (selectedWing === "B" && currentFloor.viewBoxWingB) ||
-                        currentFloor.viewBox || "0 0 754 769"
-                      }
-                      preserveAspectRatio="xMidYMid meet"
-                      className="absolute inset-0 h-full w-full pointer-events-auto "
-                    >
-                      <g className="transition-all duration-300">
-                        {currentFilteredUnits.map((unit: any, index: number) => {
-                          // Find original index for handling clicks correctly
-                          const originalIndex = currentFloor.units.findIndex((u: any) => u.id === unit.id);
-                          return (
-                            <path
-                              key={unit.id}
-                              d={unit.path}
-                              transform={unit.transform || undefined}
-                              className="cursor-pointer transition-all duration-200 ease-in-out"
-                              style={{
-                                fill: planHoveredIndex === originalIndex ? accentColor : "transparent",
-                                fillOpacity: planHoveredIndex === originalIndex ? 0.9 : 0,
-                                stroke: planHoveredIndex === originalIndex ? accentColor : "transparent",
-                                strokeWidth: planHoveredIndex === originalIndex ? 2 : 0
-                              }}
-                              onMouseEnter={() => setPlanHoveredIndex(originalIndex)}
-                              onMouseLeave={() => setPlanHoveredIndex(null)}
-                              onClick={() => handleUnitClick(originalIndex)}
-                              pointerEvents="all"
-                            />
-                          );
-                        })}
-                      </g>
-                    </svg>
+                  {projectName === "Rudraksh" ? (
+                    <div className="relative inline-flex items-center justify-center max-w-full max-h-full">
+                      {/* Render Image in flow to strictly dictate the container's precise aspect ratio dimensions */}
+                      {(
+                        currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
+                          ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
+                          : (selectedWing === "A" && currentFloor.planImageWingA) ||
+                          (selectedWing === "B" && currentFloor.planImageWingB) ||
+                          currentFloor.planImage
+                      ) && (
+                          <img
+                            src={
+                              currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
+                                ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
+                                : (selectedWing === "A" && currentFloor.planImageWingA) ||
+                                (selectedWing === "B" && currentFloor.planImageWingB) ||
+                                currentFloor.planImage
+                            }
+                            alt={`${currentFloor.title} Plan`}
+                            className="block max-w-full max-h-full object-contain select-none mix-blend-multiply pointer-events-none z-0"
+                          />
+                        )}
 
-                    {(
-                      currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
-                        ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
-                        : (selectedWing === "A" && currentFloor.planImageWingA) ||
-                        (selectedWing === "B" && currentFloor.planImageWingB) ||
-                        currentFloor.planImage
-                    ) && (
-                        <Image
-                          width={500}
-                          height={500}
-                          src={
-                            currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
-                              ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
-                              : (selectedWing === "A" && currentFloor.planImageWingA) ||
-                              (selectedWing === "B" && currentFloor.planImageWingB) ||
-                              currentFloor.planImage
-                          }
-                          alt={`${currentFloor.title} Plan`}
-                          className="absolute inset-0 h-full w-full object-contain select-none mix-blend-multiply pointer-events-none z-0"
-                        />
-                      )}
-                  </div>
+                      {/* Overlay the SVG absolutely. Because the container shrink-wraps the img, the SVG aligns perfectly! */}
+                      <svg
+                        viewBox={
+                          (selectedWing === "A" && currentFloor.viewBoxWingA) ||
+                          (selectedWing === "B" && currentFloor.viewBoxWingB) ||
+                          currentFloor.viewBox || "0 0 754 769"
+                        }
+                        preserveAspectRatio={currentFloor.preserveAspectRatio || "xMidYMid meet"}
+                        className="absolute inset-0 h-full w-full pointer-events-auto "
+                      >
+                        <g className="transition-all duration-300">
+                          {currentFilteredUnits.map((unit: any, index: number) => {
+                            // Find original index for handling clicks correctly
+                            const originalIndex = currentFloor.units.findIndex((u: any) => u.id === unit.id);
+                            return (
+                              <path
+                                key={unit.id}
+                                d={unit.path}
+                                transform={unit.transform || undefined}
+                                className="cursor-pointer transition-all duration-200 ease-in-out"
+                                style={{
+                                  fill: planHoveredIndex === originalIndex ? accentColor : "transparent",
+                                  fillOpacity: planHoveredIndex === originalIndex ? 0.9 : 0,
+                                  stroke: planHoveredIndex === originalIndex ? accentColor : "transparent",
+                                  strokeWidth: planHoveredIndex === originalIndex ? 2 : 0
+                                }}
+                                onMouseEnter={() => setPlanHoveredIndex(originalIndex)}
+                                onMouseLeave={() => setPlanHoveredIndex(null)}
+                                onClick={() => handleUnitClick(originalIndex)}
+                                pointerEvents="all"
+                              />
+                            );
+                          })}
+                        </g>
+                      </svg>
+                    </div>
+                  ) : (
+                    <div className="relative h-full w-full">
+                      {/* OLD LAYOUT FOR OTHER PROJECTS */}
+                      <svg
+                        viewBox={
+                          (selectedWing === "A" && currentFloor.viewBoxWingA) ||
+                          (selectedWing === "B" && currentFloor.viewBoxWingB) ||
+                          currentFloor.viewBox || "0 0 754 769"
+                        }
+                        preserveAspectRatio="xMidYMid meet"
+                        className="absolute inset-0 h-full w-full pointer-events-auto "
+                      >
+                        <g className="transition-all duration-300">
+                          {currentFilteredUnits.map((unit: any, index: number) => {
+                            const originalIndex = currentFloor.units.findIndex((u: any) => u.id === unit.id);
+                            return (
+                              <path
+                                key={unit.id}
+                                d={unit.path}
+                                transform={unit.transform || undefined}
+                                className="cursor-pointer transition-all duration-200 ease-in-out"
+                                style={{
+                                  fill: planHoveredIndex === originalIndex ? accentColor : "transparent",
+                                  fillOpacity: planHoveredIndex === originalIndex ? 0.9 : 0,
+                                  stroke: planHoveredIndex === originalIndex ? accentColor : "transparent",
+                                  strokeWidth: planHoveredIndex === originalIndex ? 2 : 0
+                                }}
+                                onMouseEnter={() => setPlanHoveredIndex(originalIndex)}
+                                onMouseLeave={() => setPlanHoveredIndex(null)}
+                                onClick={() => handleUnitClick(originalIndex)}
+                                pointerEvents="all"
+                              />
+                            );
+                          })}
+                        </g>
+                      </svg>
+
+                      {(
+                        currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
+                          ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
+                          : (selectedWing === "A" && currentFloor.planImageWingA) ||
+                          (selectedWing === "B" && currentFloor.planImageWingB) ||
+                          currentFloor.planImage
+                      ) && (
+                          <Image
+                            width={500}
+                            height={500}
+                            src={
+                              currentFloor.title === "Terrace Floor" && projectName === "Rudraksh"
+                                ? (terraceType === "upper" ? currentFloor.upperPlanImage : currentFloor.lowerPlanImage)
+                                : (selectedWing === "A" && currentFloor.planImageWingA) ||
+                                (selectedWing === "B" && currentFloor.planImageWingB) ||
+                                currentFloor.planImage
+                            }
+                            alt={`${currentFloor.title} Plan`}
+                            className="absolute inset-0 h-full w-full object-contain select-none mix-blend-multiply pointer-events-none z-0"
+                          />
+                        )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Sidebar Footer (Text + Compass) */}
