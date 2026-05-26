@@ -200,6 +200,7 @@ export default function page() {
           heroImageMobile="/images/kedarImage/newMobileHero.png"
           exploreTitle={<>A Life of Luxury Awaits</>}
           exploreSubtitle={<>Luxury Living, <br />Defined at Kedar</>}
+          
           accentColor="#5A1F26"
           btnAccentColor="#5A1F26"
           view360Url="https://www.turiya.co/360/KedarHighLivingLuxuryHomes/"
