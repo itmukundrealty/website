@@ -92,7 +92,7 @@ const testimonials = [
         videoUrl: "#",
         iframeSrc: "https://www.youtube.com/embed/Rb1AN7Jn2H4?si=SUxSQaqYAe6xThc0",
         name: "Dr. Devadas Kapikad",
-        role: "Proud Owner at Kedar Apartments"
+        role: "Honoured Guest at the Inauguration Ceremony"
     },
 
 ];

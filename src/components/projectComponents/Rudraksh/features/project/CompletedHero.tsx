@@ -16,6 +16,7 @@ export interface CompletedHeroProps {
     mobileVariant?: "topRight" | "center";
     pdfPath?: string;
     projectLink?: string;
+    view360Url?: string;
 }
 
 export function CompletedHero({
@@ -27,6 +28,7 @@ export function CompletedHero({
     mobileVariant = "center",
     pdfPath,
     projectLink = "/project-enquire",
+    view360Url,
 }: CompletedHeroProps) {
     const desktopStyles = {
         topRight: {
@@ -142,6 +144,14 @@ export function CompletedHero({
                             <ArrowUpRight className="w-5 h-5" />
                         </button>
                     </Link>
+                    {view360Url && (
+                        <Link href={view360Url} target="_blank" rel="noopener noreferrer" className="w-full">
+                            <button className="w-full bg-white text-[#0097DC] py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg">
+                                360° View
+                                <ArrowUpRight className="w-5 h-5" />
+                            </button>
+                        </Link>
+                    )}
                     {pdfPath && (
                         <button
                             onClick={handleDownload}
@@ -174,14 +184,29 @@ export function CompletedHero({
                             )}
                         </div>
 
-                        {variant === 'center' && pdfPath && (
-                            <button
-                                onClick={handleDownload}
-                                className="group flex items-center justify-center gap-2 px-6 py-5 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold w-full md:w-fit text-[14px] mb-2 cursor-pointer"
-                            >
-                                <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
-                                Download Floor Plans
-                            </button>
+                        {variant === 'center' && (pdfPath || view360Url) && (
+                            <div className="flex flex-row flex-wrap items-center justify-start lg:justify-end gap-4 w-full md:w-auto mb-2">
+                                {view360Url && (
+                                    <Link
+                                        href={view360Url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group flex items-center justify-center gap-2 px-6 py-5 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold w-full md:w-fit text-[14px] cursor-pointer"
+                                    >
+                                        360° View
+                                        <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+                                    </Link>
+                                )}
+                                {pdfPath && (
+                                    <button
+                                        onClick={handleDownload}
+                                        className="group flex items-center justify-center gap-2 px-6 py-5 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold w-full md:w-fit text-[14px] cursor-pointer"
+                                    >
+                                        <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+                                        Download Floor Plans
+                                    </button>
+                                )}
+                            </div>
                         )}
                     </div>
 
@@ -191,20 +216,33 @@ export function CompletedHero({
                         </h2>
                     )}
 
-                    {variant !== 'center' && pdfPath && (
+                    {variant !== 'center' && (pdfPath || view360Url) && (
                         <motion.div
-                            className={`flex w-full mt-8 ${buttonAlignClasses}`}
+                            className={`flex flex-col sm:flex-row flex-wrap gap-4 w-full mt-8 ${buttonAlignClasses}`}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.8 }}
                         >
-                            <button
-                                onClick={handleDownload}
-                                className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 md:px-6 md:py-6 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px] cursor-pointer"
-                            >
-                                <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
-                                Download Floor Plans
-                            </button>
+                            {view360Url && (
+                                <Link
+                                    href={view360Url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 md:px-6 md:py-6 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px] cursor-pointer"
+                                >
+                                    360° View
+                                    <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+                                </Link>
+                            )}
+                            {pdfPath && (
+                                <button
+                                    onClick={handleDownload}
+                                    className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 md:px-6 md:py-6 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px] cursor-pointer"
+                                >
+                                    <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
+                                    Download Floor Plans
+                                </button>
+                            )}
                         </motion.div>
                     )}
                 </motion.div>
