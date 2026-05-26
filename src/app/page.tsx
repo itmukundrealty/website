@@ -12,6 +12,7 @@ import Script from "next/script";
 import InsightsSection from "@/components/sections/InsightsSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
 import NewLandingHero from "@/components/sections/NewLandingHero";
+import KenytChatbot from "@/components/common/KenytChatbot";
 
 export default function Home() {
   const jsonLd = {
@@ -33,13 +34,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Script
-        id="kenyt-home-chatbot"
-        src="https://india.kenyt.ai/botapp/ChatbotUI/dist/js/bot-loader.js"
-        strategy="beforeInteractive"
-        defer
-        data-bot="23710952"
-      />
+      <KenytChatbot botId="23710952" />
       <Script
         id="schema-org"
         type="application/ld+json"
