@@ -161,7 +161,7 @@ export default function page() {
             <div className="">
 
                 <NewHeader projectLink="/project-enquire?project=kailash" projectName="Kailash" floorPlanPdf="/completedFloorplans/Kailash-FloorPlans.pdf" view360Url="https://www.turiya.co/360/KailashLuxuryApartments/" />
-                <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/newHero.webp" mobileImage="/images/kailashImages/heroMobile.png" pdfPath="/completedFloorplans/Kailash-FloorPlans.pdf" />
+                <CompletedHero title={<>Kailash</>} subtitle="" mobileVariant="center" variant="topRight" desktopImage="/images/kailashImages/newHero.webp" mobileImage="/images/kailashImages/heroMobile.png" pdfPath="/completedFloorplans/Kailash-FloorPlans.pdf" view360Url="https://www.turiya.co/360/KailashLuxuryApartments/" />
                 <ProjectHighLiving data={SECTION_DATA} />
                 <HighlivingSection
                     heading="Crafted for Everyday Excellence"
