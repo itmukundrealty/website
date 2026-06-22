@@ -250,6 +250,7 @@ export default function Project1Page() {
         title={<>A Higher Way to Live</>}
         subtitle="Luxury Homes at Rudraksh"
         pdfPath="/downloadFloorPlan/typical layout.pdf"
+        zipPath="/floorPlanZip/Rudraksh.zip"
         FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
         heroImageDesktop="/images/rudrakshImages/hero.png"
         heroImageMobile="/images/rudrakshImages/newMobileHero.png"

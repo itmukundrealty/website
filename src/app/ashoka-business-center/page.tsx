@@ -173,6 +173,7 @@ export default function page() {
           exploreTitle={<>Modern Business,<br /> Perfected</>}
           exploreSubtitle={<>Commercial Workspaces <br /> at Ashoka Business Center</>}
           pdfPath="/downloadFloorPlan/typical layout.pdf"
+          zipPath="/floorPlanZip/Ashoka.zip"
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}
           floorData={floorData}

@@ -193,6 +193,7 @@ export default function page() {
           title={<>A Life of Luxury Awaits</>}
           subtitle="Luxury Living, Defined at Kedar"
           pdfPath="/downloadFloorPlan/typical layout.pdf"
+          zipPath="/floorPlanZip/Kedar.zip"
           FLOOR_PATHS={FLOOR_PATHS}
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}

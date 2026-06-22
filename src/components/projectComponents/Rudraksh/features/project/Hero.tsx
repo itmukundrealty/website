@@ -25,6 +25,7 @@ interface ProjectHeroProps {
   title?: string | React.ReactNode;
   subtitle?: string | React.ReactNode;
   pdfPath?: string;
+  zipPath?: string;
   exploreTitle?: string | React.ReactNode;
   exploreSubtitle?: string | React.ReactNode;
   accentColor?: string;
@@ -47,6 +48,7 @@ export function ProjectHero({
   title,
   subtitle,
   pdfPath,
+  zipPath,
   exploreTitle = "Click to Explore",
   exploreSubtitle = "Our Floors",
   accentColor = "#0097DC",
@@ -58,10 +60,11 @@ export function ProjectHero({
   const currentPath = pathname?.split("/")[1] || "";
 
   const handleDownload = () => {
-    if (pdfPath) {
+    const downloadPath = zipPath || pdfPath;
+    if (downloadPath) {
       const link = document.createElement("a");
-      link.href = pdfPath;
-      link.download = pdfPath.split("/").pop() || "floor-plan.pdf";
+      link.href = downloadPath;
+      link.download = downloadPath.split("/").pop() || "floor-plan.zip";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -197,10 +200,10 @@ export function ProjectHero({
           transition={{ duration: 0.8, delay: 0.7 }}
           className="w-full flex flex-col gap-3 pointer-events-auto"
         >
-          {pdfPath && (
+          {(zipPath || pdfPath) && (
             <button
               onClick={handleDownload}
-              className="w-full py-4 border bg-transparent hover:bg-white text-white hover:text-[var(--btn-accent)] font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg transition-colors"
+              className="w-full py-4 border bg-transparent hover:bg-white text-white hover:text-[var(--btn-accent)] font-bold uppercase tracking-wide flex cursor-pointer items-center justify-center gap-2 text-sm shadow-lg transition-colors"
               style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
             >
               Download Floor Plan
@@ -248,7 +251,7 @@ export function ProjectHero({
 
           {/* DESKTOP BUTTONS */}
           <div className="flex flex-wrap items-center justify-end gap-4 mt-8 pointer-events-auto">
-            {pdfPath && (
+            {(zipPath || pdfPath) && (
               <button
                 onClick={handleDownload}
                 className="px-8 py-2 border text-sm font-medium text-center tracking-wide transition-all duration-300 uppercase border-white hover:opacity-80 bg-white text-[var(--btn-accent)]"
