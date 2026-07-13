@@ -172,7 +172,7 @@ export default function page() {
           subtitle="Commercial Workspaces at Ashoka Business Center"
           exploreTitle={<>Modern Business,<br /> Perfected</>}
           exploreSubtitle={<>Commercial Workspaces <br /> at Ashoka Business Center</>}
-          pdfPath="/downloadFloorPlan/typical layout.pdf"
+          pdfPath="/floorPlans/ashoka/pdf/Mukund Realty - Ashoka - First Floor - Floorplan.pdf"
           zipPath="/floorPlanZip/Ashoka.zip"
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
           HERO_MARKERS={HERO_MARKERS}

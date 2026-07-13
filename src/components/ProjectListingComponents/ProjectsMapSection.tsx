@@ -17,7 +17,7 @@ const PROJECTS_DATA = [
         location: "Airport Road, Kapikad, Mangalore",
         image: "/images/LandingPageImg/landmarks/2.png",
         slug: "/ashoka-business-center",
-        type: "ongoing" as const,
+        type: "completed" as const,
         markerIcon: "/icons/mapIcons/ashokaIcon.svg", // Replace with correct logo paths if different
         mapLocation: { id: 1, lat: 12.896349626252785, lng: 74.8419397766051 }
     },
@@ -39,7 +39,7 @@ const PROJECTS_DATA = [
         location: "Bejai Main Road, Derebail, Mangalore",
         image: "/images/LandingPageImg/landmarks/1.png",
         slug: "/kedar",
-        type: "ongoing" as const,
+        type: "completed" as const,
         markerIcon: "/icons/mapIcons/kedarIcon.svg", // Replace with correct logo paths if different
         mapLocation: { id: 3, lat: 12.909096133143487, lng: 74.8506202547441 }
     },

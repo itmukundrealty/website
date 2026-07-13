@@ -39,6 +39,7 @@ export const floorData = [
   {
     title: "Ground Floor",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newground/floor.png",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Ground Floor - Floorplan.pdf",
     viewBox: "0 0 473 680", // Updated to match your new SVG dimensions
     features: [
       "Shops",
@@ -89,7 +90,7 @@ export const floorData = [
     title: "First Floor",
     viewBox: "0 0 516 743",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor1/floor.png",
-    pdfPath: "/downloadFloorPlan/first floor plan.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- First Floor - Floorplan.pdf",
     features: [
       "Shops",
       "Car Parking",
@@ -146,7 +147,7 @@ export const floorData = [
     title: "Second Floor",
     viewBox: "0 0 530 764",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor2/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Second Floor - Floorplan.pdf",
     features: [
       "Car Parking"
     ],
@@ -165,7 +166,7 @@ export const floorData = [
     title: "Third Floor",
     viewBox: "0 0 505 728",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor3/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Third Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs",
@@ -259,7 +260,7 @@ export const floorData = [
     title: "Fourth Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -270,7 +271,7 @@ export const floorData = [
     title: "Fifth Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -281,7 +282,7 @@ export const floorData = [
     title: "Sixth Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -292,7 +293,7 @@ export const floorData = [
     title: "Seventh Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -303,7 +304,7 @@ export const floorData = [
     title: "Eighth Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -314,7 +315,7 @@ export const floorData = [
     title: "Ninth Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -325,7 +326,7 @@ export const floorData = [
     title: "Tenth Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -336,7 +337,7 @@ export const floorData = [
     title: "Eleventh Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -347,7 +348,7 @@ export const floorData = [
     title: "Twelfth Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -358,7 +359,7 @@ export const floorData = [
     title: "Thirteenth Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -369,7 +370,7 @@ export const floorData = [
     title: "Fourteenth Floor",
     viewBox: "0 0 389 734",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor4-14/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf",
     features: [
       "3 BHKs",
       "2 BHKs"
@@ -380,7 +381,7 @@ export const floorData = [
     title: "Fifteenth Floor",
     viewBox: "0 0 379 714",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor15/floor.png",
-    pdfPath: "/downloadFloorPlan/13th floor.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Fiftheenth Floor - Floorplan.pdf",
     features: [
       "4 BHKs",
       "Duplex - Lower Floor"
@@ -416,7 +417,7 @@ export const floorData = [
     title: "Sixteenth Floor",
     viewBox: "0 0 393 741",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newfloor16/floor.png",
-    pdfPath: "/downloadFloorPlan/14th floor.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Sixteenth Floor - Floorplan.pdf",
     features: [
       "4 BHKs",
       "Duplex - Upper Floor"
@@ -452,7 +453,7 @@ export const floorData = [
     title: "Terrace Floor",
     viewBox: "0 0 383 729",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newterrace/floor.png",
-    pdfPath: "/downloadFloorPlan/lower terrace.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Terrace Floor - Floorplan.pdf",
     features: [
       "Library",
       "Cardio Machines",
@@ -483,7 +484,7 @@ export const floorData = [
     title: "Upper Terrace Floor",
     viewBox: "0 0 384 720",
     planImage: "/floorPlans/kedar/floorMapAndSpeceficMapImages/newupperTerrace/floor.png",
-    pdfPath: "/downloadFloorPlan/lower terrace.pdf",
+    pdfPath: "/floorPlans/kedar/pdf/Mukund Realty - Kedar- Upper Terrace Floor - Floorplan.pdf",
     features: [
       "Infinity Swimming Pool",
       "Baby Pool",

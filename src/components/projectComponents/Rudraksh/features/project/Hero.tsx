@@ -605,9 +605,11 @@ export function ProjectHero({
 
                     </h2>
                     <a
-                      href={currentFloor?.pdfPath}
-                      download="FLOOR PLAN"
-                      className="flex items-center gap-3 text-sm font-semibold hover:opacity-70 transition-opacity"
+                      href={currentFloor?.pdfPath ? encodeURI(currentFloor.pdfPath) : "#"}
+                      download={currentFloor?.pdfPath ? currentFloor.pdfPath.split('/').pop() : "Floorplan.pdf"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-sm font-semibold hover:opacity-70 transition-opacity cursor-pointer"
                       style={{ color: accentColor }}
                     >
                       Download Floorplan
@@ -721,13 +723,15 @@ export function ProjectHero({
                       </button>
                     </Link>
 
-                    <a
-                      href={currentFloor?.pdfPath}
-                      download="FLOOR PLAN"
+                    {/* <a
+                      href={currentFloor?.pdfPath ? encodeURI(currentFloor.pdfPath) : "#"}
+                      download={currentFloor?.pdfPath ? currentFloor.pdfPath.split('/').pop() : "Floorplan.pdf"}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-white font-medium text-sm hover:underline w-full sm:w-auto text-center sm:text-left cursor-pointer"
                     >
-                      Download Floorplan
-                    </a>
+                      Download Floorplansasa
+                    </a> */}
                   </div>
                 </div>
               </div>

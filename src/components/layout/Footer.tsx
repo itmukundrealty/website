@@ -49,11 +49,12 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
     const ongoingProjects = [
         { name: "Rudraksh", href: "/rudraksh" },
-        { name: "Ashoka Business Centre", href: "/ashoka-business-center" },
-        { name: "Kedar", href: "/kedar" },
+    
     ];
 
     const completedProjects = [
+        { name: "Ashoka Business Centre", href: "/ashoka-business-center" },
+        { name: "Kedar", href: "/kedar" },
         { name: "Nandadeep Apartments", href: "/nandadeep-apartments" },
         { name: "Mathura Residency", href: "/mathura-residency" },
         { name: "Nandagokul Apartments", href: "/nandagokul-apartments" },

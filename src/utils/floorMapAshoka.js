@@ -66,6 +66,7 @@ export const floorData = [
   {
     title: "Ground Floor",
     planImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/newground/floor.png",
+    pdfPath: "/floorPlans/ashoka/pdf/Mukund Realty - Ashoka - Ground Floor - Floorplan.pdf",
     viewBox: "0 0 576 728",
     features: [
       "Visitor Lounge",
@@ -170,7 +171,7 @@ export const floorData = [
   {
     title: "First Floor",
     planImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/newfloor1/floor.png",
-    pdfPath: "/downloadFloorPlan/first floor plan.pdf",
+    pdfPath: "/floorPlans/ashoka/pdf/Mukund Realty - Ashoka - First Floor - Floorplan.pdf",
     viewBox: "0 0 576 624",
     features: [
       "Utility Block",
@@ -322,7 +323,7 @@ export const floorData = [
     title: "Second Floor",
     viewBox: "0 0 576 624",
     planImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/newfloor2/floor.png",
-    pdfPath: "/downloadFloorPlan/typical layout.pdf",
+    pdfPath: "/floorPlans/ashoka/pdf/Mukund Realty - Ashoka - Second Floor - Floorplan.pdf",
     features: [
       "Utility Block",
       "Private Offices"
@@ -478,7 +479,7 @@ export const floorData = [
     title: "Third Floor",
     viewBox: "0 0 576 624",
     planImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/newfloor3/floor.png",
-    pdfPath: "/downloadFloorPlan/third floor plan.pdf",
+    pdfPath: "/floorPlans/ashoka/pdf/Mukund Realty - Ashoka - Third Floor - Floorplan.pdf",
     features: [
       "Utility Block",
       "Private Offices"
@@ -604,7 +605,7 @@ export const floorData = [
     title: "Fourth Floor",
     viewBox: "0 0 576 624",
     planImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/newfloor4/floor.png",
-    pdfPath: "/downloadFloorPlan/fourth floor plan.pdf",
+    pdfPath: "/floorPlans/ashoka/pdf/Mukund Realty - Ashoka - Fourth Floor - Floorplan.pdf",
     features: [
       "Utility Block",
       "Private Offices"
@@ -736,7 +737,7 @@ export const floorData = [
     title: "Fifth Floor",
     viewBox: "0 0 576 624",
     planImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/newfloor5/floor.png",
-    pdfPath: "/downloadFloorPlan/fifth floor plan.pdf",
+    pdfPath: "/floorPlans/ashoka/pdf/Mukund Realty - Ashoka - Fifth Floor - Floorplan.pdf",
     features: [
       "Full Floor Private Office Space"
     ],
@@ -867,7 +868,7 @@ export const floorData = [
     title: "Terrace",
     viewBox: "0 0 576 629",
     planImage: "/floorPlans/ashoka/floorMapAndSpeceficMapImages/newterrace/floor.png",
-    pdfPath: "/downloadFloorPlan/terrace plan.pdf",
+    pdfPath: "/floorPlans/ashoka/pdf/Mukund Realty - Ashoka - Terrace - Floorplan.pdf",
     features: [
       "Auditorium",
       "Break-Out Zone",

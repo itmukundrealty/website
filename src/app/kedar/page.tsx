@@ -192,7 +192,7 @@ export default function page() {
           projectName="Kedar"
           title={<>A Life of Luxury Awaits</>}
           subtitle="Luxury Living, Defined at Kedar"
-          pdfPath="/downloadFloorPlan/typical layout.pdf"
+          pdfPath="/floorPlans/kedar/pdf/Mukund Realty - Kedar- Typical Floor - Floorplan.pdf"
           zipPath="/floorPlanZip/Kedar.zip"
           FLOOR_PATHS={FLOOR_PATHS}
           FLOOR_PATHS_VIEWBOX={FLOOR_PATHS_VIEWBOX}
