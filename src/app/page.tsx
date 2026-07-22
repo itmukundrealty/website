@@ -12,7 +12,6 @@ import Script from "next/script";
 import InsightsSection from "@/components/sections/InsightsSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
 import NewLandingHero from "@/components/sections/NewLandingHero";
-import KenytChatbot from "@/components/common/KenytChatbot";
 
 export default function Home() {
   const jsonLd = {
@@ -34,7 +33,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      <KenytChatbot botId="23710952" />
       <Script
         id="schema-org"
         type="application/ld+json"
@@ -59,4 +57,5 @@ export default function Home() {
     </main> 
   );
 }
+
 

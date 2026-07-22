@@ -16,7 +16,6 @@ import { FLOOR_PATHS_VIEWBOX, HERO_MARKERS } from "@/utils/floorMapKedar";
 import { floorData } from "@/utils/floorMapKedar";
 import { FLOOR_PATHS } from "@/utils/floorMapKedar";
 import localFont from "next/font/local";
-import KenytChatbot from "@/components/common/KenytChatbot";
 
 const swis721 = localFont({
   src: [
@@ -176,7 +175,6 @@ const AMENITIES_DATA = [
 export default function page() {
   return (
     <>
-     <KenytChatbot botId="22056372" />
       <div className={`${swis721.variable} font-swis721 font-light [&_h1]:font-normal [&_h2]:font-normal [&_h3]:font-normal [&_h4]:font-normal [&_h5]:font-normal [&_h6]:font-normal`}>
 
         <NewHeader

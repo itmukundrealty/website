@@ -14,7 +14,6 @@ import MapSection from "@/components/projectComponents/Rudraksh/MapSection";
 import HighlivingSection from "@/components/projectComponents/Rudraksh/features/project/HighlivingSection";
 import Footer from "@/components/layout/Footer";
 import { CompletedHero } from "@/components/projectComponents/Rudraksh/features/project/CompletedHero";
-import KenytChatbot from "@/components/common/KenytChatbot";
 
 const FEATURES: FeatureItem[] = [
     { icon: "SwimmingPool", label: "Infinity Rooftop Swimming Pool" },
@@ -152,7 +151,6 @@ const AMENITIES_DATA = [
 export default function page() {
     return (
         <>
-             <KenytChatbot  botId="26710585" />
             <div className="">
 
                 <NewHeader projectLink="/project-enquire?project=kailash" projectName="Kailash" floorPlanPdf="/completedFloorplans/Kailash-FloorPlans.pdf" view360Url="https://www.turiya.co/360/KailashLuxuryApartments/" />

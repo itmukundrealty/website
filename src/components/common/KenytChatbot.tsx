@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 
 const KENYT_SCRIPT_SRC =
   "https://india.kenyt.ai/botapp/ChatbotUI/dist/js/bot-loader.js";
@@ -26,8 +25,6 @@ interface KenytChatbotProps {
 }
 
 export default function KenytChatbot({ botId }: KenytChatbotProps) {
-  const pathname = usePathname();
-
   useEffect(() => {
     removeKenytChatbot();
 
@@ -43,7 +40,7 @@ export default function KenytChatbot({ botId }: KenytChatbotProps) {
     return () => {
       removeKenytChatbot();
     };
-  }, [botId, pathname]);
+  }, [botId]);
 
   return null;
-}
+}
