@@ -109,6 +109,26 @@ function EnquireProjectContent() {
     }
   };
 
+  const pushToAccelr = async (data: typeof formData) => {
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          project: data.interestedIn || data.project,
+          pageUrl: typeof window !== "undefined" ? window.location.href : "https://yourwebsite.com",
+        }),
+      });
+    } catch (error) {
+      console.error("Accelr Push Error:", error);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.interestedIn) {
@@ -117,10 +137,10 @@ function EnquireProjectContent() {
     }
     setStatus({ loading: true, error: null, success: false });
 
-    console.log("Submitting to CMS:", `${CMS_BASE_URL}/api/enquiries/project`);
+    console.log("Submitting to CMS:", "/api/enquiries/project");
     try {
       // 1. Submit to internal API
-      const response = await fetch(`${CMS_BASE_URL}/api/enquiries/project`, {
+      const response = await fetch("/api/enquiries/project", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -136,6 +156,9 @@ function EnquireProjectContent() {
 
       // 2. Push to MGM CRM (asynchronously)
       pushToCRM(formData);
+
+      // 3. Push to Accelr Webhook (asynchronously)
+      pushToAccelr(formData);
 
       setStatus({ loading: false, error: null, success: true });
       setFormData({

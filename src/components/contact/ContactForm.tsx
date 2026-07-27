@@ -32,12 +32,32 @@ export default function ContactForm() {
         }));
     };
 
+    const pushToAccelr = async (data: typeof formData) => {
+        try {
+            await fetch("/api/leads", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: data.name,
+                    email: data.email,
+                    phone: data.phone,
+                    project: "General Enquiry",
+                    pageUrl: typeof window !== "undefined" ? window.location.href : "https://yourwebsite.com",
+                }),
+            });
+        } catch (error) {
+            console.error("Accelr Push Error:", error);
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus({ loading: true, error: null, success: false });
 
         try {
-            const response = await fetch(`${CMS_BASE_URL}/api/enquiries/general`, {
+            const response = await fetch("/api/enquiries/general", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -50,6 +70,9 @@ export default function ContactForm() {
                 console.error("CMS Submission Error Response:", errorData);
                 throw new Error(errorData.error || "Failed to submit form");
             }
+
+            // Push to Accelr Webhook (asynchronously)
+            pushToAccelr(formData);
 
             setStatus({ loading: false, error: null, success: true });
             setShowModal(true);
