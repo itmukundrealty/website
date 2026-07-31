@@ -71,7 +71,8 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
     const socials = [
         { name: "Facebook", href: "https://www.facebook.com/mukundmgmrealty" },
         { name: "Instagram", href: "https://www.instagram.com/mukund_realty" },
-        { name: "WhatsApp", href: "https://wa.me/917090933700" }
+        { name: "WhatsApp", href: "https://wa.me/917090933700" },
+           { name: "LinkedIn", href: "https://www.linkedin.com/company/mukundrealty/" }
     ];
 
     const [mobileOngoingOpen, setMobileOngoingOpen] = useState(true);
