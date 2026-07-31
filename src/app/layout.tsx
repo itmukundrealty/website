@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollToTop from "@/components/ScrollToTop";
 import GlobalWidgets from "@/components/common/GlobalWidgets";
+import CookieConsentModal from "@/components/common/CookieConsentModal";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -50,6 +51,7 @@ export default function RootLayout({
       >
         <ScrollToTop />
         <GlobalWidgets />
+        <CookieConsentModal />
         <SmoothScroll>
           {children}
         </SmoothScroll>
