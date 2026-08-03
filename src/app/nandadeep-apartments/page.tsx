@@ -38,7 +38,6 @@ const FEATURES: FeatureItem[] = [
 
     { icon: "Generators", label: "24x7 Power Back-up" },
 
-    { icon: "Generators", label: "24x7 24x7 Backup Generators" },
 ];
 
 const MAP_DATA = [
