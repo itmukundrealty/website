@@ -191,6 +191,7 @@ const ProjectHeader = ({ variant = 'dark' }: HeaderProps) => {
             </div>
 
             <Link href="/insight-lists" className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : (isLight ? 'text-white' : 'text-[#505153]')}`}>Insights</Link>
+            <Link href="/careers" className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : (isLight ? 'text-white' : 'text-[#505153]')}`}>Careers</Link>
 
             <Link href="/contact" className={`hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? 'text-[#505153]' : (isLight ? 'text-white' : 'text-[#505153]')}`}>Contact</Link>
           </nav>
@@ -345,7 +346,13 @@ const ProjectHeader = ({ variant = 'dark' }: HeaderProps) => {
                 >
                   Insights
                 </Link>
-
+  <Link
+                  href="/careers"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
+                >
+                  Careers
+                </Link>
                 {/* Contact */}
                 <Link
                   href="/contact"

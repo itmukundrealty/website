@@ -171,6 +171,13 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
               Insights
             </Link>
 
+            <Link
+              href="/careers"
+              className={` hover:text-[#0097DC] text-lg font-light tracking-wide transition-colors duration-300 ${isScrolled ? "text-[#505153]" : "text-white"}`}
+            >
+              Careers
+            </Link>
+
             {/* <Link href="/insights" className="text-[#333333] hover:text-black text-lg font-medium tracking-wide transition-colors duration-300">Insights</Link> */}
 
             <Link
@@ -299,13 +306,22 @@ const ProjectHeader = ({ projectLink = "/project-enquire", projectName = "Mukund
                 </div>
 
                 {/* Insights */}
-                {/* <Link
+                <Link
                   href="/insights"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
                 >
                   Insights
-                </Link> */}
+                </Link>
+
+                <Link
+                  href="/careers"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-[22px] text-[#505153] font-light py-5 border-b border-gray-100 flex justify-between items-center"
+                >
+                  Careers
+                </Link>
+
 
                 {/* Contact */}
                 <Link

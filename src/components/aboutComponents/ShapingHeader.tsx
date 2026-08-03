@@ -17,7 +17,7 @@ export default function ShapingHeader() {
 
                 {/* Navigation */}
                 <nav className="hidden md:flex items-center gap-10">
-                    {['About', 'Projects', 'Insights', 'Contact'].map((item) => (
+                    {['About', 'Projects', 'Insights', 'Contact', 'Careers' ].map((item) => (
                         <Link
                             key={item}
                             href={`/${item.toLowerCase()}`}
