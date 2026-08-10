@@ -38,7 +38,7 @@ export default function GlobalWidgets() {
   return (
     <>
       <KenytChatbot botId={botId} />
-      {showWhatsApp && <WhatsAppWidget />}
+      {<WhatsAppWidget />}
     </>
   );
 }
