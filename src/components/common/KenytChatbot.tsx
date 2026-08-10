@@ -12,12 +12,38 @@ const KENYT_CLEANUP_SELECTORS = [
   'iframe[src*="ChatbotUI"]',
   '[id*="kenyt" i]',
   '[class*="kenyt" i]',
+  '#messageWrapperBox',
+  '#chatNowBtn',
+  '#bubbleTail',
+  '#krazorpay-btn',
+  '#kcashfree-btn',
+  '#kvgTitle',
+  '[class*="kchannel"]',
+  '[class*="kpopup"]',
+  '[class*="kbubble"]',
+  '[class*="kprimary"]',
+  '[class*="ksecondary"]',
+  '[class*="kconnectors"]',
+  '[class*="kstrip"]',
+  '[class*="kvg-"]',
+  '[class*="chatWithUsMessage"]'
 ];
 
 function removeKenytChatbot() {
   document
     .querySelectorAll(KENYT_CLEANUP_SELECTORS.join(","))
     .forEach((node) => node.remove());
+
+  if (typeof window !== "undefined") {
+    const keysToRemove = Object.keys(window).filter((key) =>
+      key.toLowerCase().includes("kenyt") || key.toLowerCase().includes("botapp")
+    );
+    keysToRemove.forEach((key) => {
+      try {
+        delete (window as any)[key];
+      } catch (e) {}
+    });
+  }
 }
 
 interface KenytChatbotProps {

@@ -31,7 +31,7 @@ const FEATURES: FeatureItem[] = [
   { icon: "GamesArea", label: "Indoor & Outdoor Games Area" },
   { icon: "Gymnasium", label: "Air Conditioned Gymnasium" },
   { icon: "Reflexology", label: "Walking Path with Reflexology" },
-  // { icon: "LeisureAreas", label: "Landscaped Leisure Areas" },
+  { icon: "LeisureAreas", label: "Landscaped Leisure Areas" },
   { icon: "ChildrenPlay", label: "Children's Play Area" },
   { icon: "JacuzziSauna", label: "Heated Jacuzzi & Timber Sauna" },
   { icon: "GrandLobby", label: "Access Controlled Grand Entrance Lobby" },
@@ -48,11 +48,11 @@ const FEATURES: FeatureItem[] = [
   { icon: "GatheringHall", label: "Residents Gathering Hall" },
   { icon: "FirefightingSystem", label: "State-of-the-art Firefighting System" },
 
-  { icon: "Elevators", label: "Four Automatic Elevators 15 Pax Capacity " },
-  { icon: "SolarElectricPowerPanels", label: "Solar Electric Power Panels " },
-  { icon: "GeneratorBackup", label: "Generator Backup " },
-  { icon: "SewageTreatment", label: "Sewage Treatment Plant " },
-  { icon: "IntercomSecurity", label: "Intercom Facility Security " },
+  // { icon: "Elevators", label: "Four Automatic Elevators 15 Pax Capacity " },
+  // { icon: "SolarElectricPowerPanels", label: "Solar Electric Power Panels " },
+  // { icon: "GeneratorBackup", label: "Generator Backup " },
+  // { icon: "SewageTreatment", label: "Sewage Treatment Plant " },
+  // { icon: "IntercomSecurity", label: "Intercom Facility Security " },
 
 
 

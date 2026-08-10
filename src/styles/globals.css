@@ -60,3 +60,13 @@ body {
   color: var(--foreground);
   font-family: var(--font-host), ui-sans-serif, system-ui;
 }
+
+/* Fix for broken Kenyt chatbot initialization (hides empty transparent shadowed divs) */
+#kenytBubbleContainer:not(:has(iframe)),
+#messageWrapperBox:not(:has(iframe)),
+.kpopup-container:not(:has(iframe)) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
