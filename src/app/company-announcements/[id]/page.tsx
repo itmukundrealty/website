@@ -8,6 +8,7 @@ import { ChevronLeft } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { fetchAnnouncementById, Blog as Announcement } from "@/lib/api";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 /** Decode common HTML entities so TOC titles display as plain readable text. */
 function decodeHtmlEntities(str: string): string {
@@ -197,7 +198,7 @@ export default function AnnouncementDetailPage({ params }: AnnouncementDetailPag
                                 className="announcement-content prose prose-lg max-w-none text-[#505153] font-light leading-relaxed"
                                 style={{ maxWidth: '100%', overflow: 'hidden' }}
                                 dangerouslySetInnerHTML={{ 
-                                    __html: addHeadingIds(sanitizeUnlayerHtml(announcement.content), toc) 
+                                    __html: addHeadingIds(sanitizeHtml(sanitizeUnlayerHtml(announcement.content)), toc) 
                                 }}
                             />
                         </div>

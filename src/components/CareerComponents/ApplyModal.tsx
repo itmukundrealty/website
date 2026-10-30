@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { db, storage } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp, getDocs, query, where } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { validateUploadFile } from '@/utils/fileValidation';
 
 interface ApplyModalProps {
     isOpen: boolean;
@@ -49,7 +50,15 @@ export default function ApplyModal({ isOpen, onClose, jobTitle = "" }: ApplyModa
     }, [isOpen]);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSubmitError("");
         if (e.target.files && e.target.files.length > 0) {
+            const check = validateUploadFile(e.target.files[0]);
+            if (!check.valid) {
+                setSubmitError(check.error || "Invalid file");
+                e.target.value = "";
+                setFileName("");
+                return;
+            }
             setFileName(e.target.files[0].name);
         } else {
             setFileName("");
@@ -64,18 +73,25 @@ export default function ApplyModal({ isOpen, onClose, jobTitle = "" }: ApplyModa
         try {
             const formData = new FormData(e.currentTarget);
 
-            const fullName = formData.get("modal_fullName") as string;
-            const email = formData.get("modal_email") as string;
-            const phone = formData.get("modal_phone") as string;
-            const position = formData.get("modal_position") as string;
-            const about = formData.get("modal_about") as string;
+            const fullName = (formData.get("modal_fullName") as string || "").trim().slice(0, 100);
+            const email = (formData.get("modal_email") as string || "").trim().slice(0, 150);
+            const phone = (formData.get("modal_phone") as string || "").trim().slice(0, 30);
+            const position = (formData.get("modal_position") as string || "").trim().slice(0, 100);
+            const about = (formData.get("modal_about") as string || "").trim().slice(0, 2000);
             const file = formData.get("modal_cv") as File;
 
             let cvUrl = "";
 
             if (file && file.size > 0) {
-                // Upload file to Firebase Storage
-                const storageRef = ref(storage, `career_cvs/${Date.now()}_${file.name}`);
+                const validation = validateUploadFile(file);
+                if (!validation.valid) {
+                    setSubmitError(validation.error || "Invalid file");
+                    setIsSubmitting(false);
+                    return;
+                }
+
+                // Upload file to Firebase Storage with sanitized name
+                const storageRef = ref(storage, `career_cvs/${Date.now()}_${validation.safeName}`);
                 const snapshot = await uploadBytes(storageRef, file);
                 cvUrl = await getDownloadURL(snapshot.ref);
             }

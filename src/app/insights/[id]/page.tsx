@@ -9,6 +9,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { fetchBlogById, Blog } from "@/lib/api";
 import RelatedArticleSection from "@/components/InsightComponents/RelatedArticleSection";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 
 /** Decode common HTML entities so TOC titles display as plain readable text. */
 function decodeHtmlEntities(str: string): string {
@@ -194,7 +195,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                                 id="blog-content-body"
                                 className="blog-content prose prose-lg max-w-none text-[#505153] font-light leading-relaxed"
                                 style={{ maxWidth: '100%', overflow: 'hidden' }}
-                                dangerouslySetInnerHTML={{ __html: addHeadingIds(blog.content, toc) }}
+                                dangerouslySetInnerHTML={{ __html: addHeadingIds(sanitizeHtml(blog.content), toc) }}
                             />
                         </div>
 

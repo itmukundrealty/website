@@ -6,6 +6,7 @@ import { ArrowLeft } from 'lucide-react';
 import { db, storage } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp, getDocs, query, where } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { validateUploadFile } from '@/utils/fileValidation';
 
 export const TextInput = ({ label, required = false, type = "text", id, onChange, isTextArea = false, maxWords = 100 }: { label: string, required?: boolean, type?: string, id: string, onChange?: (e: any) => void, isTextArea?: boolean, maxWords?: number }) => {
     const [hasValue, setHasValue] = useState(false);
@@ -160,7 +161,15 @@ export default function FormSection() {
     }, []);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSubmitError("");
         if (e.target.files && e.target.files.length > 0) {
+            const check = validateUploadFile(e.target.files[0]);
+            if (!check.valid) {
+                setSubmitError(check.error || "Invalid file");
+                e.target.value = "";
+                setFileName("");
+                return;
+            }
             setFileName(e.target.files[0].name);
         } else {
             setFileName("");
@@ -175,18 +184,25 @@ export default function FormSection() {
         try {
             const formData = new FormData(e.currentTarget);
 
-            const fullName = formData.get("fullName") as string;
-            const email = formData.get("email") as string;
-            const phone = formData.get("phone") as string;
-            const position = formData.get("position") as string;
-            const about = formData.get("about") as string;
+            const fullName = (formData.get("fullName") as string || "").trim().slice(0, 100);
+            const email = (formData.get("email") as string || "").trim().slice(0, 150);
+            const phone = (formData.get("phone") as string || "").trim().slice(0, 30);
+            const position = (formData.get("position") as string || "").trim().slice(0, 100);
+            const about = (formData.get("about") as string || "").trim().slice(0, 2000);
             const file = formData.get("cv") as File;
 
             let cvUrl = "";
 
             if (file && file.size > 0) {
-                // Upload file to Firebase Storage
-                const storageRef = ref(storage, `career_cvs/${Date.now()}_${file.name}`);
+                const validation = validateUploadFile(file);
+                if (!validation.valid) {
+                    setSubmitError(validation.error || "Invalid file");
+                    setIsSubmitting(false);
+                    return;
+                }
+
+                // Upload file to Firebase Storage with sanitized name
+                const storageRef = ref(storage, `career_cvs/${Date.now()}_${validation.safeName}`);
                 const snapshot = await uploadBytes(storageRef, file);
                 cvUrl = await getDownloadURL(snapshot.ref);
             }
