@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { detectSpamLead } from "@/utils/antiSpam";
 
 export async function POST(request: Request) {
     try {
@@ -15,6 +16,20 @@ export async function POST(request: Request) {
 
         if (!name || (!email && !phone)) {
             return NextResponse.json({ error: "Name and contact info are required" }, { status: 400 });
+        }
+
+        // Anti-Spam Check: Drop honeypot and gibberish bots silently
+        const spamCheck = detectSpamLead({
+            name,
+            email,
+            phone,
+            _hp_company: body._hp_company,
+            _formTime: body._formTime,
+        });
+
+        if (spamCheck.isSpam) {
+            console.warn(`[Anti-Spam] Dropped junk Accelr lead (${spamCheck.reason}):`, { name, email, phone });
+            return NextResponse.json({ success: true, filtered: true });
         }
 
         const response = await fetch("https://app.accelr.app/api/leads/capture", {

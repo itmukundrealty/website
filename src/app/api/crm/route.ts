@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { detectSpamLead } from "@/utils/antiSpam";
 
 export async function POST(request: Request) {
     try {
@@ -14,6 +15,20 @@ export async function POST(request: Request) {
 
         if (!rawName || (!email && !phone)) {
             return NextResponse.json({ error: "Name and contact information (email or phone) are required" }, { status: 400 });
+        }
+
+        // Anti-Spam Check: Drop honeypot and gibberish bots silently
+        const spamCheck = detectSpamLead({
+            name: rawName,
+            email,
+            phone,
+            _hp_company: data._hp_company,
+            _formTime: data._formTime,
+        });
+
+        if (spamCheck.isSpam) {
+            console.warn(`[Anti-Spam] Dropped junk CRM lead (${spamCheck.reason}):`, { name: rawName, email, phone });
+            return NextResponse.json({ success: true, filtered: true });
         }
 
         const nameParts = rawName.split(/\s+/);

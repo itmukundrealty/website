@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThankYouModal from "../contact/ThankYouModal";
@@ -64,6 +64,8 @@ function EnquireProjectContent() {
       }));
     }
   }, [projectParam]);
+  const formTimeRef = useRef<number>(Date.now());
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<{
     loading: boolean;
     error: string | null;
@@ -102,7 +104,11 @@ function EnquireProjectContent() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          _hp_company: honeypot,
+          _formTime: formTimeRef.current,
+        }),
       });
     } catch (error) {
       console.error("CRM Push Error:", error);
@@ -122,6 +128,8 @@ function EnquireProjectContent() {
           phone: data.phone,
           project: data.interestedIn || data.project,
           pageUrl: typeof window !== "undefined" ? window.location.href : "https://yourwebsite.com",
+          _hp_company: honeypot,
+          _formTime: formTimeRef.current,
         }),
       });
     } catch (error) {
@@ -145,7 +153,11 @@ function EnquireProjectContent() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          _hp_company: honeypot,
+          _formTime: formTimeRef.current,
+        }),
       });
 
       if (!response.ok) {
@@ -238,6 +250,20 @@ function EnquireProjectContent() {
 
             {/* FORM */}
             <form onSubmit={handleSubmit} className="mt-14 space-y-10">
+              {/* Hidden Anti-Spam Honeypot field (invisible to real visitors) */}
+              <div style={{ position: "absolute", opacity: 0, zIndex: -1, pointerEvents: "none", height: 0, overflow: "hidden" }} aria-hidden="true">
+                <label htmlFor="company_lead_field">Company</label>
+                <input
+                  type="text"
+                  id="company_lead_field"
+                  name="_hp_company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
+
               {/* Full Name */}
               <div className="relative">
                 <input

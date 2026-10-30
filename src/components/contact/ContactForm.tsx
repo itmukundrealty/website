@@ -5,6 +5,8 @@ import ThankYouModal from "./ThankYouModal";
 import { CMS_BASE_URL } from "@/lib/api";
 
 export default function ContactForm() {
+    const formTimeRef = React.useRef<number>(Date.now());
+    const [honeypot, setHoneypot] = React.useState("");
     const [formData, setFormData] = React.useState({
         name: "",
         email: "",
@@ -45,6 +47,8 @@ export default function ContactForm() {
                     phone: data.phone,
                     project: "General Enquiry",
                     pageUrl: typeof window !== "undefined" ? window.location.href : "https://yourwebsite.com",
+                    _hp_company: honeypot,
+                    _formTime: formTimeRef.current,
                 }),
             });
         } catch (error) {
@@ -62,7 +66,11 @@ export default function ContactForm() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    ...formData,
+                    _hp_company: honeypot,
+                    _formTime: formTimeRef.current,
+                }),
             });
 
             if (!response.ok) {
@@ -133,6 +141,20 @@ export default function ContactForm() {
                     {/* RIGHT COLUMN - Form */}
                     <div className="w-full mt-8">
                         <form onSubmit={handleSubmit} className="space-y-10">
+                            {/* Hidden Anti-Spam Honeypot field (invisible to real visitors) */}
+                            <div style={{ position: "absolute", opacity: 0, zIndex: -1, pointerEvents: "none", height: 0, overflow: "hidden" }} aria-hidden="true">
+                                <label htmlFor="company_name_field">Company</label>
+                                <input
+                                    type="text"
+                                    id="company_name_field"
+                                    name="_hp_company"
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                    value={honeypot}
+                                    onChange={(e) => setHoneypot(e.target.value)}
+                                />
+                            </div>
+
                             {/* Full Name */}
                             <div className="relative">
                                 <input
