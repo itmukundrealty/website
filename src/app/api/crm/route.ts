@@ -4,9 +4,21 @@ export async function POST(request: Request) {
     try {
         const data = await request.json();
 
-        const nameParts = data.name.trim().split(/\s+/);
-        const fname = nameParts[0] || "Test";
-        const lname = nameParts.length > 1 ? nameParts.slice(1).join(" ") : "Lead";
+        if (!data || typeof data !== "object") {
+            return NextResponse.json({ error: "Invalid request payload" }, { status: 400 });
+        }
+
+        const rawName = typeof data.name === "string" ? data.name.trim() : "";
+        const email = typeof data.email === "string" ? data.email.trim() : "";
+        const phone = typeof data.phone === "string" ? data.phone.trim() : "";
+
+        if (!rawName || (!email && !phone)) {
+            return NextResponse.json({ error: "Name and contact information (email or phone) are required" }, { status: 400 });
+        }
+
+        const nameParts = rawName.split(/\s+/);
+        const fname = nameParts[0] || "Lead";
+        const lname = nameParts.length > 1 ? nameParts.slice(1).join(" ") : "Customer";
 
         const crmData = {
             fname,
@@ -14,8 +26,8 @@ export async function POST(request: Request) {
             lname,
             gender: "",
             residing: "India",
-            email: data.email,
-            phone: data.phone,
+            email: email,
+            phone: phone,
             city: "",
             state: "",
             street: "",
@@ -25,10 +37,10 @@ export async function POST(request: Request) {
             solution: "",
             company_name: "",
             enquiry_for: "Residential",
-            enquiry_for_type: data.interestedIn,
+            enquiry_for_type: typeof data.interestedIn === "string" ? data.interestedIn : "General",
             team_size: "0",
-            description: `Enquiry from website for ${data.project}`,
-            location: data.project,
+            description: `Enquiry from website for ${data.project || "General"}`,
+            location: typeof data.project === "string" ? data.project : "Mukund Realty",
             campaign: "Website Campaign",
             category: "lead"
         };
@@ -41,10 +53,14 @@ export async function POST(request: Request) {
             body: JSON.stringify(crmData),
         });
 
-        const result = await response.json();
+        if (!response.ok) {
+            console.error("CRM response error:", response.status, await response.text());
+            return NextResponse.json({ error: "CRM service error" }, { status: response.status });
+        }
 
+        const result = await response.json();
         return NextResponse.json(result);
-    } catch (error) {
+    } catch (error: any) {
         console.error("CRM API Error:", error);
         return NextResponse.json({ error: "Failed to push to CRM" }, { status: 500 });
     }
