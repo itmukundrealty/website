@@ -10,7 +10,7 @@ const slides = [
         image: "/images/LandingPageImg/crafted/1.png",
         title: "Driven by Intent",
         description: "With unwavering integrity and transparency, Mukund commits to the long-term well-being of our communities.",
-        stat: "13+ Years",
+        stat: "14+ Years",
         statDesc: "of established expertise, with a history of trusted outcomes.",
         theme: "light",
         boxColor: "bg-[#E8F6FC]/90 "

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { PROJECTS_LIST } from "@/data/projects";
+import { useFloorPlanModal } from "@/context/FloorPlanModalContext";
 
 interface NewHeaderProps {
     projectLink?: string;
@@ -61,6 +62,7 @@ export default function NewHeader({
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isExplorerOpen, setIsExplorerOpen] = useState(false);
     const [isPastHero, setIsPastHero] = useState(false);
+    const { openFloorPlanModal } = useFloorPlanModal();
 
     // Listen for floor explorer toggle events
     useEffect(() => {
@@ -163,18 +165,23 @@ export default function NewHeader({
                         {/* Buttons Section */}
                         <div className={`flex items-center gap-4 transition-all duration-500 overflow-hidden ${isPastHero ? "opacity-100 max-w-2xl translate-x-0" : "opacity-0 max-w-0 translate-x-10"}`}>
                             {!isCompleted && (
-                                <a
-                                    href={floorPlanPdf}
-                                    download
+                                <button
+                                    type="button"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        openFloorPlanModal({ pdfUrl: floorPlanPdf, projectName });
+                                    }}
+                                    data-floorplan-download="true"
                                     style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
-                                    className={`px-8 py-2 border text-sm font-medium text-center tracking-wide transition-all duration-300 uppercase
+                                    className={`px-8 py-2 border text-sm font-medium text-center tracking-wide transition-all duration-300 uppercase cursor-pointer
                   ${isScrolled
                                             ? "border-[var(--btn-accent)] text-[var(--btn-accent)] hover:opacity-80"
                                             : "border-white text-white hover:bg-white hover:text-[var(--btn-accent)]"
                                         }`}
                                 >
                                     Download <br /> Floor Plans
-                                </a>
+                                </button>
                             )}
                             {view360Url && (
                                 <Link
@@ -255,15 +262,20 @@ export default function NewHeader({
 
                                 <div className="pt-8 flex flex-col gap-4">
                                     {!isCompleted && (
-                                        <a
-                                            href={floorPlanPdf}
-                                            download
+                                        <button
+                                            type="button"
                                             style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
-                                            className="w-full py-4 px-8 border border-[var(--btn-accent)] text-[var(--btn-accent)] hover:bg-[var(--btn-accent)] hover:text-white transition-colors text-center font-medium tracking-widest uppercase"
-                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="w-full py-4 px-8 border border-[var(--btn-accent)] text-[var(--btn-accent)] hover:bg-[var(--btn-accent)] hover:text-white transition-colors text-center font-medium tracking-widest uppercase cursor-pointer"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                setIsMobileMenuOpen(false);
+                                                openFloorPlanModal({ pdfUrl: floorPlanPdf, projectName });
+                                            }}
+                                            data-floorplan-download="true"
                                         >
                                             Download Floor Plans
-                                        </a>
+                                        </button>
                                     )}
                                     {view360Url && (
                                         <Link

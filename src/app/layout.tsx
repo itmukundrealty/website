@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollToTop from "@/components/ScrollToTop";
 import GlobalWidgets from "@/components/common/GlobalWidgets";
+import { FloorPlanModalProvider } from "@/context/FloorPlanModalContext";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -48,13 +49,14 @@ export default function RootLayout({
       <body
         className={`${hostGrotesk.variable} ${hostGrotesk.className} antialiased`}
       >
-        <ScrollToTop />
-        <GlobalWidgets />
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
+        <FloorPlanModalProvider>
+          <ScrollToTop />
+          <GlobalWidgets />
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
+        </FloorPlanModalProvider>
       </body>
     </html>
   );
 }
-

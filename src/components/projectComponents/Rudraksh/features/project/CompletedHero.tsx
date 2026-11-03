@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useFloorPlanModal } from "@/context/FloorPlanModalContext";
 
 export interface CompletedHeroProps {
     desktopImage: string;
@@ -16,6 +17,7 @@ export interface CompletedHeroProps {
     mobileVariant?: "topRight" | "center";
     pdfPath?: string;
     projectLink?: string;
+    projectName?: string;
     view360Url?: string;
 }
 
@@ -28,6 +30,7 @@ export function CompletedHero({
     mobileVariant = "center",
     pdfPath,
     projectLink = "/project-enquire",
+    projectName,
     view360Url,
 }: CompletedHeroProps) {
     const desktopStyles = {
@@ -72,16 +75,22 @@ export function CompletedHero({
     const containerClasses = `${mobileContainer} ${desktopContainer}`;
     const textClasses = `${mobileText} ${mobileMargin} ${desktopText} ${desktopMargin}`;
     const buttonAlignClasses = `${mobileButtonAlign} ${desktopButtonAlign}`;
+    const { openFloorPlanModal } = useFloorPlanModal();
 
-    const handleDownload = () => {
-        if (pdfPath) {
-            const link = document.createElement("a");
-            link.href = pdfPath;
-            link.download = pdfPath.split("/").pop() || "floor-plan.pdf";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+    const handleDownload = (e?: React.MouseEvent) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
         }
+        let pName = projectName;
+        if (!pName && typeof title === "string") {
+            pName = title;
+        }
+        openFloorPlanModal({
+            pdfUrl: pdfPath || "/downloadFloorPlan/typical layout.pdf",
+            projectName: pName,
+            fileName: (pdfPath ? pdfPath.split("/").pop() : null) || "Floorplan.pdf",
+        });
     };
 
     return (
@@ -154,7 +163,9 @@ export function CompletedHero({
                     )}
                     {pdfPath && (
                         <button
+                            type="button"
                             onClick={handleDownload}
+                            data-floorplan-download="true"
                             className="w-full bg-[#0097DC] text-white py-4 font-bold uppercase tracking-wide flex items-center justify-center gap-2 text-sm shadow-lg cursor-pointer"
                         >
                             Download Floor Plans
@@ -199,7 +210,9 @@ export function CompletedHero({
                                 )}
                                 {pdfPath && (
                                     <button
+                                        type="button"
                                         onClick={handleDownload}
+                                        data-floorplan-download="true"
                                         className="group flex items-center justify-center gap-2 px-6 py-5 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold w-full md:w-fit text-[14px] cursor-pointer"
                                     >
                                         <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />
@@ -236,7 +249,9 @@ export function CompletedHero({
                             )}
                             {pdfPath && (
                                 <button
+                                    type="button"
                                     onClick={handleDownload}
+                                    data-floorplan-download="true"
                                     className="group flex items-center justify-center md:justify-start gap-2 px-6 py-5 md:px-6 md:py-6 bg-white text-[#0097DC] hover:bg-white/80 transition-colors uppercase tracking-wide font-bold shrink-0 w-full md:w-fit text-[14px] cursor-pointer"
                                 >
                                     <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-all duration-300" />

@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import KenytChatbot from "./KenytChatbot";
 import WhatsappChatWidget from "./WhatsappChatWidget";
+import FloorPlanDownloadModal from "./FloorPlanDownloadModal";
 
 export default function GlobalWidgets() {
   const pathname = usePathname();
@@ -19,6 +20,7 @@ export default function GlobalWidgets() {
     <>
       <KenytChatbot botId={botId} />
       <WhatsappChatWidget />
+      <FloorPlanDownloadModal />
     </>
   );
 }

@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import OrientationLock from "@/components/common/OrientationLock";
 import { PROJECTS_LIST } from "@/data/projects";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useFloorPlanModal } from "@/context/FloorPlanModalContext";
 
 // Define the expected props (you can replace `any` with your specific types later)
 interface ProjectHeroProps {
@@ -58,17 +59,19 @@ export function ProjectHero({
 }: ProjectHeroProps) {
   const pathname = usePathname();
   const currentPath = pathname?.split("/")[1] || "";
+  const { openFloorPlanModal } = useFloorPlanModal();
 
-  const handleDownload = () => {
-    const downloadPath = zipPath || pdfPath;
-    if (downloadPath) {
-      const link = document.createElement("a");
-      link.href = downloadPath;
-      link.download = downloadPath.split("/").pop() || "floor-plan.zip";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+  const handleDownload = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
     }
+    const downloadPath = zipPath || pdfPath || "/downloadFloorPlan/typical layout.pdf";
+    openFloorPlanModal({
+      pdfUrl: downloadPath,
+      projectName: projectName || "Rudraksh",
+      fileName: downloadPath.split("/").pop() || `${projectName || "Rudraksh"}-Floorplan.pdf`,
+    });
   };
 
   const projectMapping: Record<string, string> = {
@@ -202,7 +205,9 @@ export function ProjectHero({
         >
           {(zipPath || pdfPath) && (
             <button
+              type="button"
               onClick={handleDownload}
+              data-floorplan-download="true"
               className="w-full py-4 border bg-transparent hover:bg-white text-white hover:text-[var(--btn-accent)] font-bold uppercase tracking-wide flex cursor-pointer items-center justify-center gap-2 text-sm shadow-lg transition-colors"
               style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
             >
@@ -253,7 +258,9 @@ export function ProjectHero({
           <div className="flex flex-wrap items-center justify-end gap-4 mt-8 pointer-events-auto">
             {(zipPath || pdfPath) && (
               <button
+                type="button"
                 onClick={handleDownload}
+                data-floorplan-download="true"
                 className="px-8 py-2 border text-sm font-medium text-center tracking-wide transition-all duration-300 uppercase border-white hover:opacity-80 bg-white text-[var(--btn-accent)]"
                 style={{ "--btn-accent": btnAccentColor || "#0097DC" } as React.CSSProperties}
               >
@@ -604,17 +611,24 @@ export function ProjectHero({
                         : `${currentFloor.title}${selectedWing ? ` - Wing ${selectedWing}` : ""}`}
 
                     </h2>
-                    <a
-                      href={currentFloor?.pdfPath ? encodeURI(currentFloor.pdfPath) : "#"}
-                      download={currentFloor?.pdfPath ? currentFloor.pdfPath.split('/').pop() : "Floorplan.pdf"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-sm font-semibold hover:opacity-70 transition-opacity cursor-pointer"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const floorPdf = currentFloor?.pdfPath;
+                        if (floorPdf) {
+                          openFloorPlanModal({
+                            pdfUrl: floorPdf,
+                            projectName,
+                            fileName: floorPdf.split('/').pop() || `${projectName}-${currentFloor.title}-Floorplan.pdf`,
+                          });
+                        }
+                      }}
+                      className="flex items-center gap-3 text-sm font-semibold hover:opacity-70 transition-opacity cursor-pointer bg-transparent border-0 p-0"
                       style={{ color: accentColor }}
                     >
                       Download Floorplan
                       <Compass accentColor={accentColor} />
-                    </a>
+                    </button>
                   </div>
                 </div>
 

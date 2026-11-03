@@ -1,103 +1,18 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import type { Swiper as SwiperClass } from 'swiper';
+import { Autoplay, EffectFade } from 'swiper/modules';
+import { fetchTestimonials, Testimonial, DEFAULT_TESTIMONIALS } from "@/lib/api";
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
-
-
-// --- Data ---
-const testimonials = [
-    {
-        id: 1,
-        thumbnail: "",
-        videoUrl: "#", // Placeholder
-        iframeSrc: "https://www.youtube.com/embed/R9MQVfJkNfI",
-        name: "Dr. Prajwal K Rao & Dr. Shruthi J's",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 2,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/YTbDJpuQIvw?si=vBjMx8zK1Nx8SQxK",
-        name: "Prajwal & Poornima",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 3,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/i1FvfPn_AyY",
-        name: "Ajay Shenava & Anusha Shenava",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 4,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/0Kr2E7fPxcY",
-        name: "Mr. Nagraj Nayak",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 5,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/OaiUlvvu1pU",
-        name: "Dinesh Kumar",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 6,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/mwlgn3Cuq68",
-        name: "Mr. Jaggannath Bhandary",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 7,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/DOoumWd6iJw",
-        name: "Dr. Prashanth Bhat",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 8,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/FPvLjrtQZUI",
-        name: "Mr. Vasuki Ganapati Shanbhag",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 9,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/6tDa2MZunhY?si=tRelWm7-61QH0l__",
-        name: "Subhashini",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 10,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/Rb1AN7Jn2H4?si=SUxSQaqYAe6xThc0",
-        name: "Dr. Devadas Kapikad",
-        role: "Honoured Guest at the Inauguration Ceremony"
-    },
-
-];
-
 
 interface ExperienceSectionProps {
     titlePart1: string;
@@ -114,8 +29,24 @@ export default function ExperienceSection({
     accentColor = "#0097DC",
     titlePart2Light = false
 }: ExperienceSectionProps) {
+    const [testimonials, setTestimonials] = useState<Testimonial[]>(DEFAULT_TESTIMONIALS);
     const [activeIndex, setActiveIndex] = useState(0);
-    const swiperRef = useRef<any>(null);
+    const swiperRef = useRef<SwiperClass | null>(null);
+
+    useEffect(() => {
+        let isMounted = true;
+        fetchTestimonials().then((data) => {
+            if (isMounted && data && data.length > 0) {
+                setTestimonials(data);
+            }
+        }).catch((err) => {
+            console.error("Error loading testimonials in Rudraksh ExperienceSection:", err);
+        });
+
+        return () => {
+            isMounted = false;
+        };
+    }, []);
 
     return (
         <section className="py-24 bg-white relative overflow-hidden font-sans">
@@ -143,36 +74,40 @@ export default function ExperienceSection({
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                            className="text-[#505153] font-light text-lg leading-relaxed max-w-sm"
+                            className="text-base text-gray-500 leading-relaxed font-light max-w-sm"
                         >
                             {description}
                         </motion.p>
 
                         {/* Custom Pagination Container (Desktop) */}
-                        <div className="hidden md:flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 justify-start pt-4">
-                            <div className="flex gap-2 flex-wrap justify-start">
+                        <div className="hidden md:flex flex-col gap-8 justify-start pt-8">
+                            <div className="flex gap-2 justify-start">
                                 {testimonials.map((_, index) => (
                                     <button
                                         key={index}
                                         onClick={() => swiperRef.current?.slideTo(index)}
-                                        className={`h-[4px]  transition-all duration-300 ${activeIndex === index ? "w-12" : "w-6 bg-[#e5e7eb]"
+                                        className={`h-1 transition-all duration-300 ${activeIndex === index ? "w-10" : "w-5 bg-[#e5e7eb]"
                                             }`}
                                         style={{ backgroundColor: activeIndex === index ? accentColor : undefined }}
                                         aria-label={`Go to slide ${index + 1}`}
                                     />
                                 ))}
                             </div>
+
                             {/* Navigation Arrows */}
                             <div className="flex items-center gap-2">
                                 <button 
                                     onClick={() => swiperRef.current?.slidePrev()}
                                     disabled={activeIndex === 0}
-                                    className={`p-2 rounded-full border-2 border-gray-400 transition-all duration-300 group ${
+                                    className={`p-2 rounded-full border border-gray-200 transition-all duration-300 group ${
                                         activeIndex === 0 
                                         ? 'opacity-30 cursor-not-allowed' 
                                         : 'text-[#505153] hover:bg-[var(--hover-bg)] hover:border-[var(--hover-border)] hover:text-white cursor-pointer'
                                     }`}
-                                    style={activeIndex !== 0 ? { "--hover-bg": accentColor, "--hover-border": accentColor } as React.CSSProperties : {}}
+                                    style={{
+                                        ['--hover-bg' as any]: accentColor,
+                                        ['--hover-border' as any]: accentColor
+                                    }}
                                     aria-label="Previous slide"
                                 >
                                     <ChevronLeft size={20} strokeWidth={1.5} />
@@ -180,12 +115,15 @@ export default function ExperienceSection({
                                 <button 
                                     onClick={() => swiperRef.current?.slideNext()}
                                     disabled={activeIndex === testimonials.length - 1}
-                                    className={`p-2 rounded-full border-2 border-gray-400 transition-all duration-300 group ${
+                                    className={`p-2 rounded-full border border-gray-200 transition-all duration-300 group ${
                                         activeIndex === testimonials.length - 1 
                                         ? 'opacity-30 cursor-not-allowed' 
                                         : 'text-[#505153] hover:bg-[var(--hover-bg)] hover:border-[var(--hover-border)] hover:text-white cursor-pointer'
                                     }`}
-                                    style={activeIndex !== testimonials.length - 1 ? { "--hover-bg": accentColor, "--hover-border": accentColor } as React.CSSProperties : {}}
+                                    style={{
+                                        ['--hover-bg' as any]: accentColor,
+                                        ['--hover-border' as any]: accentColor
+                                    }}
                                     aria-label="Next slide"
                                 >
                                     <ChevronRight size={20} strokeWidth={1.5} />
@@ -263,7 +201,10 @@ export default function ExperienceSection({
                                         ? 'opacity-30 cursor-not-allowed' 
                                         : 'text-[#505153] hover:bg-[var(--hover-bg)] hover:border-[var(--hover-border)] hover:text-white cursor-pointer'
                                     }`}
-                                    style={activeIndex !== 0 ? { "--hover-bg": accentColor, "--hover-border": accentColor } as React.CSSProperties : {}}
+                                    style={{
+                                        ['--hover-bg' as any]: accentColor,
+                                        ['--hover-border' as any]: accentColor
+                                    }}
                                     aria-label="Previous slide"
                                 >
                                     <ChevronLeft size={20} strokeWidth={1.5} />
@@ -276,7 +217,10 @@ export default function ExperienceSection({
                                         ? 'opacity-30 cursor-not-allowed' 
                                         : 'text-[#505153] hover:bg-[var(--hover-bg)] hover:border-[var(--hover-border)] hover:text-white cursor-pointer'
                                     }`}
-                                    style={activeIndex !== testimonials.length - 1 ? { "--hover-bg": accentColor, "--hover-border": accentColor } as React.CSSProperties : {}}
+                                    style={{
+                                        ['--hover-bg' as any]: accentColor,
+                                        ['--hover-border' as any]: accentColor
+                                    }}
                                     aria-label="Next slide"
                                 >
                                     <ChevronRight size={20} strokeWidth={1.5} />
@@ -284,6 +228,7 @@ export default function ExperienceSection({
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>

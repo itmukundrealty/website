@@ -18,7 +18,7 @@ export default function HeroGrid() {
                 className="text-left md:text-center mb-8 md:mb-12"
             >
                 <p className="text-3xl md:text-6xl text-[#505153] mb-2 font-light">
-                    13+ Years of
+                    14+ Years of
                 </p>
 
                 <h1 className="text-3xl md:text-6xl text-[#505153] leading-tight">

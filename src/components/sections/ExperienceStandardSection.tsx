@@ -1,105 +1,21 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
+import type { Swiper as SwiperClass } from 'swiper';
+import { Autoplay, EffectFade } from 'swiper/modules';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { fetchTestimonials, Testimonial, DEFAULT_TESTIMONIALS } from "@/lib/api";
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-// --- Data ---
-// --- Data ---
-const testimonials = [
-    {
-        id: 1,
-        thumbnail: "",
-        videoUrl: "#", // Placeholder
-        iframeSrc: "https://www.youtube.com/embed/R9MQVfJkNfI",
-        name: "Dr. Prajwal K Rao & Dr. Shruthi J's",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 2,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/YTbDJpuQIvw?si=vBjMx8zK1Nx8SQxK",
-        name: "Prajwal & Poornima",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 3,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/i1FvfPn_AyY",
-        name: "Ajay Shenava & Anusha Shenava",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 4,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/0Kr2E7fPxcY",
-        name: "Mr. Nagraj Nayak",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 5,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/OaiUlvvu1pU",
-        name: "Dinesh Kumar",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 6,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/mwlgn3Cuq68",
-        name: "Mr. Jaggannath Bhandary",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 7,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/DOoumWd6iJw",
-        name: "Dr. Prashanth Bhat",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 8,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/FPvLjrtQZUI",
-        name: "Mr. Vasuki Ganapati Shanbhag",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 9,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/6tDa2MZunhY?si=tRelWm7-61QH0l__",
-        name: "Subhashini",
-        role: "Proud Owner at Kailash High Living Luxury Apartments"
-    },
-    {
-        id: 10,
-        thumbnail: "",
-        videoUrl: "#",
-        iframeSrc: "https://www.youtube.com/embed/Rb1AN7Jn2H4?si=SUxSQaqYAe6xThc0",
-        name: "Dr. Devadas Kapikad",
-        role: "Honoured Guest at the Inauguration Ceremony"
-    },
-
-];
-
 export default function ExperienceStandardSection() {
+    const [testimonials, setTestimonials] = useState<Testimonial[]>(DEFAULT_TESTIMONIALS);
     const [activeIndex, setActiveIndex] = useState(0);
-    const [swiperRef, setSwiperRef] = useState<any>(null);
+    const [swiperRef, setSwiperRef] = useState<SwiperClass | null>(null);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -109,6 +25,22 @@ export default function ExperienceStandardSection() {
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Load testimonials from CMS / Firestore dynamically
+    useEffect(() => {
+        let isMounted = true;
+        fetchTestimonials().then((data) => {
+            if (isMounted && data && data.length > 0) {
+                setTestimonials(data);
+            }
+        }).catch((err) => {
+            console.error("Error loading testimonials in ExperienceStandardSection:", err);
+        });
+
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     const paginationDots = (
@@ -166,7 +98,7 @@ export default function ExperienceStandardSection() {
                     ))}
                 </div>
 
-                {/* Right side curve lines - Specific SVG provided by user */}
+                {/* Right side curve lines */}
                 <svg className="absolute top-[45%] -right-0 -translate-y-1/2 md:h-[90%] h-[100%] md:w-auto w-[80%] text-gray-200/60 pointer-events-none z-0" viewBox="0 0 1140 710" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M530.434 1423.73C430.299 1423.73 336.993 1369.86 286.93 1283.15L38.5509 852.959C-11.5114 766.249 -11.5225 658.507 38.5509 571.786L286.919 141.592C336.993 54.8714 430.299 1 530.434 1H1027.17C1127.31 1 1220.62 54.8714 1270.69 141.603L1519.05 571.775C1569.13 658.495 1569.13 766.238 1519.05 852.959L1270.69 1283.14C1220.62 1369.86 1127.31 1423.73 1027.17 1423.73H530.434Z" stroke="currentColor" strokeWidth="1" strokeMiterlimit="10" />
                     <path d="M530.435 1318.09C467.923 1318.09 409.677 1284.46 378.415 1230.33L130.047 800.143C98.7971 746.005 98.786 678.752 130.047 624.603L378.415 194.42C409.677 140.282 467.923 106.645 530.435 106.645H1027.17C1089.68 106.645 1147.94 140.282 1179.19 194.42L1427.56 624.603C1458.82 678.741 1458.82 746.005 1427.56 800.143L1179.19 1230.33C1147.94 1284.46 1089.68 1318.09 1027.17 1318.09H530.435Z" stroke="currentColor" strokeWidth="1" strokeMiterlimit="10" />
@@ -181,11 +113,7 @@ export default function ExperienceStandardSection() {
                 </svg>
                 {/* Bottom linear gradient */}
                 <div className="absolute bottom-0 left-0 w-full h-[30vh] bg-gradient-to-t from-white to-transparent z-10"></div>
-
-                {/* Blue Feature Shape (Bottom Right) */}
-
             </div>
-
 
             <div className=" mx-auto px-6 md:px-20 xl:px-54 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
@@ -273,7 +201,6 @@ export default function ExperienceStandardSection() {
                         </div>
 
                     </div>
-
 
                 </div>
             </div>
