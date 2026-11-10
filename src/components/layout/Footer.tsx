@@ -315,18 +315,27 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
                         </button>
                     </div>
 
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] md:text-[11px] text-slate-400 text-center md:text-left">
-                        <div className="order-3 md:order-1 text-[9px] md:text-[11px]">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 text-[10px] md:text-[11px] text-slate-400 text-center md:text-left">
+                        <div className="order-2 md:order-1 text-[9px] md:text-[11px]">
                             <p>All Rights Reserved. Copyright © 2026-27, Mukund MGM Realty</p>
                         </div>
 
-                        <div className="flex flex-col md:flex-row gap-2 md:gap-2 order-2 md:order-2">
-                            <div className="flex justify-center gap-2">
-                                <Link href="/disclaimers" className="hover:text-[#009FE3] transition-colors whitespace-nowrap">Legal Disclaimers</Link>
-                                {/* <span className="opacity-30">|</span>
-                                <Link href="/terms-of-service" className="hover:text-[#009FE3] transition-colors whitespace-nowrap">Terms of Service</Link> */}
-                            </div>
-                            <div className="md:hidden mt-1 opacity-60">All Rights Reserved.</div>
+                        <div className="order-1 md:order-2 flex justify-center">
+                            <Link href="/disclaimers" className="hover:text-[#009FE3] transition-colors whitespace-nowrap">Legal Disclaimers</Link>
+                        </div>
+
+                        <div className="order-3 md:order-3 text-[9px] md:text-[11px]">
+                            <p>
+                                Designed and Developed by{" "}
+                                <a
+                                    href="https://megamind.studio/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-[#009FE3] transition-colors underline-offset-2 hover:underline"
+                                >
+                                    Megamind Studios
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>
