@@ -123,6 +123,7 @@ export default function ExperienceStandardSection() {
                     onVideoStateChange(false);
                 }
             }
+            
         };
 
         window.addEventListener('message', handleMessage);
