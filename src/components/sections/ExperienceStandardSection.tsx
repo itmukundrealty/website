@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperClass } from 'swiper';
@@ -12,11 +12,195 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
+function getYouTubeEmbedWithApi(src: string): string {
+    if (!src) return '';
+    try {
+        const url = new URL(src);
+        url.searchParams.set('enablejsapi', '1');
+        return url.toString();
+    } catch {
+        const joinChar = src.includes('?') ? '&' : '?';
+        return `${src}${joinChar}enablejsapi=1`;
+    }
+}
+
 export default function ExperienceStandardSection() {
     const [testimonials, setTestimonials] = useState<Testimonial[]>(DEFAULT_TESTIMONIALS);
     const [activeIndex, setActiveIndex] = useState(0);
     const [swiperRef, setSwiperRef] = useState<SwiperClass | null>(null);
+    const swiperInstanceRef = useRef<SwiperClass | null>(null);
     const [isMobile, setIsMobile] = useState(false);
+
+    const iframeRefs = useRef<Map<string | number, HTMLIFrameElement>>(new Map());
+    const playerInstances = useRef<Map<string | number, any>>(new Map());
+    const isVideoPlayingRef = useRef<boolean>(false);
+
+    const pauseAllVideos = useCallback(() => {
+        iframeRefs.current.forEach((iframe) => {
+            try {
+                iframe?.contentWindow?.postMessage(
+                    JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
+                    '*'
+                );
+            } catch {}
+        });
+
+        playerInstances.current.forEach((player) => {
+            try {
+                if (typeof player?.pauseVideo === 'function') {
+                    player.pauseVideo();
+                }
+            } catch {}
+        });
+
+        isVideoPlayingRef.current = false;
+    }, []);
+
+    const onVideoStateChange = useCallback((isPlaying: boolean) => {
+        isVideoPlayingRef.current = isPlaying;
+        const swiper = swiperInstanceRef.current;
+        if (!swiper || !swiper.autoplay) return;
+
+        if (isPlaying) {
+            swiper.autoplay.stop();
+        } else {
+            swiper.autoplay.start();
+        }
+    }, []);
+
+    // Listen to postMessage from YouTube iframe
+    useEffect(() => {
+        const handleMessage = (event: MessageEvent) => {
+            if (
+                typeof event.origin === 'string' &&
+                !event.origin.includes('youtube.com') &&
+                !event.origin.includes('youtube-nocookie.com')
+            ) {
+                return;
+            }
+
+            let data = event.data;
+            if (typeof data === 'string') {
+                try {
+                    data = JSON.parse(data);
+                } catch {
+                    return;
+                }
+            }
+
+            if (!data) return;
+
+            // When YouTube player is ready, send 'listening' if not already done
+            if (data.event === 'initialDelivery' || data.event === 'onReady') {
+                iframeRefs.current.forEach((iframe) => {
+                    try {
+                        iframe?.contentWindow?.postMessage(
+                            JSON.stringify({ event: 'listening' }),
+                            '*'
+                        );
+                    } catch {}
+                });
+            }
+
+            let playerState: number | undefined;
+
+            if (data.event === 'onStateChange' && typeof data.info === 'number') {
+                playerState = data.info;
+            } else if (
+                data.event === 'infoDelivery' &&
+                data.info &&
+                typeof data.info.playerState === 'number'
+            ) {
+                playerState = data.info.playerState;
+            }
+
+            if (playerState !== undefined) {
+                // YT.PlayerState: 1 = PLAYING, 3 = BUFFERING -> pause swiper autoplay
+                // 0 = ENDED, 2 = PAUSED -> resume swiper autoplay
+                if (playerState === 1 || playerState === 3) {
+                    onVideoStateChange(true);
+                } else if (playerState === 0 || playerState === 2) {
+                    onVideoStateChange(false);
+                }
+            }
+        };
+
+        window.addEventListener('message', handleMessage);
+        return () => {
+            window.removeEventListener('message', handleMessage);
+        };
+    }, [onVideoStateChange]);
+
+    // Load YouTube IFrame API and hook into players for official event delivery
+    useEffect(() => {
+        if (typeof window !== 'undefined' && !(window as any).YT) {
+            const existingScript = document.querySelector('script[src*="youtube.com/iframe_api"]');
+            if (!existingScript) {
+                const tag = document.createElement('script');
+                tag.src = 'https://www.youtube.com/iframe_api';
+                const firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
+            }
+        }
+
+        const initPlayers = () => {
+            const YT = (window as any).YT;
+            if (!YT || !YT.Player) return;
+
+            iframeRefs.current.forEach((iframe, id) => {
+                if (!iframe || playerInstances.current.has(id)) return;
+
+                try {
+                    const player = new YT.Player(iframe, {
+                        events: {
+                            onStateChange: (event: any) => {
+                                const state = event.data;
+                                if (state === 1 || state === 3) {
+                                    onVideoStateChange(true);
+                                } else if (state === 0 || state === 2) {
+                                    onVideoStateChange(false);
+                                }
+                            },
+                        },
+                    });
+                    playerInstances.current.set(id, player);
+                } catch {}
+            });
+        };
+
+        if ((window as any).YT && (window as any).YT.Player) {
+            initPlayers();
+        } else if (typeof window !== 'undefined') {
+            const prevHandler = (window as any).onYouTubeIframeAPIReady;
+            (window as any).onYouTubeIframeAPIReady = () => {
+                if (typeof prevHandler === 'function') prevHandler();
+                initPlayers();
+            };
+        }
+    }, [testimonials, onVideoStateChange]);
+
+    // Detect click into iframe via window blur for instantaneous pause before buffering
+    useEffect(() => {
+        const handleBlur = () => {
+            setTimeout(() => {
+                const activeEl = document.activeElement;
+                if (activeEl && activeEl.tagName === 'IFRAME') {
+                    let isOurIframe = false;
+                    iframeRefs.current.forEach((iframe) => {
+                        if (iframe === activeEl) isOurIframe = true;
+                    });
+                    if (isOurIframe) {
+                        onVideoStateChange(true);
+                    }
+                }
+            }, 50);
+        };
+
+        window.addEventListener('blur', handleBlur);
+        return () => {
+            window.removeEventListener('blur', handleBlur);
+        };
+    }, [onVideoStateChange]);
 
     useEffect(() => {
         const checkMobile = () => {
@@ -49,7 +233,10 @@ export default function ExperienceStandardSection() {
                 {testimonials.map((_, index) => (
                     <button
                         key={index}
-                        onClick={() => swiperRef?.slideTo(index)}
+                        onClick={() => {
+                            swiperRef?.slideTo(index);
+                            pauseAllVideos();
+                        }}
                         className={`h-[4px] transition-all duration-300 ${activeIndex === index ? 'w-[20px] md:w-[40px] bg-[#0097DC]' : 'w-[10px] md:w-[20px] bg-[#e5e7eb]'
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
@@ -60,7 +247,10 @@ export default function ExperienceStandardSection() {
             {/* Navigation Arrows */}
             <div className="flex items-center gap-2">
                 <button 
-                    onClick={() => swiperRef?.slidePrev()}
+                    onClick={() => {
+                        swiperRef?.slidePrev();
+                        pauseAllVideos();
+                    }}
                     disabled={activeIndex === 0}
                     className={`p-2 rounded-full border border-gray-200 transition-all duration-300 group ${
                         activeIndex === 0 
@@ -72,7 +262,10 @@ export default function ExperienceStandardSection() {
                     <ChevronLeft size={20} strokeWidth={1.5} />
                 </button>
                 <button 
-                    onClick={() => swiperRef?.slideNext()}
+                    onClick={() => {
+                        swiperRef?.slideNext();
+                        pauseAllVideos();
+                    }}
                     disabled={activeIndex === testimonials.length - 1}
                     className={`p-2 rounded-full border border-gray-200 transition-all duration-300 group ${
                         activeIndex === testimonials.length - 1 
@@ -158,12 +351,20 @@ export default function ExperienceStandardSection() {
                             slidesPerView={1}
                             effect={isMobile ? 'slide' : 'fade'}
                             fadeEffect={{ crossFade: true }}
-                            onSwiper={setSwiperRef}
+                            onSwiper={(swiper) => {
+                                swiperInstanceRef.current = swiper;
+                                setSwiperRef(swiper);
+                            }}
                             autoplay={{
                                 delay: 5000,
                                 disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
                             }}
-                            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                            onSlideChange={(swiper) => {
+                                setActiveIndex(swiper.activeIndex);
+                                pauseAllVideos();
+                                swiper.autoplay?.start();
+                            }}
                             className="w-full !overflow-visible"
                         >
                             {testimonials.map((item) => (
@@ -172,12 +373,29 @@ export default function ExperienceStandardSection() {
                                         {/* Video/Image Container - NOW IFRAME */}
                                         <div className="relative h-[30vh] md:h-[55vh] w-full overflow-hidden bg-gray-100 group">
                                             <iframe
-                                                src={item.iframeSrc}
+                                                ref={(el) => {
+                                                    if (el) {
+                                                        iframeRefs.current.set(item.id, el);
+                                                    } else {
+                                                        iframeRefs.current.delete(item.id);
+                                                    }
+                                                }}
+                                                id={`yt-player-home-${item.id}`}
+                                                src={getYouTubeEmbedWithApi(item.iframeSrc)}
                                                 title={item.name}
                                                 className="w-full h-full object-cover border-0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                 allowFullScreen
                                                 loading="lazy"
                                                 referrerPolicy="no-referrer-when-downgrade"
+                                                onLoad={(e) => {
+                                                    try {
+                                                        e.currentTarget.contentWindow?.postMessage(
+                                                            JSON.stringify({ event: 'listening' }),
+                                                            '*'
+                                                        );
+                                                    } catch {}
+                                                }}
                                             />
                                         </div>
 
