@@ -1,19 +1,22 @@
-"use client";
-
 import CraftedForMomentsSection from "@/components/sections/CraftedForMomentsSection";
 import DesignedForMatters from "@/components/sections/DesignedForMatters";
 import ExperienceStandardSection from "@/components/sections/ExperienceStandardSection";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import LandingHero from "@/components/sections/LandingHero";
 import LandmarkSection from "@/components/sections/LandmarkSection";
 import PrinciplesSection from "@/components/sections/PrinciplesSection";
 import Script from "next/script";
 import InsightsSection from "@/components/sections/InsightsSection";
-import PortfolioSection from "@/components/sections/PortfolioSection";
 import NewLandingHero from "@/components/sections/NewLandingHero";
+import { getCachedBlogs, getCachedTestimonials } from "@/lib/server-api";
 
-export default function Home() {
+export const revalidate = 3600;
+
+export default async function Home() {
+  const [blogs, testimonials] = await Promise.all([
+    getCachedBlogs().catch(() => []),
+    getCachedTestimonials().catch(() => []),
+  ]);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
@@ -47,9 +50,9 @@ export default function Home() {
 
       {/* <PortfolioSection /> */}
       
-      <ExperienceStandardSection />
+      <ExperienceStandardSection initialTestimonials={testimonials} />
 
-      <InsightsSection/>
+      <InsightsSection initialBlogs={blogs} />
  
       <CraftedForMomentsSection />
       <DesignedForMatters />

@@ -7,14 +7,34 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import { fetchBlogs, Blog } from "@/lib/api";
 import { usePathname } from "next/navigation";
 
-export default function InsightsSection() {
-    const [blogs, setBlogs] = useState<Blog[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+interface InsightsSectionProps {
+    initialBlogs?: Blog[];
+}
+
+export default function InsightsSection({ initialBlogs }: InsightsSectionProps = {}) {
+    const [blogs, setBlogs] = useState<Blog[]>(() => {
+        if (initialBlogs && initialBlogs.length > 0) {
+            return initialBlogs
+                .slice()
+                .sort((a, b) => {
+                    const timeA = new Date(a.date || a.createdAt || 0).getTime();
+                    const timeB = new Date(b.date || b.createdAt || 0).getTime();
+                    return timeB - timeA;
+                })
+                .slice(0, 3);
+        }
+        return [];
+    });
+    const [isLoading, setIsLoading] = useState(!initialBlogs || initialBlogs.length === 0);
     const pathname = usePathname();
 
     const viewMoreHref = pathname === "/insight-lists" ? "/insights" : "/insight-lists";
 
     useEffect(() => {
+        if (initialBlogs && initialBlogs.length > 0) {
+            setIsLoading(false);
+            return;
+        }
         let isMounted = true;
         const getBlogs = async () => {
             try {
@@ -39,7 +59,11 @@ export default function InsightsSection() {
         return () => {
             isMounted = false;
         };
-    }, []);
+    }, [initialBlogs]);
+
+    if (!isLoading && blogs.length === 0) {
+        return null;
+    }
 
     return (
         <section className="py-12 md:py-24 bg-white relative">

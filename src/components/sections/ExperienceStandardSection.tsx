@@ -24,8 +24,14 @@ function getYouTubeEmbedWithApi(src: string): string {
     }
 }
 
-export default function ExperienceStandardSection() {
-    const [testimonials, setTestimonials] = useState<Testimonial[]>(DEFAULT_TESTIMONIALS);
+interface ExperienceStandardSectionProps {
+    initialTestimonials?: Testimonial[];
+}
+
+export default function ExperienceStandardSection({ initialTestimonials }: ExperienceStandardSectionProps = {}) {
+    const [testimonials, setTestimonials] = useState<Testimonial[]>(
+        initialTestimonials && initialTestimonials.length > 0 ? initialTestimonials : DEFAULT_TESTIMONIALS
+    );
     const [activeIndex, setActiveIndex] = useState(0);
     const [swiperRef, setSwiperRef] = useState<SwiperClass | null>(null);
     const swiperInstanceRef = useRef<SwiperClass | null>(null);
@@ -214,6 +220,7 @@ export default function ExperienceStandardSection() {
 
     // Load testimonials from CMS / Firestore dynamically
     useEffect(() => {
+        if (initialTestimonials && initialTestimonials.length > 0) return;
         let isMounted = true;
         fetchTestimonials().then((data) => {
             if (isMounted && data && data.length > 0) {
@@ -226,7 +233,7 @@ export default function ExperienceStandardSection() {
         return () => {
             isMounted = false;
         };
-    }, []);
+    }, [initialTestimonials]);
 
     const paginationDots = (
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 justify-center md:justify-start mt-4">

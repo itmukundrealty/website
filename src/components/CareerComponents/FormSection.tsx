@@ -130,14 +130,26 @@ export const SelectInput = ({ label, required = false, id, options, defaultValue
     );
 };
 
-export default function FormSection() {
+interface FormSectionProps {
+    initialJobs?: any[];
+}
+
+export default function FormSection({ initialJobs }: FormSectionProps = {}) {
     const [fileName, setFileName] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
     const [submitError, setSubmitError] = useState("");
-    const [jobOptions, setJobOptions] = useState<string[]>(["General Application"]);
+    const [jobOptions, setJobOptions] = useState<string[]>(() => {
+        const defaultOptions = ["General Application"];
+        if (initialJobs && initialJobs.length > 0) {
+            const titles = initialJobs.map((j) => j.heading || j.title).filter(Boolean);
+            return Array.from(new Set([...defaultOptions, ...titles]));
+        }
+        return defaultOptions;
+    });
 
     useEffect(() => {
+        if (initialJobs && initialJobs.length > 0) return;
         const fetchJobs = async () => {
             try {
                 const q = query(collection(db, "careers"), where("isActive", "==", true));
@@ -150,7 +162,7 @@ export default function FormSection() {
                     }
                 });
                 if (jobs.length > 0) {
-                    setJobOptions(jobs);
+                    setJobOptions(Array.from(new Set(["General Application", ...jobs])));
                 }
             } catch (error) {
                 console.error("Error fetching jobs:", error);
@@ -158,7 +170,7 @@ export default function FormSection() {
         };
 
         fetchJobs();
-    }, []);
+    }, [initialJobs]);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSubmitError("");

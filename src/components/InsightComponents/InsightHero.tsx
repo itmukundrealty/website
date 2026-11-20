@@ -5,10 +5,15 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { fetchBlogs, Blog } from "@/lib/api";
 
-export default function InsightHero() {
-    const [latestBlog, setLatestBlog] = useState<Blog | null>(null);
+interface InsightHeroProps {
+    initialBlog?: Blog | null;
+}
+
+export default function InsightHero({ initialBlog }: InsightHeroProps = {}) {
+    const [latestBlog, setLatestBlog] = useState<Blog | null>(initialBlog || null);
 
     useEffect(() => {
+        if (initialBlog) return;
         const getLatest = async () => {
             const data = await fetchBlogs();
             if (data.length === 0) return;
@@ -18,7 +23,7 @@ export default function InsightHero() {
             setLatestBlog(sorted[0]);
         };
         getLatest();
-    }, []);
+    }, [initialBlog]);
 
     // Format date like "DATE 16 JAN 2026"
     const formattedDate = latestBlog

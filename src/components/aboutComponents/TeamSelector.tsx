@@ -365,11 +365,19 @@ function TeamScrollAnimation({ members }: { members: TeamMember[] }) {
 }
 
 // --- Container Component: Handles Data Fetching ---
-export default function TeamSelector() {
-    const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
-    const [loading, setLoading] = useState(true);
+interface TeamSelectorProps {
+    initialMembers?: TeamMember[];
+}
+
+export default function TeamSelector({ initialMembers }: TeamSelectorProps = {}) {
+    const [teamMembers, setTeamMembers] = useState<TeamMember[]>(initialMembers || []);
+    const [loading, setLoading] = useState(!initialMembers || initialMembers.length === 0);
 
     useEffect(() => {
+        if (initialMembers && initialMembers.length > 0) {
+            setLoading(false);
+            return;
+        }
         const loadTeam = async () => {
             try {
                 const data = await fetchTeamMembers();
@@ -382,7 +390,7 @@ export default function TeamSelector() {
         };
 
         loadTeam();
-    }, []);
+    }, [initialMembers]);
 
     if (loading) {
         return <div className="h-screen w-full flex items-center justify-center">Loading...</div>;

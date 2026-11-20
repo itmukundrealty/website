@@ -5,11 +5,21 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { fetchAnnouncements, Blog as Announcement } from '@/lib/api';
 
-export default function CompanySection() {
-    const [announcements, setAnnouncements] = useState<Announcement[]>([]);
-    const [loading, setLoading] = useState(true);
+interface CompanySectionProps {
+    initialAnnouncements?: Announcement[];
+}
+
+export default function CompanySection({ initialAnnouncements }: CompanySectionProps = {}) {
+    const [announcements, setAnnouncements] = useState<Announcement[]>(
+        initialAnnouncements ? initialAnnouncements.slice(0, 3) : []
+    );
+    const [loading, setLoading] = useState(!initialAnnouncements || initialAnnouncements.length === 0);
 
     useEffect(() => {
+        if (initialAnnouncements && initialAnnouncements.length > 0) {
+            setLoading(false);
+            return;
+        }
         const getAnnouncements = async () => {
             const data = await fetchAnnouncements();
             // Take the latest 3 announcements
@@ -17,7 +27,7 @@ export default function CompanySection() {
             setLoading(false);
         };
         getAnnouncements();
-    }, []);
+    }, [initialAnnouncements]);
 
     if (loading) {
         return (

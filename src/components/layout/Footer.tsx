@@ -317,7 +317,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
 
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 text-[10px] md:text-[11px] text-slate-400 text-center md:text-left">
                         <div className="order-2 md:order-1 text-[9px] md:text-[11px]">
-                            <p>All Rights Reserved. Copyright © 2026-27, Mukund MGM Realty</p>
+                            <p>All Rights Reserved. Copyright © {new Date().getFullYear()}, Mukund MGM Realty</p>
                         </div>
 
                         <div className="order-1 md:order-2 flex justify-center">
@@ -333,7 +333,7 @@ export default function Footer({ blogTitle }: FooterProps = {}) {
                                     rel="noopener noreferrer"
                                     className="hover:text-[#009FE3] transition-colors underline-offset-2 hover:underline"
                                 >
-                                    Megamind Studios
+                                    Megamind Advertising Private Limited
                                 </a>
                             </p>
                         </div>

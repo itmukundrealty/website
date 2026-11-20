@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollToTop from "@/components/ScrollToTop";
 import GlobalWidgets from "@/components/common/GlobalWidgets";
 import { FloorPlanModalProvider } from "@/context/FloorPlanModalContext";
+import Script from "next/script";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -49,12 +50,11 @@ export default function RootLayout({
       <body
         className={`${hostGrotesk.variable} ${hostGrotesk.className} antialiased`}
       >
+        <Script src="/smoothScroll.js"/>
         <FloorPlanModalProvider>
           <ScrollToTop />
           <GlobalWidgets />
-          <SmoothScroll>
             {children}
-          </SmoothScroll>
         </FloorPlanModalProvider>
       </body>
     </html>

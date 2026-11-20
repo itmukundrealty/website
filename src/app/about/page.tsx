@@ -8,10 +8,12 @@ import TeamSelector from '@/components/aboutComponents/TeamSelector';
 import QuoteBanner from '@/components/aboutComponents/QuoteBanner';
 import TeamGroupSection from '@/components/aboutComponents/TeamGroupSection';
 import MetricSection from '@/components/aboutComponents/MetricSection';
+import { getCachedTeamMembers } from '@/lib/server-api';
 
 export const revalidate = 3600;
 
-export default function ShapingPage() {
+export default async function ShapingPage() {
+    const teamMembers = await getCachedTeamMembers().catch(() => []);
     return (
         <main className="bg-white min-h-screen">
             <Header />
@@ -50,7 +52,7 @@ export default function ShapingPage() {
                 }
                 imageSrc="/icons/mukund.svg"
             />
-            <TeamSelector />
+            <TeamSelector initialMembers={teamMembers} />
             <QuoteBanner />
             <TeamGroupSection />
             <Footer />

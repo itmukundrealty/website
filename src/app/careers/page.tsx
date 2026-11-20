@@ -44,7 +44,7 @@ export default async function page() {
                 imageSrc="/icons/mukund.svg"
             />
 
-            <FormSection />
+            <FormSection initialJobs={jobs} />
             <Footer />
         </div>
     );

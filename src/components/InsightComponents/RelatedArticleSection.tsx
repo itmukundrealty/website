@@ -7,13 +7,18 @@ import { fetchBlogs, Blog } from "@/lib/api";
 
 interface RelatedArticleSectionProps {
     currentBlogId: string;
+    initialArticles?: Blog[];
 }
 
-export default function RelatedArticleSection({ currentBlogId }: RelatedArticleSectionProps) {
-    const [articles, setArticles] = useState<Blog[]>([]);
-    const [loading, setLoading] = useState(true);
+export default function RelatedArticleSection({ currentBlogId, initialArticles }: RelatedArticleSectionProps) {
+    const [articles, setArticles] = useState<Blog[]>(initialArticles || []);
+    const [loading, setLoading] = useState(!initialArticles || initialArticles.length === 0);
 
     useEffect(() => {
+        if (initialArticles && initialArticles.length > 0) {
+            setLoading(false);
+            return;
+        }
         const getRelated = async () => {
             const all = await fetchBlogs();
             // Sort newest first, exclude current blog, take top 2
@@ -25,7 +30,7 @@ export default function RelatedArticleSection({ currentBlogId }: RelatedArticleS
             setLoading(false);
         };
         getRelated();
-    }, [currentBlogId]);
+    }, [currentBlogId, initialArticles]);
 
     return (
         <section className="bg-white pt-24 pb-16 md:pt-3 md:pb-12 font-host">
