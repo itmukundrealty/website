@@ -233,6 +233,8 @@ export const metadata = {
   metadataBase: new URL("https://www.mukundmgmrealty.com/rudraksh"),
 };
 
+export const revalidate = 3600;
+
 export default function Project1Page() {
   return (
     <main className={`min-h-screen bg-black ${playfair.variable} ${montserrat.variable} font-montserrat [&_h1]:font-playfair [&_h2]:font-playfair [&_h3]:font-playfair [&_h4]:font-playfair [&_h5]:font-playfair [&_h6]:font-playfair`}>

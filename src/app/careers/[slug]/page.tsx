@@ -7,6 +7,8 @@ import Footer from '@/components/layout/Footer';
 import FormSection from '@/components/CareerComponents/FormSection';
 import ApplyNowWrapper from '@/components/CareerComponents/ApplyNowWrapper';
 
+export const revalidate = 3600;
+
 export default async function JobDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const jobs = await getJobs();

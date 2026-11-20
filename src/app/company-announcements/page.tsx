@@ -1,27 +1,16 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { useRouter } from "next/navigation";
-import { ChevronLeft } from "lucide-react";
-import { fetchAnnouncements, Blog as Announcement } from "@/lib/api";
+import BackButton from "@/components/common/BackButton";
+import { Blog as Announcement } from "@/lib/api";
+import { getCachedAnnouncements } from "@/lib/server-api";
 import Image from "next/image";
 
-const CompanyAnnouncementsPage = () => {
-    const router = useRouter();
-    const [announcements, setAnnouncements] = useState<Announcement[]>([]);
-    const [loading, setLoading] = useState(true);
+export const revalidate = 3600;
 
-    useEffect(() => {
-        const getAnnouncements = async () => {
-            const data = await fetchAnnouncements();
-            setAnnouncements(data);
-            setLoading(false);
-        };
-        getAnnouncements();
-    }, []);
+const CompanyAnnouncementsPage = async () => {
+    const announcements: Announcement[] = await getCachedAnnouncements();
 
     return (
         <>
@@ -30,13 +19,7 @@ const CompanyAnnouncementsPage = () => {
             <section className="mx-auto py-16 px-6 md:px-12 lg:px-20 xl:px-54 font-sans bg-white">
                 {/* Back Button */}
                 <div className="mt-20">
-                    <button
-                        onClick={() => router.back()}
-                        className="inline-flex items-center gap-2 text-[#505153] hover:text-[#0097DC] transition-colors group"
-                    >
-                        <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                        <span className="text-sm font-medium uppercase tracking-wider">Back</span>
-                    </button>
+                    <BackButton />
                 </div>
 
                 {/* Heading */}
@@ -45,11 +28,7 @@ const CompanyAnnouncementsPage = () => {
                 </h2>
 
                 {/* Grid Container */}
-                {loading ? (
-                    <div className="flex justify-center items-center h-64">
-                        <div className="w-8 h-8 border-4 border-[#0097DC] border-t-transparent rounded-full animate-spin"></div>
-                    </div>
-                ) : announcements.length > 0 ? (
+                {announcements.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-y-16">
                         {announcements.map((item, index) => {
                             // Determine position to apply correct borders and padding based on the column

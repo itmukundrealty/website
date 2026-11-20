@@ -96,6 +96,16 @@ export default function FeaturesSection({
     const fetchImages = async () => {
       if (!currentProject) return;
       try {
+        const res = await fetch(`/api/projects/${currentProject}/features`);
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setFetchedGalleryImages(data);
+            return;
+          }
+        }
+
+        // Direct Firestore fallback
         const docRef = doc(db, "projectFeatures", currentProject);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists() && docSnap.data().galleryImages && docSnap.data().galleryImages.length > 0) {

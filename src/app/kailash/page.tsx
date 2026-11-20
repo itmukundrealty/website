@@ -1,4 +1,4 @@
-"use client";
+export const revalidate = 3600;
 // import MapSection from "@/components/contact/MapSection";
 import Script from "next/script";
 import NewHeader from "@/components/projectComponents/Rudraksh/features/NewHeader";

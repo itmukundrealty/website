@@ -1,5 +1,5 @@
 import { db } from "./firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 
 export interface TeamMember {
     id: string; // CMS uses string IDs (Firebase)
@@ -142,40 +142,70 @@ export function extractYouTubeEmbedUrl(url: string): string {
 // Ensure this matches your CMS URL.
 // Set NEXT_PUBLIC_CMS_URL in .env.local for local development (e.g. http://localhost:3001)
 export const CMS_BASE_URL = process.env.NEXT_PUBLIC_CMS_URL || "https://cms-dashboard.mukund-reality.workers.dev";
+const DEFAULT_ISR_REVALIDATE = 3600; // 1 hour background ISR
+
+function getEndpointUrl(path: string): string {
+    if (typeof window !== "undefined") {
+        return `/api${path}`;
+    }
+    return `${CMS_BASE_URL}/api${path}`;
+}
 
 export async function fetchTeamMembers(): Promise<TeamMember[]> {
     try {
-        const res = await fetch(`${CMS_BASE_URL}/api/team`, {
-            cache: 'no-store', // Ensure fresh data
-        });
-
-        if (!res.ok) {
-            throw new Error(`Failed to fetch team members: ${res.statusText}`);
-        }
-
-        const data = await res.json();
-
-        return data.map((item: any) => ({
-            id: item.id,
-            name: item.name,
-            role: item.position || 'Team Member',
-            img: item.imageUrl || 'https://placehold.co/500x500?text=No+Image',
-        }));
-    } catch (error) {
-        console.error('Error fetching team members:', error);
-        return [];
-    }
-}
-
-export async function fetchTestimonials(): Promise<Testimonial[]> {
-    // 1. Try CMS API first
-    try {
-        const res = await fetch(`${CMS_BASE_URL}/api/testimonials`, {
-            cache: 'no-store',
+        const url = getEndpointUrl("/team");
+        const res = await fetch(url, {
+            next: { tags: ["team"], revalidate: DEFAULT_ISR_REVALIDATE },
         });
 
         if (res.ok) {
             const data = await res.json();
+            const items = Array.isArray(data) ? data : data.data || [];
+            if (items.length > 0) {
+                return items.map((item: any) => ({
+                    id: item.id,
+                    name: item.name,
+                    role: item.position || item.role || 'Team Member',
+                    img: item.imageUrl || item.img || 'https://placehold.co/500x500?text=No+Image',
+                }));
+            }
+        }
+    } catch (error) {
+        console.warn('API fetch team members failed, trying Firestore fallback:', error);
+    }
+
+    try {
+        const snapshot = await getDocs(collection(db, "team"));
+        if (!snapshot.empty) {
+            const list: TeamMember[] = [];
+            snapshot.forEach((docSnap) => {
+                const item = docSnap.data() as any;
+                list.push({
+                    id: docSnap.id,
+                    name: item.name,
+                    role: item.position || item.role || 'Team Member',
+                    img: item.imageUrl || item.img || 'https://placehold.co/500x500?text=No+Image',
+                });
+            });
+            return list;
+        }
+    } catch (dbErr) {
+        console.error("Firestore team query fallback error:", dbErr);
+    }
+    return [];
+}
+
+export async function fetchTestimonials(): Promise<Testimonial[]> {
+    // 1. Try CMS API / Next.js Tag-cached Route
+    try {
+        const url = getEndpointUrl("/testimonials");
+        const res = await fetch(url, {
+            next: { tags: ["testimonials"], revalidate: DEFAULT_ISR_REVALIDATE },
+        });
+
+        if (res.ok) {
+            const result = await res.json();
+            const data = Array.isArray(result) ? result : result.data;
             if (Array.isArray(data) && data.length > 0) {
                 return data
                     .filter((item: any) => item.isActive !== false)
@@ -228,72 +258,124 @@ export async function fetchTestimonials(): Promise<Testimonial[]> {
 
 export async function fetchBlogs(): Promise<Blog[]> {
     try {
-        const res = await fetch(`${CMS_BASE_URL}/api/blogs`, {
-            cache: 'no-store',
+        const url = getEndpointUrl("/blogs");
+        const res = await fetch(url, {
+            next: { tags: ["blogs", "insights"], revalidate: DEFAULT_ISR_REVALIDATE },
         });
 
-        if (!res.ok) {
-            throw new Error(`Failed to fetch blogs: ${res.statusText}`);
+        if (res.ok) {
+            const data = await res.json();
+            const blogs = (Array.isArray(data) ? data : data.data || []) as Blog[];
+            if (blogs.length > 0) return blogs;
         }
-
-        const data = await res.json();
-        return data as Blog[];
     } catch (error) {
-        console.error('Error fetching blogs:', error);
-        return [];
+        console.warn('API fetch blogs failed, trying Firestore fallback:', error);
     }
+
+    try {
+        const snapshot = await getDocs(collection(db, "blogs"));
+        if (!snapshot.empty) {
+            const list: Blog[] = [];
+            snapshot.forEach((docSnap) => {
+                list.push({ id: docSnap.id, ...(docSnap.data() as any) });
+            });
+            return list.sort((a, b) => {
+                const timeA = new Date(a.date || a.createdAt || 0).getTime();
+                const timeB = new Date(b.date || b.createdAt || 0).getTime();
+                return timeB - timeA;
+            });
+        }
+    } catch (dbErr) {
+        console.error("Firestore blogs query fallback error:", dbErr);
+    }
+    return [];
 }
 
 export async function fetchBlogById(id: string): Promise<Blog | null> {
     try {
-        const res = await fetch(`${CMS_BASE_URL}/api/blogs/${id}`, {
-            cache: 'no-store',
+        const url = getEndpointUrl(`/blogs/${id}`);
+        const res = await fetch(url, {
+            next: { tags: ["blogs", "insights", `blog-${id}`], revalidate: DEFAULT_ISR_REVALIDATE },
         });
 
-        if (!res.ok) {
-            throw new Error(`Failed to fetch blog with id ${id}: ${res.statusText}`);
+        if (res.ok) {
+            const data = await res.json();
+            if (data && !data.error) return data as Blog;
         }
-
-        const data = await res.json();
-        return data as Blog;
     } catch (error) {
-        console.error(`Error fetching blog ${id}:`, error);
-        return null;
+        console.warn(`API fetch blog ${id} failed, trying Firestore fallback:`, error);
     }
+
+    try {
+        const docRef = doc(db, "blogs", id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            return { id: docSnap.id, ...(docSnap.data() as any) };
+        }
+    } catch (dbErr) {
+        console.error(`Firestore blog ${id} query fallback error:`, dbErr);
+    }
+    return null;
 }
 
 export async function fetchAnnouncements(): Promise<Blog[]> {
     try {
-        const res = await fetch(`${CMS_BASE_URL}/api/announcements`, {
-            cache: 'no-store',
+        const url = getEndpointUrl("/announcements");
+        const res = await fetch(url, {
+            next: { tags: ["announcements"], revalidate: DEFAULT_ISR_REVALIDATE },
         });
 
-        if (!res.ok) {
-            throw new Error(`Failed to fetch announcements: ${res.statusText}`);
+        if (res.ok) {
+            const data = await res.json();
+            const items = (Array.isArray(data) ? data : data.data || []) as Blog[];
+            if (items.length > 0) return items;
         }
-
-        const data = await res.json();
-        return data as Blog[];
     } catch (error) {
-        console.error('Error fetching announcements:', error);
-        return [];
+        console.warn('API fetch announcements failed, trying Firestore fallback:', error);
     }
+
+    try {
+        const snapshot = await getDocs(collection(db, "announcements"));
+        if (!snapshot.empty) {
+            const list: Blog[] = [];
+            snapshot.forEach((docSnap) => {
+                list.push({ id: docSnap.id, ...(docSnap.data() as any) });
+            });
+            return list.sort((a, b) => {
+                const timeA = new Date(a.date || a.createdAt || 0).getTime();
+                const timeB = new Date(b.date || b.createdAt || 0).getTime();
+                return timeB - timeA;
+            });
+        }
+    } catch (dbErr) {
+        console.error("Firestore announcements query fallback error:", dbErr);
+    }
+    return [];
 }
 
 export async function fetchAnnouncementById(id: string): Promise<Blog | null> {
     try {
-        const res = await fetch(`${CMS_BASE_URL}/api/announcements/${id}`, {
-            cache: 'no-store',
+        const url = getEndpointUrl(`/announcements/${id}`);
+        const res = await fetch(url, {
+            next: { tags: ["announcements", `announcement-${id}`], revalidate: DEFAULT_ISR_REVALIDATE },
         });
 
-        if (!res.ok) {
-            throw new Error(`Failed to fetch announcement with id ${id}: ${res.statusText}`);
+        if (res.ok) {
+            const data = await res.json();
+            if (data && !data.error) return data as Blog;
         }
-
-        const data = await res.json();
-        return data as Blog;
     } catch (error) {
-        console.error(`Error fetching announcement ${id}:`, error);
-        return null;
+        console.warn(`API fetch announcement ${id} failed, trying Firestore fallback:`, error);
     }
+
+    try {
+        const docRef = doc(db, "announcements", id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            return { id: docSnap.id, ...(docSnap.data() as any) };
+        }
+    } catch (dbErr) {
+        console.error(`Firestore announcement ${id} query fallback error:`, dbErr);
+    }
+    return null;
 }

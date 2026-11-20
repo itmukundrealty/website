@@ -6,6 +6,8 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import { getJobs } from "@/data/jobs";
 
+export const revalidate = 3600;
+
 export default async function page() {
     const jobs = await getJobs();
 

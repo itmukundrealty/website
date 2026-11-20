@@ -14,9 +14,19 @@ export interface Job {
 const colors = ["#93CCE9", "#4DB4EA", "#0097DC"]; // Lightest blue, Medium blue, Darkest blue
 
 export async function getJobs(): Promise<Job[]> {
+    if (typeof window === "undefined") {
+        try {
+            const { getCachedJobs } = await import("@/lib/server-api");
+            return await getCachedJobs();
+        } catch (err) {
+            console.warn("Failed to load cached jobs, falling back to fetch:", err);
+        }
+    }
+
     try {
-        const res = await fetch(`${CMS_BASE_URL}/api/careers`, {
-            cache: 'no-store',
+        const url = typeof window !== "undefined" ? "/api/careers" : `${CMS_BASE_URL}/api/careers`;
+        const res = await fetch(url, {
+            next: { tags: ["careers", "jobs"], revalidate: 3600 },
         });
 
         if (!res.ok) {
@@ -24,13 +34,14 @@ export async function getJobs(): Promise<Job[]> {
             return [];
         }
 
-        const data = await res.json();
+        const result = await res.json();
+        const data = Array.isArray(result) ? result : result.data || [];
         let colorIndex = 0;
         const fetchedJobs: Job[] = [];
 
         for (const item of data) {
             if (item.isActive !== false) {
-                const title = item.heading || "";
+                const title = item.heading || item.title || "";
 
                 // create URL-friendly slug and append a bit of ID for uniqueness
                 const slugCandidate = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -44,7 +55,7 @@ export async function getJobs(): Promise<Job[]> {
                     description: item.description || "",
                     color: colors[colorIndex % colors.length],
                     responsibilities: item.responsibilities || [],
-                    experience: item.experiences || []
+                    experience: item.experiences || item.experience || []
                 });
                 colorIndex++;
             }

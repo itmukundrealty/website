@@ -9,6 +9,8 @@ import QuoteBanner from '@/components/aboutComponents/QuoteBanner';
 import TeamGroupSection from '@/components/aboutComponents/TeamGroupSection';
 import MetricSection from '@/components/aboutComponents/MetricSection';
 
+export const revalidate = 3600;
+
 export default function ShapingPage() {
     return (
         <main className="bg-white min-h-screen">

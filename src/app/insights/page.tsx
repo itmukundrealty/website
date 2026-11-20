@@ -1,24 +1,15 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { fetchBlogs, Blog } from "@/lib/api";
+import { Blog } from "@/lib/api";
+import { getCachedBlogs } from "@/lib/server-api";
 import Image from "next/image";
 
-export default function BlogListingPage() {
-    const [blogs, setBlogs] = useState<Blog[]>([]);
-    const [loading, setLoading] = useState(true);
+export const revalidate = 3600;
 
-    useEffect(() => {
-        const getBlogs = async () => {
-            const data = await fetchBlogs();
-            setBlogs(data);
-            setLoading(false);
-        };
-        getBlogs();
-    }, []);
+export default async function BlogListingPage() {
+    const blogs: Blog[] = await getCachedBlogs();
 
     return (
         <>
@@ -31,11 +22,7 @@ export default function BlogListingPage() {
                 </h2>
 
                 {/* Grid Container */}
-                {loading ? (
-                    <div className="flex justify-center items-center h-64">
-                        <div className="w-8 h-8 border-4 border-[#0097DC] border-t-transparent rounded-full animate-spin"></div>
-                    </div>
-                ) : blogs.length > 0 ? (
+                {blogs.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-y-16">
                         {blogs.map((blog, index) => {
                             const isFirstCol = index % 3 === 0;

@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
-import { useLenis } from "lenis/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import OrientationLock from "@/components/common/OrientationLock";
@@ -126,8 +125,6 @@ export function ProjectHero({
     // Dispatch global event for NewHeader to listen to without prop drilling through Page
     window.dispatchEvent(new CustomEvent("floorExplorerToggle", { detail: { isOpen } }));
   }, [selectedIndex]);
-
-  const lenis = useLenis();
 
   const currentFloor = selectedIndex !== null ? floorData[selectedIndex] : null;
 
