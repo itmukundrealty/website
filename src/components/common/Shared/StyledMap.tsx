@@ -189,6 +189,8 @@ interface StyledMapProps {
     accentColorLight?: string;
 }
 
+const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY || "AIzaSyA_iuXcnTYRwre6wlxuk1BSrfOxrueOczs";
+
 export default function StyledMap({
     activePoints = [],
     highlightHighway = false,
@@ -315,7 +317,7 @@ export default function StyledMap({
 
     return (
         <div className={`relative h-full w-full overflow-hidden ${className}`}>
-            <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY!}>
+            <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={center}

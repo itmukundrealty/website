@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_GOOGLE_MAPS_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY || "AIzaSyA_iuXcnTYRwre6wlxuk1BSrfOxrueOczs",
+  },
   poweredByHeader: false,
   images: {
     unoptimized: true,
@@ -75,15 +78,6 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/icons/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/_next/static/:path*",
         headers: [
           {
             key: "Cache-Control",
